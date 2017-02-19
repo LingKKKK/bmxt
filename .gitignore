@@ -1,0 +1,7 @@
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+.sass-cache
+.php_cs.cache
