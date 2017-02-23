@@ -12,6 +12,14 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::any('/enroll/test', 'EnrollController@test');
+Route::any('/enroll/info', 'EnrollController@info');
+Route::any('/enroll/success', 'EnrollController@info');
+Route::any('/enroll/fail', 'EnrollController@fail');
+Route::get('/enroll/{id}', 'EnrollController@index');
+Route::post('/enroll/{id}', 'EnrollController@doEnroll');
+
+
 
 // 认证路由...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -22,10 +30,16 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+
 // 后台管理
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/', 'IndexController@index');
-    Route::get('/activity', 'EnrollController@index');
-    Route::post('/activity', 'EnrollController@createActivity');
+    Route::get('/activity/list', 'EnrollController@index');
+    Route::get('/activity/create', 'EnrollController@create');
+    Route::post('/activity/create', 'EnrollController@store');
+    Route::get('/activity/config', 'EnrollController@config');
 });
 
+//验证码
+Route::get('/capacha/{config?}', 'EnrollController@getCaptcha');
+Route::get('/auth/verifycode', 'EnrollController@getVerifyCode');

@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>报名系统</title>
+  <title>@yield('title', '报名系统')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -30,6 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  @yield('css')
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -90,7 +91,7 @@ desired effect
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="{{ asset('assets/admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                        <img src="{{ asset('assets/img/kenrobot-logo.png') }}" class="img-circle" alt="User Image">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -174,18 +175,18 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{ asset('assets/admin/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{ asset('assets/img/kenrobot-logo.png') }}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{ $user->name or '啃萝卜管家'}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{ asset('assets/admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                <img src="{{ asset('assets/img/kenrobot-logo.png') }}" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  啃萝卜管理员
+                  <small>**</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -231,10 +232,10 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('assets/admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+          <img src="{{ asset('assets/img/kenrobot-logo.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>啃萝卜管家</p>
+          <p>{{ $user->name or '啃萝卜管家'}}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -264,8 +265,10 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">创建报名活动</a></li>
-            <li><a href="#">报名活动列表</a></li>
+            <li><a href="{{url('/admin/activity/create')}}">创建报名活动</a></li>
+            <li><a href="{{url('/admin/activity/list')}}">报名活动列表</a></li>
+            <li><a href="{{url('/admin/activity/config')}}">配置报名活动</a></li>
+
           </ul>
         </li>
         <li class="active"><a href="#"><i class="fa fa-link"></i> <span>报名数据</span></a></li>
@@ -387,6 +390,9 @@ desired effect
 <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
+
+@yield('pre_scripts')
+
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/admin/dist/js/app.min.js') }}"></script>
 
@@ -394,5 +400,6 @@ desired effect
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+@yield('scripts')
 </body>
 </html>

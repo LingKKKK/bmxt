@@ -34,9 +34,19 @@ gulp.task('clean-js', function() {
 });
 
 gulp.task('clean-css', function(){
-    return gulp.src(DIST +'css/*')
+    return gulp.src(DIST + 'css/*')
         .pipe(clean());
-})
+});
+
+gulp.task('clean-img', function(){
+    return gulp.src('DIST' + 'img/*')
+        .pipe(clean());
+});
+
+gulp.task('clean-bootstrap', function(){
+    return gulp.src('DIST' + 'bootstrap-3.3.7/*')
+        .pipe(clean());
+});
 
 gulp.task('js',['clean-js'] , function(){
     var jsSrc = SRC + 'js/**/*.js'
@@ -47,14 +57,12 @@ gulp.task('js',['clean-js'] , function(){
 });
 
 gulp.task('css', ['clean-css'], function(){
-
-    //复制已存在CSS
     var cssSrc = SRC + 'css/**';
     var cssDst = DIST + 'css/';
     var sassSrc = SRC + 'sass/*.scss';
 
     gulp.src(cssSrc)
-    .pipe(gulp.dest(cssDst))
+        .pipe(gulp.dest(cssDst));
    
     return sass(sassSrc, {style: 'expanded'})
         // .pipe(autoprefixer())
@@ -62,6 +70,19 @@ gulp.task('css', ['clean-css'], function(){
         .pipe(gulp.dest(cssDst));
 });
 
+gulp.task('img', ['clean-img'], function(){
+    var imgSrc = SRC + 'img/**';
+    var imgDst = DIST + 'img/';
+    return gulp.src(imgSrc)
+        .pipe(gulp.dest(imgDst));
+});
+
+gulp.task('bootstrap', ['clean-bootstrap'], function(){
+    var bootstrapSrc = SRC + 'bootstrap-3.3.7/**';
+    var bootstrapDst = DIST + 'bootstrap-3.3.7/';
+    return gulp.src(bootstrapSrc)
+        .pipe(gulp.dest(bootstrapDst));
+});
 
 //后台管理
 var adminSrc = SRC + 'admin/bower_components/AdminLTE'
@@ -99,6 +120,6 @@ gulp.task('admin-lte-plugins', ['clean-admin-lte-plugins'], _ => {
 
 gulp.task('admin', ['admin-lte-dist', 'admin-lte-bootstrap', 'admin-lte-plugins'])
 
-gulp.task('default', ['js', 'css', 'admin'],function() {
+gulp.task('default', ['js', 'css', 'img', 'admin', 'bootstrap'],function() {
     
 });
