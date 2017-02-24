@@ -34,9 +34,4 @@ class EnrollDataRepository
         $enroll_data->activity['form_design'] = json_decode($enroll_data->activity['form_design'], true);
         return $enroll_data;
     }
-
-    public function saveEnrollData($id)
-    {
-        # code...
-    }
 }

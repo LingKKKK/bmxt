@@ -13,7 +13,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app['validator']->extend('verificationcode', function($attribute, $value, $parameters){
+            return verificationcode_check($value);
+        });
+
+        $this->app['validator']->extend('mobile', function($attribute, $value, $parameters){
+            return is_mobile($value);
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+  
     }
 }

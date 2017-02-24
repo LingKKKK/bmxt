@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Enroll\Activity as ActivityModel;
 use App\Enroll\EnrollData as EnrollDataModel;
-use Mews\Captcha\Captcha;
 use App\Enroll\EnrollDataRepository;
-use App\Enroll\SMS;
-use App\Enroll\VerifyCode;
+use Validator;
+
 /**
  * 报名页面展示
  */
@@ -23,33 +20,41 @@ class EnrollController extends Controller
         $this->enrollrepo = $enrollrepo;
     }
 
-    public function index($id, Request $request)
+    public function index($id, Request $request, \App\Enroll\EnrollService $enrollservice)
     {
         $id = intval($id);
         $act = $this->enrollrepo->getActivity($id);
         if (!$act) {
             abort(404);
         }
+        $config = $enrollservice->parseConfig($enrollservice->getdemoFormDesign());
 
-        $form_design = $act['form_design'];
-      
 
-        return view('enroll.theme1', compact('form_design','id'));
+        return view('enroll.theme1', compact('config','id'));
     }
 
-    public function doEnroll($id, Request $request, SMS $sms)
+    public function doEnroll($id, Request $request, \App\Enroll\EnrollService $enrollservice)
     {
+        $config = $enrollservice->parseConfig($enrollservice->getdemoFormDesign());
+        $validator = Validator::make($request->all(), 
+            $config['validator.rules'],
+            $config['validator.messages']
+        );
+
+        if ($validator->fails()) {
+            return redirect("/enroll/$id")
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
+
         $id = intval($id);
         $act = $this->enrollrepo->getActivity($id);
         if (empty($act)) {
             abort(404);
         }
 
-        $capacha = $request->input('capacha');
-        $ret = captcha_check($capacha);
-
         $form_design = $act['form_design'];
-
 
         $fileds = [];
         foreach ($form_design['fields'] as $tag) {
@@ -73,29 +78,16 @@ class EnrollController extends Controller
                     });
             }
 
-            if (!empty($enrolldata['phone'])) {
-                $sms->sendVerifycode($enrolldata['phone'], rand(100000,999999));
-            }
-
             return redirect('/enroll/success?enrollid='.$endata->id);
         } else {
             return redirect('/enroll/fail');
         }
     }
 
-    public function test(\App\Enroll\VerifyCode $verifycode, Request $request)
+    public function test(Request $request, \App\Enroll\EnrollService $enrollservice)
     {
-       $act = $request->input('act', '');
-       if ($act == 'g') {
-          $code = $verifycode->getCode();
-          return $code;
-       }
-
-       if ($act == 'v') {
-           $code = $request->input('code', '');
-           $ret = $verifycode->verifyCode($code);
-           dd($ret);
-       }
+        $ret = $enrollservice->parseConfig($enrollservice->getdemoFormDesign());
+        dd($ret);
     }
 
     public function success()
@@ -163,28 +155,6 @@ class EnrollController extends Controller
         return $val;
     }
 
-    /**
-     * 获取验证码
-     */
-    public function getCaptcha(Captcha $captcha, $config = 'default')
-    {
-        return $captcha->create($config);
-    }
-
-    public function getVerifyCode(Request $request, VerifyCode $verfiycode, SMS $sms)
-    {
-
-        $phone = $request->input('phone', '');
-        $code = $verfiycode->getCode();
-        if (empty($code) || empty($phone)) {
-            return api_response(0, '发送失败');
-        }
-
-        $sms->sendVerifycode($phone, $code);
-
-        
-
-        return api_response(0, '发送成功');
-    }
+  
 
 }

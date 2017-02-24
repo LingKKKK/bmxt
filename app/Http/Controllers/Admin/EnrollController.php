@@ -95,8 +95,8 @@ class EnrollController extends Controller
                 ],
                 [
                     'type' => 'text',
-                    'id' => 'phone',
-                    'name' => 'phone', 
+                    'id' => 'mobile',
+                    'name' => 'mobile', 
                     'labeltext' => '手机号',
                     'required' => true,
                 ],
