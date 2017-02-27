@@ -40,7 +40,7 @@ class EnrollService
 
                 if ($tag['datatype'] == 'captcha') {
                     $rule[] = 'captcha';
-                    $validatormessages["$k.captcha"] = $tag['labeltext'].' 校验错误';
+                    $validatormessages["$k.captcha"] = $tag['labeltext'].' 校验错误!';
                 }
 
                 if ($tag['datatype'] == 'verificationcode') {
