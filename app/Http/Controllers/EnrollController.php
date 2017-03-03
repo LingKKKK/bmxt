@@ -74,11 +74,6 @@ class EnrollController extends Controller
         }
     }
 
-    public function test(Request $request, \App\Enroll\EnrollService $enrollservice)
-    {
-
-    }
-
     public function success()
     {
         return view('enroll.success');

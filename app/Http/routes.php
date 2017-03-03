@@ -44,7 +44,6 @@ Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode')
 // 报名前台页面
 Route::any('/enroll/info', 'EnrollController@info');
 Route::any('/enroll/success', 'EnrollController@info');
-Route::any('/enroll/test', 'EnrollController@test');
 Route::any('/enroll/fail', 'EnrollController@fail');
 Route::get('/enroll/{id}', 'EnrollController@index');
 Route::post('/enroll/{id}', 'EnrollController@doEnroll')->where('id', '[0-9]+');
