@@ -25,15 +25,17 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 // 后台管理
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/', 'IndexController@index');
-    Route::get('/activity/list', 'EnrollController@index');
-    Route::get('/activity/create', 'EnrollController@create');
-    Route::post('/activity/create', 'EnrollController@store');
-    Route::get('/activity/config', 'EnrollController@config');
+    Route::get('/activity/list', 'ActivityController@index');
+    Route::get('/activity/create', 'ActivityController@create');
+    Route::post('/activity/create', 'ActivityController@store');
+    Route::get('/activity/config/{id}', 'ActivityController@config')->where('id', '[0-9]+');
+    Route::post('/activity/config/{id}', 'ActivityController@saveConfig')->where('id', '[0-9]+');
+    Route::get('/activity/config/{id}/preview', 'ActivityController@configPreview')->where('id', '[0-9]+');
 });
 
 // 图形验证码
 Route::get('/captcha/{config?}', 'UtilsController@captcha');
-Route::post('/captcha/verify', 'UtilsController@checkCaptcha');
+Route::post('/captcha/verify', 'UtilsController@verificationcode');
 
 // 短信/邮件验证码 
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
@@ -45,4 +47,4 @@ Route::any('/enroll/success', 'EnrollController@info');
 Route::any('/enroll/test', 'EnrollController@test');
 Route::any('/enroll/fail', 'EnrollController@fail');
 Route::get('/enroll/{id}', 'EnrollController@index');
-Route::post('/enroll/{id}', 'EnrollController@doEnroll');
+Route::post('/enroll/{id}', 'EnrollController@doEnroll')->where('id', '[0-9]+');

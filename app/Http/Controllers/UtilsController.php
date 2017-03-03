@@ -8,7 +8,6 @@ use Mail;
 
 class UtilsController extends Controller
 {
-
     /**
      * 图片验证码
      */
@@ -17,6 +16,9 @@ class UtilsController extends Controller
         return captcha($config);
     }
 
+    /**
+     * 检查图片验证码
+     */
     public function checkCaptcha(Request $request)
     {
         $captcha = $request->input('captcha', '');
@@ -36,7 +38,7 @@ class UtilsController extends Controller
     {
         $type = $request->input('type', '');
 
-        if ($type == 'mobile' || $type == 'email') {
+        if ($type != 'mobile' && $type != 'email') {
             return api_response(-1, '参数不正确!');
         }
 
@@ -55,7 +57,7 @@ class UtilsController extends Controller
             $vcode = verificationcode_create();
             //发送短信
             sms_send_verifycode($mobile, $vcode);
-            return api_response(0, '短信发送成功!');
+            return api_response(0, '短信发送成功!'.$vcode);
         }
 
         if ($type == 'email') {
@@ -63,16 +65,17 @@ class UtilsController extends Controller
             if (! is_email($email)) {
                 return api_response(-1, '参数不正确!');
             }
-            $vcode = verificationcode_create();
 
+            $vcode = verificationcode_create();
+            //发送邮件
             $result = Mail::send('emails.verificationcode', ['code' => $vcode], function($m) use($email) {
-                        $m->from('support@kenrobot.com', '啃萝卜');
+                        $m->from('support@kenrobot.com', '啃萝卜验证码');
                         $m->to($email, '')->subject('验证码');
             });
-            return api_response(0, '邮件发送成功');
+            return api_response(0, '邮件发送成功!'.$vcode);
         }
 
-        return api_response(-1, '参数不正确!');
+        return api_response(-3, '参数不正确!');
     }
 
     /**

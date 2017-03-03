@@ -8,18 +8,45 @@ class EnrollService
     public function parseConfig($form_design)
     {
         $fields = isset($form_design['fields']) ? $form_design['fields'] : [];
-        $default_fields = isset($form_design['default_fields']) ? $form_design['default_fields'] : [];
-        $verification = isset($form_design['verification']) ? $form_design['verification'] : [];
 
-        $fieldlist = array_merge($default_fields,$fields,$verification );
+        //规范化数据
+        foreach ($fields as $k => $tag) {
+            if (isset($tag['required']) && $tag['required']) {
+                $fields[$k]['required'] = 'required';
+            } else {
+                unset($fields[$k]['required']);
+            }
 
-        $config['theme'] = isset($form_design['theme']) ? $form_design['theme'] : 'default';
-        $config['fieldlist'] = $fieldlist;
-        //提取校验规则
+            if (isset($tag['checked']) && $tag['checked']) {
+                $fields[$k]['checked'] = 'checked';
+            } else {
+                unset($fields[$k]['checked']);
+            }
+
+            if (isset($tag['multiple']) && $tag['multiple']) {
+                $fields[$k]['multiple'] = 'multiple';
+            } else {
+                unset($fields[$k]['multiple']);
+            }
+
+            if (!isset($tag['id']) || !$tag['id']) {
+                $fields[$k]['id'] = 'input_'.$tag['name'];
+            }
+        }
+
+        //校验规则
         $validatorules = [];
         $validatormessages = [];
 
-        foreach ($fieldlist as $k => $tag) {
+
+        $config['fields'] = $fields;
+        $config['datakeys'] = array_keys($fields);
+        $config['verificationtype'] = isset($form_design['verificationtype']) ? $form_design['verificationtype'] : 'captcha';
+        $config['verificationtype'] = 'mobile';
+        $config['theme'] = isset($form_design['theme']) ? $form_design['theme'] : 'default';
+
+
+        foreach ($fields as $k => $tag) {
             $rule = [];
 
             if (isset($tag['required']) && $tag['required']) {
@@ -37,16 +64,6 @@ class EnrollService
                     $rule[] = 'mobile';
                     $validatormessages["$k.mobile"] = $tag['labeltext'].' [手机号]格式不正确!';
                 }
-
-                if ($tag['datatype'] == 'captcha') {
-                    $rule[] = 'captcha';
-                    $validatormessages["$k.captcha"] = $tag['labeltext'].' 校验错误';
-                }
-
-                if ($tag['datatype'] == 'verificationcode') {
-                    $rule[] = 'verificationcode';
-                    $validatormessages["$k.verificationcode"] = $tag['labeltext'].' 验证错误!';
-                }
             }
 
             if (! empty($rule)) {
@@ -54,27 +71,21 @@ class EnrollService
             }
         }
 
+        // 配置校验规则
+        if($config['verificationtype'] == 'captcha') {
+            $validatorules['captcha'] = 'required|captcha';
+            $validatormessages['captcha.required'] = '验证码不能为空!';
+            $validatormessages['captcha.captcha'] = '验证码格式不正确!';
+        } elseif ($config['verificationtype'] == 'mobile' || $config['verificationtype'] = 'email') {
+            $validatorules['verificationcode'] = 'required|verificationcode';
+            $validatormessages['verificationcode.required'] = '验证码不能为空!';
+            $validatormessages['verificationcode.verificationcode'] = '验证码格式不正确!';
+        } else {
+
+        }
+
         $config['validator.rules'] = $validatorules;
         $config['validator.messages'] = $validatormessages;
-
-        //提取数据字段
-        $config['datakeys'] =array_diff(array_merge(array_keys($default_fields), array_keys($fields)), ['verificationcode', 'captcha']);
-
-        //提取验证码发送规则
-        // mobile > email > captcha > '' 三者者必须有一个
-        $config['verificationcode.driver'] = 'captcha';
-
-        if (isset($default_fields['captcha'])) {
-            $config['verificationcode.driver'] = 'captcha';
-        }
-
-        if (isset($default_fields['email'])) {
-            $config['verificationcode.driver'] = 'email';
-        }
-
-        if (isset($default_fields['mobile'])) {
-            $config['verificationcode.driver'] = 'mobile';
-        }
 
         return $config;
     }
@@ -228,10 +239,12 @@ class EnrollService
                 ],
             ],
             'theme' => 'black',
+            'verificationcode' => 'email',
 
         ];
 
         return $form_design;
     }
 
+    
 }

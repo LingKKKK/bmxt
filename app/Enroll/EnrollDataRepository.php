@@ -18,6 +18,14 @@ class EnrollDataRepository
         return $act;
     }
 
+    public function saveActivity($act_id, $data)
+    {
+        $act = Activity::find($act_id);
+        if ($act) {
+            $act->fill($data)->save();
+        }
+    }
+
     public function getEnrollData($id)
     {
         if (empty($id)) {

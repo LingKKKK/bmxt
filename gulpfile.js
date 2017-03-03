@@ -22,6 +22,7 @@ var gulp = require('gulp'),                   //基础库
     minifyHtml = require("gulp-minify-html"); //html压缩
     ngAnnotate = require('gulp-ng-annotate'), //ng注释
     sourcemaps = require('gulp-sourcemaps'),  //source map
+    child_process = require('child_process'),
     requirejsOptimize = require('gulp-requirejs-optimize'); //requirejs打包
 
 var SRC = './resources/assets/';
@@ -49,7 +50,7 @@ gulp.task('clean-bootstrap', function(){
 });
 
 gulp.task('js',['clean-js'] , function(){
-    var jsSrc = SRC + 'js/**/*.js'
+    var jsSrc = SRC + 'js/**/*'
     var jsDst = DIST + 'js/';
 
     gulp.src(jsSrc)

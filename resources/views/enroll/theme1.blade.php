@@ -4,9 +4,7 @@
 
 <div class="row">
 <div class="col-md-2"></div>
-
   @if (count($errors) > 0) 
-
   <div class="col-md-6 bg-warning">    
     <p class="">
     @foreach ($errors->all() as $error)
@@ -20,24 +18,24 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
          <form class="form-horizontal" method="post" action="/enroll/{{$id}}">
-            @foreach($config['fieldlist'] as $tag)
+            @foreach($config['fields'] as $tag)
                 
             @if ($tag['type'] == 'text')
             <div class="form-group">
                 <label for="{{$tag['id']}}">{{$tag['labeltext'] or ''}}</label>
-                <input class="form-control" type="text" id="{{$tag['id']}}" value="{{ old($tag['name']) }}" name="{{$tag['name']}}">
+                <input class="form-control" type="text" id="{{$tag['id']}}" value="{{ old($tag['name']) }}" name="{{$tag['name']}}" {{ $tag['required'] or '' }}>
             </div>
             @elseif ($tag['type'] == 'radio')
             <div class="radio">
                 <label>
-                    <input type="radio" name="{{$tag['name']}}" id="{{$tag['id']}}" value="{{$tag['value'] or ''}}" {{ $tag['checked'] or ''}} >
+                    <input type="radio" name="{{$tag['name']}}" id="{{$tag['id']}}" value="{{$tag['value'] or ''}}" {{ $tag['checked'] or ''}} {{ $tag['required'] or '' }}>
                     {{$tag['labeltext'] or ''}}
                 </label>
             </div>
             @elseif ($tag['type'] == 'checkbox')
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="{{$tag['id']}}" name="{{$tag['name']}}" value="{{$tag['value'] or ''}}" {{ $tag['checked'] or ''}}>
+                    <input type="checkbox" id="{{$tag['id']}}" name="{{$tag['name']}}" value="{{$tag['value'] or ''}}" {{ $tag['checked'] or ''}} {{ $tag['required'] or '' }}>
                     {{$tag['labeltext'] or ''}}
                 </label>
             </div>   
@@ -48,7 +46,7 @@
                         {{$tag['labeltext'] or ''}}
                     </label>
                 </div>
-                <select class="form-control" id="{{$tag['id']}}" name="{{$tag['name']}}{{isset($tag['multiple']) ? '[]' : ''}}"  {{$tag['multiple'] or ''}}>   
+                <select class="form-control" id="{{$tag['id']}}" name="{{$tag['name']}}"  {{$tag['multiple'] or ''}} {{ $tag['required'] or ''}}>   
                 @foreach($tag['options'] as $option)
                     <option value="{{$option['value']}}">{{$option['text']}}</option>
                 @endforeach
@@ -61,7 +59,7 @@
                 </div>
                 @foreach($tag['items'] as $radio)
                 <label class="radio-inline">
-                    <input type="radio" name="{{isset($tag['name']) ? $tag['name'].'[]' : $radio['name']}}" id="{{$radio['id']}}" value="{{$radio['value'] or ''}}" {{ $radio['checked'] or ''}} >
+                    <input type="radio" name="{{ $tag['name'].'[]' }}" id="{{$radio['id']}}" value="{{$radio['value'] or ''}}" {{ $tag['required'] or '' }} required>
                     {{$radio['labeltext'] or ''}}
                 </label>
                 @endforeach
@@ -70,9 +68,10 @@
             <div class="form-group">
                 <div>
                     <label>{{$tag['labeltext'] or ''}}</label>
-                </div>                @foreach($tag['items'] as $checkbox)
+                </div>                
+                @foreach($tag['items'] as $checkbox)
                 <label class="checkbox-inline">
-                    <input type="checkbox" name="{{isset($tag['name']) ? $tag['name'].'[]' : $checkbox['name']}}" id="{{$checkbox['id']}}" value="{{$checkbox['value'] or ''}}" {{ $checkbox['checked'] or ''}} >
+                    <input type="checkbox" name="{{ $tag['name'].'[]' }}" id="{{$checkbox['id']}}" value="{{$checkbox['value'] or ''}}" {{ $tag['required'] or '' }} required >
                     {{$checkbox['labeltext'] or ''}}
                 </label>
                 @endforeach
@@ -81,14 +80,31 @@
             
             @endif
             @endforeach
-            
+    
+            @if( $config['verificationtype'] == 'mobile')
             <div class="form-group form-inline">
                   <div class="form-group">
                   <label for="verificationcode">验证码</label>
-                  <input type="text" class="form-control" id="verificationcode" name="verificationcode" placeholder="验证码" required>
+                  <input type="text" class="form-control" id="verificationcode" name="verificationcode" data-verifyfield="mobile" placeholder="验证码" required>
                    </div>
-                  <button id="getverifycode"   data-toggle="modal" data-target="#myModal" class="btn btn-default">获取验证码</button>
+                  <button id="getverifycode" data-toggle="modal" data-target="#myModal" class="btn btn-default">发送手机验证码</button>
             </div>
+            @elseif( $config['verificationtype'] == 'email')
+            <div class="form-group form-inline">
+                  <div class="form-group">
+                  <label for="verificationcode">验证码</label>
+                  <input type="text" class="form-control"  id="verificationcode" name="verificationcode" data-verifyfield="email" placeholder="验证码" required>
+                   </div>
+                  <button id="getverifycode" data-toggle="modal" data-target="#myModal" class="btn btn-default">发送邮箱验证码</button>
+            </div>
+            @elseif( $config['verificationtype'] == 'captcha')
+            <div id="captcha_area" class="form-group form-inline">
+                <input type="text" id="captcha" name="captcha">
+                <img class="captcha_img" src="{{captcha_src()}}">
+            </div>
+            @else 
+           
+            @endif
 
           
             <div class="form-group">
@@ -110,7 +126,7 @@
         <form class="form-inline">
             <div id="captcha_area" class="form-group">
                 <input type="text" id="captchacode" name="captchacode">
-                <img src="{{captcha_src()}}">
+                <img class="captcha_img" = src="{{captcha_src()}}">
             </div>
         </form>
       </div>
@@ -125,9 +141,9 @@
 @section('scripts')
 <script type="text/javascript">
 
-    function refresh_captcha() {
+    function refresh_captcha($el) {
         var timestamp = Date.parse(new Date());
-        $('#captcha_area > img').attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
+        $($el).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
     }
 
     function countdown() {
@@ -141,24 +157,42 @@
             }
         },1000);
     }
+
     $(function(){
-        $('#captcha_area > img').click(function(){
-           refresh_captcha();
+        $('.captcha_img').click(function(){
+           refresh_captcha(this);
         });
 
         $('#sendcaptchacode').click(function(){
             var captchacode = $('#captchacode').val();
             var mobile = $('#mobile').val();
+            var email = $('#email').val();
+
+            var verifyfield = $('#verificationcode').attr('data-verifyfield');
+            if (verifyfield == 'email') {
+                if (!email) {
+                    alert('未填写的email');
+                }
+            }
+
+            if (verifyfield == 'mobile') {
+                if (!mobile) {
+                    alert('未填写mobile');
+                }
+            }
 
             $.post(
                 "{{url('/captcha/verify')}}",
                 {
                     captcha : captchacode,
-                    mobile : mobile,
+                    mobile  : mobile,
+                    email   : email,
+                    type    : verifyfield,
                 },
                 function(res){
                     if (res.status == 0) {
                         $('#myModal').modal('hide')
+                        console.log(res.message);
                         refresh_captcha();
                         countdown();
                     } else {

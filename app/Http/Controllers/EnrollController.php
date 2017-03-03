@@ -15,6 +15,7 @@ use Validator;
 class EnrollController extends Controller
 {
     protected $enrollrepo = null;
+
     public function __construct(EnrollDataRepository $enrollrepo)
     {
         $this->enrollrepo = $enrollrepo;
@@ -22,20 +23,27 @@ class EnrollController extends Controller
 
     public function index($id, Request $request, \App\Enroll\EnrollService $enrollservice)
     {
-        $id = intval($id);
         $act = $this->enrollrepo->getActivity($id);
         if (!$act) {
             abort(404);
         }
-        $config = $enrollservice->parseConfig($enrollservice->getdemoFormDesign());
-
-
+        $config = $enrollservice->parseConfig($act['form_design']);
         return view('enroll.theme1', compact('config','id'));
     }
 
     public function doEnroll($id, Request $request, \App\Enroll\EnrollService $enrollservice)
     {
-        $config = $enrollservice->parseConfig($enrollservice->getdemoFormDesign());
+        $id = intval($id);
+        $act = $this->enrollrepo->getActivity($id);
+        if (empty($act)) {
+            abort(404);
+        }
+
+        $form_design = $act['form_design'];
+
+        $config = $enrollservice->parseConfig($form_design);
+
+        // 
         $validator = Validator::make($request->all(), 
             $config['validator.rules'],
             $config['validator.messages']
@@ -48,36 +56,18 @@ class EnrollController extends Controller
         }
         
 
-        $id = intval($id);
-        $act = $this->enrollrepo->getActivity($id);
-        if (empty($act)) {
-            abort(404);
-        }
+        $datakeys = $config['datakeys'];
 
-        $form_design = $act['form_design'];
-
-        $fileds = [];
-        foreach ($form_design['fields'] as $tag) {
-            $fields[] = $tag['name'];
-        }
-
-        $input = $request->only($fields);
+        $input = $request->only($config['datakeys']);
         $enrolldata = [];
         $enrolldata['activity_id'] = $id;
-        $enrolldata['phone'] = isset($input['phone']) ? $input['phone'] : '';
+        $enrolldata['mobile'] = isset($input['mobile']) ? $input['mobile'] : '';
         $enrolldata['email'] = isset($input['email']) ? $input['email'] : '';
         $enrolldata['data'] = json_encode($input, JSON_UNESCAPED_UNICODE);
 
         $endata = EnrollDataModel::create($enrolldata);
-        if ($endata) {
-            $input['id'] = $endata->id;
-            if (!empty($enrolldata['email'])) {
-                  $result = \Mail::send('emails.enroll', ['enrolldata' => $input], function($m) use($endata) {
-                        $m->from('support@kenrobot.com', '啃萝卜');
-                        $m->to($endata['email'], '王昆鹏')->subject('报名成功');
-                    });
-            }
 
+        if ($endata) {
             return redirect('/enroll/success?enrollid='.$endata->id);
         } else {
             return redirect('/enroll/fail');
@@ -86,8 +76,7 @@ class EnrollController extends Controller
 
     public function test(Request $request, \App\Enroll\EnrollService $enrollservice)
     {
-        $ret = $enrollservice->parseConfig($enrollservice->getdemoFormDesign());
-        dd($ret);
+
     }
 
     public function success()

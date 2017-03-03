@@ -95,7 +95,7 @@
                     <td>{{ $act['end_time'] }}</td>
                     <td>{{ $act['count'] }}</td>
                     <td>{{ $act['status'] }}</td>
-                    <td><a href="{{ url('/admin/activity/config?act_id=').$act['id']}}">操作</a>
+                    <td><a href="{{ url('/admin/activity/config\/').$act['id']}}">操作</a>
 
                     <a href="{{ url('/enroll\/').$act['id'] }}">查看</a>
                     </td>
