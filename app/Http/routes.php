@@ -45,5 +45,7 @@ Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode')
 Route::any('/enroll/info', 'EnrollController@info');
 Route::any('/enroll/success', 'EnrollController@info');
 Route::any('/enroll/fail', 'EnrollController@fail');
+Route::any('/enroll/theme/default', 'EnrollController@themedefault');
+
 Route::get('/enroll/{id}', 'EnrollController@index');
 Route::post('/enroll/{id}', 'EnrollController@doEnroll')->where('id', '[0-9]+');

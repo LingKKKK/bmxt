@@ -64,6 +64,18 @@ class EnrollService
                     $rule[] = 'mobile';
                     $validatormessages["$k.mobile"] = $tag['labeltext'].' [手机号]格式不正确!';
                 }
+
+
+                if ($tag['datatype'] == 'captcha') {
+                    $rule[] = 'captcha';
+                    $validatormessages["$k.captcha"] = $tag['labeltext'].' 校验错误!';
+                }
+
+                if ($tag['datatype'] == 'verificationcode') {
+                    $rule[] = 'verificationcode';
+                    $validatormessages["$k.verificationcode"] = $tag['labeltext'].' 验证错误!';
+                }
+
             }
 
             if (! empty($rule)) {

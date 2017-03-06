@@ -11,6 +11,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+
+        $test = collect(['a', 'c', 4, '5']);
+        $test->splice(-2, null, 7);
+        return $test;
+        // return view('welcome');
     }
 }

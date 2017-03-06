@@ -1,0 +1,78 @@
+.container {
+  width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #ffffff;
+}
+.header .header-wrapper {
+  width: 1280px;
+  margin: 0 auto;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.header .header-wrapper a.header-logo {
+  height: 40px;
+  margin-top: 10px;
+  width: 200px;
+  background: url(/assets/img/logo-top.png) no-repeat contain;
+  display: block;
+}
+.header .header-wrapper > ul.nav {
+  width: 500px;
+  height: 40px;
+}
+.header .header-wrapper > ul.nav > li {
+  margin-left: 50px;
+  float: left;
+}
+.header .header-wrapper > ul.nav > li > a {
+  height: 40px;
+  line-height: 40px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #2a201d;
+  letter-spacing: 1px;
+  line-height: 18px;
+  text-align: center;
+}
+.header .banner {
+  margin: 0 auto;
+  background-color: #2564f5;
+  width: 100%;
+  height: 200px;
+  float: left;
+}
+.header .banner > p {
+  display: block;
+  margin-left: 130px;
+  width: 300px;
+  text-align: left;
+}
+.header .banner > .title {
+  margin-top: 60px;
+  font-family: PingFangSC-Regular;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  height: 18px;
+}
+.header .banner > .subtitle {
+  float: left;
+  width: 300px;
+  font-family: PingFangSC-Semibold;
+  font-size: 32px;
+  height: 32px;
+  color: #ffffff;
+  letter-spacing: 0;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}

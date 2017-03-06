@@ -1,0 +1,23 @@
+$plus_prefix: "+";
+$star_prefix: "*";
+
+
+@import "default/layout.scss";
+@import "default/variables.scss";
+@import "default/components/header.scss";
+@import "default/components/footer.scss";
+
+
+
+//清楚浮动
+.clearfix:after{
+    content:"";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden
+}
+// .clearfix{
+//     {$star_prefix}{$star_prefix}height:1%;
+// }
+

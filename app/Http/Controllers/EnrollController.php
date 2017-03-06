@@ -139,6 +139,10 @@ class EnrollController extends Controller
         return $val;
     }
 
+    public function themedefault()
+    {
+        return view('enroll.default');
+    }
   
 
 }
