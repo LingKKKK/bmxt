@@ -45,7 +45,7 @@ class EnrollController extends Controller
         $form = EForm::loadFromArray($act['form_design']);
 
         $validateRules = $form->validateRules();
-
+        // dd($validateRules);
         $validator = Validator::make($request->all(), 
             $validateRules['rules'],
             $validateRules['messages']

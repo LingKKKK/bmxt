@@ -69,6 +69,8 @@ class ActivityController extends Controller
 
         $config = $request->only(['verificationtype', 'theme']);
         $form = EForm::create($config);
+        $form->add('mobile', 'text', '手机', ['datatype' => 'mobile', 'required' => true]);
+        $form->add('email', 'text', '邮箱', ['datatype' => 'email', 'required' => true]);
 
         $input['form_design'] = $form->toJson();
         $input['config'] = json_encode([]);
@@ -174,7 +176,7 @@ class ActivityController extends Controller
             if (isset($input['verificationtype'])) {
                 $form->verificationtype = $input['verificationtype'];
             }
-            
+            // dd($input, $form);
             $enrollrepo->saveActivity($id, ['form_design' => $form->toJson()]);
             return api_response(0, '修改成功', ['theme' => $form->theme, 'verificationtype' => $form->verificationtype]);
 

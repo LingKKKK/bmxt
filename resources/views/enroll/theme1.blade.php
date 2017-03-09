@@ -168,8 +168,8 @@
 
         $('#sendcaptchacode').click(function(){
             var captchacode = $('#captchacode').val();
-            var mobile = $('#mobile').val();
-            var email = $('#email').val();
+            var mobile = $('#input_mobile').val();
+            var email = $('#input_email').val();
 
             var verifyfield = $('#verificationcode').attr('data-verifyfield');
             if (verifyfield == 'email') {

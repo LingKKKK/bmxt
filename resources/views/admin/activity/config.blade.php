@@ -140,11 +140,11 @@
                 </tr>
                 @foreach($form->fields as $tag)
                 <tr>
-                  <th></th>
+                  <td></td>
                   <td>{{ $tag->labeltext }}</td>
                   <td>{{ $tag->type }}</td>
                   <td>{{ $tag->required ? 'true' : 'false' }}</td>
-                  <td>{{ join("  ", $tag->items) }}
+                  <td>{{ is_array($tag->items) ?  join("  ", $tag->items) : '' }}
                   @if(!empty($tag->items))
                     @foreach($tag->items as $k => $item)
                       {{$k.'. '.$item.' '}}
@@ -173,9 +173,16 @@
 
 <script id="tablerow" type="text/html">
 <tr>
-    @{{each rowdata as value i}}
-        <td>@{{value}}</td>
-    @{{/each}}
+    <td></td>
+    <td>@{{rowdata.labeltext}}</td>
+    <td>@{{rowdata.type}}</td>
+    <td>@{{rowdata.required ? 'true' : 'false'}}</td>
+    <td>@{{rowdata.items}}</td>
+            
+    <td>
+      <a class="field-edit" data-key='@{{ rowdata.name }}' href="javascript:void(0);">编辑</a>
+      <a class="field-del"  data-key='@{{ rowdata.name }}' href="javascript:void(0);">删除</a>
+    </td>
 </tr>
 </script>
 <script id="" type="text/javascript">
@@ -208,26 +215,39 @@
       $('#form_addfield').ajaxSubmit(addFieldOption);
     });
 
-    var editform = {
+    var editformOption = {
       type : "post",
       dataType : "json",
       data : [],
       success: function(res) {
         if (res.status == 0) {
             $("#input_theme").val(res.data.theme);
-            
-            $("#input_theme").val(res.data.verificationtype);
+            $("#input_verificationtype").val(res.data.verificationtype);
 
-            $("#input_verificationtype").find("option[text='pxx']").attr("selected",true);
+            $('#input_theme > option').each(function(){
+              var txt = $(this).text();
+              $(this).text(txt.replace("*", ""));
+            });
 
+            $('#input_verificationtype > option').each(function(){
+              var txt = $(this).text();
+              $(this).text(txt.replace("*", ""));
+            });
+
+
+            var theme_text = $('#input_theme').find("option:selected").text();
+            $('#input_theme').find("option:selected").text("*" + theme_text);
+
+
+            var theme_text = $('#input_verificationtype').find("option:selected").text();
+            $('#input_verificationtype').find("option:selected").text("*" + theme_text);
 
         }
       }
     };
     $('#btn_editform').click(function(){
-      $('#form_editform').ajaxSubmit(editform);
+      $('#form_editform').ajaxSubmit(editformOption);
     });
-
 
 
   });

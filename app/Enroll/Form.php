@@ -146,6 +146,15 @@ class Form implements Arrayable
         return $content;
     }
 
+    public function __set($property, $value)
+    {
+        if ($property == 'fields') {
+            $this->fields = collect((array)$value);
+        }
+
+        $this->options->put($property, $value);
+    }
+
     public function __get($property)
     {
         if ($property === 'fields') {
