@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enroll;
+namespace App\Enroll\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,6 @@ class EnrollData extends Model
 
     public function activity()
     {
-        return $this->belongsTo('App\Enroll\Activity', 'activity_id', 'id');
+        return $this->belongsTo('App\Enroll\Models\Activity', 'activity_id', 'id');
     }
 }

@@ -3,6 +3,15 @@
 @section('content')
 
 <div class="row">
+    <div class="col-md-12">
+        <h1> {{$act['act_name']}}</h1>
+        <p>
+            {{ $act['remark']}}
+        </p>
+    </div>
+</div>
+
+<div class="row">
 <div class="col-md-2"></div>
   @if (count($errors) > 0) 
   <div class="col-md-6 bg-warning">    
@@ -17,7 +26,7 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-         <form class="form-horizontal" method="post" action="/enroll/{{$id}}">
+         <form class="form-horizontal" method="post" action="/enroll/{{$act['id']}}">
             @foreach($form->fields as $tag)
                 
             @if ($tag['type'] == 'text')

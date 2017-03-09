@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-use App\Enroll\Activity as ActivityModel;
+use App\Enroll\Models\Activity as ActivityModel;
 use Carbon\Carbon;
 use Validator;
 use App\Enroll\EnrollDataRepository;

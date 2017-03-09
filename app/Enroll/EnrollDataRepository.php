@@ -2,6 +2,8 @@
 
 namespace App\Enroll;
 
+use App\Enroll\Models\Activity;
+use App\Enroll\Models\EnrollData;
 
 class EnrollDataRepository
 {
@@ -42,5 +44,10 @@ class EnrollDataRepository
         $enroll_data['data'] = json_decode($enroll_data['data'], true);
         $enroll_data->activity['form_design'] = json_decode($enroll_data->activity['form_design'], true);
         return $enroll_data;
+    }
+
+    public function createEnrollData($data)
+    {
+        return $endata = EnrollData::create($data);
     }
 }

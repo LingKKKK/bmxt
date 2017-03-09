@@ -17,7 +17,7 @@ class Activity extends Model
 
     public function enrolldatas()
     {
-        return $this->hasMany('App\Enroll\EnrollData', 'activity_id', 'id');
+        return $this->hasMany('App\Enroll\Models\EnrollData', 'activity_id', 'id');
     }
 
 }

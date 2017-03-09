@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Enroll\Activity as ActivityModel;
-use App\Enroll\EnrollData as EnrollDataModel;
 use App\Enroll\EnrollDataRepository;
 use Validator;
 use App\Enroll\Form as EForm;
@@ -31,7 +29,7 @@ class EnrollController extends Controller
 
         $form = EForm::loadFromArray($act['form_design']);
 
-        return view('enroll.theme1', compact('form','id'));
+        return view('enroll.theme1', compact('form','act'));
     }
 
     public function doEnroll($id, Request $request)
@@ -67,7 +65,7 @@ class EnrollController extends Controller
         $enrolldata['email'] = isset($input['email']) ? $input['email'] : '';
         $enrolldata['data'] = json_encode($input, JSON_UNESCAPED_UNICODE);
 
-        $endata = EnrollDataModel::create($enrolldata);
+        $endata = $this->enrollrepo->createEnrollData($enrolldata);
 
         if ($endata) {
             return redirect('/enroll/info?enrollid='.$endata->id);
