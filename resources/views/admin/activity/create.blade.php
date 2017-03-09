@@ -47,22 +47,41 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputstart_time" class="col-sm-2 control-label">开始时间</label>
-                  <div class="col-sm-10 input-group date">
+                  <label for="input_start_time" class="col-sm-2 control-label">开始时间</label>
+                  <div class="col-sm-9 input-group date">
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="inputstart_time" name="start_time" placeholder="">
+                      <input type="text" class="form-control" id="input_start_time" name="start_time" placeholder="">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputend_time" class="col-sm-2 control-label">结束时间</label>
-                  <div class="col-sm-10 input-group date">
+                  <label for="input_end_time" class="col-sm-2 control-label">结束时间</label>
+                  <div class="col-sm-9 input-group date">
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="inputend_time" name="end_time" placeholder="">
+                      <input type="text" class="form-control" id="input_end_time" name="end_time" placeholder="">
                   </div>
+                </div>
+                <div class="form-group">
+                <label for="input_status" class="col-sm-2 control-label">活动开启</label>
+                <div class="checkbox col-sm-10">
+                  <label>
+                    <input id="input_status" name="status" type="checkbox">开始
+                  </label>
+                </div>
+                </div>
+                <div class="form-group">
+                    <label for="input_verificationtype" class="col-sm-2 control-label">验证类型</label>
+                    <div class="col-sm-10">
+                     <select name="verificationtype" id="input_verificationtype" class="form-control">
+                        <option value="captcha">图片验证码</option>
+                        <option value="email">邮件验证码</option>
+                        <option value="mobile">短信验证码</option>
+                        <option value="none">无验证码</option>
+                     </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="remark" class="col-sm-2 control-label">说明</label>
@@ -100,12 +119,12 @@
 <script type="text/javascript">
  $(function(){
       //Date picker
-    $('#inputstart_time').datepicker({
+    $('#input_start_time').datepicker({
       autoclose: true,
       format: 'yyyy-mm-dd',
     });
 
-    $('#inputend_time').datepicker({
+    $('#input_end_time').datepicker({
       autoclose: true,
       format: 'yyyy-mm-dd',
     });

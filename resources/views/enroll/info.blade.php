@@ -9,10 +9,10 @@
                <th>属性</th>
                <th>值</th> 
             </tr>
-            @foreach($pretty_data as $item)
+            @foreach($pretty_data['titles'] as $name => $labeltext)
             <tr>
-                <td>{{$item['labeltext']}}</td>
-                <td>{{$item['data']}}</td>
+                <td>{{$labeltext}}</td>
+                <td>{{$pretty_data['content'][$name]}}</td>
             </tr>
             @endforeach
         </table>

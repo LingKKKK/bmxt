@@ -18,37 +18,38 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
          <form class="form-horizontal" method="post" action="/enroll/{{$id}}">
-            @foreach($config['fields'] as $tag)
+            @foreach($form->fields as $tag)
                 
             @if ($tag['type'] == 'text')
             <div class="form-group">
                 <label for="{{$tag['id']}}">{{$tag['labeltext'] or ''}}</label>
-                <input class="form-control" type="text" id="{{$tag['id']}}" value="{{ old($tag['name']) }}" name="{{$tag['name']}}" {{ $tag['required'] or '' }}>
+                <input class="form-control" type="text" id="{{$tag['id']}}" value="{{ old($tag['name']) }}" name="{{$tag['name']}}" {{ $tag['required'] ? 'required' : '' }}>
             </div>
             @elseif ($tag['type'] == 'radio')
             <div class="radio">
                 <label>
-                    <input type="radio" name="{{$tag['name']}}" id="{{$tag['id']}}" value="{{$tag['value'] or ''}}" {{ $tag['checked'] or ''}} {{ $tag['required'] or '' }}>
+                    <input type="radio" name="{{$tag['name']}}" id="{{$tag['id']}}" value="{{$tag['value'] or ''}}" {{ $tag['checked'] or ''}} {{ $tag['required'] ? 'required' : '' }}>
                     {{$tag['labeltext'] or ''}}
                 </label>
             </div>
             @elseif ($tag['type'] == 'checkbox')
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="{{$tag['id']}}" name="{{$tag['name']}}" value="{{$tag['value'] or ''}}" {{ $tag['checked'] or ''}} {{ $tag['required'] or '' }}>
+                    <input type="checkbox" id="{{$tag['id']}}" name="{{$tag['name']}}" value="{{$tag['value'] or ''}}" {{ $tag['checked'] or ''}} {{ $tag['required'] ? 'required' : '' }}>
                     {{$tag['labeltext'] or ''}}
                 </label>
             </div>   
             @elseif ($tag['type'] == 'select')
+           
             <div class="form-group">
                 <div>
                     <label>
                         {{$tag['labeltext'] or ''}}
                     </label>
                 </div>
-                <select class="form-control" id="{{$tag['id']}}" name="{{$tag['name']}}"  {{$tag['multiple'] or ''}} {{ $tag['required'] or ''}}>   
-                @foreach($tag['options'] as $option)
-                    <option value="{{$option['value']}}">{{$option['text']}}</option>
+                <select class="form-control" id="{{$tag['id']}}" name="{{$tag['name']}}"  {{$tag['multiple'] ? 'mutiple' : ''}} {{ $tag['required'] ? 'required' : '' }}>
+                @foreach($tag['items'] as $value => $text)
+                    <option value="{{$value}}">{{$text}}</option>
                 @endforeach
                 </select>
             </div>
@@ -57,22 +58,24 @@
                 <div>
                     <label>{{$tag['labeltext'] or ''}}</label>
                 </div>
-                @foreach($tag['items'] as $radio)
+                @if($tag['items'])
+                @foreach($tag['items'] as $value => $text)
                 <label class="radio-inline">
-                    <input type="radio" name="{{ $tag['name'].'[]' }}" id="{{$radio['id']}}" value="{{$radio['value'] or ''}}" {{ $tag['required'] or '' }} required>
-                    {{$radio['labeltext'] or ''}}
+                    <input type="radio" name="{{ $tag['name'].'[]' }}" value="{{$value or ''}}" {{ $tag['required'] ? 'required' : '' }}>
+                    {{$text or ''}}
                 </label>
                 @endforeach
+                @endif
             </div>
             @elseif ($tag['type'] == 'checkboxlist')
             <div class="form-group">
                 <div>
                     <label>{{$tag['labeltext'] or ''}}</label>
-                </div>                
-                @foreach($tag['items'] as $checkbox)
+                </div>        
+                @foreach($tag['items'] as $value => $text)
                 <label class="checkbox-inline">
-                    <input type="checkbox" name="{{ $tag['name'].'[]' }}" id="{{$checkbox['id']}}" value="{{$checkbox['value'] or ''}}" {{ $tag['required'] or '' }} required >
-                    {{$checkbox['labeltext'] or ''}}
+                    <input type="checkbox" name="{{ $tag['name'].'[]' }}" value="{{$value or ''}}" {{ $tag['required'] ? 'required' : '' }}  >
+                    {{$text or ''}}
                 </label>
                 @endforeach
             </div>
@@ -81,7 +84,7 @@
             @endif
             @endforeach
     
-            @if( $config['verificationtype'] == 'mobile')
+            @if( $form->verificationtype == 'mobile')
             <div class="form-group form-inline">
                   <div class="form-group">
                   <label for="verificationcode">验证码</label>
@@ -89,7 +92,7 @@
                    </div>
                   <button id="getverifycode" data-toggle="modal" data-target="#myModal" class="btn btn-default">发送手机验证码</button>
             </div>
-            @elseif( $config['verificationtype'] == 'email')
+            @elseif( $form->verificationtype == 'email')
             <div class="form-group form-inline">
                   <div class="form-group">
                   <label for="verificationcode">验证码</label>
@@ -97,7 +100,7 @@
                    </div>
                   <button id="getverifycode" data-toggle="modal" data-target="#myModal" class="btn btn-default">发送邮箱验证码</button>
             </div>
-            @elseif( $config['verificationtype'] == 'captcha')
+            @elseif( $form->verificationtype == 'captcha')
             <div id="captcha_area" class="form-group form-inline">
                 <input type="text" id="captcha" name="captcha">
                 <img class="captcha_img" src="{{captcha_src()}}">

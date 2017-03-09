@@ -14,6 +14,7 @@ class EnrollDataRepository
         $act = Activity::find($act_id);
         if ($act) {
             $act['form_design'] = json_decode($act['form_design'], true);
+            $act['config']  = json_encode($act['config'], true);
         }
         return $act;
     }

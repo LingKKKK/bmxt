@@ -4,14 +4,12 @@
 
 @stop
 
-
-
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
     报名
-    <small>报名列表</small>
+    <small>报名活动列表</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i>主页</a></li>
@@ -23,6 +21,30 @@
 
 <!-- Main content -->
 <section class="content">
+    <div class="row">
+      <div class="col-md-4">
+         <div class="box box-primary">
+            <div class="box-body">
+
+              <h3 class="profile-username text-center">{{ $act['act_name'] }}</h3>
+
+              <p class="text-muted text-center">{{ $act['remark']}}</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>开始时间</b> <a class="pull-right">{{ $act['start_time'] }}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>结束时间</b> <a class="pull-right">{{ $act['end_time'] }}</a>
+                </li>
+              </ul>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+      </div>
+       
+    </div>
     <div class="row">
                <div class="col-md-12">
           <div class="box box-primary">
@@ -67,41 +89,28 @@
                      <th>
                         #
                       </th>
+                      @foreach($titles as $title)
                       <th>
-                        活动名
+                        {{$title}}
                       </th>
-                      <th>
-                        起始时间
-                      </th>
-                      <th>
-                        结束时间
-                      </th>
-                      <th>
-                        报名数
-                      </th>
-                      <th>
-                        状态
-                      </th>
+                      @endforeach
                       <th>
                         操作
                       </th>
                   </tr>
 
-                @foreach($activities as $act)
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td>{{ $act['act_name'] }}</a></td>
-                    <td>{{ $act['start_time'] }}</td>
-                    <td>{{ $act['end_time'] }}</td>
-                    <td>{{ $act['count'] }}</td>
-                    <td>{{ $act['status'] }}</td>
-                    <td>
-                      <a href="{{ url('/admin/activity/config\/').$act['id']}}">操作</a>
-                      <a href="{{ url('/enroll\/').$act['id'] }}">查看</a>
-                      <a href="{{ url('/admin/enrolldata\/').$act['id'] }}">数据</a>
-                    </td>
-                  </tr>
-                @endforeach
+                  @foreach($contents as $content)
+                    <tr>
+                      <td><input type="checkbox"></td>
+                      @foreach($datakeys as $key)
+                      <td>
+                      {{ $content[$key] }}
+                      </td>
+                      @endforeach
+                      <td></td>
+                    </tr>
+                  @endforeach
+           
                   </tbody>
                 </table>
                 <!-- /.table -->

@@ -9,7 +9,7 @@ class Activity extends Model
 {
     protected $table = 'activities';
 
-    protected $fillable = ['act_name', 'start_time', 'end_time', 'remark', 'form_design'];
+    protected $fillable = ['act_name', 'start_time', 'end_time', 'remark','status','config', 'form_design'];
 
     protected $hidden = [];
 
@@ -19,4 +19,5 @@ class Activity extends Model
     {
         return $this->hasMany('App\Enroll\EnrollData', 'activity_id', 'id');
     }
+
 }

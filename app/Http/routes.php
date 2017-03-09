@@ -29,8 +29,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/activity/create', 'ActivityController@create');
     Route::post('/activity/create', 'ActivityController@store');
     Route::get('/activity/config/{id}', 'ActivityController@config')->where('id', '[0-9]+');
-    Route::post('/activity/config/{id}', 'ActivityController@saveConfig')->where('id', '[0-9]+');
-    Route::get('/activity/config/{id}/preview', 'ActivityController@configPreview')->where('id', '[0-9]+');
+    Route::post('/activity/editform/{id}', 'ActivityController@editForm')->where('id', '[0-9]+');
+    Route::post('/activity/addfield/{id}', 'ActivityController@addField')->where('id', '[0-9]+');
+    
+    Route::get('/enrolldata/{id}', 'ActivityController@enrolldata')->where('id', '[0-9]+');
+
 });
 
 // 图形验证码
@@ -43,8 +46,6 @@ Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode')
 
 // 报名前台页面
 Route::any('/enroll/info', 'EnrollController@info');
-Route::any('/enroll/success', 'EnrollController@info');
-Route::any('/enroll/fail', 'EnrollController@fail');
 Route::any('/enroll/theme/default', 'EnrollController@themedefault');
 
 Route::get('/enroll/{id}', 'EnrollController@index');
