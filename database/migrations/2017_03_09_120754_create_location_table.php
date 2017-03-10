@@ -37,8 +37,8 @@ class CreateLocationTable extends Migration
      */
     public function down()
     {
-        Schema::drop('province');
-        Schema::drop('city');
-        Schema::drop('district');
+        Schema::drop('provinces');
+        Schema::drop('cities');
+        Schema::drop('districts');
     }
 }

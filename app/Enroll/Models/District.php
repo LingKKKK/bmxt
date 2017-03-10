@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Enroll;
+namespace App\Enroll\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class City extends Model
+class District extends Model
 {
-    protected $table = 'cities';
+    protected $table = 'districts';
 
     protected $fillable = ['id', 'city_id' , 'district_name'];
 
