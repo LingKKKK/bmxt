@@ -3,10 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Storage;
-use App\Enroll\Models\Province;
-use App\Enroll\Models\City;
-use App\Enroll\Models\District;
+
+use App\Utils\Models\Province;
+use App\Utils\Models\City;
+use App\Utils\Models\District;
 
 
 class Location extends Command

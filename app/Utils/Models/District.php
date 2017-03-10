@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enroll\Models;
+namespace App\Utils\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,6 +17,6 @@ class District extends Model
 
     public function city()
     {
-        return $this->belongsTo('App\Enroll\Models\City', 'city_id', 'id');
+        return $this->belongsTo('App\Utils\Models\City', 'city_id', 'id');
     }
 }

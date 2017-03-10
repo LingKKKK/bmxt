@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enroll\Models;
+namespace App\Utils\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,6 +17,6 @@ class Province extends Model
 
     public function cities()
     {
-        return $this->hasMany('App\Enroll\Models\City', 'province_id', 'id');
+        return $this->hasMany('App\Utils\Models\City', 'province_id', 'id');
     }
 }
