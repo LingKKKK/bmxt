@@ -74,6 +74,7 @@ class ActivityController extends Controller
 
         $input['form_design'] = $form->toJson();
         $input['config'] = json_encode([]);
+        $input['status'] = 0;
 
         $act = ActivityModel::create($input);
         return redirect('/admin/activity/list');
