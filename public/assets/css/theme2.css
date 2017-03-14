@@ -1,0 +1,510 @@
+@charset "UTF-8";
+/*重置css*/
+/*重置css*/
+body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img, input, textarea, a {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: #666;
+  background: #f9f9f9;
+}
+
+img {
+  border: 0;
+  display: inline-block;
+}
+
+i {
+  font-style: normal;
+}
+
+textarea {
+  resize: none;
+}
+
+.clear {
+  clear: both;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #edf3ff;
+  position: relative;
+}
+body #info .top {
+  width: 100%;
+  height: 60px;
+}
+body #info .top .inner {
+  width: 1182px;
+  height: 60px;
+  margin: 0 auto;
+}
+body #info .top .inner .logo {
+  width: 102px;
+  height: 40px;
+  float: left;
+  margin-top: 10px;
+  background: url("../img/logo-top.png");
+  background-size: cover;
+}
+body #info .top .inner .nav {
+  float: left;
+  margin-left: 100px;
+  height: 60px;
+}
+body #info .top .inner .nav li {
+  float: left;
+  margin-right: 50px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #2a201d;
+  letter-spacing: 1px;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+body #info .top .inner .login {
+  float: right;
+  height: 30px;
+  margin-top: 15px;
+}
+body #info .top .inner .login li {
+  height: 30px;
+  margin-left: 29px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #2a201d;
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+body #info .top .inner .login .active {
+  border: 1px solid #0088ff;
+  border-radius: 100px;
+  width: 96px;
+  height: 30px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #0088ff;
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-align: center;
+}
+body #info .banner {
+  background: #2564f5;
+  height: 110px;
+  margin-bottom: 30px;
+}
+body #info .banner .inner {
+  width: 1182px;
+  /* height: 110px; */
+  margin: 0 auto;
+  padding-top: 20px;
+}
+body #info .banner .inner span {
+  display: block;
+  font-family: PingFangSC-Regular;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-align: left;
+  line-height: 20px;
+}
+body #info .banner .inner p {
+  font-family: PingFangSC-Semibold;
+  font-size: 32px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 34px;
+  display: block;
+  margin-top: 5px;
+}
+body #info .inner {
+  width: 1182px;
+  margin: 0 auto;
+}
+body #info .inner .tabs {
+  background: #2564f5;
+  box-shadow: 0 0 10px 0 rgba(64, 85, 149, 0.2);
+  border-radius: 10px 0px 0px 10px;
+  width: 241px;
+  height: 688px;
+  position: relative;
+  float: left;
+}
+body #info .inner .tabs .back_click {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 104px;
+  top: 45px;
+  background: url("../img/back.png");
+  background-size: cover;
+  cursor: pointer;
+}
+body #info .inner .tabs .change_tab_click {
+  width: 10px;
+  height: 90px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body #info .inner .tabs .change_tab_click li {
+  background: #ffffff;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin-bottom: 30px;
+}
+body #info .inner .tabs .change_tab_click .no_margin {
+  margin-bottom: 0px;
+}
+body #info .inner .tabs .change_tab_click .active {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+}
+body #info .inner .enroll_information {
+  float: right;
+  background: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(64, 85, 149, 0.2);
+  border-radius: 0px 10px 10px 0px;
+  width: 880px;
+  height: 643px;
+  padding-top: 45px;
+  padding-left: 60px;
+  position: relative;
+}
+body #info .inner .enroll_information .title {
+  font-family: MicrosoftYaHei;
+  font-size: 24px;
+  color: #2564f5;
+  letter-spacing: 0.75px;
+  text-align: left;
+  margin-bottom: 50px;
+}
+body #info .inner .enroll_information .form-horizontal {
+  position: relative;
+}
+body #info .inner .enroll_information .form-horizontal .form-group {
+  width: 380px;
+  height: 44px;
+  float: left;
+  margin-right: 59px;
+  font-family: MicrosoftYaHei;
+  font-size: 18px;
+  color: #a4aebd;
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 44px;
+  border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 69px;
+  position: relative;
+}
+body #info .inner .enroll_information .form-horizontal .form-group .form-control {
+  width: 100%;
+  height: 44px;
+  float: left;
+  margin-right: 18px;
+  font-family: MicrosoftYaHei;
+  font-size: 18px;
+  color: #a4aebd;
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 44px;
+}
+body #info .inner .enroll_information .form-horizontal .form-group .true {
+  background: url("../img/true.png");
+  background-size: 13px 10px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+body #info .inner .enroll_information .form-horizontal .form-group .false {
+  background: url("../img/false.png");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+body #info .inner .enroll_information .form-horizontal .text label {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #a4aebd;
+  letter-spacing: 5px;
+  text-align: left;
+  opacity: 0;
+}
+body #info .inner .enroll_information .form-horizontal .radio > div {
+  margin-right: 40px;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #a4aebd;
+  letter-spacing: 5px;
+  text-align: left;
+}
+body #info .inner .enroll_information .form-horizontal .radio .radio-inline {
+  margin-right: 20px;
+}
+body #info .inner .enroll_information .form-horizontal .radio .radio-inline input {
+  cursor: pointer;
+}
+body #info .inner .enroll_information .form-horizontal .sendtomail {
+  position: relative;
+}
+body #info .inner .enroll_information .form-horizontal .sendtomail label {
+  opacity: 0;
+  position: absolute;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #a4aebd;
+  letter-spacing: 5px;
+  text-align: left;
+  transition: all 1s;
+  left: 0px;
+  top: 0px;
+}
+body #info .inner .enroll_information .form-horizontal .sendtomail .form-control {
+  width: 66%;
+}
+body #info .inner .enroll_information .form-horizontal .sendtomail button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.8;
+  background: #2564f5;
+  border-radius: 5px;
+  width: 120px;
+  height: 40px;
+  border: 0;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+}
+body #info .inner .enroll_information .form-horizontal .submit {
+  border: 0;
+  float: right;
+}
+body #info .inner .enroll_information .form-horizontal .submit input {
+  opacity: 0.8;
+  background: #2564f5;
+  border-radius: 5px;
+  width: 180px;
+  font-family: MicrosoftYaHei;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  height: 57px;
+  cursor: pointer;
+  float: right;
+}
+body #info .inner .enroll_information .form-horizontal .select {
+  border-bottom: 1px solid #fff;
+}
+body #info .inner .enroll_information .form-horizontal .select > div {
+  position: absolute;
+  left: 0px;
+  top: -24px;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #a4aebd;
+  letter-spacing: 5px;
+  text-align: left;
+}
+body #info .inner .enroll_information .form-horizontal .select select {
+  border: 0;
+  border-bottom: 1px solid #d8d8d8;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: url("../img/select_icon.png");
+  background-repeat: no-repeat;
+  background-position: 92% 57%;
+  background-size: 10px 5px;
+  padding: 0px 30px 0px 0px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+body #info .inner .enroll_information .form-horizontal .select .form-control {
+  width: 30%;
+  color: #666666;
+}
+body #info .inner .enroll_information .form-horizontal .checkbox {
+  /* overflow: hidden; */
+}
+body #info .inner .enroll_information .form-horizontal .checkbox > div {
+  margin-right: 40px;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #a4aebd;
+  letter-spacing: 5px;
+  text-align: left;
+}
+body #info .inner .enroll_information #reset {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #a4aebd;
+  letter-spacing: 0;
+  text-align: left;
+  border: 0;
+  background-color: #fff;
+  cursor: pointer;
+}
+body #info .bot {
+  background: #2564f5;
+  height: 151px;
+  margin-top: 100px;
+  padding-top: 60px;
+}
+body #info .bot .logo {
+  width: 102px;
+  height: 41px;
+  background: url("../img/logo-bot.png");
+  background-size: cover;
+  margin: 0 auto;
+}
+body #info .bot span {
+  display: block;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #ffffff;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: center;
+  height: 25px;
+  margin: 0 auto;
+  margin-top: 9px;
+}
+body #info .bot p {
+  display: block;
+  height: 14px;
+  margin: 0 auto;
+  margin-top: 2px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #ffffff;
+  letter-spacing: 1.2px;
+  text-align: center;
+}
+body .model {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(210, 217, 234, 0.6);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+body .model #verification_code {
+  background: #ffffff;
+  box-shadow: 0 0 20px 0 rgba(84, 99, 135, 0.2);
+  border-radius: 3px;
+  width: 540px;
+  height: 360px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body .model #verification_code .top {
+  background: #2564f5;
+  border-radius: 3px;
+  width: 540px;
+  height: 50px;
+}
+body .model #verification_code .top p {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 2px;
+  line-height: 50px;
+  text-align: center;
+}
+body .model #verification_code .top .img {
+  width: 12px;
+  position: absolute;
+  right: 8px;
+  top: 19px;
+  background: url(../img/chahao.png);
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  height: 12px;
+  cursor: pointer;
+}
+body .model #verification_code .bot img {
+  background: #7c9e81;
+  width: 240px;
+  height: 60px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  display: block;
+}
+body .model #verification_code .bot input {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  width: 238px;
+  height: 38px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  display: block;
+  text-align: center;
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  color: #666666;
+  letter-spacing: 5px;
+}
+body .model #verification_code .bot button {
+  opacity: 0.8;
+  background: #2564f5;
+  border-radius: 5px;
+  width: 140px;
+  height: 50px;
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 50px;
+  margin: 0 auto;
+  display: block;
+}

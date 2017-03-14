@@ -20,6 +20,18 @@ class EnrollController extends Controller
         $this->enrollrepo = $enrollrepo;
     }
 
+    public function enrolldev($id, Request $request)
+    {
+        $act = $this->enrollrepo->getActivity($id);
+        if (!$act) {
+            abort(404);
+        }
+
+        $form = EForm::loadFromArray($act['form_design']);
+
+        return view('enroll.theme2', compact('form','act'));
+    }
+
     public function index($id, Request $request)
     {
         $act = $this->enrollrepo->getActivity($id);
@@ -31,6 +43,8 @@ class EnrollController extends Controller
 
         return view('enroll.theme1', compact('form','act'));
     }
+
+
 
     public function doEnroll($id, Request $request)
     {

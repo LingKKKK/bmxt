@@ -50,3 +50,5 @@ Route::any('/enroll/theme/default', 'EnrollController@themedefault');
 
 Route::get('/enroll/{id}', 'EnrollController@index');
 Route::post('/enroll/{id}', 'EnrollController@doEnroll')->where('id', '[0-9]+');
+
+Route::get('/enrolldev/{id}', 'EnrollController@enrolldev');
