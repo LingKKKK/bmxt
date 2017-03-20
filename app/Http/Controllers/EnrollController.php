@@ -64,7 +64,7 @@ class EnrollController extends Controller
         );
 
         if ($validator->fails()) {
-            return redirect("/enroll/$id")
+            return redirect()->back()
                         ->withErrors($validator)
                         ->withInput();
         }

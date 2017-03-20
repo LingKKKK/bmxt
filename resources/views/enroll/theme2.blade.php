@@ -56,7 +56,7 @@
 			<div class="enroll_information">
 				<p class="title">报名系统</p>
 				<div class="clear"></div>
-				<form class="form-horizontal" method="post" action="/enroll/{{$act['id']}}">
+				<form class="form-horizontal" method="post" action="#">
 		            @foreach($form->fields as $tag)
 		                
 		            @if ($tag['type'] == 'text')
