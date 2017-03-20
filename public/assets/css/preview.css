@@ -1,0 +1,476 @@
+@charset "UTF-8";
+/*重置css*/
+/*重置css*/
+body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img, input, textarea, a {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: #666;
+  background: #f9f9f9;
+}
+
+img {
+  border: 0;
+  display: inline-block;
+}
+
+i {
+  font-style: normal;
+}
+
+textarea {
+  resize: none;
+}
+
+.clearfix {
+  clear: both;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, div, ul, ol, li, dl, dt, dd, iframe, textarea, input, button, p, strong, b, i, a, span, del, pre, table, tr, th, td, form, fieldset, .pr, .pc {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  font-family: verdana,Microsoft YaHei,Tahoma,sans-serif;
+  *font-family: Microsoft YaHei,verdana,Tahoma,sans-serif;
+}
+
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc, em, del {
+  font-style: normal;
+  font-size: 100%;
+}
+
+ul, ol, dl {
+  list-style: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #edf3ff;
+  position: relative;
+}
+body #info .top {
+  width: 100%;
+  height: 60px;
+  background: white;
+}
+body #info .top .inner {
+  width: 1180px;
+  height: 60px;
+  margin: 0 auto;
+}
+body #info .top .inner .logo {
+  width: 102px;
+  height: 40px;
+  float: left;
+  margin-top: 10px;
+  background: url("../img/logo-top.png");
+  background-size: cover;
+}
+body #info .top .inner .nav {
+  float: left;
+  margin-left: 100px;
+  height: 60px;
+}
+body #info .top .inner .nav a {
+  display: block;
+  float: left;
+  margin-right: 50px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #2a201d;
+  letter-spacing: 1px;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+body #info .top .inner .login {
+  float: right;
+  height: 30px;
+  margin-top: 15px;
+}
+body #info .top .inner .login a {
+  display: block;
+  height: 30px;
+  margin-left: 29px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #2a201d;
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+body #info .top .inner .login .active {
+  border: 1px solid #0088ff;
+  border-radius: 100px;
+  width: 96px;
+  height: 30px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #0088ff;
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-align: center;
+}
+body #info .preview_show {
+  padding-top: 30px;
+}
+body #info .preview_show .inner {
+  width: 1180px;
+  margin: 0 auto;
+  padding-bottom: 160px;
+}
+body #info .preview_show .inner .preview_fl {
+  float: left;
+  width: 800px;
+}
+body #info .preview_show .inner .preview_fl .video {
+  opacity: 0.9;
+  background: #696969;
+  width: 800px;
+  height: 500px;
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+body #info .preview_show .inner .preview_fl .video .controller_video {
+  width: 100%;
+  height: 50px;
+  background: #ccc;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  opacity: 1;
+}
+body #info .preview_show .inner .preview_fl .tabs_course {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #989898;
+  margin-bottom: 4px;
+}
+body #info .preview_show .inner .preview_fl .tabs_course li {
+  width: 120px;
+  height: 49px;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  line-height: 49px;
+  color: #696969;
+  letter-spacing: 5px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+body #info .preview_show .inner .preview_fl .tabs_course .active {
+  font-family: MicrosoftYaHei-Bold;
+  font-size: 14px;
+  color: #696969;
+  line-height: 49px;
+  letter-spacing: 5px;
+  text-align: center;
+  border-bottom: 1px solid #696969;
+  font-weight: bold;
+}
+body #info .preview_show .inner .preview_fl .course_tabs {
+  width: 100%;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter {
+  display: block;
+  margin-bottom: 10px;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: left;
+  background: #d8d8d8;
+  padding-left: 10px;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub {
+  display: block;
+  width: 750px;
+  height: 36px;
+  padding-left: 30px;
+  padding-right: 20px;
+  cursor: pointer;
+  position: relative;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .chapter_name {
+  display: block;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: left;
+  float: left;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .chapter_time {
+  display: block;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: right;
+  float: right;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .buy {
+  background-color: #bfbfbf;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: right;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .unbuy {
+  background-color: #bfbfbf;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: right;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .login {
+  background-color: #bfbfbf;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: right;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .active {
+  background-color: #bfbfbf;
+}
+body #info .preview_show .inner .preview_fr {
+  width: 340px;
+  float: right;
+}
+body #info .preview_show .inner .preview_fr .preview_intro {
+  background: #e1e1e1;
+  border: 1px solid #cccccc;
+  width: 318px;
+  height: 498px;
+  position: relative;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .tab_intro {
+  height: 50px;
+  display: block;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .tab_intro li {
+  width: 157px;
+  height: 50px;
+  float: left;
+  background: #d8d8d8;
+  border: 1px solid #d8d8d8;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #747474;
+  letter-spacing: 5px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .tab_intro .active {
+  width: 157px;
+  background: #696969;
+  border: 1px solid #696969;
+  color: #fff;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro {
+  width: 280px;
+  margin-left: 20px;
+  margin-top: 21px;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro .intro {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #696969;
+  line-height: 21px;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro .intro span {
+  font-weight: bold;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro .price {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #696969;
+  line-height: 21px;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro .price span {
+  font-weight: bold;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro .price i {
+  text-decoration: line-through;
+  margin-right: 15px;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro .recommend {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #696969;
+  line-height: 21px;
+  text-align: justify;
+  margin-bottom: 34px;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro .recommend span {
+  font-weight: bold;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .div_intro .tech_sup span {
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+  width: 80px;
+  height: 24px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #696969;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: center;
+  margin-right: 8px;
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+body #info .preview_show .inner .preview_fr .preview_intro button {
+  background: #d8d8d8;
+  border: 1px solid #cccccc;
+  width: 318px;
+  height: 48px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #696969;
+  line-height: 48px;
+  letter-spacing: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+body #info .preview_show .inner .preview_fr .recommend_preview {
+  margin-top: 20px;
+}
+body #info .preview_show .inner .preview_fr .recommend_preview p {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #696969;
+  letter-spacing: 5px;
+  line-height: 40px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+body #info .preview_show .inner .preview_fr .recommend_preview ul li {
+  position: relative;
+  margin-bottom: 15px;
+  height: 80px;
+  cursor: pointer;
+}
+body #info .preview_show .inner .preview_fr .recommend_preview ul li .img {
+  background: #696969;
+  width: 120px;
+  height: 80px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+body #info .preview_show .inner .preview_fr .recommend_preview ul li .name {
+  font-family: Helvetica;
+  font-size: 12px;
+  color: #696969;
+  text-align: left;
+  position: absolute;
+  left: 135px;
+  top: 0px;
+}
+body #info .preview_show .inner .preview_fr .recommend_preview ul li .num {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #989898;
+  text-align: left;
+  position: absolute;
+  left: 135px;
+  top: 32px;
+}
+body #info .bot {
+  background: #ffffff;
+  height: 135px;
+  padding-top: 45px;
+}
+body #info .bot .logo {
+  width: 102px;
+  height: 41px;
+  background: url("../img/logo-top.png");
+  background-size: cover;
+  margin: 0 auto;
+}
+body #info .bot span {
+  display: block;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: black;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: center;
+  height: 25px;
+  margin: 0 auto;
+  margin-top: 9px;
+}
+body #info .bot p {
+  display: block;
+  height: 14px;
+  margin: 0 auto;
+  margin-top: 2px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: black;
+  letter-spacing: 1.2px;
+  text-align: center;
+}

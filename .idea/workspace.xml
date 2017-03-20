@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5a538964-7423-4cb4-97e3-8d9dc3dc6681" name="默认的" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/demo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/enroll/demo.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/alpha-horizontal.png" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/alpha-horizontal.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/alpha.png" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/alpha.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/hue-horizontal.png" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/hue-horizontal.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/hue.png" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/hue.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/saturation.png" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/img/saturation.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/back.png" afterPath="$PROJECT_DIR$/public/assets/img/back.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/chahao.png" afterPath="$PROJECT_DIR$/public/assets/img/chahao.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/false.png" afterPath="$PROJECT_DIR$/public/assets/img/false.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/kenrobot-logo.png" afterPath="$PROJECT_DIR$/public/assets/img/kenrobot-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/logo-bot.png" afterPath="$PROJECT_DIR$/public/assets/img/logo-bot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/logo-top.png" afterPath="$PROJECT_DIR$/public/assets/img/logo-top.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/notes-icon.png" afterPath="$PROJECT_DIR$/public/assets/img/notes-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/select_icon.png" afterPath="$PROJECT_DIR$/public/assets/img/select_icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/true.png" afterPath="$PROJECT_DIR$/public/assets/img/true.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/v_code.png" afterPath="$PROJECT_DIR$/public/assets/img/v_code.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/alpha-horizontal.png" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/alpha-horizontal.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/alpha.png" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/alpha.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/hue-horizontal.png" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/hue-horizontal.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/hue.png" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/hue.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/saturation.png" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/img/saturation.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/back.png" afterPath="$PROJECT_DIR$/resources/assets/img/back.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/chahao.png" afterPath="$PROJECT_DIR$/resources/assets/img/chahao.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/false.png" afterPath="$PROJECT_DIR$/resources/assets/img/false.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/kenrobot-logo.png" afterPath="$PROJECT_DIR$/resources/assets/img/kenrobot-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/logo-bot.png" afterPath="$PROJECT_DIR$/resources/assets/img/logo-bot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/logo-top.png" afterPath="$PROJECT_DIR$/resources/assets/img/logo-top.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/notes-icon.png" afterPath="$PROJECT_DIR$/resources/assets/img/notes-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/select_icon.png" afterPath="$PROJECT_DIR$/resources/assets/img/select_icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/true.png" afterPath="$PROJECT_DIR$/resources/assets/img/true.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/img/v_code.png" afterPath="$PROJECT_DIR$/resources/assets/img/v_code.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Commands/Location.php" afterPath="$PROJECT_DIR$/app/Console/Commands/Location.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Kernel.php" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Enroll/Activity.php" afterPath="$PROJECT_DIR$/app/Enroll/Activity.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Enroll/ActivityConfig.php" afterPath="$PROJECT_DIR$/app/Enroll/ActivityConfig.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Enroll/EnrollDataRepository.php" afterPath="$PROJECT_DIR$/app/Enroll/EnrollDataRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Enroll/Field.php" afterPath="$PROJECT_DIR$/app/Enroll/Field.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Enroll/Form.php" afterPath="$PROJECT_DIR$/app/Enroll/Form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Enroll/Models/Activity.php" afterPath="$PROJECT_DIR$/app/Enroll/Models/Activity.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Enroll/Models/EnrollData.php" afterPath="$PROJECT_DIR$/app/Enroll/Models/EnrollData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ActivityController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ActivityController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndexController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndexController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/EnrollController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/EnrollController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UtilsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtilsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Utils/Location.php" afterPath="$PROJECT_DIR$/app/Utils/Location.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Utils/Models/City.php" afterPath="$PROJECT_DIR$/app/Utils/Models/City.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Utils/Models/District.php" afterPath="$PROJECT_DIR$/app/Utils/Models/District.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Utils/Models/Province.php" afterPath="$PROJECT_DIR$/app/Utils/Models/Province.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Utils/SMS.php" afterPath="$PROJECT_DIR$/app/Utils/SMS.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Utils/VerificationCode.php" afterPath="$PROJECT_DIR$/app/Utils/VerificationCode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers.php" afterPath="$PROJECT_DIR$/app/helpers.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artisan" afterPath="$PROJECT_DIR$/artisan" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/app.php" afterPath="$PROJECT_DIR$/config/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/sms.php" afterPath="$PROJECT_DIR$/config/sms.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2017_02_19_095146_create_activities_table.php" afterPath="$PROJECT_DIR$/database/migrations/2017_02_19_095146_create_activities_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2017_02_19_100207_create_enroll_datas_table.php" afterPath="$PROJECT_DIR$/database/migrations/2017_02_19_100207_create_enroll_datas_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2017_03_09_120754_create_location_table.php" afterPath="$PROJECT_DIR$/database/migrations/2017_03_09_120754_create_location_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/LocationSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/LocationSeeder.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/chartjs/Chart.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/chartjs/Chart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/chartjs/Chart.min.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/chartjs/Chart.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/bootstrap-colorpicker.css" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/bootstrap-colorpicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/bootstrap-colorpicker.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/bootstrap-colorpicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/bootstrap-colorpicker.min.css" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/bootstrap-colorpicker.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/bootstrap-colorpicker.min.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/colorpicker/bootstrap-colorpicker.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/daterangepicker/daterangepicker.css" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/daterangepicker/daterangepicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/daterangepicker/daterangepicker.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/daterangepicker/daterangepicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/daterangepicker/moment.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/daterangepicker/moment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/pace/pace.css" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/pace/pace.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/pace/pace.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/pace/pace.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/pace/pace.min.css" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/pace/pace.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/pace/pace.min.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/pace/pace.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ar.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/az.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/az.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/bg.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/bg.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ca.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ca.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/cs.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/cs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/da.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/da.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/de.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/de.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/en.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/en.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/es.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/es.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/et.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/et.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/eu.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/eu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/fa.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/fa.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/fi.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/fi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/fr.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/fr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/gl.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/gl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/he.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/he.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/hi.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/hi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/hr.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/hr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/hu.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/hu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/id.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/id.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/is.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/is.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/it.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/it.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ja.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ja.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ko.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ko.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/lt.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/lt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/lv.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/lv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/mk.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/mk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ms.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ms.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/nb.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/nb.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/nl.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/nl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/pl.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/pl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/pt-BR.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/pt-BR.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/pt.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/pt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ro.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ro.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ru.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/ru.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/sk.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/sk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/sr-Cyrl.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/sr-Cyrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/sr.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/sr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/sv.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/sv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/th.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/th.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/tr.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/tr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/uk.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/uk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/vi.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/vi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/zh-CN.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/zh-CN.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/zh-TW.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/i18n/zh-TW.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.css" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.full.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.full.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.full.min.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.full.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.min.css" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.min.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/select2/select2.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/slimScroll/jquery.slimscroll.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/slimScroll/jquery.slimscroll.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/admin/plugins/slimScroll/jquery.slimscroll.min.js" afterPath="$PROJECT_DIR$/public/assets/admin/plugins/slimScroll/jquery.slimscroll.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap-theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap-theme.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css.map" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap.css" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap.min.css.map" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/css/bootstrap.min.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/js/bootstrap.js" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/js/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/js/bootstrap.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/js/npm.js" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.3.7/js/npm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/theme2.css" afterPath="$PROJECT_DIR$/public/assets/css/theme2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/artTemplate/tpl/tablerow.html" afterPath="$PROJECT_DIR$/public/assets/js/artTemplate/tpl/tablerow.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/test.php" afterPath="$PROJECT_DIR$/public/test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/background-variant.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/background-variant.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/buttons.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/buttons.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/grid.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/grid.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/hide-text.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/hide-text.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/list-group.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/list-group.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/pagination.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/pagination.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/reset-text.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/reset-text.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/text-emphasis.less" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/build/bootstrap-less/mixins/text-emphasis.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/chartjs/Chart.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/chartjs/Chart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/chartjs/Chart.min.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/chartjs/Chart.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.css" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.css" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.css" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/daterangepicker/moment.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/daterangepicker/moment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/pace/pace.css" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/pace/pace.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/pace/pace.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/pace/pace.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/pace/pace.min.css" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/pace/pace.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/pace/pace.min.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/pace/pace.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ar.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/az.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/az.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/bg.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/bg.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ca.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ca.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/cs.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/cs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/da.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/da.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/de.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/de.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/en.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/en.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/es.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/es.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/et.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/et.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/eu.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/eu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/fa.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/fa.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/fi.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/fi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/fr.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/fr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/gl.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/gl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/he.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/he.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/hi.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/hi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/hr.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/hr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/hu.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/hu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/id.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/id.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/is.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/is.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/it.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/it.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ja.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ja.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ko.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ko.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/lt.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/lt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/lv.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/lv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/mk.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/mk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ms.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ms.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/nb.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/nb.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/nl.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/nl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/pl.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/pl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/pt-BR.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/pt-BR.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/pt.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/pt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ro.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ro.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ru.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/ru.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/sk.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/sk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/sr-Cyrl.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/sr-Cyrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/sr.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/sr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/sv.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/sv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/th.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/th.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/tr.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/tr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/uk.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/uk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/vi.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/vi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/zh-CN.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/zh-CN.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/zh-TW.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/i18n/zh-TW.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.css" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.full.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.full.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.full.min.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.full.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.min.css" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.min.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/select2/select2.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js" afterPath="$PROJECT_DIR$/resources/assets/admin/bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap-theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap-theme.css.map" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap-theme.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css.map" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap.css" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap.css.map" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap.min.css.map" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/css/bootstrap.min.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/js/bootstrap.js" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/js/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/js/bootstrap.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/js/npm.js" afterPath="$PROJECT_DIR$/resources/assets/bootstrap-3.3.7/js/npm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/artTemplate/tpl/tablerow.html" afterPath="$PROJECT_DIR$/resources/assets/js/artTemplate/tpl/tablerow.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/app.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/app.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/default.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/default.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/default/components/footer.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/default/components/footer.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/default/components/header.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/default/components/header.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/default/components/notes.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/default/components/notes.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/default/layout.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/default/layout.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/default/variables.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/default/variables.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/theme2.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/theme2.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/theme2/_reset.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/theme2/_reset.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/activity/config.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/activity/config.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/activity/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/activity/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/activity/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/activity/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/enroll/list.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/enroll/list.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/master.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/master.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/emails/enroll.blade.php" afterPath="$PROJECT_DIR$/resources/views/emails/enroll.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/emails/verificationcode.php" afterPath="$PROJECT_DIR$/resources/views/emails/verificationcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/default.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll/default.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/demo.html" afterPath="$PROJECT_DIR$/resources/views/enroll/demo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/demo.js" afterPath="$PROJECT_DIR$/resources/views/enroll/demo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/demo1.html" afterPath="$PROJECT_DIR$/resources/views/enroll/demo1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/demo1.js" afterPath="$PROJECT_DIR$/resources/views/enroll/demo1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/fail.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll/fail.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/info.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll/info.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/master.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll/master.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/success.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll/success.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/theme1.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll/theme1.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/theme2.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll/theme2.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll/verificationcode.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll/verificationcode.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/enroll1.blade.php" afterPath="$PROJECT_DIR$/resources/views/enroll1.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/EnrollFormTest.php" afterPath="$PROJECT_DIR$/tests/EnrollFormTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/ExampleTest.php" afterPath="$PROJECT_DIR$/tests/ExampleTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/UtilsTest.php" afterPath="$PROJECT_DIR$/tests/UtilsTest.php" />
+    </list>
+    <ignored path="EnrollSystem.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="EnrollSystem" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/resources/assets/sass/theme2.scss" />
+        <option value="$PROJECT_DIR$/resources/views/enroll/demo.css" />
+        <option value="$PROJECT_DIR$/resources/assets/js/demo.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <gulpfiles>
+      <GulpfileState>
+        <gulpfile-path>$PROJECT_DIR$/gulpfile.js</gulpfile-path>
+      </GulpfileState>
+    </gulpfiles>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="添加" />
+    <OptionsSetting value="true" id="移除" />
+    <OptionsSetting value="true" id="签出" />
+    <OptionsSetting value="true" id="更新" />
+    <OptionsSetting value="true" id="状态" />
+    <OptionsSetting value="true" id="编辑" />
+    <ConfirmationsSetting value="0" id="添加" />
+    <ConfirmationsSetting value="0" id="移除" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enroll" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sass" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sass" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="theme2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EnrollSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a538964-7423-4cb4-97e3-8d9dc3dc6681" name="默认的" comment="" />
+      <created>1489496470196</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1489496470196</updated>
+      <workItem from="1489496476161" duration="761000" />
+      <workItem from="1489555866414" duration="254000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1015000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="1" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/theme2.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6489">
+          <caret line="364" column="0" selection-start-line="364" selection-start-column="0" selection-end-line="364" selection-end-column="0" />
+          <folding>
+            <marker date="1489498421403" expanded="true" signature="78:11837" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="130:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="139:1376" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="185:1372" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="280:439" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="450:757" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="523:751" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="770:1367" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="842:1090" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1105:1361" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1388:1956" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1465:1952" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1564:1741" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1749:1947" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1967:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2016:2841" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2221:2416" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2440:2836" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2582:2706" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2724:2758" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2773:2830" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2866:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="3115:3272" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="3295:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="3340:4403" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="3722:4000" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4017:4197" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4215:4396" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4416:4658" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4430:4651" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4672:5068" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4688:4935" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4960:5061" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5009:5050" ph="{...}" />
+            <marker date="1489498421403" expanded="false" signature="5087:5857" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5128:5376" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5398:5426" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5441:5850" ph="{...}" />
+            <marker date="1489498421403" expanded="false" signature="5872:6266" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5924:6259" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="6281:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="6332:6562" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="6577:6998" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="7020:7071" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/enroll/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/enroll/theme2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7035">
+          <caret line="335" column="44" selection-start-line="335" selection-start-column="44" selection-end-line="335" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/enroll/theme2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="350" column="44" selection-start-line="350" selection-start-column="44" selection-end-line="350" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/enroll/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/theme2.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="459" column="0" selection-start-line="459" selection-start-column="0" selection-end-line="459" selection-end-column="0" />
+          <folding>
+            <marker date="1489498421403" expanded="true" signature="78:11837" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="130:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="139:1376" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="185:1372" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="280:439" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="450:757" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="523:751" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="770:1367" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="842:1090" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1105:1361" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1388:1956" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1465:1952" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1564:1741" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1749:1947" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="1967:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2016:2841" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2221:2416" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2440:2836" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2582:2706" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2724:2758" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2773:2830" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="2866:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="3115:3272" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="3295:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="3340:4403" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="3722:4000" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4017:4197" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4215:4396" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4416:4658" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4430:4651" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4672:5068" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4688:4935" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="4960:5061" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5009:5050" ph="{...}" />
+            <marker date="1489498421403" expanded="false" signature="5087:5857" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5128:5376" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5398:5426" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5441:5850" ph="{...}" />
+            <marker date="1489498421403" expanded="false" signature="5872:6266" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="5924:6259" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="6281:7073" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="6332:6562" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="6577:6998" ph="{...}" />
+            <marker date="1489498421403" expanded="true" signature="7020:7071" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

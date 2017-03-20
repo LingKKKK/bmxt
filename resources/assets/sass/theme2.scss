@@ -345,9 +345,9 @@ body {
 						select {
 							border: 0;
 							border-bottom: 1px solid #d8d8d8;
-							appearance:none;   
-							-moz-appearance:none;   
-							-webkit-appearance:none; 
+							appearance:none;
+							-moz-appearance:none;
+							-webkit-appearance:none;
 							background: url('../img/select_icon.png');
 							background-repeat: no-repeat;
 						    background-position: 92% 57%;
@@ -360,6 +360,24 @@ body {
 						.form-control {
 							width: 30%;
 							color: #666666;
+						}
+
+						#city {
+						    width: 100%;
+						    height: 44px;
+						    float: left;
+						    margin-right: 18px;
+						    font-family: MicrosoftYaHei;
+						    font-size: 18px;
+						    color: #a4aebd;
+						    letter-spacing: 0;
+						    text-align: left;
+						    line-height: 44px;
+						    border-bottom: 1px solid #d8d8d8;
+
+					        &:active {
+					        	color: #666666;
+					        }
 						}
 					}
 
@@ -527,11 +545,90 @@ body {
 					color:#ffffff;
 					letter-spacing:0;
 					text-align:center;
-					line-height: 50px;    
+					line-height: 50px;
 					margin: 0 auto;
 					display: block;
+					border: 0;
 				}
 			}
 		}
 	}
+}
+
+._citys {
+    width: 450px;
+    display: inline-block;
+    border: 2px solid #eee;
+    padding: 5px;
+    position: relative;
+    background: white;
+
+    span {
+	    color: #56b4f8;
+	    height: 15px;
+	    width: 15px;
+	    line-height: 15px;
+	    text-align: center;
+	    border-radius: 3px;
+	    position: absolute;
+	    right: 10px;
+	    top: 10px;
+	    border: 1px solid #56b4f8;
+	    cursor: pointer;
+	}
+}
+
+._citys0 {
+    width: 100%;
+    height: 34px;
+    display: inline-block;
+    border-bottom: 2px solid #56b4f8;
+    padding: 0;
+    margin: 0;
+
+    li {
+	    display: inline-block;
+	    line-height: 34px;
+	    font-size: 15px;
+	    color: #888;
+	    width: 80px;
+	    text-align: center;
+	    cursor: pointer;
+	}
+}
+
+.citySel {
+    background-color: #56b4f8;
+    color: #fff !important;
+}
+
+._citys1 {
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0;
+
+    a {
+	    width: 83px;
+	    height: 35px;
+	    display: inline-block;
+	    background-color: #f5f5f5;
+	    color: #666;
+	    margin-left: 6px;
+	    margin-top: 3px;
+	    line-height: 35px;
+	    text-align: center;
+	    cursor: pointer;
+	    font-size: 13px;
+	    overflow: hidden;
+
+	    &:hover {
+		    color: #fff;
+		    background-color: #56b4f8;
+	    }
+	}
+}
+
+.AreaS {
+    background-color: #56b4f8 !important;
+    color: #fff !important;
 }

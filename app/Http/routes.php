@@ -52,3 +52,16 @@ Route::get('/enroll/{id}', 'EnrollController@index');
 Route::post('/enroll/{id}', 'EnrollController@doEnroll')->where('id', '[0-9]+');
 
 Route::get('/enrolldev/{id}', 'EnrollController@enrolldev');
+
+// 课程介绍  轮播图+缩略图简介
+Route::get('/course', 'CourseController@index');
+Route::get('/course/list', 'CourseController@lists');
+// 课程预览  视频+购买+简介+目录+评价+推荐
+Route::get('/preview', 'PreviewController@index');
+Route::get('/preview/chapter', 'PreviewController@chapter');
+Route::get('/preview/intro', 'PreviewController@intro');
+Route::get('/preview/recommend', 'PreviewController@recommend');
+//订单支付
+Route::get('/order', 'OrderController@order');
+// Route::get('/order', 'OrderController@order');
+

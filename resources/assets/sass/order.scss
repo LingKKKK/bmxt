@@ -1,0 +1,246 @@
+/*重置css*/
+@import "theme2/_reset.scss";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background:#edf3ff;
+	position: relative;
+
+	#info {
+		.top {
+			width: 100%;
+			height: 60px;
+
+			.inner {
+				width: 1180px;
+				height: 60px;
+				margin: 0 auto;
+
+				.logo {
+					width: 102px;
+					height: 40px;
+					float: left;
+					margin-top: 10px;
+					background:url('../img/logo-top.png');
+					background-size: cover;
+				}
+
+				.nav {
+					float: left;
+					margin-left: 100px;
+					height: 60px;
+
+					a {
+						display: block;
+						float: left;
+						margin-right: 50px;
+						font-family:MicrosoftYaHei;
+						font-size:13px;
+						color:#2a201d;
+						letter-spacing:1px;
+						line-height:60px;
+						text-align:center;
+						cursor: pointer;
+					}
+				}
+
+				.login {
+					float: right;
+					height: 30px;
+					margin-top: 15px;
+
+					a {
+						display: block;
+						height: 30px;
+						margin-left:  29px;
+						font-family:MicrosoftYaHei;
+						font-size:13px;
+						color:#2a201d;
+						letter-spacing:1px;
+						line-height:30px;
+						text-align:center;
+						float: left;
+						cursor: pointer;
+					}
+
+					.active {
+						border:1px solid #0088ff;
+						border-radius:100px;
+						width:96px;
+						height:30px;
+						font-family:MicrosoftYaHei;
+						font-size:13px;
+						color:#0088ff;
+						letter-spacing:1px;
+						line-height:30px;
+						text-align:center;
+					}
+				}
+			}
+		}
+		.banner {
+			background: #e6e6e6;
+			width: 100%;
+			height: 220px;
+
+			.inner {
+				width: 1180px;
+				margin: 0 auto;
+				padding-top: 40px;
+
+				p {
+					font-family:MicrosoftYaHei-Bold;
+					font-size:32px;
+					color:#666666;
+					letter-spacing:5px;
+					text-align:left;
+					margin-left: 40px;
+					font-weight: bold;
+				}
+			}
+		}
+		.mid {
+			width: 100%;
+			height: 715px;
+			background-color: #fff;
+			position: relative;
+
+			.order {
+				width: 1080px;
+				height: 685px;
+				position: absolute;
+				left: 50%;
+				top: -95px;
+				transform: translateX(-50%);
+				background:#ffffff;
+				box-shadow:0 2px 4px 0 rgba(0,0,0,0.20);
+				padding: 40px 50px 0px 50px;
+
+				.title {
+					margin-left: 30px;
+					display: block;
+					font-family:MicrosoftYaHei-Bold;
+					font-size:16px;
+					color:#666666;
+					letter-spacing:0;
+					line-height:16px;
+					text-align:left;
+					font-weight: bold;
+					margin-bottom: 40px;
+				}
+
+				.product_tab {
+
+				}
+
+				.cut {
+					background:#d8d8d8;
+					width:1080px;
+					height:1px;
+					margin-top: 40px;
+				}
+
+				.discount {
+					padding-top: 40px;
+
+					.sp1 {
+						font-family:MicrosoftYaHei-Bold;
+						font-size:16px;
+						color:#666666;
+						letter-spacing:0;
+						line-height:16px;
+						text-align:left;
+						display: block;
+						float: left;
+						/* background: url() */
+					}
+
+					.sp2 {
+						font-family: MicrosoftYaHei;
+						font-size: 14px;
+						color: #666666;
+						letter-spacing: 0;
+						text-align: right;
+						display: block;
+						float: right;
+					}
+
+					input {
+						background: #ffffff;
+						border: 1px solid #979797;
+						width: 289px;
+						height: 30px;
+						padding-left:  11px;
+						font-family: MicrosoftYaHei;
+						font-size: 14px;
+						color: #666666;
+						letter-spacing: 0;
+						line-height: 30px;
+						text-align: left;
+						float: left;
+					}
+
+					button {
+						float: left;
+						background: #d8d8d8;
+						border: 1px solid #979797;
+						width: 76px;
+						height: 32px;
+						font-family: MicrosoftYaHei;
+						font-size: 14px;
+						color: #666666;
+						letter-spacing: 0;
+						line-height: 30px;
+						text-align: center;
+						margin-left: 13px;
+					}
+
+				}
+			}
+		}
+		.bot {
+			background:#ffffff;
+			height:135px;
+			padding-top: 45px;
+
+			.logo {
+				width: 102px;
+				height: 41px;
+				background: url('../img/logo-top.png');
+				background-size: cover;
+				margin: 0 auto;
+
+			}
+
+			span {
+				display: block;
+				font-family:MicrosoftYaHei;
+				font-size:12px;
+				color: black;
+				letter-spacing:0;
+				line-height:24px;
+				text-align:center;
+				height: 25px;
+				margin: 0 auto;
+				margin-top: 9px;
+			}
+
+			p {
+				display: block;
+				height: 14px;
+				margin: 0 auto;
+				margin-top: 2px;
+				font-family:PingFangSC-Regular;
+				font-size:12px;
+				color: black;
+				letter-spacing:1.2px;
+				text-align:center;
+			}
+		}
+	}
+
+}
