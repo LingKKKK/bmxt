@@ -42,7 +42,7 @@
 				<p>报名系统</p>
 			</div>	
 		</div>
-		<div class="clear"></div>
+		<div class="clearfix"></div>
 		<div class="inner">
 			<div class="tabs">
 				<div class="back_click"></div>
