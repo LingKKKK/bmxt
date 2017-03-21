@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/activity/config/{id}', 'ActivityController@config')->where('id', '[0-9]+');
     Route::post('/activity/editform/{id}', 'ActivityController@editForm')->where('id', '[0-9]+');
     Route::post('/activity/addfield/{id}', 'ActivityController@addField')->where('id', '[0-9]+');
+    Route::post('/activity/delfield/{id}', 'ActivityController@delfield')->where('id', '[0-9]+');
+    
     
     Route::get('/enrolldata/{id}', 'ActivityController@enrolldata')->where('id', '[0-9]+');
 
@@ -53,6 +55,10 @@ Route::post('/enroll/{id}', 'EnrollController@doEnroll')->where('id', '[0-9]+');
 
 Route::get('/enrolldev/{id}', 'EnrollController@enrolldev');
 
+//报名
+Route::get('/theme3', 'OrderController@loadindex1');
+
+
 // 课程介绍  轮播图+缩略图简介
 Route::get('/course', 'CourseController@index');
 Route::get('/course/list', 'CourseController@lists');
@@ -63,5 +69,4 @@ Route::get('/preview/intro', 'PreviewController@intro');
 Route::get('/preview/recommend', 'PreviewController@recommend');
 //订单支付
 Route::get('/order', 'OrderController@order');
-// Route::get('/order', 'OrderController@order');
 

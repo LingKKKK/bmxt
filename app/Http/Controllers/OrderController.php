@@ -19,4 +19,9 @@ class OrderController extends Controller
         return view('order');
     }
 
+    public function loadindex1()
+    {
+        return view('enroll/theme3');
+    }
+
 }

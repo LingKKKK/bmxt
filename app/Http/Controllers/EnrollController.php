@@ -28,7 +28,7 @@ class EnrollController extends Controller
         }
 
         $form = EForm::loadFromArray($act['form_design']);
-
+        // dd($form);
         return view('enroll.theme2', compact('form','act'));
     }
 
@@ -44,7 +44,10 @@ class EnrollController extends Controller
         return view('enroll.theme1', compact('form','act'));
     }
 
-
+    public function loadindex1($id, Request $request)
+    {
+        return view('enroll/theme3');
+    }
 
     public function doEnroll($id, Request $request)
     {

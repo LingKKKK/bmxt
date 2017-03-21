@@ -100,6 +100,7 @@
                       <option value="text">text</option>
                       <option value="text.email">text.email</option>
                       <option value="text.mobile">text.mobile</option>
+                      <option value="text.address">text.address</option>
                       <option value="text.date">text.date</option>
                       <option value="text.password">text.password</option>
                       <option value="select">select</option>
@@ -139,7 +140,7 @@
                   <th>操作</th>
                 </tr>
                 @foreach($form->fields as $tag)
-                <tr>
+                <tr id="tr_{{$tag->name}}">
                   <td></td>
                   <td>{{ $tag->labeltext }}</td>
                   <td>{{ $tag->type }}</td>
@@ -247,6 +248,18 @@
     };
     $('#btn_editform').click(function(){
       $('#form_editform').ajaxSubmit(editformOption);
+    });
+
+    $('.field-del').click(function(){
+      var key = $(this).attr('data-key');
+      $.post("{{ url('/admin/activity/delfield').'/'.$id }}", 
+      {
+        key: key,
+      },function(res){
+        if (res.status == 0) {
+          $('#tr_'+key).remove();
+        };
+      })
     });
 
 

@@ -159,6 +159,28 @@ class ActivityController extends Controller
         }
     }
 
+    public function delfield($id, Request $request, EnrollDataRepository $enrollrepo)
+    {
+        $key = $request->input('key');
+        $act = $enrollrepo->getActivity($id);
+
+        if (empty($act)) {
+            return api_response(-1, 'invalid act_id');
+        }
+
+        try {
+
+            $form = EForm::loadFromArray($act['form_design']);
+
+            $form->remove($key);
+
+            $enrollrepo->saveActivity($id, ['form_design' => $form->toJson()]);
+            return api_response(0, '删除成功');
+        } catch (\Exception $e) {
+            return api_response(-3, '重复的key '.$e->getMessage());
+        }
+    }
+
     public function editForm($id, Request $request, EnrollDataRepository $enrollrepo)
     {
         $input = $request->only('theme', 'verificationtype');

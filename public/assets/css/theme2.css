@@ -167,6 +167,45 @@ body #info .banner .inner p {
   display: block;
   margin-top: 5px;
 }
+body #info .title_read {
+  background: #2564f5;
+  box-shadow: 0 0 20px 0 rgba(37, 99, 245, 0.8);
+  border-radius: 3px;
+  width: 960px;
+  height: 78px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  position: relative;
+}
+body #info .title_read p {
+  width: 840px;
+  margin: 0 auto;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 2px;
+  line-height: 24px;
+  text-align: justify;
+  text-align: left;
+  background: url(../img/read_icon.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  padding-left: 44px;
+  background-position: 0px 4px;
+}
+body #info .title_read span {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: url(../img/false_click.png);
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+}
 body #info .inner {
   width: 1182px;
   margin: 0 auto;
@@ -211,7 +250,112 @@ body #info .inner .tabs .change_tab_click .no_margin {
 body #info .inner .tabs .change_tab_click .active {
   border: 4px solid rgba(255, 255, 255, 0.1);
 }
+body #info .inner .enroll_need {
+  display: none;
+  float: right;
+  background: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(64, 85, 149, 0.2);
+  border-radius: 0px 10px 10px 0px;
+  width: 880px;
+  height: 643px;
+  padding-top: 45px;
+  padding-left: 60px;
+  position: relative;
+}
+body #info .inner .enroll_need p {
+  font-family: MicrosoftYaHei;
+  font-size: 24px;
+  color: #2564f5;
+  letter-spacing: 0.75px;
+  text-align: left;
+  display: block;
+  line-height: 26px;
+}
+body #info .inner .enroll_need .intro {
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+  width: 818px;
+  height: 418px;
+  margin-top: 35px;
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+body #info .inner .enroll_need .intro span {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 1px;
+  line-height: 24px;
+  text-align: justify;
+  margin-bottom: 12px;
+  display: block;
+}
+body #info .inner .enroll_need .simul_input {
+  background: #2980d9;
+  border: 1px solid #2980d9;
+  border-radius: 3px;
+  width: 14px;
+  height: 14px;
+  display: block;
+  float: left;
+  vertical-align: top;
+  margin-top: 81px;
+  cursor: pointer;
+  position: relative;
+  margin-right: 9px;
+}
+body #info .inner .enroll_need .simul_input img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body #info .inner .enroll_need .active {
+  background: #2980d9;
+  border: 1px solid #2564f5;
+}
+body #info .inner .enroll_need i {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #999999;
+  letter-spacing: 0;
+  line-height: 12px;
+  text-align: left;
+  display: block;
+  margin-top: 83px;
+  vertical-align: top;
+  float: left;
+}
+body #info .inner .enroll_need i a {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #20a0ff;
+  letter-spacing: 0;
+  line-height: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+body #info .inner .enroll_need button {
+  cursor: pointer;
+  opacity: 0.8;
+  background: #2564f5;
+  border-radius: 5px;
+  width: 180px;
+  height: 57px;
+  font-family: MicrosoftYaHei;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 57px;
+  float: right;
+  border: 0;
+  margin-top: 60px;
+  margin-right: 60px;
+}
 body #info .inner .enroll_information {
+  display: none;
   float: right;
   background: #ffffff;
   box-shadow: 0 0 10px 0 rgba(64, 85, 149, 0.2);
@@ -425,6 +569,83 @@ body #info .inner .enroll_information #reset {
   border: 0;
   background-color: #fff;
   cursor: pointer;
+}
+body #info .inner .enroll_other {
+  float: right;
+  background: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(64, 85, 149, 0.2);
+  border-radius: 0px 10px 10px 0px;
+  width: 880px;
+  height: 643px;
+  padding-top: 45px;
+  padding-left: 60px;
+  position: relative;
+}
+body #info .inner .enroll_other p {
+  font-family: MicrosoftYaHei;
+  font-size: 24px;
+  color: #2564f5;
+  letter-spacing: 0.75px;
+  text-align: left;
+  line-height: 26px;
+  margin-bottom: 5px;
+  display: block;
+}
+body #info .inner .enroll_other span {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #a4aebd;
+  letter-spacing: 0;
+  text-align: left;
+  display: block;
+  line-height: 16px;
+  margin-top: 30px;
+}
+body #info .inner .enroll_other .resume {
+  border: 1px solid #dddddd;
+  width: 818px;
+  height: 178px;
+  padding: 20px;
+  margin-top: 13px;
+}
+body #info .inner .enroll_other .resume p {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: justify;
+}
+body #info .inner .enroll_other .choice {
+  margin-top: 13px;
+  opacity: 0.8;
+  background: #2564f5;
+  border-radius: 5px;
+  width: 120px;
+  height: 40px;
+  display: block;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 40px;
+}
+body #info .inner .enroll_other button {
+  opacity: 0.8;
+  background: #2564f5;
+  border-radius: 5px;
+  width: 180px;
+  height: 57px;
+  font-family: MicrosoftYaHei;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 57px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
 }
 body #info .bot {
   background: #2564f5;
