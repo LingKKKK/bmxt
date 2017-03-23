@@ -630,6 +630,7 @@ body #info .inner .enroll_other .choice {
   letter-spacing: 0;
   text-align: center;
   line-height: 40px;
+  cursor: pointer;
 }
 body #info .inner .enroll_other button {
   opacity: 0.8;

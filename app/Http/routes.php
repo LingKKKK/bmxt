@@ -69,4 +69,9 @@ Route::get('/preview/intro', 'PreviewController@intro');
 Route::get('/preview/recommend', 'PreviewController@recommend');
 //订单支付
 Route::get('/order', 'OrderController@order');
+Route::get('/payment', 'OrderController@payment');
+Route::get('/payment/list', 'OrderController@paymentLists');
+// 商品详情页面
+Route::get('/details', 'OrderController@details');
+Route::get('/details/list', 'OrderController@detailsLists');
 

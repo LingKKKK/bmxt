@@ -163,38 +163,63 @@ body #info .mid {
   background-color: #fff;
   position: relative;
 }
-body #info .mid .order {
-  width: 1080px;
-  margin: 0 auto;
-  transform: translateY(-100px);
+body #info .mid .payment {
+  transform: translateY(-80px);
   background: #ffffff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  width: 1180px;
+  margin: 0 auto;
   padding: 40px 50px 40px 50px;
+  box-sizing: border-box;
 }
-body #info .mid .order .title {
+body #info .mid .payment .payment_num {
   margin-left: 30px;
-  display: block;
   font-family: MicrosoftYaHei-Bold;
   font-size: 16px;
   color: #666666;
   letter-spacing: 0;
   line-height: 16px;
   text-align: left;
-  font-weight: bold;
-  margin-bottom: 40px;
+  display: block;
+  float: left;
 }
-body #info .mid .order .product_tabs {
+body #info .mid .payment .payment_intro {
+  display: block;
+  float: right;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: right;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+body #info .mid .payment .payment_way {
+  margin-left: 30px;
+  margin-top: 40px;
+  font-family: MicrosoftYaHei-Bold;
+  font-size: 16px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: left;
+  display: block;
+}
+body #info .mid .payment .product_tabs {
+  display: none;
   background: #f2f2f2;
   width: 1080px;
   margin: 0 auto;
+  margin-bottom: 40px;
 }
-body #info .mid .order .product_tabs .product_tab {
+body #info .mid .payment .product_tabs .product_tab {
   width: 100%;
   height: 160px;
   box-sizing: border-box;
   padding: 30px;
 }
-body #info .mid .order .product_tabs .product_tab .product_img {
+body #info .mid .payment .product_tabs .product_tab .product_img {
   background: #dddddd;
   border: 1px solid #979797;
   width: 148px;
@@ -203,7 +228,7 @@ body #info .mid .order .product_tabs .product_tab .product_img {
   float: left;
   cursor: pointer;
 }
-body #info .mid .order .product_tabs .product_tab .product_name {
+body #info .mid .payment .product_tabs .product_tab .product_name {
   float: left;
   font-family: MicrosoftYaHei;
   font-size: 16px;
@@ -215,7 +240,7 @@ body #info .mid .order .product_tabs .product_tab .product_name {
   margin-top: 35px;
   margin-left: 40px;
 }
-body #info .mid .order .product_tabs .product_tab .product_delete {
+body #info .mid .payment .product_tabs .product_tab .product_delete {
   width: 30px;
   height: 30px;
   float: right;
@@ -226,13 +251,13 @@ body #info .mid .order .product_tabs .product_tab .product_delete {
   background-position: center center;
   cursor: pointer;
 }
-body #info .mid .order .product_tabs .product_tab .product_num {
+body #info .mid .payment .product_tabs .product_tab .product_num {
   float: right;
   margin-right: 40px;
   margin-top: 40px;
   display: block;
 }
-body #info .mid .order .product_tabs .product_tab .product_num a {
+body #info .mid .payment .product_tabs .product_tab .product_num a {
   width: 20px;
   height: 20px;
   float: left;
@@ -241,17 +266,18 @@ body #info .mid .order .product_tabs .product_tab .product_num a {
   text-align: center;
   border-radius: 5px;
 }
-body #info .mid .order .product_tabs .product_tab .product_num input {
+body #info .mid .payment .product_tabs .product_tab .product_num input {
   display: block;
   float: left;
   border: 1px #ccc solid;
-  width: 40px;
+  width: 63px;
   height: 20px;
   text-align: center;
   line-height: 20px;
   border-radius: 5px;
+  pointer-events: none;
 }
-body #info .mid .order .product_tabs .product_tab .product_price_new {
+body #info .mid .payment .product_tabs .product_tab .product_price_new {
   display: block;
   float: right;
   margin-right: 40px;
@@ -264,7 +290,7 @@ body #info .mid .order .product_tabs .product_tab .product_price_new {
   line-height: 30px;
   margin-top: 35px;
 }
-body #info .mid .order .product_tabs .product_tab .product_price_new i {
+body #info .mid .payment .product_tabs .product_tab .product_price_new i {
   font-family: MicrosoftYaHei;
   float: right;
   font-size: 12px;
@@ -276,7 +302,7 @@ body #info .mid .order .product_tabs .product_tab .product_price_new i {
   margin-right: 5px;
   margin-top: 8px;
 }
-body #info .mid .order .product_tabs .product_tab .product_price_old {
+body #info .mid .payment .product_tabs .product_tab .product_price_old {
   display: block;
   float: right;
   margin-right: 20px;
@@ -290,7 +316,7 @@ body #info .mid .order .product_tabs .product_tab .product_price_old {
   text-decoration: line-through;
   margin-top: 35px;
 }
-body #info .mid .order .product_tabs .product_tab .product_price_old i {
+body #info .mid .payment .product_tabs .product_tab .product_price_old i {
   font-family: MicrosoftYaHei;
   float: right;
   font-size: 12px;
@@ -302,181 +328,100 @@ body #info .mid .order .product_tabs .product_tab .product_price_old i {
   margin-right: 5px;
   margin-top: 8px;
 }
-body #info .mid .order .cut {
-  background: #d8d8d8;
-  width: 1080px;
-  height: 1px;
-  margin-top: 40px;
-}
-body #info .mid .order .discount {
-  padding-top: 40px;
-}
-body #info .mid .order .discount .sp1 {
+body #info .mid .payment ul {
+  display: block;
   margin-left: 30px;
+  padding: 38px 0px 38px 0px;
+}
+body #info .mid .payment ul li {
+  float: left;
+  background: #f2f2f2;
+  border: 1px solid #c6c6c6;
+  width: 240px;
+  height: 90px;
   font-family: MicrosoftYaHei-Bold;
   font-size: 16px;
   color: #666666;
   letter-spacing: 0;
-  line-height: 16px;
-  text-align: left;
-  display: block;
-  float: left;
-  position: absolute;
-  cursor: pointer;
-}
-body #info .mid .order .discount .sp1 .icon {
-  width: 6px;
-  height: 4px;
-  position: absolute;
-  right: -15px;
-  top: -4px;
-}
-body #info .mid .order .discount .sp1 .icon img {
-  width: 100%;
-  transform: rotate(-90deg);
-}
-body #info .mid .order .discount .sp2 {
-  font-family: MicrosoftYaHei;
-  font-size: 14px;
-  color: #666666;
-  letter-spacing: 0;
-  text-align: right;
-  display: block;
-  float: right;
-  cursor: pointer;
-}
-body #info .mid .order .discount input {
-  margin-left: 30px;
-  background: #ffffff;
-  border: 1px solid #979797;
-  width: 289px;
-  height: 30px;
-  padding-left: 11px;
-  font-family: MicrosoftYaHei;
-  font-size: 14px;
-  color: #666666;
-  letter-spacing: 0;
-  line-height: 30px;
-  text-align: left;
-  float: left;
-  margin-top: 24px;
-  display: none;
-}
-body #info .mid .order .discount button {
-  float: left;
-  background: #d8d8d8;
-  border: 1px solid #979797;
-  width: 76px;
-  height: 32px;
-  font-family: MicrosoftYaHei;
-  font-size: 14px;
-  color: #666666;
-  letter-spacing: 0;
-  line-height: 30px;
   text-align: center;
-  margin-left: 13px;
-  margin-top: 24px;
-  display: none;
+  box-sizing: border-box;
+  line-height: 94px;
   cursor: pointer;
 }
-body #info .mid .order .discount .discount_intro {
+body #info .mid .payment ul .active {
+  border: 2px solid #929292;
+  width: 240px;
+  height: 90px;
+  background: url("../img/payment_bg.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+body #info .mid .payment .prompt {
+  margin-top: 40px;
+  margin-left: 30px;
+  display: block;
+  padding-left: 44px;
   float: left;
   font-family: MicrosoftYaHei;
   font-size: 14px;
   color: #666666;
   letter-spacing: 0;
-  text-align: right;
-  line-height: 16px;
+  line-height: 24px;
+  text-align: left;
+  background: url("../img/payment_icon.png");
+  background-repeat: no-repeat;
+}
+body #info .mid .payment .cut {
+  background: #d8d8d8;
+  width: 1080px;
+  height: 1px;
   display: block;
-  margin-left: 29px;
-  margin-top: 32px;
-  display: none;
+  margin: 0 auto;
 }
-body #info .mid .order .total_order {
-  padding-top: 40px;
+body #info .mid .payment .payment_price {
+  margin-top: 40px;
+  float: right;
 }
-body #info .mid .order .total_order .total_all .oDiv {
-  width: 100%;
-  height: 24px;
-}
-body #info .mid .order .total_order .total_all .oDiv .right_sp {
+body #info .mid .payment .payment_price .right_sp {
   display: block;
-  width: 160px;
   float: right;
   font-family: MicrosoftYaHei;
   font-size: 14px;
   color: #666666;
   letter-spacing: 0;
-  line-height: 24px;
   text-align: right;
+  margin-top: -6px;
 }
-body #info .mid .order .total_order .total_all .oDiv .left_sp {
-  display: block;
-  font-family: MicrosoftYaHei;
-  font-size: 14px;
-  color: #666666;
-  letter-spacing: 0;
-  line-height: 24px;
-  text-align: right;
-  float: right;
-}
-body #info .mid .order .total_order .total_all .altogether {
-  margin-bottom: 5px;
-}
-body #info .mid .order .total_order .total_all .discount_amount {
-  margin-bottom: 12px;
-}
-body #info .mid .order .total_order .total_all .payable {
-  margin-bottom: 20px;
-}
-body #info .mid .order .total_order .total_all .payable .right_sp i {
+body #info .mid .payment .payment_price .right_sp i {
+  font-size: 23px;
   font-weight: bold;
-  font-size: 22px;
 }
-body #info .mid .order .total_order .total_all button {
+body #info .mid .payment .payment_price .left_sp {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: right;
   display: block;
+  float: right;
+}
+body #info .mid .payment button {
+  margin-top: 40px;
+  display: block;
+  float: right;
   background: #d8d8d8;
   border: 1px solid #979797;
   width: 138px;
   height: 38px;
+  border: 0;
   font-family: MicrosoftYaHei;
   font-size: 14px;
   color: #666666;
   letter-spacing: 0;
   line-height: 24px;
   text-align: center;
-  float: right;
-  margin-bottom: 20px;
   cursor: pointer;
-}
-body #info .mid .order .total_order .total_all .read_agreement {
-  float: right;
-  font-family: MicrosoftYaHei;
-  font-size: 14px;
-  color: #666666;
-  letter-spacing: 0;
-  line-height: 24px;
-  text-align: right;
-  margin-left: 10px;
-}
-body #info .mid .order .total_order .total_all .read_click {
-  display: block;
-  background: #d8d8d8;
-  border: 1px solid #979797;
-  border-radius: 3px;
-  width: 12px;
-  height: 12px;
-  float: right;
-  margin-top: 5px;
-  cursor: pointer;
-}
-body #info .mid .order .total_order .total_all .active {
-  position: relative;
-}
-body #info .mid .order .total_order .total_all .active img {
-  width: 100%;
-  position: absolute;
-  top: 2px;
 }
 body #info .bot {
   background: #ffffff;
