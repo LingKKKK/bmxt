@@ -21,6 +21,8 @@
         </div>
 
         <div class="mid">
+            <form action="/signup" enctype="multipart/form-data" method="POST">
+       
             <div class="title_top">
                 <ul>
                     <li class="active">①领队信息</li> 
@@ -32,46 +34,111 @@
             </div>
             <div class="all_info clearfix">
                 <div class="active leader_info div_tab">
-                    <span class="user_name">用户名  :</span>
-                    <input class="user_name_input" id="user_name" type="text">
-                    <div class="clearfix"></div>
-                    <span class="user_name">真实姓名  :</span>
-                    <input class="user_name_input" id="leader_name" type="text">
-                    <div class="clearfix"></div>
-                    <span class="user_name">身份证号  :</span>
-                    <input class="user_name_input" id="idCard" type="text">
-                    <div class="clearfix"></div>
-                    <span class="user_name">性别  :</span>
-                    <input class="man" type="radio" name="sex" value="男"><span>男</span>
-                    <input class="woman" type="radio" name="sex" value="女"><span>女</span>
-                    <div class="clearfix"></div>
-                    <span class="user_name">领队照片  :</span>
-                    <div class="div2">上传图片</div>
-                    <input type="file" class="inputstyle">
-                    <div class="clearfix"></div>
-                    <span class="user_name">注册邮箱  :</span>
-                    <input class="user_name_input" id="leader_email" type="text">
-                    <div class="clearfix"></div>
-                    <span class="user_name">手机号码  :</span>
-                    <input class="user_name_input"  id="leader_mobile" type="text">
-                    <a class="tel">发送验证码</a>
-                    <div class="clearfix"></div>
-                    <span class="user_name">验证码  :</span>
-                    <input class="code" type="text">
-                    <div class="clearfix"></div>
-                    <button class="btn_next" id="leader_info_btn">下一步</button>
+                    <div>
+                        <span class="user_name">用户名  :</span>
+                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="user_name_input" id="user_name" name="user_name" type="text">
+                        <div class="tips">
+                            <!-- <span class="cue">仅支持仅支持英文、数字、下划线</span> -->
+                            <span class="useable">√</span>
+                            <span class="unuse">内容不能为空</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                 
+                    <div>
+                        <span class="user_name">真实姓名  :</span>
+                        <input required tip-warn="" tip-info="仅支持仅支持英文、汉字"  class="user_name_input" id="leader_name" name="leader_name" type="text">
+                        <div class="tips">
+                            <!-- <span class="cue">仅支持仅支持汉字、英文</span> -->
+                            <span class="useable">√</span>
+                            <span class="unuse">内容不能为空</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div>
+                        <span class="user_name">身份证号  :</span>
+                        <input required tip-warn="" tip-info="仅支持仅支持数字以及个别英文" class="user_name_input" id="idCard" name="leader_id" type="text">
+                        <div class="tips">
+                            <!-- <span class="cue">仅支持数字</span> -->
+                            <span class="useable">√</span>
+                            <span class="unuse">格式不正确</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div>
+                        <span class="user_name">性别  :</span>
+                        <input class="man" type="radio" name="leader_sex" value="男"><span>男</span>
+                        <input class="woman" type="radio" name="leader_sex" value="女"><span>女</span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div>
+                        <span class="user_name">领队照片  :</span>
+                        <div class="div2">上传图片</div>
+                        <input type="file" name="leader_pic" class="inputstyle">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div>
+                        <span class="user_name">注册邮箱  :</span>
+                        <input required tip-warn="" tip-info="请按照正确的邮箱格式填写" class="user_name_input" id="leader_email" name="leader_email" type="text">
+                        <div class="tips">
+                            <!-- <span class="cue">请按照正确的邮箱格式填写</span> -->
+                            <span class="useable">√</span>
+                            <span class="unuse">格式不正确</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div>
+                        <span class="user_name">手机号码  :</span>
+                        <input required tip-warn="" tip-info="请输入您收到的验证码" class="user_name_input"  id="leader_mobile" type="text">
+                        <a class="tel">发送验证码</a>
+                        <div class="tips">
+                            <!-- <span class="cue">请输入您收到的验证码</span> -->
+                            <span class="useable">√</span>
+                            <span class="unuse">格式不正确</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div>
+                        <span class="user_name">验证码  :</span>
+                        <input required tip-warn="" tip-info="请输入您收到的验证码" class="code" type="text">
+                        <div class="tips">
+                            <!-- <span class="cue">请输入您收到的验证码</span> -->
+                            <span class="useable">√</span>
+                            <span class="unuse">请输入正确的验证码</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <button type="button" class="btn_next" id="leader_info_btn">下一步</button>
                     <div class="clearfix"></div>
                 </div>
                 <div class="ranks_info div_tab">
-                    <span class="user_name">队伍名称  :</span>
-                    <input class="user_name_input" id="team_name" type="text">
-                    <div class="clearfix"></div>
-                    <span class="user_name">学校/单位名称  :</span>
-                    <input class="user_name_input" id="school_name" type="text">
-                    <div class="clearfix"></div>
-                    <span class="user_name">学校/单位地址  :</span>
-                    <input class="user_name_input" id="school_address" type="text">
-                    <div class="clearfix"></div>
+                    <div>
+                        <span class="user_name">队伍名称  :</span>
+                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="user_name_input" id="team_name" name="team_name" type="text">
+                            <div class="tips">
+                                <span class="useable">√</span>
+                                <span class="unuse">不可用</span>
+                            </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div>
+                        <span class="user_name">学校/单位名称  :</span>
+                        <input required tip-warn="" tip-info="仅支持汉字"  class="user_name_input" id="school_name" name="school_name" type="text">
+                            <div class="tips">
+                                <span class="useable">√</span>
+                                <span class="unuse">内容不能为空</span>
+                            </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div>
+                        <span class="user_name">学校/单位地址  :</span>
+                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="user_name_input" id="school_address" name="school_address" type="text">
+                        <div class="tips">
+                            <span class="useable">√</span>
+                            <span class="unuse">不可用</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
                     <span class="user_name">赛事项目  :</span>
                     ‍‍<select id="competition_type1">
                         <option grade="1" value="a">选项一</a>
@@ -89,14 +156,14 @@
                         <option grade="4" value="d">大学生</a>
                     </select>
                     <div class="clearfix"></div>
-                    <button class="btn_pre" id="ranks_info_pre">上一步</button>
-                    <button class="btn_next" id="ranks_info_next">下一步</button>
+                    <button type="button" class="btn_pre" id="ranks_info_pre">上一步</button>
+                    <button type="button" class="btn_next" id="ranks_info_next">下一步</button>
                 </div>
 
                 <div class="append_rank div_tab">
-                    <button class="btn_new" id="append_rank_new">继续添加新成员</button>
-                    <button class="btn_pre" id="append_rank_pre">上一步</button>
-                    <button class="btn_next" id="append_rank_next">下一步</button>
+                    <button type="button" class="btn_new" id="append_rank_new">继续添加新成员</button>
+                    <button type="button" class="btn_pre" id="append_rank_pre">上一步</button>
+                    <button type="button" class="btn_next" id="append_rank_next">下一步</button>
                 </div>
 
                 <div class="payment div_tab">
@@ -104,8 +171,8 @@
                     <input class="man" type="radio" name="sex" value="option1"><span>现场缴费</span>
                     <input class="woman" type="radio" name="sex" value="option2"><span>在线支付(暂不支持)</span>
                     <div class="clearfix"></div>
-                    <button class="btn_pre" id="payment_pre">上一步</button>
-                    <button class="btn_next" id="payment_next">下一步</button>
+                    <button type="button" class="btn_pre" id="payment_pre">上一步</button>
+                    <button type="button" class="btn_next" id="payment_next">下一步</button>
                 </div>
 
                 <div class="team_info div_tab">
@@ -123,11 +190,13 @@
                         <input class="name_input" type="text" value="现场支付">
                         <div class="clearfix"></div>
                     </div>
-                    <button class="btn_pre" id="team_info_pre">上一步</button>
-                    <button class="btn_next" id="team_info_next">下一步</button>
+                    <button type="button" class="btn_pre" id="team_info_pre">上一步</button>
+                    <button  class="btn_next" type="submit" id="team_info_next">完成</button>
 
                 </div>
             </div>
+            </form>
+
         </div>
 
         <div class="bot">
@@ -169,6 +238,19 @@
         },1000);
     }
 
+    function tipWarn(msg){
+        return '<span class="unuse">'+msg+'</span>';
+    }
+
+    function tipValid(){
+        return '<span class="useable">√</span>';
+    }
+
+    function tipInfo(msg){
+        return '<span class="cue">'+msg+'</span>';
+    }
+
+
     $(function(){
         // 上传照片
         $('.leader_info .div2').click(function() {
@@ -201,7 +283,6 @@
         $('.identifying .showBox img').click(function (){
             console.log($('.identifying .showBox img').attr("src"));
             refresh_captcha(this);
-            // $('.identifying .showBox img').attr("src","http://enroll0.kenrobot.com/captcha");
         });
         // 点击取消输入验证码
         $('.identifying .no').click(function() {
@@ -236,25 +317,44 @@
         });
 
         // 所有信息都不能为空
-        $('.user_name_input').blur(function(){
-            if($(this).val() == "") {
-                console.log("不能为空");
+        $("input[type=text]").blur(function(){
+
+            if ($(this).prop('required') && $(this).val() == "") {
+                $(this).next('.tips').html(tipWarn('不能为空'));
                 return false;
+            }
+      
+            $(this).next('.tips').html(tipValid());
+            return false;
+        });
+
+        $("input[type=text]").focus(function(){
+            console.log(1)
+            $(this).next('.tips').css('display', 'block');
+            
+            $(this).next('.tips').html('');
+
+            var tip_info = $(this).attr('tip-info');
+            console.log(tip_info);
+            var required = $(this).prop('required');
+
+
+            var tip_info = tip_info ? tip_info : required ? '不能为空' : '';
+            if (tip_info) {
+                $(this).next('.tips').html(tipInfo(tip_info));
             }
         });
 
         $('#append_rank_new').click(function (){
             addMemberList();
             $('.append_rank .menber_list .delete').click(function(){
-                console.log(1)
                 $(this).parent('.menber_list').remove();
             })
-            $('.append_rank .menber_list .div2').click(function() {
-                 $(this).siblings('.inputstyle').click();
+            $('.append_rank .menber_list .div2').unbind('click').click(function() {
+                console.log($(this))
+                 $(this).next('.inputstyle').click();
             });
         })
-
-  
 
 
         var memberListNum = 1;
@@ -262,28 +362,46 @@
             var memberList = '';
             memberList += '<div class="menber_list">';
             memberList += '<div class="delete"></div>';
+            memberList += '<div>';
             memberList += '<span class="user_name">队员姓名('+ memberListNum +'):</span>';
-            memberList += '<input class="user_name_input member_name" type="text">';
+            memberList += '<input  tip-warn="" tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="user_name_input member_name" type="text">';
+            memberList += '<div class="tips"><span class="useable">√</span><span class="unuse">内容不能为空</span></div>';
             memberList += '<div class="clearfix"></div>';
+            memberList += '</div>';
+            memberList += '<div>';
             memberList += '<span class="user_name">手机号码  :</span>';
-            memberList += '<input class="user_name_input member_mobile" type="text">';
+            memberList += '<input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" name="members['+memberListNum+'][mobile]" class="user_name_input member_mobile" type="text">';
+            memberList += '<div class="tips"><span class="cue">仅支持汉字</span><span class="useable">√</span><span class="unuse">内容不能为空</span></div>';
             memberList += '<div class="clearfix"></div>';
+            memberList += '</div>';
+            memberList += '<div>';
             memberList += '<span class="user_name">年龄  :</span>';
-            memberList += '<input class="user_name_input member_age" type="text">';
+            memberList += '<input required tip-warn="" tip-info="仅支持数字" name="members['+memberListNum+'][age]" class="user_name_input member_age" type="text">';
+            memberList += '<div class="tips"><span class="useable">√</span><span class="unuse">内容不能为空</span></div>';
             memberList += '<div class="clearfix"></div>';
+            memberList += '</div>';
+            memberList += '<div>';
             memberList += '<span class="user_name">性别  :</span>';
-            memberList += '<input class="man" type="radio" name="sex" value="man"><span>男</span>';
-            memberList += '<input class="woman" type="radio" name="sex" value="women"><span>女</span>';
+            memberList += '<input name="members['+memberListNum+'][sex]" class="man" type="radio" name="sex" value="man"><span>男</span>';
+            memberList += '<input name="members['+memberListNum+'][sex]" class="woman" type="radio" name="sex" value="women"><span>女</span>';
             memberList += '<div class="clearfix"></div>';
+            memberList += '</div>';
+            memberList += '<div>';
             memberList += '<span class="user_name">学校/单位名称  :</span>';
-            memberList += '<input class="user_name_input member_school_name" type="text">';
+            memberList += '<input required tip-warn="" tip-info="仅支持汉字"  name="members['+memberListNum+'][school_name]" class="user_name_input member_school_name" type="text">';
+            memberList += '<div class="tips"><span class="cue">仅支持汉字</span><span class="useable">√</span><span class="unuse">内容不能为空</span></div>';
             memberList += '<div class="clearfix"></div>';
+            memberList += '</div>';
+            memberList += '<div>';
             memberList += '<span class="user_name">学校/单位地址  :</span>';
-            memberList += '<input class="user_name_input member_school_address" type="text">';
+            memberList += '<input required tip-warn="" tip-info="仅支持汉字 name="members['+memberListNum+'][school_address]" class="user_name_input member_school_address" type="text">';
+            memberList += '<div class="tips"><span class="cue">仅支持汉字</span><span class="useable">√</span><span class="unuse">内容不能为空</span></div>';
             memberList += '<div class="clearfix"></div>';
+            memberList += '</div>';
+            memberList += '<div>';
             memberList += '<span class="user_name">队员照片  :</span>';
             memberList += '<div class="div2">上传图片</div>';
-            memberList += '<input type="file" class="inputstyle">';
+            memberList += '<input name="members['+memberListNum+'][pic]" type="file" class="inputstyle">';
             memberList += '<div class="clearfix"></div>';
             memberList += '<div class="cut"></div>';
             memberList += '</div>';

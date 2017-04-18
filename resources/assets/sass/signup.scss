@@ -129,6 +129,89 @@ body {
                     padding-left: 20px;
                 }
 
+                .tips {
+                    display: none;
+                    float: left;
+
+                    .cue {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #587BEF;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #587BEF;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
+
+                    .useable {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #2ECC71;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #2ECC71;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
+
+                    .unuse {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #E74C3C;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #E74C3C;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
+                }
+
                 .man {
                     transform: translateY(2px);
                     margin-right: 10px;
@@ -169,7 +252,7 @@ body {
                     opacity: 1;
                     transform: translate(-70px,2px);
                     z-index: 99;
-                    pointer-events: none;
+                    // pointer-events: none;
                     margin-bottom: 30px;
                 }
 
@@ -248,6 +331,89 @@ body {
                     margin-bottom: 30px;
                     box-sizing: border-box;
                     padding-left: 20px;
+                }
+
+                .tips {
+                    display: none;
+                    float: left;
+
+                    .cue {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #587BEF;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #587BEF;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
+
+                    .useable {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #2ECC71;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #2ECC71;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
+
+                    .unuse {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #E74C3C;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #E74C3C;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
                 }
 
                 select {
@@ -338,6 +504,89 @@ body {
                         padding-left: 20px;
                     }
 
+                .tips {
+                    display: none;
+                    float: left;
+
+                    .cue {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #587BEF;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #587BEF;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
+
+                    .useable {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #2ECC71;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #2ECC71;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
+
+                    .unuse {
+                        font-family: PingFangSC-Regular;
+                        font-size: 14px;
+                        color: #FFFFFF;
+                        letter-spacing: 0;
+                        padding: 5px 10px 5px 10px;
+                        background: #E74C3C;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                        display: block;
+                        position: relative;
+                        float: left;
+
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            border-right: 10px solid #E74C3C;
+                            border-bottom: 5px solid transparent;
+                            border-top: 5px solid transparent;
+                            left: -10px;
+                            top: 10px;
+                        }
+                    }
+                }
+
                     .user_age {
                         background: #FFFFFF;
                         border: 1px solid #CCCCCC;
@@ -390,7 +639,7 @@ body {
                         opacity: 1;
                         transform: translate(-70px,2px);
                         z-index: 99;
-                        pointer-events: none;
+                        // pointer-events: none;
                         margin-bottom: 30px;
                     }
 

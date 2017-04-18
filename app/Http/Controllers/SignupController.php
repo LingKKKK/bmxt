@@ -23,7 +23,7 @@ class SignupController extends Controller
 
     public function doSignup(Request $request)
     {
-
+        dd($request->all(), $request->file());
         $default_data = [
             'team_name' => '',
             'school_name' => '',
