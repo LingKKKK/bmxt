@@ -44,6 +44,7 @@ Route::post('/captcha/verify', 'UtilsController@verificationcode');
 // 短信/邮件验证码 
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
+Route::post('/uploadimg', 'UtilsController@uploadImg');
 
 //  报名页面
 Route::get('/signup', 'SignupController@signup');

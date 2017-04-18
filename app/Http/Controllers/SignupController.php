@@ -38,7 +38,6 @@ class SignupController extends Controller
             'remark' => '',
             'origin_data' => json_encode($request->all(), JSON_UNESCAPED_UNICODE)
         ];
-
         $validator = Validator::make($request->all(), 
             [
                 'team_name' => 'required',
@@ -70,7 +69,7 @@ class SignupController extends Controller
         } catch (\Exception $e) {
             return api_response('报名失败');
         }
-        
+
         return api_response(0, '报名成功', $ddt->toArray());
     }
 

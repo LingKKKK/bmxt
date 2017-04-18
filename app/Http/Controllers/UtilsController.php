@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
+use Storage;
 
 class UtilsController extends Controller
 {
@@ -90,5 +91,26 @@ class UtilsController extends Controller
         } else {
             return api_response(-1, '验证失败');
         }
+    }
+
+    public function uploadImg(Request $request)
+    {
+        // dd($request->all());
+
+        $file = $request->file('file');
+        if (empty($file)) {
+            return api_response(1, 'Fail');
+        }
+
+        $filename = $file->getClientOriginalName();
+        $ext = $file->getClientOriginalExtension();
+
+        $suffix = rand(1000, 9999);
+        $hashfilename = md5($filename.$suffix).'.'.$ext;
+        $storePath = '/data/img/'.$hashfilename;
+        $publicPath = '/data/img/'.$hashfilename;
+
+        Storage::put($storePath, file_get_contents($file));
+        return api_response(0, 'OK', ['imgUrl' => $publicPath]);
     }
 }
