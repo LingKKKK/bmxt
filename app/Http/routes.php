@@ -14,29 +14,28 @@
 Route::get('/', 'HomeController@index');
 
 // 认证路由...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+// Route::get('auth/login', 'Auth\AuthController@getLogin');
+// Route::post('auth/login', 'Auth\AuthController@postLogin');
+// Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // 注册路由...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+// Route::get('auth/register', 'Auth\AuthController@getRegister');
+// Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // 后台管理
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
-    Route::get('/', 'IndexController@index');
-    Route::get('/activity/list', 'ActivityController@index');
-    Route::get('/activity/create', 'ActivityController@create');
-    Route::post('/activity/create', 'ActivityController@store');
-    Route::get('/activity/config/{id}', 'ActivityController@config')->where('id', '[0-9]+');
-    Route::post('/activity/editform/{id}', 'ActivityController@editForm')->where('id', '[0-9]+');
-    Route::post('/activity/addfield/{id}', 'ActivityController@addField')->where('id', '[0-9]+');
-    Route::post('/activity/delfield/{id}', 'ActivityController@delfield')->where('id', '[0-9]+');
+// Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+//     Route::get('/', 'IndexController@index');
+//     Route::get('/activity/list', 'ActivityController@index');
+//     Route::get('/activity/create', 'ActivityController@create');
+//     Route::post('/activity/create', 'ActivityController@store');
+//     Route::get('/activity/config/{id}', 'ActivityController@config')->where('id', '[0-9]+');
+//     Route::post('/activity/editform/{id}', 'ActivityController@editForm')->where('id', '[0-9]+');
+//     Route::post('/activity/addfield/{id}', 'ActivityController@addField')->where('id', '[0-9]+');
+//     Route::post('/activity/delfield/{id}', 'ActivityController@delfield')->where('id', '[0-9]+');
     
-    
-    Route::get('/enrolldata/{id}', 'ActivityController@enrolldata')->where('id', '[0-9]+');
+//     Route::get('/enrolldata/{id}', 'ActivityController@enrolldata')->where('id', '[0-9]+');
 
-});
+// });
 
 // 图形验证码
 Route::get('/captcha/{config?}', 'UtilsController@captcha');
@@ -46,35 +45,8 @@ Route::post('/captcha/verify', 'UtilsController@verificationcode');
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 
-// 报名前台页面
-Route::any('/enroll/info', 'EnrollController@info');
-Route::any('/enroll/theme/default', 'EnrollController@themedefault');
-
-Route::get('/enroll/{id}', 'EnrollController@index');
-Route::post('/enroll/{id}', 'EnrollController@doEnroll')->where('id', '[0-9]+');
-
-Route::get('/enrolldev/{id}', 'EnrollController@enrolldev');
-
-//报名
-Route::get('/theme3', 'OrderController@loadindex1');
-
-
-// 课程介绍  轮播图+缩略图简介
-Route::get('/course', 'CourseController@index');
-Route::get('/course/list', 'CourseController@lists');
-// 课程预览  视频+购买+简介+目录+评价+推荐
-Route::get('/preview', 'PreviewController@index');
-Route::get('/preview/chapter', 'PreviewController@chapter');
-Route::get('/preview/intro', 'PreviewController@intro');
-Route::get('/preview/recommend', 'PreviewController@recommend');
-//订单支付
-Route::get('/order', 'OrderController@order');
-Route::get('/payment', 'OrderController@payment');
-Route::get('/payment/list', 'OrderController@paymentLists');
-// 商品详情页面
-Route::get('/details', 'OrderController@details');
-Route::get('/details/list', 'OrderController@detailsLists');
-
 //  报名页面
 Route::get('/signup', 'SignupController@signup');
+Route::post('/signup', 'SignupController@doSignup');
+
 Route::get('/signup/list', 'SignupController@lists');
