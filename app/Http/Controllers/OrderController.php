@@ -55,4 +55,9 @@ class OrderController extends Controller
 
         return api_response(0, 'OK', $testData);
     }
+
+    public function details()
+    {
+        return view('details');
+    }
 }

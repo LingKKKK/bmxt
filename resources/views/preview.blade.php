@@ -1,219 +1,224 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/preview.css')}}">	
-	<script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/preview.css')}}"> 
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 </head>
 <body>
 <div id="info">
-	<div class="top">
-		<div class="inner">
-			<div class="logo"></div>
-			<ul class="nav">
-				<a>开发版</a>
-				<a>教育版</a>
-				<a>社区</a>
-				<a>帮助</a>
-			</ul>
-			<ul class="login">  
-				<a class="active">免费注册</a>
-				<a>登录</a>
-			</ul>
-		</div>	
-	</div>
+    <div class="top">
+        <div class="inner">
+            <div class="logo"></div>
+            <ul class="nav">
+                <a>开发版</a>
+                <a>教育版</a>
+                <a>社区</a>
+                <a>帮助</a>
+            </ul>
+            <ul class="login">  
+                <a class="active">免费注册</a>
+                <a>登录</a>
+            </ul>
+        </div>  
+    </div>
 
-	<div class="preview_show">
-		<div class="inner">
-			<div class="preview_fl">
-				<div class="video">
-					<div class="controller_video"></div>
-				</div>
-				<ul class="tabs_course">
-					<li class="active">课程目录</li>
-					<li>课程咨询</li>
-					<li>课程评价</li>
-				</ul>
-				<div class="course_tabs" id="course_tabs">
-					<div class="kecheng active">
-						<!-- <span class="chapter">第yi章  历史由来</span>
-						<div class="chapter_sub">
-							<span class="chapter_name">1.1 arduino起源</span>
-							<span class="chapter_time">56:10</span>
-						</div>
-						<div class="chapter_sub">
-							<span class="chapter_name">1.2 arduino cc 和arduino org的爱恨情仇</span>
-							<span class="chapter_time">56:10</span>
-						</div> -->
-					</div>
+    <div class="preview_show">
+        <div class="inner">
+            <div class="preview_fl">
+                <div class="video">
+                    <div class="controller_video"></div>
+                </div>
+                <ul class="tabs_course">
+                    <li v-on:click="tabindex = 0" v-bind:class="{active:tabindex == 0}">课程目录</li>
+                    <li v-on:click="tabindex = 1" v-bind:class="{active:tabindex == 1}">课程咨询</li>
+                    <li v-on:click="tabindex = 2" v-bind:class="{active:tabindex == 2}">课程评价</li>
+                </ul>
+                <div class="course_tabs" id="course_tabs">
+                    <div class="kecheng" v-show="tabindex == 0">
+                        <div class="course_catalogue" v-for="(item, index) in courseList">
+                            <span class="chapter">@{{item.title}}</span>
+                            <div class="chapter_sub">
+                            	
+	                                <span v-for="(i, vk) in item.subtitle" class="chapter_name active" v-bind:id="index+'_'+vk" @mouseover="hoverIndex = (index+'_'+vk)" v-on:mouseleave="hoverIndex = ''">
+	                                	@{{i.subhead}}
+		                                <span v-show="index+'_'+vk !== hoverIndex" class="time">@{{i.time}}</span>
+		                                <span v-show="index+'_'+vk == hoverIndex" class="buy">购买@{{index+'_'+vk}}</span>
+		                                <span v-show="index+'_'+vk == hoverIndex" class="login">购买2--@{{index+'_'+vk}}</span>
+									</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="consulte" v-show="tabindex == 1"></div>
+                    <div class="evaluate" v-show="tabindex == 2"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="preview_fr">
+                <div class="preview_intro">
+                    <ul class="tab_intro">
+                        <li v-on:click="needRead = 0" v-bind:class="{active:needRead == 0}">简介</li>
+                        <li v-on:click="needRead = 1" v-bind:class="{active:needRead == 1}">须知</li>
+                    </ul>
+                    <div class="div_intro" v-show="needRead == 0">
+                        <p class="intro"><span>课程介绍：</span>@{{introList.intro}}</p>
+                        <p class="price"><span>课程费用：</span><i>@{{introList.mark_price}}</i>@{{introList.price}}</p>
+                        <p class="recommend"><span>推荐指数：</span>@{{introList.recommend}}</p>
+                        <p class="tech_sup"><span v-for="(item, index) in introList.tech_sup">@{{item.company_name}}</span></p>
+                    </div>
+                    <div class="user_read" v-show="needRead == 1">
+						<p class="title">课程须知</p>
+						<span>@{{introList.course_notes.note}}</span>
+                    </div>
+                    <button class="preview_pay">@{{preview_pay}}</button>
+                </div>
+                <div class="recommend_preview">
+                    <p>推荐课程</p>
+                    <ul>
+                        <li v-for="(item, index) in recommend">
+                            <div class="img"></div>
+                            <span class="name">@{{item.name}}</span>
+                            <span class="num">@{{item.num}}</span>
+                            <div class="clearfix"></div>
+                        </li>
 
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 
-					<div class="consulte"></div>
-					<div class="evaluate"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="preview_fr">
-				<div class="preview_intro">
-					<ul class="tab_intro">
-						<li class="active">简介</li>
-						<li>须知</li>
-					</ul>
-					<div class="div_intro active">
-						<!-- <p class="intro"><span>课程介绍：</span>在这个时代，数据越来越重要，数据=金钱，已经成为定理。本课程让你初步掌握使用Python进行数据采集，以及如何从TXT和PDF文档中读取数据，掌握本课程，创造属于你的价值。</p>
-						<p class="price"><span>课程费用：</span><i>198</i>  158 RMB</p>
-						<p class="recommend"><span>推荐指数：</span>★★★★★</p>
-						<p class="tech_sup"><span>Scratch</span><span>Arduino</span><span>啃萝卜</span></p> -->
-					</div>
-					<button class="preview_pay">购买课程</button>
-				</div>
-				<div class="recommend_preview">
-					<p>推荐课程</p>
-					<ul>
-						<!-- <li>
-							<div class="img"></div>
-							<span class="name">SpringBoot进阶之Web进阶</span>
-							<span class="num">初级 · 2487人在学</span>
-							<div class="clearfix"></div>
-						</li> -->
-						<div class="clearfix"></div>
-					</ul>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-
-	<div class="bot">
-		<div class="logo"></div>
-		<span>© 2017 KenRobot  |  京 ICP备15039570号</span>
-		<p>北京市海淀区天秀路10号中国农大国际创业园1号楼526</p>
-	</div>
+    <div class="bot">
+        <div class="logo"></div>
+        <span>© 2017 KenRobot  |  京 ICP备15039570号</span>
+        <p>北京市海淀区天秀路10号中国农大国际创业园1号楼526</p>
+    </div>
 </div>
+
+<script type="text/javascript" src="{{asset('assets/js/vue.js')}}"></script>
 <script type="text/javascript">
-	window.onload = function (){
-//  点击课程目录\咨询\评价  切换相应的栏目
-		$(".tabs_course li").click(function () {
-		    $(this).addClass("active").siblings().removeClass("active");
-		    // var index = $(this).index();
-		    // iNow = index;
-		    // $(".turns_pic .turns_pic_tabs").eq(iNow).addClass("active").siblings().removeClass("active");
-		});
-//  点击课程简介\须知  切换相应的栏目
-		$(".tab_intro li").click(function () {
-		    $(this).addClass("active").siblings().removeClass("active");
-		    // var index = $(this).index();
-		    // iNow = index;
-		    // $(".turns_pic .turns_pic_tabs").eq(iNow).addClass("active").siblings().removeClass("active");
-		});
-//  添加课程的信息
-		loadChapter();  	//课程目录
-		loadIntro();		//详情
-		loadRecommend();	//推荐
+    var cartList = new Vue({
+        el: '#info',
+        data: {
+            courseList : [
+                {
+                    title: "第一章",
+                    subtitle: [
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                    ]
+                },{
+                    title: "第二章",
+                    subtitle: [
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                    ]
+                },{
+                    title: "第三章",
+                    subtitle: [
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                    ]
+                },{
+                    title: "第四章",
+                    subtitle: [
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                        {
+                        	subhead: "1.1 arduino起源",
+                        	time: '56:11',
+                        },
+                    ]
+                }
+            ],
+            introList : {
+            	intro: '在这个时代，数据越来越重要，数据=金钱，已经成为定理。本课程让你初步掌握使用Python进行数据采集，以及如何从TXT和PDF文档中读取数据，掌握本课程，创造属于你的价值。',
+            	mark_price: ' 198 ',
+            	price: '158 RMB',
+            	recommend: '★★★★★',
+            	tech_sup: [
+            		{company_name: 'Scratch'},
+            		{company_name: 'Arduino'},
+            		{company_name: '啃萝卜'},
+            	],
+            	course_notes: {
+            		note: '没有基础的同学建议先学习前置课程小时学习SpringBoot》http://www.imooc.com/learn/767,代码示例请参考https://git.oschina.net/liaoshixiong/girl老师告诉你能学到什么？SpringBoot针对Web方面的相关技巧（1）SpringBoot针对Web方面的相关技巧（2）SpringBoot针对Web方面的相关技巧（3）SpringBoot针对Web方面的相关技巧（4）SpringBoot针对Web方面的相关技巧（5）SpringBoot针对Web方面的相关技巧（6）SpringBoot针对Web方面的相关技巧（7）SpringBoot针对Web方面的相关技巧（8）',
+            	},
+            },
+            recommend: [
+            	{
+            		img_src: "",
+            		name: 'SpringBoot进阶之Web进阶',
+            		num: '初级 · 2487人在学',
+            	},{
+            		img_src: "",
+            		name: 'SpringBoot进阶之Web进阶',
+            		num: '初级 · 2487人在学'
+            	},{
+            		img_src: "",
+            		name: 'SpringBoot进阶之Web进阶',
+            		num: '初级 · 2487人在学'
+            	},{
+            		img_src: "",
+            		name: 'SpringBoot进阶之Web进阶',
+            		num: '初级 · 2487人在学'
+            	}
+            ],
+            tabindex : 0,
+            isActive : 0,
+            needRead: 0,
+            preview_pay: '购买课程',
+            hoverIndex: '',
+        },
+        computed: {
 
-	    function loadChapter() 
-	    {
-	        $.get('http://enroll0.kenrobot.com/preview/chapter',
-	            function (res) {
-	                if (res.status == 0) {
-	                    showChapter(res.data);
-	                }
-	            }
-	        );
-	    }
-	    function showChapter(alldatas)
-	    {
-	    	var str = '';
-	    	for (var version in alldatas){
-	    		str += '<span class="chapter">'+version+'</span>';
-	    		for (var i in alldatas[version]){
-	    			str += '<div class="chapter_sub">';
-					str += '<span class="chapter_name">'+alldatas[version][i].name+'</span>';
-					str += '<span class="chapter_time">'+alldatas[version][i].time+'</span>';
-					str += '<span class="'+alldatas[version][i].buy+'"></span>';
-					str += '<span class="login"></span>';
-					str += '</div>';
-	    		}
-	    	}
-	    	$('#course_tabs .kecheng').html(str);
-	    	chapter_sub_hover();
-	    }
-
-	   	function loadIntro()
-	   	{
-	   		$.get('http://enroll0.kenrobot.com/preview/intro',
-	            function (res) {
-	                if (res.status == 0) {
-	                    showIntro(res.data);
-	                }
-	            }
-	        );
-	   	}
-	   	function showIntro(alldatas)
-	   	{
-	    	var str = '';
-	    	str += '<p class="intro"><span>课程介绍：</span>'+ alldatas.intro +'</p>';
-	    	str += '<p class="price"><span>课程费用：</span><i>198   </i>'+ alldatas.price +'</p>';
-	    	str += '<p class="recommend"><span>推荐指数：</span>'+ alldatas.recommend +'</p>';
-	    	str += '<p class="tech_sup">'
-	    	for (var name in alldatas.tech_sup){
-	    		str += '<span>'+ name +'</span>';
-	    	}
-	    	str += '</p>';
-	    	$('.preview_intro .div_intro').html(str);	   		
-	   	}
-	   	function loadRecommend()
-	   	{
-	   		$.get('http://enroll0.kenrobot.com/preview/recommend',
-	            function (res) {
-	                if (res.status == 0) {
-	                	console.log(res.data)
-	                    showRecommend(res.data);
-	                }
-	            }
-	        );
-	   	}
-	   	function showRecommend(alldatas)
-	   	{
-	    	var str = '';
-            for(var version in alldatas)
-            {
-            	str += '<li>';
-            	str += '<div class="img"></div>';
-            	str += '<span class="name">'+ alldatas[version].name +'</span>';
-            	str += '<span class="num">'+ alldatas[version].info +'</span>';
-            	str += '<div class="clearfix"></div>';
-            	str += '</li>';
+        },
+        methods: {
+            chapternum_change: function (event) {
+            },
+            alert_this: function() {
+            },
+            handleClick(i, index, vk, event){
+            	// event.target.innerHtml
+            	// console.dir(this.courseList);
+            },
+            b() {
+                console.log('b');
             }
-	    	$('.recommend_preview ul').html(str);	   		
-	   	}
-
-	   	function chapter_sub_hover()
-	   	{
-   		   	$('.chapter_sub').hover(function(){
-   		   		$('.chapter_sub').removeClass('active');
-   			    $(this).addClass('active');
-   			    $('.chapter_sub').find('.buy').html("");
-   			    $('.chapter_sub').find('.unbuy').html("");
-   			    $('.chapter_sub').find('.login').html("");
-
-
-   			    if ( 1 == 1 ){
-   			    	$(this).find('.buy').html("您已购买,请点击播放!");
-   			    	$(this).find('.unbuy').html("需购买观看!");
-   			    } else {
-   			    	$(this).find('.login').html("请您登陆之后查看!");
-   			    }
-   			    // $(this).find('.login').html("请您登陆之后查看!");
-   			},function(){
-   			    
-   			});
-	   	}
-
-
-
-	}
+        },
+    })
 </script>
 </body>
 </html>

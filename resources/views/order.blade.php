@@ -50,7 +50,7 @@
 				<span class="sp2">关于折扣码？</span>
 				<div class="clearfix"></div>
 				<input type="text" name="discount_num" class="discount_num" value="KDEC-KL12-3KCA-ZFFP" />
-				<button class="en_use">确定使用</button>
+				<button class="en_use" @click.once="html_change">@{{user}}</button>
 				<span class="discount_intro">优惠券：满100减20</span>
 				
 				<div class="clearfix"></div>
@@ -101,7 +101,8 @@
 				{id: 1, name: 2, price: 13, qty: 3},
 				{id: 1, name: 3, price: 14, qty: 1},
 			],
-			discount: 20
+			discount: 0,
+			user: '确定使用',
 		},
 		computed: {
 			totalPrice: function() {
@@ -114,7 +115,8 @@
 
 			payPrice: function(){
 				if ( this.discount >= this.totalPrice){
-					console.log("优惠券不可用");
+					alert("优惠券不可用");
+					// console.log("优惠券不可用");
 					this.discount = 0;
 					return this.totalPrice;
 				}
@@ -127,6 +129,10 @@
 			},
 			red: function () {
 				g.qty += 1;
+			},
+			html_change: function (){
+				console.log(1)
+				this.discount = 20;
 			}
 		}
 	})
@@ -159,10 +165,10 @@
 
 		// 使用优惠券
 
-		$('.order .discount .en_use').bind('click', function() {
-			$(this).html('成功使用');
-		    $(this).unbind('click');
-		});
+		// $('.order .discount .en_use').bind('click', function() {
+		// 	$(this).html('成功使用');
+		//     $(this).unbind('click');
+		// });
 
 		// 购物车数量添加减少
 		// $(".add_num").click(function (event) {

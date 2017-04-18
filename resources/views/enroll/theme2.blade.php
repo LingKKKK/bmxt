@@ -71,14 +71,14 @@
 
 	              @if ($tag['type'] == 'text' && $tag['datatype'] == 'address')
 		            <div class="form-group select">
-		                <div>
+		                <!-- <div>
 		                    <label>{{$tag['labeltext']}}</label>
-		                </div>
+		                </div> -->
 		                <!-- <select class="form-control">
 		                	<option>中国大陆</option>
 		                	<option disabled="">其他</option>
-		                </select>
-		                <select class="form-control" id="selProvince" onchange="provinceChange();">
+		                </select> -->
+		                <!-- <select class="form-control" id="selProvince" onchange="provinceChange();">
 		                </select>
 		                <select class="form-control" id="selCity" style="margin-right: 0px;">
 		                </select> -->

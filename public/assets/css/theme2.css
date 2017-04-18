@@ -355,7 +355,7 @@ body #info .inner .enroll_need button {
   margin-right: 60px;
 }
 body #info .inner .enroll_information {
-  display: none;
+  display: block;
   float: right;
   background: #ffffff;
   box-shadow: 0 0 10px 0 rgba(64, 85, 149, 0.2);
@@ -571,6 +571,7 @@ body #info .inner .enroll_information #reset {
   cursor: pointer;
 }
 body #info .inner .enroll_other {
+  display: none;
   float: right;
   background: #ffffff;
   box-shadow: 0 0 10px 0 rgba(64, 85, 149, 0.2);

@@ -206,7 +206,10 @@ body #info .preview_show .inner .preview_fl .course_tabs .kecheng {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter {
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue {
+  width: 100%;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter {
   display: block;
   margin-bottom: 10px;
   font-family: MicrosoftYaHei;
@@ -218,16 +221,12 @@ body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter {
   background: #d8d8d8;
   padding-left: 10px;
 }
-body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub {
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter_sub {
   display: block;
-  width: 750px;
-  height: 36px;
-  padding-left: 30px;
-  padding-right: 20px;
   cursor: pointer;
   position: relative;
 }
-body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .chapter_name {
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter_sub .chapter_name {
   display: block;
   font-family: MicrosoftYaHei;
   font-size: 12px;
@@ -235,9 +234,59 @@ body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .
   letter-spacing: 0;
   line-height: 36px;
   text-align: left;
-  float: left;
+  padding-left: 30px;
+  padding-right: 20px;
 }
-body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .chapter_time {
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter_sub .chapter_name:hover {
+  background-color: #bfbfbf;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter_sub .chapter_name .buy {
+  background-color: #bfbfbf;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: right;
+  display: block;
+  float: right;
+  padding: 0px 10px;
+  margin-left: 10px;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter_sub .chapter_name .unbuy {
+  background-color: #bfbfbf;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: right;
+  display: block;
+  float: right;
+  padding: 0px 10px;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter_sub .chapter_name .login {
+  background-color: #bfbfbf;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: right;
+  display: block;
+  float: right;
+  padding: 0px 10px;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter_sub .chapter_name .time {
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 36px;
+  text-align: right;
+  display: block;
+  float: right;
+}
+body #info .preview_show .inner .preview_fl .course_tabs .kecheng .course_catalogue .chapter_sub .chapter_time {
   display: block;
   font-family: MicrosoftYaHei;
   font-size: 12px;
@@ -246,45 +295,6 @@ body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .
   line-height: 36px;
   text-align: right;
   float: right;
-}
-body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .buy {
-  background-color: #bfbfbf;
-  position: absolute;
-  right: 20px;
-  top: 0;
-  font-family: MicrosoftYaHei;
-  font-size: 12px;
-  color: #666666;
-  letter-spacing: 0;
-  line-height: 36px;
-  text-align: right;
-}
-body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .unbuy {
-  background-color: #bfbfbf;
-  position: absolute;
-  right: 20px;
-  top: 0;
-  font-family: MicrosoftYaHei;
-  font-size: 12px;
-  color: #666666;
-  letter-spacing: 0;
-  line-height: 36px;
-  text-align: right;
-}
-body #info .preview_show .inner .preview_fl .course_tabs .kecheng .chapter_sub .login {
-  background-color: #bfbfbf;
-  position: absolute;
-  right: 20px;
-  top: 0;
-  font-family: MicrosoftYaHei;
-  font-size: 12px;
-  color: #666666;
-  letter-spacing: 0;
-  line-height: 36px;
-  text-align: right;
-}
-body #info .preview_show .inner .preview_fl .course_tabs .kecheng .active {
-  background-color: #bfbfbf;
 }
 body #info .preview_show .inner .preview_fr {
   width: 340px;
@@ -378,6 +388,31 @@ body #info .preview_show .inner .preview_fr .preview_intro .div_intro .tech_sup 
   display: block;
   float: left;
   cursor: pointer;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .user_read {
+  width: 280px;
+  margin-left: 20px;
+  margin-top: 21px;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .user_read p {
+  font-family: MicrosoftYaHei-Bold;
+  font-size: 14px;
+  color: #787878;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: left;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+body #info .preview_show .inner .preview_fr .preview_intro .user_read span {
+  display: block;
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #787878;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: left;
 }
 body #info .preview_show .inner .preview_fr .preview_intro button {
   background: #d8d8d8;

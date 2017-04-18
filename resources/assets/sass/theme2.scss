@@ -323,8 +323,7 @@ body {
 			}
 
 			.enroll_information {
-				display: none;
-
+				display: block;
 				float: right;
 				background:#ffffff;
 				box-shadow:0 0 10px 0 rgba(64,85,149,0.20);
@@ -574,6 +573,7 @@ body {
 			}
 
 			.enroll_other {
+				display: none;
 				float: right;
 				background:#ffffff;
 				box-shadow:0 0 10px 0 rgba(64,85,149,0.20);

@@ -3,7 +3,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/course.css')}}">	
-	<script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
 </head>
 <body>
 <div id="info">
@@ -95,7 +95,7 @@
 		loadAllVersion();
 	    function loadAllVersion() 
 	    {
-	        $.get('http://enroll0.kenrobot.com/course/list',
+	        $.get('http://enroll0.kenrobot.com/signup/list',
 	            function (res) {
 	                if (res.status == 0) {
 	                	console.log(res.data)

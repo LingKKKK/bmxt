@@ -75,3 +75,6 @@ Route::get('/payment/list', 'OrderController@paymentLists');
 Route::get('/details', 'OrderController@details');
 Route::get('/details/list', 'OrderController@detailsLists');
 
+//  报名页面
+Route::get('/signup', 'SignupController@signup');
+Route::get('/signup/list', 'SignupController@lists');

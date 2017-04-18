@@ -1,0 +1,654 @@
+@charset "UTF-8";
+/*重置css*/
+/*重置css*/
+body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img, input, textarea, a {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: #666;
+  background: #f9f9f9;
+}
+
+img {
+  border: 0;
+  display: inline-block;
+}
+
+i {
+  font-style: normal;
+}
+
+textarea {
+  resize: none;
+}
+
+.clearfix {
+  clear: both;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, div, ul, ol, li, dl, dt, dd, iframe, textarea, input, button, p, strong, b, i, a, span, del, pre, table, tr, th, td, form, fieldset, .pr, .pc {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  font-family: verdana,Microsoft YaHei,Tahoma,sans-serif;
+  *font-family: Microsoft YaHei,verdana,Tahoma,sans-serif;
+}
+
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc, em, del {
+  font-style: normal;
+  font-size: 100%;
+}
+
+ul, ol, dl {
+  list-style: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #edf3ff;
+  position: relative;
+}
+body #info .top {
+  width: 100%;
+  height: 60px;
+}
+body #info .top .inner {
+  width: 1180px;
+  height: 60px;
+  margin: 0 auto;
+}
+body #info .top .inner .logo {
+  width: 102px;
+  height: 40px;
+  float: left;
+  margin-top: 10px;
+  background: url("../img/logo-top.png");
+  background-size: cover;
+}
+body #info .top .inner .nav {
+  float: left;
+  margin-left: 100px;
+  height: 60px;
+}
+body #info .top .inner .nav a {
+  display: block;
+  float: left;
+  margin-right: 50px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #2a201d;
+  letter-spacing: 1px;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+body #info .top .inner .login {
+  float: right;
+  height: 30px;
+  margin-top: 15px;
+}
+body #info .top .inner .login a {
+  display: block;
+  height: 30px;
+  margin-left: 29px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #2a201d;
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+body #info .top .inner .login .active {
+  border: 1px solid #0088ff;
+  border-radius: 100px;
+  width: 96px;
+  height: 30px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #0088ff;
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-align: center;
+}
+body #info .path {
+  background: #979797;
+  height: 44px;
+}
+body #info .path .inner {
+  width: 1180px;
+  height: 44px;
+  margin: 0 auto;
+}
+body #info .path .inner a {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #ffffff;
+  letter-spacing: 0;
+  line-height: 44px;
+  text-align: justify;
+}
+body #info .path .inner .classify {
+  position: relative;
+  background: #a8a8a8;
+  border: 1px solid #979797;
+  width: 180px;
+  height: 26px;
+  float: left;
+  margin-top: 9px;
+}
+body #info .path .inner .classify p {
+  padding: 0px 27px 0px 11px;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 27px;
+  background: url("../img/details_path_icon.png");
+  background-size: 6px 4px;
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  width: 142px;
+  height: 27px;
+  overflow: hidden;
+  cursor: pointer;
+}
+body #info .path .inner .classify ul {
+  width: 142px;
+  position: absolute;
+  left: 0px;
+  top: 29px;
+  transition: all 0.5s;
+}
+body #info .path .inner .classify ul li {
+  background: #a8a8a8;
+  width: 142px;
+  height: 30px;
+  padding: 0px 27px 0px 11px;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 30px;
+  cursor: pointer;
+  overflow: hidden;
+}
+body #info .products_details {
+  width: 100%;
+  padding-top: 32px;
+}
+body #info .products_details .inner {
+  width: 1180px;
+  margin: 0 auto;
+  margin-top: 32px;
+}
+body #info .products_details .inner .products_img {
+  background: #8c8c8c;
+  border: 1px solid #dddddd;
+  width: 450px;
+  height: 450px;
+  float: left;
+}
+body #info .products_details .inner .products_payment {
+  width: 690px;
+  display: block;
+  float: right;
+}
+body #info .products_details .inner .products_payment .product_name {
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 30px;
+  text-align: justify;
+  display: block;
+  width: 690px;
+  margin-bottom: 20px;
+}
+body #info .products_details .inner .products_payment .producr_intro {
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: justify;
+  display: block;
+  margin-bottom: 20px;
+}
+body #info .products_details .inner .products_payment .payment_list {
+  width: 100%;
+  height: 120px;
+  background: #eaeaea;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 39px;
+}
+body #info .products_details .inner .products_payment .payment_list .info_label {
+  display: block;
+  float: left;
+  width: 47px;
+  height: 13px;
+  margin-right: 20px;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #999999;
+  letter-spacing: 1.5px;
+  line-height: 13px;
+  text-align: right;
+}
+body #info .products_details .inner .products_payment .payment_list .price {
+  display: block;
+  float: left;
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+body #info .products_details .inner .products_payment .payment_list .price i {
+  font-family: MicrosoftYaHei;
+  font-size: 24px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: justify;
+  display: block;
+  float: right;
+  margin-left: 5px;
+  margin-top: -8px;
+}
+body #info .products_details .inner .products_payment .payment_list .market_price {
+  font-family: MicrosoftYaHei;
+  font-size: 14px;
+  color: #999999;
+  letter-spacing: 0;
+  line-height: 14px;
+  text-align: justify;
+  display: block;
+  float: left;
+  margin-left: 10px;
+  text-decoration: line-through;
+}
+body #info .products_details .inner .products_payment .payment_list .address {
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #999999;
+  letter-spacing: 0;
+  line-height: 13px;
+  text-align: justify;
+  display: block;
+  float: left;
+}
+body #info .products_details .inner .products_payment .payment_list .address .shop_address {
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 13px;
+  text-align: justify;
+  display: block;
+  float: left;
+  padding-right: 11px;
+  margin-right: 10px;
+  background: url("../img/product_details_icon.png");
+  background-repeat: no-repeat;
+  background-size: 6px 4px;
+  background-position: 100%;
+}
+body #info .products_details .inner .products_payment .payment_list .address .buyer_address {
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 13px;
+  text-align: justify;
+  display: block;
+  float: right;
+  margin-left: 10px;
+  padding-right: 11px;
+  background: url("../img/product_details_icon.png");
+  background-repeat: no-repeat;
+  background-size: 6px 4px;
+  background-position: 100%;
+  cursor: pointer;
+}
+body #info .products_details .inner .products_payment .payment_list .express_price {
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 13px;
+  text-align: justify;
+  display: block;
+  float: left;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+body #info .products_details .inner .products_payment .payment_list .product_weight {
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 13px;
+  text-align: justify;
+  display: block;
+  float: left;
+  margin-bottom: 20px;
+}
+body #info .products_details .inner .products_payment .product_quantity {
+  display: block;
+  float: left;
+  background: #ffffff;
+  border: 1px solid #c3c3c3;
+  width: 40px;
+  height: 38px;
+  text-align: center;
+  font-family: MicrosoftYaHei;
+  font-size: 13px;
+  color: #999999;
+  letter-spacing: 0;
+}
+body #info .products_details .inner .products_payment .quantity_change {
+  display: block;
+  float: left;
+  margin-right: 18px;
+}
+body #info .products_details .inner .products_payment .quantity_change a {
+  display: block;
+  background: #d8d8d8;
+  border: 1px solid #c3c3c3;
+  width: 20px;
+  height: 18px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #999999;
+  letter-spacing: 0;
+  line-height: 18px;
+  text-align: center;
+}
+body #info .products_details .inner .products_payment button {
+  margin-right: 18px;
+  background: #d8d8d8;
+  border: 1px solid #cfcfcf;
+  width: 120px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: center;
+  display: block;
+  float: left;
+  border: 0;
+  height: 40px;
+  cursor: pointer;
+}
+body #info .products_details .inner .tabs_details {
+  width: 100%;
+  margin-top: 49px;
+}
+body #info .products_details .inner .tabs_details .official_recommen {
+  width: 298px;
+  display: block;
+  float: left;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+}
+body #info .products_details .inner .tabs_details .official_recommen p {
+  background: #ececec;
+  /* border: 1px solid #dddddd; */
+  width: 278px;
+  height: 38px;
+  font-family: MicrosoftYaHei-Bold;
+  font-size: 14px;
+  color: #8c8c8c;
+  letter-spacing: 0;
+  line-height: 38px;
+  text-align: left;
+  display: block;
+  padding: 8px 0px 8px 20px;
+}
+body #info .products_details .inner .tabs_details .official_recommen .official_recommen_list {
+  padding-top: 20px;
+}
+body #info .products_details .inner .tabs_details .official_recommen .official_recommen_list .recommen {
+  display: block;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background: #fff;
+  margin-bottom: 20px;
+}
+body #info .products_details .inner .tabs_details .official_recommen .official_recommen_list .recommen .img {
+  background: #8c8c8c;
+  border: 1px solid #979797;
+  width: 258px;
+  height: 178px;
+}
+body #info .products_details .inner .tabs_details .official_recommen .official_recommen_list .recommen .name {
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 18px;
+  text-align: justify;
+  display: block;
+  margin-top: 10px;
+}
+body #info .products_details .inner .tabs_details .official_recommen .official_recommen_list .recommen .price {
+  font-family: MicrosoftYaHei-Bold;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: justify;
+  margin-top: 10px;
+  display: block;
+}
+body #info .products_details .inner .tabs_details .tab_details {
+  width: 840px;
+  display: block;
+  float: right;
+}
+body #info .products_details .inner .tabs_details .tab_details #oClick_tabs {
+  width: 100%;
+  background: #dddddd;
+  height: 40px;
+}
+body #info .products_details .inner .tabs_details .tab_details #oClick_tabs li {
+  background: #e1e1e1;
+  width: 140px;
+  height: 40px;
+  display: block;
+  float: left;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #989898;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+  line-height: 40px;
+  transition: all 0.5s;
+}
+body #info .products_details .inner .tabs_details .tab_details #oClick_tabs .active {
+  background: #989898;
+  color: #ffffff;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product {
+  width: 100%;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_product {
+  width: 100%;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_product .img {
+  display: block;
+  background: #989898;
+  width: 820px;
+  height: 180px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_product .p {
+  width: 820px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #656565;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: justify;
+  margin-bottom: 50px;
+  display: block;
+  margin-left: 10px;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_product .p p {
+  display: block;
+  margin-bottom: 50px;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_parameter {
+  width: 820px;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_parameter ul {
+  width: 100%;
+  margin-top: 14px;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_parameter ul li {
+  height: 34px;
+  width: 100%;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_parameter ul li .attribute {
+  width: 200px;
+  height: 34px;
+  float: left;
+  display: block;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #989898;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: justify;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_parameter ul li .value {
+  display: block;
+  float: left;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #989898;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: justify;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_parameter ul li:nth-child(2n) {
+  background-color: #f5f5f5;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_service {
+  width: 820px;
+  margin-top: 20px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_service .service {
+  width: 100%;
+  margin-bottom: 30px;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_service .service .title {
+  display: block;
+  font-family: PingFangSC-Semibold;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  text-align: justify;
+  line-height: 16px;
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_service .service .subtitle {
+  display: block;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  text-align: justify;
+  line-height: 22px;
+  margin-bottom: 9px;
+}
+body #info .products_details .inner .tabs_details .tab_details .alls_product .details_service .service .text {
+  display: block;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #c8c8c8;
+  letter-spacing: 0;
+  line-height: 20px;
+  text-align: justify;
+}
+body #info .bot {
+  background: #ffffff;
+  height: 135px;
+  padding-top: 45px;
+}
+body #info .bot .logo {
+  width: 102px;
+  height: 41px;
+  background: url("../img/logo-top.png");
+  background-size: cover;
+  margin: 0 auto;
+}
+body #info .bot span {
+  display: block;
+  font-family: MicrosoftYaHei;
+  font-size: 12px;
+  color: black;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: center;
+  height: 25px;
+  margin: 0 auto;
+  margin-top: 9px;
+}
+body #info .bot p {
+  display: block;
+  height: 14px;
+  margin: 0 auto;
+  margin-top: 2px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: black;
+  letter-spacing: 1.2px;
+  text-align: center;
+}
