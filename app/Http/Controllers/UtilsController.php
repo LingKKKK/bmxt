@@ -72,7 +72,7 @@ class UtilsController extends Controller
                         $m->from('support@kenrobot.com', '啃萝卜验证码');
                         $m->to($email, '')->subject('验证码');
             });
-            return api_response(0, '邮件发送成功!'.$vcode);
+            return api_response(0, '邮件发送成功!');
         }
 
         return api_response(-3, '参数不正确!');

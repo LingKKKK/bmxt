@@ -31,7 +31,6 @@
 			<div class="inner">
 				<span>Registeration System</span>
 				<p>报名系统</p>
-				<!-- <img src="{{asset('assets/img/back.png')}}"> -->
 			</div>	
 		</div>
 		<div class="clear"></div>
@@ -65,6 +64,7 @@
 			</div>
 			<div class="enroll_information">
 				<p class="title">报名系统</p>
+				
 				<div class="clear"></div>
 				<form class="form-horizontal" method="post" action="/enroll/{{$act['id']}}">
 		            @foreach($form->fields as $tag)
@@ -90,8 +90,8 @@
 		            <!-- 1 -->
 		            <div class="form-group text input_text">
 		                <label class="label_text" for="{{$tag['id']}}">{{$tag['labeltext'] or ''}}</label>
-		                <div class="input_value" style="display: none;">{{$tag['labeltext'] or ''}}</div>
-		                <input class="form-control" type="text" id="{{$tag['id']}}" value="{{$tag['labeltext'] or ''}}" name="{{$tag['name']}}" {{ $tag['required'] ? 'required' : '' }}>
+		                <!-- <div class="input_value" style="display: none;">{{$tag['labeltext'] or ''}}</div> -->
+		                <input class="form-control" type="text" id="{{$tag['id']}}" placeholder="{{$tag['labeltext'] or ''}}" name="{{$tag['name']}}" {{ $tag['required'] ? 'required' : '' }}>
 		            </div>
 
 		            @elseif ($tag['type'] == 'radio')
@@ -189,12 +189,23 @@
 		            @endif
 		            <!-- 提交 -->
 		            <div class="form-group submit">
-		                <input type="submit" name="submit" class="btn btn-primary">
+
+		                <input type="submit" name="submit" value="提交" class="btn btn-primary">
 		            </div>
 
 		        </form>
 		        <button id="reset">重置信息</button>
+		         @if (count($errors) > 0) 
+				  <div style="font-size: 12px;;color: red;padding-left: 25px;box-sizing: border-box; margin-top: 15px;">    
+				    <p class="">
+				    @foreach ($errors->all() as $error)
+				          {{ $error }}<br>
+				    @endforeach  
+				    </p>
+				  </div>
+				  @endif
 			</div>
+
 			<div class="enroll_other">
 				<p class="enroll_intro">报名信息</p>
 				<span>简介</span>
@@ -207,6 +218,7 @@
 				<button class="finish">完成</button>
 
 			</div>
+
 			<div class="clearfix"></div>
 		</div>
 		<div class="bot">
@@ -223,9 +235,9 @@
 				<div class="img"></div>
 			</div>
 			<div class="bot">
-				<img src="img/logo.png">
+		        <img class="captcha_img" src="{{captcha_src()}}">
 				<input type="text" name="v_code" id="v_code" />
-				<button id="confirm">确定</button>
+				<button id="sendcaptchacode">确定</button>
 			</div>
 		</div>
 	</div>
@@ -362,6 +374,7 @@
 		    })
 
 
+
      		// 报名的流程  报名须知按钮
 		    var num_toggle = 0;
 		    $('.simul_input').click(function (){
@@ -402,6 +415,73 @@
 		    // })
 
 		}
+
 	</script>
+
+	<script type="text/javascript">
+
+    function refresh_captcha($el) {
+        var timestamp = Date.parse(new Date());
+        $($el).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
+    }
+
+    function countdown() {
+        var t = 60;
+        var countdown = setInterval(function(){
+            $('#getverifycode').html('获取验证码('+ t-- + ')');
+
+            if (t <= 0) {
+                $('#getverifycode').html('获取验证码');
+                clearInterval(countdown);
+            }
+        },1000);
+    }
+
+    $(function(){
+        $('.captcha_img').click(function(){
+           refresh_captcha(this);
+        });
+
+        $('#sendcaptchacode').click(function(){
+            var captchacode = $('#v_code').val();
+            var mobile = $('#input_mobile').val();
+            var email = $('#input_email').val();
+
+            var verifyfield = $('#verificationcode').attr('data-verifyfield');
+            if (verifyfield == 'email') {
+                if (!email) {
+                    alert('未填写的email');
+                }
+            }
+
+            if (verifyfield == 'mobile') {
+                if (!mobile) {
+                    alert('未填写手机号');
+                }
+            }
+
+            $.post(
+                "{{url('/captcha/verify')}}",
+                {
+                    captcha : captchacode,
+                    mobile  : mobile,
+                    email   : email,
+                    type    : verifyfield,
+                },
+                function(res){
+                    if (res.status == 0) {
+                    	$('.model').hide();
+                        // $('#myModal').modal('hide')
+                        console.log(res.message);
+                        refresh_captcha();
+                        countdown();
+                    } else {
+                        alert(res.message);
+                    }
+                }
+            );
+        });
+    });
+</script>
 </body>
 </html>
