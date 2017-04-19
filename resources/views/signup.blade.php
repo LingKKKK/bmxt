@@ -256,11 +256,11 @@
     }
 
     function isMobile(val) {
-        return false;
+        return true;
     }
 
     function isID(val) {
-        return false;
+        return true;
     }
 
     function validField(el) {
@@ -320,6 +320,15 @@
     }
 
 
+    function showTab(index) {
+
+        //checkTab
+        $($('.title_top ul li').get(index)).addClass('active').siblings().removeClass('active');
+        var actTab = $('.all_info .div_tab').get(index);
+        $(actTab).addClass('active').siblings().removeClass('active');
+    }
+
+
     function rebindVlidation() {
         // 所有信息都不能为空
         $("input[type=text]").unbind('blur').blur(function(){
@@ -334,6 +343,10 @@
         $("input[type=text]").unbind('focus').focus(function(){
             inputTips(this);
             return false;
+        });
+
+        $('.append_rank .menber_list .div2').unbind('click').click(function() {
+                 $(this).next('.inputstyle').click();
         });
     }
 
@@ -357,7 +370,6 @@
         });
         // 发送手机验证码
         $('.team_info .tel').click(function() {
-            addMemberList();
             var partten = /^1[3,5,8]\d{9}$/;
             if(partten.test($('#leader_mobile').val())){
                $('.identifying').addClass('active');
@@ -402,28 +414,8 @@
             );
         });
 
-        // 所有信息都不能为空
-        $("input[type=text]").blur(function(){
-
-            if ($(this).prop('required') && $(this).val() == "") {
-                $(this).next('.tips').html(tipWarn('不能为空'));
-                return false;
-            }
-
-            $(this).next('.tips').html(tipValid());
-            return false;
-        });
-
-        $("input[type=text]").focus(function(){
-            console.log(1)
-            $(this).next('.tips').css('opacity', 1);
-
-            $(this).next('.tips').html('');
-
-            var tip_info = $(this).attr('tip-info');
-            console.log(tip_info);
-            var required = $(this).prop('required');
-
+        //更新表单验证绑定
+        rebindVlidation();
 
 
         $('#append_rank_new').click(function (){
@@ -437,7 +429,6 @@
             });
         })
 
-        rebindVlidation();
         var memberListNum = 1;
         function addMemberList(){
             var memberList = '';
@@ -502,6 +493,7 @@
             competition_type: '',
             members: [],
         };
+
         var data = [];
         var memberList = {
             name: '',
@@ -539,12 +531,7 @@
             }
         });
 
-        // 队长信息
-        // var captain_name = $('#captain_name').val();
-        // var captain_mobile = $('#captain_mobile').val();
-        // var captain_email = $('#captain_email').val();
-        // 队员信息
-
+        //显示所有信息
         function alertInfo(){
             var user_name = $('#user_name').val();
             var leader_name = $('#leader_name').val();
@@ -577,13 +564,6 @@
             console.log(allData);
         }
 
-
-        $('#payment_next').click(function (){
-            $($('.title_top ul li').get(4)).addClass('active').siblings().removeClass('active');
-            $($('.all_info .div_tab').get(4)).addClass('active').siblings().removeClass('active');
-            alertInfo();
-            showInfo();
-        });
 
         function showInfo(){
             var leadersList = '';
@@ -654,57 +634,39 @@
             $('#number').html(membersList);
         }
 
+        var tabIndex = 0;
 
-
-        // 点击下一步 切换到队伍信息
-        $('#leader_info_btn').click(function (){
-            $($('.title_top ul li').get(1)).addClass('active').siblings().removeClass('active');
-            $($('.all_info .div_tab').get(1)).addClass('active').siblings().removeClass('active');
-        });
-        $('#ranks_info_pre').click(function (){
-            $($('.title_top ul li').get(0)).addClass('active').siblings().removeClass('active');
-            $($('.all_info .div_tab').get(0)).addClass('active').siblings().removeClass('active');
-        });
-        $('#ranks_info_next').click(function (){
-            $($('.title_top ul li').get(2)).addClass('active').siblings().removeClass('active');
-            $($('.all_info .div_tab').get(2)).addClass('active').siblings().removeClass('active');
-            addMemberList();
-            addTips();
-            $('.append_rank .menber_list .delete').click(function(){
-                $(this).parent('.menber_list').remove();
-            })
-            $('.append_rank .menber_list .div2').unbind('click').click(function() {
-                console.log($(this))
-                 $(this).next('.inputstyle').click();
+        $('.btn_next').click(function(){
+            var prevent = false;
+            var $inputs = $($('.all_info .div_tab').get(tabIndex)).find('input').each(function(){
+               var ret = validField(this);
+               if (!ret) {
+                 prevent = true;
+               }
             });
+            if (!prevent) {
+                tabIndex +=1;
+                showTab(tabIndex);
+            }
+
+
+            // showTab(tabIndex);
         });
-        $('#append_rank_pre').click(function (){
-            $($('.title_top ul li').get(1)).addClass('active').siblings().removeClass('active');
-            $($('.all_info .div_tab').get(1)).addClass('active').siblings().removeClass('active');
+
+        $('.btn_pre').click(function(){
+            tabIndex -=1;
+            showTab(tabIndex);
         });
-        $('#payment_pre').click(function (){
-            $($('.title_top ul li').get(2)).addClass('active').siblings().removeClass('active');
-            $($('.all_info .div_tab').get(2)).addClass('active').siblings().removeClass('active');
+
+        $('#payment_next').click(function (){
+            $($('.title_top ul li').get(4)).addClass('active').siblings().removeClass('active');
+            $($('.all_info .div_tab').get(4)).addClass('active').siblings().removeClass('active');
+            alertInfo();
+            showInfo();
         });
-        $('#team_info_pre').click(function (){
-            $($('.title_top ul li').get(3)).addClass('active').siblings().removeClass('active');
-            $($('.all_info .div_tab').get(3)).addClass('active').siblings().removeClass('active');
-        });
+
 
     })
-
-    function showTab(index) {
-
-        //checkTab
-        var $inputs = $($('.all_info .div_tab').get(index)).find('input').each(function(){
-            validField(this);
-        });
-
-
-        $($('.title_top ul li').get(index)).addClass('active').siblings().removeClass('active');
-        var actTab = $('.all_info .div_tab').get(index);
-        $(actTab).addClass('active').siblings().removeClass('active');
-    }
 
     // 0 start
 
