@@ -288,11 +288,22 @@
 
     //手机
     function isMobile(val) {
+        reg=/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$/gi;
+        if(!reg.test(val)) {
+            console.log("错误的手机格式");
+            return false;
+        }
         return true;
     }
 
     //身份证
     function isID(val) {
+        reg1=/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/gi;
+        reg2=/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/gi;
+        if(!reg1.test(val) || !reg2.test(val)) {
+            console.log("错误的身份证格式");
+            return false;
+        }
         return true;
     }
 
