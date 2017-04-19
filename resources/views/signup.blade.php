@@ -251,6 +251,63 @@
         });
     }
 
+    // function isEmail(mail) {
+    //     reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
+    //     if(!reg.test(mail) {
+    //         console.log("非法的电子邮件");
+    //         return false;
+    //     }
+    //     return true;
+    // }
+
+
+    function rebindVlidation() {
+        
+        // 所有信息都不能为空
+        $("input[type=text]").unbind('blur').blur(function(){
+
+            //必填验证
+            if ($(this).prop('required') && $(this).val() == "") {
+                $(this).next('.tips').html(tipWarn('不能为空'));
+                return false;
+            }
+
+            //邮件验证
+            // var useemail = $(this).attr('use-email');
+            // if (useemail == 'email' && !isEmail($(this).val())) {
+            //     $(this).next('.tips').html(tipWarn('邮件格式不正确'))
+            // }
+
+            // var mobile = $(this).attr('vvv-mobile');
+            // if (mobile == 'vvv-mobile' && !isMobile()) {
+
+            // }
+
+            // if (this.) {}
+
+
+
+            $(this).next('.tips').html(tipValid());
+            return false;
+        });
+
+        $("input[type=text]").unbind('focus').focus(function(){
+            console.log(1)
+            $(this).next('.tips').css('display', 'block');
+            
+            $(this).next('.tips').html('');
+
+            var tip_info = $(this).attr('tip-info');
+            console.log(tip_info);
+            var required = $(this).prop('required');
+
+            var tip_info = tip_info ? tip_info : required ? '不能为空' : '';
+            if (tip_info) {
+                $(this).next('.tips').html(tipInfo(tip_info));
+            }
+        });
+    }
+
     $(function(){
         // 上传照片
         $('.leader_info .div2').click(function() {
@@ -339,11 +396,6 @@
             var required = $(this).prop('required');
 
 
-            var tip_info = tip_info ? tip_info : required ? '不能为空' : '';
-            if (tip_info) {
-                $(this).next('.tips').html(tipInfo(tip_info));
-            }
-        });
 
         $('#append_rank_new').click(function (){
             addMemberList();
@@ -356,7 +408,7 @@
             });
         })
 
-
+        rebindVlidation();
         var memberListNum = 1;
         function addMemberList(){
             var memberList = '';
@@ -406,6 +458,7 @@
             memberList += '<div class="cut"></div>';
             memberList += '</div>';
             $('.append_rank').append(memberList);
+            rebindVlidation();
             memberListNum +=1;
         }
 
@@ -608,7 +661,18 @@
             $($('.title_top ul li').get(3)).addClass('active').siblings().removeClass('active');
             $($('.all_info .div_tab').get(3)).addClass('active').siblings().removeClass('active');
         });
+
     })
+
+        function showTab(index) {
+            
+            
+            $($('.title_top ul li').get(index)).addClass('active').siblings().removeClass('active');
+            $($('.all_info .div_tab').get(index)).addClass('active').siblings().removeClass('active');
+        }
+
+    // 0 start
+
 </script>
 </body>
 </html>
