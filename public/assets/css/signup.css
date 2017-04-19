@@ -71,7 +71,7 @@ ul, ol, dl {
 }
 
 body {
-  background: #edf3ff;
+  background: #fff;
   position: relative;
 }
 body .top {
@@ -182,8 +182,9 @@ body .mid .all_info .leader_info .user_name_input {
   padding-left: 20px;
 }
 body .mid .all_info .leader_info .tips {
-  display: none;
+  opacity: 0;
   float: left;
+  transition: all 1s;
 }
 body .mid .all_info .leader_info .tips .cue {
   font-family: PingFangSC-Regular;
@@ -337,6 +338,7 @@ body .mid .all_info .leader_info .btn_next {
   right: 90px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 body .mid .all_info .ranks_info {
   padding-left: 100px;
@@ -368,8 +370,9 @@ body .mid .all_info .ranks_info .user_name_input {
   padding-left: 20px;
 }
 body .mid .all_info .ranks_info .tips {
-  display: none;
+  opacity: 0;
   float: left;
+  transition: all 1s;
 }
 body .mid .all_info .ranks_info .tips .cue {
   font-family: PingFangSC-Regular;
@@ -476,6 +479,7 @@ body .mid .all_info .ranks_info .btn_next {
   right: 90px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 body .mid .all_info .ranks_info .btn_pre {
   background: #587BEF;
@@ -491,6 +495,7 @@ body .mid .all_info .ranks_info .btn_pre {
   right: 230px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 body .mid .all_info .append_rank {
   padding-left: 100px;
@@ -525,8 +530,9 @@ body .mid .all_info .append_rank .menber_list .user_name_input {
   padding-left: 20px;
 }
 body .mid .all_info .append_rank .menber_list .tips {
-  display: none;
+  opacity: 0;
   float: left;
+  transition: all 1s;
 }
 body .mid .all_info .append_rank .menber_list .tips .cue {
   font-family: PingFangSC-Regular;
@@ -656,6 +662,7 @@ body .mid .all_info .append_rank .menber_list .cut {
   margin-bottom: 35px;
 }
 body .mid .all_info .append_rank .menber_list .delete {
+  display: none;
   width: 10px;
   height: 10px;
   background: red;
@@ -678,6 +685,7 @@ body .mid .all_info .append_rank .btn_next {
   right: 90px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 body .mid .all_info .append_rank .btn_pre {
   background: #587BEF;
@@ -693,10 +701,11 @@ body .mid .all_info .append_rank .btn_pre {
   right: 230px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 body .mid .all_info .append_rank .btn_new {
   background: #587BEF;
-  width: 120px;
+  width: 138px;
   height: 42px;
   font-family: PingFangSC-Regular;
   font-size: 14px;
@@ -708,6 +717,35 @@ body .mid .all_info .append_rank .btn_new {
   left: 100px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
+}
+body .mid .all_info .append_rank .btn_new_tips {
+  opacity: 0;
+  transition: all 0.7s;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  padding: 0px 10px;
+  background: #587BEF;
+  border-radius: 5px;
+  position: absolute;
+  left: 260px;
+  bottom: -41px;
+  width: 213px;
+  line-height: 42px;
+  cursor: pointer;
+}
+body .mid .all_info .append_rank .btn_new_tips:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-right: 10px solid #587BEF;
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid transparent;
+  left: -10px;
+  top: 16px;
 }
 body .mid .all_info .payment {
   padding-left: 100px;
@@ -753,6 +791,7 @@ body .mid .all_info .payment .btn_next {
   right: 90px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 body .mid .all_info .payment .btn_pre {
   background: #587BEF;
@@ -768,6 +807,7 @@ body .mid .all_info .payment .btn_pre {
   right: 230px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 body .mid .all_info .team_info {
   height: 100%;
@@ -902,6 +942,9 @@ body .mid .all_info .team_info .all_number .team_number .name_input {
   letter-spacing: 2px;
   margin-top: 30px;
 }
+body .mid .all_info .team_info .all_number .team_number .school_add {
+  margin-bottom: 30px;
+}
 body .mid .all_info .team_info .pays {
   width: 922px;
   height: 140px;
@@ -909,7 +952,7 @@ body .mid .all_info .team_info .pays {
   position: relative;
   background: #FFFFFF;
   border: 1px solid #EAEAEA;
-  margin-bottom: 18px;
+  margin-bottom: 50px;
 }
 body .mid .all_info .team_info .pays .leader_title {
   font-family: PingFangSC-Regular;
@@ -969,6 +1012,7 @@ body .mid .all_info .team_info .btn_next {
   right: 90px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 body .mid .all_info .team_info .btn_pre {
   background: #587BEF;
@@ -984,6 +1028,27 @@ body .mid .all_info .team_info .btn_pre {
   right: 230px;
   bottom: -40px;
   transition: all 0.5s;
+  cursor: pointer;
+}
+body .mid .all_info .team_info .tel {
+  border: 1px solid #587BEF;
+  width: 100px;
+  height: 30px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #587BEF;
+  letter-spacing: 0;
+  line-height: 30px;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0px 10px;
+  margin-left: 30px;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-right: 25px;
+  text-align: center;
 }
 body .mid .all_info .active {
   display: block;
@@ -999,6 +1064,8 @@ body .bot .inner {
   height: 182px;
   display: block;
   margin: 0 auto;
+  padding-top: 46px;
+  box-sizing: border-box;
 }
 body .bot .inner img {
   display: block;
@@ -1010,6 +1077,7 @@ body .bot .inner .sp1 {
   /* width: 100px; */
   display: block;
   text-align: center;
+  margin-top: 10px;
   /* margin: 0 auto; */
   color: #fff;
   line-height: 24px;
@@ -1020,6 +1088,7 @@ body .bot .inner .sp2 {
   text-align: center;
   /* margin: 0 auto; */
   color: #fff;
+  margin-top: 10px;
   line-height: 24px;
 }
 body .identifying {

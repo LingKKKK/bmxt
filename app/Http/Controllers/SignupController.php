@@ -21,6 +21,10 @@ class SignupController extends Controller
         return view('signup');
     }
 
+    public function success()
+    {
+        return view('success');
+    }
     public function doSignup(Request $request)
     {
         dd($request->all(), $request->file());

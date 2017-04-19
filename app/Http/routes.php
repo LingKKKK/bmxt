@@ -48,6 +48,7 @@ Route::post('/uploadimg', 'UtilsController@uploadImg');
 
 //  报名页面
 Route::get('/signup', 'SignupController@signup');
+Route::get('/success', 'SignupController@success');
 Route::post('/signup', 'SignupController@doSignup');
 
 Route::get('/signup/list', 'SignupController@lists');
