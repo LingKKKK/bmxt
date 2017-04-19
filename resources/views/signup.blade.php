@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">   
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
     <style type="text/css">
         body .mid .all_info .leader_info .tips
@@ -16,27 +16,26 @@
     <div class="main">
         <div class="top">
             <div class="inner">
-                <img src="{{ asset('assets/img/logo-top.png')}}" alt="">
+                <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
                 <div class="login">
-                    <span class="register">注册</span>
-                    <span class="signin">登录</span>
+                    <!-- <span class="register">注册</span>
+                    <span class="signin">登录</span> -->
                 </div>
                 <div class="logout">
                     <span></span>
                 </div>
             </div>
         </div>
-
         <div class="mid">
             <form action="/signup" enctype="multipart/form-data" method="POST" novalidate>
-       
+
             <div class="title_top">
                 <ul>
-                    <li class="active">①领队信息</li> 
-                    <li>②队伍参赛信息</li> 
-                    <li>③队员信息</li> 
-                    <li>④缴费信息</li> 
-                    <li>⑤信息确认</li> 
+                    <li class="active">①领队信息</li>
+                    <li>②队伍参赛信息</li>
+                    <li>③队员信息</li>
+                    <li>④缴费信息</li>
+                    <li>⑤信息确认</li>
                 </ul>
             </div>
             <div class="all_info clearfix">
@@ -45,16 +44,16 @@
                         <span class="user_name">用户名  :</span>
                         <input required tip-warn="" data-type="email"  tip-info="仅支持仅支持英文、数字、下划线" class="user_name_input" id="user_name" name="user_name" type="text">
                         <div class="tips">
-        
+
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                 
+
                     <div>
                         <span class="user_name">真实姓名  :</span>
                         <input required tip-warn="" tip-info="仅支持仅支持英文、汉字"  class="user_name_input" id="leader_name" name="leader_name" type="text">
                         <div class="tips">
-                          
+
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -66,7 +65,7 @@
                     </div>
                     <div>
                         <span class="user_name">性别  :</span>
-                        <input class="man" type="radio" name="leader_sex" value="男"><span>男</span>
+                        <input class="man" type="radio" name="leader_sex" checked="checked" value="男"男><span>男</span>
                         <input class="woman" type="radio" name="leader_sex" value="女"><span>女</span>
                         <div class="clearfix"></div>
                     </div>
@@ -88,17 +87,8 @@
                         <span class="user_name">手机号码  :</span>
                         <input data-type="mobile" required tip-info="请输入您收到的验证码" class="user_name_input"  id="leader_mobile" type="text" name="leader_mobile">
                         <a class="tel">发送验证码</a>
+
                         <div class="tips">
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div>
-                        <span class="user_name">验证码  :</span>
-                        <input required tip-warn="" tip-info="请输入您收到的验证码" class="code" type="text">
-                        <div class="tips">
-                            <!-- <span class="cue">请输入您收到的验证码</span> -->
-                            <span class="useable">√</span>
-                            <span class="unuse">请输入正确的验证码</span>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -153,22 +143,20 @@
                     <button type="button" class="btn_pre" id="ranks_info_pre">上一步</button>
                     <button type="button" class="btn_next" id="ranks_info_next">下一步</button>
                 </div>
-
                 <div class="append_rank div_tab">
                     <button type="button" class="btn_new" id="append_rank_new">继续添加新成员</button>
+                    <span class="btn_new_tips">请您在完善信息之后添加新的队员</span>
                     <button type="button" class="btn_pre" id="append_rank_pre">上一步</button>
                     <button type="button" class="btn_next" id="append_rank_next">下一步</button>
                 </div>
-
                 <div class="payment div_tab">
                     <span class="user_name">缴费方式:</span>
-                    <input class="man" type="radio" name="sex" value="option1"><span>现场缴费</span>
-                    <input class="woman" type="radio" name="sex" value="option2"><span>在线支付(暂不支持)</span>
+                    <input class="man" type="radio" name="payment" checked="checked" value="现场缴费"><span>现场缴费</span>
+                    <input class="woman" type="radio" name="payment" value="在线支付"><span>在线支付(暂不支持)</span>
                     <div class="clearfix"></div>
                     <button type="button" class="btn_pre" id="payment_pre">上一步</button>
                     <button type="button" class="btn_next" id="payment_next">下一步</button>
                 </div>
-
                 <div class="team_info div_tab">
                     <div class="leader" id="leader"></div>
                     <div class="leader" id="team"></div>
@@ -184,23 +172,32 @@
                         <input class="name_input" type="text" value="现场支付">
                         <div class="clearfix"></div>
                     </div>
+                    <!-- <a class="tel">发送验证码</a> -->
+                    <!-- <div>
+                        <span class="user_name">验证码  :</span>
+                        <input required tip-warn="" tip-info="请输入您收到的验证码" class="code" type="text">
+                        <div class="tips">
+                            <span class="cue">请输入您收到的验证码</span>
+                            <span class="useable">√</span>
+                            <span class="unuse">请输入正确的验证码</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> -->
+                    <div class="clearfix"></div>
                     <button type="button" class="btn_pre" id="team_info_pre">上一步</button>
-                    <button  class="btn_next" type="submit" id="team_info_next">完成</button>
+                    <button  class="btn_next" type="submit" id="team_info_next">确认提交</button>
 
                 </div>
             </div>
             </form>
-
         </div>
-
         <div class="bot">
             <div class="inner">
-                <img src="{{ asset('assets/img/logo-top.png')}}" alt="">
-                <span class="sp1">© 2016 KenRobot  |  京 ICP备15039570号 </span>
+                <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
+                <span class="sp1">© 2017 KenRobot  |  京 ICP备15039570号 </span>
                 <span class="sp2">北京市海淀区天秀路10号中国农大国际创业园1号楼526</span>
             </div>
         </div>
-
         <div class="identifying">
             <div class="showBox">
                 <img src="{{url('/captcha')}}">
@@ -210,9 +207,6 @@
             </div>
         </div>
     </div>
-
-
-
 <script type="text/javascript">
 
     function refresh_captcha($el) {
@@ -244,6 +238,13 @@
         return '<span class="cue">'+msg+'</span>';
     }
 
+    function addTips(){
+        $('.btn_new').hover(function() {
+            $('.btn_new_tips').css('opacity', 0.6);
+        }, function() {
+            $('.btn_new_tips').css('opacity', 0);
+        });
+    }
 
     function isEmail(mail) {
         reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
@@ -355,7 +356,7 @@
             }
         });
         // 发送手机验证码
-        $('.leader_info .tel').click(function() {
+        $('.team_info .tel').click(function() {
             addMemberList();
             var partten = /^1[3,5,8]\d{9}$/;
             if(partten.test($('#leader_mobile').val())){
@@ -401,6 +402,27 @@
             );
         });
 
+        // 所有信息都不能为空
+        $("input[type=text]").blur(function(){
+
+            if ($(this).prop('required') && $(this).val() == "") {
+                $(this).next('.tips').html(tipWarn('不能为空'));
+                return false;
+            }
+
+            $(this).next('.tips').html(tipValid());
+            return false;
+        });
+
+        $("input[type=text]").focus(function(){
+            console.log(1)
+            $(this).next('.tips').css('opacity', 1);
+
+            $(this).next('.tips').html('');
+
+            var tip_info = $(this).attr('tip-info');
+            console.log(tip_info);
+            var required = $(this).prop('required');
 
 
 
@@ -420,10 +442,11 @@
         function addMemberList(){
             var memberList = '';
             memberList += '<div class="menber_list">';
-            memberList += '<div class="delete"></div>';
+            memberList += '<div class="delete"><i class="icon kenrobot ken-logo"></i></div>';
             memberList += '<div>';
             memberList += '<span class="user_name">队员姓名('+ memberListNum +'):</span>';
             memberList += '<input required tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="user_name_input member_name" type="text">';
+
             memberList += '<div class="tips"><span class="useable">√</span><span class="unuse">内容不能为空</span></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
@@ -441,8 +464,8 @@
             memberList += '</div>';
             memberList += '<div>';
             memberList += '<span class="user_name">性别  :</span>';
-            memberList += '<input name="members['+memberListNum+'][sex]" class="man" type="radio" name="sex" value="man"><span>男</span>';
-            memberList += '<input name="members['+memberListNum+'][sex]" class="woman" type="radio" name="sex" value="women"><span>女</span>';
+            memberList += '<input name="members['+memberListNum+'][sex]" class="man" type="radio" checked="checked" name="sex" value="男"><span>男</span>';
+            memberList += '<input name="members['+memberListNum+'][sex]" class="woman" type="radio" name="sex" value="女"><span>女</span>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
             memberList += '<div>';
@@ -609,7 +632,7 @@
             var membersList = '';
             for( var i=0; i<num_member; i++ ){
                 membersList += '<div class="cut"></div>';
-                membersList += '<span class="name">队员姓名(一) :</span>';
+                membersList += '<span class="name">队员姓名 :</span>';
                 membersList += '<input class="name_input" type="text" value='+ allData.members[i].name +'>';
                 membersList += '<div class="clearfix"></div>';
                 membersList += '<span class="name">手机号码 :</span> ';
@@ -624,7 +647,7 @@
                 membersList += '<span class="name">学校/单位名称 :</span>';
                 membersList += '<input class="name_input" type="text" value='+ allData.members[i].member_school_name +'>';
                 membersList += '<div class="clearfix"></div>';
-                membersList += '<span class="name">学校/单位地址 :</span>';
+                membersList += '<span class="name school_add">学校/单位地址 :</span>';
                 membersList += '<input class="name_input" type="text" value='+ allData.members[i].member_school_address +'>';
                 membersList += '<div class="clearfix"></div>';
             }
@@ -645,6 +668,15 @@
         $('#ranks_info_next').click(function (){
             $($('.title_top ul li').get(2)).addClass('active').siblings().removeClass('active');
             $($('.all_info .div_tab').get(2)).addClass('active').siblings().removeClass('active');
+            addMemberList();
+            addTips();
+            $('.append_rank .menber_list .delete').click(function(){
+                $(this).parent('.menber_list').remove();
+            })
+            $('.append_rank .menber_list .div2').unbind('click').click(function() {
+                console.log($(this))
+                 $(this).next('.inputstyle').click();
+            });
         });
         $('#append_rank_pre').click(function (){
             $($('.title_top ul li').get(1)).addClass('active').siblings().removeClass('active');
