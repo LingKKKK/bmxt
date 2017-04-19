@@ -100,7 +100,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <span class="input-label">赛事项目  :</span>
-                    ‍‍<select id="competition_type1" name="competiton_type">
+                    ‍‍<select id="competition_type" name="competition_type">
                         <option grade="1" value="选项一">选项一</a>
                         <option grade="2" value="选项二">选项二</a>
                         <option grade="3" value="选项三">选项三</a>
@@ -109,7 +109,7 @@
                     </select>
                     <div class="clearfix"></div>
                     <span class="input-label">组别  :</span>
-                    ‍‍<select id="competition_type2" name="competiton_group">
+                    ‍‍<select id="competiton_group" name="competiton_group">
                         <option grade="1" value="小学组">小学组</a>
                         <option grade="2" value="初中组">初中组</a>
                         <option grade="3" value="高中组">高中组</a>
@@ -137,40 +137,40 @@
                     <div class="leader" id="leader">
                         <span class="leader_title">领队信息</span>
                         <div class="cut"></div>
-                        <span class="name">用户名 :</span>
-                        <span class="name_input" ></span>
-                        <div class="clearfix"></div>
                         <span class="name">真实姓名 :</span>
-                        <span class="name_input" ></span>
+                        <span  id="preview_leader_name" class="name_input" ></span>
                         <div class="clearfix"></div>
-                        <span class="name">性别 :</span>
-                        <span class="name_input"></span>
+                        <span class="name">身份证号 :</span>
+                        <span  id="preview_leader_id" class="name_input"></span>
                         <div class="clearfix"></div>
-                        <span class="name">注册邮箱 :</span>
-                        <span class="name_input"></span>
+                        <span class="name">邮箱 :</span>
+                        <span  id="preview_leader_email" class="name_input"></span>
                         <div class="clearfix"></div>
-                        <span class="name">手机号码 :</span>
-                        <span class="name_input"></span>
+                        <span  class="name">手机号 :</span>
+                        <span id="preview_leader_mobile" class="name_input"></span>
                         <div class="clearfix"></div>
-                        <img id="show_leader_pic" src="" >
+                        <span  class="name">性别 :</span>
+                        <span id="preview_leader_sex" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <img id="preview_leader_pic" src="" >
                     </div>
                     <div class="leader" id="team">
                         <span class="leader_title">队伍信息</span>
                         <div class="cut"></div>
                         <span class="name">队伍名称 :</span>
-                        <span class="name_input"></span>
+                        <span id="preview_team_name" class="name_input"></span>
                         <div class="clearfix"></div>
                         <span class="name">学校/单位名称 :</span>
-                        <span class="name_input"></span>
+                        <span id="preview_school_name" class="name_input"></span>
                         <div class="clearfix"></div>
                         <span class="name">学校/单位地址 :</span>
-                        <span class="name_input"></span>
+                        <span id="preview_school_address" class="name_input"></span>
                         <div class="clearfix"></div>
                         <span class="name">赛事项目 :</span>
-                        <span class="name_input"></span>
+                        <span id="preview_competition_type" class="name_input"></span>
                         <div class="clearfix"></div>
                         <span class="name">组别 :</span>
-                        <span class="name_input"></span>
+                        <span id="preview_competiton_group" class="name_input"></span>
                         <div class="clearfix"></div>
                     </div>
                     <div class="all_number">
@@ -362,6 +362,7 @@
         $($('.tab_menu ul li').get(index)).addClass('active').siblings().removeClass('active');
         var actTab = $('.all_info .div_tab').get(index);
         $(actTab).addClass('active').siblings().removeClass('active');
+        updatePreview();
     }
 
     // 重新绑定事件, DOM发生变化时调用
@@ -392,6 +393,41 @@
         //上传 队员照片
         $('.uploadBtn').unbind('click').click(function() {
             $(this).siblings('.inputstyle').click();
+        });
+    }
+
+    // 更新预览界面
+    function updatePreview() {
+        $('input,select').each(function(){
+            var type = $(this).prop('type');
+            var id = $(this).prop('id');
+            var name = $(this).prop('name');
+            var val = $(this).val();
+            console.log(id+' : '+type);
+            if (type == 'select-one') {
+                val = $('#'+id+' option:selected').val();
+                console.log('selected' + val);
+            }
+
+            if (type == 'text' || type == 'select-one') {
+                $('#preview_' + id).html(val);
+            }
+
+            if (type == 'radio') {
+                console.log('name');
+                var chkVal = $('input:radio[name="'+name+'"]:checked').val();
+                $('#preview_' + name).html(chkVal);
+            }
+
+   
+            if (type == 'file') {
+                var fileObj = document.getElementById(id);
+                var f = fileObj.files[0];
+                if (f) {
+                    $('#preview_'+id).attr('src', URL.createObjectURL(f));
+
+                }
+            }
         });
     }
 
@@ -438,7 +474,6 @@
         });
 
         //更新表单验证绑定
-
 
         $('#append_rank_new').click(function (){
             addMemberList();
