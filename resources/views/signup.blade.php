@@ -177,25 +177,22 @@
                         <span class="leader_title">队员信息</span>
                         <div class="team_number" id="number">
                             @for($i = 0; $i< 10; $i++)
-                            <div class="member_info">
+                            <div id="member_info_{{$i}}" class="member_info" style="display: none;">
                                 <div class="cut"></div>
                                 <span class="name">队员姓名 :</span>
-                                <span class="name_input"></span>
+                                <span id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                                 <span class="name">手机号码 :</span> 
-                                <span class="name_input"></span>
+                                <span id="{{'preview_'.$i.'_member_mobile'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                                 <span class="name">性别 :</span>
-                                <span class="name_input"></span>
+                                <span id="{{'preview_'.$i.'_member_sex'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                                 <span class="name">年龄 :</span>
-                                <span class="name_input"></span>
+                                <span id="{{'preview_'.$i.'_member_age'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                                 <span class="name">学校/单位名称 :</span>
-                                <span class="name_input"></span>
-                                <div class="clearfix"></div>
-                                <span class="name school_add">学校/单位地址 :</span>
-                                <span class="name_input"></span>
+                                <span id="{{'preview_'.$i.'_member_school_name'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                             </div>
                             @endfor
@@ -206,7 +203,7 @@
                         <span class="leader_title">缴费信息</span>
                         <div class="cut"></div>
                         <span class="name">支付方式 :</span>
-                        <span class="name_input" type="text" value="现场</span>支付">
+                        <span id="preview_payment" class="name_input" ></span>
                         <div class="clearfix"></div>
                     </div>
                     <div id="code">
@@ -283,7 +280,7 @@
     function isEmail(mail) {
         reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
         if(!reg.test(mail)) {
-            console.log("非法的电子邮件");
+            //console.log("非法的电子邮件");
             return false;
         }
         return true;
@@ -293,7 +290,7 @@
     function isMobile(val) {
         reg=/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$/gi;
         if(!reg.test(val)) {
-            console.log("错误的手机格式");
+            //console.log("错误的手机格式");
             return false;
         }
         return true;
@@ -304,7 +301,7 @@
         reg1=/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/gi;
         reg2=/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/gi;
         if(!reg1.test(val) || !reg2.test(val)) {
-            console.log("错误的身份证格式");
+            //console.log("错误的身份证格式");
             return false;
         }
         return true;
@@ -316,7 +313,7 @@
         var type = $el.attr('type');
         var val = $el.val();
         var datatype = $el.data('type');// 数据类型 email , mobile , ID,
-        console.log('name' + name);
+        //console.log('name' + name);
 
         if (type == 'file') {
             if ($el.prop('required') && val == '') {
@@ -327,13 +324,13 @@
         } else if(type == 'text') {
             if ($el.prop('required') && val == '') {
                 $el.siblings('.tips').html(tipWarn('不能为空！'));
-                console.log('不能')
+                //console.log('不能')
                 return false;
             }
 
             if (datatype == 'email' && !isEmail(val)) {
                 $el.siblings('.tips').html(tipWarn('邮件格式不正确'));
-                console.log('Email');
+                //console.log('Email');
 
                 return false;
             }
@@ -414,10 +411,10 @@
             var id = $(this).prop('id');
             var name = $(this).prop('name');
             var val = $(this).val();
-            console.log(id+' : '+type);
+            //console.log(id+' : '+type);
             if (type == 'select-one') {
                 val = $('#'+id+' option:selected').val();
-                console.log('selected' + val);
+                //console.log('selected' + val);
             }
 
             if (type == 'text' || type == 'select-one') {
@@ -425,7 +422,7 @@
             }
 
             if (type == 'radio') {
-                console.log('name');
+                //console.log('name');
                 var chkVal = $('input:radio[name="'+name+'"]:checked').val();
                 $('#preview_' + name).html(chkVal);
             }
@@ -433,13 +430,43 @@
    
             if (type == 'file') {
                 var fileObj = document.getElementById(id);
-                var f = fileObj.files[0];
-                if (f) {
-                    $('#preview_'+id).attr('src', URL.createObjectURL(f));
-
+                if (fileObj) {
+                    var f = fileObj.files[0];
+                    if(f){
+                        $('#preview_'+id).attr('src', URL.createObjectURL(f));
+                    }
                 }
             }
         });
+
+        $('.append_rank > .menber_list').each(function(index){
+            console.log(index);
+
+            var mapKey = new Array('member_name', 'member_mobile', 'member_age', 'member_sex', 'member_school_name', 'member_school_address');
+            for (var i = 0; i < mapKey.length; i++) {
+                var key = mapKey[i];
+
+                var $el = $($(this).find('.'+key)[0]);
+                var type = $el.prop('type');
+                var val = $el.val();
+
+                if(type == 'radio')
+                {
+                    val = $($(this)).find('.'+key+":checked").val();
+                }
+
+                var preview_el = '#preview_'+index+'_'+key;
+
+                console.log(preview_el);
+                console.log(val);
+
+                $(preview_el).html(val);
+            }
+
+            $('#member_info_'+index).show();
+
+
+        })
     }
 
 
@@ -447,7 +474,7 @@
 
         // 点击刷新验证码图片
         $('.identifying .showBox img').click(function (){
-            console.log($('.identifying .showBox img').attr("src"));
+            //console.log($('.identifying .showBox img').attr("src"));
             refresh_captcha(this);
         });
 
@@ -463,7 +490,7 @@
             var mobile = $('#leader_mobile').val();
             var email = $('#leader_email').val();
             var type = 'mobile';
-            console.log(captchacode,mobile,type);
+            //console.log(captchacode,mobile,type);
             $.post(
                 "{{url('/verificationcode/send')}}",
                 {
@@ -473,8 +500,8 @@
                 },
                 function(res){
                     if (res.status == 0) {
-                        // console.log(res);
-                        // console.log('消息发送成功');
+                        // //console.log(res);
+                        // //console.log('消息发送成功');
                         refresh_captcha();
                         countdown();
                     } else {
@@ -516,8 +543,8 @@
             memberList += '</div>';
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">性别  :</span>';
-            memberList += '<input name="members['+memberListNum+'][sex]" class="input-radio man" type="radio" checked="checked" name="sex" value="男"><span>男</span>';
-            memberList += '<input name="members['+memberListNum+'][sex]" class="input-radio woman" type="radio" name="sex" value="女"><span>女</span>';
+            memberList += '<input name="members['+memberListNum+'][sex]" class="input-radio man member_sex" type="radio" checked="checked" name="sex" value="男"><span>男</span>';
+            memberList += '<input name="members['+memberListNum+'][sex]" class="input-radio woman member_sex" type="radio" name="sex" value="女"><span>女</span>';
 
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
@@ -536,7 +563,7 @@
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">队员照片  :</span>';
             memberList += '<div class="uploadBtn">上传图片</div>';
-            memberList += '<input name="members['+memberListNum+'][pic]" type="file" class="inputstyle">';
+            memberList += '<input name="members['+memberListNum+'][pic]" type="file" class="inputstyle member_pic">';
             memberList += '<div class="clearfix"></div>';
             memberList += '<div class="cut"></div>';
             memberList += '</div>';
@@ -580,7 +607,7 @@
            $('.identifying').addClass('active');
            $('#tipes i').html($('#leader_mobile').val());
         }else {
-           console.log('格式错误');
+           //console.log('格式错误');
         }
     });
 

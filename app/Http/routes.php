@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+// Route::get('/', 'HomeController@index');
 
 // 认证路由...
 // Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -47,7 +47,7 @@ Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode')
 Route::post('/uploadimg', 'UtilsController@uploadImg');
 
 //  报名页面
-Route::get('/signup', 'SignupController@signup');
+Route::get('/', 'SignupController@signup');
 Route::get('/success', 'SignupController@success');
 Route::post('/signup', 'SignupController@doSignup');
 
