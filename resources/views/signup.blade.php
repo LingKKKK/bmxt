@@ -4,6 +4,13 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">   
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
+    <style type="text/css">
+        body .mid .all_info .leader_info .tips
+        {
+            display: block !important;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="main">
@@ -21,7 +28,7 @@
         </div>
 
         <div class="mid">
-            <form action="/signup" enctype="multipart/form-data" method="POST">
+            <form action="/signup" enctype="multipart/form-data" method="POST" novalidate>
        
             <div class="title_top">
                 <ul>
@@ -36,11 +43,9 @@
                 <div class="active leader_info div_tab">
                     <div>
                         <span class="user_name">用户名  :</span>
-                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="user_name_input" id="user_name" name="user_name" type="text">
+                        <input required tip-warn="" data-type="email"  tip-info="仅支持仅支持英文、数字、下划线" class="user_name_input" id="user_name" name="user_name" type="text">
                         <div class="tips">
-                            <!-- <span class="cue">仅支持仅支持英文、数字、下划线</span> -->
-                            <span class="useable">√</span>
-                            <span class="unuse">内容不能为空</span>
+        
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -49,20 +54,14 @@
                         <span class="user_name">真实姓名  :</span>
                         <input required tip-warn="" tip-info="仅支持仅支持英文、汉字"  class="user_name_input" id="leader_name" name="leader_name" type="text">
                         <div class="tips">
-                            <!-- <span class="cue">仅支持仅支持汉字、英文</span> -->
-                            <span class="useable">√</span>
-                            <span class="unuse">内容不能为空</span>
+                          
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div>
                         <span class="user_name">身份证号  :</span>
-                        <input required tip-warn="" tip-info="仅支持仅支持数字以及个别英文" class="user_name_input" id="idCard" name="leader_id" type="text">
-                        <div class="tips">
-                            <!-- <span class="cue">仅支持数字</span> -->
-                            <span class="useable">√</span>
-                            <span class="unuse">格式不正确</span>
-                        </div>
+                        <input required data-type="ID" tip-warn="" tip-info="仅支持仅支持数字以及个别英文" class="user_name_input" id="idCard" name="leader_id" type="text">
+                        <div class="tips"></div>
                         <div class="clearfix"></div>
                     </div>
                     <div>
@@ -74,27 +73,22 @@
                     <div>
                         <span class="user_name">领队照片  :</span>
                         <div class="div2">上传图片</div>
-                        <input type="file" name="leader_pic" class="inputstyle">
+                        <input type="file" required name="leader_pic" class="inputstyle">
+                        <div class="tips"></div>
                         <div class="clearfix"></div>
                     </div>
                     <div>
                         <span class="user_name">注册邮箱  :</span>
-                        <input required tip-warn="" tip-info="请按照正确的邮箱格式填写" class="user_name_input" id="leader_email" name="leader_email" type="text">
+                        <input required data-type="email" tip-warn="" tip-info="请按照正确的邮箱格式填写" class="user_name_input" id="leader_email" name="leader_email" type="text">
                         <div class="tips">
-                            <!-- <span class="cue">请按照正确的邮箱格式填写</span> -->
-                            <span class="useable">√</span>
-                            <span class="unuse">格式不正确</span>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div>
                         <span class="user_name">手机号码  :</span>
-                        <input required tip-warn="" tip-info="请输入您收到的验证码" class="user_name_input"  id="leader_mobile" type="text">
+                        <input data-type="mobile" required tip-info="请输入您收到的验证码" class="user_name_input"  id="leader_mobile" type="text" name="leader_mobile">
                         <a class="tel">发送验证码</a>
                         <div class="tips">
-                            <!-- <span class="cue">请输入您收到的验证码</span> -->
-                            <span class="useable">√</span>
-                            <span class="unuse">格式不正确</span>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -251,60 +245,94 @@
     }
 
 
-    // function isEmail(mail) {
-    //     reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
-    //     if(!reg.test(mail) {
-    //         console.log("非法的电子邮件");
-    //         return false;
-    //     }
-    //     return true;
-    // }
+    function isEmail(mail) {
+        reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
+        if(!reg.test(mail)) {
+            console.log("非法的电子邮件");
+            return false;
+        }
+        return true;
+    }
 
+    function isMobile(val) {
+        return false;
+    }
 
-    function rebindVlidation() {
-        
-        // 所有信息都不能为空
-        $("input[type=text]").unbind('blur').blur(function(){
+    function isID(val) {
+        return false;
+    }
 
-            //必填验证
-            if ($(this).prop('required') && $(this).val() == "") {
-                $(this).next('.tips').html(tipWarn('不能为空'));
+    function validField(el) {
+        var $el = $(el);
+        var name = $el.attr('name');
+        var type = $el.attr('type');
+        var val = $el.val();
+        var datatype = $el.data('type');// 数据类型 email , mobile , ID,
+        console.log('name' + name);
+
+        if (type == 'file') {
+            if ($el.prop('required') && val == '') {
+                $el.siblings('.tips').html(tipWarn('照片不能为空'));
+                return false;
+            }
+            //TODO : 文件格式，文件大小限制
+        } else if(type == 'text') {
+            if ($el.prop('required') && val == '') {
+                $el.siblings('.tips').html(tipWarn('不能为空！'));
+                console.log('不能')
                 return false;
             }
 
-            //邮件验证
-            // var useemail = $(this).attr('use-email');
-            // if (useemail == 'email' && !isEmail($(this).val())) {
-            //     $(this).next('.tips').html(tipWarn('邮件格式不正确'))
-            // }
+            if (datatype == 'email' && !isEmail(val)) {
+                $el.siblings('.tips').html(tipWarn('邮件格式不正确'));
+                console.log('Email');
 
-            // var mobile = $(this).attr('vvv-mobile');
-            // if (mobile == 'vvv-mobile' && !isMobile()) {
+                return false;
+            }
 
-            // }
+            if (datatype == 'mobile' && !isMobile(val)) {
+                $el.siblings('.tips').html(tipWarn('手机格式不正确'));
+                return false;
+            }
 
-            // if (this.) {}
+            if (datatype == 'ID' && ! isID(val)) {
+                $el.siblings('.tips').html(tipWarn('身份证号格式不正确'));
+                return false;
+            }
+        }
+
+        $el.siblings('.tips').html(tipValid());
+        return true;
+    }
+
+    function inputTips(el) {
+        var $el = $(el);
+        $el.siblings('.tips').html('');
+
+        var tip_info = $el.attr('tip-info');
+        var required = $el.prop('required');
+
+        var tip_info = tip_info ? tip_info : required ? '不能为空' : '';
+        if (tip_info) {
+            $el.siblings('.tips').html(tipInfo(tip_info));
+        }
+    }
 
 
+    function rebindVlidation() {
+        // 所有信息都不能为空
+        $("input[type=text]").unbind('blur').blur(function(){
+            validField(this);
+            var $el = $(this);
+            var name = $el.attr('name');
+            console.log('name' + name);
 
-            $(this).next('.tips').html(tipValid());
             return false;
         });
 
         $("input[type=text]").unbind('focus').focus(function(){
-            console.log(1)
-            $(this).next('.tips').css('display', 'block');
-            
-            $(this).next('.tips').html('');
-
-            var tip_info = $(this).attr('tip-info');
-            console.log(tip_info);
-            var required = $(this).prop('required');
-
-            var tip_info = tip_info ? tip_info : required ? '不能为空' : '';
-            if (tip_info) {
-                $(this).next('.tips').html(tipInfo(tip_info));
-            }
+            inputTips(this);
+            return false;
         });
     }
 
@@ -395,13 +423,13 @@
             memberList += '<div class="delete"></div>';
             memberList += '<div>';
             memberList += '<span class="user_name">队员姓名('+ memberListNum +'):</span>';
-            memberList += '<input  tip-warn="" tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="user_name_input member_name" type="text">';
+            memberList += '<input required tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="user_name_input member_name" type="text">';
             memberList += '<div class="tips"><span class="useable">√</span><span class="unuse">内容不能为空</span></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
             memberList += '<div>';
             memberList += '<span class="user_name">手机号码  :</span>';
-            memberList += '<input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" name="members['+memberListNum+'][mobile]" class="user_name_input member_mobile" type="text">';
+            memberList += '<input required tip-info="仅支持仅支持英文、数字、下划线" name="members['+memberListNum+'][mobile]" class="user_name_input member_mobile" type="text">';
             memberList += '<div class="tips"><span class="cue">仅支持汉字</span><span class="useable">√</span><span class="unuse">内容不能为空</span></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
@@ -601,7 +629,6 @@
                 membersList += '<div class="clearfix"></div>';
             }
             $('#number').html(membersList);
-
         }
 
 
@@ -634,12 +661,18 @@
 
     })
 
-        function showTab(index) {
-            
-            
-            $($('.title_top ul li').get(index)).addClass('active').siblings().removeClass('active');
-            $($('.all_info .div_tab').get(index)).addClass('active').siblings().removeClass('active');
-        }
+    function showTab(index) {
+
+        //checkTab
+        var $inputs = $($('.all_info .div_tab').get(index)).find('input').each(function(){
+            validField(this);
+        });
+
+
+        $($('.title_top ul li').get(index)).addClass('active').siblings().removeClass('active');
+        var actTab = $('.all_info .div_tab').get(index);
+        $(actTab).addClass('active').siblings().removeClass('active');
+    }
 
     // 0 start
 
