@@ -9,11 +9,9 @@ class SignupData extends Model
 {
     protected $table = 'signup_data';
 
-    protected $fillable = ['team_name', 'school_name', 'competition_type', 
-                            'leader_name', 'leader_mobile', 'leader_email',
-                            'captain_name', 'captain_mobile', 'captain_email',
-                            'members',
-                            'remark', 'origin_data'];
+    protected $fillable = ['leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 'leader_pic',
+                            'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
+                            'members', 'payment', 'remark', 'data', 'origin_data'];
 
     protected $hidden = ['updated_at'];
 }

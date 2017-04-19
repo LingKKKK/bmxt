@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Enroll\SignupData;
 use Validator;
+use Mail;
+use Storage;
 
 class SignupController extends Controller
 {
@@ -18,6 +20,7 @@ class SignupController extends Controller
     
     public function signup()
     {
+        // $this->sendMail('2429175732@qq.com');
         return view('signup');
     }
 
@@ -27,26 +30,21 @@ class SignupController extends Controller
     }
     public function doSignup(Request $request)
     {
-        dd($request->all(), $request->file());
-        $default_data = [
-            'team_name' => '',
-            'school_name' => '',
-            'competition_type' => '',
-            'leader_name' => '',
-            'leader_mobile' => '',
-            'leader_email' => '',
-            'captain_name' => '',
-            'captain_mobile' => '',
-            'captain_email' => '',
-            'members' => '{}',
-            'remark' => '',
-            'origin_data' => json_encode($request->all(), JSON_UNESCAPED_UNICODE)
-        ];
+        // dd($request->all(), $request->file());
+
         $validator = Validator::make($request->all(), 
             [
+                'leader_name' => 'required', //领队姓名
+                'leader_id' => 'required', //领队身份证号
+                'leader_sex' => 'required', //领队性别
+                'leader_pic' => 'required|image',
+                'leader_email' => 'required|email',
+                'leader_mobile' => 'required',
+
                 'team_name' => 'required',
                 'school_name' => 'required',
-                'verificationcode' => 'required|verificationcode',
+                'school_address' => 'required', 
+                // 'verificationcode' => 'required|verificationcode',
             ],
             [
                 'team_name.required' => '队名必填',
@@ -60,21 +58,76 @@ class SignupController extends Controller
             return api_response(1, 'Fail', $validator->errors()->toArray());
         }
 
-        $keys = ['team_name', 'school_name', 'competition_type', 
-                'leader_name', 'leader_mobile', 'leader_email',
-                'captain_name', 'captain_mobile', 'captain_email',
-                'members',
-                'remark', 'origin_data'];
+        //表单地钻
+        $keys = ['leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 
+                'team_name', 'school_name', 'school_address', 'competiton_type', 'competiton_group',
+                'payment'
+        ];
 
         $data = $request->only($keys);
-        $data = array_merge($default_data, array_filter($data));
+
+        $data['leader_pic'] = $this->saveFile($request->file('leader_pic'));
+
+        // 处理成员
+        $members = array();
+        $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
+
+        foreach ($origin_members as $k => $item) {
+            $member_info = array_only($item, ['name', 'mobile', 'age', 'sex', 'school_name']);
+            $pic = isset($item['pic']) ? $item['pic'] : null;
+            $member_info['pic'] = $this->saveFile($item['pic']);
+            $members[] = $member_info;
+        }
+
+        $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
+
+        $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
+
+        // dd($data, $request->all());
         try {
             $ddt = SignupData::create($data);
         } catch (\Exception $e) {
-            return api_response('报名失败');
+            return api_response(1 ,'报名失败'.$e->getMessage());
+        }
+        // $this->sendMail('');
+        return api_response(0, '报名成功', $ddt->toArray());
+    }
+
+    //发送邮件
+    protected function sendMail($email)
+    {
+        if (!is_email($email)) {
+            return false;
+        }
+        $result = Mail::send('emails.signsuccess', [], function($m) use($email) {
+                        $m->from('support@kenrobot.com', '比赛注册');
+                        $m->to($email)->subject('验证码');
+        });
+
+        return true;
+    }
+
+    public function saveFile($file)
+    {
+        if (!$file) {
+            return '';
         }
 
-        return api_response(0, '报名成功', $ddt->toArray());
+        $filename = $file->getClientOriginalName();
+
+        $ext = $file->getClientOriginalExtension();
+
+        $suffix = rand(1000, 9999);
+
+        $hashfilename = md5($filename.$suffix).'.'.$ext;
+        $storePath = '/data/pic/'.$hashfilename;
+        $publicPath = '/data/pic/'.$hashfilename;
+
+        Storage::put($storePath, file_get_contents($file));
+
+        return $publicPath;
+        // return compact('filename', 'storePath', 'publicPath');
     }
 
     public function lists()
