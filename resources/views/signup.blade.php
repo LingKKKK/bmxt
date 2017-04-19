@@ -64,6 +64,7 @@
                         <span class="input-label">性别  :</span>
                         <input class="input-radio man" type="radio" name="leader_sex" checked="checked" value="男"><span>男</span>
                         <input class="input-radio woman" type="radio" name="leader_sex" value="女"><span>女</span>
+
                         <div class="clearfix"></div>
                     </div>
                     <div class="input-field">
@@ -127,6 +128,7 @@
                     <span class="input-label">缴费方式:</span>
                     <input class="input-radio man" type="radio" name="payment" checked="checked" value="现场缴费"><span>现场缴费</span>
                     <input class="input-radio woman" type="radio" name="payment" value="在线支付"><span>在线支付(暂不支持)</span>
+
                     <div class="clearfix"></div>
                     <button type="button" class="btn_pre" id="payment_pre">上一步</button>
                     <button type="button" class="btn_next" id="payment_next">下一步</button>
@@ -470,6 +472,7 @@
             memberList += '<span class="input-label">性别  :</span>';
             memberList += '<input name="members['+memberListNum+'][sex]" class="input-radio man" type="radio" checked="checked" name="sex" value="男"><span>男</span>';
             memberList += '<input name="members['+memberListNum+'][sex]" class="input-radio woman" type="radio" name="sex" value="女"><span>女</span>';
+
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
             memberList += '<div class="input-field">';
