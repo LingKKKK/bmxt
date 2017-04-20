@@ -39,7 +39,7 @@ textarea {
   resize: none;
 }
 
-.clearfix {
+.clear {
   clear: both;
 }
 
@@ -63,6 +63,16 @@ body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc, e
 
 ul, ol, dl {
   list-style: none;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
 }
 
 * {

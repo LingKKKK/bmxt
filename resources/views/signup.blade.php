@@ -33,59 +33,47 @@
                 </ul>
             </div>
             <div class="all_info clearfix">
-                <div class="active leader_info div_tab">
-                    <div class="input-field">
+                <div class="active leader_info div_tab clearfix">
+                    <div class="input-field clearfix">
                         <span class="input-label">姓名  :</span>
-
                         <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
                         <div class="tips"></div>
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="input-field">
+                    <div class="input-field clearfix">
                         <span class="input-label">手机号码  :</span>
                         <input data-type="mobile" required tip-info="请填写您的常用手机" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
-                        <div class="tips">
-                        </div>
-                        <div class="clearfix"></div>
+                        <div class="tips"></div>
                     </div>
-                    <div class="input-field">
+                    <div class="input-field clearfix">
                         <span class="input-label">邮箱  :</span>
                         <input required data-type="email" tip-warn="" tip-info="请按照正确的邮箱格式填写" class="input-field-text" id="leader_email" name="leader_email" type="text" value="{{old('leader_email')}}">
-                        <div class="tips">
-                        </div>
-                        <div class="clearfix"></div>
+                        <div class="tips"></div>
                     </div>
-                    <div class="input-field">
+                    <div class="input-field clearfix">
                         <span class="input-label">身份证号  :</span>
                         <input required data-type="ID" tip-info="仅支持仅支持数字以及个别英文" class="input-field-text" id="leader_id" name="leader_id" type="text" value="{{old('leader_id')}}">
                         <div class="tips"></div>
-                        <div class="clearfix"></div>
                     </div>
 
-                    <div class="input-field">
+                    <div class="input-field clearfix">
                         <span class="input-label">性别  :</span>
                         <input class="input-radio man" type="radio" name="leader_sex" @if(old('leader_sex') == '' || old('leader_sex') == '男') checked="checked" @endif value="男"><span>男</span>
                         <input class="input-radio woman" type="radio" name="leader_sex"  @if(old('leader_sex') == '女') checked="checked" @endif value="女"><span>女</span>
-
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="input-field">
+                    <div class="input-field clearfix">
                         <span class="input-label">领队照片  :</span>
                         <div class="uploadBtn">上传图片</div>
                         <input type="file" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle">
                         <div class="tips"></div>
                         <span class="file_name" id="file_name"></span>
-                        <div class="clearfix"></div>
                     </div>
                     <button type="button" class="btn_next" id="leader_info_btn">下一步</button>
-                    <div class="clearfix"></div>
                 </div>
                 <div class="ranks_info div_tab">
                     <div class="input-field">
                         <span class="input-label">队伍名称  :</span>
                         <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="input-field-text" id="team_name" name="team_name" type="text" value="{{old('team_name')}}">
-                            <div class="tips">
-                            </div>
+                        <div class="tips"></div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="input-field">
@@ -112,12 +100,12 @@
                     <span class="input-label">组别  :</span>
                     ‍‍<select id="competition_group" name="competition_group">
                         @foreach ($competition_groups as $value => $text)
-                        <option value="{{$value}}" @if(old('competition_group') == $value) selected @endif >{{$text}}</a>
+                        <option value="{{$value}}" @if(old('competition_group') == $value) selected @endif >{{$text}}</option>
                         @endforeach
                     </select>
                     <div class="clearfix"></div>
-                    <button type="button" class="btn_pre" id="ranks_info_pre">上一步</button>
-                    <button type="button" class="btn_next" id="ranks_info_next">下一步</button>
+                    <button type="button" class="btn_pre">上一步</button>
+                    <button type="button" class="btn_next">下一步</button>
                 </div>
                 <div class="append_rank div_tab">
                     <?php $i = 20 ?>
@@ -184,8 +172,8 @@
 
 
                     <button type="button" class="btn_new" id="append_rank_new">继续添加新成员</button>
-                    <button type="button" class="btn_pre" id="append_rank_pre">上一步</button>
-                    <button type="button" class="btn_next" id="append_rank_next">下一步</button>
+                    <button type="button" class="btn_pre">上一步</button>
+                    <button type="button" class="btn_next">下一步</button>
                 </div>
                 <div class="payment div_tab">
                     <span class="input-label">缴费方式:</span>
@@ -193,8 +181,8 @@
                     <input class="input-radio woman" type="radio" name="payment" disabled value="在线支付"><span style="color: #ccc" >在线支付(暂不支持)</span>
 
                     <div class="clearfix"></div>
-                    <button type="button" class="btn_pre" id="payment_pre">上一步</button>
-                    <button type="button" class="btn_next" id="payment_next">下一步</button>
+                    <button type="button" class="btn_pre">上一步</button>
+                    <button type="button" class="btn_next">下一步</button>
                 </div>
                 <div class="team_info div_tab">
                     <div class="leader" id="leader">
@@ -245,7 +233,7 @@
                                 <span class="name">队员姓名 :</span>
                                 <span data-type="realname" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
-                                <<div >
+                                <div >
                                     <span class="name">身份证 :</span> 
                                 <span id="{{'preview_'.$i.'_member_id'}}" class="name_input"></span>
                                 </div>
@@ -267,24 +255,21 @@
 
                         </div>
                     </div>
-                    <div class="pays" id="pays">
+                    <div class="pays clearfix" id="pays">
                         <span class="leader_title">缴费信息</span>
                         <div class="cut"></div>
                         <span class="name">支付方式 :</span>
                         <span id="preview_payment" class="name_input" ></span>
-                        <div class="clearfix"></div>
                     </div>
-                    <div id="code">
+                    <div id="code" class="clearfix">
                         <span class="input-label">验证码  :</span>
                         <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text">
-                        <div class="tips">
-                        </div>
-                        <div class="clearfix"></div>
+                        <div class="tips"></div>
                     </div>
                     <a id="tel">获取手机验证码</a>
                     <div class="clearfix"></div>
-                    <button type="button" class="btn_pre" id="team_info_pre">上一步</button>
-                    <button  class="btn_next" type="submit" id="team_info_next">确认提交</button>
+                    <button type="button" class="btn_pre">上一步</button>
+                    <button  class="btn_next" type="submit">确认提交</button>
 
                 </div>
             </div>
