@@ -649,11 +649,12 @@ body .tips .unuse {
 body .tips .unuse:after {
   border-right: 10px solid #E74C3C;
 }
-body .sex {
+body .input-radio {
   transform: translateY(2px);
   margin-right: 10px;
   margin-top: 5px;
   margin-bottom: 28px;
+  margin-left: 13px;
 }
 body .uploadBtn {
   font-size: 15px;

@@ -54,6 +54,23 @@ body {
         margin: 0 auto;
         margin-top: 30px;
 
+        .successAlert {
+            width: 500px;
+            opacity: 1;
+            margin: 0 auto;
+            background: #587BEF;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #FFFFFF;
+            letter-spacing: 0.58px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            border-radius: 11px;
+            transition: all 1s;
+        }
+
         .title_top {
             width: 100%;
             height: 40px;

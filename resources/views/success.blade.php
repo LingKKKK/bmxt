@@ -21,10 +21,15 @@
         </div>
         
         <div class="mid">
+            <div class="successAlert" id="successAlert">
+                <span>您已报名成功!</span>
+            </div>
+            
             <div class="title_top">
                 <ul>
                     <li>2017啃萝卜</li>
                 </ul>
+                <div class="clearfix"></div>
             </div>
             <div class="all_info clearfix">
                 <div class="active team_info div_tab">
@@ -117,6 +122,10 @@
         </div>
     </div>
 <script type="text/javascript">
+    setTimeout(function(){
+        $('#successAlert').css('opacity', 0);
+    }, 3000);
+
     function showInfo(){
         var leadersList = '';
         leadersList += '<span class="leader_title">领队信息</span>';
