@@ -190,6 +190,7 @@ body .mid .all_info .append_rank .menber_list .delete {
   top: 50px;
   right: 50px;
   cursor: pointer;
+  display: none;
 }
 body .mid .all_info .append_rank .btn_new {
   position: absolute;
@@ -604,11 +605,19 @@ body .input-field-text {
   box-sizing: border-box;
   padding-left: 20px;
 }
+body .file_name {
+  float: left;
+  display: block;
+  margin-left: 15px;
+  margin-top: 0px;
+  line-height: 25px;
+}
 body .tips {
   display: block;
   opacity: 1;
   float: left;
   transition: all 1s;
+  margin-top: -1px;
 }
 body .tips > span {
   font-family: PingFangSC-Regular;
@@ -701,7 +710,7 @@ body .inputstyle {
   outline: medium none;
   filter: alpha(opacity=0);
   -moz-opacity: 0;
-  opacity: 1;
+  opacity: 0;
   transform: translate(-70px, 2px);
   z-index: 99;
   margin-bottom: 30px;

@@ -74,6 +74,7 @@
                         <div class="uploadBtn">上传图片</div>
                         <input type="file" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle">
                         <div class="tips"></div>
+                        <span class="file_name" id="file_name"></span>
                         <div class="clearfix"></div>
                     </div>
                     <button type="button" class="btn_next" id="leader_info_btn">下一步</button>
@@ -170,11 +171,12 @@
                         <div class="clearfix"></div>
                         </div>
                         <div class="input-field">
-                        <span class="input-label">队员照片  :</span>
-                        <div class="uploadBtn">上传图片</div>
-                        <input name="members[{{$i}}][pic]" type="file" class="inputstyle member_pic">
-                        <div class="clearfix"></div>
-                        <div class="cut"></div>
+                            <span class="input-label">队员照片  :</span>
+                            <div class="uploadBtn">上传图片</div>
+                            <input name="members[{{$i}}][pic]" type="file" class="inputstyle member_pic">
+                            <span class="file_name"></span>
+                            <div class="clearfix"></div>
+                            <div class="cut"></div>
                         </div>
                     </div>
                     <?php $i++ ?>
@@ -243,9 +245,11 @@
                                 <span class="name">队员姓名 :</span>
                                 <span data-type="realname" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
-                                <span class="name">身份证 :</span> 
+                                <<div >
+                                    <span class="name">身份证 :</span> 
                                 <span id="{{'preview_'.$i.'_member_id'}}" class="name_input"></span>
-                                <div class="clearfix"></div>
+                                </div>
+                                
                                 <span data-type="mobile" class="name">手机号 :</span> 
                                 <span id="{{'preview_'.$i.'_member_mobile'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
@@ -487,7 +491,14 @@
 
         $("input[type=file]").unbind('change').change(function(){
             validField(this);
+            $(this).siblings('.file_name').html('');
             //文件大小
+            var f = $(this).prop('files')[0];
+            console.log(f)
+            if(f)
+            {
+                $(this).siblings('.file_name').html(f.name);
+            }
          });
 
         $('input[type=file]').unbind('click').click(function(){
@@ -680,6 +691,7 @@
             memberList += '<span class="input-label">队员照片  :</span>';
             memberList += '<div class="uploadBtn">上传图片</div>';
             memberList += '<input name="members['+memberListNum+'][pic]" type="file" class="inputstyle member_pic">';
+            memberList += '<span class="file_name"></span>';
             memberList += '<div class="clearfix"></div>';
             memberList += '<div class="cut"></div>';
             memberList += '</div>';
