@@ -114,6 +114,7 @@ class SignupController extends Controller
         try {
             $ddt = SignupData::create($data);
         } catch (\Exception $e) {
+            return redirect()->back()->withInput();
             return api_response(1 ,'报名失败'.$e->getMessage());
         }
         return redirect('/');
