@@ -50,5 +50,3 @@ Route::post('/uploadimg', 'UtilsController@uploadImg');
 Route::get('/', 'SignupController@signup');
 Route::get('/success', 'SignupController@success');
 Route::post('/signup', 'SignupController@doSignup');
-
-Route::get('/signup/list', 'SignupController@lists');

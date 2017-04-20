@@ -36,35 +36,36 @@
                 <div class="active leader_info div_tab">
                     <div class="input-field">
                         <span class="input-label">姓名  :</span>
-                        <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text">
+
+                        <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
                         <div class="tips"></div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="input-field">
                         <span class="input-label">手机号码  :</span>
-                        <input data-type="mobile" required tip-info="请填写您的常用手机" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile">
+                        <input data-type="mobile" required tip-info="请填写您的常用手机" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
                         <div class="tips">
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="input-field">
                         <span class="input-label">邮箱  :</span>
-                        <input required data-type="email" tip-warn="" tip-info="请按照正确的邮箱格式填写" class="input-field-text" id="leader_email" name="leader_email" type="text">
+                        <input required data-type="email" tip-warn="" tip-info="请按照正确的邮箱格式填写" class="input-field-text" id="leader_email" name="leader_email" type="text" value="{{old('leader_email')}}">
                         <div class="tips">
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="input-field">
                         <span class="input-label">身份证号  :</span>
-                        <input required data-type="ID" tip-info="仅支持仅支持数字以及个别英文" class="input-field-text" id="leader_id" name="leader_id" type="text">
+                        <input required data-type="ID" tip-info="仅支持仅支持数字以及个别英文" class="input-field-text" id="leader_id" name="leader_id" type="text" value="{{old('leader_id')}}">
                         <div class="tips"></div>
                         <div class="clearfix"></div>
                     </div>
 
                     <div class="input-field">
                         <span class="input-label">性别  :</span>
-                        <input class="input-radio man" type="radio" name="leader_sex" checked="checked" value="男"><span>男</span>
-                        <input class="input-radio woman" type="radio" name="leader_sex" value="女"><span>女</span>
+                        <input class="input-radio man" type="radio" name="leader_sex" @if(old('leader_sex') == '' || old('leader_sex') == '男') checked="checked" @endif value="男"><span>男</span>
+                        <input class="input-radio woman" type="radio" name="leader_sex"  @if(old('leader_sex') == '女') checked="checked" @endif value="女"><span>女</span>
 
                         <div class="clearfix"></div>
                     </div>
@@ -81,46 +82,106 @@
                 <div class="ranks_info div_tab">
                     <div class="input-field">
                         <span class="input-label">队伍名称  :</span>
-                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="input-field-text" id="team_name" name="team_name" type="text">
+                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="input-field-text" id="team_name" name="team_name" type="text" value="{{old('team_name')}}">
                             <div class="tips">
                             </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="input-field">
                         <span class="input-label">学校/单位名称  :</span>
-                        <input required tip-warn="" tip-info="仅支持汉字"  class="input-field-text" id="school_name" name="school_name" type="text">
+                        <input required tip-warn="" tip-info="仅支持汉字"  class="input-field-text" id="school_name" name="school_name" type="text" value="{{old('school_name')}}">
                             <div class="tips">
                             </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="input-field">
                         <span class="input-label">学校/单位地址  :</span>
-                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="input-field-text" id="school_address" name="school_address" type="text">
+                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="input-field-text" id="school_address" name="school_address" type="text" value="{{old('school_address')}}">
                         <div class="tips">
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <span class="input-label">赛事项目  :</span>
                     ‍‍<select id="competition_type" name="competition_type">
-                        <option grade="1" value="选项一">选项一</a>
-                        <option grade="2" value="选项二">选项二</a>
-                        <option grade="3" value="选项三">选项三</a>
-                        <option grade="4" value="选项四">选项四</a>
-                        <option grade="5" value="选项五">选项五</a>
+                        @foreach ($competition_types as $value => $text)
+                        <option value="{{$value}}" @if(old('competition_type') == $value) selected @endif >{{$text}}</a>
+                        @endforeach
                     </select>
                     <div class="clearfix"></div>
                     <span class="input-label">组别  :</span>
                     ‍‍<select id="competition_group" name="competition_group">
-                        <option grade="1" value="小学组">小学组</a>
-                        <option grade="2" value="初中组">初中组</a>
-                        <option grade="3" value="高中组">高中组</a>
-                        <option grade="4" value="大学组">大学组</a>
+                        @foreach ($competition_groups as $value => $text)
+                        <option value="{{$value}}" @if(old('competition_group') == $value) selected @endif >{{$text}}</a>
+                        @endforeach
                     </select>
                     <div class="clearfix"></div>
                     <button type="button" class="btn_pre" id="ranks_info_pre">上一步</button>
                     <button type="button" class="btn_next" id="ranks_info_next">下一步</button>
                 </div>
                 <div class="append_rank div_tab">
+                    <?php $i = 20 ?>
+                    @foreach((array)old('members') as $member)
+                    <div class="menber_list">
+                        <div class="delete"><i class="icon kenrobot ken-logo"></i></div>
+                        <div class="input-field">
+                        <span class="input-label">队员姓名{{$i}}:</span>
+                        <input required tip-info="仅支持仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
+                        <div class="tips"></div>
+                        <div class="clearfix"></div>
+                        </div>
+
+                        <div class="input-field">
+                        <span class="input-label">身份证号  :</span>
+                        <input required data-type="ID" tip-info="请输入合法的身份证号格式" name="members[{{$i}}][ID]" class="input-field-text member_id" type="text" value="{{$member['ID']}}">
+                        <div class="tips"></div>
+                        <div class="clearfix"></div>
+                        </div>
+
+
+                        <div class="input-field">
+                        <span class="input-label">手机号码  :</span>
+                        <input required tip-info="仅支持仅支持英文、数字、下划线" name="members[{{$i}}][mobile]" class="input-field-text member_mobile" type="text" value="{{$member['mobile']}}">
+                        <div class="tips"></div>
+                        <div class="clearfix"></div>
+                        </div>
+
+                        <div class="input-field">
+                        <span class="input-label">年龄  :</span>
+                        <input required tip-warn="" tip-info="仅支持数字" name="members[{{$i}}][age]" class="input-field-text member_age" type="text" value="{{$member['age']}}">
+                        <div class="tips"></div>
+                        <div class="clearfix"></div>
+                        </div>
+                        <div class="input-field">
+                        <span class="input-label">性别  :</span>
+                        <input name="members[{{$i}}][sex]" class="input-radio man member_sex" type="radio" checked="checked" name="sex" @if($member['sex'] == '' || $member['sex'] == '男') checked="checked" @endif value="男"><span>男</span>
+                        <input name="members[{{$i}}][sex]" class="input-radio woman member_sex" type="radio" name="sex" @if($member['sex'] == '女') checked="checked" @endif value="女"><span>女</span>
+
+                        <div class="clearfix"></div>
+                        </div>
+                        <div class="input-field">
+                        <span class="input-label">学校/单位名称  :</span>
+                        <input required tip-warn="" tip-info="仅支持汉字"  name="members[{{$i}}][school_name]" class="input-field-text member_school_name" type="text" value="{{$member['school_name']}}">
+                        <div class="tips"></div>
+                        <div class="clearfix"></div>
+                        </div>
+                        <div class="input-field">
+                        <span class="input-label">学校/单位地址  :</span>
+                        <input required tip-warn="" tip-info="仅支持汉字" name="members[{{$i}}][school_address]" class="input-field-text member_school_address" type="text" value="{{$member['school_address']}}">
+                        <div class="tips"></div>
+                        <div class="clearfix"></div>
+                        </div>
+                        <div class="input-field">
+                        <span class="input-label">队员照片  :</span>
+                        <div class="uploadBtn">上传图片</div>
+                        <input name="members[{{$i}}][pic]" type="file" class="inputstyle member_pic">
+                        <div class="clearfix"></div>
+                        <div class="cut"></div>
+                        </div>
+                    </div>
+                    <?php $i++ ?>
+                    @endforeach
+
+
                     <button type="button" class="btn_new" id="append_rank_new">继续添加新成员</button>
                     <button type="button" class="btn_pre" id="append_rank_pre">上一步</button>
                     <button type="button" class="btn_next" id="append_rank_next">下一步</button>
@@ -630,7 +691,12 @@
         //     return false;
         //     console.log('阻止提交');
         // })
-
+        @if(old('leader_sex'))
+        $('input').each(function(){
+            validField(this);
+        });
+        @endif
+        showTab(tabIndex);
         rebindVlidation();
 
     })
