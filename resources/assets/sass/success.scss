@@ -113,10 +113,10 @@ body {
                 display: none;
                 transition: all 0.7s;
 
-                .leader {
+                .leader , .all_number {
                     width: 922px;
-                    height: 340px;
                     display: block;
+                    padding-bottom: 20px;
                     position: relative;
                     background: #FFFFFF;
                     border: 1px solid #EAEAEA;
@@ -177,83 +177,83 @@ body {
                         position: absolute;
                         right: 71px;
                         top: 89px;
-                        display: none;
+                        // display: none;
                     }
                 }
 
-                .all_number {
-                    width: 922px;
-                    display: block;
-                    position: relative;
-                    background: #FFFFFF;
-                    border: 1px solid #EAEAEA;
-                    margin-bottom: 18px;
+                // .all_number {
+                //     width: 922px;
+                //     display: block;
+                //     position: relative;
+                //     background: #FFFFFF;
+                //     border: 1px solid #EAEAEA;
+                //     margin-bottom: 18px;
 
-                    .leader_title {
-                        font-family: PingFangSC-Regular;
-                        font-size: 16px;
-                        color: #587BEF;
-                        letter-spacing: 2.29px;
-                        width: 74px;
-                        height: 22px;
-                        display: block;
-                        margin: 0 auto;
-                        margin-top: 31px;
-                        margin-bottom: 5px;
-                    }
+                //     .leader_title {
+                //         font-family: PingFangSC-Regular;
+                //         font-size: 16px;
+                //         color: #587BEF;
+                //         letter-spacing: 2.29px;
+                //         width: 74px;
+                //         height: 22px;
+                //         display: block;
+                //         margin: 0 auto;
+                //         margin-top: 31px;
+                //         margin-bottom: 5px;
+                //     }
 
-                    .cut {
-                        opacity: 0.2;
-                        background: #587BEF;
-                        display: block;
-                        width: 800px;
-                        height: 2px;
-                        margin: 0 auto;
-                    }
+                //     .cut {
+                //         opacity: 0.2;
+                //         background: #587BEF;
+                //         display: block;
+                //         width: 800px;
+                //         height: 2px;
+                //         margin: 0 auto;
+                //     }
 
-                    .team_number {
-                        padding-bottom: 30px;
+                //     .team_number {
+                //         padding-bottom: 30px;
                         
-                        .cut {
-                            opacity: 0.2;
-                            background: #587BEF;
-                            display: block;
-                            width: 800px;
-                            height: 2px;
-                            margin: 0 auto;
-                        }
+                //         .cut {
+                //             opacity: 0.2;
+                //             background: #587BEF;
+                //             display: block;
+                //             width: 800px;
+                //             height: 2px;
+                //             margin: 0 auto;
+                //         }
 
-                        .name {
-                            font-family: PingFangSC-Regular;
-                            font-size: 14px;
-                            color: #666666;
-                            letter-spacing: 2px;
-                            width: 121px;
-                            height: 20px;
-                            margin-right: 10px;
-                            display: block;
-                            float: left;
-                            line-height: 20px;
-                            margin-left: 71px;
-                            margin-top: 30px;
-                        }
+                //         .name {
+                //             font-family: PingFangSC-Regular;
+                //             font-size: 14px;
+                //             color: #666666;
+                //             letter-spacing: 2px;
+                //             width: 121px;
+                //             height: 20px;
+                //             margin-right: 10px;
+                //             display: block;
+                //             float: left;
+                //             line-height: 20px;
+                //             margin-left: 71px;
+                //             margin-top: 30px;
+                //         }
 
-                        .name_input {
-                            display: block;
-                            float: left;
-                            font-family: PingFangSC-Regular;
-                            font-size: 14px;
-                            color: #666666;
-                            line-height: 20px;
-                            letter-spacing: 2px;
-                            margin-top: 30px;
-                        }
+                //         .name_input {
+                //             display: block;
+                //             float: left;
+                //             font-family: PingFangSC-Regular;
+                //             font-size: 14px;
+                //             color: #666666;
+                //             line-height: 20px;
+                //             letter-spacing: 2px;
+                //             margin-top: 30px;
+                //         }
 
-                        .school_add {
-                            margin-bottom: 30px;
-                        }
-                    }
-                }
+                //         .school_add {
+                //             margin-bottom: 30px;
+                //         }
+                //     }
+                // }
                 
                 .pays {
                     width: 922px;

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*重置css*/
 /*重置css*/
 body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
@@ -167,16 +168,16 @@ body .mid .all_info .team_info {
   display: none;
   transition: all 0.7s;
 }
-body .mid .all_info .team_info .leader {
+body .mid .all_info .team_info .leader, body .mid .all_info .team_info .all_number {
   width: 922px;
-  height: 340px;
   display: block;
+  padding-bottom: 20px;
   position: relative;
   background: #FFFFFF;
   border: 1px solid #EAEAEA;
   margin-bottom: 18px;
 }
-body .mid .all_info .team_info .leader .leader_title {
+body .mid .all_info .team_info .leader .leader_title, body .mid .all_info .team_info .all_number .leader_title {
   font-family: PingFangSC-Regular;
   font-size: 16px;
   color: #587BEF;
@@ -188,7 +189,7 @@ body .mid .all_info .team_info .leader .leader_title {
   margin-top: 31px;
   margin-bottom: 5px;
 }
-body .mid .all_info .team_info .leader .cut {
+body .mid .all_info .team_info .leader .cut, body .mid .all_info .team_info .all_number .cut {
   opacity: 0.2;
   background: #587BEF;
   display: block;
@@ -196,7 +197,7 @@ body .mid .all_info .team_info .leader .cut {
   height: 2px;
   margin: 0 auto;
 }
-body .mid .all_info .team_info .leader .name {
+body .mid .all_info .team_info .leader .name, body .mid .all_info .team_info .all_number .name {
   font-family: PingFangSC-Regular;
   font-size: 14px;
   color: #666666;
@@ -210,7 +211,7 @@ body .mid .all_info .team_info .leader .name {
   margin-left: 71px;
   margin-top: 30px;
 }
-body .mid .all_info .team_info .leader .name_input {
+body .mid .all_info .team_info .leader .name_input, body .mid .all_info .team_info .all_number .name_input {
   display: block;
   float: left;
   font-family: PingFangSC-Regular;
@@ -220,80 +221,13 @@ body .mid .all_info .team_info .leader .name_input {
   letter-spacing: 2px;
   margin-top: 30px;
 }
-body .mid .all_info .team_info .leader img {
+body .mid .all_info .team_info .leader img, body .mid .all_info .team_info .all_number img {
   width: 120px;
   height: 160px;
   display: block;
   position: absolute;
   right: 71px;
   top: 89px;
-  display: none;
-}
-body .mid .all_info .team_info .all_number {
-  width: 922px;
-  display: block;
-  position: relative;
-  background: #FFFFFF;
-  border: 1px solid #EAEAEA;
-  margin-bottom: 18px;
-}
-body .mid .all_info .team_info .all_number .leader_title {
-  font-family: PingFangSC-Regular;
-  font-size: 16px;
-  color: #587BEF;
-  letter-spacing: 2.29px;
-  width: 74px;
-  height: 22px;
-  display: block;
-  margin: 0 auto;
-  margin-top: 31px;
-  margin-bottom: 5px;
-}
-body .mid .all_info .team_info .all_number .cut {
-  opacity: 0.2;
-  background: #587BEF;
-  display: block;
-  width: 800px;
-  height: 2px;
-  margin: 0 auto;
-}
-body .mid .all_info .team_info .all_number .team_number {
-  padding-bottom: 30px;
-}
-body .mid .all_info .team_info .all_number .team_number .cut {
-  opacity: 0.2;
-  background: #587BEF;
-  display: block;
-  width: 800px;
-  height: 2px;
-  margin: 0 auto;
-}
-body .mid .all_info .team_info .all_number .team_number .name {
-  font-family: PingFangSC-Regular;
-  font-size: 14px;
-  color: #666666;
-  letter-spacing: 2px;
-  width: 121px;
-  height: 20px;
-  margin-right: 10px;
-  display: block;
-  float: left;
-  line-height: 20px;
-  margin-left: 71px;
-  margin-top: 30px;
-}
-body .mid .all_info .team_info .all_number .team_number .name_input {
-  display: block;
-  float: left;
-  font-family: PingFangSC-Regular;
-  font-size: 14px;
-  color: #666666;
-  line-height: 20px;
-  letter-spacing: 2px;
-  margin-top: 30px;
-}
-body .mid .all_info .team_info .all_number .team_number .school_add {
-  margin-bottom: 30px;
 }
 body .mid .all_info .team_info .pays {
   width: 922px;
