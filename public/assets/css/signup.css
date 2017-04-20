@@ -98,6 +98,7 @@ body .mid {
   display: block;
   margin: 0 auto;
   margin-top: 30px;
+  min-height: 682px;
 }
 body .mid .tab_menu {
   width: 100%;
@@ -176,7 +177,8 @@ body .mid .all_info .append_rank .menber_list .user_age {
   padding-left: 20px;
 }
 body .mid .all_info .append_rank .menber_list .cut {
-  width: 800px;
+  width: 862px;
+  transform: translateX(-45px);
   border-bottom: 1px #666 solid;
   margin-bottom: 35px;
 }
@@ -431,7 +433,6 @@ body .mid .all_info .active {
 body .footer {
   height: 182px;
   background: #587BEF;
-  margin-top: 200px;
 }
 body .footer .inner {
   width: 1180px;
@@ -591,6 +592,7 @@ body .input-label {
   display: block;
   float: left;
   margin-top: 4px;
+  margin-right: 10px;
 }
 body .input-field-text {
   border: 1px solid #CCCCCC;
@@ -626,36 +628,51 @@ body .tips > span:after {
   position: absolute;
   width: 0;
   height: 0;
-  border-right: 10px solid #587BEF;
-  border-bottom: 5px solid transparent;
-  border-top: 5px solid transparent;
-  left: -10px;
-  top: 10px;
+  border-right: 8px solid #587BEF;
+  border-bottom: 6px solid transparent;
+  border-top: 6px solid transparent;
+  left: -8px;
+  top: 9px;
 }
 body .tips .cue {
   background: #587BEF;
 }
 body .tips .cue:after {
-  border-right: 10px solid #587BEF;
+  border-right: 8px solid #587BEF;
 }
 body .tips .useable {
   background: #2ECC71;
 }
 body .tips .useable:after {
-  border-right: 10px solid #2ECC71;
+  border-right: 8px solid #2ECC71;
+}
+body .tips .useable i {
+  display: block;
+  background: #fff;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: #2ECC71;
+  font-size: 19px;
+}
+body .tips .useable i:before {
+  content: "\e668";
+  position: absolute;
+  left: 9px;
+  top: 6px;
 }
 body .tips .unuse {
   background: #E74C3C;
 }
 body .tips .unuse:after {
-  border-right: 10px solid #E74C3C;
+  border-right: 8px solid #E74C3C;
 }
 body .input-radio {
   transform: translateY(2px);
   margin-right: 10px;
   margin-top: 5px;
   margin-bottom: 28px;
-  margin-left: 13px;
+  margin-left: 20px;
 }
 body .uploadBtn {
   font-size: 15px;
@@ -668,10 +685,16 @@ body .uploadBtn {
   color: #587BEF;
   letter-spacing: 2px;
   line-height: 25px;
-  padding: 0px 10px;
+  padding: 1px 11px;
   cursor: pointer;
   z-index: 999;
   position: relative;
+  transition: all 0.7s;
+  margin-top: -1px;
+}
+body .uploadBtn:hover {
+  color: #fff;
+  background: #587BEF;
 }
 body .inputstyle {
   cursor: pointer;
@@ -714,6 +737,6 @@ body .cut {
   background: #587BEF;
   display: block;
   width: 800px;
-  height: 2px;
+  height: 0px;
   margin: 0 auto;
 }
