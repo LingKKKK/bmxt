@@ -72,7 +72,7 @@
                     <div class="input-field">
                         <span class="input-label">领队照片  :</span>
                         <div class="uploadBtn">上传图片</div>
-                        <input type="file" required name="leader_pic" id="leader_pic" class="inputstyle">
+                        <input type="file" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle">
                         <div class="tips"></div>
                         <div class="clearfix"></div>
                     </div>
@@ -396,6 +396,22 @@
                 $el.siblings('.tips').html(tipWarn('照片不能为空'));
                 return false;
             }
+
+            var fileObj = document.getElementById($el.prop('id'));
+            if(fileObj)
+            {
+                var f = fileObj.files[0];
+                if(f)
+                {
+                    if(f.size > 2 * 1024 * 1024)
+                    {
+                        $el.siblings('.tips').html(tipWarn('文件大小不能超过2M！'));
+                        return false;
+                    }
+
+                }
+            }
+
             //TODO : 文件格式，文件大小限制
         } else if(type == 'text') {
             if ($el.prop('required') && val == '') {
@@ -456,19 +472,27 @@
 
     // 重新绑定事件, DOM发生变化时调用
     function rebindVlidation() {
-        // 所有信息都不能为空
+        // 空间验证
         $("input").unbind('blur').blur(function(){
             validField(this);
-            var $el = $(this);
-            var name = $el.attr('name');
 
             return false;
         });
 
+        //输入提示
         $("input").unbind('focus').focus(function(){
             inputTips(this);
             return false;
         });
+
+        $("input[type=file]").unbind('change').change(function(){
+            validField(this);
+            //文件大小
+         });
+
+        $('input[type=file]').unbind('click').click(function(){
+            inputTips(this);
+        })
 
         $('.append_rank .menber_list .delete').click(function(){
             $(this).parent('.menber_list').remove();
@@ -591,6 +615,8 @@
                 }
             );
         });
+
+
 
         //更新表单验证绑定
 
