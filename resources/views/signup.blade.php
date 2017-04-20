@@ -125,22 +125,21 @@
                         <div class="delete"><i class="icon kenrobot ken-logo"></i></div>
                         <div class="input-field">
                         <span class="input-label">队员姓名{{$i}}:</span>
-                        <input required tip-info="仅支持仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
+                        <input data-type="realname" required tip-info="仅支持仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
                         <div class="tips"></div>
                         <div class="clearfix"></div>
                         </div>
 
                         <div class="input-field">
                         <span class="input-label">身份证号  :</span>
-                        <input required data-type="ID" tip-info="请输入合法的身份证号格式" name="members[{{$i}}][ID]" class="input-field-text member_id" type="text" value="{{$member['ID']}}">
+                        <input data-type="ID" required data-type="ID" tip-info="请输入合法的身份证号格式" name="members[{{$i}}][ID]" class="input-field-text member_id" type="text" value="{{$member['ID']}}">
                         <div class="tips"></div>
                         <div class="clearfix"></div>
                         </div>
 
-
                         <div class="input-field">
                         <span class="input-label">手机号码  :</span>
-                        <input required tip-info="仅支持仅支持英文、数字、下划线" name="members[{{$i}}][mobile]" class="input-field-text member_mobile" type="text" value="{{$member['mobile']}}">
+                        <input data-type="mobile" required tip-info="仅支持仅支持英文、数字、下划线" name="members[{{$i}}][mobile]" class="input-field-text member_mobile" type="text" value="{{$member['mobile']}}">
                         <div class="tips"></div>
                         <div class="clearfix"></div>
                         </div>
@@ -155,9 +154,9 @@
                         <span class="input-label">性别  :</span>
                         <input name="members[{{$i}}][sex]" class="input-radio man member_sex" type="radio" checked="checked" name="sex" @if($member['sex'] == '' || $member['sex'] == '男') checked="checked" @endif value="男"><span>男</span>
                         <input name="members[{{$i}}][sex]" class="input-radio woman member_sex" type="radio" name="sex" @if($member['sex'] == '女') checked="checked" @endif value="女"><span>女</span>
-
                         <div class="clearfix"></div>
                         </div>
+
                         <div class="input-field">
                         <span class="input-label">学校/单位名称  :</span>
                         <input required tip-warn="" tip-info="仅支持汉字"  name="members[{{$i}}][school_name]" class="input-field-text member_school_name" type="text" value="{{$member['school_name']}}">
@@ -621,7 +620,7 @@
 
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">手机号码  :</span>';
-            memberList += '<input required tip-info="仅支持仅支持英文、数字、下划线" name="members['+memberListNum+'][mobile]" class="input-field-text member_mobile" type="text">';
+            memberList += '<input data-type="mobile" required tip-info="仅支持仅支持英文、数字、下划线" name="members['+memberListNum+'][mobile]" class="input-field-text member_mobile" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
