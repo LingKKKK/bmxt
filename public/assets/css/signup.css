@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*重置css*/
 /*重置css*/
 body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
@@ -72,6 +71,7 @@ ul, ol, dl {
 }
 
 body {
+  min-width: 1200px;
   background: #fff;
   position: relative;
   font-family: PingFangSC-Regular;
@@ -695,6 +695,11 @@ body button {
   position: absolute;
   transition: all 0.5s;
   cursor: pointer;
+  border: 0;
+  opacity: 1;
+}
+body button:hover {
+  opacity: 0.8;
 }
 body .btn_next {
   right: 90px;

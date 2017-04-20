@@ -7,6 +7,7 @@
 }
 
 body {
+    min-width: 1200px;
     background:#fff;
     position: relative;
 
@@ -142,6 +143,11 @@ body {
                         width: 800px;
                         height: 2px;
                         margin: 0 auto;
+                        position: relative;
+
+                        img {
+                            right: 10px;
+                        }
                     }
 
                     .name {

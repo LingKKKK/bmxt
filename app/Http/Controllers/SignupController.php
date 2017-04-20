@@ -23,7 +23,7 @@ class SignupController extends Controller
     {
         // $this->sendMail('2429175732@qq.com');
         $signdata = $request->session()->get('signdata');
-        // $request->session()->forget('signdata');
+
         if ($signdata) {
             $signdata['members'] = json_decode($signdata['members'], true);
             return view('success', compact('signdata'));
@@ -89,7 +89,7 @@ class SignupController extends Controller
 
         $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
 
-        $request->session()->put('signdata', $data);
+        $request->session()->flash('signdata', $data);
 
         $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
         $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);

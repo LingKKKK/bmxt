@@ -7,6 +7,7 @@
 }
 
 body {
+    min-width: 1200px;
     background:#fff;
     position: relative;
     font-family: PingFangSC-Regular;
@@ -711,6 +712,12 @@ body {
         position: absolute;
         transition: all 0.5s;
         cursor: pointer;
+        border: 0;
+        opacity: 1;
+
+        &:hover {
+            opacity: 0.8;
+        }
     }
 
    .btn_next {

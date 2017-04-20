@@ -194,7 +194,7 @@
                                 <span class="name">年龄 :</span>
                                 <span id="{{'preview_'.$i.'_member_age'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
-                                <span class="name">学校/单位名称 :</span>
+                                <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
                                 <span id="{{'preview_'.$i.'_member_school_name'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -566,13 +566,13 @@
             memberList += '</div>';
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">学校/单位名称  :</span>';
-            memberList += '<input required tip-warn="" tip-info="仅支持汉字"  name="members['+memberListNum+'][school]" class="input-field-text member_school_name" type="text">';
+            memberList += '<input required tip-warn="" tip-info="仅支持汉字"  name="members['+memberListNum+'][school_name]" class="input-field-text member_school_name" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">学校/单位地址  :</span>';
-            memberList += '<input required tip-warn="" tip-info="仅支持汉字" name="members['+memberListNum+'][address]" class="input-field-text member_school_address" type="text">';
+            memberList += '<input required tip-warn="" tip-info="仅支持汉字" name="members['+memberListNum+'][school_address]" class="input-field-text member_school_address" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
@@ -612,10 +612,10 @@
             showTab(tabIndex);
         });
 
-        $('form').submit(function(){
-            return false;
-            console.log('阻止提交');
-        })
+        // $('form').submit(function(){
+        //     return false;
+        //     console.log('阻止提交');
+        // })
 
         rebindVlidation();
 
