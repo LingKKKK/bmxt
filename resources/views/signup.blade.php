@@ -3,6 +3,7 @@
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 </head>
 <body>
@@ -35,7 +36,7 @@
                 <div class="active leader_info div_tab">
                     <div class="input-field">
                         <span class="input-label">姓名  :</span>
-                        <input required tip-warn="" tip-info="仅支持仅支持英文、汉字"  class="input-field-text" id="leader_name" name="leader_name" type="text">
+                        <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text">
                         <div class="tips"></div>
                         <div class="clearfix"></div>
                     </div>
@@ -180,12 +181,12 @@
                             <div id="member_info_{{$i}}" class="member_info" style="display: none;">
                                 <div class="cut"></div>
                                 <span class="name">队员姓名 :</span>
-                                <span id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
+                                <span data-type="realname" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                                 <span class="name">身份证 :</span> 
                                 <span id="{{'preview_'.$i.'_member_id'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
-                                <span class="name">手机号 :</span> 
+                                <span data-type="mobile" class="name">手机号 :</span> 
                                 <span id="{{'preview_'.$i.'_member_mobile'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                                 <span class="name">性别 :</span>
@@ -273,11 +274,19 @@
     }
 
     function tipValid(){
-        return '<span class="useable">√</span>';
+        return '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
     }
 
     function tipInfo(msg){
         return '<span class="cue">'+msg+'</span>';
+    }
+
+    function isName(val) {
+        reg= /^[\u4e00-\u9fa5a-z]+$/gi;
+        if(!reg.test(val)) {
+            return false;
+        }
+        return true;
     }
 
     function isEmail(mail) {
@@ -332,6 +341,11 @@
             if ($el.prop('required') && val == '') {
                 $el.siblings('.tips').html(tipWarn('不能为空！'));
                 //console.log('不能')
+                return false;
+            }
+
+            if (datatype == 'realname' && !isName(val)) {
+                $el.siblings('.tips').html(tipWarn('姓名不能是数字或特殊字符，请重新输入!'));
                 return false;
             }
 
