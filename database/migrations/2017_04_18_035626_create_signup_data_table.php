@@ -25,8 +25,8 @@ class CreateSignupDataTable extends Migration
             $table->string('team_name', 50)->comments('队伍名称');
             $table->string('school_name', 50)->comments('学校或单位名称');
             $table->string('school_address', 200)->comments('学校地址');
-            $table->string('competiton_type', 50)->comments('赛事项目');
-            $table->string('competiton_group', 50)->comments('组别');
+            $table->string('competition_type', 50)->comments('赛事项目');
+            $table->string('competition_group', 50)->comments('组别');
 
             $table->string('members', 1200)->comments('队员列表:json');
 

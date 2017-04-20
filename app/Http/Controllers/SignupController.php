@@ -9,6 +9,7 @@ use App\Enroll\SignupData;
 use Validator;
 use Mail;
 use Storage;
+use Session;
 
 class SignupController extends Controller
 {
@@ -18,9 +19,16 @@ class SignupController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function signup()
+    public function signup(Request $request)
     {
         // $this->sendMail('2429175732@qq.com');
+        $signdata = $request->session()->get('signdata');
+        // $request->session()->forget('signdata');
+        if ($signdata) {
+            $signdata['members'] = json_decode($signdata['members'], true);
+            return view('success', compact('signdata'));
+        }
+
         return view('signup');
     }
 
@@ -54,13 +62,13 @@ class SignupController extends Controller
             ]
         );
 
-        if ($validator->fails()) {
-            return api_response(1, 'Fail', $validator->errors()->toArray());
-        }
+        // if ($validator->fails()) {
+        //     return api_response(1, 'Fail', $validator->errors()->toArray());
+        // }
 
         //表单地钻
         $keys = ['leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 
-                'team_name', 'school_name', 'school_address', 'competiton_type', 'competiton_group',
+                'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
                 'payment'
         ];
 
@@ -73,7 +81,7 @@ class SignupController extends Controller
         $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
 
         foreach ($origin_members as $k => $item) {
-            $member_info = array_only($item, ['name', 'mobile', 'age', 'sex', 'school_name']);
+            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name']);
             $pic = isset($item['pic']) ? $item['pic'] : null;
             $member_info['pic'] = $this->saveFile($item['pic']);
             $members[] = $member_info;
@@ -81,15 +89,17 @@ class SignupController extends Controller
 
         $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
 
+        $request->session()->put('signdata', $data);
+
         $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
         $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
 
-        // dd($data, $request->all());
         try {
             $ddt = SignupData::create($data);
         } catch (\Exception $e) {
             return api_response(1 ,'报名失败'.$e->getMessage());
         }
+        return redirect('/');
         // $this->sendMail('');
         return api_response(0, '报名成功', $ddt->toArray());
     }

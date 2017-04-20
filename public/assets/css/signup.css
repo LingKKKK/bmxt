@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*重置css*/
 /*重置css*/
 body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
@@ -649,11 +650,12 @@ body .tips .unuse {
 body .tips .unuse:after {
   border-right: 10px solid #E74C3C;
 }
-body .sex {
+body .input-radio {
   transform: translateY(2px);
   margin-right: 10px;
   margin-top: 5px;
   margin-bottom: 28px;
+  margin-left: 13px;
 }
 body .uploadBtn {
   font-size: 15px;

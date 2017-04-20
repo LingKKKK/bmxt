@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="mid">
-            <form action="/signup" enctype="multipart/form-data" method="POST" novalidate>
+            <form id="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate>
 
             <div class="tab_menu">
                 <ul>
@@ -109,7 +109,7 @@
                     </select>
                     <div class="clearfix"></div>
                     <span class="input-label">组别  :</span>
-                    ‍‍<select id="competiton_group" name="competiton_group">
+                    ‍‍<select id="competition_group" name="competition_group">
                         <option grade="1" value="小学组">小学组</a>
                         <option grade="2" value="初中组">初中组</a>
                         <option grade="3" value="高中组">高中组</a>
@@ -127,7 +127,7 @@
                 <div class="payment div_tab">
                     <span class="input-label">缴费方式:</span>
                     <input class="input-radio man" type="radio" name="payment" checked="checked" value="现场缴费"><span>现场缴费</span>
-                    <input class="input-radio woman" type="radio" name="payment" value="在线支付"><span>在线支付(暂不支持)</span>
+                    <input class="input-radio woman" type="radio" name="payment" disabled value="在线支付"><span style="color: #ccc" >在线支付(暂不支持)</span>
 
                     <div class="clearfix"></div>
                     <button type="button" class="btn_pre" id="payment_pre">上一步</button>
@@ -170,7 +170,7 @@
                         <span id="preview_competition_type" class="name_input"></span>
                         <div class="clearfix"></div>
                         <span class="name">组别 :</span>
-                        <span id="preview_competiton_group" class="name_input"></span>
+                        <span id="preview_competition_group" class="name_input"></span>
                         <div class="clearfix"></div>
                     </div>
                     <div class="all_number">
@@ -182,7 +182,10 @@
                                 <span class="name">队员姓名 :</span>
                                 <span id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
-                                <span class="name">手机号码 :</span> 
+                                <span class="name">身份证 :</span> 
+                                <span id="{{'preview_'.$i.'_member_id'}}" class="name_input"></span>
+                                <div class="clearfix"></div>
+                                <span class="name">手机号 :</span> 
                                 <span id="{{'preview_'.$i.'_member_mobile'}}" class="name_input"></span>
                                 <div class="clearfix"></div>
                                 <span class="name">性别 :</span>
@@ -446,7 +449,7 @@
         $('.append_rank > .menber_list').each(function(index){
             console.log(index);
 
-            var mapKey = new Array('member_name', 'member_mobile', 'member_age', 'member_sex', 'member_school_name', 'member_school_address');
+            var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_school_name', 'member_school_address');
             for (var i = 0; i < mapKey.length; i++) {
                 var key = mapKey[i];
 
@@ -529,16 +532,25 @@
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">队员姓名('+ memberListNum +'):</span>';
             memberList += '<input required tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="input-field-text member_name" type="text">';
-
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
+
+            memberList += '<div class="input-field">';
+            memberList += '<span class="input-label">身份证号  :</span>';
+            memberList += '<input required data-type="ID" tip-info="请输入合法的身份证号格式" name="members['+memberListNum+'][ID]" class="input-field-text member_id" type="text">';
+            memberList += '<div class="tips"></div>';
+            memberList += '<div class="clearfix"></div>';
+            memberList += '</div>';
+
+
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">手机号码  :</span>';
             memberList += '<input required tip-info="仅支持仅支持英文、数字、下划线" name="members['+memberListNum+'][mobile]" class="input-field-text member_mobile" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
+
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">年龄  :</span>';
             memberList += '<input required tip-warn="" tip-info="仅支持数字" name="members['+memberListNum+'][age]" class="input-field-text member_age" type="text">';
@@ -599,6 +611,11 @@
             tabIndex -=1;
             showTab(tabIndex);
         });
+
+        $('form').submit(function(){
+            return false;
+            console.log('阻止提交');
+        })
 
         rebindVlidation();
 
