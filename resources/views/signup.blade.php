@@ -4,7 +4,6 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
-    <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 </head>
 <body>
     <div class="main">
@@ -299,8 +298,37 @@
         </div>
 
     </div>
-<script type="text/javascript">
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 
+    <script type="text/javascript">
+
+    (function($){
+        $.fn.tipInfo = function(tipMsg){
+            $(this).siblings('.tips').html('<span class="cue">'+tipMsg+'</span>');
+        }
+
+        $.fn.tipWarn = function(tipMsg) {
+            $(this).siblings('.tips').html('<span class="unuse">'+tipMsg+'</span>')
+        }
+
+        $.fn.tipValid = function() {
+            $(this).siblings('.tips').html('<span class="useable"><i class="icon kenrobot ken-check"></i></span>');
+        }
+
+        $.fn.tipClear = function() {
+            $(this).siblings('.tips').html('');
+        }
+
+        $.fn.refreshCaptcha = function(){
+            if($(this).prop('tagName') == 'IMG'){
+                var timestamp = Date.parse(new Date());
+                $(this).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
+            }
+        }
+
+    })(jQuery);
+
+    //修改
     function refresh_captcha($el) {
         var timestamp = Date.parse(new Date());
         $($el).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
@@ -318,18 +346,7 @@
         },1000);
     }
 
-    function tipWarn(msg){
-        return '<span class="unuse">'+msg+'</span>';
-    }
-
-    function tipValid(){
-        return '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
-    }
-
-    function tipInfo(msg){
-        return '<span class="cue">'+msg+'</span>';
-    }
-
+    //判断是否位真实姓名
     function isName(val) {
         reg= /^[\u4e00-\u9fa5a-z]+$/gi;
         if(!reg.test(val)) {
@@ -338,10 +355,10 @@
         return true;
     }
 
+    //邮件判断
     function isEmail(mail) {
         reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
         if(!reg.test(mail)) {
-            //console.log("非法的电子邮件");
             return false;
         }
         return true;
@@ -350,9 +367,7 @@
     //手机
     function isMobile(val) {
         reg = /^1(?:[38]\d|4[4579]|5[0-35-9]|7[35678])\d{8}$/
-        // reg=/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))d{8}$/gi;
         if(!reg.test(val)) {
-            //console.log("错误的手机格式");
             return false;
         }
         return true;
@@ -360,29 +375,25 @@
 
     //身份证
     function isID(val) {
-        reg1=/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/gi;
-        reg2=/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/gi;
-
         var idCardReg =/(^\d{15}$)|(^\d{17}([0-9]|X|x))$/gi;
 
         if(!idCardReg.test(val)) {
-            //console.log("错误的身份证格式");
             return false;
         }
         return true;
     }
 
+    //校验表单字段
     function validField(el) {
         var $el = $(el);
         var name = $el.attr('name');
         var type = $el.attr('type');
         var val = $el.val();
         var datatype = $el.data('type');// 数据类型 email , mobile , ID,
-        //console.log('name' + name);
 
         if (type == 'file') {
             if ($el.prop('required') && val == '') {
-                $el.siblings('.tips').html(tipWarn('照片不能为空'));
+                $el.tipWarn('照片不能为空');
                 return false;
             }
 
@@ -394,62 +405,46 @@
                 {
                     if(f.size > 2 * 1024 * 1024)
                     {
-                        $el.siblings('.tips').html(tipWarn('文件大小不能超过2M！'));
+                        $el.tipWarn('文件大小不能超过2M！');
                         return false;
                     }
 
                 }
             }
 
-            //TODO : 文件格式，文件大小限制
         } else if(type == 'text') {
             if ($el.prop('required') && val == '') {
-                $el.siblings('.tips').html(tipWarn('不能为空！'));
+                $el.tipWarn('不能为空！');
                 //console.log('不能')
                 return false;
             }
 
             if (datatype == 'realname' && !isName(val)) {
-                $el.siblings('.tips').html(tipWarn('姓名不能是数字或特殊字符，请重新输入!'));
+                $el.tipWarn('姓名不能是数字或特殊字符，请重新输入!');
                 return false;
             }
 
             if (datatype == 'email' && !isEmail(val)) {
-                $el.siblings('.tips').html(tipWarn('邮件格式不正确'));
+                $el.tipWarn('邮件格式不正确');
                 //console.log('Email');
 
                 return false;
             }
 
             if (datatype == 'mobile' && !isMobile(val)) {
-                $el.siblings('.tips').html(tipWarn('手机格式不正确'));
+                $el.tipWarn('手机格式不正确');
                 return false;
             }
 
             if (datatype == 'ID' && ! isID(val)) {
-                $el.siblings('.tips').html(tipWarn('身份证号格式不正确'));
+                $el.tipWarn('身份证号格式不正确');
                 return false;
             }
         }
 
-        $el.siblings('.tips').html(tipValid());
+        $el.tipValid();
         return true;
     }
-
-    //输入时提示
-    function inputTips(el) {
-        var $el = $(el);
-        $el.siblings('.tips').html('');
-
-        var tip_info = $el.attr('tip-info');
-        var required = $el.prop('required');
-
-        var tip_info = tip_info ? tip_info : required ? '不能为空' : '';
-        if (tip_info) {
-            $el.siblings('.tips').html(tipInfo(tip_info));
-        }
-    }
-
 
     function showTab(index) {
         //checkTab
@@ -470,34 +465,30 @@
 
         //输入提示
         $("input").unbind('focus').focus(function(){
-            inputTips(this);
+            $(this).tipClear();
+            var tip_info = $(this).attr('tip-info');
+            var required = $(this).prop('required');
+            var tip_info = tip_info ? tip_info : required ? '不能为空' : '';
+            if (tip_info) {
+                $(this).tipInfo(tip_info);
+            }
             return false;
         });
 
+        //获取文件信息
         $("input[type=file]").unbind('change').change(function(){
             validField(this);
             $(this).siblings('.file_name').html('');
-            //文件大小
             var f = $(this).prop('files')[0];
-            console.log(f)
             if(f)
             {
                 $(this).siblings('.file_name').html(f.name);
             }
          });
 
-        $('input[type=file]').unbind('click').click(function(){
-            inputTips(this);
-        })
-
         $('.append_rank .menber_list .delete').click(function(){
             $(this).parent('.menber_list').remove();
         })
-    
-        // 上传照片
-        $('.leader_info .uploadBtn').unbind('click').click(function() {
-            $('.leader_info .inputstyle').click();
-        });
 
         //上传 队员照片
         $('.uploadBtn').unbind('click').click(function() {
@@ -575,8 +566,7 @@
 
         // 点击刷新验证码图片
         $('.identifying .showBox img').click(function (){
-            //console.log($('.identifying .showBox img').attr("src"));
-            refresh_captcha(this);
+            $(this).refreshCaptcha();
         });
 
         // 点击取消输入验证码
