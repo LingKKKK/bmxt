@@ -21,16 +21,32 @@ class SignupController extends Controller
     
     public function signup(Request $request)
     {
-        // $this->sendMail('2429175732@qq.com');
+        //数据展示
         $signdata = $request->session()->get('signdata');
-
         if ($signdata) {
             $signdata['members'] = json_decode($signdata['members'], true);
             return view('success', compact('signdata'));
         }
 
-        return view('signup');
+        $competition_groups = [
+            '小学组' => '小学组',
+            '中学组' => '中学组',
+            '高中组' => '高中组',
+            '大学组' => '大学组',
+        ];
+
+        $competition_types = [
+            '选项一' => '选项一',
+            '选项二' => '选项二',
+            '选项三' => '选项三',
+            '选项四' => '选项四'
+        ];
+
+        return view('signup', compact('competition_types', 'competition_groups'));
     }
+
+
+
 
     public function success()
     {
@@ -48,7 +64,6 @@ class SignupController extends Controller
                 'leader_pic' => 'required|image',
                 'leader_email' => 'required|email',
                 'leader_mobile' => 'required',
-
                 'team_name' => 'required',
                 'school_name' => 'required',
                 'school_address' => 'required', 
@@ -62,13 +77,14 @@ class SignupController extends Controller
             ]
         );
 
-        // if ($validator->fails()) {
-        //     return api_response(1, 'Fail', $validator->errors()->toArray());
-        // }
+        if ($validator->fails()) {
+            // return api_response(1, 'Fail', $validator->errors()->toArray());
+            return redirect()->back()->withInput();
+        }
 
         //表单地钻
         $keys = ['leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 
-                'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
+                 'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
                 'payment'
         ];
 
@@ -88,6 +104,7 @@ class SignupController extends Controller
         }
 
         $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
+        $data['team_no'] = $this->getTeamNo();
 
         $request->session()->flash('signdata', $data);
 
@@ -102,6 +119,11 @@ class SignupController extends Controller
         return redirect('/');
         // $this->sendMail('');
         return api_response(0, '报名成功', $ddt->toArray());
+    }
+
+    protected function getTeamNo()
+    {
+        //队伍码生成规则
     }
 
     //发送邮件
@@ -138,41 +160,5 @@ class SignupController extends Controller
 
         return $publicPath;
         // return compact('filename', 'storePath', 'publicPath');
-    }
-
-    public function lists()
-    {
-
-        $testData = [
-                "leader" =>   [
-                    "title" =>  "领队信息",
-                    "user_name" =>  "fdagtshhdesf",
-                    "name" =>  "啊啊",
-                    "sex" =>  "男",
-                    "mail" =>  "23254235@qq.com",
-                    "tel" =>  "15090000000",
-                ],
-                "team" =>  [
-                    "title" =>  "队伍信息",
-                    "name" =>  "蓝色风暴队",
-                    "school" =>  "东北电力大学",
-                    "address" =>  "吉林省 吉林省 xx区 xxxxxxxxxxxxxxx",
-                    "type_item" =>  "引领未来",
-                    "type" =>  "大学组",
-                ],
-                "payment" =>  [
-                    "type" =>  "现场支付",
-                ],
-                "team_num" =>  [
-                        "name" =>  "啊啊啊",
-                        "tel" =>  "15090000000",
-                        "sex" =>  "男",
-                        "age" =>  "24",
-                        "school" =>  "东北电力大学",
-                        "address" =>  "吉林省 吉林省 xx区 xxxxxxxxxxxxxxx",
-                ]
-        ];
-
-        return api_response(0, 'OK', $testData);
     }
 }

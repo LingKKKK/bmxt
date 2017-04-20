@@ -22,6 +22,8 @@ class CreateSignupDataTable extends Migration
             $table->string('leader_email', 20)->comments('领队电话'); // 注册手机
             $table->string('leader_pic', 1200)->comments('领队照片');
 
+            $table->string('team_no', 50)->comments('队伍编号');
+
             $table->string('team_name', 50)->comments('队伍名称');
             $table->string('school_name', 50)->comments('学校或单位名称');
             $table->string('school_address', 200)->comments('学校地址');
