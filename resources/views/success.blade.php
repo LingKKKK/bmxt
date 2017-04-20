@@ -27,22 +27,82 @@
                 </ul>
             </div>
             <div class="all_info clearfix">
-                <div class=" active team_info div_tab">
-                    <div class="leader" id="leader"></div>
-                    <div class="leader" id="team"></div>
+                <div class="active team_info div_tab">
+                    <div class="leader" id="leader">
+                        <span class="leader_title">领队信息</span>
+                        <div class="cut"></div>
+                        <span class="name">真实姓名 :</span>
+                        <span  id="preview_leader_name" class="name_input" ></span>
+                        <div class="clearfix"></div>
+                        <span class="name">身份证号 :</span>
+                        <span  id="preview_leader_id" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <span class="name">邮箱 :</span>
+                        <span  id="preview_leader_email" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <span  class="name">手机号 :</span>
+                        <span id="preview_leader_mobile" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <span  class="name">性别 :</span>
+                        <span id="preview_leader_sex" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <img id="preview_leader_pic" src="" >
+                    </div>
+                    <div class="leader" id="team">
+                        <span class="leader_title">队伍信息</span>
+                        <div class="cut"></div>
+                        <span class="name">队伍名称 :</span>
+                        <span id="preview_team_name" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <span class="name">学校/单位名称 :</span>
+                        <span id="preview_school_name" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <span class="name">学校/单位地址 :</span>
+                        <span id="preview_school_address" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <span class="name">赛事项目 :</span>
+                        <span id="preview_competition_type" class="name_input"></span>
+                        <div class="clearfix"></div>
+                        <span class="name">组别 :</span>
+                        <span id="preview_competiton_group" class="name_input"></span>
+                        <div class="clearfix"></div>
+                    </div>
                     <div class="all_number">
                         <span class="leader_title">队员信息</span>
                         <div class="team_number" id="number">
+                            @for($i = 0; $i< 10; $i++)
+                            <div id="member_info_{{$i}}" class="member_info" style="display: none;">
+                                <div class="cut"></div>
+                                <span class="name">队员姓名 :</span>
+                                <span id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
+                                <div class="clearfix"></div>
+                                <span class="name">手机号码 :</span> 
+                                <span id="{{'preview_'.$i.'_member_mobile'}}" class="name_input"></span>
+                                <div class="clearfix"></div>
+                                <span class="name">性别 :</span>
+                                <span id="{{'preview_'.$i.'_member_sex'}}" class="name_input"></span>
+                                <div class="clearfix"></div>
+                                <span class="name">年龄 :</span>
+                                <span id="{{'preview_'.$i.'_member_age'}}" class="name_input"></span>
+                                <div class="clearfix"></div>
+                                <span class="name">学校/单位名称 :</span>
+                                <span id="{{'preview_'.$i.'_member_school_name'}}" class="name_input"></span>
+                                <div class="clearfix"></div>
+                            </div>
+                            @endfor
+
                         </div>
                     </div>
                     <div class="pays" id="pays">
                         <span class="leader_title">缴费信息</span>
                         <div class="cut"></div>
                         <span class="name">支付方式 :</span>
-                        <input class="name_input" type="text" value="现场支付">
+                        <span id="preview_payment" class="name_input" ></span>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div class="clearfix">
+                        
+                    </div>
                 </div>
             </div>
             </form>

@@ -208,7 +208,7 @@
                     </div>
                     <div id="code">
                         <span class="input-label">验证码  :</span>
-                        <input required tip-warn="" tip-info="请输入您收到的验证码" class="code" type="text">
+                        <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text">
                         <div class="tips">
                         </div>
                         <div class="clearfix"></div>
@@ -288,7 +288,8 @@
 
     //手机
     function isMobile(val) {
-        reg=/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$/gi;
+        reg = /^1(?:[38]\d|4[4579]|5[0-35-9]|7[35678])\d{8}$/
+        // reg=/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))d{8}$/gi;
         if(!reg.test(val)) {
             //console.log("错误的手机格式");
             return false;
@@ -300,7 +301,10 @@
     function isID(val) {
         reg1=/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/gi;
         reg2=/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/gi;
-        if(!reg1.test(val) || !reg2.test(val)) {
+
+        var idCardReg =/(^\d{15}$)|(^\d{17}([0-9]|X|x))$/gi;
+
+        if(!idCardReg.test(val)) {
             //console.log("错误的身份证格式");
             return false;
         }

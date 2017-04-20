@@ -44,7 +44,7 @@ class SignupController extends Controller
                 'team_name' => 'required',
                 'school_name' => 'required',
                 'school_address' => 'required', 
-                // 'verificationcode' => 'required|verificationcode',
+                'verificationcode' => 'required|verificationcode',
             ],
             [
                 'team_name.required' => '队名必填',
