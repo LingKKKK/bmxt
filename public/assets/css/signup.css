@@ -396,9 +396,8 @@ body .content .all_info .team_info .pays .name_input {
   letter-spacing: 2px;
   margin-top: 30px;
 }
-body .content .all_info .team_info #tel {
+body .content .all_info .team_info .tel {
   border: 1px solid #587BEF;
-  width: 130px;
   height: 30px;
   font-family: PingFangSC-Regular;
   font-size: 14px;
@@ -416,6 +415,11 @@ body .content .all_info .team_info #tel {
   margin-right: 25px;
   text-align: center;
 }
+body .content .all_info .team_info .active {
+  color: #ccc;
+  border: 1px solid #ccc;
+  pointer-events: none;
+}
 body .content .all_info .team_info #code {
   display: block;
   float: left;
@@ -431,6 +435,9 @@ body .content .all_info .team_info #code input {
   box-sizing: border-box;
   padding-left: 20px;
 }
+body .content .all_info .team_info #code .tips {
+  display: none;
+}
 body .content .all_info .active {
   display: block;
   transition: all 0.7s;
@@ -438,6 +445,7 @@ body .content .all_info .active {
 body .footer {
   height: 182px;
   background: #587BEF;
+  font-size: 14px;
 }
 body .footer .inner {
   width: 1180px;
@@ -479,7 +487,7 @@ body .identifying {
 }
 body .identifying .showBox {
   width: 500px;
-  height: 188px;
+  height: 215px;
   background-color: white;
   position: absolute;
   left: 50%;
@@ -500,6 +508,14 @@ body .identifying .showBox #tipes {
 }
 body .identifying .showBox #tipes i {
   color: red;
+}
+body .identifying .showBox .tipes-false {
+  color: red;
+  display: block;
+  margin: 16px 0px -13px 0px;
+  transform: translateX(95px);
+  font-size: 14px;
+  opacity: 0;
 }
 body .identifying .showBox img {
   display: block;
@@ -536,6 +552,24 @@ body .identifying .showBox .yes {
   left: 50%;
   bottom: 25px;
   transform: translateX(-50%);
+  cursor: pointer;
+}
+body .identifying .showBox .no {
+  width: 80px;
+  height: 30px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  letter-spacing: 2px;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  right: -65px;
+  top: 0px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+body .identifying .showBox .no i {
+  font-size: 25px;
 }
 body .falseCodeAlert {
   width: 100%;

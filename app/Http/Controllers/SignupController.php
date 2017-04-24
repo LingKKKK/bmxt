@@ -36,10 +36,11 @@ class SignupController extends Controller
         ];
 
         $competition_types = [
-            '选项一' => '选项一',
-            '选项二' => '选项二',
-            '选项三' => '选项三',
-            '选项四' => '选项四'
+            '智慧日月潭' => '智慧日月潭',
+            '部落战争' => '部落战争',
+            '引领未来' => '引领未来',
+            '星光璀璨' => '星光璀璨',
+            '工业时代' => '工业时代'
         ];
 
         return view('signup', compact('competition_types', 'competition_groups'));
@@ -48,9 +49,13 @@ class SignupController extends Controller
 
 
 
-    public function success()
+    public function success(Request $request)
     {
-        return view('success');
+        $signdata = $request->session()->get('signdata');
+        if ($signdata) {
+            $signdata['members'] = json_decode($signdata['members'], true);
+            return view('success', compact('signdata'));
+        }
     }
     public function doSignup(Request $request)
     {
@@ -161,5 +166,53 @@ class SignupController extends Controller
 
         return $publicPath;
         // return compact('filename', 'storePath', 'publicPath');
+    }
+
+    public function search()
+    {
+        return view('search');
+    }
+
+    public function doSearch(Request $request)
+    {
+        $leader_name = $request->input('leader_name', '');
+        $leader_ID = $request->input('leader_ID', '');
+        $leader_mobile = $request->input('leader_mobile', '');
+
+        $inputData = $request->only(['leader_name', 'leader_ID', 'leader_mobile']);
+        $inputData = array_filter($inputData);
+
+        $validator = Validator::make($inputData, 
+            [
+                'leader_mobile' => 'required',
+                'leader_ID' => 'sometimes|required',
+                'leader_name' => 'required_without:leader_ID'
+            ],
+            [
+                'leader_mobile.required' => '手机号不能为空',
+                'leader_name.required_without' => '身份证或者用户名至少一个2',
+                'leader_ID.required' => '身份证或者用户名至少一个1',
+            ]);
+
+        if ($validator->fails()) {
+           return redirect()->back()->withErrors($validator->errors());
+        }
+
+        // $singdata = SignupData::where('leader_mobile', $leader_mobile);
+        // if (!empty($leader_ID)) {
+        //     $singdata = $singdata->where('leader_ID', $leader_ID);
+        // }
+
+        // if (!empty($leader_name)) {
+        //     $singdata = $singdata->where('leader_name', $leader_name);
+        // }
+
+        $signdata = SignupData::where('leader_mobile', $leader_mobile)->first();
+        // $signdata['members'] = json_decode($signdata['members'], true);
+        $request->session()->flash('signdata', $signdata);
+        return redirect('success');
+
+        // return $signdata;
+
     }
 }

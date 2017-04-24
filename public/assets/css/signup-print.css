@@ -1,5 +1,4 @@
 /*重置css*/
-/*重置css*/
 body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
   margin: 0;
   padding: 0;
@@ -86,6 +85,7 @@ body {
   position: relative;
 }
 body .top {
+  display: none;
   height: 90px;
   background: #587BEF;
 }
@@ -118,22 +118,16 @@ body .top .inner .logout {
   display: none;
 }
 body .button-print {
-  position: absolute;
-  left: 29px;
-  top: 160px;
-  width: 50px;
-  height: 30px;
-  cursor: pointer;
-  color: #fff;
-  background: #587BEF;
+  display: none;
 }
 body .mid {
   width: 1000px;
   display: block;
   margin: 0 auto;
-  margin-top: 30px;
+  transform: translateX(-60px);
 }
 body .mid .successAlert {
+  display: none;
   width: 500px;
   opacity: 1;
   margin: 0 auto;
@@ -363,10 +357,10 @@ body .mid .all_info .active {
   transition: all 0.7s;
 }
 body .bot {
+  display: none;
   height: 182px;
   background: #587BEF;
   margin-top: 200px;
-  font-size: 14px;
 }
 body .bot .inner {
   width: 1180px;

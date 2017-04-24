@@ -256,10 +256,11 @@
                     </div>
                     <div id="code" class="clearfix">
                         <span class="input-label">验证码  :</span>
-                        <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text">
+                        <!-- <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
+                        <input name="verificationcode" id="verificationcode" class="code" type="text">
                         <div class="tips"></div>
                     </div>
-                    <a id="tel">获取手机验证码</a>
+                    <a id="tel" class="tel">获取手机验证码</a>
                     <div class="clearfix"></div>
                     <button type="button" class="btn_pre">上一步</button>
                     <button  class="btn_next" type="submit">确认提交</button>
@@ -278,16 +279,12 @@
             <div class="showBox">
                 <span class="tip">提示: 请您在右侧输入图中的数字或者字母~</span>
                 <span id="tipes">验证成功之后,我们会将验证码发送至您的手机:  <i></i></span>
+                <span class="tipes-false">您输入的手机号码或者验证码有误,请重新输入!!!</span>
                 <img src="{{url('/captcha')}}">
                 <input id="v_code" type="text" placeholder="请输入">
                 <a id="sendCode" class="yes">确认</a>
-                <a class="no">取消</a>
+                <a class="no"><i class="icon kenrobot ken-close"></i></a>
             </div>
-        </div>
-
-        <div class="falseCodeAlert">
-            <span class="tip">请输入正确的手机号和验证码~</span>
-            <a class="no">X</a>
         </div>
 
     </div>
@@ -330,10 +327,11 @@
     function countdown() {
         var t = 60;
         var countdown = setInterval(function(){
-            $('#getverifycode').html('获取验证码('+ t-- + ')');
-
+            $('#tel').html('重新获取验证码('+ t-- + ')s');
+            $('#tel').addClass('active');
             if (t <= 0) {
-                $('#getverifycode').html('获取验证码');
+                $('#tel').html('获取验证码');
+                $('#tel').removeClass('active');
                 clearInterval(countdown);
             }
         },1000);
@@ -561,7 +559,6 @@
         // 默认添加一次队员列表
         setTimeout(function (){
             $('#append_rank_new').click();
-            console.log(1);
         }, 1000)
 
         // 点击刷新验证码图片
@@ -574,9 +571,14 @@
             $('.identifying').removeClass('active');
         });
 
+        $('#v_code').click(function(event) {
+            console.log(1)
+            $('.tipes-false').css('opacity', 0);
+        });
+
         // 点击确认输入验证码
         $('.identifying .yes').click(function() {
-            $('.identifying').removeClass('active');
+            // $('.identifying').removeClass('active');
             var captchacode = $('#v_code').val();
             var mobile = $('#leader_mobile').val();
             var email = $('#leader_email').val();
@@ -591,12 +593,14 @@
                 },
                 function(res){
                     if (res.status == 0) {
-                        // //console.log(res);
-                        // //console.log('消息发送成功');
+                        console.log('验证码填写成功并确定')
                         refresh_captcha();
+                        $('.identifying').removeClass('active');
                         countdown();
+
                     } else {
-                        $('.falseCodeAlert').css('display', 'block');
+                        console.log('验证码填写错误')
+                        $('.tipes-false').css('opacity', 1);
                     }
                 }
             );
@@ -608,6 +612,9 @@
 
         $('#append_rank_new').click(function (){
             addMemberList();
+            console.log(memberListNum-2);
+            console.dir($('.delete').eq(memberListNum-3));
+            $('.delete').eq(0).css('display', 'none');
         })
 
         var memberListNum = 1;
@@ -719,6 +726,7 @@
         if(partten.test($('#leader_mobile').val())){
            $('.identifying').addClass('active');
            $('#tipes i').html($('#leader_mobile').val());
+           countdown();
         }else {
            //console.log('格式错误');
         }

@@ -2,7 +2,8 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/success.css')}}">   
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/success.css')}}">  
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup-print.css')}}" media="print"> 
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 </head>
 <body>
@@ -10,16 +11,9 @@
         <div class="top">
             <div class="inner">
                 <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
-                <div class="login">
-                    <!-- <span class="register">注册</span>
-                    <span class="signin">登录</span> -->
-                </div>
-                <div class="logout">
-                    <span></span>
-                </div>
             </div>
         </div>
-        
+        <input class="button-print" type="button" value="打印" onclick="window.print()">
         <div class="mid">
             <div class="successAlert" id="successAlert">
                 <span>您已报名成功!</span>

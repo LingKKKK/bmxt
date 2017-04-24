@@ -1,0 +1,221 @@
+/*重置css*/
+/*重置css*/
+body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img, input, textarea, a {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: #666;
+  background: #f9f9f9;
+}
+
+img {
+  border: 0;
+  display: inline-block;
+}
+
+i {
+  font-style: normal;
+}
+
+textarea {
+  resize: none;
+}
+
+.clear {
+  clear: both;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, div, ul, ol, li, dl, dt, dd, iframe, textarea, input, button, p, strong, b, i, a, span, del, pre, table, tr, th, td, form, fieldset, .pr, .pc {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  font-family: verdana,Microsoft YaHei,Tahoma,sans-serif;
+  *font-family: Microsoft YaHei,verdana,Tahoma,sans-serif;
+}
+
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc, em, del {
+  font-style: normal;
+  font-size: 100%;
+}
+
+ul, ol, dl {
+  list-style: none;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 1200px;
+  background: #fff;
+  position: relative;
+}
+body .header {
+  height: 90px;
+  background: #587BEF;
+}
+body .header .inner {
+  width: 1180px;
+  height: 90px;
+  display: block;
+  margin: 0 auto;
+}
+body .header .inner img {
+  display: block;
+  float: left;
+  width: 126.5px;
+  height: 50px;
+  margin-top: 20px;
+}
+body .header .inner .login {
+  display: block;
+  float: right;
+}
+body .header .inner .login span {
+  display: block;
+  float: right;
+  font-size: 14px;
+  color: #fff;
+  line-height: 90px;
+  margin-right: 30px;
+}
+body .header .inner .logout {
+  display: none;
+}
+body .button-print {
+  position: absolute;
+  left: 29px;
+  top: 160px;
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+  color: #fff;
+  background: #587BEF;
+}
+body .content {
+  min-height: 712px;
+  width: 100%;
+  padding-top: 100px;
+  box-sizing: border-box;
+}
+body .content .inner {
+  width: 600px;
+  height: 350px;
+  margin: 0 auto;
+  border: 1px solid #587BEF;
+  box-sizing: border-box;
+  padding: 41px 78px;
+}
+body .content .inner .input-field {
+  zoom: 1;
+}
+body .content .inner .input-field:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+body .content .inner .input-field .input-label {
+  width: 120px;
+  height: 20px;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 2px;
+  float: left;
+  margin: 4px 10px 0px 0px;
+}
+body .content .inner .input-field .input-field-text {
+  border: 1px solid #CCCCCC;
+  width: 300px;
+  height: 30px;
+  float: left;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+body .content .inner .tips {
+  font-size: 12px;
+}
+body .content .inner button {
+  display: block;
+  font-size: 16px;
+  padding: 5px 20px;
+  color: #fff;
+  background: #587BEF;
+  border: 0;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+body .footer {
+  height: 182px;
+  background: #587BEF;
+  font-size: 14px;
+}
+body .footer .inner {
+  width: 1180px;
+  height: 182px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 46px;
+  box-sizing: border-box;
+}
+body .footer .inner img {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 40px;
+}
+body .footer .inner .sp1 {
+  /* width: 100px; */
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  /* margin: 0 auto; */
+  color: #fff;
+  line-height: 24px;
+}
+body .footer .inner .sp2 {
+  /* width: 100px; */
+  display: block;
+  text-align: center;
+  /* margin: 0 auto; */
+  color: #fff;
+  margin-top: 10px;
+  line-height: 24px;
+}

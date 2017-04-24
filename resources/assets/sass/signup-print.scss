@@ -1,4 +1,3 @@
-/*重置css*/
 @import "theme2/_reset.scss";
 
 * {
@@ -12,6 +11,7 @@ body {
     position: relative;
 
     .top {
+        display: none;
         height: 90px;
         background: #587BEF;
 
@@ -50,23 +50,17 @@ body {
     }
 
     .button-print {
-        position: absolute;
-        left: 29px;
-        top: 160px;
-        width: 50px;
-        height: 30px;
-        cursor: pointer;
-        color: #fff;
-        background: #587BEF;
+        display: none;
     }
 
     .mid {
         width: 1000px;
         display: block;
         margin: 0 auto;
-        margin-top: 30px;
+        transform: translateX(-60px);
 
         .successAlert {
+            display: none;
             width: 500px;
             opacity: 1;
             margin: 0 auto;
@@ -394,10 +388,10 @@ body {
     }
 
     .bot {
+        display: none;
         height: 182px;
         background: #587BEF;
         margin-top: 200px;
-        font-size: 14px;
 
         .inner {
             width: 1180px;

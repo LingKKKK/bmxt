@@ -359,9 +359,8 @@ body {
 
              
 
-                #tel {
+                .tel {
                     border: 1px solid #587BEF;
-                    width: 130px;
                     height: 30px;
                     font-family: PingFangSC-Regular;
                     font-size: 14px;
@@ -380,6 +379,12 @@ body {
                     text-align: center;
                 }
 
+                .active {
+                    color: #ccc;
+                    border: 1px solid #ccc;
+                    pointer-events: none;
+                }
+
                 #code {
                     display: block;
                     float: left;
@@ -396,6 +401,10 @@ body {
                         box-sizing: border-box;
                         padding-left: 20px;
                     }
+
+                    .tips {
+                        display: none;
+                    }
                 }
             }
 
@@ -409,6 +418,7 @@ body {
     .footer {
         height: 182px;
         background: #587BEF;
+        font-size: 14px;
 
         .inner {
             width: 1180px;
@@ -455,7 +465,7 @@ body {
 
         .showBox {
             width: 500px;
-            height: 188px;
+            height: 215px;
             background-color: white;
             position: absolute;
             left: 50%;
@@ -478,6 +488,15 @@ body {
                 i {
                     color: red;
                 }
+            }
+
+            .tipes-false {
+                color: red;
+                display: block;
+                margin: 16px 0px -13px 0px;
+                transform: translateX(95px);
+                font-size: 14px;
+                opacity: 0;
             }
 
             img {
@@ -517,6 +536,26 @@ body {
                 left: 50%;
                 bottom: 25px;
                 transform: translateX(-50%);
+                cursor: pointer;
+            }
+
+            .no {
+                width: 80px;
+                height: 30px;
+                font-family: PingFangSC-Regular;
+                font-size: 14px;
+                letter-spacing: 2px;
+                line-height: 30px;
+                text-align: center;
+                position: absolute;
+                right: -65px;
+                top: 0px;
+                transform: translateX(-50%);
+                cursor: pointer;
+
+                i {
+                    font-size: 25px;
+                }
             }
         }
     }
