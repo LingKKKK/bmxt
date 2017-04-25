@@ -32,7 +32,6 @@ class SignupController extends Controller
             '小学组' => '小学组',
             '中学组' => '中学组',
             '高中组' => '高中组',
-            '大学组' => '大学组',
         ];
 
         $competition_types = [
@@ -81,10 +80,26 @@ class SignupController extends Controller
                 'verificationcode.verificationcode' => '验证码错误',
             ]
         );
+
         $leader_pic = $this->saveFile($request->file('leader_pic'));
+
+                // 处理成员
+        $members = array();
+        $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
+
+        foreach ($origin_members as $k => $item) {
+            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name']);
+            $pic = isset($item['pic']) ? $item['pic'] : null;
+            $member_info['pic'] = $this->saveFile($item['pic']);
+            $members[] = $member_info;
+        }
+
         if ($validator->fails()) {
             // return api_response(1, 'Fail', $validator->errors()->toArray());
-            return redirect()->back()->withInput()->withErrors($validator->errors())->with('leader_pic_preview', $leader_pic);
+            return redirect()->back()->withInput()
+                                     ->withErrors($validator->errors())
+                                     ->with('leader_pic_preview', $leader_pic)
+                                     ->with('members_data', $members);
         }
 
         //表单地钻
@@ -97,16 +112,7 @@ class SignupController extends Controller
 
         $data['leader_pic'] = $leader_pic;
 
-        // 处理成员
-        $members = array();
-        $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
 
-        foreach ($origin_members as $k => $item) {
-            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name']);
-            $pic = isset($item['pic']) ? $item['pic'] : null;
-            $member_info['pic'] = $this->saveFile($item['pic']);
-            $members[] = $member_info;
-        }
 
         $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
         $data['team_no'] = $this->getTeamNo();

@@ -20,7 +20,7 @@
 
             <div class="tab_menu">
                 <ul>
-                    <li class="active">领队信息</li>
+                    <li class="active">带队老师信息</li>
                     <li>队伍参赛信息</li>
                     <li>队员信息</li>
                     <li>缴费信息</li>
@@ -56,9 +56,9 @@
                         <input class="input-radio woman" type="radio" name="leader_sex"  @if(old('leader_sex') == '女') checked="checked" @endif value="女"><span>女</span>
                     </div>
                     <div class="input-field">
-                        <span class="input-label">领队照片  :{{session('leader_pic_preview')}}</span>
+                        <span class="input-label">带队老师照片  :</span>
                         <div class="uploadBtn">上传图片</div>
-                        <input type="file" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle">
+                        <input type="file" data-picurl="{{session('leader_pic_preview')}}" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle">
                         <div class="tips"></div>
                         <span class="file_name" id="file_name"></span>
                     </div>
@@ -67,17 +67,17 @@
                 <div class="ranks_info div_tab">
                     <div class="input-field">
                         <span class="input-label">队伍名称  :</span>
-                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="input-field-text" id="team_name" name="team_name" type="text" value="{{old('team_name')}}">
+                        <input required tip-warn="" tip-info="请出入您队伍的名称" class="input-field-text" id="team_name" name="team_name" type="text" value="{{old('team_name')}}">
                         <div class="tips"></div>
                     </div>
                     <div class="input-field">
                         <span class="input-label">学校/单位名称  :</span>
-                        <input required tip-warn="" tip-info="仅支持汉字"  class="input-field-text" id="school_name" name="school_name" type="text" value="{{old('school_name')}}">
+                        <input data-type="schoolname" required tip-warn="" tip-info="仅支持汉字、英文、数字"  class="input-field-text" id="school_name" name="school_name" type="text" value="{{old('school_name')}}">
                         <div class="tips"></div>
                     </div>
                     <div class="input-field">
                         <span class="input-label">学校/单位地址  :</span>
-                        <input required tip-warn="" tip-info="仅支持仅支持英文、数字、下划线" class="input-field-text" id="school_address" name="school_address" type="text" value="{{old('school_address')}}">
+                        <input data-type="schoolname" required tip-warn="" tip-info="仅支持汉字、英文、数字" class="input-field-text" id="school_address" name="school_address" type="text" value="{{old('school_address')}}">
                         <div class="tips"></div>
                     </div>
                     <div class="input-field">
@@ -100,7 +100,7 @@
                     <button type="button" class="btn_next">下一步</button>
                 </div>
                 <div class="append_rank div_tab">
-                    <?php $i = 20 ?>
+                    <?php $i = 0 ?>
                     @foreach((array)old('members') as $member)
                     <div class="menber_list">
                         <div class="delete"><i class="icon kenrobot ken-close"></i></div>
@@ -142,7 +142,7 @@
                         <div class="input-field">
                             <span class="input-label">队员照片  :</span>
                             <div class="uploadBtn">上传图片</div>
-                            <input name="members[{{$i}}][pic]" type="file" class="inputstyle member_pic">
+                            <input name="members[{{$i}}][pic]" data-picurl="{{session('members_data')[$i]['pic']}}" type="file" class="inputstyle member_pic">
                             <span class="file_name"></span>
                         </div>
                         <div class="cut"></div>
@@ -150,7 +150,7 @@
                     <?php $i++ ?>
                     @endforeach
 
-                    <button type="button" class="btn_new" id="append_rank_new">继续添加新成员</button>
+                    <button type="button" class="btn_new" id="append_rank_new">添加新成员</button>
                     <button type="button" class="btn_pre">上一步</button>
                     <button type="button" class="btn_next">下一步</button>
                 </div>
@@ -165,7 +165,7 @@
                 </div>
                 <div class="team_info div_tab">
                     <div class="leader" id="leader">
-                        <span class="leader_title">领队信息</span>
+                        <span class="leader_title">带队老师信息</span>
                         <div class="cut"></div>
                         <div class="input-field">
                             <span class="name">真实姓名 :</span>
@@ -243,6 +243,7 @@
                                     <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
                                     <span id="{{'preview_'.$i.'_member_school_name'}}" class="name_input"></span>
                                 </div>
+                                <img id="{{'preview_'.$i.'_member_pic'}}" src="" >
                             </div>
                             @endfor
 
@@ -347,6 +348,24 @@
         return true;
     }
 
+    //数字 英文 汉字
+    function isMathEngCha(val) {
+        reg= /^[\u4e00-\u9fa5a-z0-9]+$/gi;
+        if(!reg.test(val)) {
+            return false;
+        }
+        return true;
+    }
+
+    //数字 英文 汉字  agemenber
+    function isAgemenber(val) {
+        reg= /^[0-9]+$/gi;
+        if(!reg.test(val)) {
+            return false;
+        }
+        return true;
+    }
+
     //邮件判断
     function isEmail(mail) {
         reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
@@ -414,6 +433,16 @@
 
             if (datatype == 'realname' && !isName(val)) {
                 $el.tipWarn('姓名不能是数字或特殊字符，请重新输入!');
+                return false;
+            }
+
+            if (datatype == 'schoolname' && !isMathEngCha(val)) {
+                $el.tipWarn('不能为特殊字符,请重新输入!');
+                return false;
+            }
+
+            if (datatype == 'agemenber' && !isAgemenber(val)) {
+                $el.tipWarn('只能输入数字!');
                 return false;
             }
 
@@ -527,7 +556,7 @@
         $('.append_rank > .menber_list').each(function(index){
             console.log(index);
 
-            var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_school_name', 'member_school_address');
+            var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_school_name', 'member_school_address', 'member_pic');
             for (var i = 0; i < mapKey.length; i++) {
                 var key = mapKey[i];
 
@@ -540,10 +569,29 @@
                     val = $($(this)).find('.'+key+":checked").val();
                 }
 
+
                 var preview_el = '#preview_'+index+'_'+key;
 
                 console.log(preview_el);
                 console.log(val);
+
+                if (type == 'file') {
+                    var picurl = $el.data('picurl');
+                    if (picurl) {
+                        $(preview_el).attr('src', picurl);
+                        continue;
+                    }
+                    var fileObj = $el.prop('files');
+                    if (fileObj) {
+                        var f = $el.prop('files')[0];
+                        if(f){
+                            // $('#preview_'+id).attr('src', );
+                            $(preview_el).attr('src', URL.createObjectURL(f));
+                        }
+                    }
+                    continue;
+
+                }
 
                 $(preview_el).html(val);
             }
@@ -624,7 +672,7 @@
             memberList += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">队员姓名('+ memberListNum +'):</span>';
-            memberList += '<input required tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="input-field-text member_name" type="text">';
+            memberList += '<input data-type="realname" required tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="input-field-text member_name" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
@@ -646,7 +694,7 @@
 
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">年龄  :</span>';
-            memberList += '<input required tip-warn="" tip-info="仅支持数字" name="members['+memberListNum+'][age]" class="input-field-text member_age" type="text">';
+            memberList += '<input data-type="agemenber" required tip-warn="" tip-info="仅支持数字" name="members['+memberListNum+'][age]" class="input-field-text member_age" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
@@ -659,20 +707,20 @@
             memberList += '</div>';
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">学校/单位名称  :</span>';
-            memberList += '<input required tip-warn="" tip-info="仅支持汉字"  name="members['+memberListNum+'][school_name]" class="input-field-text member_school_name" type="text">';
+            memberList += '<input data-type="schoolname" required tip-warn="" tip-info="可以输入非汉字，英文，数字，下划线字符"  name="members['+memberListNum+'][school_name]" class="input-field-text member_school_name" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
             memberList += '<div class="input-field">';
-            memberList += '<span class="input-label">学校/单位地址  :</span>';
-            memberList += '<input required tip-warn="" tip-info="仅支持汉字" name="members['+memberListNum+'][school_address]" class="input-field-text member_school_address" type="text">';
+            memberList += '<span data-type="schoolname" class="input-label">学校/单位地址  :</span>';
+            memberList += '<input required tip-warn="" tip-info="可以输入非汉字，英文，数字，下划线字符" name="members['+memberListNum+'][school_address]" class="input-field-text member_school_address" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">队员照片  :</span>';
             memberList += '<div class="uploadBtn">上传图片</div>';
-            memberList += '<input name="members['+memberListNum+'][pic]" type="file" class="inputstyle member_pic">';
+            memberList += '<input name="members['+memberListNum+'][pic]" id="" type="file" class="inputstyle member_pic">';
             memberList += '<span class="file_name"></span>';
             memberList += '<div class="clearfix"></div>';
             memberList += '<div class="cut"></div>';
