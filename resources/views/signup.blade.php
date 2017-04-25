@@ -58,7 +58,7 @@
                     <div class="input-field">
                         <span class="input-label">带队老师照片  :</span>
                         <div class="uploadBtn">上传图片</div>
-                        <input type="file" data-picurl="{{session('leader_pic_preview')}}" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle">
+                        <input type="file" data-picurl="{{session('leader_pic_preview')}}" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle" value=''>
                         <div class="tips"></div>
                         <span class="file_name" id="file_name"></span>
                     </div>
@@ -504,6 +504,9 @@
             var f = $(this).prop('files')[0];
             if(f)
             {
+                console.log(f.name);
+                // console.dir($(this));
+                // $(this).val(f.name);
                 $(this).siblings('.file_name').html(f.name);
             }
          });
@@ -720,7 +723,8 @@
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">队员照片  :</span>';
             memberList += '<div class="uploadBtn">上传图片</div>';
-            memberList += '<input name="members['+memberListNum+'][pic]" id="" type="file" class="inputstyle member_pic">';
+            memberList += '<input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="members['+memberListNum+'][pic]" id="" type="file" class="inputstyle member_pic">';
+            memberList += '<div class="tips"></div>';
             memberList += '<span class="file_name"></span>';
             memberList += '<div class="clearfix"></div>';
             memberList += '<div class="cut"></div>';
