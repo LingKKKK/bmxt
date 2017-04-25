@@ -133,13 +133,26 @@ body .content {
   padding-top: 100px;
   box-sizing: border-box;
 }
+body .content .leader-info-tips {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  opacity: 1;
+  transition: all 1s;
+}
+body .content .leader-info-tips span {
+  display: inline-block;
+  color: red;
+  font-size: 16px;
+}
 body .content .inner {
   width: 600px;
   height: 350px;
   margin: 0 auto;
   border: 1px solid #587BEF;
   box-sizing: border-box;
-  padding: 41px 78px;
+  padding: 20px 78px;
+  margin-top: 33px;
 }
 body .content .inner .input-field {
   zoom: 1;
@@ -164,14 +177,17 @@ body .content .inner .input-field .input-field-text {
   width: 300px;
   height: 30px;
   float: left;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   box-sizing: border-box;
   padding-left: 20px;
 }
 body .content .inner .tips {
   font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-body .content .inner button {
+body .content .inner .submit-search {
+  width: 130px;
   display: block;
   font-size: 16px;
   padding: 5px 20px;
@@ -180,7 +196,166 @@ body .content .inner button {
   border: 0;
   cursor: pointer;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 16px;
+}
+body .content .inner .active {
+  background: #ccc;
+  pointer-events: none;
+}
+body .content .inner .tips-false {
+  font-size: 14px;
+  color: red;
+  margin-left: 90px;
+  margin-top: 14px;
+  display: block;
+  margin-bottom: 13px;
+  opacity: 0;
+}
+body .content .inner #code {
+  display: block;
+  float: left;
+}
+body .content .inner #code .input-label {
+  width: 120px;
+  height: 20px;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 2px;
+  float: left;
+  margin: 4px 10px 0px 0px;
+}
+body .content .inner #code input {
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  width: 100px;
+  height: 30px;
+  display: block;
+  float: left;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+body .content .inner .tel {
+  border: 1px solid #587BEF;
+  height: 30px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #587BEF;
+  letter-spacing: 0;
+  line-height: 30px;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0px 10px;
+  margin-left: 30px;
+  cursor: pointer;
+  float: left;
+  margin-bottom: 40px;
+  /* margin-top: 20px; */
+  margin-right: 25px;
+  text-align: center;
+}
+body .content .inner .active {
+  color: #ccc;
+  border: 1px solid #ccc;
+}
+body .identifying {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 9999;
+  display: none;
+}
+body .identifying .showBox {
+  width: 500px;
+  height: 215px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body .identifying .showBox .tip {
+  display: table;
+  margin: 0 auto;
+  margin-top: 22px;
+  font-size: 14px;
+}
+body .identifying .showBox #tipes {
+  display: table;
+  margin: 6px 0px -13px 0px;
+  transform: translateX(55px);
+  font-size: 14px;
+}
+body .identifying .showBox #tipes i {
+  color: red;
+}
+body .identifying .showBox .tipes-false {
+  color: red;
+  display: block;
+  margin: 16px 0px -13px 0px;
+  transform: translateX(95px);
+  font-size: 14px;
+  opacity: 0;
+}
+body .identifying .showBox img {
+  display: block;
+  float: left;
+  width: 120px;
+  margin: 0 auto;
+  cursor: pointer;
+  margin: 30px 0px 0px 125px;
+  border: 1px solid #ccc;
+}
+body .identifying .showBox input {
+  width: 139px;
+  height: 38px;
+  display: block;
+  box-sizing: border-box;
+  padding: 10px 20px 10px 20px;
+  font-size: 19px;
+  line-height: 30px;
+  text-align: center;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+}
+body .identifying .showBox .yes {
+  background: #587BEF;
+  width: 80px;
+  height: 30px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 2px;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+body .identifying .showBox .no {
+  width: 80px;
+  height: 30px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  letter-spacing: 2px;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  right: -65px;
+  top: 0px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+body .identifying .showBox .no i {
+  font-size: 25px;
+}
+body .active {
+  display: block;
 }
 body .footer {
   height: 182px;

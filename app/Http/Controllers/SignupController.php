@@ -81,10 +81,10 @@ class SignupController extends Controller
                 'verificationcode.verificationcode' => '验证码错误',
             ]
         );
-
+        $leader_pic = $this->saveFile($request->file('leader_pic'));
         if ($validator->fails()) {
             // return api_response(1, 'Fail', $validator->errors()->toArray());
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->withErrors($validator->errors())->with('leader_pic_preview', $leader_pic);
         }
 
         //表单地钻
@@ -95,7 +95,7 @@ class SignupController extends Controller
 
         $data = $request->only($keys);
 
-        $data['leader_pic'] = $this->saveFile($request->file('leader_pic'));
+        $data['leader_pic'] = $leader_pic;
 
         // 处理成员
         $members = array();
@@ -190,15 +190,21 @@ class SignupController extends Controller
             ],
             [
                 'leader_mobile.required' => '手机号不能为空',
-                'leader_name.required_without' => '身份证或者用户名至少一个2',
                 'leader_ID.required' => '身份证或者用户名至少一个1',
+                'leader_name.required_without' => '身份证或者用户名至少填写一个',
             ]);
+        // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
+
 
         if ($validator->fails()) {
-           return redirect()->back()->withErrors($validator->errors());
+           return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
-        // $singdata = SignupData::where('leader_mobile', $leader_mobile);
+        $singdata = SignupData::where('leader_mobile', $leader_mobile);
+        if (empty($signdata)) {
+            return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
+
+        }
         // if (!empty($leader_ID)) {
         //     $singdata = $singdata->where('leader_ID', $leader_ID);
         // }

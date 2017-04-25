@@ -56,7 +56,7 @@
                         <input class="input-radio woman" type="radio" name="leader_sex"  @if(old('leader_sex') == '女') checked="checked" @endif value="女"><span>女</span>
                     </div>
                     <div class="input-field">
-                        <span class="input-label">领队照片  :</span>
+                        <span class="input-label">领队照片  :{{session('leader_pic_preview')}}</span>
                         <div class="uploadBtn">上传图片</div>
                         <input type="file" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle">
                         <div class="tips"></div>
@@ -310,6 +310,7 @@
         }
 
         $.fn.refreshCaptcha = function(){
+            console.log(123)
             if($(this).prop('tagName') == 'IMG'){
                 var timestamp = Date.parse(new Date());
                 $(this).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
@@ -555,7 +556,6 @@
 
 
     $(function(){
-
         // 默认添加一次队员列表
         setTimeout(function (){
             $('#append_rank_new').click();
@@ -696,8 +696,6 @@
                 tabIndex +=1;
                 showTab(tabIndex);
             }
-
-
             // showTab(tabIndex);
         });
 
@@ -705,7 +703,6 @@
             tabIndex -=1;
             showTab(tabIndex);
         });
-
         // $('form').submit(function(){
         //     return false;
         //     console.log('阻止提交');
@@ -726,7 +723,7 @@
         if(partten.test($('#leader_mobile').val())){
            $('.identifying').addClass('active');
            $('#tipes i').html($('#leader_mobile').val());
-           countdown();
+           // countdown();
         }else {
            //console.log('格式错误');
         }
