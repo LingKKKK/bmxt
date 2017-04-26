@@ -180,7 +180,7 @@ body .content .all_info .append_rank .menber_list .user_age {
 }
 body .content .all_info .append_rank .menber_list .cut {
   width: 862px;
-  transform: translateX(-45px);
+  transform: translateX(-66px);
   border-bottom: 1px #666 solid;
   margin-bottom: 35px;
 }

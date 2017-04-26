@@ -61,6 +61,7 @@ class SignupController extends Controller
         // dd($request->all(), $request->file());
 
         $validator = Validator::make($request->all(), 
+
             [
                 'leader_name' => 'required', //领队姓名
                 'leader_id' => 'required', //领队身份证号
@@ -80,17 +81,22 @@ class SignupController extends Controller
                 'verificationcode.verificationcode' => '验证码错误',
             ]
         );
+        // dd($this->saveFile($request->file('leader_pic'))['publicPath']);
+        $leader_picdata = $this->saveFile($request->file('leader_pic'));
+        $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
+        $leader_pic_filename = !empty($leader_picdata) && isset($leader_picdata['filename']) ? $leader_picdata['filename'] : '';
 
-        $leader_pic = $this->saveFile($request->file('leader_pic'));
-
-                // 处理成员
+        // 处理成员
         $members = array();
         $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
 
         foreach ($origin_members as $k => $item) {
             $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name']);
             $pic = isset($item['pic']) ? $item['pic'] : null;
-            $member_info['pic'] = $this->saveFile($item['pic']);
+
+            $member_picdata = $this->saveFile($item['pic']);
+            $member_info['pic'] = $member_picdata['publicPath'];
+            $member_info['pic_filename'] = $member_picdata['filename'];
             $members[] = $member_info;
         }
 
@@ -99,6 +105,7 @@ class SignupController extends Controller
             return redirect()->back()->withInput()
                                      ->withErrors($validator->errors())
                                      ->with('leader_pic_preview', $leader_pic)
+                                     ->with('leader_pic_filename', $leader_pic_filename)
                                      ->with('members_data', $members);
         }
 
@@ -170,8 +177,9 @@ class SignupController extends Controller
 
         Storage::put($storePath, file_get_contents($file));
 
-        return $publicPath;
-        // return compact('filename', 'storePath', 'publicPath');
+        // return $publicPath;
+        return compact('filename', 'publicPath');
+         // ['filename' => $filename, 'publicPath' => $publicPath];
     }
 
     public function search()

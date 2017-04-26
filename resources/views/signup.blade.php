@@ -57,10 +57,10 @@
                     </div>
                     <div class="input-field">
                         <span class="input-label">带队老师照片  :</span>
-                        <div class="uploadBtn">上传图片</div>
+                        <div class="uploadBtn">上传图片 </div>
                         <input type="file" data-picurl="{{session('leader_pic_preview')}}" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle" value=''>
                         <div class="tips"></div>
-                        <span class="file_name" id="file_name"></span>
+                        <span class="file_name" id="file_name">{{session('leader_pic_filename')}}</span>
                     </div>
                     <button type="button" class="btn_next" id="leader_info_btn">下一步</button>
                 </div>
@@ -143,7 +143,7 @@
                             <span class="input-label">队员照片  :</span>
                             <div class="uploadBtn">上传图片</div>
                             <input name="members[{{$i}}][pic]" data-picurl="{{session('members_data')[$i]['pic']}}" type="file" class="inputstyle member_pic">
-                            <span class="file_name"></span>
+                            <span class="file_name">{{session('leader_pic_filename')}}</span>
                         </div>
                         <div class="cut"></div>
                     </div>
@@ -725,7 +725,7 @@
             memberList += '<div class="uploadBtn">上传图片</div>';
             memberList += '<input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="members['+memberListNum+'][pic]" id="" type="file" class="inputstyle member_pic">';
             memberList += '<div class="tips"></div>';
-            memberList += '<span class="file_name"></span>';
+            memberList += '<span class="file_name">{{session("leader_pic_filename")}}</span>';
             memberList += '<div class="clearfix"></div>';
             memberList += '<div class="cut"></div>';
             memberList += '</div>';

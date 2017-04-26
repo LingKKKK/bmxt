@@ -66,11 +66,9 @@
             </div>
         </div>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
-
 <script type="text/javascript">
     (function($){
         $.fn.refreshCaptcha = function(){
-            console.log(123)
             if($(this).prop('tagName') == 'IMG'){
                 var timestamp = Date.parse(new Date());
                 $(this).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
@@ -97,11 +95,6 @@
     }
 
     $(function(){
-        
-
-
-
-        
         // 默认添加一次队员列表
         setTimeout(function (){
             $('#append_rank_new').click();
