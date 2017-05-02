@@ -1,0 +1,500 @@
+/*重置css*/
+/*重置css*/
+body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img, input, textarea, a {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: #666;
+  background: #f9f9f9;
+}
+
+img {
+  border: 0;
+  display: inline-block;
+}
+
+i {
+  font-style: normal;
+}
+
+textarea {
+  resize: none;
+}
+
+.clear {
+  clear: both;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, div, ul, ol, li, dl, dt, dd, iframe, textarea, input, button, p, strong, b, i, a, span, del, pre, table, tr, th, td, form, fieldset, .pr, .pc {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  font-family: verdana,Microsoft YaHei,Tahoma,sans-serif;
+  *font-family: Microsoft YaHei,verdana,Tahoma,sans-serif;
+}
+
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc, em, del {
+  font-style: normal;
+  font-size: 100%;
+}
+
+ul, ol, dl {
+  list-style: none;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fff;
+}
+body .error {
+  color: red;
+}
+body .wrap {
+  width: 1280px;
+  margin: 0 auto;
+}
+body .wrap .header .stripe {
+  width: 100%;
+  height: 25px;
+  background-color: #003377;
+  margin-bottom: 28px;
+}
+body .wrap .header .inner {
+  width: 1210px;
+  margin: 0 auto;
+}
+body .wrap .header .inner .back-index {
+  display: block;
+  width: 90px;
+  height: 21px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #003377;
+  float: left;
+  line-height: 21px;
+  margin-bottom: 52px;
+  border: 0;
+  border-radius: 10px 10px 10px 10px;
+  cursor: pointer;
+}
+body .wrap .header .inner img {
+  width: 70px;
+  height: 21px;
+  background-color: red;
+  float: right;
+}
+body .wrap .header .inner .enroll-title {
+  margin-bottom: 20px;
+}
+body .wrap .header .inner .enroll-title .title {
+  display: block;
+  line-height: 36px;
+  font-size: 36px;
+  color: #003377;
+  float: left;
+  font-weight: bold;
+}
+body .wrap .header .inner .enroll-title .logo {
+  display: block;
+  float: right;
+  width: 70px;
+  margin-top: 17px;
+  cursor: pointer;
+}
+body .wrap .header .inner .cut {
+  width: 100%;
+  height: 0px;
+  border-top: 1px solid #666;
+  margin-bottom: 20px;
+}
+body .wrap .header .inner .enroll-content {
+  width: 100%;
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 100px;
+}
+body .wrap .content {
+  width: 1210px;
+  margin: 0 auto;
+}
+body .wrap .content .content-title {
+  display: block;
+  color: #003377;
+  font-size: 21px;
+  line-height: 21px;
+  margin-bottom: 20px;
+}
+body .wrap .content .cut {
+  width: 100%;
+  height: 0px;
+  border-top: 1px solid #666;
+  margin-bottom: 20px;
+}
+body .wrap .content .form {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 70px 60px 70px;
+}
+body .wrap .content .form .input-field {
+  zoom: 1;
+  margin-bottom: 20px;
+}
+body .wrap .content .form .input-field:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+body .wrap .content .form .input-field .input-label {
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 60px;
+}
+body .wrap .content .form .input-field .input-field-text {
+  width: 280px;
+  height: 30px;
+  border-radius: 5px 5px 5px 5px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #666;
+}
+body .wrap .content .form .cut {
+  border: 1px dashed #000;
+  width: 100%;
+  margin-bottom: 34px;
+  margin-top: 14px;
+}
+body .wrap .content .form .team-nav {
+  width: 100%;
+  height: 50px;
+}
+body .wrap .content .form .team-nav li {
+  width: 100px;
+  color: #003377;
+  background-color: #fff;
+  font-weight: bold;
+  text-align: center;
+  float: left;
+  line-height: 50px;
+  cursor: pointer;
+}
+body .wrap .content .form .team-nav .active {
+  color: #fff;
+  background-color: #003377;
+  line-height: 50px;
+  font-size: 16px;
+  font-weight: blod;
+}
+body .wrap .content .form .team {
+  margin-top: 14px;
+  padding-top: 34px;
+  box-sizing: border-box;
+  border: 2px solid #666;
+  width: 100%;
+  padding-left: 35px;
+  box-sizing: border-box;
+}
+body .wrap .content .form .team .members {
+  width: 324px;
+  height: 323px;
+  display: block;
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+body .wrap .content .form .team .members .member-title {
+  display: block;
+  width: 100%;
+  height: 35px;
+  color: #fff;
+  background-color: #ccc;
+  font-size: 16px;
+  line-height: 35px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+body .wrap .content .form .team .members .input-field {
+  box-sizing: border-box;
+  padding: 0px 23px;
+}
+body .wrap .content .form .team .members .input-field .input-label {
+  display: block;
+  float: left;
+  margin-right: 20px;
+  line-height: 32px;
+}
+body .wrap .content .form .team .members .input-field .input-field-text {
+  display: block;
+  float: right;
+  width: 150px;
+}
+body .wrap .content .form .symposium span {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+}
+body .wrap .content .form .symposium .symposium-member {
+  margin-top: 20px;
+  width: 1090px;
+}
+body .wrap .content .form .symposium .symposium-member .meet {
+  width: 258px;
+  height: 285px;
+  display: block;
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+body .wrap .content .form .symposium .symposium-member .meet .meet-title {
+  display: block;
+  width: 100%;
+  height: 35px;
+  color: #fff;
+  background-color: #ccc;
+  font-size: 16px;
+  line-height: 35px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+body .wrap .content .form .symposium .symposium-member .meet .input-field {
+  box-sizing: border-box;
+  padding: 0px 23px;
+}
+body .wrap .content .form .symposium .symposium-member .meet .input-field .input-label {
+  display: block;
+  float: left;
+  margin-right: 0px;
+  line-height: 32px;
+}
+body .wrap .content .form .symposium .symposium-member .meet .input-field .input-field-text {
+  display: block;
+  float: right;
+  width: 150px;
+}
+body .wrap .content .form .invoice-header span {
+  font-weight: bold;
+  display: block;
+  float: left;
+  margin-right: 20px;
+  line-height: 32px;
+}
+body .wrap .content .form .invoice-header .input-field-text {
+  width: 280px;
+  height: 30px;
+  border-radius: 5px 5px 5px 5px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #666;
+  float: left;
+}
+body .wrap .content .form .code-send {
+  margin-bottom: 50px;
+}
+body .wrap .content .form .code-send span {
+  font-weight: bold;
+  display: block;
+  float: left;
+  margin-right: 20px;
+  line-height: 32px;
+}
+body .wrap .content .form .code-send .input-field-text {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px 5px 5px 5px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #666;
+  float: left;
+}
+body .wrap .content .form .code-send a {
+  padding: 0px 10px;
+  line-height: 29px;
+  border: 2px solid #003377;
+  text-align: center;
+  display: block;
+  float: left;
+  margin-left: 30px;
+}
+body .wrap .content .form .logo-img {
+  width: 100px;
+  height: 30px;
+  background-color: red;
+  display: block;
+  float: left;
+}
+body .wrap .content .form .submit {
+  width: 150px;
+  height: 50px;
+  background-color: #003377;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  display: block;
+  float: right;
+}
+body .wrap .footer {
+  margin-top: 100px;
+}
+body .wrap .footer .inner {
+  width: 1080px;
+  margin: 0 auto;
+}
+body .wrap .footer .inner img {
+  display: block;
+  float: right;
+  width: 200px;
+  height: 100px;
+  background-color: red;
+}
+body .wrap .footer .bot {
+  height: 100px;
+  width: 100%;
+  background-color: #003377;
+}
+body .wrap .identifying {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 9999;
+  display: none;
+}
+body .wrap .identifying .showBox {
+  width: 500px;
+  height: 215px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body .wrap .identifying .showBox .tip {
+  display: table;
+  margin: 0 auto;
+  margin-top: 22px;
+  font-size: 14px;
+}
+body .wrap .identifying .showBox #tipes {
+  display: table;
+  margin: 6px 0px -13px 0px;
+  transform: translateX(55px);
+  font-size: 14px;
+}
+body .wrap .identifying .showBox #tipes i {
+  color: red;
+}
+body .wrap .identifying .showBox .tipes-false {
+  color: red;
+  display: block;
+  margin: 16px 0px -13px 0px;
+  transform: translateX(95px);
+  font-size: 14px;
+  opacity: 0;
+}
+body .wrap .identifying .showBox img {
+  display: block;
+  float: left;
+  width: 120px;
+  margin: 0 auto;
+  cursor: pointer;
+  margin: 30px 0px 0px 125px;
+  border: 1px solid #ccc;
+}
+body .wrap .identifying .showBox input {
+  width: 139px;
+  height: 38px;
+  display: block;
+  box-sizing: border-box;
+  padding: 10px 20px 10px 20px;
+  font-size: 19px;
+  line-height: 30px;
+  text-align: center;
+  margin-top: 30px;
+  border: 1px solid #ccc;
+}
+body .wrap .identifying .showBox .yes {
+  background: #587BEF;
+  width: 80px;
+  height: 30px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 2px;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+body .wrap .identifying .showBox .no {
+  width: 80px;
+  height: 30px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  letter-spacing: 2px;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  right: -65px;
+  top: 0px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+body .wrap .identifying .showBox .no i {
+  font-size: 25px;
+}
+body .wrap .active {
+  display: block;
+}
+body .wrap .clearfix {
+  zoom: 1;
+}
+body .wrap .clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}

@@ -4,6 +4,7 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
+    <script src="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/contrib/other-validations.js"></script>
 </head>
 <body>
     <div class="main">
@@ -17,256 +18,255 @@
         </div>
         <div class="content">
             <form id="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate>
-
-            <div class="tab_menu">
-                <ul>
-                    <li class="active">带队老师信息</li>
-                    <li>队伍参赛信息</li>
-                    <li>队员信息</li>
-                    <li>缴费信息</li>
-                    <li>信息确认</li>
-                </ul>
-            </div>
-            <div class="all_info clearfix">
-                <div class="active leader_info div_tab clearfix">
-                    <div class="input-field">
-                        <span class="input-label">姓名  :</span>
-                        <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
-                        <div class="tips"></div>
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">手机号码  :</span>
-                        <input data-type="mobile" required tip-info="请填写您的常用手机" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
-                        <div class="tips"></div>
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">邮箱  :</span>
-                        <input required data-type="email" tip-warn="" tip-info="请按照正确的邮箱格式填写" class="input-field-text" id="leader_email" name="leader_email" type="text" value="{{old('leader_email')}}">
-                        <div class="tips"></div>
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">身份证号  :</span>
-                        <input required data-type="ID" tip-info="仅支持仅支持数字以及个别英文" class="input-field-text" id="leader_id" name="leader_id" type="text" value="{{old('leader_id')}}">
-                        <div class="tips"></div>
-                    </div>
-
-                    <div class="input-field">
-                        <span class="input-label">性别  :</span>
-                        <input class="input-radio man" type="radio" name="leader_sex" @if(old('leader_sex') == '' || old('leader_sex') == '男') checked="checked" @endif value="男"><span>男</span>
-                        <input class="input-radio woman" type="radio" name="leader_sex"  @if(old('leader_sex') == '女') checked="checked" @endif value="女"><span>女</span>
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">带队老师照片  :</span>
-                        <div class="uploadBtn">上传图片 </div>
-                        <input type="file" data-picurl="{{session('leader_pic_preview')}}" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle" value=''>
-                        <div class="tips"></div>
-                        <span class="file_name" id="file_name">{{session('leader_pic_filename')}}</span>
-                    </div>
-                    <button type="button" class="btn_next" id="leader_info_btn">下一步</button>
+                <div class="tab_menu">
+                    <ul>
+                        <li class="active">带队老师信息</li>
+                        <li>队伍参赛信息</li>
+                        <li>队员信息</li>
+                        <li>缴费信息</li>
+                        <li>信息确认</li>
+                    </ul>
                 </div>
-                <div class="ranks_info div_tab">
-                    <div class="input-field">
-                        <span class="input-label">队伍名称  :</span>
-                        <input required tip-warn="" tip-info="请出入您队伍的名称" class="input-field-text" id="team_name" name="team_name" type="text" value="{{old('team_name')}}">
-                        <div class="tips"></div>
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">学校/单位名称  :</span>
-                        <input data-type="schoolname" required tip-warn="" tip-info="仅支持汉字、英文、数字"  class="input-field-text" id="school_name" name="school_name" type="text" value="{{old('school_name')}}">
-                        <div class="tips"></div>
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">学校/单位地址  :</span>
-                        <input data-type="schoolname" required tip-warn="" tip-info="仅支持汉字、英文、数字" class="input-field-text" id="school_address" name="school_address" type="text" value="{{old('school_address')}}">
-                        <div class="tips"></div>
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">赛事项目  :</span>
-                        ‍‍<select id="competition_type" name="competition_type">
-                            @foreach ($competition_types as $value => $text)
-                            <option value="{{$value}}" @if(old('competition_type') == $value) selected @endif >{{$text}}</a>
-                            @endforeach
-                        </select>
-                    </div>                    
-                    <div class="input-field">
-                        <span class="input-label">组别  :</span>
-                        ‍‍<select id="competition_group" name="competition_group">
-                            @foreach ($competition_groups as $value => $text)
-                            <option value="{{$value}}" @if(old('competition_group') == $value) selected @endif >{{$text}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="button" class="btn_pre">上一步</button>
-                    <button type="button" class="btn_next">下一步</button>
-                </div>
-                <div class="append_rank div_tab">
-                    <?php $i = 0 ?>
-                    @foreach((array)old('members') as $member)
-                    <div class="menber_list">
-                        <div class="delete"><i class="icon kenrobot ken-close"></i></div>
+                <div class="all_info clearfix">
+                    <div class="active leader_info div_tab clearfix">
                         <div class="input-field">
-                            <span class="input-label">队员姓名{{$i}}:</span>
-                            <input data-type="realname" required tip-info="仅支持仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
-                            <div class="tips"></div>
-                        </div>
-                        <div class="input-field">
-                            <span class="input-label">身份证号  :</span>
-                            <input data-type="ID" required data-type="ID" tip-info="请输入合法的身份证号格式" name="members[{{$i}}][ID]" class="input-field-text member_id" type="text" value="{{$member['ID']}}">
+                            <span class="input-label">姓名  :</span>
+                            <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">手机号码  :</span>
-                            <input data-type="mobile" required tip-info="仅支持仅支持英文、数字、下划线" name="members[{{$i}}][mobile]" class="input-field-text member_mobile" type="text" value="{{$member['mobile']}}">
+                            <input data-type="mobile" required tip-info="请填写您的常用手机" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
-                            <span class="input-label">年龄  :</span>
-                            <input required tip-warn="" tip-info="仅支持数字" name="members[{{$i}}][age]" class="input-field-text member_age" type="text" value="{{$member['age']}}">
+                            <span class="input-label">邮箱  :</span>
+                            <input required data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text" id="leader_email" name="leader_email" type="text" value="{{old('leader_email')}}">
                             <div class="tips"></div>
                         </div>
+                        <div class="input-field">
+                            <span class="input-label">身份证号  :</span>
+                            <input required data-type="ID" tip-info="仅支持仅支持数字以及个别英文" class="input-field-text" id="leader_id" name="leader_id" type="text" value="{{old('leader_id')}}">
+                            <div class="tips"></div>
+                        </div>
+
                         <div class="input-field">
                             <span class="input-label">性别  :</span>
-                            <input name="members[{{$i}}][sex]" class="input-radio man member_sex" type="radio" checked="checked" name="sex" @if($member['sex'] == '' || $member['sex'] == '男') checked="checked" @endif value="男"><span>男</span>
-                            <input name="members[{{$i}}][sex]" class="input-radio woman member_sex" type="radio" name="sex" @if($member['sex'] == '女') checked="checked" @endif value="女"><span>女</span>
+                            <input class="input-radio man" type="radio" name="leader_sex" @if(old('leader_sex') == '' || old('leader_sex') == '男') checked="checked" @endif value="男"><span>男</span>
+                            <input class="input-radio woman" type="radio" name="leader_sex"  @if(old('leader_sex') == '女') checked="checked" @endif value="女"><span>女</span>
+                        </div>
+                        <div class="input-field">
+                            <span class="input-label">带队老师照片  :</span>
+                            <div class="uploadBtn">上传图片 </div>
+                            <input type="file" data-picurl="{{session('leader_pic_preview')}}" tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leader_pic" id="leader_pic" class="inputstyle" value=''>
+                            <div class="tips"></div>
+                            <span class="file_name" id="file_name">{{session('leader_pic_filename')}}</span>
+                        </div>
+                        <button type="button" class="btn_next" id="leader_info_btn">下一步</button>
+                    </div>
+                    <div class="ranks_info div_tab">
+                        <div class="input-field">
+                            <span class="input-label">队伍名称  :</span>
+                            <input required tip-warn="" tip-info="请出入您队伍的名称" class="input-field-text" id="team_name" name="team_name" type="text" value="{{old('team_name')}}">
+                            <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">学校/单位名称  :</span>
-                            <input required tip-warn="" tip-info="仅支持汉字"  name="members[{{$i}}][school_name]" class="input-field-text member_school_name" type="text" value="{{$member['school_name']}}">
+                            <input data-type="schoolname" required tip-warn="" tip-info="仅支持汉字、英文、数字"  class="input-field-text" id="school_name" name="school_name" type="text" value="{{old('school_name')}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">学校/单位地址  :</span>
-                            <input required tip-warn="" tip-info="仅支持汉字" name="members[{{$i}}][school_address]" class="input-field-text member_school_address" type="text" value="{{$member['school_address']}}">
+                            <input data-type="schoolname" required tip-warn="" tip-info="仅支持汉字、英文、数字" class="input-field-text" id="school_address" name="school_address" type="text" value="{{old('school_address')}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
-                            <span class="input-label">队员照片  :</span>
-                            <div class="uploadBtn">上传图片</div>
-                            <input name="members[{{$i}}][pic]" data-picurl="{{session('members_data')[$i]['pic']}}" type="file" class="inputstyle member_pic">
-                            <span class="file_name">{{session('leader_pic_filename')}}</span>
+                            <span class="input-label">赛事项目  :</span>
+                            ‍‍<select id="competition_type" name="competition_type">
+                                @foreach ($competition_types as $value => $text)
+                                <option value="{{$value}}" @if(old('competition_type') == $value) selected @endif >{{$text}}</a>
+                                @endforeach
+                            </select>
+                        </div>                    
+                        <div class="input-field">
+                            <span class="input-label">组别  :</span>
+                            ‍‍<select id="competition_group" name="competition_group">
+                                @foreach ($competition_groups as $value => $text)
+                                <option value="{{$value}}" @if(old('competition_group') == $value) selected @endif >{{$text}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="cut"></div>
+                        <button type="button" class="btn_pre">上一步</button>
+                        <button type="button" class="btn_next">下一步</button>
                     </div>
-                    <?php $i++ ?>
-                    @endforeach
-
-                    <button type="button" class="btn_new" id="append_rank_new">添加新成员</button>
-                    <button type="button" class="btn_pre">上一步</button>
-                    <button type="button" class="btn_next">下一步</button>
-                </div>
-                <div class="payment div_tab">
-                    <div class="input-field">
-                        <span class="input-label">缴费方式:</span>
-                        <input class="input-radio man" type="radio" name="payment" checked="checked" value="现场缴费"><span>现场缴费</span>
-                        <input class="input-radio woman" type="radio" name="payment" disabled value="在线支付"><span style="color: #ccc" >在线支付(暂不支持)</span>
-                    </div>
-                    <button type="button" class="btn_pre">上一步</button>
-                    <button type="button" class="btn_next">下一步</button>
-                </div>
-                <div class="team_info div_tab">
-                    <div class="leader" id="leader">
-                        <span class="leader_title">带队老师信息</span>
-                        <div class="cut"></div>
-                        <div class="input-field">
-                            <span class="name">真实姓名 :</span>
-                            <span  id="preview_leader_name" class="name_input" ></span>
-                        </div>
-                        <div class="input-field">
-                            <span class="name">身份证号 :</span>
-                            <span  id="preview_leader_id" class="name_input"></span>
-                        </div>
-                        <div class="input-field">
-                            <span class="name">邮箱 :</span>
-                            <span  id="preview_leader_email" class="name_input"></span>
-                        </div>
-                        <div class="input-field">
-                            <span  class="name">手机号 :</span>
-                            <span id="preview_leader_mobile" class="name_input"></span>
-                        </div>
-                        <div class="input-field">
-                            <span  class="name">性别 :</span>
-                            <span id="preview_leader_sex" class="name_input"></span>
-                        </div>
-                        <img id="preview_leader_pic" src="" >
-                    </div>
-                    <div class="leader" id="team">
-                        <span class="leader_title">队伍信息</span>
-                        <div class="cut"></div>
-                        <div class="input-field">
-                            <span class="name">队伍名称 :</span>
-                            <span id="preview_team_name" class="name_input"></span>
-                        </div>
-                        <div class="input-field">
-                            <span class="name">学校/单位名称 :</span>
-                            <span id="preview_school_name" class="name_input"></span>
-                        </div>
-                        <div class="input-field">
-                            <span class="name">学校/单位地址 :</span>
-                            <span id="preview_school_address" class="name_input"></span>
-                        </div>
-                        <div class="input-field">
-                            <span class="name">赛事项目 :</span>
-                            <span id="preview_competition_type" class="name_input"></span>
-                        </div>
-                        <div class="input-field">
-                            <span class="name">组别 :</span>
-                            <span id="preview_competition_group" class="name_input"></span>
-                        </div>
-                    </div>
-                    <div class="all_number">
-                        <span class="leader_title">队员信息</span>
-                        <div class="team_number" id="number">
-                            @for($i = 0; $i< 10; $i++)
-                            <div id="member_info_{{$i}}" class="member_info" style="display: none;">
-                                <div class="cut"></div>
-                                <div class="input-field">
-                                    <span class="name">队员姓名 :</span>
-                                    <span data-type="realname" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">身份证 :</span> 
-                                    <span id="{{'preview_'.$i.'_member_id'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span data-type="mobile" class="name">手机号 :</span> 
-                                    <span id="{{'preview_'.$i.'_member_mobile'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">性别 :</span>
-                                    <span id="{{'preview_'.$i.'_member_sex'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">年龄 :</span>
-                                    <span id="{{'preview_'.$i.'_member_age'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
-                                    <span id="{{'preview_'.$i.'_member_school_name'}}" class="name_input"></span>
-                                </div>
-                                <img id="{{'preview_'.$i.'_member_pic'}}" src="" >
+                    <div class="append_rank div_tab">
+                        <?php $i = 0 ?>
+                        @foreach((array)old('members') as $member)
+                        <div class="menber_list">
+                            <div class="delete"><i class="icon kenrobot ken-close"></i></div>
+                            <div class="input-field">
+                                <span class="input-label">队员姓名{{$i}}:</span>
+                                <input data-type="realname" required tip-info="仅支持仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
+                                <div class="tips"></div>
                             </div>
-                            @endfor
-
+                            <div class="input-field">
+                                <span class="input-label">身份证号  :</span>
+                                <input data-type="ID" required data-type="ID" tip-info="请输入合法的身份证号格式" name="members[{{$i}}][ID]" class="input-field-text member_id" type="text" value="{{$member['ID']}}">
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">手机号码  :</span>
+                                <input data-type="mobile" required tip-info="仅支持仅支持英文、数字、下划线" name="members[{{$i}}][mobile]" class="input-field-text member_mobile" type="text" value="{{$member['mobile']}}">
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">年龄  :</span>
+                                <input required tip-warn="" tip-info="仅支持数字" name="members[{{$i}}][age]" class="input-field-text member_age" type="text" value="{{$member['age']}}">
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">性别  :</span>
+                                <input name="members[{{$i}}][sex]" class="input-radio man member_sex" type="radio" checked="checked" name="sex" @if($member['sex'] == '' || $member['sex'] == '男') checked="checked" @endif value="男"><span>男</span>
+                                <input name="members[{{$i}}][sex]" class="input-radio woman member_sex" type="radio" name="sex" @if($member['sex'] == '女') checked="checked" @endif value="女"><span>女</span>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">学校/单位名称  :</span>
+                                <input required tip-warn="" tip-info="仅支持汉字"  name="members[{{$i}}][school_name]" class="input-field-text member_school_name" type="text" value="{{$member['school_name']}}">
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">学校/单位地址  :</span>
+                                <input required tip-warn="" tip-info="仅支持汉字" name="members[{{$i}}][school_address]" class="input-field-text member_school_address" type="text" value="{{$member['school_address']}}">
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">队员照片  :</span>
+                                <div class="uploadBtn">上传图片</div>
+                                <input name="members[{{$i}}][pic]" data-picurl="{{session('members_data')[$i]['pic']}}" type="file" class="inputstyle member_pic">
+                                <span class="file_name">{{session('leader_pic_filename')}}</span>
+                            </div>
+                            <div class="cut"></div>
                         </div>
+                        <?php $i++ ?>
+                        @endforeach
+
+                        <button type="button" class="btn_new" id="append_rank_new">添加新成员</button>
+                        <button type="button" class="btn_pre">上一步</button>
+                        <button type="button" class="btn_next">下一步</button>
                     </div>
-                    <div class="pays clearfix" id="pays">
-                        <span class="leader_title">缴费信息</span>
-                        <div class="cut"></div>
-                        <span class="name">支付方式 :</span>
-                        <span id="preview_payment" class="name_input" ></span>
+                    <div class="payment div_tab">
+                        <div class="input-field">
+                            <span class="input-label">缴费方式:</span>
+                            <input class="input-radio man" type="radio" name="payment" checked="checked" value="现场缴费"><span>现场缴费</span>
+                            <input class="input-radio woman" type="radio" name="payment" disabled value="在线支付"><span style="color: #ccc" >在线支付(暂不支持)</span>
+                        </div>
+                        <button type="button" class="btn_pre">上一步</button>
+                        <button type="button" class="btn_next">下一步</button>
                     </div>
-                    <div id="code" class="clearfix">
-                        <span class="input-label">验证码  :</span>
-                        <!-- <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
-                        <input name="verificationcode" id="verificationcode" class="code" type="text">
-                        <div class="tips"></div>
+                    <div class="team_info div_tab">
+                        <div class="leader" id="leader">
+                            <span class="leader_title">带队老师信息</span>
+                            <div class="cut"></div>
+                            <div class="input-field">
+                                <span class="name">真实姓名 :</span>
+                                <span  id="preview_leader_name" class="name_input" ></span>
+                            </div>
+                            <div class="input-field">
+                                <span class="name">身份证号 :</span>
+                                <span  id="preview_leader_id" class="name_input"></span>
+                            </div>
+                            <div class="input-field">
+                                <span class="name">邮箱 :</span>
+                                <span  id="preview_leader_email" class="name_input"></span>
+                            </div>
+                            <div class="input-field">
+                                <span  class="name">手机号 :</span>
+                                <span id="preview_leader_mobile" class="name_input"></span>
+                            </div>
+                            <div class="input-field">
+                                <span  class="name">性别 :</span>
+                                <span id="preview_leader_sex" class="name_input"></span>
+                            </div>
+                            <img id="preview_leader_pic" src="" >
+                        </div>
+                        <div class="leader" id="team">
+                            <span class="leader_title">队伍信息</span>
+                            <div class="cut"></div>
+                            <div class="input-field">
+                                <span class="name">队伍名称 :</span>
+                                <span id="preview_team_name" class="name_input"></span>
+                            </div>
+                            <div class="input-field">
+                                <span class="name">学校/单位名称 :</span>
+                                <span id="preview_school_name" class="name_input"></span>
+                            </div>
+                            <div class="input-field">
+                                <span class="name">学校/单位地址 :</span>
+                                <span id="preview_school_address" class="name_input"></span>
+                            </div>
+                            <div class="input-field">
+                                <span class="name">赛事项目 :</span>
+                                <span id="preview_competition_type" class="name_input"></span>
+                            </div>
+                            <div class="input-field">
+                                <span class="name">组别 :</span>
+                                <span id="preview_competition_group" class="name_input"></span>
+                            </div>
+                        </div>
+                        <div class="all_number">
+                            <span class="leader_title">队员信息</span>
+                            <div class="team_number" id="number">
+                                @for($i = 0; $i< 10; $i++)
+                                <div id="member_info_{{$i}}" class="member_info" style="display: none;">
+                                    <div class="cut"></div>
+                                    <div class="input-field">
+                                        <span class="name">队员姓名 :</span>
+                                        <span data-type="realname" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">身份证 :</span> 
+                                        <span id="{{'preview_'.$i.'_member_id'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span data-type="mobile" class="name">手机号 :</span> 
+                                        <span id="{{'preview_'.$i.'_member_mobile'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">性别 :</span>
+                                        <span id="{{'preview_'.$i.'_member_sex'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">年龄 :</span>
+                                        <span id="{{'preview_'.$i.'_member_age'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
+                                        <span id="{{'preview_'.$i.'_member_school_name'}}" class="name_input"></span>
+                                    </div>
+                                    <img id="{{'preview_'.$i.'_member_pic'}}" src="" >
+                                </div>
+                                @endfor
+
+                            </div>
+                        </div>
+                        <div class="pays clearfix" id="pays">
+                            <span class="leader_title">缴费信息</span>
+                            <div class="cut"></div>
+                            <span class="name">支付方式 :</span>
+                            <span id="preview_payment" class="name_input" ></span>
+                        </div>
+                        <div id="code" class="clearfix">
+                            <span class="input-label">验证码  :</span>
+                            <!-- <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
+                            <input name="verificationcode" id="verificationcode" class="code" type="text">
+                            <div class="tips"></div>
+                        </div>
+                        <a id="tel" class="tel">获取手机验证码</a>
+                        <div class="clearfix"></div>
+                        <button type="button" class="btn_pre">上一步</button>
+                        <button  class="btn_next" type="submit">确认提交</button>
                     </div>
-                    <a id="tel" class="tel">获取手机验证码</a>
-                    <div class="clearfix"></div>
-                    <button type="button" class="btn_pre">上一步</button>
-                    <button  class="btn_next" type="submit">确认提交</button>
                 </div>
-            </div>
             </form>
         </div>
         <div class="footer">
@@ -311,7 +311,6 @@
         }
 
         $.fn.refreshCaptcha = function(){
-            console.log(123)
             if($(this).prop('tagName') == 'IMG'){
                 var timestamp = Date.parse(new Date());
                 $(this).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
@@ -748,7 +747,7 @@
                 tabIndex +=1;
                 showTab(tabIndex);
             }
-            // showTab(tabIndex);
+            showTab(tabIndex);
         });
 
         $('.btn_pre').click(function(){
@@ -784,8 +783,6 @@
     $('.falseCodeAlert').click(function(){
         $(this).css('display', 'none');
     })
-
-
 </script>
 </body>
 </html>

@@ -52,3 +52,6 @@ Route::get('/success', 'SignupController@success');
 Route::post('/signup', 'SignupController@doSignup');
 Route::get('/search', 'SignupController@search');
 Route::post('/search', 'SignupController@doSearch');
+
+Route::get('/lzsignup', 'SignupController@lzsignup');
+Route::post('/submitForm', 'SignupController@submitForm');

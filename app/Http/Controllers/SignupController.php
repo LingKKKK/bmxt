@@ -235,4 +235,91 @@ class SignupController extends Controller
         // return $signdata;
 
     }
+
+    public function lzsignup()
+    {
+        return view('lzsignup');
+    }
+
+    public function submitForm()
+    {
+        dd(123);
+        // $validator = Validator::make($request->all(), 
+        //     [
+        //         // 'leader_name' => 'required', //领队姓名
+        //         // 'leader_id' => 'required', //领队身份证号
+        //         // 'leader_sex' => 'required', //领队性别
+        //         // 'leader_pic' => 'required|image',
+        //         // 'leader_email' => 'required|email',
+        //         // 'leader_mobile' => 'required',
+        //         // 'team_name' => 'required',
+        //         // 'school_name' => 'required',
+        //         // 'school_address' => 'required', 
+        //         // 'verificationcode' => 'required|verificationcode',
+        //     ],
+        //     [
+        //         // 'team_name.required' => '队名必填',
+        //         // 'school_name.required' => '学校名必填',
+        //         // 'verificationcode.required' => '验证码不能为空',
+        //         // 'verificationcode.verificationcode' => '验证码错误',
+        //     ]
+        // );
+        // // dd($this->saveFile($request->file('leader_pic'))['publicPath']);
+        // $leader_picdata = $this->saveFile($request->file('leader_pic'));
+        // $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
+        // $leader_pic_filename = !empty($leader_picdata) && isset($leader_picdata['filename']) ? $leader_picdata['filename'] : '';
+
+        // // 处理成员
+        // $members = array();
+        // $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
+
+        // foreach ($origin_members as $k => $item) {
+        //     $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name']);
+        //     $pic = isset($item['pic']) ? $item['pic'] : null;
+
+        //     $member_picdata = $this->saveFile($item['pic']);
+        //     $member_info['pic'] = $member_picdata['publicPath'];
+        //     $member_info['pic_filename'] = $member_picdata['filename'];
+        //     $members[] = $member_info;
+        // }
+
+        // if ($validator->fails()) {
+        //     // return api_response(1, 'Fail', $validator->errors()->toArray());
+        //     return redirect()->back()->withInput()
+        //                              ->withErrors($validator->errors())
+        //                              ->with('leader_pic_preview', $leader_pic)
+        //                              ->with('leader_pic_filename', $leader_pic_filename)
+        //                              ->with('members_data', $members);
+        // }
+
+        // //表单地钻
+        // $keys = ['leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 
+        //          'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
+        //         'payment'
+        // ];
+
+        // $data = $request->only($keys);
+
+        // $data['leader_pic'] = $leader_pic;
+
+
+
+        // $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
+        // $data['team_no'] = $this->getTeamNo();
+
+        // $request->session()->flash('signdata', $data);
+
+        // $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
+        // $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
+
+        // try {
+        //     $ddt = SignupData::create($data);
+        // } catch (\Exception $e) {
+        //     return redirect()->back()->withInput();
+        //     return api_response(1 ,'报名失败'.$e->getMessage());
+        // }
+        // return redirect('/');
+        // // $this->sendMail('');
+        // return api_response(0, '报名成功', $ddt->toArray());
+    }
 }
