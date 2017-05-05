@@ -243,25 +243,24 @@ class SignupController extends Controller
 
     public function submitForm()
     {
-        dd(123);
         // $validator = Validator::make($request->all(), 
         //     [
-        //         // 'leader_name' => 'required', //领队姓名
-        //         // 'leader_id' => 'required', //领队身份证号
-        //         // 'leader_sex' => 'required', //领队性别
-        //         // 'leader_pic' => 'required|image',
-        //         // 'leader_email' => 'required|email',
-        //         // 'leader_mobile' => 'required',
-        //         // 'team_name' => 'required',
-        //         // 'school_name' => 'required',
-        //         // 'school_address' => 'required', 
-        //         // 'verificationcode' => 'required|verificationcode',
-        //     ],
-        //     [
-        //         // 'team_name.required' => '队名必填',
-        //         // 'school_name.required' => '学校名必填',
-        //         // 'verificationcode.required' => '验证码不能为空',
-        //         // 'verificationcode.verificationcode' => '验证码错误',
+                // 'leader_name' => 'required', //领队姓名
+                // 'leader_id' => 'required', //领队身份证号
+                // 'leader_sex' => 'required', //领队性别
+                // 'leader_pic' => 'required|image',
+                // 'leader_email' => 'required|email',
+                // 'leader_mobile' => 'required',
+                // 'team_name' => 'required',
+                // 'school_name' => 'required',
+                // 'school_address' => 'required', 
+                // 'verificationcode' => 'required|verificationcode',
+            // ],
+            // [
+                // 'team_name.required' => '队名必填',
+                // 'school_name.required' => '学校名必填',
+                // 'verificationcode.required' => '验证码不能为空',
+                // 'verificationcode.verificationcode' => '验证码错误',
         //     ]
         // );
         // // dd($this->saveFile($request->file('leader_pic'))['publicPath']);

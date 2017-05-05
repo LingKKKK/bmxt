@@ -173,6 +173,7 @@ body .wrap .content .form {
   padding: 0px 70px 60px 70px;
 }
 body .wrap .content .form .input-field {
+  position: relative;
   zoom: 1;
   margin-bottom: 20px;
 }
@@ -202,8 +203,9 @@ body .wrap .content .form .cut {
   margin-top: 14px;
 }
 body .wrap .content .form .team-nav {
-  width: 100%;
   height: 50px;
+  display: block;
+  float: left;
 }
 body .wrap .content .form .team-nav li {
   width: 100px;
@@ -214,6 +216,7 @@ body .wrap .content .form .team-nav li {
   float: left;
   line-height: 50px;
   cursor: pointer;
+  transition: all 0.3s;
 }
 body .wrap .content .form .team-nav .active {
   color: #fff;
@@ -222,16 +225,37 @@ body .wrap .content .form .team-nav .active {
   font-size: 16px;
   font-weight: blod;
 }
-body .wrap .content .form .team {
-  margin-top: 14px;
+body .wrap .content .form .button-add {
+  background-color: #003377;
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  line-height: 50px;
+  font-size: 35px;
+  text-align: center;
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+body .wrap .content .form .button-add i {
+  color: #fff;
+  width: 50px;
+  line-height: 50px;
+  font-size: 35px;
+  text-align: center;
+  cursor: pointer;
+  transform: rotate(45deg);
+}
+body .wrap .content .form .team-list .team {
   padding-top: 34px;
   box-sizing: border-box;
   border: 2px solid #666;
   width: 100%;
   padding-left: 35px;
   box-sizing: border-box;
+  display: none;
 }
-body .wrap .content .form .team .members {
+body .wrap .content .form .team-list .team .members {
   width: 324px;
   height: 323px;
   display: block;
@@ -240,7 +264,7 @@ body .wrap .content .form .team .members {
   margin-right: 10px;
   border: 1px solid #ccc;
 }
-body .wrap .content .form .team .members .member-title {
+body .wrap .content .form .team-list .team .members .member-title {
   display: block;
   width: 100%;
   height: 35px;
@@ -250,21 +274,50 @@ body .wrap .content .form .team .members .member-title {
   line-height: 35px;
   text-align: center;
   margin-bottom: 25px;
+  position: relative;
 }
-body .wrap .content .form .team .members .input-field {
+body .wrap .content .form .team-list .team .members .member-title .ken-add {
+  width: 20px;
+  height: 20px;
+  background-color: #003377;
+  color: #fff;
+  position: absolute;
+  right: 17px;
+  top: 8px;
+  line-height: 21px;
+  cursor: pointer;
+  display: none;
+}
+body .wrap .content .form .team-list .team .members .member-title .closeTeacher {
+  width: 20px;
+  height: 20px;
+  background-color: #003377;
+  color: #fff;
+  position: absolute;
+  right: 17px;
+  top: 8px;
+  line-height: 21px;
+  cursor: pointer;
+  display: block;
+}
+body .wrap .content .form .team-list .team .members .input-field {
+  position: relative;
   box-sizing: border-box;
   padding: 0px 23px;
 }
-body .wrap .content .form .team .members .input-field .input-label {
+body .wrap .content .form .team-list .team .members .input-field .input-label {
   display: block;
   float: left;
   margin-right: 20px;
   line-height: 32px;
 }
-body .wrap .content .form .team .members .input-field .input-field-text {
+body .wrap .content .form .team-list .team .members .input-field .input-field-text {
   display: block;
   float: right;
   width: 150px;
+}
+body .wrap .content .form .team-list .active {
+  display: block;
 }
 body .wrap .content .form .symposium span {
   margin-bottom: 5px;
@@ -296,6 +349,7 @@ body .wrap .content .form .symposium .symposium-member .meet .meet-title {
   margin-bottom: 25px;
 }
 body .wrap .content .form .symposium .symposium-member .meet .input-field {
+  position: relative;
   box-sizing: border-box;
   padding: 0px 23px;
 }
@@ -370,6 +424,18 @@ body .wrap .content .form .submit {
   line-height: 50px;
   display: block;
   float: right;
+}
+body .wrap .content .form .width415 {
+  width: 415px;
+}
+body .wrap .content .form .width450 {
+  width: 450px;
+}
+body .wrap .content .form .width875 {
+  width: 875px;
+}
+body .wrap .content .form .width875 input {
+  width: 700px !important;
 }
 body .wrap .footer {
   margin-top: 100px;
@@ -497,4 +563,19 @@ body .wrap .clearfix:after {
   display: block;
   clear: both;
   height: 0;
+}
+body .tips {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+}
+body .tips .useable {
+  color: green;
+}
+body .tips .useable i {
+  font-size: 23px;
+}
+body .tips .unuse {
+  color: red;
+  font-size: 20px;
 }

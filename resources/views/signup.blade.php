@@ -668,6 +668,7 @@
         })
 
         var memberListNum = 1;
+        // 添加成员列表
         function addMemberList(){
             var memberList = '';
             memberList += '<div class="menber_list">';
@@ -735,6 +736,7 @@
 
         var tabIndex = 0;
 
+        // 点击切换 进行下一步
         $('.btn_next').click(function(){
             var prevent = false;
             var $inputs = $($('.all_info .div_tab').get(tabIndex)).find('input').each(function(){
@@ -745,11 +747,11 @@
             });
             if (!prevent) {
                 tabIndex +=1;
-                showTab(tabIndex);
             }
             showTab(tabIndex);
         });
 
+        // 返回上一步
         $('.btn_pre').click(function(){
             tabIndex -=1;
             showTab(tabIndex);
@@ -783,6 +785,7 @@
     $('.falseCodeAlert').click(function(){
         $(this).css('display', 'none');
     })
+    
 </script>
 </body>
 </html>
