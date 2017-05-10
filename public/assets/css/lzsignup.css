@@ -196,6 +196,16 @@ body .wrap .content .form .input-field .input-field-text {
   text-align: center;
   border: 1px solid #666;
 }
+body .wrap .content .form .input-field .school-type {
+  display: block;
+  float: left;
+}
+body .wrap .content .form .input-field .school-type .label-school {
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-left: 20px;
+}
 body .wrap .content .form .cut {
   border: 1px dashed #000;
   width: 100%;
@@ -434,8 +444,9 @@ body .wrap .content .form .width450 {
 body .wrap .content .form .width875 {
   width: 875px;
 }
-body .wrap .content .form .width875 input {
+body .wrap .content .form .width875 #competition_type {
   width: 700px !important;
+  font-size: 15px;
 }
 body .wrap .footer {
   margin-top: 100px;
@@ -578,4 +589,36 @@ body .tips .useable i {
 body .tips .unuse {
   color: red;
   font-size: 20px;
+}
+body #competition_type {
+  cursor: pointer;
+}
+body #product-game {
+  display: none;
+  width: 700px;
+  border: 1px solid #666;
+  position: absolute;
+  left: 132px;
+  background: white;
+  z-index: 999;
+  border-radius: 5px 5px 5px 5px;
+  padding: 20px 0px 20px 20px;
+  box-sizing: border-box;
+}
+body #product-game .project-classify {
+  font-size: 15px;
+  font-weight: bold;
+  width: 110px;
+  display: block;
+  float: left;
+  line-height: 32px;
+}
+body #product-game .project-click {
+  display: block;
+  float: left;
+  line-height: 32px;
+  margin-right: 27px;
+}
+body #product-game .project-click span {
+  margin-left: 10px;
 }

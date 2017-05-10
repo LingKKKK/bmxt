@@ -42,11 +42,22 @@
       <form id="form" enctype="multipart/form-data" method="post" action="/submitForm" novalidate>
         <div class="form">
           <div>
-            <div class="input-field width415">
+            <div class="input-field width415" style="float: left;">
               <span class="input-label">学校  :</span>
               <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text " id="school_name" name="school_name" type="text" value="">
               <div class="tips"></div>
             </div>
+            <div class="input-field" style="float: left;">
+              <div id="primary" class="school-type">
+                <label class="label-school">中小学组</label>
+                <input class="input-school" type="radio" name="school_type" value="primary" checked="true" />
+              </div>
+              <div id="university" class="school-type">
+                <label class="label-school">大学组</label>
+                <input class="input-school" type="radio" name="school_type" value="university" />
+              </div>
+            </div>
+            <div class="clear"></div>
             <div class="input-field width415">
               <span class="input-label">院系  :</span>
               <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text " id="department" name="department" type="text" value="">
@@ -155,23 +166,23 @@
               <?php $i++ ?>
               @endforeach
             </div>
-          </div>
+          </div> 
           <div class="cut" style="margin-top: 34px;"></div>
           <div>
             <div class="invoice-header clearfix">
               <span>发票抬头:</span>
-              <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="invoice_header" name="invoice_header" type="text" value="{{old('invoice_header')}}"">
+              <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="invoice_header" name="invoice_header" type="text" value="{{old('invoice_header')}}">
             </div>
           </div>
           <div class="cut" style="margin-top: 34px;"></div>
-          <div>
+          <!-- <div>
             <div class="code-send clearfix">
               <span>验证码:</span>
-              <input data-type="realname" required tip-warn="" tip-info="请输入手机短信收到的验证码" class="input-field-text" id="verificationcode" name="verificationcode" type="text" value="">
+              <input data-type="realname" tip-warn="" tip-info="请输入手机短信收到的验证码" class="input-field-text" id="verificationcode" name="verificationcode" type="text" value="">
               <a id="tel" class="tel">发送验证码</a>
             </div>
           </div>
-          <div class="logo-img"></div>
+          <div class="logo-img"></div> -->
           <button class="submit" type="submit">申请报名</button>
         </div>
       </form>
@@ -393,10 +404,8 @@
       // 空间验证
       $("input").unbind('blur').blur(function(){
         validField(this);
-
         return false;
       });
-
       //输入提示
       $("input").unbind('focus').focus(function(){
         $(this).tipClear();
@@ -422,6 +431,22 @@
         $('.team-list .active .members:eq(1) .member-title .ken-add').css('display', 'block');
         $('.team-list .active .members:eq(1) .member-title .closeTeacher').css('display', 'none');
       });
+      // 切换参加的类型内容
+      $('#primary .input-school').unbind();
+      $('#primary .input-school').bind('click', function() {
+        $("#primary .input-school").attr("checked","true");
+        $("#university .input-school").removeAttr("checked");
+        primaryList();
+        checkboxChange();
+      });
+      $('#university .input-school').unbind();
+      $('#university .input-school').bind('click', function() {
+        $("#university .input-school").attr("checked","true");
+        $("#primary .input-school").removeAttr("checked");
+        universityList();
+        checkboxChange();
+      });
+
       // 点击切换队伍信息
       $('.team-nav li').unbind();
       $('.team-nav li').bind("click", function() {
@@ -440,6 +465,28 @@
         $(".closeTeacher").unbind();
         deleteList();
       });
+      // 点击弹出队伍项目选项
+      $('#competition_type').unbind();
+      $("#competition_type").bind("click",function(){
+        // console.log('显示#product-game');
+        $('.project-click').unbind();
+        $('.project-click').bind("click",function(){
+          // console.log('赋值');
+          checkboxChange();
+        });
+        $('#product-game').css('display', 'block');
+      });
+      // 
+      $('#product-game').unbind();
+      $('#product-game').bind({
+        mouseenter: function(e) {
+          $('#product-game').css('display', 'block');
+        },
+        mouseleave: function(e) {
+          $('#product-game').css('display', 'none');
+        }
+      });
+      // 选择参加的项目
     }
     // 更新预览界面
     function updatePreview() {
@@ -465,14 +512,31 @@
 
     function deleteList() {
       $(".closeTeacher").bind("click", function() {
-        console.log('删除元素')
+        // console.log('删除元素')
         $(this).parents('.member-title').parents('.members').remove();
         teacher_list_num -= 1;
       });
     }
+    // 选择参加的项目
+    function checkboxVal(){
+      // console.log('赋值');
+      $('#competition_type').val($("#product-game input[type='checkbox']:checked").siblings('span').text());
+    }
+
+    function checkboxChange(){
+      if($("#product-game input[type='checkbox']:checked").length > 1) {
+        $("#product-game input").attr("disabled","true");
+        $("#product-game input[type='checkbox']:checked").removeAttr("disabled");
+        checkboxVal();
+      }else if($("#product-game input[type='checkbox']:checked").length < 2){
+        $("#product-game input").removeAttr("disabled");
+        checkboxVal();
+      }
+    }
+
     // 点击确认输入验证码
     $('.identifying .yes').click(function() {
-      console.log('获取验证码')
+      // console.log('获取验证码')
       // $('.identifying').removeClass('active');
       var captchacode = $('#v_code').val();
       var mobile = $('#leader_mobile').val();
@@ -488,13 +552,13 @@
         },
         function(res){
           if (res.status == 0) {
-            console.log('验证码填写成功并确定')
+            // console.log('验证码填写成功并确定')
             refresh_captcha();
             $('.identifying').removeClass('active');
             countdown();
 
           } else {
-            console.log(res)
+            // console.log(res)
             $('.tipes-false').css('opacity', 1);
           }
         }
@@ -526,17 +590,17 @@
     function addMemberList() {
       memberListNum += 1;
       var fieldHtml = '';
-      // console.log(fieldHtml);
+      
       fieldHtml += '<div class="team clearfix">';
-      // console.log(fieldHtml);
       fieldHtml += buildField('input-field width450', '队伍名称', 'team[' + memberListNum + '][name]', 'name');
       fieldHtml += selectField('input-field width875', '参赛项目', 'team[' + memberListNum + '][department]', 'department');
       fieldHtml += buildMember('参赛队员', '队长姓名', 'team[' + memberListNum + '][captain_name]', '队长电话', 'team[' + memberListNum + '][captain_tel]', 'team[' + memberListNum + '][member_name1]', 'team[' + memberListNum + '][member_name2]', 'team[' + memberListNum + '][member_name3]');
       fieldHtml += buildTeaacher('指导教师', 'team[' + memberListNum + '][' + teacher_list_num + '][teacher_name]', 'team[' + memberListNum + '][' + teacher_list_num + '][teacher_tel]', 'team[' + memberListNum + '][' + teacher_list_num + '][teacher_email]', 'team[' + memberListNum + '][' + teacher_list_num + '][teacher_job]');
       fieldHtml += '</div>';
-      console.log(fieldHtml);
+   
       $('.team-list').append(fieldHtml);
       // memberListNum += 1;
+      primaryList()
       rebindVlidation();
     }
     function addTeacherList() {
@@ -545,10 +609,10 @@
     }
     function teacherNumChange() {
       teacher_list_num = $('.team-list .active .members').length - 1;
-      console.log(teacher_list_num);
+      // console.log(teacher_list_num);
     };
     function teamNumChange() {
-      console.log(memberListNum);
+      // console.log(memberListNum);
       memberListNum = $('.team-nav .active').index() + 1;
     };
     // 添加队伍信息部分
@@ -559,7 +623,7 @@
       fieldHtml += '<span class="input-label">' + lablename + '  :</span>';
       fieldHtml += '<input data-type="realname" required tip-warn="" tip-info="" class="input-field-text" name="' + name + '" type="text" value="{{old('+ variable +')}}">';
       fieldHtml += '<div class="tips"></div></div>';
-      // console.log(fieldHtml);
+      
       return fieldHtml;
     }
     // 添加select部分
@@ -568,11 +632,10 @@
       var fieldHtml = '';
       fieldHtml += '<div class="' + className + '">';
       fieldHtml += '<span class="input-label">' + lablename + '  :</span>';
-      fieldHtml += '<select id="competition_type" name="' + name + 'competition_type" class="input-field-text">';
-      fieldHtml += '<option value="">21312</option>';
-      fieldHtml += '<select>';
-      fieldHtml += '<div class="tips"></div></div>';
-      // console.log(fieldHtml);
+      fieldHtml += '<input id="competition_type" name="' + name + 'competition_type" class="input-field-text width700">';
+      fieldHtml += '<div id="product-game">';
+      fieldHtml += '</div>';
+      fieldHtml += '</div>';
       return fieldHtml;
     }
     // 队员部分
@@ -601,7 +664,7 @@
       fieldHtml += '<span class="input-label">队员姓名3  :</span>';
       fieldHtml += '<input data-type="realname" class="input-field-text" name="' + member3 + '" type="text" value="{{old('member_name3')}}"">';
       fieldHtml += '<div class="tips"></div></div></div>';
-      // console.log(fieldHtml);
+      
       return fieldHtml;
     }
     // 添加指导老师部分
@@ -657,7 +720,7 @@
 
     // 发送手机验证码
     $('#tel').click(function() {
-      console.log(1);
+      // console.log(1);
       $('.identifying').addClass('active');
       var partten = /^1[3,5,8]\d{9}$/;
       if(partten.test($('#leader_mobile').val())){
@@ -676,6 +739,28 @@
     $('.falseCodeAlert').click(function(){
       $(this).css('display', 'none');
     })
+
+    function primaryList() {
+      var primary = '';
+      primary += '<span class="project-classify">小学组内容</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      primary += '<div class="clear"></div>';
+      $('#product-game').html(primary);
+    };
+    function universityList() {
+      var universityList = '';
+      universityList += '<span class="project-classify">全局视觉组</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      universityList += '<div class="clear"></div>';
+      universityList += '<span class="project-classify">工程创意组</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      universityList += '<div class="clear"></div>';
+      universityList += '<span class="project-classify">创新创意组</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      universityList += '<div class="clear"></div>';
+      universityList += '<span class="project-classify">2D仿生组</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      universityList += '<div class="clear"></div>';
+      $('#product-game').html(universityList);
+    };
+    
+
+
   </script>
 
 

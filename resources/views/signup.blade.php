@@ -67,7 +67,7 @@
                     <div class="ranks_info div_tab">
                         <div class="input-field">
                             <span class="input-label">队伍名称  :</span>
-                            <input required tip-warn="" tip-info="请出入您队伍的名称" class="input-field-text" id="team_name" name="team_name" type="text" value="{{old('team_name')}}">
+                            <input data-type="schoolname" required tip-warn="" tip-info="请出入您队伍的名称" class="input-field-text" id="team_name" name="team_name" type="text" value="{{old('team_name')}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -128,6 +128,11 @@
                                 <span class="input-label">性别  :</span>
                                 <input name="members[{{$i}}][sex]" class="input-radio man member_sex" type="radio" checked="checked" name="sex" @if($member['sex'] == '' || $member['sex'] == '男') checked="checked" @endif value="男"><span>男</span>
                                 <input name="members[{{$i}}][sex]" class="input-radio woman member_sex" type="radio" name="sex" @if($member['sex'] == '女') checked="checked" @endif value="女"><span>女</span>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">队员身高  :</span>
+                                <input required tip-warn="" tip-info="仅支持数字,以厘米为单位" name="members[{{$i}}][height]" class="input-field-text member_age" type="text" value="{{$member['height']}}">
+                                <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">学校/单位名称  :</span>
@@ -240,8 +245,12 @@
                                         <span id="{{'preview_'.$i.'_member_age'}}" class="name_input"></span>
                                     </div>
                                     <div class="input-field">
-                                        <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
+                                        <span class="name">学校/单位名称 :</span>
                                         <span id="{{'preview_'.$i.'_member_school_name'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name" style="margin-bottom: 30px;">学校/单位地址 :</span>
+                                        <span id="{{'preview_'.$i.'_member_school_address'}}" class="name_input"></span>
                                     </div>
                                     <img id="{{'preview_'.$i.'_member_pic'}}" src="" >
                                 </div>
@@ -708,15 +717,23 @@
 
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
+
+            memberList += '<div class="input-field">';
+            memberList += '<span class="input-label">队员身高  :</span>';
+            memberList += '<input data-type="agemenber" required tip-warn="" tip-info="仅支持数字,以厘米为单位"  name="members['+memberListNum+'][height]" class="input-field-text" type="text">';
+            memberList += '<div class="tips"></div>';
+            memberList += '<div class="clearfix"></div>';
+            memberList += '</div>';
+
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">学校/单位名称  :</span>';
-            memberList += '<input data-type="schoolname" required tip-warn="" tip-info="可以输入非汉字，英文，数字，下划线字符"  name="members['+memberListNum+'][school_name]" class="input-field-text member_school_name" type="text">';
+            memberList += '<input data-type="schoolname" required tip-warn="" tip-info="可以输入汉字，英文，数字"  name="members['+memberListNum+'][school_name]" class="input-field-text member_school_name" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
             memberList += '<div class="input-field">';
             memberList += '<span data-type="schoolname" class="input-label">学校/单位地址  :</span>';
-            memberList += '<input required tip-warn="" tip-info="可以输入非汉字，英文，数字，下划线字符" name="members['+memberListNum+'][school_address]" class="input-field-text member_school_address" type="text">';
+            memberList += '<input required tip-warn="" tip-info="可以输入汉字，英文，数字" name="members['+memberListNum+'][school_address]" class="input-field-text member_school_address" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';

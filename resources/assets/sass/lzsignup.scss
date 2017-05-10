@@ -136,6 +136,23 @@ body {
                         text-align: center;
                         border: 1px solid #666;
                     }
+                    
+                    .school-type {
+                        display: block;
+                        float: left;
+                        
+                        .label-school {
+                            font-size: 15px;
+                            font-weight: bold;
+                            margin-right: 10px;
+                            margin-left: 20px;
+                        }
+
+                        .input-school {
+                            // position: absolute;
+                            // top: 5px;
+                        }
+                    }
                 }
 
                 .cut {
@@ -413,8 +430,9 @@ body {
                 .width875 {
                     width: 875px;
 
-                    input {
+                    #competition_type {
                         width: 700px!important;
+                        font-size: 15px;
                     }
                 }
             }
@@ -583,6 +601,42 @@ body {
             font-size: 20px;
         }
     }
+    #competition_type {
+        cursor: pointer;
+    }
+    #product-game {
+        display: none;
+        width: 700px;
+        border: 1px solid #666;
+        position: absolute;
+        left: 132px;
+        background: white;
+        z-index: 999;
+        border-radius: 5px 5px 5px 5px;
+        padding: 20px 0px 20px 20px;
+        box-sizing: border-box;
 
-    
+        .project-classify {
+            font-size: 15px;
+            font-weight: bold;
+            width: 110px;
+            display: block;
+            float: left;
+            line-height: 32px;
+        }
+
+        .project-click {
+            display: block;
+            float: left;
+            line-height: 32px;
+            margin-right: 27px;
+
+            span {
+                margin-left: 10px;
+            }
+
+            input {
+            }
+        }
+    }
 }
