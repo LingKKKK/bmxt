@@ -1,4 +1,5 @@
 /*重置css*/
+$hack_ie7: "+";
 @import "theme2/_reset.scss";
 * {
     margin: 0;
@@ -619,6 +620,10 @@ body {
         margin-left: 15px;
         margin-top: 0px;
         line-height: 25px;
+        // float: left\9;
+        // float: left\0; 
+        // #{$hack_ie7}float: left;
+        // _float: left;
     }
 
     .tips {
@@ -710,6 +715,11 @@ body {
         z-index: 999;
         transition: all 0.7s;
         margin-top: -1px;
+        // display: none;
+        // display: none\9;
+        // display: none\0; 
+        // #{$hack_ie7}display: none;
+        // _display: none;
 
         &:hover {
             color: #fff;
@@ -725,8 +735,19 @@ body {
         opacity: 0;
         transform: translate(-70px,2px);
         z-index: 99;
-        // pointer-events: none;
         margin-bottom: 30px;
+        // opacity: 1\9;
+        // opacity: 1\0; 
+        // #{$hack_ie7}opacity: 1;
+        // _opacity: 1;
+        // display: block\9;
+        // display: block\0; 
+        // #{$hack_ie7}display: block;
+        // _display: block;
+        // float: left\9;
+        // float: left\0; 
+        // #{$hack_ie7}float: left;
+        // _float: left;
     }
 
     // 按钮

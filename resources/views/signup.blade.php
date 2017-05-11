@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="x-ua-compatible" content="IE=9" >
     <title></title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
-    <script src="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/contrib/other-validations.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/contrib/other-validations.js"></script> -->
 </head>
 <body>
     <div class="main">
@@ -301,6 +302,15 @@
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 
     <script type="text/javascript">
+    
+    function isIE(){
+        if (window.navigator.userAgent.indexOf("MSIE")>=1) {
+            console.log("true")
+        }
+        else{
+            console.log("false")
+        }
+    }
 
     (function($){
         $.fn.tipInfo = function(tipMsg){
@@ -416,21 +426,23 @@
                 $el.tipWarn('照片不能为空');
                 return false;
             }
-
-            var fileObj = document.getElementById($el.prop('id'));
-            if(fileObj)
-            {
-                var f = fileObj.files[0];
-                if(f)
-                {
-                    if(f.size > 2 * 1024 * 1024)
-                    {
-                        $el.tipWarn('文件大小不能超过2M！');
-                        return false;
+            else {
+                if (isIE()) {
+                    var fileObj = document.getElementById($el.prop('id'));
+                    if (fileObj) {
+                        var f = fileObj.files[0];
+                        if (f) {
+                            if (f.size > 2 * 1024 * 1024) {
+                                $el.tipWarn('文件大小不能超过2M！');
+                                return false;
+                            }
+                        }
                     }
-
+                } else {
+                    // return false;
                 }
             }
+            
 
         } else if(type == 'text') {
             if ($el.prop('required') && val == '') {
@@ -505,7 +517,7 @@
             return false;
         });
 
-        //获取文件信息
+        // 获取文件信息 IE 也可以获取该文件名称
         $("input[type=file]").unbind('change').change(function(){
             validField(this);
             $(this).siblings('.file_name').html('');
@@ -552,13 +564,17 @@
                 $('#preview_' + name).html(chkVal);
             }
 
-   
+            // 默认填写图片文件的路径 
             if (type == 'file') {
-                var fileObj = document.getElementById(id);
-                if (fileObj) {
-                    var f = fileObj.files[0];
-                    if(f){
-                        $('#preview_'+id).attr('src', URL.createObjectURL(f));
+                if (isIE()) {
+
+                }else {
+                    var fileObj = document.getElementById(id);
+                    if (fileObj) {
+                        var f = fileObj.files[0];
+                        if(f){
+                            $('#preview_'+id).attr('src', URL.createObjectURL(f));
+                        }
                     }
                 }
             }
