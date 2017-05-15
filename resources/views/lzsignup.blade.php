@@ -175,14 +175,14 @@
             </div>
           </div>
           <div class="cut" style="margin-top: 34px;"></div>
-          <!-- <div>
+          <div>
             <div class="code-send clearfix">
               <span>验证码:</span>
               <input data-type="realname" tip-warn="" tip-info="请输入手机短信收到的验证码" class="input-field-text" id="verificationcode" name="verificationcode" type="text" value="">
-              <a id="tel" class="tel">发送验证码</a>
+              <a id="tel" class="tel" style="cursor: pointer;">发送验证码</a>
             </div>
           </div>
-          <div class="logo-img"></div> -->
+          <div class="logo-img"></div>
           <button class="submit" type="submit">申请报名</button>
         </div>
       </form>

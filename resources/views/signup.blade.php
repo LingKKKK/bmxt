@@ -868,27 +868,31 @@
             }
         });
     }
-    // 递归
+    // 轮询
     function RefreshQrcode(outTradeNo){
-        $.ajax({
-            type: "post",
-            url: "{{url('/pay/queryorder')}}",
-            data: {
-                "out_trade_no": outTradeNo
-            },
-            async: false,
-            success: function(res) {
-                setInterval(function (){
+        var Qrcode = false;
+        var timer = setInterval(function (){
+            $.ajax({
+                type: "post",
+                url: "{{url('/pay/queryorder')}}",
+                data: {
+                    "out_trade_no": outTradeNo
+                },
+                async: false,
+                success: function(res) {
                     if (res.status == 0) {
-                        console.log(res.message);
-                        validcode = true;
+                        console.log(res);   //支付成功
+                        // $('#submit').click();
+                        clearTimeout(timer);
+                        Qrcode = true;
                     } else if (res.status == 1) {
-                        console.log(res.message);
-                        validcode = false;
+                        console.log(res);
+                        Qrcode = false;
                     }
-                }, 3000);
-            }
-        });
+                }
+            });
+        }, 2000)
+        
     }
 </script>
 </body>

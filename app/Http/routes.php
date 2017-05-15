@@ -69,6 +69,6 @@ Route::post('/getpayqrcode', 'UtilsController@getPayQrcode');
 // 查询订单，单位 invitecode
 Route::post('/pay/queryorder', 'UtilsController@queryOrderStatus');
 
-Route::get('/qrcodeimg', 'UtilsController@qrcodeimg');
+Route::get('/qrcodeimg.svg', 'UtilsController@qrcodeimg');
 
 

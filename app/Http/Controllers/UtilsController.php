@@ -133,7 +133,8 @@ class UtilsController extends Controller
     {
         $data = $request->input('data', '');
         $data = urldecode($data);
-        return QrCode::size(300)->generate($data);
+        $content =  QrCode::size(300)->generate($data);
+        return response($content)->header('Content-Type', 'image/svg+xml');
     }
 
 
@@ -147,7 +148,6 @@ class UtilsController extends Controller
             return api_response(1, '参数错误');
         }
 
-
         $alipay = new AliPayDemo();
         $out_trade_no = '20150302'.date('His').rand(100,999);
         $subject = '比赛缴费';
@@ -156,11 +156,7 @@ class UtilsController extends Controller
         if (!$payurl || $payurl['code'] != 10000) {
             return api_response(1, '获取失败');
         }
-
-
-
-        return api_response(0, '获取成功', ['qrcodeimgurl' => url('/qrcodeimg?data=').urlencode($payurl['qr_code']), 'out_trade_no' => $out_trade_no]);
-
+        return api_response(0, '获取成功', ['qrcodeimgurl' => url('/qrcodeimg.svg?data=').urlencode($payurl['qr_code']), 'out_trade_no' => $out_trade_no]);
        }
 
     /**
@@ -176,10 +172,11 @@ class UtilsController extends Controller
 
         $alipay = new AliPayDemo();
         $payResult =  $alipay->queryOrder($out_trade_no);
+        // dd($payResult);
 
-        if ($payResult['code'] == 10000 ) {
+        if ($payResult['code'] == 10000 && $payResult['trade_status'] == "TRADE_SUCCESS") {
             return api_response(0, '支付成功');
-        }
+        } 
 
         return api_response(1, '等待支付');
     }
