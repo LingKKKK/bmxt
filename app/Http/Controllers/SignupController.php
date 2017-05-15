@@ -87,13 +87,13 @@ class SignupController extends Controller
                 'team_name' => 'required',
                 'school_name' => 'required',
                 'school_address' => 'required', 
-                'verificationcode' => 'required|verificationcode',
+                // 'verificationcode' => 'required|verificationcode',
             ],
             [
                 'team_name.required' => '队名必填',
                 'school_name.required' => '学校名必填',
                 'verificationcode.required' => '验证码不能为空',
-                'verificationcode.verificationcode' => '验证码错误',
+                // 'verificationcode.verificationcode' => '验证码错误',
             ]
         );
         // dd($this->saveFile($request->file('leader_pic'))['publicPath']);

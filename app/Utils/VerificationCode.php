@@ -40,7 +40,7 @@ class VerificationCode
             return false;
         }
 
-        $code_expected = Cache::pull($key);
+        $code_expected = Cache::get($key);
 
         if (empty($code_expected)) {
             return false;

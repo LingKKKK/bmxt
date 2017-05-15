@@ -278,7 +278,7 @@
                         <a id="tel" class="tel">获取手机验证码</a>
                         <div class="clearfix"></div>
                         <button type="button" class="btn_pre">上一步</button>
-                        <button  class="btn_next" type="submit">确认提交</button>
+                        <button  class="btn_next" id="submit">确认提交</button>
                     </div>
                 </div>
             </form>
@@ -530,6 +530,38 @@
                 }
             });
         });
+        // 校验验证码   
+        $("#submit").unbind('click').click(function() {
+            // $.post("{{url('/verificationcode/verify')}}",{
+            //     verificationcode: $('#verificationcode').val()
+            // }, function(res) {
+            //     if (res.status == 0) {
+            //         console.log('通过验证');
+            //     } else if (res.status == -1) {
+            //         console.log('验证码错误');
+            //     }
+            // });
+            // return false;
+            var validcode = false;
+            $.ajax({
+                type:"post",
+                url:"{{url('/verificationcode/verify')}}",
+                data:{"verificationcode": $('#verificationcode').val()},
+                async:false, 
+                success:function(res) {
+                    if (res.status == 0) {
+                        console.log('通过验证');
+                        validcode = true;
+                    } else if (res.status == -1) {
+                        console.log('验证码错误');
+                        validcode = false;
+                    }
+                }
+            });
+
+            console.log('valid', validcode);
+            return false;
+        });
     }
     // 更新预览界面
     function updatePreview() {
@@ -600,7 +632,12 @@
     $(function(){
         // 默认添加一次队员列表
         setTimeout(function (){
-            $('#append_rank_new').click();
+            if ($('.append_rank .menber_list').length > 0) {
+                // console.log(1);
+            } else {
+                // console.log(0);
+                $('#append_rank_new').click();
+            }
         }, 1000)
         // 点击刷新验证码图片
         $('.identifying .showBox img').click(function (){
@@ -644,8 +681,6 @@
         //更新表单验证绑定
         $('#append_rank_new').click(function (){
             addMemberList();
-            // console.log(memberListNum-2);
-            // console.dir($('.delete').eq(memberListNum-3));
             $('.delete').eq(0).css('display', 'none');
         })
         var memberListNum = 1;
@@ -756,7 +791,7 @@
            $('#tipes i').html($('#leader_mobile').val());
            // countdown();
         }else {
-           //console.log('格式错误');
+           // console.log('格式错误');
         }
     });
     // IE有关的判断;
