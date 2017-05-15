@@ -159,7 +159,7 @@ class UtilsController extends Controller
 
 
 
-        return api_response(0, '获取成功', ['qrcodeimgurl' => url('/qrcodeimg?data=').urlencode($payurl['qr_code']), ]);
+        return api_response(0, '获取成功', ['qrcodeimgurl' => url('/qrcodeimg?data=').urlencode($payurl['qr_code']), 'out_trade_no' => $out_trade_no]);
 
        }
 
@@ -167,17 +167,21 @@ class UtilsController extends Controller
      * 查询订单张台
      * @return [type] [description]
      */
-    public function queryOrderStatus()
+    public function queryOrderStatus(Request $request)
     {
+        $out_trade_no = $request->input('out_trade_no', '');
+        if (empty($out_trade_no)) {
+            return api_response(1, '等待支付');
+        }
+
+        $alipay = new AliPayDemo();
+        $payResult =  $alipay->queryOrder($out_trade_no);
+
+        if ($payResult['code'] == 10000 && $payResult['TRADE_SUCCESS'] == 'TRADE_SUCCESS') {
+            return api_response(0, '支付成功');
+        }
+
         return api_response(1, '等待支付');
-        return api_response(0, '支付成功');
-
-        // $invitecode = $request->input('invitecode', '');
-        // if (empty($invitecode)) {
-        //     return api_response(1， '参数错误');
-        // }
-        // $codeModel = InviteManager::queryCode($code);
-
     }
 
 

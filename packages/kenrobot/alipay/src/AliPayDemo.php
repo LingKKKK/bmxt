@@ -6,6 +6,7 @@ require_once 'alipay-sdk-PHP-20170511115423/AopSdk.php';
 
 use AopClient;
 use AlipayTradePrecreateRequest;
+use AlipayTradeQueryRequest;
 
 /**
 * 支付宝接口
@@ -49,8 +50,24 @@ class AliPayDemo
         return $result['alipay_trade_precreate_response'];
     }
 
-   public function queryOrder()
+   public function queryOrder($out_trade_no)
    {
+        $request = new AlipayTradeQueryRequest ();
+        $data = ['out_trade_no' => $out_trade_no];
+
+        $request->setBizContent(json_encode($data));
+        $result = $this->aopClient->execute ( $request);
+        $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+
+        $resultCode = $result->$responseNode->code;
+        if(! empty($resultCode) && $resultCode == 10000){
+            return (array) $result->$responseNode;
+        } else {
+            return [
+                'code' => '-1000',
+                'msg' => '错误'
+            ];
+        }
 
    }
 }
