@@ -177,7 +177,7 @@ class UtilsController extends Controller
         $alipay = new AliPayDemo();
         $payResult =  $alipay->queryOrder($out_trade_no);
 
-        if ($payResult['code'] == 10000 && $payResult['TRADE_SUCCESS'] == 'TRADE_SUCCESS') {
+        if ($payResult['code'] == 10000 ) {
             return api_response(0, '支付成功');
         }
 
