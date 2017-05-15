@@ -40,18 +40,17 @@
 // 图形验证码
 Route::get('/captcha/{config?}', 'UtilsController@captcha');
 Route::post('/captcha/verify', 'UtilsController@verificationcode');
-
 // 短信/邮件验证码 
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
-
 //  报名页面
 Route::get('/', 'SignupController@signup');
 Route::get('/success', 'SignupController@success');
 Route::post('/signup', 'SignupController@doSignup');
+Route::post('/checkteamname', 'SignupController@checkName');
 Route::get('/search', 'SignupController@search');
 Route::post('/search', 'SignupController@doSearch');
-
+// 乐智报名系统
 Route::get('/lzsignup', 'SignupController@lzsignup');
 Route::post('/submitForm', 'SignupController@submitForm');

@@ -32,7 +32,7 @@
         </div>
         <div class="cut"></div>
         <div class="enroll-content clearfix">
-          <p>达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦达瓦</p>
+          <p>1、报名系统与报名表格仅需填写一个即可,在报2名系统提交的不需要填写表格发送邮件.</br>2、若各参赛院校将报名信息发送后仍发现有问题存在,请在9月20日之前由负责指导老师致电大赛组委会联络人李乔说明情况,并将最新的报名信息发送至指定邮箱,未致电说明情况及逾期,视为不修改.<br><br>报名回执表请进入"下载中心"进行下载</p>
         </div>
       </div>
       </div>
@@ -519,8 +519,8 @@
     }
     // 选择参加的项目
     function checkboxVal(){
-      // console.log('赋值');
-      $('#competition_type').val($("#product-game input[type='checkbox']:checked").siblings('span').text());
+      console.log('赋值');
+      $('#competition_type').val($("#p1roduct-game input[type='checkbox']:checked").siblings('span').text());
     }
 
     function checkboxChange(){
@@ -632,7 +632,7 @@
       var fieldHtml = '';
       fieldHtml += '<div class="' + className + '">';
       fieldHtml += '<span class="input-label">' + lablename + '  :</span>';
-      fieldHtml += '<input id="competition_type" name="' + name + 'competition_type" class="input-field-text width700">';
+      fieldHtml += '<input id="competition_type" name="' + name + 'competition_type" class="input-field-text width700" autocomplete="off">';
       fieldHtml += '<div id="product-game">';
       fieldHtml += '</div>';
       fieldHtml += '</div>';
@@ -742,19 +742,23 @@
 
     function primaryList() {
       var primary = '';
-      primary += '<span class="project-classify">小学组内容</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      primary += '<span class="project-classify">小学组内容</span><label class="project-click"><input type="checkbox" value="水陆协同" ><span>水陆协同</span></label><label class="project-click"><input type="checkbox" value="水中排球赛" ><span>水中排球赛</span></label>';
       primary += '<div class="clear"></div>';
       $('#product-game').html(primary);
     };
     function universityList() {
       var universityList = '';
-      universityList += '<span class="project-classify">全局视觉组</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      universityList += '<span class="project-classify">2D仿真组</span><label class="project-click"><input type="checkbox" value="生存挑战" ><span>生存挑战</span></label><label class="project-click"><input type="checkbox" value="抢球博弈" ><span>抢球博弈</span></label><label class="project-click"><input type="checkbox" value="水中搬运" ><span>水中搬运</span></label><label class="project-click"><input type="checkbox" value="花样游泳" ><span>花样游泳</span></label>';
       universityList += '<div class="clear"></div>';
-      universityList += '<span class="project-classify">工程创意组</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      universityList += '<span class="project-classify">全局视觉组</span><label class="project-click"><input type="checkbox" value="水球2v2" ><span>水球2v2</span></label><label class="project-click"><input type="checkbox" value="水球2v2(黑鱼)" ><span>水球2v2(黑鱼)</span></label><label class="project-click"><input type="checkbox" value="抢球博弈" ><span>抢球博弈</span></label><label class="project-click"><input type="checkbox" value="水中角力" ><span>水中角力</span></label><label class="project-click"><input type="checkbox" value="花样游泳" ><span>花样游泳</span></label><label class="project-click"><input type="checkbox" value="水中救援" ><span>水中救援</span></label>';
       universityList += '<div class="clear"></div>';
-      universityList += '<span class="project-classify">创新创意组</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      universityList += '<span class="project-classify">工程项目组</span><label class="project-click"><input type="checkbox" value="输油管巡检技术挑战赛（深水）" ><span>输油管巡检技术挑战赛（深水）</span></label><label class="project-click"><input type="checkbox" value="输油管巡检技术挑战赛（浅水）" ><span>输油管巡检技术挑战赛（浅水）</span></label><label class="project-click"><input type="checkbox" value="水陆协同" ><span>水陆协同</span></label>';
       universityList += '<div class="clear"></div>';
-      universityList += '<span class="project-classify">2D仿生组</span><label class="project-click"><input type="checkbox" value="game01" ><span>赛事1</span></label><label class="project-click"><input type="checkbox" value="game02" ><span>赛事2</span></label><label class="project-click"><input type="checkbox" value="game03" ><span>赛事3</span></label>';
+      universityList += '<span class="project-classify">创新创意组</span><label class="project-click"><input type="checkbox" value="主题赛（水面垃圾清理）" ><span>主题赛（水面垃圾清理）</span></label><label class="project-click"><input type="checkbox" value="主题赛（海参捕捞）" ><span>主题赛（海参捕捞）</span></label><label class="project-click"><input type="checkbox" value="常规赛" ><span>常规赛</span></label>';
+      universityList += '<div class="clear"></div>';
+      universityList += '<span class="project-classify">水下作业组</span><label class="project-click"><input type="checkbox" value="水下巡游" ><span>水下巡游</span></label><label class="project-click"><input type="checkbox" value="水下对抗" ><span>水下对抗</span></label><label class="project-click"><input type="checkbox" value="水下作业" ><span>水下作业</span></label>';
+      universityList += '<div class="clear"></div>';
+      universityList += '<span class="project-classify">自主视觉组</span><label class="project-click"><input type="checkbox" value="港口侦查" ><span>港口侦查</span></label><label class="project-click"><input type="checkbox" value="污染源搜索" ><span>污染源搜索</span></label><label class="project-click"><input type="checkbox" value="创新创意大赛" ><span>创新创意大赛</span></label>';
       universityList += '<div class="clear"></div>';
       $('#product-game').html(universityList);
     };

@@ -45,6 +45,23 @@ class SignupController extends Controller
         return view('signup', compact('competition_types', 'competition_groups'));
     }
 
+    public function checkName(Request $request)
+    {
+        $team_name = $request->input('team_name');
+        if (empty($team_name)) {
+            return api_response(2, '队名不能为空');
+        }
+
+        $result = SignupData::where('team_name', $team_name)->first();
+
+        if ($result !== null) {
+            return api_response(1, '队伍名重复');
+        }
+
+        return api_response(0, '合法的队名');
+        
+    }
+
 
 
 

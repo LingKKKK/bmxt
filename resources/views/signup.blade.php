@@ -98,13 +98,13 @@
                             </select>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
-                        <button type="button" class="btn_next">下一步</button>
+                        <button id="checkTeamName" type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="append_rank div_tab">
                         <?php $i = 0 ?>
                         @foreach((array)old('members') as $member)
                         <div class="menber_list">
-                            <div class="delete"><i class="icon kenrobot ken-close"></i></div>
+                            <!-- <div class="delete"><i class="icon kenrobot ken-close"></i></div> -->
                             <div class="input-field">
                                 <span class="input-label">队员姓名{{$i}}:</span>
                                 <input data-type="realname" required tip-info="仅支持仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
@@ -163,8 +163,8 @@
                     <div class="payment div_tab">
                         <div class="input-field">
                             <span class="input-label">缴费方式:</span>
-                            <input class="input-radio man" type="radio" name="payment" checked="checked" value="现场缴费"><span>现场缴费</span>
-                            <input class="input-radio woman" type="radio" name="payment" disabled value="在线支付"><span style="color: #ccc" >在线支付(暂不支持)</span>
+                            <input class="input-radio man" type="radio" name="payment" checked="checked" value="在线支付"><span>在线支付(仅支持支付宝)</span>
+                            <input class="input-radio woman" type="radio" name="payment" disabled value="现场缴费"><span style="color: #ccc" >现场缴费(暂不支持)</span>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
@@ -198,6 +198,10 @@
                         <div class="leader" id="team">
                             <span class="leader_title">队伍信息</span>
                             <div class="cut"></div>
+                            <div class="input-field">
+                                <span class="name">队伍编号 :</span> 
+                                <span id="preview_team_id" class="name_input"></span>
+                            </div>
                             <div class="input-field">
                                 <span class="name">队伍名称 :</span>
                                 <span id="preview_team_name" class="name_input"></span>
@@ -300,50 +304,40 @@
 
     </div>
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
-
     <script type="text/javascript">
-    
     function isIE(){
         if (window.navigator.userAgent.indexOf("MSIE")>=1) {
-            console.log("true")
+            // console.log("true")
         }
         else{
-            console.log("false")
+            // console.log("false")
         }
     }
-
     (function($){
         $.fn.tipInfo = function(tipMsg){
             $(this).siblings('.tips').html('<span class="cue">'+tipMsg+'</span>');
         }
-
         $.fn.tipWarn = function(tipMsg) {
             $(this).siblings('.tips').html('<span class="unuse">'+tipMsg+'</span>')
         }
-
         $.fn.tipValid = function() {
             $(this).siblings('.tips').html('<span class="useable"><i class="icon kenrobot ken-check"></i></span>');
         }
-
         $.fn.tipClear = function() {
             $(this).siblings('.tips').html('');
         }
-
         $.fn.refreshCaptcha = function(){
             if($(this).prop('tagName') == 'IMG'){
                 var timestamp = Date.parse(new Date());
                 $(this).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
             }
         }
-
     })(jQuery);
-
     //修改
     function refresh_captcha($el) {
         var timestamp = Date.parse(new Date());
         $($el).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
     }
-
     function countdown() {
         var t = 60;
         var countdown = setInterval(function(){
@@ -356,7 +350,6 @@
             }
         },1000);
     }
-
     //判断是否位真实姓名
     function isName(val) {
         reg= /^[\u4e00-\u9fa5a-z]+$/gi;
@@ -365,7 +358,6 @@
         }
         return true;
     }
-
     //数字 英文 汉字
     function isMathEngCha(val) {
         reg= /^[\u4e00-\u9fa5a-z0-9]+$/gi;
@@ -374,7 +366,6 @@
         }
         return true;
     }
-
     //数字 英文 汉字  agemenber
     function isAgemenber(val) {
         reg= /^[0-9]+$/gi;
@@ -383,7 +374,6 @@
         }
         return true;
     }
-
     //邮件判断
     function isEmail(mail) {
         reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
@@ -392,7 +382,6 @@
         }
         return true;
     }
-
     //手机
     function isMobile(val) {
         reg = /^1(?:[38]\d|4[4579]|5[0-35-9]|7[35678])\d{8}$/;
@@ -401,7 +390,6 @@
         }
         return true;
     }
-
     //身份证
     function isID(val) {        
         var vcity={ 11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古", 21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏", 33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南", 42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆", 51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃", 63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"}; 
@@ -412,7 +400,6 @@
         }
         return true;
     }
-
     //校验表单字段
     function validField(el) {
         var $el = $(el);
@@ -420,7 +407,6 @@
         var type = $el.attr('type');
         var val = $el.val();
         var datatype = $el.data('type');// 数据类型 email , mobile , ID,
-
         if (type == 'file') {
             if ($el.prop('required') && val == '') {
                 $el.tipWarn('照片不能为空');
@@ -442,52 +428,42 @@
                     // return false;
                 }
             }
-            
-
         } else if(type == 'text') {
             if ($el.prop('required') && val == '') {
                 $el.tipWarn('不能为空！');
                 //console.log('不能')
                 return false;
             }
-
             if (datatype == 'realname' && !isName(val)) {
                 $el.tipWarn('姓名不能是数字或特殊字符，请重新输入!');
                 return false;
             }
-
             if (datatype == 'schoolname' && !isMathEngCha(val)) {
                 $el.tipWarn('不能为特殊字符,请重新输入!');
                 return false;
             }
-
             if (datatype == 'agemenber' && !isAgemenber(val)) {
                 $el.tipWarn('只能输入数字!');
                 return false;
             }
-
             if (datatype == 'email' && !isEmail(val)) {
                 $el.tipWarn('邮件格式不正确');
                 //console.log('Email');
-
                 return false;
             }
-
             if (datatype == 'mobile' && !isMobile(val)) {
                 $el.tipWarn('手机格式不正确');
                 return false;
             }
-
             if (datatype == 'ID' && ! isID(val)) {
                 $el.tipWarn('身份证号格式不正确');
                 return false;
             }
         }
-
         $el.tipValid();
         return true;
     }
-
+    // 切换显示页面
     function showTab(index) {
         //checkTab
         $($('.tab_menu ul li').get(index)).addClass('active').siblings().removeClass('active');
@@ -495,16 +471,13 @@
         $(actTab).addClass('active').siblings().removeClass('active');
         updatePreview();
     }
-
     // 重新绑定事件, DOM发生变化时调用
     function rebindVlidation() {
         // 空间验证
         $("input").unbind('blur').blur(function(){
             validField(this);
-
             return false;
         });
-
         //输入提示
         $("input").unbind('focus').focus(function(){
             $(this).tipClear();
@@ -516,7 +489,6 @@
             }
             return false;
         });
-
         // 获取文件信息 IE 也可以获取该文件名称
         $("input[type=file]").unbind('change').change(function(){
             validField(this);
@@ -524,23 +496,41 @@
             var f = $(this).prop('files')[0];
             if(f)
             {
-                console.log(f.name);
+                // console.log(f.name);
                 // console.dir($(this));
                 // $(this).val(f.name);
                 $(this).siblings('.file_name').html(f.name);
             }
          });
-
+        // 添加删除按钮
         $('.append_rank .menber_list .delete').click(function(){
             $(this).parent('.menber_list').remove();
         })
-
         //上传 队员照片
         $('.uploadBtn').unbind('click').click(function() {
             $(this).siblings('.inputstyle').click();
         });
+        // 校验队伍名称
+        $("#team_name").unbind('blur').blur(function() {
+            let str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
+            let str1 = '<span class="unuse">您输入的队伍名已被占用,请输入其他名称!</span>';
+            let str2 = '<span class="unuse">队伍名不能为空</span>';
+            $.post("{{url('/checkteamname')}}",{
+                team_name: $('#team_name').val()
+            }, function(res) {
+                if (res.status == 0) {
+                    $('#team_name').siblings('.tips').html(str0);
+                    $('#checkTeamName').css('pointer-events', 'auto');
+                } else if (res.status == 1) {
+                    $('#team_name').siblings('.tips').html(str1);
+                    $('#checkTeamName').css('pointer-events', 'none');
+                } else if (res.status == 2) {
+                    $('#team_name').siblings('.tips').html(str2);
+                    $('#checkTeamName').css('pointer-events', 'none');
+                }
+            });
+        });
     }
-
     // 更新预览界面
     function updatePreview() {
         $('input,select').each(function(){
@@ -548,26 +538,19 @@
             var id = $(this).prop('id');
             var name = $(this).prop('name');
             var val = $(this).val();
-            //console.log(id+' : '+type);
             if (type == 'select-one') {
                 val = $('#'+id+' option:selected').val();
-                //console.log('selected' + val);
             }
-
             if (type == 'text' || type == 'select-one') {
                 $('#preview_' + id).html(val);
             }
-
             if (type == 'radio') {
-                //console.log('name');
                 var chkVal = $('input:radio[name="'+name+'"]:checked').val();
                 $('#preview_' + name).html(chkVal);
             }
-
             // 默认填写图片文件的路径 
             if (type == 'file') {
                 if (isIE()) {
-
                 }else {
                     var fileObj = document.getElementById(id);
                     if (fileObj) {
@@ -579,29 +562,20 @@
                 }
             }
         });
-
         $('.append_rank > .menber_list').each(function(index){
-            console.log(index);
-
             var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_school_name', 'member_school_address', 'member_pic');
             for (var i = 0; i < mapKey.length; i++) {
                 var key = mapKey[i];
-
                 var $el = $($(this).find('.'+key)[0]);
                 var type = $el.prop('type');
                 var val = $el.val();
-
                 if(type == 'radio')
                 {
                     val = $($(this)).find('.'+key+":checked").val();
                 }
-
-
                 var preview_el = '#preview_'+index+'_'+key;
-
-                console.log(preview_el);
-                console.log(val);
-
+                // console.log(preview_el);
+                // console.log(val);
                 if (type == 'file') {
                     var picurl = $el.data('picurl');
                     if (picurl) {
@@ -617,40 +591,28 @@
                         }
                     }
                     continue;
-
                 }
-
                 $(preview_el).html(val);
             }
-
             $('#member_info_'+index).show();
-
-
         })
     }
-
-
     $(function(){
         // 默认添加一次队员列表
         setTimeout(function (){
             $('#append_rank_new').click();
         }, 1000)
-
         // 点击刷新验证码图片
         $('.identifying .showBox img').click(function (){
             $(this).refreshCaptcha();
         });
-
         // 点击取消输入验证码
         $('.identifying .no').click(function() {
             $('.identifying').removeClass('active');
         });
-
         $('#v_code').click(function(event) {
-            console.log(1)
             $('.tipes-false').css('opacity', 0);
         });
-
         // 点击确认输入验证码
         $('.identifying .yes').click(function() {
             // $('.identifying').removeClass('active');
@@ -668,36 +630,30 @@
                 },
                 function(res){
                     if (res.status == 0) {
-                        console.log('验证码填写成功并确定')
+                        // console.log('验证码填写成功并确定')
                         refresh_captcha();
                         $('.identifying').removeClass('active');
                         countdown();
-
                     } else {
-                        console.log('验证码填写错误')
+                        // console.log('验证码填写错误')
                         $('.tipes-false').css('opacity', 1);
                     }
                 }
             );
         });
-
-
-
         //更新表单验证绑定
-
         $('#append_rank_new').click(function (){
             addMemberList();
-            console.log(memberListNum-2);
-            console.dir($('.delete').eq(memberListNum-3));
+            // console.log(memberListNum-2);
+            // console.dir($('.delete').eq(memberListNum-3));
             $('.delete').eq(0).css('display', 'none');
         })
-
         var memberListNum = 1;
         // 添加成员列表
         function addMemberList(){
             var memberList = '';
             memberList += '<div class="menber_list">';
-            memberList += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
+            // memberList += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">队员姓名('+ memberListNum +'):</span>';
             memberList += '<input data-type="realname" required tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="input-field-text member_name" type="text">';
@@ -711,7 +667,6 @@
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
-
 
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">手机号码  :</span>';
@@ -730,7 +685,6 @@
             memberList += '<span class="input-label">性别  :</span>';
             memberList += '<input name="members['+memberListNum+'][sex]" class="input-radio man member_sex" type="radio" checked="checked" name="sex" value="男"><span>男</span>';
             memberList += '<input name="members['+memberListNum+'][sex]" class="input-radio woman member_sex" type="radio" name="sex" value="女"><span>女</span>';
-
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
 
@@ -766,9 +720,7 @@
             rebindVlidation();
             memberListNum +=1;
         }
-
         var tabIndex = 0;
-
         // 点击切换 进行下一步
         $('.btn_next').click(function(){
             var prevent = false;
@@ -783,16 +735,11 @@
             }
             showTab(tabIndex);
         });
-
         // 返回上一步
         $('.btn_pre').click(function(){
             tabIndex -=1;
             showTab(tabIndex);
         });
-        // $('form').submit(function(){
-        //     return false;
-        //     console.log('阻止提交');
-        // })
         @if(old('leader_sex'))
         $('input').each(function(){
             validField(this);
@@ -800,9 +747,7 @@
         @endif
         showTab(tabIndex);
         rebindVlidation();
-
     })
-
     // 发送手机验证码
     $('#tel').click(function() {
         var partten = /^1[3,5,8]\d{9}$/;
@@ -814,7 +759,7 @@
            //console.log('格式错误');
         }
     });
-
+    // IE有关的判断;
     $('.falseCodeAlert').click(function(){
         $(this).css('display', 'none');
     })
