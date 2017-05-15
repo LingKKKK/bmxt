@@ -32,7 +32,7 @@
                     <div class="active leader_info div_tab clearfix">
                         <div class="input-field">
                             <span class="input-label">邀请码  :</span>
-                            <input required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{old('invitecode')}}">
+                            <input required tip-warn="" tip-info="输入邀请码" class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{old('invitecode')}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -535,6 +535,28 @@
         $('.uploadBtn').unbind('click').click(function() {
             $(this).siblings('.inputstyle').click();
         });
+        // 校验邀请码是否重复
+        $("#invitecode").unbind('blur').blur(function() {
+            // let str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
+            // let str1 = '<span class="unuse">您输入的邀请码已被使用,请输入未使用的邀请码!</span>';
+            // let str2 = '<span class="unuse">邀请码信息不能为空</span>';
+            $.post("{{url('/checkinvitecode')}}",{
+                invitecode: $('#invitecode').val()
+            }, function(res) {
+                if (res.status == 0) {
+                    console.log(res);
+                    // $('#invitecode').siblings('.tips').html(str0);
+                    // $('#leader_info_btn').css('pointer-events', 'auto');
+                } else if (res.status == 1) {
+                    console.log(res);
+                    // $('#invitecode').siblings('.tips').html(str1);
+                    // $('#leader_info_btn').css('pointer-events', 'none');
+                } else if (res.status == 2) {
+                    // $('#invitecode').siblings('.tips').html(str2);
+                    // $('#leader_info_btn').css('pointer-events', 'none');
+                }
+            });
+        });
         // 校验队伍名称
         $("#team_name").unbind('blur').blur(function() {
             let str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
@@ -567,6 +589,7 @@
                     if (res.status == 0) {
                         console.log('通过验证');
                         $('.QRcodeShow').addClass('active');
+                        getPayQrcode();
                         validcode = true;
                     } else if (res.status == -1) {
                         $('.codeError').addClass('active');
@@ -816,7 +839,29 @@
     $('.falseCodeAlert').click(function(){
         $(this).css('display', 'none');
     })
-    
+    // 获取支付二维码
+    function getPayQrcode (){
+        var validcode = false;
+        $.ajax({
+            type: "post",
+            url: "{{url('/getpayqrcode')}}",
+            data: {
+                invitecode: $('#invitecode').val()
+            },
+            async: false,
+            success: function(res) {
+                if (res.status == 0) {
+                    console.log(res);
+                    $(".QRcodeShow .QEbox .QEcode img").attr('src', res.qrcodeurl);
+                    validcode = true;
+                } else if (res.status == -1) {
+                    console.log(res);
+                    validcode = false;
+                }
+            }
+        });
+        return false;
+    }
 </script>
 </body>
 </html>

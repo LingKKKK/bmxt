@@ -51,19 +51,25 @@ class SignupController extends Controller
         if (empty($team_name)) {
             return api_response(2, '队名不能为空');
         }
-
         $result = SignupData::where('team_name', $team_name)->first();
-
         if ($result !== null) {
             return api_response(1, '队伍名重复');
         }
-
         return api_response(0, '合法的队名');
-        
+
     }
 
+    public function checkInvitecode(Request $request)
+    {
+        // return api_response(1, '邀请码正确');
+        return api_response(0, '邀请码错误');
+    }
 
-
+    public function getPayQrcode(Request $request)
+    {
+        // return
+        return api_response(0, 'success', ['qrcodeurl' => 'http:://www.kenrobot.com']);
+    }
 
     public function success(Request $request)
     {
@@ -78,6 +84,7 @@ class SignupController extends Controller
         $validator = Validator::make($request->all(), 
 
             [
+                'invitecode' => 'required', //邀请码信息
                 'leader_name' => 'required', //领队姓名
                 'leader_id' => 'required', //领队身份证号
                 'leader_sex' => 'required', //领队性别
@@ -90,6 +97,7 @@ class SignupController extends Controller
                 // 'verificationcode' => 'required|verificationcode',
             ],
             [
+                'invitecode.required' => '邀请码必填',
                 'team_name.required' => '队名必填',
                 'school_name.required' => '学校名必填',
                 'verificationcode.required' => '验证码不能为空',
@@ -124,8 +132,8 @@ class SignupController extends Controller
                                      ->with('members_data', $members);
         }
 
-        //表单地钻
-        $keys = ['leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 
+        //表单地钻 
+        $keys = ['invitecode', 'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 
                  'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
                 'payment'
         ];
