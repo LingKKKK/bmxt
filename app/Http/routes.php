@@ -32,7 +32,7 @@
 //     Route::post('/activity/editform/{id}', 'ActivityController@editForm')->where('id', '[0-9]+');
 //     Route::post('/activity/addfield/{id}', 'ActivityController@addField')->where('id', '[0-9]+');
 //     Route::post('/activity/delfield/{id}', 'ActivityController@delfield')->where('id', '[0-9]+');
-    
+
 //     Route::get('/enrolldata/{id}', 'ActivityController@enrolldata')->where('id', '[0-9]+');
 
 // });
@@ -40,7 +40,7 @@
 // 图形验证码
 Route::get('/captcha/{config?}', 'UtilsController@captcha');
 Route::post('/captcha/verify', 'UtilsController@verificationcode');
-// 短信/邮件验证码 
+// 短信/邮件验证码
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
@@ -54,3 +54,6 @@ Route::post('/search', 'SignupController@doSearch');
 // 乐智报名系统
 Route::get('/lzsignup', 'SignupController@lzsignup');
 Route::post('/submitForm', 'SignupController@submitForm');
+
+//
+Route::get('/pay/test', 'AliPayController@test');
