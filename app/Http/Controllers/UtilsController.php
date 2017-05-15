@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
 use Storage;
+use App\Enroll\InviteManager;
+use QrCode;
+use Kenrobot\AliPay\AliPayDemo;
 
 class UtilsController extends Controller
 {
@@ -113,4 +116,69 @@ class UtilsController extends Controller
         Storage::put($storePath, file_get_contents($file));
         return api_response(0, 'OK', ['imgUrl' => $publicPath]);
     }
+
+    public function checkInviteCode(Request $request)
+    {
+        $invitecode = $request->input('invitecode', '');
+        $codeModel = InviteManager::queryCode($invitecode);
+
+        if ($codeModel === null || $codeModel->used_time !== null) {
+            return api_response(1, '无效的邀请码');
+        }
+
+        return api_response(0, '邀请码有效');
+    }
+
+    public function qrcodeimg(Request $request)
+    {
+        $data = $request->input('data', '');
+        $data = urldecode($data);
+        return QrCode::size(300)->generate($data);
+    }
+
+
+    // 获取支付二维码
+    public function getPayQrcode(Request $request)
+    {
+
+        $invitecode = $request->input('invitecode', '');
+        $codeModel = InviteManager::queryCode($invitecode);
+        if ($codeModel === null || $codeModel->used_time !== null) {
+            return api_response(1, '参数错误');
+        }
+
+
+        $alipay = new AliPayDemo();
+        $out_trade_no = '20150302'.date('His').rand(100,999);
+        $subject = '比赛缴费';
+        $total_amount = '300.00'; // 单位元
+        $payurl = $alipay->getPayUrl($out_trade_no, $total_amount, $subject);
+        if (!$payurl || $payurl['code'] != 10000) {
+            return api_response(1, '获取失败');
+        }
+
+
+
+        return api_response(0, '获取成功', ['qrcodeimgurl' => url('/qrcodeimg?data=').urlencode($payurl['qr_code']), ]);
+
+       }
+
+    /**
+     * 查询订单张台
+     * @return [type] [description]
+     */
+    public function queryOrderStatus()
+    {
+        return api_response(1, '等待支付');
+        return api_response(0, '支付成功');
+
+        // $invitecode = $request->input('invitecode', '');
+        // if (empty($invitecode)) {
+        //     return api_response(1， '参数错误');
+        // }
+        // $codeModel = InviteManager::queryCode($code);
+
+    }
+
+
 }

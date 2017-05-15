@@ -50,4 +50,6 @@ class EnrollDataRepository
     {
         return $endata = EnrollData::create($data);
     }
+
+
 }

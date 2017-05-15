@@ -24,25 +24,33 @@ class AliPayDemo
         $this->aopClient->signType = 'RSA2';
     }
 
-    public function getPayUrl()
+    public function getPayUrl($out_trade_no, $total_amount, $subject)
     {
         $request = new AlipayTradePrecreateRequest ();
         $request->setNotifyUrl('http:://enroll0.kenrobot.com/pay/notify');
 
-        $data = ['out_trade_no' => '20150320010101002',
-                'total_amount' => '88.88',
-                'subject' => 'iPhone6 16G',
-                'body' => 'iPhone6 16G '];
+        $data = ['out_trade_no' => $out_trade_no,
+                'total_amount' => $total_amount,
+                'subject' => $subject,
+                'body' => $subject];
         $request->setBizContent(json_encode($data));
 
         // $request->setBizContent('{"product_code":"FAST_INSTANT_TRADE_PAY","out_trade_no":"20150320010101002","subject":"Iphone6 16G","total_amount":"88.88","body":"Iphone6 16G"}');
         //请求
         $result = $this->aopClient->execute($request);
-        return $result;
+        $result = json_decode(json_encode($result, JSON_UNESCAPED_UNICODE), true);
+        if (empty($result) || $result['alipay_trade_precreate_response']['code'] != 10000) {
+            return [
+                'code' => '-1000',
+                'msg' => '错误'
+            ];
+        }
+
+        return $result['alipay_trade_precreate_response'];
     }
 
-    public function getFormPayUrl()
-    {
+   public function queryOrder()
+   {
 
-    }
+   }
 }

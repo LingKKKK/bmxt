@@ -50,10 +50,7 @@ Route::get('/success', 'SignupController@success');
 Route::post('/signup', 'SignupController@doSignup');
 // 校验队伍名称是否重复
 Route::post('/checkteamname', 'SignupController@checkName');
-// 校验邀请码是否重复
-Route::post('/checkinvitecode', 'SignupController@checkInvitecode');
-// 获取支付二维码
-Route::post('/getpayqrcode', 'SignupController@getPayQrcode');
+
 // 报名系统查询
 Route::get('/search', 'SignupController@search');
 Route::post('/search', 'SignupController@doSearch');
@@ -63,3 +60,15 @@ Route::post('/submitForm', 'SignupController@submitForm');
 
 //
 Route::get('/pay/test', 'AliPayController@test');
+
+
+// 校验邀请码是否重复
+Route::post('/checkinvitecode', 'UtilsController@checkInvitecode');
+// 获取支付二维码地址
+Route::post('/getpayqrcode', 'UtilsController@getPayQrcode');
+// 查询订单，单位 invitecode
+Route::post('/pay/queryorder', 'UtilsController@queryOrderStatus');
+
+Route::get('/qrcodeimg', 'UtilsController@qrcodeimg');
+
+

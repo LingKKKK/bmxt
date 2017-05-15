@@ -43,6 +43,14 @@ if (! function_exists('verificationcode_check')) {
     }
 }
 
+// 邀请码验证机制
+if (! function_exists('invitecode_check')) {
+    function invitecode_check($code)
+    {
+        return \App\Enroll\InviteManager::checkCode($code);
+    }
+}
+
 
 
 /****************** Common Helper *********************/

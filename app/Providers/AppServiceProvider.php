@@ -20,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app['validator']->extend('mobile', function($attribute, $value, $parameters){
             return is_mobile($value);
         });
+
+        $this->app['validator']->extend('invitecode', function($attribute, $value, $parameters){
+            return invitecode_check($value);
+        });
     }
 
     /**
@@ -29,6 +33,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-  
+
     }
 }
