@@ -31,6 +31,11 @@
                 <div class="all_info clearfix">
                     <div class="active leader_info div_tab clearfix">
                         <div class="input-field">
+                            <span class="input-label">邀请码  :</span>
+                            <input required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{old('invitecode')}}">
+                            <div class="tips"></div>
+                        </div>
+                        <div class="input-field">
                             <span class="input-label">姓名  :</span>
                             <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
                             <div class="tips"></div>
@@ -301,6 +306,26 @@
                 <a class="no"><i class="icon kenrobot ken-close"></i></a>
             </div>
         </div>
+        <div class="codeError">
+            <div class="showBox">
+                <i class="icon kenrobot ken-close close"></i>
+                <div class="clear"></div>
+                <i class="icon kenrobot ken-close"></i>
+                <p>您输入的手机验证码有误,请核对短信后再次输入~</p>
+            </div>
+        </div>
+        <div class="QRcodeShow">
+            <div class="QEbox">
+                <div class="zhifubao"></div>
+                <span class="payment">扫码支付</span>
+                <span class="money">￥199</span>
+                <div class="QEcode">
+                    <img src="{{ asset('assets/img/QRcode.png')}}" alt="">
+                </div>
+                <span class="method">使用【支付宝】钱包扫描交易付款二维码</span>
+                <p class="tips">Tips：支付完成前，请不要关闭页面</p>
+            </div>
+        </div>
 
     </div>
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
@@ -532,16 +557,6 @@
         });
         // 校验验证码   
         $("#submit").unbind('click').click(function() {
-            // $.post("{{url('/verificationcode/verify')}}",{
-            //     verificationcode: $('#verificationcode').val()
-            // }, function(res) {
-            //     if (res.status == 0) {
-            //         console.log('通过验证');
-            //     } else if (res.status == -1) {
-            //         console.log('验证码错误');
-            //     }
-            // });
-            // return false;
             var validcode = false;
             $.ajax({
                 type:"post",
@@ -551,16 +566,19 @@
                 success:function(res) {
                     if (res.status == 0) {
                         console.log('通过验证');
+                        $('.QRcodeShow').addClass('active');
                         validcode = true;
                     } else if (res.status == -1) {
-                        console.log('验证码错误');
+                        $('.codeError').addClass('active');
                         validcode = false;
                     }
                 }
             });
-
-            console.log('valid', validcode);
+            // console.log('valid', validcode);
             return false;
+        });
+        $('.codeError .close').unbind('click').click(function() {
+            $('.codeError').removeClass('active');
         });
     }
     // 更新预览界面
