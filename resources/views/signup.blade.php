@@ -205,7 +205,7 @@
                             <div class="cut"></div>
                             <div class="input-field">
                                 <span class="name">队伍编号 :</span> 
-                                <span id="preview_team_id" class="name_input"></span>
+                                <span id="team_id" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name">队伍名称 :</span>
@@ -283,7 +283,8 @@
                         <a id="tel" class="tel">获取手机验证码</a>
                         <div class="clearfix"></div>
                         <button type="button" class="btn_pre">上一步</button>
-                        <button  class="btn_next" id="submit">确认提交</button>
+                        <button type="button" id="getQrcode" class="btn_next">确认提交</button>
+                        <button class="btn_next" id="submit"></button>
                     </div>
                 </div>
             </form>
@@ -320,7 +321,7 @@
                 <span class="payment">扫码支付</span>
                 <span class="money">￥199</span>
                 <div class="QEcode">
-                    <img src="{{ asset('assets/img/QRcode.png')}}" alt="">
+                    <img src="" />
                 </div>
                 <span class="method">使用【支付宝】钱包扫描交易付款二维码</span>
                 <p class="tips">Tips：支付完成前，请不要关闭页面</p>
@@ -537,23 +538,20 @@
         });
         // 校验邀请码是否重复
         $("#invitecode").unbind('blur').blur(function() {
-            // let str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
-            // let str1 = '<span class="unuse">您输入的邀请码已被使用,请输入未使用的邀请码!</span>';
+            let str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
+            let str1 = '<span class="unuse">请您输入有效邀请码!</span>';
             // let str2 = '<span class="unuse">邀请码信息不能为空</span>';
             $.post("{{url('/checkinvitecode')}}",{
                 invitecode: $('#invitecode').val()
             }, function(res) {
                 if (res.status == 0) {
-                    console.log(res);
-                    // $('#invitecode').siblings('.tips').html(str0);
-                    // $('#leader_info_btn').css('pointer-events', 'auto');
+                    $('#invitecode').siblings('.tips').html(str0);
+                    $('#leader_info_btn').css('pointer-events', 'auto');
+                    $('#leader_info_btn').css('backgroundColor', '#587BEF');
                 } else if (res.status == 1) {
-                    console.log(res);
-                    // $('#invitecode').siblings('.tips').html(str1);
-                    // $('#leader_info_btn').css('pointer-events', 'none');
-                } else if (res.status == 2) {
-                    // $('#invitecode').siblings('.tips').html(str2);
-                    // $('#leader_info_btn').css('pointer-events', 'none');
+                    $('#invitecode').siblings('.tips').html(str1);
+                    $('#leader_info_btn').css('pointer-events', 'none');
+                    $('#leader_info_btn').css('backgroundColor', '#ccc');
                 }
             });
         });
@@ -578,7 +576,7 @@
             });
         });
         // 校验验证码   
-        $("#submit").unbind('click').click(function() {
+        $("#getQrcode").unbind('click').click(function() {
             var validcode = false;
             $.ajax({
                 type:"post",
@@ -849,18 +847,48 @@
                 invitecode: $('#invitecode').val()
             },
             async: false,
-            success: function(res) {
+            success: function (res) {
+                var outTradeNo = 0;
                 if (res.status == 0) {
                     console.log(res);
-                    $(".QRcodeShow .QEbox .QEcode img").attr('src', res.qrcodeurl);
+                    $(".QRcodeShow .QEbox .QEcode img").attr('src', res.data.qrcodeimgurl);
+                    outTradeNo = res.data.out_trade_no;
+                    console.log(outTradeNo)
                     validcode = true;
+                    if (outTradeNo != null) {
+                        console.log(outTradeNo);
+                        RefreshQrcode(outTradeNo);
+                    }else {
+                        console.log('未获取到out_trade_no')
+                    }
                 } else if (res.status == -1) {
                     console.log(res);
                     validcode = false;
                 }
             }
         });
-        return false;
+    }
+    // 递归
+    function RefreshQrcode(outTradeNo){
+        $.ajax({
+            type: "post",
+            url: "{{url('/pay/queryorder')}}",
+            data: {
+                "out_trade_no": outTradeNo
+            },
+            async: false,
+            success: function(res) {
+                setInterval(function (){
+                    if (res.status == 0) {
+                        console.log(res.message);
+                        validcode = true;
+                    } else if (res.status == 1) {
+                        console.log(res.message);
+                        validcode = false;
+                    }
+                }, 3000);
+            }
+        });
     }
 </script>
 </body>

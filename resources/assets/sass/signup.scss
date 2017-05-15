@@ -175,7 +175,6 @@ body {
                         top: 16px;
                     }
                 }
-                
             }
 
             .team_info {
@@ -186,15 +185,14 @@ body {
                 display: block;
                 transition: all 0.7s;
                 display: none;
-
                 .leader {
                     width: 922px;
-                    height: 340px;
                     display: block;
                     position: relative;
                     background: #FFFFFF;
                     border: 1px solid #EAEAEA;
                     margin-bottom: 18px;
+                    padding-bottom: 30px;
 
                     .leader_title {
                         font-family: PingFangSC-Regular;
@@ -245,7 +243,6 @@ body {
                         display: block;
                     }
                 }
-
                 .all_number {
                     width: 922px;
                     display: block;
@@ -315,7 +312,6 @@ body {
                         }
                     }
                 }
-                
                 .pays {
                     width: 922px;
                     height: 140px;
@@ -363,9 +359,6 @@ body {
                         margin-top: 30px;
                     }
                 }
-
-             
-
                 .tel {
                     border: 1px solid #587BEF;
                     height: 30px;
@@ -385,18 +378,17 @@ body {
                     margin-right: 25px;
                     text-align: center;
                 }
-
                 .active {
                     color: #ccc;
                     border: 1px solid #ccc;
                     pointer-events: none;
                 }
-
+                #submit {
+                    display: none;
+                }
                 #code {
                     display: block;
                     float: left;
-
-          
                     input {
                         background: #FFFFFF;
                         border: 1px solid #CCCCCC;

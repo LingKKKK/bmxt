@@ -240,12 +240,12 @@ body .content .all_info .team_info {
 }
 body .content .all_info .team_info .leader {
   width: 922px;
-  height: 340px;
   display: block;
   position: relative;
   background: #FFFFFF;
   border: 1px solid #EAEAEA;
   margin-bottom: 18px;
+  padding-bottom: 30px;
 }
 body .content .all_info .team_info .leader .leader_title {
   font-family: PingFangSC-Regular;
@@ -423,6 +423,9 @@ body .content .all_info .team_info .active {
   color: #ccc;
   border: 1px solid #ccc;
   pointer-events: none;
+}
+body .content .all_info .team_info #submit {
+  display: none;
 }
 body .content .all_info .team_info #code {
   display: block;
