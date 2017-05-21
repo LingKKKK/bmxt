@@ -387,7 +387,7 @@
     }
     //数字 英文 汉字
     function isMathEngCha(val) {
-        reg= /^[\u4e00-\u9fa5a-z0-9]+$/gi;
+        reg= /^[\w\u4e00-\u9fa5][\s\w\u4e00-\u9fa5]*(?!\s)$/gi;
         if(!reg.test(val)) {
             return false;
         }
@@ -395,7 +395,15 @@
     }
     //数字 英文 汉字  agemenber
     function isAgemenber(val) {
-        reg= /^[0-9]+$/gi;
+        reg= /^([0-9]|[0-9]{2}|80)$/gi; 
+        if(!reg.test(val)) {
+            return false;
+        }
+        return true;
+    }
+    // 身高 isHeightnum  heightNum
+    function isHeightnum(val) {
+        reg= /^([1-2]\d{2})$/gi; 
         if(!reg.test(val)) {
             return false;
         }
@@ -466,11 +474,15 @@
                 return false;
             }
             if (datatype == 'schoolname' && !isMathEngCha(val)) {
-                $el.tipWarn('不能为特殊字符,请重新输入!');
+                $el.tipWarn('允许输入汉字英文数字空格,切首位不能为空格!');
                 return false;
             }
             if (datatype == 'agemenber' && !isAgemenber(val)) {
-                $el.tipWarn('只能输入数字!');
+                $el.tipWarn('请出入正确的年龄!');
+                return false;
+            }
+            if (datatype == 'heightNum' && !isHeightnum(val)) {
+                $el.tipWarn('请出入正确的身高!');
                 return false;
             }
             if (datatype == 'email' && !isEmail(val)) {
@@ -765,7 +777,7 @@
 
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">队员身高  :</span>';
-            memberList += '<input data-type="agemenber" required tip-warn="" tip-info="仅支持数字,以厘米为单位"  name="members['+memberListNum+'][height]" class="input-field-text" type="text">';
+            memberList += '<input data-type="heightNum" required tip-warn="" tip-info="仅支持数字,以厘米为单位"  name="members['+memberListNum+'][height]" class="input-field-text" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
