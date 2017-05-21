@@ -117,9 +117,6 @@ body .top .inner .login span {
 body .top .inner .logout {
   display: none;
 }
-body .button-print {
-  display: none;
-}
 body .mid {
   width: 1000px;
   display: block;
@@ -157,10 +154,9 @@ body .mid .title_top ul li {
   display: block;
   float: left;
   opacity: 1;
-  background: #587BEF;
   font-family: PingFangSC-Regular;
-  font-size: 14px;
-  color: #FFFFFF;
+  font-size: 18px;
+  color: #333;
   letter-spacing: 0.58px;
   text-align: center;
   line-height: 40px;
@@ -173,6 +169,7 @@ body .mid .all_info {
   box-sizing: border-box;
   padding-top: 30px;
   position: relative;
+  margin-top: 10px;
 }
 body .mid .all_info .team_info {
   height: 100%;
@@ -355,6 +352,9 @@ body .mid .all_info .team_info .tel {
 body .mid .all_info .active {
   display: block;
   transition: all 0.7s;
+}
+body .button-print {
+  display: none;
 }
 body .bot {
   display: none;

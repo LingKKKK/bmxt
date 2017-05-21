@@ -152,7 +152,7 @@ class SignupController extends Controller
         $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
         $data['team_no'] = $this->team_no;
 
-        $request->session()->flash('signdata', $data);
+        $request->session()->put('signdata', $data);
 
         $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
         $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);

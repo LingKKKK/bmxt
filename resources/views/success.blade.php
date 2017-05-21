@@ -13,7 +13,6 @@
                 <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
             </div>
         </div>
-        <input class="button-print" type="button" value="打印" onclick="window.print()">
         <div class="mid">
             <div class="successAlert" id="successAlert">
                 <span>您已报名成功!</span>
@@ -21,7 +20,7 @@
 
             <div class="title_top">
                 <ul>
-                    <li>2017啃萝卜</li>
+                    <li>2017世界机器人大赛-RoboCom青少年挑战赛</li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -31,7 +30,7 @@
                         <span class="leader_title">队伍信息</span>
                         <div class="cut"></div>
                         <span class="name">队伍编号 :</span>
-                        <span id="preview_team_id" class="name_input">{{$signdata['team_id'] or ''}}</span>
+                        <span id="preview_team_id" class="name_input">{{$signdata['team_no'] or ''}}</span>
                         <div class="clearfix"></div>
                         <span class="name">队伍名称 :</span>
                         <span id="preview_team_name" class="name_input">{{$signdata['team_name'] or ''}}</span>
@@ -117,6 +116,7 @@
             </form>
         </div>
 
+        <input class="button-print" type="button" value="打印" onclick="window.print()">
         <div class="bot">
             <div class="inner">
                 <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
