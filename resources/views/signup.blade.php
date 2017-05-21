@@ -884,7 +884,7 @@
                 success: function(res) {
                     if (res.status == 0) {
                         console.log(res);   //支付成功
-                        // $('#submit').click();
+                        $('#submit').click();
                         clearTimeout(timer);
                         Qrcode = true;
                     } else if (res.status == 1) {

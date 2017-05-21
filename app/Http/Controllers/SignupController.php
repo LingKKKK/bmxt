@@ -16,17 +16,18 @@ class SignupController extends Controller
 {
     //
     protected $group_map = [
-        1 => '小学组',
-        2 => '中学组',
-        3 => '高中组'
+
+        '小学组' => 1,
+        '中学组' => 2,
+        '高中组' => 3,
     ];
 
     protected $type_map = [
-        1 => '智慧日月潭',
-        2 => '部落战争',
-        3 => '引领未来',
-        4 => '星光璀璨',
-        5 => '工业时代',
+        '智慧日月潭' => 1,
+        '部落战争' => 2,
+        '引领未来' => 3,
+        '星光璀璨' => 4,
+        '工业时代' => 5,
     ];
 
     //队伍码
@@ -178,9 +179,9 @@ class SignupController extends Controller
         $total_count = SignupData::count();
 
         $seg4 = str_pad($group_type_count, 3, '0', STR_PAD_LEFT);
-        $seg5 = str_pad($group_type_count, 4, '0', STR_PAD_LEFT);
+        $seg5 = str_pad($total_count, 4, '0', STR_PAD_LEFT);
         // 年份前缀-组别-比赛类型-报名总序号-比赛序号
-        $this->team_no = $seg1.$seg2.$seg3.$seg5.$seg2;
+        $this->team_no = $seg1.$seg2.$seg3.$seg5.$seg4;
         return $this->team_no;
     }
 
