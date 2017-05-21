@@ -301,7 +301,7 @@
             <div class="showBox">
                 <span class="tip">提示: 请您在右侧输入图中的数字或者字母~</span>
                 <span id="tipes">验证成功之后,我们会将验证码发送至您的手机:  <i></i></span>
-                <span class="tipes-false">您输入的手机号码或者验证码有误,请重新输入!!!</span>
+                <span class="tipes-false">您输入的验证码有误,请核对后重新输入!!!</span>
                 <img src="{{url('/captcha')}}">
                 <input id="v_code" type="text" placeholder="请输入">
                 <a id="sendCode" class="yes">确认</a>
