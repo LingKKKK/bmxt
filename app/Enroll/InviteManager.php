@@ -79,7 +79,7 @@ class InviteManager
             $arrValues = [];
             for ($j=0; $j < 128; $j++) {
                 $arrValues[] = [
-                    'code' => md5('enroll_data_'. $i . '_'. $j),
+                    'code' => substr(md5('enroll_data_'. $i . '_'. $j), 0, 16),
                     'remark' => 'enroll_data_'. $i . '_'. $j
                 ];
             }
