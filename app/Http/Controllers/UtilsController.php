@@ -153,6 +153,7 @@ class UtilsController extends Controller
         $subject = '比赛缴费';
         $total_amount = '300.00'; // 单位元
         $payurl = $alipay->getPayUrl($out_trade_no, $total_amount, $subject);
+
         if (!$payurl || $payurl['code'] != 10000) {
             return api_response(1, '获取失败');
         }
@@ -176,7 +177,7 @@ class UtilsController extends Controller
 
         if ($payResult['code'] == 10000 && $payResult['trade_status'] == "TRADE_SUCCESS") {
             return api_response(0, '支付成功');
-        } 
+        }
 
         return api_response(1, '等待支付');
     }

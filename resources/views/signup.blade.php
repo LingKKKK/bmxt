@@ -33,6 +33,7 @@
                         <div class="input-field">
                             <span class="input-label">邀请码  :</span>
                             <input required tip-warn="" tip-info="输入邀请码" class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{old('invitecode')}}">
+                            <input type="hidden" name="out_trade_no" id="out_trade_no">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -93,7 +94,7 @@
                                 <option value="{{$value}}" @if(old('competition_type') == $value) selected @endif >{{$text}}</a>
                                 @endforeach
                             </select>
-                        </div>                    
+                        </div>
                         <div class="input-field">
                             <span class="input-label">组别  :</span>
                             ‍‍<select id="competition_group" name="competition_group">
@@ -204,7 +205,7 @@
                             <span class="leader_title">队伍信息</span>
                             <div class="cut"></div>
                             <div class="input-field">
-                                <span class="name">队伍编号 :</span> 
+                                <span class="name">队伍编号 :</span>
                                 <span id="team_id" class="name_input"></span>
                             </div>
                             <div class="input-field">
@@ -239,11 +240,11 @@
                                         <span data-type="realname" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
                                     </div>
                                     <div class="input-field">
-                                        <span class="name">身份证 :</span> 
+                                        <span class="name">身份证 :</span>
                                         <span id="{{'preview_'.$i.'_member_id'}}" class="name_input"></span>
                                     </div>
                                     <div class="input-field">
-                                        <span data-type="mobile" class="name">手机号 :</span> 
+                                        <span data-type="mobile" class="name">手机号 :</span>
                                         <span id="{{'preview_'.$i.'_member_mobile'}}" class="name_input"></span>
                                     </div>
                                     <div class="input-field">
@@ -417,8 +418,8 @@
         return true;
     }
     //身份证
-    function isID(val) {        
-        var vcity={ 11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古", 21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏", 33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南", 42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆", 51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃", 63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"}; 
+    function isID(val) {
+        var vcity={ 11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古", 21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏", 33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南", 42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆", 51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃", 63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"};
         var idCardReg =/(^\d{15}$)|(^\d{17}([0-9]|X|x))$/gi;
 
         if(!idCardReg.test(val)) {
@@ -575,14 +576,14 @@
                 }
             });
         });
-        // 校验验证码   
+        // 校验验证码
         $("#getQrcode").unbind('click').click(function() {
             var validcode = false;
             $.ajax({
                 type:"post",
                 url:"{{url('/verificationcode/verify')}}",
                 data:{"verificationcode": $('#verificationcode').val()},
-                async:false, 
+                async:false,
                 success:function(res) {
                     if (res.status == 0) {
                         console.log('通过验证');
@@ -619,7 +620,7 @@
                 var chkVal = $('input:radio[name="'+name+'"]:checked').val();
                 $('#preview_' + name).html(chkVal);
             }
-            // 默认填写图片文件的路径 
+            // 默认填写图片文件的路径
             if (type == 'file') {
                 if (isIE()) {
                 }else {
@@ -853,6 +854,7 @@
                     console.log(res);
                     $(".QRcodeShow .QEbox .QEcode img").attr('src', res.data.qrcodeimgurl);
                     outTradeNo = res.data.out_trade_no;
+                    $('#out_trade_no').val(out_trade_no);
                     console.log(outTradeNo)
                     validcode = true;
                     if (outTradeNo != null) {
@@ -892,7 +894,7 @@
                 }
             });
         }, 2000)
-        
+
     }
 </script>
 </body>

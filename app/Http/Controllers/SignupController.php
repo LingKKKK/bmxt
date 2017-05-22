@@ -10,15 +10,28 @@ use Validator;
 use Mail;
 use Storage;
 use Session;
+use App\Enroll\InviteManager;
 
 class SignupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
+    //
+    protected $group_map = [
+        1 => '小学组',
+        2 => '中学组',
+        3 => '高中组'
+    ];
+
+    protected $type_map = [
+        1 => '智慧日月潭',
+        2 => '部落战争',
+        3 => '引领未来',
+        4 => '星光璀璨',
+        5 => '工业时代',
+    ];
+
+    //队伍码
+    protected $team_no = '';
+
     public function signup(Request $request)
     {
         //数据展示
@@ -59,18 +72,6 @@ class SignupController extends Controller
 
     }
 
-    public function checkInvitecode(Request $request)
-    {
-        // return api_response(1, '邀请码正确');
-        return api_response(0, '邀请码错误');
-    }
-
-    public function getPayQrcode(Request $request)
-    {
-        // return
-        return api_response(0, 'success', ['qrcodeurl' => 'http:://www.kenrobot.com']);
-    }
-
     public function success(Request $request)
     {
         $signdata = $request->session()->get('signdata');
@@ -81,7 +82,7 @@ class SignupController extends Controller
     }
     public function doSignup(Request $request)
     {
-        $validator = Validator::make($request->all(), 
+        $validator = Validator::make($request->all(),
 
             [
                 'invitecode' => 'required', //邀请码信息
@@ -93,7 +94,7 @@ class SignupController extends Controller
                 'leader_mobile' => 'required',
                 'team_name' => 'required',
                 'school_name' => 'required',
-                'school_address' => 'required', 
+                'school_address' => 'required',
                 // 'verificationcode' => 'required|verificationcode',
             ],
             [
@@ -104,7 +105,10 @@ class SignupController extends Controller
                 // 'verificationcode.verificationcode' => '验证码错误',
             ]
         );
-        // dd($this->saveFile($request->file('leader_pic'))['publicPath']);
+        //初始化队伍码
+        $this->initTeamNo($request->input('competition_group'), $request->input('competition_type'));
+
+
         $leader_picdata = $this->saveFile($request->file('leader_pic'));
         $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
         $leader_pic_filename = !empty($leader_picdata) && isset($leader_picdata['filename']) ? $leader_picdata['filename'] : '';
@@ -114,7 +118,7 @@ class SignupController extends Controller
         $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
 
         foreach ($origin_members as $k => $item) {
-            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name']);
+            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name', 'height']);
             $pic = isset($item['pic']) ? $item['pic'] : null;
 
             $member_picdata = $this->saveFile($item['pic']);
@@ -124,7 +128,6 @@ class SignupController extends Controller
         }
 
         if ($validator->fails()) {
-            // return api_response(1, 'Fail', $validator->errors()->toArray());
             return redirect()->back()->withInput()
                                      ->withErrors($validator->errors())
                                      ->with('leader_pic_preview', $leader_pic)
@@ -132,18 +135,16 @@ class SignupController extends Controller
                                      ->with('members_data', $members);
         }
 
-        //表单地钻 
-        $keys = ['invitecode', 'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 
+        //表单地钻
+        $keys = ['invitecode','out_trade_no' ,'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email',
                  'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
                 'payment'
         ];
 
         $data = $request->only($keys);
-
         $data['leader_pic'] = $leader_pic;
-
         $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
-        $data['team_no'] = $this->getTeamNo();
+        $data['team_no'] = $this->team_no;
 
         $request->session()->flash('signdata', $data);
 
@@ -152,18 +153,35 @@ class SignupController extends Controller
 
         try {
             $ddt = SignupData::create($data);
+            dd($ddt);
+            InviteManager::useCode($data['invitecode'], $ddt->id);
         } catch (\Exception $e) {
+            dd($e);
             return redirect()->back()->withInput();
-            return api_response(1 ,'报名失败'.$e->getMessage());
         }
+        dd($ddt);
+
         return redirect('/');
-        // $this->sendMail('');
-        return api_response(0, '报名成功', $ddt->toArray());
     }
 
-    protected function getTeamNo()
+    protected function initTeamNo($competition_group, $competition_type)
     {
-        //队伍码生成规则
+        $seg1 = '2017';
+
+        $competition_group_id = $this->group_map[$competition_group];
+        $competition_type_id = $this->type_map[$competition_type];
+
+        $seg2 = str_pad($competition_group_id, 2, '0', STR_PAD_LEFT);
+        $seg3 = str_pad($competition_type_id, 2, '0', STR_PAD_LEFT);
+
+        $group_type_count = SignupData::where('competition_group', $competition_group)->where('competition_type', $competition_type)->count();
+        $total_count = SignupData::count();
+
+        $seg4 = str_pad($group_type_count, 3, '0', STR_PAD_LEFT);
+        $seg5 = str_pad($group_type_count, 4, '0', STR_PAD_LEFT);
+        // 年份前缀-组别-比赛类型-报名总序号-比赛序号
+        $this->team_no = $seg1.$seg2.$seg3.$seg5.$seg2;
+        return $this->team_no;
     }
 
     //发送邮件
@@ -180,6 +198,11 @@ class SignupController extends Controller
         return true;
     }
 
+    /**
+     * 保存文件
+     * @param  [type] $file [description]
+     * @return [type]       [description]
+     */
     public function saveFile($file)
     {
         if (!$file) {
@@ -193,16 +216,18 @@ class SignupController extends Controller
         $suffix = rand(1000, 9999);
 
         $hashfilename = md5($filename.$suffix).'.'.$ext;
-        $storePath = '/data/pic/'.$hashfilename;
-        $publicPath = '/data/pic/'.$hashfilename;
+        $storePath = '/data/pic/'.$this->team_no.'/'.$hashfilename;
+        $publicPath = '/data/pic/'.$this->team_no.'/'.$hashfilename;
 
         Storage::put($storePath, file_get_contents($file));
 
-        // return $publicPath;
         return compact('filename', 'publicPath');
-         // ['filename' => $filename, 'publicPath' => $publicPath];
     }
 
+    /**
+     * 搜索
+     * @return [type] [description]
+     */
     public function search()
     {
         return view('search');
@@ -217,7 +242,7 @@ class SignupController extends Controller
         $inputData = $request->only(['leader_name', 'leader_ID', 'leader_mobile']);
         $inputData = array_filter($inputData);
 
-        $validator = Validator::make($inputData, 
+        $validator = Validator::make($inputData,
             [
                 'leader_mobile' => 'required',
                 'leader_ID' => 'sometimes|required',
@@ -230,7 +255,6 @@ class SignupController extends Controller
             ]);
         // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
 
-
         if ($validator->fails()) {
            return redirect()->back()->withErrors($validator->errors())->withInput();
         }
@@ -240,94 +264,9 @@ class SignupController extends Controller
             return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
 
         }
-        // if (!empty($leader_ID)) {
-        //     $singdata = $singdata->where('leader_ID', $leader_ID);
-        // }
-        // if (!empty($leader_name)) {
-        //     $singdata = $singdata->where('leader_name', $leader_name);
-        // }
+
         $signdata = SignupData::where('leader_mobile', $leader_mobile)->first();
-        // $signdata['members'] = json_decode($signdata['members'], true);
         $request->session()->flash('signdata', $signdata);
         return redirect('success');
-        // return $signdata;
-    }
-
-    public function lzsignup(Request $request)
-    {
-        //数据展示
-        $signdata = $request->session()->get('signdata');
-        // dd($signdata);
-        return view('lzsignup');
-    }
-
-    public function submitForm(Request $request)
-    {    
-        // dd($_POST["name"]);
-        $validator = Validator::make($request->all(), 
-            [
-                'leader_name' => 'required', //领队姓名
-                'leader_mobile' => 'required',
-                'team_name' => 'required',
-                'school_name' => 'required',
-                'department' => 'required', 
-                'verificationcode' => 'required|verificationcode',
-            ],
-            [
-                'team_name.required' => '队名必填',
-                'school_name.required' => '学校名必填',
-                'verificationcode.required' => '验证码不能为空',
-                'verificationcode.verificationcode' => '验证码错误',
-            ]
-        );
-        // 提交数据的信息 $request->all()
-        dd($request->all(), $validator);
-        // dd($validator);所有的数据
-        // 处理成员
-        $members = array();
-        $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
-
-        foreach ($origin_members as $k => $item) {
-            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'height', 'school_name']);
-            $pic = isset($item['pic']) ? $item['pic'] : null;
-            $member_picdata = $this->saveFile($item['pic']);
-            $member_info['pic'] = $member_picdata['publicPath'];
-            $member_info['pic_filename'] = $member_picdata['filename'];
-            $members[] = $member_info;
-        }
-
-        if ($validator->fails()) {
-            // return api_response(1, 'Fail', $validator->errors()->toArray());
-            return redirect()->back()->withInput()
-                                     ->withErrors($validator->errors());
-        }
-
-        //表单地钻
-        $keys = ['leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 
-                 'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
-                'payment'
-        ];
-
-        $data = $request->only($keys);
-
-        $data['leader_pic'] = $leader_pic;
-
-        $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
-        $data['team_no'] = $this->getTeamNo();
-
-        $request->session()->flash('signdata', $data);
-
-        $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
-        $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
-
-        try {
-            $ddt = SignupData::create($data);
-        } catch (\Exception $e) {
-            return redirect()->back()->withInput();
-            return api_response(1 ,'报名失败'.$e->getMessage());
-        }
-        return redirect('/');
-        // $this->sendMail('');
-        return api_response(0, '报名成功', $ddt->toArray());
     }
 }

@@ -11,32 +11,31 @@
 |
 */
 
-// Route::get('/', 'HomeController@index');
 
-// 认证路由...
-// Route::get('auth/login', 'Auth\AuthController@getLogin');
-// Route::post('auth/login', 'Auth\AuthController@postLogin');
-// Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//  报名页面
+Route::get('/', 'SignupController@signup');
+Route::post('/signup', 'SignupController@doSignup');
+Route::get('/success', 'SignupController@success');
 
-// 注册路由...
-// Route::get('auth/register', 'Auth\AuthController@getRegister');
-// Route::post('auth/register', 'Auth\AuthController@postRegister');
+// 报名系统查询
+Route::get('/search', 'SignupController@search');
+Route::post('/search', 'SignupController@doSearch');
 
-// 后台管理
-// Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
-//     Route::get('/', 'IndexController@index');
-//     Route::get('/activity/list', 'ActivityController@index');
-//     Route::get('/activity/create', 'ActivityController@create');
-//     Route::post('/activity/create', 'ActivityController@store');
-//     Route::get('/activity/config/{id}', 'ActivityController@config')->where('id', '[0-9]+');
-//     Route::post('/activity/editform/{id}', 'ActivityController@editForm')->where('id', '[0-9]+');
-//     Route::post('/activity/addfield/{id}', 'ActivityController@addField')->where('id', '[0-9]+');
-//     Route::post('/activity/delfield/{id}', 'ActivityController@delfield')->where('id', '[0-9]+');
+//
+Route::get('/pay/test', 'AliPayController@test');
 
-//     Route::get('/enrolldata/{id}', 'ActivityController@enrolldata')->where('id', '[0-9]+');
+// 队伍名称检查
+Route::post('/checkteamname', 'SignupController@checkName');
 
-// });
 
+// 支付宝支付接口
+Route::post('/getpayqrcode', 'UtilsController@getPayQrcode');
+// 邀请码验证
+Route::post('/checkinvitecode', 'UtilsController@checkInvitecode');
+// 查询订单，参数 invitecode
+Route::post('/pay/queryorder', 'UtilsController@queryOrderStatus');
+//二维码显示
+Route::get('/qrcodeimg.svg', 'UtilsController@qrcodeimg');
 // 图形验证码
 Route::get('/captcha/{config?}', 'UtilsController@captcha');
 Route::post('/captcha/verify', 'UtilsController@verificationcode');
@@ -44,31 +43,3 @@ Route::post('/captcha/verify', 'UtilsController@verificationcode');
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
-//  报名页面
-Route::get('/', 'SignupController@signup');
-Route::get('/success', 'SignupController@success');
-Route::post('/signup', 'SignupController@doSignup');
-// 校验队伍名称是否重复
-Route::post('/checkteamname', 'SignupController@checkName');
-
-// 报名系统查询
-Route::get('/search', 'SignupController@search');
-Route::post('/search', 'SignupController@doSearch');
-// 乐智报名系统
-Route::get('/lzsignup', 'SignupController@lzsignup');
-Route::post('/submitForm', 'SignupController@submitForm');
-
-//
-Route::get('/pay/test', 'AliPayController@test');
-
-
-// 校验邀请码是否重复
-Route::post('/checkinvitecode', 'UtilsController@checkInvitecode');
-// 获取支付二维码地址
-Route::post('/getpayqrcode', 'UtilsController@getPayQrcode');
-// 查询订单，单位 invitecode
-Route::post('/pay/queryorder', 'UtilsController@queryOrderStatus');
-
-Route::get('/qrcodeimg.svg', 'UtilsController@qrcodeimg');
-
-

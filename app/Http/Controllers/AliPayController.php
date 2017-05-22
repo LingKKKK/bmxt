@@ -17,10 +17,6 @@ class AliPayController extends Controller
      */
     public function test()
     {
-        $alipay = new AliPayDemo();
-        $url = $alipay->getPayUrl();
-        dd($url);
-
 
     }
 }

@@ -2,8 +2,8 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/success.css')}}">  
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup-print.css')}}" media="print"> 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/success.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup-print.css')}}" media="print">
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
             <div class="successAlert" id="successAlert">
                 <span>您已报名成功!</span>
             </div>
-            
+
             <div class="title_top">
                 <ul>
                     <li>2017啃萝卜</li>
@@ -81,10 +81,10 @@
                                 <span class="name">队员姓名 :</span>
                                 <span  class="name_input">{{$member['name'] or ''}}</span>
                                 <div class="clearfix"></div>
-                                <span class="name">身份证 :</span> 
+                                <span class="name">身份证 :</span>
                                 <span class="name_input">{{$member['ID'] or ''}}</span>
                                 <div class="clearfix"></div>
-                                <span class="name">手机号 :</span> 
+                                <span class="name">手机号 :</span>
                                 <span class="name_input">{{$member['mobile'] or ''}}</span>
                                 <div class="clearfix"></div>
                                 <span class="name">性别 :</span>
@@ -106,11 +106,11 @@
                         <span class="leader_title">缴费信息</span>
                         <div class="cut"></div>
                         <span class="name">支付方式 :</span>
-                        <span id="preview_payment" class="name_input" >现场缴费</span>
+                        <span id="preview_payment" class="name_input" >在线支付(已成功付款)</span>
                         <div class="clearfix"></div>
                     </div>
                     <div class="clearfix">
-                        
+
                     </div>
                 </div>
             </div>
