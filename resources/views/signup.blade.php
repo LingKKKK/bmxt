@@ -854,7 +854,7 @@
                     console.log(res);
                     $(".QRcodeShow .QEbox .QEcode img").attr('src', res.data.qrcodeimgurl);
                     outTradeNo = res.data.out_trade_no;
-                    $('#out_trade_no').val(out_trade_no);
+                    $('#out_trade_no').val(outTradeNo);
                     console.log(outTradeNo)
                     validcode = true;
                     if (outTradeNo != null) {

@@ -97,15 +97,19 @@ class SignupController extends Controller
                 'school_name' => 'required',
                 'school_address' => 'required',
                 // 'verificationcode' => 'required|verificationcode',
+                'invitecode' => 'required|invitecode'
             ],
             [
                 'invitecode.required' => '邀请码必填',
                 'team_name.required' => '队名必填',
                 'school_name.required' => '学校名必填',
                 'verificationcode.required' => '验证码不能为空',
+                'invitecode.required' => '邀请码不能为空',
+                'invitecode.invitecode' => '邀请码不正确',
                 // 'verificationcode.verificationcode' => '验证码错误',
             ]
         );
+
         //初始化队伍码
         $this->initTeamNo($request->input('competition_group'), $request->input('competition_type'));
 
@@ -154,13 +158,13 @@ class SignupController extends Controller
 
         try {
             $ddt = SignupData::create($data);
-            dd($ddt);
             InviteManager::useCode($data['invitecode'], $ddt->id);
+            // dd($ddt);
         } catch (\Exception $e) {
-            dd($e);
+            // dd($e);
             return redirect()->back()->withInput();
         }
-        dd($ddt);
+        // dd($ddt);
 
         return redirect('/');
     }
@@ -178,8 +182,8 @@ class SignupController extends Controller
         $group_type_count = SignupData::where('competition_group', $competition_group)->where('competition_type', $competition_type)->count();
         $total_count = SignupData::count();
 
-        $seg4 = str_pad($group_type_count, 3, '0', STR_PAD_LEFT);
-        $seg5 = str_pad($total_count, 4, '0', STR_PAD_LEFT);
+        $seg4 = str_pad($group_type_count + 1, 3, '0', STR_PAD_LEFT);
+        $seg5 = str_pad($total_count + 1, 4, '0', STR_PAD_LEFT);
         // 年份前缀-组别-比赛类型-报名总序号-比赛序号
         $this->team_no = $seg1.$seg2.$seg3.$seg5.$seg4;
         return $this->team_no;

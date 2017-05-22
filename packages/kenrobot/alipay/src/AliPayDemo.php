@@ -39,7 +39,9 @@ class AliPayDemo
         // $this->aopClient->gatewayUrl = 'https://openapi.alipaydev.com/gateway.do';
         $this->aopClient->appId = '2017051707261563';
         $this->aopClient->rsaPrivateKey = 'MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC/5gPxw9jB2FNUr8t6c4nwivy+w6XYNJfFViBVsM/OaxyKIcOroPYeuAxMB2cAPCwg1gFl7EGCB01AL277oQxn81B9/YFV/AEwh9hP/83gTjopt5a3wK9Km8bfhPYdWTHpsvEVgD6plY4LCRf8VX8QIgDcgI/t0baFU3zmEXv1dY87j5WDHyIt9Afl9qo3MhJPxGVOj0JUp1g59x+PiLyiHj4sc91RMZ7J8fm4kq+W542JoZWKkJZXNHZ4zifxds/ccDGgUEkacpvJEO/gA4g12RrbDBdSiKRmNe/wteAIf+1HIScczfHptCiDHSgndh6EVwgJn2pcIV2li0Pftw5nAgMBAAECggEAWvSUFAim+aImRTKZuG2BCRFnoKetOOAcu70J0HPg207rlRFR5EyDu6WytmqfyH280Md+nCeyGQaK+AxDh2MbNT4ffcglgHLUwYLx5WEy3MlXSiSpfGkI7M0PIyyrVtfLD6DwIifKC6lGTTa/NqvzcNsdG2aYUbmf0Gv0/Dt3TKzbKFnAT7l20yqLmjcnxwYOLPP0sBB/eE20Avd/uQ8EstRy1DnVeDMbPjLHjVdPREJtKgbVCxZpKsU59D+NRe+zvQBn05HVStuwfW0ASb93AiozE8C29CMxqhZ2AL9/L/Wjc/xNVFfe/YaSQjvZthmr33k6+iLuWjJcoaPC9CepMQKBgQD7wrkHIs1kJ/EHih19BqHxLOiLvYpIgAFaCy5YnW7JQIH9FA3cDztNSM8gcaFErFkwvF91zXGu4SZZeNdHbDfyzT6GBccynvhdy6NVd/nq+FWIUZ6/iCOud4aTaIkjhHsxY9DTgxhHtvRW424Xia302TtNbkjYjZ6uXakBEzHCPwKBgQDDIT3uBWLv+AomBgiUpDb7Qk57NiQTAFNx/hDPDPIKPnOiuYCiluJasOT1YQcnOcH3VLqk9/GImiP/CeyHpn3BdBEJP/uTy0lcKzAog3NA3+pltnN+TbGdYqXEj3Kdc055TRwMnvMPVRgvG0tg3uSz4d76fY4HkvPuFn2J9p7Z2QKBgCBExRJ1E35S4EHnIgB0aS1QZD4E/URto7620Cnrg9envQGDIIOkMCWnv2SZK+JxdL0aZ+Hhg0C2+wNcybsN0937EJh9BRsn5Q2gnD7IMfA8BDqEu6Qw/uHN0CH0tB8pS+D4ujtiAiqu+IJqhCHgM7u+XCuAhzW6cSxINPE+VJJhAoGAYYfbAX51vkX3JJw9a7ZMuPeibJlaHJk8HC0GT8dDr3UZrUsVDa9nAjeKqU9PGP8YgTw7cjtv4XxR46cdL4w7LReLcFknsO6aA1Se5JEXaWTCLwar4YSJ84WcH4wnmKVKovy0uWY1TQOWa+0zlv6xx2ttXTymYgjEnctmAjBfo7kCgYAQguXXepRDbhaU5PUFynEa2rCk7NcFn7iRFpV3zI7Hl1QTOhwpbmVMv48fq4Twczh3uM6244MRWb7B8O9w2Wzzeh8ijZ2W7W4VxhRej8w2JfkQrXvZ/z5bom7ndIZq9kxwfj8jOLCzCfUEJkaLtJU+zIIHcFl0eKUxsMC8+sObHg==';
-        $this->aopClient->alipayrsaPublicKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv+YD8cPYwdhTVK/LenOJ8Ir8vsOl2DSXxVYgVbDPzmsciiHDq6D2HrgMTAdnADwsINYBZexBggdNQC9u+6EMZ/NQff2BVfwBMIfYT//N4E46KbeWt8CvSpvG34T2HVkx6bLxFYA+qZWOCwkX/FV/ECIA3ICP7dG2hVN85hF79XWPO4+Vgx8iLfQH5faqNzIST8RlTo9CVKdYOfcfj4i8oh4+LHPdUTGeyfH5uJKvlueNiaGVipCWVzR2eM4n8XbP3HAxoFBJGnKbyRDv4AOINdka2wwXUoikZjXv8LXgCH/tRyEnHM3x6bQogx0oJ3YehFcICZ9qXCFdpYtD37cOZwIDAQAB';
+        $this->aopClient->alipayrsaPublicKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiWnIf7Wm6Kq061gCfggerT1XPyyNjYM8jNTe2vhODc0Wg+hOVcicP2Rkuv3AhVtnZFbZgEaPGmYGTJWQhIWiEsr1OAf6H5c9qiX4eHxAisr8ZQ4Mpa9EVS4bSGtVJtPw+rKpQ+V7nh6K5jCIzEUZgC2bZQ5Gj4thz9daN/YI0O3nucf8O4AG9AFPpmYIBUAWT3lEO2KNEPophD5VZ3gdnEXoieyuV+lKAePrHoI4he9UN7f/98vcPaB7HOwn+dACzUUYghqURZSNu2cKeyCqVu+RSn33FeNrJhlzG3rZHY7QFEOhhAoJ/VAI53TiKbi7ZaEg80vydA8wmvHHvVAuCQIDAQAB';
+
+
         $this->aopClient->signType = 'RSA2';
 
     }
@@ -89,18 +91,21 @@ class AliPayDemo
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
 
         $resultCode = $result->$responseNode->code;
-        if(! empty($resultCode) && $resultCode == 10000 && $result->$responseNode->trade_status == 'TRADE_SUCCESS'){
+
+        if(! empty($resultCode) && $resultCode == 10000){
             $dd = (array)$result->$responseNode;
             $alipayLog = AliPayLog::where('out_trade_no', $out_trade_no)->first();
-            if ($alipayLog) {
+            if (!$alipayLog) {
                 $alipayLog = new AliPayLog();
             }
+            // dd($dd);
 
-            $alipayLog->out_trade_no = $dd['out_trade_no'];
-            $alipayLog->point_amount = $dd['point_amount'];
-            $alipayLog->receipt_amount = $dd['receipt_amount'];
-            $alipayLog->send_pay_date = $dd['send_pay_date'];
+            if ($dd['trade_status'] == 'TRADE_SUCCESS') {
+                $pay_data = array_only($dd, ['buyer_logon_id', 'buyer_pay_amount', 'buyer_user_id', 'invoice_amount', 'openid', 'out_trade_no',
+                        'point_amount', 'receipt_amount', 'send_pay_date', 'total_amount', 'trade_no', 'trade_status', 'attach']);
 
+                $alipayLog->fill($pay_data)->save();
+            }
 
 
             // dd($dd);

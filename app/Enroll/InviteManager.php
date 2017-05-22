@@ -39,7 +39,7 @@ class InviteManager
         return InviteCode::where('code', $code)->first();
     }
 
-    public function useCode($code, $enroll_id)
+    public static function useCode($code, $enroll_id)
     {
         $codeModel = InviteCode::where('code', $code)->first();
         if ($codeModel === null) {
