@@ -59,7 +59,7 @@ class InviteManager
     /**
      * 检验邀请码是否可用
      */
-    public function checkCode($code)
+    public static function checkCode($code)
     {
         $codeModel = InviteCode::where('code', $code)->first();
         if ($codeModel === null) {
