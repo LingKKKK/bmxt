@@ -151,7 +151,7 @@ class UtilsController extends Controller
         $alipay = new AliPayDemo();
         $out_trade_no = '20150302'.date('His').rand(100,999);
         $subject = '比赛缴费';
-        $total_amount = '300.00'; // 单位元
+        $total_amount = '0.01'; // 单位元
         $payurl = $alipay->getPayUrl($out_trade_no, $total_amount, $subject);
 
         if (!$payurl || $payurl['code'] != 10000) {

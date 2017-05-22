@@ -19,8 +19,8 @@ class AliPayDemo
     protected $AopClient = null;
     function __construct()
     {
-        $this->sandBoxConfig();
-        // $this->productionConfig();
+        // $this->sandBoxConfig();
+        $this->productionConfig();
     }
 
     protected function sandBoxConfig()

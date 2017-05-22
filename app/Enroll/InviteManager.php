@@ -79,7 +79,8 @@ class InviteManager
             $arrValues = [];
             for ($j=0; $j < 128; $j++) {
                 $arrValues[] = [
-                    'code' => md5('enroll_data_'. $i . '_'. $j)
+                    'code' => md5('enroll_data_'. $i . '_'. $j),
+                    'remark' => 'enroll_data_'. $i . '_'. $j
                 ];
             }
             DB::table('invite_codes')->insert($arrValues);

@@ -106,6 +106,7 @@ class SignupController extends Controller
                 'verificationcode.required' => '验证码不能为空',
                 'invitecode.required' => '邀请码不能为空',
                 'invitecode.invitecode' => '邀请码不正确',
+                'leader_pic.required' => '领队照片不能为空'
                 // 'verificationcode.verificationcode' => '验证码错误',
             ]
         );
@@ -127,8 +128,8 @@ class SignupController extends Controller
             $pic = isset($item['pic']) ? $item['pic'] : null;
 
             $member_picdata = $this->saveFile($item['pic']);
-            $member_info['pic'] = $member_picdata['publicPath'];
-            $member_info['pic_filename'] = $member_picdata['filename'];
+            $member_info['pic'] =  !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['publicPath'] : '';
+            $member_info['pic_filename'] = !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['filename'] : '';
             $members[] = $member_info;
         }
 
