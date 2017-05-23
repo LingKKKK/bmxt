@@ -319,7 +319,7 @@
             <div class="QEbox">
                 <div class="zhifubao"></div>
                 <span class="payment">扫码支付</span>
-                <span class="money">￥199</span>
+                <span class="money">￥0.01</span>
                 <div class="QEcode">
                     <img src="" />
                 </div>
@@ -394,7 +394,7 @@
     }
     //数字 英文 汉字  agemenber
     function isAgemenber(val) {
-        reg= /^([0-9]|[0-9]{2}|80)$/gi; 
+        reg= /^([0-9]|[0-9]{2}|80)$/gi;
         if(!reg.test(val)) {
             return false;
         }
@@ -402,7 +402,7 @@
     }
     // 身高 isHeightnum  heightNum
     function isHeightnum(val) {
-        reg= /^([1-2]\d{2})$/gi; 
+        reg= /^([1-2]\d{2})$/gi;
         if(!reg.test(val)) {
             return false;
         }
