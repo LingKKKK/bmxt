@@ -16,18 +16,32 @@ class SignupController extends Controller
 {
     //
     protected $group_map = [
-
-        '小学组' => 1,
-        '中学组' => 2,
-        '高中组' => 3,
+        '小学' => 1,
+        '初中' => 2,
+        '高中' => 3,
+        '大专' => 4, 
+        '中学(含初高中)' => 5,
+        '中学(含小初)' => 6, 
+        '小初高' => 7
     ];
 
     protected $type_map = [
-        '智慧日月潭' => 1,
-        '部落战争' => 2,
-        '引领未来' => 3,
-        '星光璀璨' => 4,
-        '工业时代' => 5,
+        // 未来世界
+        "WRO常规赛" => 1,
+        "EV3足球赛" => 2,
+        "WRO创意赛-'可持续发展'" => 3,
+        // 博思威龙
+        "VEX-EDR'步步为营'工程挑战赛" => 11,
+        "VEX-IQ'环环相扣'工程挑战赛" => 12,
+        "BDS机器人工程挑战赛——'长城意志'" => 13,
+        // 工业时代
+        "能力风暴——WER能力挑战赛" => 21,
+        "能力风暴——WER能力挑战赛工程创新赛" => 22,
+        "能力风暴——WER普及赛" => 23,
+        // 部落战争——攻城大师
+        "部落战争——攻城大师" => 31,
+        // 智造大挑战
+        "智造大挑战" => 41
     ];
 
     //队伍码
@@ -36,6 +50,7 @@ class SignupController extends Controller
     public function signup(Request $request)
     {
         //数据展示
+        // $request->session()->forget('signdata');
         $signdata = $request->session()->get('signdata');
         if ($signdata) {
             $signdata['members'] = json_decode($signdata['members'], true);
@@ -43,17 +58,32 @@ class SignupController extends Controller
         }
 
         $competition_groups = [
-            '小学组' => '小学组',
-            '中学组' => '中学组',
-            '高中组' => '高中组',
+            '小学' => 1,
+            '初中' => 2,
+            '高中' => 3,
+            '大专' => 4, 
+            '中学(含初高中)' => 5,
+            '中学(含小初)' => 6, 
+            '小初高' => 7
         ];
 
         $competition_types = [
-            '智慧日月潭' => '智慧日月潭',
-            '部落战争' => '部落战争',
-            '引领未来' => '引领未来',
-            '星光璀璨' => '星光璀璨',
-            '工业时代' => '工业时代'
+            // 未来世界
+            "WRO常规赛" => 1,
+            "EV3足球赛" => 2,
+            "WRO创意赛-'可持续发展'" => 3,
+            // 博思威龙
+            "VEX-EDR'步步为营'工程挑战赛" => 11,
+            "VEX-IQ'环环相扣'工程挑战赛" => 12,
+            "BDS机器人工程挑战赛——'长城意志'" => 13,
+            // 工业时代
+            "能力风暴——WER能力挑战赛" => 21,
+            "能力风暴——WER能力挑战赛工程创新赛" => 22,
+            "能力风暴——WER普及赛" => 23,
+            // 部落战争——攻城大师
+            "部落战争——攻城大师" => 31,
+            // 智造大挑战
+            "智造大挑战" => 41
         ];
 
         return view('signup', compact('competition_types', 'competition_groups'));

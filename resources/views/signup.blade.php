@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="x-ua-compatible" content="IE=9" >
-    <title></title>
+    <title>RoboCom青少年挑战赛</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
     <!-- <script src="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/contrib/other-validations.js"></script> -->
@@ -38,7 +38,7 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">姓名  :</span>
-                            <input data-type="realname" required tip-warn="" tip-info="仅支持仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
+                            <input data-type="realname" required tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">身份证号  :</span>
-                            <input required data-type="ID" tip-info="仅支持仅支持数字以及个别英文" class="input-field-text" id="leader_id" name="leader_id" type="text" value="{{old('leader_id')}}">
+                            <input required data-type="ID" tip-info="仅支持数字以及个别英文" class="input-field-text" id="leader_id" name="leader_id" type="text" value="{{old('leader_id')}}">
                             <div class="tips"></div>
                         </div>
 
@@ -89,18 +89,17 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">赛事项目  :</span>
-                            ‍‍<select id="competition_type" name="competition_type">
-                                @foreach ($competition_types as $value => $text)
-                                <option value="{{$value}}" @if(old('competition_type') == $value) selected @endif >{{$text}}</a>
-                                @endforeach
+                            <select id="competition_type" onchange="chg(this);">
+                                <option value="">请选择</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <select id="competition_name" name="competition_type" onchange="chg2(this)" style="margin-left: 130px;">
                             </select>
                         </div>
                         <div class="input-field">
                             <span class="input-label">组别  :</span>
-                            ‍‍<select id="competition_group" name="competition_group">
-                                @foreach ($competition_groups as $value => $text)
-                                <option value="{{$value}}" @if(old('competition_group') == $value) selected @endif >{{$text}}</option>
-                                @endforeach
+                            <select id="competition_group" name="competition_group">
                             </select>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
@@ -110,10 +109,10 @@
                         <?php $i = 0 ?>
                         @foreach((array)old('members') as $member)
                         <div class="menber_list">
-                            <!-- <div class="delete"><i class="icon kenrobot ken-close"></i></div> -->
+                            <div class="delete"><i class="icon kenrobot ken-close"></i></div>
                             <div class="input-field">
                                 <span class="input-label">队员姓名{{$i}}:</span>
-                                <input data-type="realname" required tip-info="仅支持仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
+                                <input data-type="realname" required tip-info="仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
@@ -123,7 +122,7 @@
                             </div>
                             <div class="input-field">
                                 <span class="input-label">手机号码  :</span>
-                                <input data-type="mobile" required tip-info="仅支持仅支持英文、数字、下划线" name="members[{{$i}}][mobile]" class="input-field-text member_mobile" type="text" value="{{$member['mobile']}}">
+                                <input data-type="mobile" required tip-info="仅支持英文、数字、下划线" name="members[{{$i}}][mobile]" class="input-field-text member_mobile" type="text" value="{{$member['mobile']}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
@@ -449,13 +448,12 @@
             }
             else {
                 if (isIE()) {
-                    var fileObj = document.getElementById($el.prop('id'));
+                    var fileObj = $('#'+id);
                     if (fileObj) {
-                        var f = fileObj.files[0];
-                        if (f) {
-                            if (f.size > 2 * 1024 * 1024) {
-                                $el.tipWarn('文件大小不能超过2M！');
-                                return false;
+                        if (fileObj.prop('files')) {
+                            var f = fileObj.prop('files')[0];
+                            if (f) {
+                                $('#preview_'+id).attr('src', URL.createObjectURL(f));
                             }
                         }
                     }
@@ -532,18 +530,31 @@
         $("input[type=file]").unbind('change').change(function(){
             validField(this);
             $(this).siblings('.file_name').html('');
-            var f = $(this).prop('files')[0];
-            if(f)
-            {
-                // console.log(f.name);
-                // console.dir($(this));
-                // $(this).val(f.name);
-                $(this).siblings('.file_name').html(f.name);
+            if ($(this).prop('files')) {
+                var f = $(this).prop('files')[0];
+                if(f)
+                {
+                    // console.log(f.name);
+                    // console.dir($(this));
+                    // $(this).val(f.name);
+                    $(this).siblings('.file_name').html(f.name);
+                }
             }
          });
         // 添加删除按钮
-        $('.append_rank .menber_list .delete').click(function(){
+        $('.append_rank .menber_list .delete').unbind('click').click(function(){
             $(this).parent('.menber_list').remove();
+            if ($('.all_info .append_rank .menber_list').length > 8) {
+                $('#append_rank_new').css({
+                    'pointer-events': 'none',
+                    'background': '#ccc'
+                });
+            }else {
+                $('#append_rank_new').css({
+                    'pointer-events': 'auto',
+                    'background': '#587BEF'
+                });
+            }
         })
         //上传 队员照片
         $('.uploadBtn').unbind('click').click(function() {
@@ -551,9 +562,9 @@
         });
         // 校验邀请码是否重复
         $("#invitecode").unbind('blur').blur(function() {
-            let str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
-            let str1 = '<span class="unuse">请您输入有效邀请码!</span>';
-            // let str2 = '<span class="unuse">邀请码信息不能为空</span>';
+            var str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
+            var str1 = '<span class="unuse">请您输入有效邀请码!</span>';
+            // var str2 = '<span class="unuse">邀请码信息不能为空</span>';
             $.post("{{url('/checkinvitecode')}}",{
                 invitecode: $('#invitecode').val()
             }, function(res) {
@@ -570,9 +581,9 @@
         });
         // 校验队伍名称
         $("#team_name").unbind('blur').blur(function() {
-            let str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
-            let str1 = '<span class="unuse">您输入的队伍名已被占用,请输入其他名称!</span>';
-            let str2 = '<span class="unuse">队伍名不能为空</span>';
+            var str0 = '<span class="useable"><i class="icon kenrobot ken-check"></i></span>';
+            var str1 = '<span class="unuse">您输入的队伍名已被占用,请输入其他名称!</span>';
+            var str2 = '<span class="unuse">队伍名不能为空</span>';
             $.post("{{url('/checkteamname')}}",{
                 team_name: $('#team_name').val()
             }, function(res) {
@@ -636,11 +647,13 @@
             if (type == 'file') {
                 if (isIE()) {
                 }else {
-                    var fileObj = document.getElementById(id);
+                    var fileObj = $('#'+id);
                     if (fileObj) {
-                        var f = fileObj.files[0];
-                        if(f){
-                            $('#preview_'+id).attr('src', URL.createObjectURL(f));
+                        if (fileObj.prop('files')) {
+                            var f = fileObj.prop('files')[0];
+                            if(f){
+                                $('#preview_'+id).attr('src', URL.createObjectURL(f));
+                            }
                         }
                     }
                 }
@@ -668,10 +681,12 @@
                     }
                     var fileObj = $el.prop('files');
                     if (fileObj) {
-                        var f = $el.prop('files')[0];
-                        if(f){
-                            // $('#preview_'+id).attr('src', );
-                            $(preview_el).attr('src', URL.createObjectURL(f));
+                        if ($el.prop('files')) {
+                            var f = $el.prop('files')[0];
+                            if(f){
+                                // $('#preview_'+id).attr('src', );
+                                $(preview_el).attr('src', URL.createObjectURL(f));
+                            }
                         }
                     }
                     continue;
@@ -734,16 +749,27 @@
         $('#append_rank_new').click(function (){
             addMemberList();
             $('.delete').eq(0).css('display', 'none');
+            if ($('.all_info .append_rank .menber_list').length > 8) {
+                $('#append_rank_new').css({
+                    'pointer-events': 'none',
+                    'background': '#ccc'
+                });
+            }else {
+                $('#append_rank_new').css({
+                    'pointer-events': 'auto',
+                    'background': '#587BEF'
+                });
+            }
         })
         var memberListNum = 1;
         // 添加成员列表
         function addMemberList(){
             var memberList = '';
             memberList += '<div class="menber_list">';
-            // memberList += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
+            memberList += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">队员姓名('+ memberListNum +'):</span>';
-            memberList += '<input data-type="realname" required tip-info="仅支持仅支持汉字、英文" name="members['+memberListNum+'][name]" class="input-field-text member_name" type="text">';
+            memberList += '<input data-type="realname" required tip-info="仅支持汉字、英文" name="members['+memberListNum+'][name]" class="input-field-text member_name" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
@@ -757,7 +783,7 @@
 
             memberList += '<div class="input-field">';
             memberList += '<span class="input-label">手机号码  :</span>';
-            memberList += '<input data-type="mobile" required tip-info="仅支持仅支持英文、数字、下划线" name="members['+memberListNum+'][mobile]" class="input-field-text member_mobile" type="text">';
+            memberList += '<input data-type="mobile" required tip-info="仅支持英文、数字、下划线" name="members['+memberListNum+'][mobile]" class="input-field-text member_mobile" type="text">';
             memberList += '<div class="tips"></div>';
             memberList += '<div class="clearfix"></div>';
             memberList += '</div>';
@@ -906,7 +932,95 @@
                 }
             });
         }, 2000)
+    }
 
+     //声明省
+    var game_name = ["未来世界", "博思威龙", "工业时代", "部落战争——攻城大师", "智造大挑战"]; //直接声明Array
+     //声明市
+    var game_type = [
+        ["WRO常规赛", "EV3足球赛", "WRO创意赛-'可持续发展'"],
+        ["VEX-EDR'步步为营'工程挑战赛", "VEX-IQ'环环相扣'工程挑战赛", "BDS机器人工程挑战赛——'长城意志'"],
+        ["能力风暴——WER能力挑战赛", "能力风暴——WER能力挑战赛工程创新赛", "能力风暴——WER普及赛"],
+        ["部落战争——攻城大师"],
+        ["智造大挑战"]
+    ];
+    var game_object = [
+            [
+                ["小学", "初中", "高中", "大专"],
+                ["小学", "中学(含初高中)"],
+                ["小学", "中学(含初高中)"],
+            ],
+            [
+                ["中学(含小初)", "高中"],
+                ["小学", "初中"],
+                ["小初高"]
+            ],
+            [
+                ["小学", "初中", "高中"],
+                ["小学", "初中", "高中"],
+                ["小学", "初中"]
+            ],
+            [
+                ["小学", "初中", "高中"]
+            ],
+            [
+                ["中学(含小初)", "高中"]
+            ]
+        ]
+    var pIndex = -1;
+    var preEle = document.getElementById("competition_type");
+    var cityEle = document.getElementById("competition_name");
+    var areaEle = document.getElementById("competition_group");
+    for (var i = 0; i < game_name.length; i++) {
+        var op = new Option(game_name[i], i);
+        preEle.options.add(op);
+    }
+    function chg(obj) {
+        if (obj.value == -1) {
+            cityEle.options.length = 0;
+            areaEle.options.length = 0;
+        }
+        var val = obj.value;
+        pIndex = obj.value;
+        var cs = game_type[val];
+        var as = game_object[val][0];
+        cityEle.options.length = 0;
+        areaEle.options.length = 0;
+        for (var i = 0; i < cs.length; i++) {
+            //  type
+            var op = new Option(cs[i], cs[i]);
+            cityEle.options.add(op);
+        }
+        for (var i = 0; i < as.length; i++) {
+            //  group
+            var op = new Option(as[i], as[i]);
+            // console.log(as[i], i)
+            areaEle.options.add(op);
+            // console.log(areaEle)
+        }
+        if(($('#competition_name option').text() == "智造大挑战") || ($('#competition_name option').text() == "智造大挑战")){
+            $('#competition_name').css({
+                'height': '0',
+                'margin-bottom': '0',
+                'border': 'none'
+            });
+        }else {
+            $('#competition_name').css({
+                'height': '30px',
+                'margin-bottom': '30px',
+                'border': '1px solid #CCCCCC'
+            });
+        }
+        $('#competition_type option:eq(0)').css("display", "none");
+    }
+    function chg2(obj) {
+        var val = obj.selectedIndex;
+        var as = game_object[pIndex][val];
+        areaEle.options.length = 0;
+        for (var i = 0; i < as.length; i++) {
+            var op = new Option(as[i], as[i]);
+            areaEle.options.add(op);
+        }
     }
 </script>
 </body>
