@@ -142,6 +142,7 @@ class SignupController extends Controller
         );
 
         //初始化队伍码
+        // dd($request->all());
         $this->initTeamNo($request->input('competition_group'), $request->input('competition_type'));
 
 
@@ -173,7 +174,7 @@ class SignupController extends Controller
 
         //表单地钻
         $keys = ['invitecode','out_trade_no' ,'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email',
-                 'team_name', 'school_name', 'school_address', 'competition_type', 'competition_group',
+                 'team_name', 'school_name', 'school_address', 'competition_name', 'competition_type', 'competition_group',
                 'payment'
         ];
 

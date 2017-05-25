@@ -89,7 +89,7 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">赛事项目  :</span>
-                            <select id="competition_name" onchange="chg(this);">
+                            <select id="competition_name" name="competition_name" onchange="chg(this);">
                                 <!-- <option value ='-1' selected = "selected">未来世界</option> -->
                             </select>
                         </div>
@@ -139,7 +139,7 @@
                             </div>
                             <div class="input-field">
                                 <span class="input-label">队员身高  :</span>
-                                <input required tip-warn="" tip-info="仅支持数字,以厘米为单位" name="members[{{$i}}][height]" class="input-field-text member_age" type="text" value="{{$member['height']}}">
+                                <input required tip-warn="" tip-info="仅支持数字,以厘米为单位" name="members[{{$i}}][height]" class="input-field-text member_height" type="text" value="{{$member['height']}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
@@ -223,6 +223,10 @@
                             </div>
                             <div class="input-field">
                                 <span class="name">赛事项目 :</span>
+                                <span id="preview_competition_name" class="name_input"></span>
+                            </div>
+                            <div class="input-field">
+                                <span class="name"></span>
                                 <span id="preview_competition_type" class="name_input"></span>
                             </div>
                             <div class="input-field">
@@ -255,6 +259,10 @@
                                     <div class="input-field">
                                         <span class="name">年龄 :</span>
                                         <span id="{{'preview_'.$i.'_member_age'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">身高(单位:cm) :</span>
+                                        <span id="{{'preview_'.$i.'_member_height'}}" class="name_input"></span>
                                     </div>
                                     <div class="input-field">
                                         <span class="name">学校/单位名称 :</span>
@@ -297,8 +305,8 @@
                     <img src="{{ asset('assets/img/LOGO2.png')}}" alt="">
                     <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
                 </div>
-                <span class="sp1">© 2017 KenRobot  |  鄂ICP备16011249号-2 </span>
-                <span class="sp2">北京市海淀区天秀路10号中国农大国际创业园1号楼526</span>
+                <span class="sp1">© 2017 RoboCom 国际公开赛组委会  |  鄂ICP备16011249号-2 </span>
+                <span class="sp2">技术支持: 北京啃萝卜信息技术有限公司</span>
             </div>
         </div>
         <div class="identifying">
@@ -644,6 +652,7 @@
                     // if (id == 'competition_type') {
                     //     val = $('#competition_name  option:selected').text() + ' ' + val;
                     // }
+                    $('#preview_competition_name').html($('#competition_name  option:selected').text())
                     $('#preview_' + id).html(val);
                 }
                 if (type == 'text' || type == 'select-one') {
@@ -670,7 +679,7 @@
                 }
             });
             $('.append_rank > .menber_list').each(function(index){
-                var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_school_name', 'member_school_address', 'member_pic');
+                var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_height', 'member_school_name', 'member_school_address', 'member_pic');
                 for (var i = 0; i < mapKey.length; i++) {
                     var key = mapKey[i];
                     var $el = $($(this).find('.'+key)[0]);
@@ -817,7 +826,7 @@
 
                 memberList += '<div class="input-field">';
                 memberList += '<span class="input-label">队员身高  :</span>';
-                memberList += '<input data-type="heightNum" required tip-warn="" tip-info="仅支持数字,以厘米为单位"  name="members['+memberListNum+'][height]" class="input-field-text" type="text">';
+                memberList += '<input data-type="heightNum" required tip-warn="" tip-info="仅支持数字,以厘米为单位"  name="members['+memberListNum+'][height]" class="input-field-text member_height" type="text">';
                 memberList += '<div class="tips"></div>';
                 memberList += '<div class="clearfix"></div>';
                 memberList += '</div>';

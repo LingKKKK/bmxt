@@ -201,7 +201,7 @@ body .mid .all_info .team_info .leader .leader_title, body .mid .all_info .team_
   margin-bottom: 5px;
 }
 body .mid .all_info .team_info .leader .cut, body .mid .all_info .team_info .all_number .cut {
-  opacity: 0.2;
+  opacity: 1;
   background: #587BEF;
   display: block;
   width: 800px;
@@ -266,7 +266,7 @@ body .mid .all_info .team_info .pays .leader_title {
   margin-bottom: 5px;
 }
 body .mid .all_info .team_info .pays .cut {
-  opacity: 0.2;
+  opacity: 1;
   background: #587BEF;
   display: block;
   width: 800px;

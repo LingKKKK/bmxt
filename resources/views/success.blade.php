@@ -42,6 +42,9 @@
                         <span id="preview_school_address" class="name_input">{{$signdata['school_address'] or ''}}</span>
                         <div class="clearfix clear"></div>
                         <span class="name">赛事项目 :</span>
+                        <span id="preview_competition_name" class="name_input">{{$signdata['competition_name'] or ''}}</span>
+                        <div class="clearfix clear"></div>
+                        <span class="name"></span>
                         <span id="preview_competition_type" class="name_input">{{$signdata['competition_type'] or ''}}</span>
                         <div class="clearfix clear"></div>
                         <span class="name">组别 :</span>
@@ -92,6 +95,9 @@
                                 <span class="name">年龄 :</span>
                                 <span  class="name_input">{{$member['age'] or ''}}</span>
                                 <div class="clearfix clear"></div>
+                                <span class="name">身高(单位cm) :</span>
+                                <span  class="name_input">{{$member['height'] or ''}}</span>
+                                <div class="clearfix clear"></div>
                                 <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
                                 <span class="name_input">{{$member['school_name'] or ''}}</span>
                                 <div class="clearfix clear"></div>
@@ -123,8 +129,8 @@
                     <img src="{{ asset('assets/img/LOGO2.png')}}" alt="">
                     <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
                 </div>
-                <span class="sp1">© 2017 KenRobot  |  鄂ICP备16011249号-2 </span>
-                <span class="sp2">北京市海淀区天秀路10号中国农大国际创业园1号楼526</span>
+                <span class="sp1">© 2017 RoboCom 国际公开赛组委会  |  鄂ICP备16011249号-2 </span>
+                <span class="sp2">技术支持: 北京啃萝卜信息技术有限公司</span>
             </div>
         </div>
     </div>
@@ -203,6 +209,22 @@
             membersList += '<div class="clearfix clear"></div>';
         }
         $('#number').html(membersList);
+    }
+
+    var game_name = ["未来世界", "博思威龙", "工业时代", "部落战争——攻城大师", "智造大挑战"]; //直接声明Array
+    var game_type = [
+        ["WRO常规赛", "EV3足球赛", "WRO创意赛-'可持续发展'"],
+        ["VEX-EDR'步步为营'工程挑战赛", "VEX-IQ'环环相扣'工程挑战赛", "BDS机器人工程挑战赛——'长城意志'"],
+        ["能力风暴——WER能力挑战赛", "能力风暴——WER能力挑战赛工程创新赛", "能力风暴——WER普及赛"],
+        ["部落战争——攻城大师"],
+        ["智造大挑战"]
+    ];
+    var get_competition_type = $('#preview_competition_type').text();
+    for (x in game_type)
+    {
+        if (game_type[x].indexOf(get_competition_type) > -1) {
+            $('#preview_competition_name').html(game_name[x]);
+        }
     }
 </script>
 </body>
