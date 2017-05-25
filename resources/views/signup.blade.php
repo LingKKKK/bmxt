@@ -17,7 +17,18 @@
                 </div>
             </div>
         </div>
-        <div class="content">
+        <div class="instructions">
+            <h2 class="instructions-h">报名须知</h2>
+            <span class="instructions-span">1.报名时间截止日期：2017年6月20日23:59。</span>
+            <span class="instructions-span">2.正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
+            <span class="instructions-span"><i style="color: red;">重要提示</i>：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于2017年世界机器人大赛—RoboCom青少年挑战赛全国总决赛，报名人员须对其提交的错误信息造成的后果负责。</span>
+            <span class="instructions-span">3.联系“总通知中”各个项目的报名负责人，索取相应的项目邀请码。</span>
+            <span class="instructions-span">4.每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
+            <span class="instructions-span">5.注册完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
+            <span class="instructions-span">6.注册资料填写完整，经组委会审核通过后，会在RoboCom官方网站进行公示s。</span>
+            <span class="instructions-span">7.如对网上报名有疑问，可通过联系江城（13476000614），曾令勇（ 15899948376），李达（ 15876493817）咨询。</span>
+        </div>
+        <div class="content active">
             <form id="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate>
                 <div class="tab_menu">
                     <ul>
@@ -747,7 +758,7 @@
                 var mobile = $('#leader_mobile').val();
                 var email = $('#leader_email').val();
                 var type = 'mobile';
-                //console.log(captchacode,mobile,type);
+                console.log(captchacode,mobile,type);
                 $.post(
                     "{{url('/verificationcode/send')}}",
                     {
@@ -757,12 +768,12 @@
                     },
                     function(res){
                         if (res.status == 0) {
-                            // console.log('验证码填写成功并确定')
+                            console.log('验证码填写成功并确定')
                             refresh_captcha();
                             $('.identifying').removeClass('active');
                             countdown();
                         } else {
-                            // console.log('验证码填写错误')
+                            console.log('验证码填写错误')
                             $('.tipes-false').css('opacity', 1);
                         }
                     }
@@ -1049,8 +1060,6 @@
                 areaEle.options.add(op);
             }
         }
-        // chg();
-
         function dox1(obj) {  
             var browser=navigator.appName 
             var b_version=navigator.appVersion 

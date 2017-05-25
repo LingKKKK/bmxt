@@ -48,6 +48,8 @@ class UtilsController extends Controller
 
         $captcha = $request->input('captcha');
         $ret = captcha_check($captcha);
+        // var_dump(\Session::all());
+
         if (! $ret) {
             return api_response(-2, '参数不正确!');
         }
