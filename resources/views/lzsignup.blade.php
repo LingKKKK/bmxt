@@ -763,11 +763,6 @@
       $('#product-game').html(universityList);
     };
     
-
-
   </script>
-
-
-
 </body>
 </html>

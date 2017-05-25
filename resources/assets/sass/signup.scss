@@ -21,10 +21,8 @@ body {
             margin: 0 auto;
             img {
                 display: block;
-                float: left;
-                width: 126.5px;
-                height: 50px;
-                margin-top: 20px;
+                height: 90px;
+                margin: 0 auto;
             }
         }
     }
@@ -427,11 +425,14 @@ body {
             padding-top: 46px;
             box-sizing: border-box;
 
-            img {
-                display: block;
-                margin: 0 auto;
-                width: 100px;
+            .logo-all {
+                width: 180px;
                 height: 40px;
+                margin: 0 auto;
+
+                img {
+                    height: 40px;
+                }
             }
 
             .sp1 {    
@@ -481,7 +482,7 @@ body {
             #tipes {
                 display: table;
                 margin: 6px 0px -13px 0px;
-                transform: translateX(55px);
+                margin-left: 55px;
                 font-size: 14px;
 
                 i {
