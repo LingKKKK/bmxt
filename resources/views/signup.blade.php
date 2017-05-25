@@ -758,7 +758,7 @@
                 var mobile = $('#leader_mobile').val();
                 var email = $('#leader_email').val();
                 var type = 'mobile';
-                console.log(captchacode,mobile,type);
+                // console.log(captchacode,mobile,type);
                 $.post(
                     "{{url('/verificationcode/send')}}",
                     {
@@ -768,12 +768,12 @@
                     },
                     function(res){
                         if (res.status == 0) {
-                            console.log('验证码填写成功并确定')
+                            // console.log('验证码填写成功并确定')
                             refresh_captcha();
                             $('.identifying').removeClass('active');
                             countdown();
                         } else {
-                            console.log('验证码填写错误')
+                            // console.log('验证码填写错误')
                             $('.tipes-false').css('opacity', 1);
                         }
                     }
@@ -923,20 +923,20 @@
                 success: function (res) {
                     var outTradeNo = 0;
                     if (res.status == 0) {
-                        console.log(res);
+                        // console.log(res);
                         $(".QRcodeShow .QEbox .QEcode img").attr('src', res.data.qrcodeimgurl);
                         outTradeNo = res.data.out_trade_no;
                         $('#out_trade_no').val(outTradeNo);
-                        console.log(outTradeNo)
+                        // console.log(outTradeNo)
                         validcode = true;
                         if (outTradeNo != null) {
-                            console.log(outTradeNo);
+                            // console.log(outTradeNo);
                             RefreshQrcode(outTradeNo);
                         }else {
-                            console.log('未获取到out_trade_no')
+                            // console.log('未获取到out_trade_no')
                         }
                     } else if (res.status == -1) {
-                        console.log(res);
+                        // console.log(res);
                         validcode = false;
                     }
                 }
@@ -1067,7 +1067,7 @@
             var trim_Version=version[1].replace(/[ ]/g,""); 
             if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){ 
                 if (obj) {
-                    console.log("图片预览")
+                    // console.log("图片预览")
                     obj.select();  
                     obj.blur();  
                     var nfile = document.selection.createRange().text;
@@ -1098,7 +1098,7 @@
             var trim_Version=version[1].replace(/[ ]/g,""); 
             if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){ 
                 if (obj) {
-                    console.log("图片预览")
+                    // console.log("图片预览")
                     obj.select();  
                     obj.blur();  
                     var nfile = document.selection.createRange().text;
