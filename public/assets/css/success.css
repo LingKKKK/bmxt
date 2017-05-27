@@ -86,18 +86,20 @@ body {
   position: relative;
 }
 body .top {
-  height: 90px;
+  height: 180px;
   background: #587BEF;
 }
 body .top .inner {
   width: 1180px;
-  height: 90px;
+  height: 180px;
   margin: 0 auto;
 }
 body .top .inner img {
   display: block;
-  height: 90px;
-  margin: 0 auto;
+  float: left;
+  width: 1180px;
+  height: 150px;
+  margin-top: 10px;
 }
 body .mid {
   width: 1000px;
@@ -360,7 +362,7 @@ body .bot .inner {
   box-sizing: border-box;
 }
 body .bot .inner .logo-all {
-  width: 180px;
+  width: 190px;
   height: 40px;
   margin: 0 auto;
 }

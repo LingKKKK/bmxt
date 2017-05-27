@@ -107,15 +107,14 @@
 
                         </div>
                     </div>
-                    <div class="pays" id="pays">
+                    <!-- <div class="pays" id="pays">
                         <span class="leader_title">缴费信息</span>
                         <div class="cut"></div>
                         <span class="name">支付方式 :</span>
                         <span id="preview_payment" class="name_input" >在线支付(已成功付款)</span>
                         <div class="clearfix clear"></div>
-                    </div>
+                    </div> -->
                     <div class="clearfix clear">
-
                     </div>
                 </div>
             </div>
@@ -220,10 +219,50 @@
         ["智造大挑战"]
     ];
     var get_competition_type = $('#preview_competition_type').text();
-    for (x in game_type)
-    {
-        if (game_type[x].indexOf(get_competition_type) > -1) {
-            $('#preview_competition_name').html(game_name[x]);
+    
+    isIE8();
+    function isIE8(){
+        if (navigator.appName === 'Microsoft Internet Explorer') { 
+            if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) { 
+                for (x in game_type)
+                {
+                    if (!Array.prototype.indexOf){  
+                        Array.prototype.indexOf = function(elt /*, from*/){  
+                        var len = this.length >>> 0;  
+                        var from = Number(arguments[1]) || 0;  
+                        from = (from < 0)  
+                             ? Math.ceil(from)  
+                             : Math.floor(from);  
+                        if (from < 0)  
+                          from += len;  
+                        for (; from < len; from++)  
+                        {  
+                          if (from in this &&  
+                              this[from] === elt)  
+                            return from;  
+                        }  
+                        return -1;  
+                      };  
+                    } 
+                    if (game_type[x].indexOf(get_competition_type) > -1) {
+                        $('#preview_competition_name').html(game_name[x]);
+                    }
+                }
+            }else {
+                for (x in game_type)
+                {
+                    if (game_type[x].indexOf(get_competition_type) > -1) {
+                        $('#preview_competition_name').html(game_name[x]);
+                    }
+                }
+            }
+        }else {
+            for (x in game_type)
+            {
+                if (game_type[x].indexOf(get_competition_type) > -1) {
+                    $('#preview_competition_name').html(game_name[x]);
+                }
+            }
         }
     }
 </script>

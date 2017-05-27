@@ -17,18 +17,40 @@
                 </div>
             </div>
         </div>
-        <div class="instructions">
+        <div class="instructions clearfix active">
             <h2 class="instructions-h">报名须知</h2>
-            <span class="instructions-span">1.报名时间截止日期：2017年6月20日23:59。</span>
-            <span class="instructions-span">2.正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
-            <span class="instructions-span"><i style="color: red;">重要提示</i>：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于2017年世界机器人大赛—RoboCom青少年挑战赛全国总决赛，报名人员须对其提交的错误信息造成的后果负责。</span>
-            <span class="instructions-span">3.联系“总通知中”各个项目的报名负责人，索取相应的项目邀请码。</span>
-            <span class="instructions-span">4.每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
-            <span class="instructions-span">5.注册完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
-            <span class="instructions-span">6.注册资料填写完整，经组委会审核通过后，会在RoboCom官方网站进行公示s。</span>
-            <span class="instructions-span">7.如对网上报名有疑问，可通过联系江城（13476000614），曾令勇（ 15899948376），李达（ 15876493817）咨询。</span>
+            <span class="instructions-span clearfix">1.报名时间截止日期：2017年6月20日23:59。</span>
+            <span class="instructions-span clearfix">2.正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
+            <span class="instructions-span clearfix"><i style="color: red;">重要提示</i>：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于2017年世界机器人大赛—RoboCom青少年挑战赛全国总决赛，报名人员须对其提交的错误信息造成的后果负责。</span>
+            <span class="instructions-span clearfix">3.联系“总通知中”各个项目的报名负责人，索取相应的项目邀请码。</span>
+            <span class="instructions-span clearfix">4.每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
+            <span class="instructions-span clearfix">5.注册完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
+            <span class="instructions-span clearfix">6.注册资料填写完整，经组委会审核通过后，会在RoboCom官方网站进行公示s。</span>
+            <span class="instructions-span clearfix">7.如对网上报名有疑问，可通过联系江城（13476000614），曾令勇（ 15899948376），李达（ 15876493817）咨询。</span>
+
+            <h2 class="instructions-h" style="margin-top: 40px;">报名表填写说明</h2>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">邀请码</i><i class="right">由赛项负责人提供的16位邀请码，每个邀请码只能使用一次</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">姓名</i><i class="right">填写有效证件上的姓名，姓名只能包含汉字和英文</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">手机号码</i><i class="right">填写11位有效手机号码。如参赛选手没有手机则须填写带队老师或监护人手机号码。</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">邮箱</i><i class="right">填写有效邮箱地址</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">身份证号</i><i class="right">填写有效18位居民身份证号。</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">照片</i><i class="right">须上传2寸免冠登记照</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">队伍名称</i><i class="right">填写参赛队伍的名称，不接受已存在的队伍名称</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">学校/单位名称</i><i class="right">填写所属学校或单位名称</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">学校/单位地址</i><i class="right">填写所属学校或单位地址</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">赛事项目</i><i class="right">选择队伍参加的赛项</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">子赛项</i><i class="right">选择参队伍加的子赛项</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">组别</i><i class="right">选择参队伍加的组别</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">性别</i><i class="right">填写真实年龄</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">年龄</i><i class="right">填写真实性别</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">身高</i><i class="right">填写真实身高（用于制定活动用T恤尺寸）</i></span>
+            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">验证码</i><i class="right">填写发送到领队手机的6位数验证码</i></span>
+            <div class="clear"></div>
+            <a id="btn-read" type="button">我同意</a>
+            <span class="span-read">阅读,并同意</span>
+            <input type="checkbox" id="input-read" name="" value="" checked="" />
         </div>
-        <div class="content active">
+        <div class="content">
             <form id="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate>
                 <div class="tab_menu">
                     <ul>
@@ -43,8 +65,8 @@
                     <div class="active leader_info div_tab clearfix">
                         <div class="input-field">
                             <span class="input-label">邀请码  :</span>
-                            <input required tip-warn="" tip-info="输入邀请码" class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{old('invitecode')}}">
-                            <input type="hidden" name="out_trade_no" id="out_trade_no">
+                            <input required tip-warn="不能为空" tip-warn="" tip-info="输入邀请码" class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{old('invitecode')}}">
+                            <!-- <input type="hidden" name="out_trade_no" id="out_trade_no"> -->
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -119,6 +141,7 @@
                         <button id="checkTeamName" type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="append_rank div_tab">
+                        <span class="title-span">*添加队员人数最多为9人</span>
                         <?php $i = 0 ?>
                         @foreach((array)old('members') as $member)
                         <div class="menber_list">
@@ -179,10 +202,25 @@
                         <button type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="payment div_tab">
-                        <div class="input-field">
+                        <div class="input-field" style="display: none;">
                             <span class="input-label">缴费方式:</span>
                             <input class="input-radio man" type="radio" name="payment" checked="checked" value="在线支付"><span>在线支付(仅支持支付宝)</span>
                             <input class="input-radio woman" type="radio" name="payment" disabled value="现场缴费"><span style="color: #ccc" >现场缴费(暂不支持)</span>
+                        </div>
+                        <div class="enroll-notice">
+                            <h4>缴费流程如下：</h4>
+                            <p>在线报名完成后，请根据自己所报赛项联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。2017年6月20日23:59后未缴费的队伍将被视为报名失败。</p>
+                            <span>1.联系相关项目的收费负责人。</span>
+                            <span>a):“博思威龙”、“工业时代”两个项目参赛交费联系人：曾令勇 15899948376</span>
+                            <span>b):“攻城大师”、“智造大挑战” 两个项目参赛交费联系人：李达 15876493817</span>
+                            <span>c) 座机：027-84692577</span>
+                            <span>2.核实参赛队伍是否报名成功。并核实参赛人数。</span>
+                            <span>3.支付参赛注册费</span>
+                            <span style="font-weight: bold;">付款对公账户：</span>
+                            <span>开户名称：北京工道动力机器人技术研究院</span>
+                            <span>开户银行：锦州银行股份有限公司北京分行</span>
+                            <span>开户行号：313100022226</span>
+                            <span>银行账号：410100203296687</span>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
@@ -304,6 +342,7 @@
                         <a id="tel" class="tel">获取手机验证码</a>
                         <div class="clearfix"></div>
                         <button type="button" class="btn_pre">上一步</button>
+                        <!-- <button type="submit" class="btn_next">确认提交</button> -->
                         <button type="button" id="getQrcode" class="btn_next">确认提交</button>
                         <button class="btn_next" id="submit"></button>
                     </div>
@@ -377,10 +416,12 @@
                 $(this).siblings('.tips').html('');
             }
             $.fn.refreshCaptcha = function(){
-                if($(this).prop('tagName') == 'IMG'){
+                console.log(2)
+                console.log($(this));
+                // if($(this).attr('tagName') == 'IMG'){
                     var timestamp = Date.parse(new Date());
                     $(this).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
-                }
+                // }
             }
         })(jQuery);
         //修改
@@ -463,32 +504,34 @@
             var $el = $(el);
             var name = $el.attr('name');
             var type = $el.attr('type');
+            var id = $el.attr('id');
             var val = $el.val();
             var datatype = $el.data('type');// 数据类型 email , mobile , ID,
             if (type == 'file') {
-                if ($el.prop('required') && val == '') {
+                // console.log($el.attr('required'));
+                // console.log(val);
+                // console.log(';;;;;;;;;;;;;;');
+                if (!!$el.attr('required') && val == "") {
                     $el.tipWarn('照片不能为空');
                     return false;
-                }
-                else {
-                    if (isIE()) {
-                        var fileObj = $('#'+id);
-                        if (fileObj) {
-                            if (fileObj.prop('files')) {
-                                var f = fileObj.prop('files')[0];
-                                if (f) {
-                                    $('#preview_'+id).attr('src', URL.createObjectURL(f));
-                                }
+                } else {                    
+                    console.log('照片不能为空');
+
+                    var fileObj = $('#'+id);
+                    // console.log(fileObj)
+                    if (fileObj) {
+                        if (fileObj.attr('files')) {
+                            var f = fileObj.attr('files')[0];
+                            if (f) {
+                                $('#preview_'+id).attr('src', URL.createObjectURL(f));
                             }
                         }
-                    } else {
-                        // return false;
                     }
                 }
             } else if(type == 'text') {
-                if ($el.prop('required') && val == '') {
+                if ($el.attr('required') && val == '') {
                     $el.tipWarn('不能为空！');
-                    //console.log('不能')
+                    // console.log($el)
                     return false;
                 }
                 if (datatype == 'realname' && !isName(val)) {
@@ -543,7 +586,7 @@
             $("input").unbind('focus').focus(function(){
                 $(this).tipClear();
                 var tip_info = $(this).attr('tip-info');
-                var required = $(this).prop('required');
+                var required = $(this).attr('required');
                 var tip_info = tip_info ? tip_info : required ? '不能为空' : '';
                 if (tip_info) {
                     $(this).tipInfo(tip_info);
@@ -554,8 +597,8 @@
             $("input[type=file]").unbind('change').change(function(){
                 validField(this);
                 $(this).siblings('.file_name').html('');
-                if ($(this).prop('files')) {
-                    var f = $(this).prop('files')[0];
+                if ($(this).attr('files')) {
+                    var f = $(this).attr('files')[0];
                     if(f)
                     {
                         // console.log(f.name);
@@ -635,8 +678,9 @@
                     success:function(res) {
                         if (res.status == 0) {
                             console.log('通过验证');
-                            $('.QRcodeShow').addClass('active');
-                            getPayQrcode();
+                            // $('.QRcodeShow').addClass('active');
+                            // getPayQrcode();
+                            $('#submit').click();
                             validcode = true;
                         } else if (res.status == -1) {
                             $('.codeError').addClass('active');
@@ -654,9 +698,9 @@
         // 更新预览界面
         function updatePreview() {
             $('input,select').each(function(){
-                var type = $(this).prop('type');
-                var id = $(this).prop('id');
-                var name = $(this).prop('name');
+                var type = $(this).attr('type');
+                var id = $(this).attr('id');
+                var name = $(this).attr('name');
                 var val = $(this).val();
                 if (type == 'select-one') {
                     // val = $('#'+id+' option:selected').val();
@@ -679,8 +723,8 @@
                     }else {
                         var fileObj = $('#'+id);
                         if (fileObj) {
-                            if (fileObj.prop('files')) {
-                                var f = fileObj.prop('files')[0];
+                            if (fileObj.attr('files')) {
+                                var f = fileObj.attr('files')[0];
                                 if(f){
                                     $('#preview_'+id).attr('src', URL.createObjectURL(f));
                                 }
@@ -694,7 +738,7 @@
                 for (var i = 0; i < mapKey.length; i++) {
                     var key = mapKey[i];
                     var $el = $($(this).find('.'+key)[0]);
-                    var type = $el.prop('type');
+                    var type = $el.attr('type');
                     var val = $el.val();
                     if(type == 'radio')
                     {
@@ -709,10 +753,10 @@
                             $(preview_el).attr('src', picurl);
                             continue;
                         }
-                        var fileObj = $el.prop('files');
+                        var fileObj = $el.attr('files');
                         if (fileObj) {
-                            if ($el.prop('files')) {
-                                var f = $el.prop('files')[0];
+                            if ($el.attr('files')) {
+                                var f = $el.attr('files')[0];
                                 if(f){
                                     // $('#preview_'+id).attr('src');
                                     $(preview_el).attr('src', URL.createObjectURL(f));
@@ -731,6 +775,25 @@
             }
         }
         $(function(){
+            $('#input-read').click(function (){
+                // console.log($('#input-read').prop("checked"))
+                if ($('#input-read').prop("checked") == false) {
+                    $('#btn-read').css({
+                        'backgroundColor': '#ccc',
+                        'pointer-events': 'none'
+                    });
+                    $('#btn-read').unbind('click');
+                } else {
+                    $('#btn-read').css({
+                        'backgroundColor': '#587BEF',
+                        'pointer-events': 'auto'
+                    });
+                    $('#btn-read').bind('click', function(event) {
+                        $('.instructions').removeClass('active');
+                        $('.content').addClass('active');
+                    });;
+                }
+            })
             // 默认添加一次队员列表
             setTimeout(function (){
                 if ($('.append_rank .menber_list').length > 0) {
@@ -742,6 +805,7 @@
             }, 1000)
             // 点击刷新验证码图片
             $('.identifying .showBox img').click(function (){
+                console.log(1)
                 $(this).refreshCaptcha();
             });
             // 点击取消输入验证码
@@ -895,6 +959,11 @@
             showTab(tabIndex);
             rebindVlidation();
         })
+        //  阅读报名须知
+        $('#btn-read').click(function (){
+            $('.instructions').removeClass('active');
+            $('.content').addClass('active');
+        })
         // 发送手机验证码
         $('#tel').click(function() {
             var partten = /^1[3,5,8]\d{9}$/;
@@ -911,37 +980,37 @@
             $(this).css('display', 'none');
         })
         // 获取支付二维码
-        function getPayQrcode (){
-            var validcode = false;
-            $.ajax({
-                type: "post",
-                url: "{{url('/getpayqrcode')}}",
-                data: {
-                    invitecode: $('#invitecode').val()
-                },
-                async: false,
-                success: function (res) {
-                    var outTradeNo = 0;
-                    if (res.status == 0) {
-                        // console.log(res);
-                        $(".QRcodeShow .QEbox .QEcode img").attr('src', res.data.qrcodeimgurl);
-                        outTradeNo = res.data.out_trade_no;
-                        $('#out_trade_no').val(outTradeNo);
-                        // console.log(outTradeNo)
-                        validcode = true;
-                        if (outTradeNo != null) {
-                            // console.log(outTradeNo);
-                            RefreshQrcode(outTradeNo);
-                        }else {
-                            // console.log('未获取到out_trade_no')
-                        }
-                    } else if (res.status == -1) {
-                        // console.log(res);
-                        validcode = false;
-                    }
-                }
-            });
-        }
+        // function getPayQrcode (){
+        //     var validcode = false;
+        //     $.ajax({
+        //         type: "post",
+        //         url: "{{url('/getpayqrcode')}}",
+        //         data: {
+        //             invitecode: $('#invitecode').val()
+        //         },
+        //         async: false,
+        //         success: function (res) {
+        //             var outTradeNo = 0;
+        //             if (res.status == 0) {
+        //                 // console.log(res);
+        //                 $(".QRcodeShow .QEbox .QEcode img").attr('src', res.data.qrcodeimgurl);
+        //                 outTradeNo = res.data.out_trade_no;
+        //                 $('#out_trade_no').val(outTradeNo);
+        //                 // console.log(outTradeNo)
+        //                 validcode = true;
+        //                 if (outTradeNo != null) {
+        //                     // console.log(outTradeNo);
+        //                     RefreshQrcode(outTradeNo);
+        //                 }else {
+        //                     // console.log('未获取到out_trade_no')
+        //                 }
+        //             } else if (res.status == -1) {
+        //                 // console.log(res);
+        //                 validcode = false;
+        //             }
+        //         }
+        //     });
+        // }
         // 轮询
         function RefreshQrcode(outTradeNo){
             var Qrcode = false;
@@ -1061,6 +1130,7 @@
             }
         }
         function dox1(obj) {  
+            console.log(obj)
             var browser=navigator.appName 
             var b_version=navigator.appVersion 
             var version=b_version.split(";"); 

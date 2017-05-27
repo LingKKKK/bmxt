@@ -165,6 +165,7 @@ class SignupController extends Controller
         }
 
         if ($validator->fails()) {
+            dd($validator->errors());
             return redirect()->back()->withInput()
                                      ->withErrors($validator->errors())
                                      ->with('leader_pic_preview', $leader_pic)
@@ -182,8 +183,9 @@ class SignupController extends Controller
         $data['leader_pic'] = $leader_pic;
         $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
         $data['team_no'] = $this->team_no;
+        $data['out_trade_no'] = '';
 
-        $request->session()->put('signdata', $data);
+        $request->session()->flash('signdata', $data);
 
         $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
         $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
@@ -194,6 +196,7 @@ class SignupController extends Controller
             // dd($ddt);
         } catch (\Exception $e) {
             // dd($e);
+            dd($e);
             return redirect()->back()->withInput();
         }
         // dd($ddt);

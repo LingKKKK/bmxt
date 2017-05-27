@@ -12,17 +12,20 @@ body {
     position: relative;
 
     .top {
-        height: 90px;
+        height: 180px;
         background: #587BEF;
 
         .inner {
             width: 1180px;
-            height: 90px;
+            height: 180px;
             margin: 0 auto;
             img {
                 display: block;
-                height: 90px;
-                margin: 0 auto;
+                float: left;
+                width: 1180px;
+                height: 150px;
+                // margin: 0 auto;
+                margin-top: 10px;
             }
         }
     }
@@ -387,7 +390,7 @@ body {
             box-sizing: border-box;
 
             .logo-all {
-                width: 180px;
+                width: 190px;
                 height: 40px;
                 margin: 0 auto;
 

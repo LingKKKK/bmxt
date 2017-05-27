@@ -86,18 +86,20 @@ body {
   position: relative;
 }
 body .header {
-  height: 90px;
+  height: 180px;
   background: #587BEF;
 }
 body .header .inner {
   width: 1180px;
-  height: 90px;
+  height: 180px;
   margin: 0 auto;
 }
 body .header .inner img {
   display: block;
-  height: 90px;
-  margin: 0 auto;
+  float: left;
+  width: 1180px;
+  height: 150px;
+  margin-top: 10px;
 }
 body .instructions {
   width: 1180px;
@@ -106,6 +108,7 @@ body .instructions {
   border-radius: 10px;
   margin: 0 auto;
   margin-top: 100px;
+  margin-bottom: 80px;
   padding: 50px 80px;
   box-sizing: border-box;
   display: none;
@@ -117,6 +120,7 @@ body .instructions .instructions-h {
   letter-spacing: 0.75px;
   text-align: left;
   display: block;
+  margin-bottom: 40px;
 }
 body .instructions .instructions-span {
   font-family: PingFangSC-Regular;
@@ -127,6 +131,50 @@ body .instructions .instructions-span {
   text-align: justify;
   display: block;
   margin-bottom: 10px;
+}
+body .instructions .instructions-span i {
+  display: block;
+  float: left;
+}
+body .instructions .instructions-span .left {
+  width: 200px;
+}
+body .instructions #input-read {
+  display: block;
+  float: right;
+  margin-top: 15px;
+  margin-right: 9px;
+}
+body .instructions .span-read {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 1px;
+  line-height: 24px;
+  text-align: justify;
+  display: block;
+  float: right;
+  margin-bottom: 10px;
+  line-height: 42px;
+}
+body .instructions #btn-read {
+  display: block;
+  float: right;
+  background: #587BEF;
+  width: 120px;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  line-height: 42px;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  border: 0;
+  opacity: 1;
+  margin-left: 15px;
+}
+body .instructions #btn-read:hover {
+  opacity: 0.7;
 }
 body .content {
   width: 1000px;
@@ -168,10 +216,36 @@ body .content .all_info {
 }
 body .content .all_info .div_tab {
   padding-left: 100px;
+  padding-right: 100px;
   height: 100%;
   position: relative;
   display: none;
   transition: all 0.7s;
+}
+body .content .all_info .div_tab .enroll-notice h4 {
+  color: red;
+  margin-bottom: 29px;
+  font-size: 20px;
+}
+body .content .all_info .div_tab .enroll-notice p {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 1px;
+  line-height: 24px;
+  text-align: justify;
+  display: block;
+  margin-bottom: 40px;
+}
+body .content .all_info .div_tab .enroll-notice span {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 1px;
+  line-height: 24px;
+  text-align: justify;
+  display: block;
+  margin-bottom: 10px;
 }
 body .content .all_info .ranks_info select {
   background: #FFFFFF;
@@ -191,6 +265,16 @@ body .content .all_info .ranks_info select option {
   height: 30px;
   box-sizing: border-box;
   padding-left: 20px;
+}
+body .content .all_info .append_rank .title-span {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: red;
+  letter-spacing: 1px;
+  line-height: 24px;
+  text-align: justify;
+  display: block;
+  margin-bottom: 24px;
 }
 body .content .all_info .append_rank .menber_list {
   position: relative;
@@ -293,7 +377,7 @@ body .content .all_info .team_info .leader .name {
   font-size: 14px;
   color: #666666;
   letter-spacing: 2px;
-  width: 121px;
+  width: 140px;
   height: 20px;
   margin-right: 10px;
   display: block;
@@ -352,7 +436,7 @@ body .content .all_info .team_info .all_number .team_number .member_info .name {
   font-size: 14px;
   color: #666666;
   letter-spacing: 2px;
-  width: 121px;
+  width: 140px;
   height: 20px;
   margin-right: 10px;
   display: block;
@@ -409,7 +493,7 @@ body .content .all_info .team_info .pays .name {
   font-size: 14px;
   color: #666666;
   letter-spacing: 2px;
-  width: 121px;
+  width: 140px;
   height: 20px;
   margin-right: 10px;
   display: block;
@@ -494,7 +578,7 @@ body .footer .inner {
   box-sizing: border-box;
 }
 body .footer .inner .logo-all {
-  width: 180px;
+  width: 190px;
   height: 40px;
   margin: 0 auto;
 }
@@ -531,7 +615,9 @@ body .identifying .showBox {
   background-color: white;
   position: absolute;
   left: 50%;
+  left: 34% \9;
   top: 50%;
+  top: 37% \9;
   transform: translate(-50%, -50%);
 }
 body .identifying .showBox .tip {
@@ -645,6 +731,7 @@ body .codeError .showBox {
   width: 500px;
   height: 100px;
   background-color: rgba(0, 0, 0, 0.6);
+  background: #ccc\9;
   display: block;
   margin: 0 auto;
   margin-top: 90px;
