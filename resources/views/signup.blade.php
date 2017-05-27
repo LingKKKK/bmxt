@@ -71,7 +71,7 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">姓名  :</span>
-                            <input data-type="realname" required tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
+                            <input data-type="character" required tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text" id="leader_name" name="leader_name" type="text" value="{{old('leader_name')}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -148,7 +148,7 @@
                             <div class="delete"><i class="icon kenrobot ken-close"></i></div>
                             <div class="input-field">
                                 <span class="input-label">队员姓名{{$i}}:</span>
-                                <input data-type="realname" required tip-info="仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
+                                <input data-type="character" required tip-info="仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
@@ -291,7 +291,7 @@
                                     <div class="cut"></div>
                                     <div class="input-field">
                                         <span class="name">队员姓名 :</span>
-                                        <span data-type="realname" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
+                                        <span data-type="character" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
                                     </div>
                                     <div class="input-field">
                                         <span class="name">身份证 :</span>
@@ -533,7 +533,7 @@
                     // console.log($el)
                     return false;
                 }
-                if (datatype == 'realname' && !isName(val)) {
+                if (datatype == 'character' && !isName(val)) {
                     $el.tipWarn('姓名不能是数字或特殊字符，请重新输入!');
                     return false;
                 }
@@ -715,10 +715,8 @@
                 var id = $(this).attr('id');
                 var name = $(this).attr('name');
                 var val = $(this).val();
-                console.log(type);
                 if (type == 'select-one') {
                     val = $('#'+id+' option:selected').val();
-                    console.log('select-one');
                     if (id == 'competition_name') {
                        val = $('#'+id+' option:selected').text();
                     }
@@ -762,7 +760,11 @@
                 for (var i = 0; i < mapKey.length; i++) {
                     var key = mapKey[i];
                     var $el = $($(this).find('.'+key)[0]);
-                    var type = $el.attr('type');
+                
+                    var type = $el.prop('type');
+                    console.log($el);
+                    console.log(type);
+                    console.log()
                     var val = $el.val();
                     if(type == 'radio')
                     {
@@ -772,24 +774,24 @@
                     // console.log(preview_el);
                     // console.log(val);
                     if (type == 'file') {
-                        var picurl = $el.data('picurl');
-                        if (picurl) {
-                            $(preview_el).attr('src', picurl);
-                            continue;
-                        }
+                        // var picurl = $el.data('picurl');
+                        // if (picurl) {
+                        //     $(preview_el).attr('src', picurl);
+                        //     continue;
+                        // }
                         if (detectIE() == 'ie8') {
 
                         } else {
-                            var fileObj = $el.attr('files');
-                            if (fileObj) {
-                                if ($el.attr('files')) {
-                                    var f = $el.attr('files')[0];
-                                    if(f){
-                                        // $('#preview_'+id).attr('src');
-                                        $(preview_el).attr('src', URL.createObjectURL(f));
-                                    }
+                            if ($el.attr('files')) {
+                                var f = $el.attr('files')[0];
+                                 console.log(f);
+                                 console.log(preview_el);
+                                if(f){
+                                    // $('#preview_'+id).attr('src');
+                                    $(preview_el).attr('src', URL.createObjectURL(f));
                                 }
                             }
+                  
                         }
                         continue;
                     }
@@ -895,7 +897,7 @@
                 memberList += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
                 memberList += '<div class="input-field">';
                 memberList += '<span class="input-label">队员姓名('+ memberListNum +'):</span>';
-                memberList += '<input data-type="realname" required tip-info="仅支持汉字、英文" name="members['+memberListNum+'][name]" class="input-field-text member_name" type="text">';
+                memberList += '<input data-type="character" required tip-info="仅支持汉字、英文" name="members['+memberListNum+'][name]" class="input-field-text member_name" type="text">';
                 memberList += '<div class="tips"></div>';
                 memberList += '<div class="clearfix"></div>';
                 memberList += '</div>';
@@ -1161,8 +1163,7 @@
                 areaEle.options.add(op);
             }
         }
-        function dox1(obj) {  
-            console.log(obj)
+        function dox1(obj) {
             var browser=navigator.appName 
             var b_version=navigator.appVersion 
             var version=b_version.split(";"); 
@@ -1190,7 +1191,9 @@
                 } else {
                     console.error("文件不存在")
                 }
-            } 
+            } else {
+                console.log('非ie 8 9 版本')
+            }
         }  
         function dox2(obj, id) {  
             console.log(obj, id)
@@ -1221,7 +1224,9 @@
                 } else {
                     console.error("文件不存在")
                 }
-            } 
+            } else {
+                console.log('非ie 8 9 版本')
+            }
         }  
     </script>
 </body>
