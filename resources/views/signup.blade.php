@@ -693,6 +693,21 @@
                 $('.codeError').removeClass('active');
             });
         }
+        function detectIE()
+        {
+            var browser=navigator.appName
+            var b_version=navigator.appVersion 
+            var version=b_version.split(";"); 
+            var trim_Version=version[1].replace(/[ ]/g,""); 
+            if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0") {
+                return 'ie8';
+            }
+            if (browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0") {
+                return 'ie9';
+            }
+
+            return '';
+        }
         // 更新预览界面
         function updatePreview() {
             $('input, select').each(function(){
@@ -723,19 +738,23 @@
                 }
                 // 默认填写图片文件的路径
                 if (type == 'file') {
-              
-                    var fileObj = $('#'+id);
-                    if (fileObj) {
-                        if (fileObj.attr('files')) {
-                            var f = fileObj.attr('files')[0];
-                            if(f){
-                                $('#preview_'+id).attr('src', URL.createObjectURL(f));
+                    if (detectIE() == 'ie8') {
+
+                    } else {
+                        var fileObj = $('#'+id);
+                        if (fileObj) {
+                            if (fileObj.attr('files')) {
+                                var f = fileObj.attr('files')[0];
+                                if(f){
+                                    $('#preview_'+id).attr('src', URL.createObjectURL(f));
+                                }
+                            } else {
+                                console.log('img');
                             }
-                        } else {
-                            console.log('img');
                         }
                     }
-             
+              
+                 
                 }
             });
             $('.append_rank > .menber_list').each(function(index){
@@ -758,13 +777,17 @@
                             $(preview_el).attr('src', picurl);
                             continue;
                         }
-                        var fileObj = $el.attr('files');
-                        if (fileObj) {
-                            if ($el.attr('files')) {
-                                var f = $el.attr('files')[0];
-                                if(f){
-                                    // $('#preview_'+id).attr('src');
-                                    $(preview_el).attr('src', URL.createObjectURL(f));
+                        if (detectIE() == 'ie8') {
+
+                        } else {
+                            var fileObj = $el.attr('files');
+                            if (fileObj) {
+                                if ($el.attr('files')) {
+                                    var f = $el.attr('files')[0];
+                                    if(f){
+                                        // $('#preview_'+id).attr('src');
+                                        $(preview_el).attr('src', URL.createObjectURL(f));
+                                    }
                                 }
                             }
                         }
