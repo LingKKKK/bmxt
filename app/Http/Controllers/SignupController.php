@@ -165,7 +165,8 @@ class SignupController extends Controller
         }
 
         if ($validator->fails()) {
-            dd($validator->errors());
+            // 弹出错误提示码
+            // dd($validator->errors());
             return redirect()->back()->withInput()
                                      ->withErrors($validator->errors())
                                      ->with('leader_pic_preview', $leader_pic)
@@ -196,7 +197,7 @@ class SignupController extends Controller
             // dd($ddt);
         } catch (\Exception $e) {
             // dd($e);
-            dd($e);
+            // dd($e);
             return redirect()->back()->withInput();
         }
         // dd($ddt);

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="x-ua-compatible" content="IE=9" >
+    <!-- <meta http-equiv="x-ua-compatible" content="IE=9" > -->
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>RoboCom青少年挑战赛</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
@@ -51,7 +52,7 @@
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
         <div class="content">
-            <form id="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate>
+            <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate>
                 <div class="tab_menu">
                     <ul>
                         <li class="active">带队老师信息</li>
@@ -327,12 +328,12 @@
 
                             </div>
                         </div>
-                        <div class="pays clearfix" id="pays">
+                        <!-- <div class="pays clearfix" id="pays">
                             <span class="leader_title">缴费信息</span>
                             <div class="cut"></div>
                             <span class="name">支付方式 :</span>
                             <span id="preview_payment" class="name_input" ></span>
-                        </div>
+                        </div> -->
                         <div id="code" class="clearfix">
                             <span class="input-label">验证码  :</span>
                             <!-- <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
@@ -344,7 +345,7 @@
                         <button type="button" class="btn_pre">上一步</button>
                         <!-- <button type="submit" class="btn_next">确认提交</button> -->
                         <button type="button" id="getQrcode" class="btn_next">确认提交</button>
-                        <button class="btn_next" id="submit"></button>
+                        <input class="btn_next" id="submit" type="submit" value="确认提交" />
                     </div>
                 </div>
             </form>
@@ -416,8 +417,8 @@
                 $(this).siblings('.tips').html('');
             }
             $.fn.refreshCaptcha = function(){
-                console.log(2)
-                console.log($(this));
+                // console.log(2)
+                // console.log($(this));
                 // if($(this).attr('tagName') == 'IMG'){
                     var timestamp = Date.parse(new Date());
                     $(this).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
@@ -467,7 +468,7 @@
         }
         // 身高 isHeightnum  heightNum
         function isHeightnum(val) {
-            reg= /^([1-2]\d{2})$/gi;
+            reg= /^1[6-9]$|^[2-9]\d$|^1\d{2}$/gi;
             if(!reg.test(val)) {
                 return false;
             }
@@ -520,7 +521,7 @@
                     if (fileObj) {
                         if (fileObj.prop('files')) {
                             var f = fileObj.prop('files')[0];
-                            console.log(f);
+                            // console.log(f);
                             if (f) {
                                 $('#preview_'+id).attr('src', URL.createObjectURL(f));
                             }
@@ -667,6 +668,10 @@
             });
             // 校验验证码
             $("#getQrcode").unbind('click').click(function() {
+                // setTimeout(function() {
+                //     $('#submit').click();
+                // }, 100);
+                
                 var validcode = false;
                 $.ajax({
                     type:"post",
@@ -675,19 +680,25 @@
                     async:false,
                     success:function(res) {
                         if (res.status == 0) {
-                            console.log('通过验证');
+                            // console.log('通过验证');
                             // $('.QRcodeShow').addClass('active');
                             // getPayQrcode();
-                            $('#submit').click();
                             validcode = true;
+                            setTimeout(function() {
+                                $('#submit').click();
+                            }, 1000);
                         } else if (res.status == -1) {
-                            $('.codeError').addClass('active');
                             validcode = false;
+                            $('.codeError').addClass('active');
                         }
                     }
                 });
                 // console.log('valid', validcode);
                 return false;
+            });
+
+            $("#submit").unbind("click").click(function() {
+                $("#form").submit();
             });
             $('.codeError .close').unbind('click').click(function() {
                 $('.codeError').removeClass('active');
@@ -747,7 +758,7 @@
                                     $('#preview_'+id).attr('src', URL.createObjectURL(f));
                                 }
                             } else {
-                                console.log('img');
+                                // console.log('img');
                             }
                         }
                     }
@@ -760,38 +771,51 @@
                 for (var i = 0; i < mapKey.length; i++) {
                     var key = mapKey[i];
                     var $el = $($(this).find('.'+key)[0]);
-                
                     var type = $el.prop('type');
-                    console.log($el);
-                    console.log(type);
-                    console.log()
                     var val = $el.val();
                     if(type == 'radio')
                     {
                         val = $($(this)).find('.'+key+":checked").val();
                     }
                     var preview_el = '#preview_'+index+'_'+key;
-                    // console.log(preview_el);
-                    // console.log(val);
-                    if (type == 'file') {
-                        // var picurl = $el.data('picurl');
-                        // if (picurl) {
-                        //     $(preview_el).attr('src', picurl);
-                        //     continue;
-                        // }
-                        if (detectIE() == 'ie8') {
+                    // if (type == 'file') {
+                    //     // var picurl = $el.data('picurl');
+                    //     // if (picurl) {
+                    //     //     $(preview_el).attr('src', picurl);
+                    //     //     continue;
+                    //     // }
+                    //     if (detectIE() == 'ie8') {
 
-                        } else {
-                            if ($el.attr('files')) {
-                                var f = $el.attr('files')[0];
-                                 console.log(f);
-                                 console.log(preview_el);
+                    //     } else {
+                    //         if ($el.attr('files')) {
+                    //             var f = $el.attr('files')[0];
+                    //              console.log(f);
+                    //              console.log(preview_el);
+                    //             if(f){
+                    //                 // $('#preview_'+id).attr('src');
+                    //                 $(preview_el).attr('src', URL.createObjectURL(f));
+                    //             }
+                    //         }
+                  
+                    //     }
+                    //     continue;
+                    // }
+                    if (type == 'file') {
+                        var picurl = $el.data('picurl');
+                        if (picurl) {
+                            $(preview_el).attr('src', picurl);
+                            continue;
+                        }
+                        var fileObj = $el.prop('files');
+                        if (fileObj) {
+                            if ($el.prop('files')) {
+                                var f = $el.prop('files')[0];
                                 if(f){
                                     // $('#preview_'+id).attr('src');
+                                    // console.log('111')
                                     $(preview_el).attr('src', URL.createObjectURL(f));
                                 }
                             }
-                  
                         }
                         continue;
                     }
@@ -835,7 +859,7 @@
             }, 1000)
             // 点击刷新验证码图片
             $('.identifying .showBox img').click(function (){
-                console.log(1)
+                // console.log(1)
                 $(this).refreshCaptcha();
             });
             // 点击取消输入验证码
@@ -1058,12 +1082,12 @@
                     async: false,
                     success: function(res) {
                         if (res.status == 0) {
-                            console.log(res);   //支付成功
+                            // console.log(res);   //支付成功
                             $('#submit').click();
                             clearTimeout(timer);
                             Qrcode = true;
                         } else if (res.status == 1) {
-                            console.log(res);
+                            // console.log(res);
                             Qrcode = false;
                         }
                     }
@@ -1177,7 +1201,7 @@
                     document.selection.empty();  
                     document.getElementById("preview_leader_pic").style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')"; 
                     document.getElementById("preview_leader_pic").style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";            } else {
-                    console.error("文件不存在")
+                    // console.error("文件不存在")
                 }
             } 
             else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0"){ 
@@ -1189,14 +1213,14 @@
                     document.getElementById("preview_leader_pic").style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')"; 
                     document.getElementById("preview_leader_pic").style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                 } else {
-                    console.error("文件不存在")
+                    // console.error("文件不存在")
                 }
             } else {
-                console.log('非ie 8 9 版本')
+                // console.log('非ie 8 9 版本')
             }
         }  
         function dox2(obj, id) {  
-            console.log(obj, id)
+            // console.log(obj, id)
             var browser=navigator.appName 
             var b_version=navigator.appVersion 
             var version=b_version.split(";"); 
@@ -1210,7 +1234,7 @@
                     document.selection.empty();  
                     document.getElementById(id).style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')"; 
                     document.getElementById(id).style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";            } else {
-                    console.error("文件不存在")
+                    // console.error("文件不存在")
                 }
             } 
             else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0"){ 
@@ -1222,10 +1246,10 @@
                     document.getElementById(id).style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')"; 
                     document.getElementById(id).style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                 } else {
-                    console.error("文件不存在")
+                    // console.error("文件不存在")
                 }
             } else {
-                console.log('非ie 8 9 版本')
+                // console.log('非ie 8 9 版本')
             }
         }  
     </script>
