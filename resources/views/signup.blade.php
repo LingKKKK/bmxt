@@ -668,10 +668,6 @@
             });
             // 校验验证码
             $("#getQrcode").unbind('click').click(function() {
-                // setTimeout(function() {
-                //     $('#submit').click();
-                // }, 100);
-                
                 var validcode = false;
                 $.ajax({
                     type:"post",
@@ -685,8 +681,14 @@
                             // getPayQrcode();
                             validcode = true;
                             setTimeout(function() {
-                                $('#submit').click();
-                            }, 1000);
+                                $('#submit').trigger('click');
+                                $('#submit').trigger('click');
+                                $('#submit').trigger('click');
+                                $('#submit').trigger('click');
+                                $('#submit').trigger('click');
+                                $('#submit').trigger('click');
+                                $('#submit').trigger('click');
+                            }, 100);
                         } else if (res.status == -1) {
                             validcode = false;
                             $('.codeError').addClass('active');
@@ -1071,28 +1073,29 @@
         // }
         // 轮询
         function RefreshQrcode(outTradeNo){
-            var Qrcode = false;
-            var timer = setInterval(function (){
-                $.ajax({
-                    type: "post",
-                    url: "{{url('/pay/queryorder')}}",
-                    data: {
-                        "out_trade_no": outTradeNo
-                    },
-                    async: false,
-                    success: function(res) {
-                        if (res.status == 0) {
-                            // console.log(res);   //支付成功
-                            $('#submit').click();
-                            clearTimeout(timer);
-                            Qrcode = true;
-                        } else if (res.status == 1) {
-                            // console.log(res);
-                            Qrcode = false;
-                        }
-                    }
-                });
-            }, 2000)
+            // var Qrcode = false;
+            // var timer = setInterval(function (){
+            //     $.ajax({
+            //         type: "post",
+            //         url: "{{url('/pay/queryorder')}}",
+            //         data: {
+            //             "out_trade_no": outTradeNo
+            //         },
+            //         async: false,
+            //         success: function(res) {
+            //             if (res.status == 0) {
+            //                 // console.log(res);   //支付成功
+            //                 $('#submit').click();
+            //                 $('#submit').click();
+            //                 clearTimeout(timer);
+            //                 Qrcode = true;
+            //             } else if (res.status == 1) {
+            //                 // console.log(res);
+            //                 Qrcode = false;
+            //             }
+            //         }
+            //     });
+            // }, 2000)
         }
 
          //声明省

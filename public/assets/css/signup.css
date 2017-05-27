@@ -617,9 +617,8 @@ body .identifying .showBox {
   background-color: white;
   position: absolute;
   left: 50%;
-  left: 34% \9;
   top: 50%;
-  top: 37% \9;
+  border: 1px solid #DDDDDD\9;
   transform: translate(-50%, -50%);
 }
 body .identifying .showBox .tip {
