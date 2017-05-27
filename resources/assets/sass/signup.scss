@@ -104,6 +104,8 @@ body {
             cursor: pointer;
             border: 0;
             opacity: 1;
+            background-color:#ccc;
+            pointer-events: none;
             margin-left: 15px;
 
             &:hover {

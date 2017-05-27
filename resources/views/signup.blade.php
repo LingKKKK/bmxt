@@ -48,7 +48,7 @@
             <div class="clear"></div>
             <a id="btn-read" type="button">我同意</a>
             <span class="span-read">阅读,并同意</span>
-            <input type="checkbox" id="input-read" name="" value="" checked="" />
+            <input type="checkbox" id="input-read" name="" value=""/>
         </div>
         <div class="content">
             <form id="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate>
@@ -502,9 +502,9 @@
         //校验表单字段
         function validField(el) {
             var $el = $(el);
-            var name = $el.attr('name');
-            var type = $el.attr('type');
-            var id = $el.attr('id');
+            var name = $el.prop('name');
+            var type = $el.prop('type');
+            var id = $el.prop('id');
             var val = $el.val();
             var datatype = $el.data('type');// 数据类型 email , mobile , ID,
             if (type == 'file') {
@@ -515,13 +515,12 @@
                     $el.tipWarn('照片不能为空');
                     return false;
                 } else {                    
-                    console.log('照片不能为空');
-
                     var fileObj = $('#'+id);
                     // console.log(fileObj)
                     if (fileObj) {
-                        if (fileObj.attr('files')) {
-                            var f = fileObj.attr('files')[0];
+                        if (fileObj.prop('files')) {
+                            var f = fileObj.prop('files')[0];
+                            console.log(f);
                             if (f) {
                                 $('#preview_'+id).attr('src', URL.createObjectURL(f));
                             }
@@ -639,7 +638,6 @@
                         $('#invitecode').siblings('.tips').html(str0);
                         $('#leader_info_btn').css('pointer-events', 'auto');
                         $('#leader_info_btn').css('backgroundColor', '#587BEF');
-                        $('#competition_name').change();
                     } else if (res.status == 1) {
                         $('#invitecode').siblings('.tips').html(str1);
                         $('#leader_info_btn').css('pointer-events', 'none');
@@ -697,20 +695,26 @@
         }
         // 更新预览界面
         function updatePreview() {
-            $('input,select').each(function(){
-                var type = $(this).attr('type');
+            $('input, select').each(function(){
+                var type = $(this).prop('type');
                 var id = $(this).attr('id');
                 var name = $(this).attr('name');
                 var val = $(this).val();
+                console.log(type);
                 if (type == 'select-one') {
-                    // val = $('#'+id+' option:selected').val();
-                    // if (id == 'competition_type') {
-                    //     val = $('#competition_name  option:selected').text() + ' ' + val;
-                    // }
-                    $('#preview_competition_name').html($('#competition_name  option:selected').text())
-                    $('#preview_' + id).html(val);
+                    val = $('#'+id+' option:selected').val();
+                    console.log('select-one');
+                    if (id == 'competition_name') {
+                       val = $('#'+id+' option:selected').text();
+                    }
+                    // $('#preview_competition_name').html($('#competition_name  option:selected').text())
+                    // $('#preview_' + id).html(val);
                 }
                 if (type == 'text' || type == 'select-one') {
+                    // console.log('id:'+id);
+                    // console.log('val:'+val);
+                    // console.log(this)
+
                     $('#preview_' + id).html(val);
                 }
                 if (type == 'radio') {
@@ -719,18 +723,19 @@
                 }
                 // 默认填写图片文件的路径
                 if (type == 'file') {
-                    if (isIE()) {
-                    }else {
-                        var fileObj = $('#'+id);
-                        if (fileObj) {
-                            if (fileObj.attr('files')) {
-                                var f = fileObj.attr('files')[0];
-                                if(f){
-                                    $('#preview_'+id).attr('src', URL.createObjectURL(f));
-                                }
+              
+                    var fileObj = $('#'+id);
+                    if (fileObj) {
+                        if (fileObj.attr('files')) {
+                            var f = fileObj.attr('files')[0];
+                            if(f){
+                                $('#preview_'+id).attr('src', URL.createObjectURL(f));
                             }
+                        } else {
+                            console.log('img');
                         }
                     }
+             
                 }
             });
             $('.append_rank > .menber_list').each(function(index){
@@ -958,7 +963,11 @@
             @endif
             showTab(tabIndex);
             rebindVlidation();
-        })
+            $('#competition_name').change();
+
+        });// end of $(function())
+
+
         //  阅读报名须知
         $('#btn-read').click(function (){
             $('.instructions').removeClass('active');
