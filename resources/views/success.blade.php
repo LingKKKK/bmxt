@@ -100,7 +100,8 @@
                                 <div class="clearfix clear"></div>
                                 <span class="name" >学校/单位名称 :</span>
                                 <span class="name_input">{{$member['school_name'] or ''}}</span>
-                                <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
+                                <div class="clearfix clear"></div>
+                                <span class="name" style="margin-bottom: 30px;">学校/单位地址 :</span>
                                 <span class="name_input">{{$member['school_address'] or ''}}</span>
                                 <div class="clearfix clear"></div>
                             </div>

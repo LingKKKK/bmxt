@@ -31,8 +31,8 @@
                         <span class="input-label">身份证号  :</span>
                         <input data-type="ID" class="input-field-text"  id="leader_id" type="text" name="leader_id" value="{{old('leader_id')}}">
                     </div> -->
-                    <div class="input-field">
-                        <span class="input-label">手机号  :</span>
+                    <div class="input-field" style="margin-top: 15px;">
+                        <span class="input-label">队伍编号  :</span>
                         <input data-type="team_no" class="input-field-text"  id="team_no" type="text" name="team_no" value="{{old('team_no')}}">
                     </div>
 
