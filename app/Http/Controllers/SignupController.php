@@ -108,7 +108,7 @@ class SignupController extends Controller
         $signdata = $request->session()->get('signdata');
         if ($signdata) {
             $signdata['members'] = json_decode($signdata['members'], true);
-            dd($signdata);
+            // dd($signdata);
             return view('success', compact('signdata'));
         }
 
@@ -312,7 +312,6 @@ class SignupController extends Controller
         if ($signdata === null) {
             return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
         }
-        $request->session()->put('signdata', $signdata->toArray());
 
         $request->session()->flash('signdata', $signdata->toArray());
         return redirect('success');
