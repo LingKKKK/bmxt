@@ -1240,7 +1240,7 @@
                     // console.error("文件不存在")
                 }
             }
-            else if(ieVersion == 'ie9')){
+            else if(ieVersion == 'ie9'){
                 if (obj) {
                     obj.select();
                     obj.blur();
