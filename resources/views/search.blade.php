@@ -21,7 +21,7 @@
             </div>
             <form id="form" action="/search"  method="POST" novalidate>
                 <div class="inner">
-                    <span class="tips">tips: 请输入领队手机号,并至少填写领队姓名和领队身份证号的其中一项~</span>
+                    <span class="tips">tips: 请输入领队手机号，队伍编号~</span>
                    <!--  <div class="input-field">
                         <span class="input-label">姓名  :</span>
                         <input data-type="name" class="input-field-text"  id="leader_name" type="text" name="leader_name" value="{{old('leader_name')}}">
