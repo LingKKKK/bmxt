@@ -19,9 +19,9 @@ class SignupController extends Controller
         '小学' => 1,
         '初中' => 2,
         '高中' => 3,
-        '大专' => 4, 
+        '大专' => 4,
         '中学(含初高中)' => 5,
-        '中学(含小初)' => 6, 
+        '中学(含小初)' => 6,
         '小初高' => 7
     ];
 
@@ -61,9 +61,9 @@ class SignupController extends Controller
             '小学' => 1,
             '初中' => 2,
             '高中' => 3,
-            '大专' => 4, 
+            '大专' => 4,
             '中学(含初高中)' => 5,
-            '中学(含小初)' => 6, 
+            '中学(含小初)' => 6,
             '小初高' => 7
         ];
 
@@ -144,6 +144,7 @@ class SignupController extends Controller
         //初始化队伍码
         // dd($request->all());
         $this->initTeamNo($request->input('competition_group'), $request->input('competition_type'));
+        try {
 
 
         $leader_picdata = $this->saveFile($request->file('leader_pic'));
@@ -191,9 +192,8 @@ class SignupController extends Controller
         $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
         $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
 
-        try {
-            $ddt = SignupData::create($data);
-            InviteManager::useCode($data['invitecode'], $ddt->id);
+        $ddt = SignupData::create($data);
+        InviteManager::useCode($data['invitecode'], $ddt->id);
             // dd($ddt);
         } catch (\Exception $e) {
             // dd($e);
@@ -260,6 +260,11 @@ class SignupController extends Controller
         $storePath = '/data/pic/'.$this->team_no.'/'.$hashfilename;
         $publicPath = '/data/pic/'.$this->team_no.'/'.$hashfilename;
 
+        try {
+
+        } catch (Exception $e) {
+
+        }
         Storage::put($storePath, file_get_contents($file));
 
         return compact('filename', 'publicPath');
