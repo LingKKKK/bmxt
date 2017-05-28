@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/search.css')}}"> 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/search.css')}}">
 </head>
 <body>
         <div class="header">
@@ -16,8 +16,8 @@
                 @if(count($errors) > 0)
                     @foreach($errors->all() as $error)
                     <span>{{$error}}</span>
-                    @endforeach 
-                @endif   
+                    @endforeach
+                @endif
             </div>
             <form id="form" action="/search"  method="POST" novalidate>
                 <div class="inner">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="input-field">
                         <span class="input-label">身份证号  :</span>
-                        <input data-type="ID" class="input-field-text"  id="leader_ID" type="text" name="leader_ID" value="{{old('leader_ID')}}">
+                        <input data-type="ID" class="input-field-text"  id="leader_id" type="text" name="leader_id" value="{{old('leader_id')}}">
                     </div>
                     <div class="input-field">
                         <span class="input-label">手机号  :</span>
@@ -120,7 +120,7 @@
             console.log(1)
             var captchacode = $('#v_code').val();
             var mobile = $('#leader_mobile').val();
-            var ID = $('#leader_ID').val();
+            var ID = $('#leader_id').val();
             var type = 'mobile';
             //console.log(captchacode,mobile,type);
             $.post(
