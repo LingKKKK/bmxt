@@ -281,23 +281,21 @@ class SignupController extends Controller
 
     public function doSearch(Request $request)
     {
-        $leader_name = $request->input('leader_name', '');
-        $leader_id = $request->input('leader_id', '');
-        $leader_mobile = $request->input('leader_mobile', '');
 
-        $inputData = $request->only(['leader_name', 'leader_id', 'leader_mobile']);
-        $inputData = array_filter($inputData);
-
-        $validator = Validator::make($inputData,
+        $validator = Validator::make($request->all(),
             [
                 'leader_mobile' => 'required',
-                'leader_id' => 'sometimes|required',
-                'leader_name' => 'required_without:leader_id'
+                // 'leader_id' => 'sometimes|required',
+                // 'leader_name' => 'required_without:leader_id'
+                'team_no'   => 'required',
+                'verificationcode' => 'required|verificationcode',
             ],
             [
                 'leader_mobile.required' => '手机号不能为空',
-                'leader_id.required' => '身份证或者用户名至少一个1',
-                'leader_name.required_without' => '身份证或者用户名至少填写一个',
+                'leader_id.required' => '身份证或者领队姓名名填写至少一个',
+                'leader_name.required_without' => '身份证或者领队姓名名至少填写一个',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
             ]);
         // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
 
@@ -305,14 +303,13 @@ class SignupController extends Controller
            return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
-        $singdata = SignupData::where('leader_mobile', $leader_mobile);
-        if (empty($signdata)) {
+        $team_no = $request->input('team_no', '');
+        $signdata = SignupData::where('team_no', $team_no)->first();
+        if ($signdata === null) {
             return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
-
         }
 
-        $signdata = SignupData::where('leader_mobile', $leader_mobile)->first();
-        $request->session()->flash('signdata', $signdata);
+        $request->session()->flash('signdata', $signdata->toArray());
         return redirect('success');
     }
 }
