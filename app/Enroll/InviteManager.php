@@ -73,14 +73,15 @@ class InviteManager
         return true;
     }
 
-    public static function InitCode()
+    public static function InitCode($prefix = 'enroll_data')
     {
         for ($i=0; $i < 32; $i++) {
             $arrValues = [];
             for ($j=0; $j < 128; $j++) {
+                $seed = $prefix.'_'. $i . '_'. $j;
                 $arrValues[] = [
-                    'code' => substr(md5('enroll_data_'. $i . '_'. $j), 0, 16),
-                    'remark' => 'enroll_data_'. $i . '_'. $j
+                    'code' => substr(md5($seed), 0, 16),
+                    'remark' => $seed
                 ];
             }
             DB::table('invite_codes')->insert($arrValues);
