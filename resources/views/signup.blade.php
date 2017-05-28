@@ -709,15 +709,20 @@
         function detectIE()
         {
             var browser=navigator.appName
-            var b_version=navigator.appVersion
-            var version=b_version.split(";");
-            var trim_Version=version[1].replace(/[ ]/g,"");
-            if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0") {
-                return 'ie8';
+
+            if(browser == "Microsoft Internet Explorer")
+            {
+                var b_version=navigator.appVersion
+                var version=b_version.split(";");
+                var trim_Version=version[1].replace(/[ ]/g,"");
+                if(trim_Version=="MSIE8.0") {
+                    return 'ie8';
+                }
+                if (trim_Version=="MSIE9.0") {
+                    return 'ie9';
+                }
             }
-            if (browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0") {
-                return 'ie9';
-            }
+
 
             return '';
         }
@@ -1191,11 +1196,8 @@
             }
         }
         function dox1(obj) {
-            var browser=navigator.appName
-            var b_version=navigator.appVersion
-            var version=b_version.split(";");
-            var trim_Version=version[1].replace(/[ ]/g,"");
-            if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){
+            var ieVersion = detectIE();
+            if(ieVersion == 'ie8'){
                 if (obj) {
                     // console.log("图片预览")
                     obj.select();
@@ -1207,7 +1209,7 @@
                     // console.error("文件不存在")
                 }
             }
-            else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0"){
+            else if(ieVersion == 'ie9'){
                 if (obj) {
                     obj.select();
                     obj.blur();
@@ -1224,11 +1226,9 @@
         }
         function dox2(obj, id) {
             // console.log(obj, id)
-            var browser=navigator.appName
-            var b_version=navigator.appVersion
-            var version=b_version.split(";");
-            var trim_Version=version[1].replace(/[ ]/g,"");
-            if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){
+
+            var ieVersion = detectIE();
+            if(ieVersion == 'ie8'){
                 if (obj) {
                     // console.log("图片预览")
                     obj.select();
@@ -1240,7 +1240,7 @@
                     // console.error("文件不存在")
                 }
             }
-            else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0"){
+            else if(ieVersion == 'ie9')){
                 if (obj) {
                     obj.select();
                     obj.blur();
