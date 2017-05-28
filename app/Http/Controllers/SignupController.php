@@ -108,8 +108,11 @@ class SignupController extends Controller
         $signdata = $request->session()->get('signdata');
         if ($signdata) {
             $signdata['members'] = json_decode($signdata['members'], true);
+            dd($signdata);
             return view('success', compact('signdata'));
         }
+
+        return redirect('/search');
     }
     public function doSignup(Request $request)
     {
@@ -156,7 +159,7 @@ class SignupController extends Controller
         $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
 
         foreach ($origin_members as $k => $item) {
-            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name', 'height']);
+            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name', 'school_address' ,'height']);
             $pic = isset($item['pic']) ? $item['pic'] : null;
 
             $member_picdata = $this->saveFile($item['pic']);
@@ -294,6 +297,7 @@ class SignupController extends Controller
                 'leader_mobile.required' => '手机号不能为空',
                 'leader_id.required' => '身份证或者领队姓名名填写至少一个',
                 'leader_name.required_without' => '身份证或者领队姓名名至少填写一个',
+                'team_no.required'  => '队伍编号不能为空',
                 'verificationcode.required' => '验证码不能为空',
                 'verificationcode.verificationcode' => '验证码不正确',
             ]);
@@ -308,6 +312,7 @@ class SignupController extends Controller
         if ($signdata === null) {
             return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
         }
+        $request->session()->put('signdata', $signdata->toArray());
 
         $request->session()->flash('signdata', $signdata->toArray());
         return redirect('success');

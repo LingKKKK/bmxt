@@ -15,7 +15,7 @@
             <div class="leader-info-tips">
                 @if(count($errors) > 0)
                     @foreach($errors->all() as $error)
-                    <span>{{$error}}</span>
+                    <span>{{$error}}</span><br/>
                     @endforeach
                 @endif
             </div>
