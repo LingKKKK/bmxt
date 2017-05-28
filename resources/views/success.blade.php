@@ -98,8 +98,10 @@
                                 <span class="name">身高(单位cm) :</span>
                                 <span  class="name_input">{{$member['height'] or ''}}</span>
                                 <div class="clearfix clear"></div>
-                                <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
+                                <span class="name" >学校/单位名称 :</span>
                                 <span class="name_input">{{$member['school_name'] or ''}}</span>
+                                <span class="name" style="margin-bottom: 30px;">学校/单位名称 :</span>
+                                <span class="name_input">{{$member['school_address'] or ''}}</span>
                                 <div class="clearfix clear"></div>
                             </div>
                             @endforeach
@@ -219,31 +221,31 @@
         ["智造大挑战"]
     ];
     var get_competition_type = $('#preview_competition_type').text();
-    
+
     isIE8();
     function isIE8(){
-        if (navigator.appName === 'Microsoft Internet Explorer') { 
-            if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) { 
+        if (navigator.appName === 'Microsoft Internet Explorer') {
+            if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) {
                 for (x in game_type)
                 {
-                    if (!Array.prototype.indexOf){  
-                        Array.prototype.indexOf = function(elt /*, from*/){  
-                        var len = this.length >>> 0;  
-                        var from = Number(arguments[1]) || 0;  
-                        from = (from < 0)  
-                             ? Math.ceil(from)  
-                             : Math.floor(from);  
-                        if (from < 0)  
-                          from += len;  
-                        for (; from < len; from++)  
-                        {  
-                          if (from in this &&  
-                              this[from] === elt)  
-                            return from;  
-                        }  
-                        return -1;  
-                      };  
-                    } 
+                    if (!Array.prototype.indexOf){
+                        Array.prototype.indexOf = function(elt /*, from*/){
+                        var len = this.length >>> 0;
+                        var from = Number(arguments[1]) || 0;
+                        from = (from < 0)
+                             ? Math.ceil(from)
+                             : Math.floor(from);
+                        if (from < 0)
+                          from += len;
+                        for (; from < len; from++)
+                        {
+                          if (from in this &&
+                              this[from] === elt)
+                            return from;
+                        }
+                        return -1;
+                      };
+                    }
                     if (game_type[x].indexOf(get_competition_type) > -1) {
                         $('#preview_competition_name').html(game_name[x]);
                     }
