@@ -2,7 +2,7 @@
 <html>
 <head>
     <!-- <meta http-equiv="x-ua-compatible" content="IE=9" > -->
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>RoboCom青少年挑战赛</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
@@ -515,7 +515,7 @@
                 if (!!$el.attr('required') && val == "") {
                     $el.tipWarn('照片不能为空');
                     return false;
-                } else {                    
+                } else {
                     var fileObj = $('#'+id);
                     // console.log(fileObj)
                     if (fileObj) {
@@ -709,15 +709,20 @@
         function detectIE()
         {
             var browser=navigator.appName
-            var b_version=navigator.appVersion 
-            var version=b_version.split(";"); 
-            var trim_Version=version[1].replace(/[ ]/g,""); 
-            if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0") {
-                return 'ie8';
+
+            if(browser == "Microsoft Internet Explorer")
+            {
+                var b_version=navigator.appVersion
+                var version=b_version.split(";");
+                var trim_Version=version[1].replace(/[ ]/g,"");
+                if(trim_Version=="MSIE8.0") {
+                    return 'ie8';
+                }
+                if (trim_Version=="MSIE9.0") {
+                    return 'ie9';
+                }
             }
-            if (browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0") {
-                return 'ie9';
-            }
+
 
             return '';
         }
@@ -764,8 +769,8 @@
                             }
                         }
                     }
-              
-                 
+
+
                 }
             });
             $('.append_rank > .menber_list').each(function(index){
@@ -798,7 +803,7 @@
                     //                 $(preview_el).attr('src', URL.createObjectURL(f));
                     //             }
                     //         }
-                  
+
                     //     }
                     //     continue;
                     // }
@@ -1191,29 +1196,26 @@
             }
         }
         function dox1(obj) {
-            var browser=navigator.appName 
-            var b_version=navigator.appVersion 
-            var version=b_version.split(";"); 
-            var trim_Version=version[1].replace(/[ ]/g,""); 
-            if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){ 
+            var ieVersion = detectIE();
+            if(ieVersion == 'ie8'){
                 if (obj) {
                     // console.log("图片预览")
-                    obj.select();  
-                    obj.blur();  
+                    obj.select();
+                    obj.blur();
                     var nfile = document.selection.createRange().text;
-                    document.selection.empty();  
-                    document.getElementById("preview_leader_pic").style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')"; 
+                    document.selection.empty();
+                    document.getElementById("preview_leader_pic").style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                     document.getElementById("preview_leader_pic").style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";            } else {
                     // console.error("文件不存在")
                 }
-            } 
-            else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0"){ 
+            }
+            else if(ieVersion == 'ie9'){
                 if (obj) {
-                    obj.select();  
-                    obj.blur();  
+                    obj.select();
+                    obj.blur();
                     var nfile = document.selection.createRange().text;
-                    document.selection.empty();  
-                    document.getElementById("preview_leader_pic").style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')"; 
+                    document.selection.empty();
+                    document.getElementById("preview_leader_pic").style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                     document.getElementById("preview_leader_pic").style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                 } else {
                     // console.error("文件不存在")
@@ -1221,32 +1223,30 @@
             } else {
                 // console.log('非ie 8 9 版本')
             }
-        }  
-        function dox2(obj, id) {  
+        }
+        function dox2(obj, id) {
             // console.log(obj, id)
-            var browser=navigator.appName 
-            var b_version=navigator.appVersion 
-            var version=b_version.split(";"); 
-            var trim_Version=version[1].replace(/[ ]/g,""); 
-            if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){ 
+
+            var ieVersion = detectIE();
+            if(ieVersion == 'ie8'){
                 if (obj) {
                     // console.log("图片预览")
-                    obj.select();  
-                    obj.blur();  
+                    obj.select();
+                    obj.blur();
                     var nfile = document.selection.createRange().text;
-                    document.selection.empty();  
-                    document.getElementById(id).style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')"; 
+                    document.selection.empty();
+                    document.getElementById(id).style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                     document.getElementById(id).style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";            } else {
                     // console.error("文件不存在")
                 }
-            } 
-            else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0"){ 
+            }
+            else if(ieVersion == 'ie9'){
                 if (obj) {
-                    obj.select();  
-                    obj.blur();  
+                    obj.select();
+                    obj.blur();
                     var nfile = document.selection.createRange().text;
-                    document.selection.empty();  
-                    document.getElementById(id).style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')"; 
+                    document.selection.empty();
+                    document.getElementById(id).style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                     document.getElementById(id).style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                 } else {
                     // console.error("文件不存在")
@@ -1254,7 +1254,7 @@
             } else {
                 // console.log('非ie 8 9 版本')
             }
-        }  
+        }
     </script>
 </body>
 </html>

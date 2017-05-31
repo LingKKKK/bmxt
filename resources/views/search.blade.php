@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/search.css')}}"> 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/search.css')}}">
 </head>
 <body>
     <div class="header">
@@ -13,14 +13,13 @@
             </div>
         </div>
     </div>
-    <!-- <input class="button-print" type="button" value="打印" onclick="window.print()"> -->
     <div class="content">
         <div class="leader-info-tips">
             @if(count($errors) > 0)
                 @foreach($errors->all() as $error)
-                <span>{{$error}}</span>
-                @endforeach 
-            @endif   
+                <span>{{$error}}</span><br/>
+                @endforeach
+            @endif
         </div>
         <form id="form" action="/search"  method="POST" novalidate>
             <div class="inner">
@@ -118,16 +117,16 @@
         });
 
         $('#v_code').click(function(event) {
-            console.log(1)
+            // console.log(1)
             $('.tipes-false').css('opacity', 0);
         });
 
         // 点击确认输入验证码
         $('.identifying .yes').click(function() {
-            console.log(1)
+            // console.log(1)
             var captchacode = $('#v_code').val();
             var mobile = $('#leader_mobile').val();
-            var ID = $('#leader_ID').val();
+            var ID = $('#leader_id').val();
             var type = 'mobile';
             //console.log(captchacode,mobile,type);
             $.post(
@@ -139,12 +138,12 @@
                 },
                 function(res){
                     if (res.status == 0) {
-                        console.log('验证码填写成功并确定')
+                        // console.log('验证码填写成功并确定')
                         refresh_captcha();
                         $('.identifying').removeClass('active');
                         // $('.submit-search').removeClass('active');
                     } else {
-                        console.log('验证码填写错误')
+                        // console.log('验证码填写错误')
                         $('.tipes-false').css('opacity', 1);
                     }
                 }

@@ -12,7 +12,7 @@ class InitInviteCode extends Command
      *
      * @var string
      */
-    protected $signature = 'work:initinvitecode';
+    protected $signature = 'work:initinvitecode {--prefix=}';
 
     /**
      * The console command description.
@@ -38,6 +38,10 @@ class InitInviteCode extends Command
      */
     public function handle()
     {
-        InviteManager::InitCode();
+
+        $prefixName = $this->option('prefix');
+
+
+        InviteManager::InitCode($prefixName);
     }
 }
