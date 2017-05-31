@@ -17,21 +17,16 @@
         <div class="leader-info-tips">
             @if(count($errors) > 0)
                 @foreach($errors->all() as $error)
-                <span>{{$error}}</span><br/>
+                <span>{{$error}}</span>
                 @endforeach
             @endif
         </div>
         <form id="form" action="/search"  method="POST" novalidate>
             <div class="inner">
-                <span class="tips">tips: 请输入领队手机号,并至少填写领队姓名和领队身份证号的其中一项~</span>
+                <span class="tips">tips: 请输入队伍编号、领队手机号</span>
                 <div class="input-field">
-                    <span class="input-label">姓名  :</span>
-                    <input data-type="name" class="input-field-text"  id="leader_name" type="text" name="leader_name" value="{{old('leader_name')}}">
-                    <div class="tips"></div>
-                </div>
-                <div class="input-field">
-                    <span class="input-label">身份证号  :</span>
-                    <input data-type="ID" class="input-field-text"  id="leader_ID" type="text" name="leader_ID" value="{{old('leader_ID')}}">
+                    <span class="input-label">队伍编号  :</span>
+                    <input data-type="" class="input-field-text"  id="team_no" type="text" name="team_no" value="{{old('team_no')}}">
                 </div>
                 <div class="input-field">
                     <span class="input-label">手机号  :</span>

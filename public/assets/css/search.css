@@ -116,18 +116,23 @@ body .content {
   width: 100%;
   padding-top: 100px;
   box-sizing: border-box;
+  position: relative;
 }
 body .content .leader-info-tips {
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
   opacity: 1;
+  width: 460px;
   transition: all 1s;
 }
 body .content .leader-info-tips span {
-  display: inline-block;
+  display: block;
   color: red;
   font-size: 16px;
+  float: left;
+  margin-right: 25px;
+  margin-top: 45px;
 }
 body .content .inner {
   width: 600px;
@@ -166,9 +171,10 @@ body .content .inner .input-field .input-field-text {
   padding-left: 20px;
 }
 body .content .inner .tips {
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 20px;
   margin-bottom: 20px;
+  display: block;
 }
 body .content .inner .submit-search {
   width: 130px;
