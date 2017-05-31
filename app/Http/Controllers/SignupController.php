@@ -313,6 +313,10 @@ class SignupController extends Controller
             return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
         }
 
+        if ($signdata['leader_mobile'] != $request->input('leader_mobile')) {
+            return redirect()->back()->withErrors(collect(['notfound' => '请填写正确的领队手机号']))->withInput();
+        }
+
         $request->session()->flash('signdata', $signdata->toArray());
         return redirect('success');
     }
