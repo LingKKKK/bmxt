@@ -12,39 +12,20 @@ body {
     position: relative;
 
     .header {
-        height: 90px;
+        height: 180px;
         background: #587BEF;
 
         .inner {
             width: 1180px;
-            height: 90px;
-            display: block;
+            height: 180px;
             margin: 0 auto;
-
             img {
                 display: block;
                 float: left;
-                width: 126.5px;
-                height: 50px;
-                margin-top: 20px;
-            }
-
-            .login {
-                display: block;
-                float: right;
-
-                span {
-                    display: block;
-                    float: right;
-                    font-size: 14px;
-                    color: #fff;
-                    line-height: 90px;
-                    margin-right: 30px;
-                }
-            }
-
-            .logout {
-                display: none;
+                width: 1180px;
+                height: 150px;
+                // margin: 0 auto;
+                margin-top: 10px;
             }
         }
     }
@@ -319,7 +300,7 @@ body {
 
     .footer {
         height: 182px;
-        background: #587BEF;    
+        background: #587BEF;
         font-size: 14px;
 
         .inner {
@@ -330,32 +311,32 @@ body {
             padding-top: 46px;
             box-sizing: border-box;
 
-            img {
-                display: block;
-                margin: 0 auto;
-                width: 100px;
+            .logo-all {
+                width: 190px;
                 height: 40px;
+                margin: 0 auto;
+
+                img {
+                    height: 40px;
+                }
             }
 
             .sp1 {    
-                /* width: 100px; */
                 display: block;
                 text-align: center;
                 margin-top: 10px;
-                /* margin: 0 auto; */
                 color: #fff;
                 line-height: 24px;
             }
 
             .sp2 {
-                /* width: 100px; */
                 display: block;
                 text-align: center;
-                /* margin: 0 auto; */
                 color: #fff;
                 margin-top: 10px;
                 line-height: 24px;
             }
         }
     }
+
 }

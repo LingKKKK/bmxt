@@ -5,66 +5,72 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/search.css')}}"> 
 </head>
 <body>
-        <div class="header">
-            <div class="inner">
-                <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
+    <div class="header">
+        <div class="inner">
+            <img src="{{ asset('assets/img/logo1.png')}}" alt="">
+            <div class="logout">
+                <span></span>
             </div>
         </div>
-        <!-- <input class="button-print" type="button" value="打印" onclick="window.print()"> -->
-        <div class="content">
-            <div class="leader-info-tips">
-                @if(count($errors) > 0)
-                    @foreach($errors->all() as $error)
-                    <span>{{$error}}</span>
-                    @endforeach 
-                @endif   
-            </div>
-            <form id="form" action="/search"  method="POST" novalidate>
-                <div class="inner">
-                    <span class="tips">tips: 请输入领队手机号,并至少填写领队姓名和领队身份证号的其中一项~</span>
-                    <div class="input-field">
-                        <span class="input-label">姓名  :</span>
-                        <input data-type="name" class="input-field-text"  id="leader_name" type="text" name="leader_name" value="{{old('leader_name')}}">
-                        <div class="tips"></div>
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">身份证号  :</span>
-                        <input data-type="ID" class="input-field-text"  id="leader_ID" type="text" name="leader_ID" value="{{old('leader_ID')}}">
-                    </div>
-                    <div class="input-field">
-                        <span class="input-label">手机号  :</span>
-                        <input data-type="mobile" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
-                    </div>
-                    <!-- <span class="tips-false">您输入的手机或验证码有误,请重新输入~</span> -->
-                    <div id="code" class="clearfix">
-                        <span class="input-label">验证码  :</span>
-                        <input name="verificationcode" id="verificationcode" class="code" type="text">
-                    </div>
-                    <a id="tel" class="tel">获取手机验证码</a>
-                    <button class="submit-search" id="submit-search" type="submit">查询</button>
+    </div>
+    <!-- <input class="button-print" type="button" value="打印" onclick="window.print()"> -->
+    <div class="content">
+        <div class="leader-info-tips">
+            @if(count($errors) > 0)
+                @foreach($errors->all() as $error)
+                <span>{{$error}}</span>
+                @endforeach 
+            @endif   
+        </div>
+        <form id="form" action="/search"  method="POST" novalidate>
+            <div class="inner">
+                <span class="tips">tips: 请输入领队手机号,并至少填写领队姓名和领队身份证号的其中一项~</span>
+                <div class="input-field">
+                    <span class="input-label">姓名  :</span>
+                    <input data-type="name" class="input-field-text"  id="leader_name" type="text" name="leader_name" value="{{old('leader_name')}}">
+                    <div class="tips"></div>
                 </div>
-            </form>
-        </div>
-
-        <div class="identifying">
-            <div class="showBox">
-                <span class="tip">提示: 请您在右侧输入图中的数字或者字母~</span>
-                <span id="tipes">验证成功之后,我们会将验证码发送至您的手机:  <i></i></span>
-                <span class="tipes-false">您输入的手机号码或者验证码有误,请重新输入!!!</span>
-                <img src="{{url('/captcha')}}">
-                <input id="v_code" type="text" placeholder="请输入">
-                <a id="sendCode" class="yes">确认</a>
-                <a class="no"><i class="icon kenrobot ken-close"></i></a>
+                <div class="input-field">
+                    <span class="input-label">身份证号  :</span>
+                    <input data-type="ID" class="input-field-text"  id="leader_ID" type="text" name="leader_ID" value="{{old('leader_ID')}}">
+                </div>
+                <div class="input-field">
+                    <span class="input-label">手机号  :</span>
+                    <input data-type="mobile" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
+                </div>
+                <!-- <span class="tips-false">您输入的手机或验证码有误,请重新输入~</span> -->
+                <div id="code" class="clearfix">
+                    <span class="input-label">验证码  :</span>
+                    <input name="verificationcode" id="verificationcode" class="code" type="text">
+                </div>
+                <a id="tel" class="tel">获取手机验证码</a>
+                <button class="submit-search" id="submit-search" type="submit">查询</button>
             </div>
-        </div>
+        </form>
+    </div>
 
-        <div class="footer">
-            <div class="inner">
+    <div class="identifying">
+        <div class="showBox">
+            <span class="tip">提示: 请您在右侧输入图中的数字或者字母~</span>
+            <span id="tipes">验证成功之后,我们会将验证码发送至您的手机:  <i></i></span>
+            <span class="tipes-false">您输入的手机号码或者验证码有误,请重新输入!!!</span>
+            <img src="{{url('/captcha')}}">
+            <input id="v_code" type="text" placeholder="请输入">
+            <a id="sendCode" class="yes">确认</a>
+            <a class="no">X</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="inner">
+            <div class="logo-all">
+                <img src="{{ asset('assets/img/LOGO2.png')}}" alt="">
                 <img src="{{ asset('assets/img/logo-white-word.png')}}" alt="">
-                <span class="sp1">© 2017 KenRobot  |  京 ICP备15039570号 </span>
-                <span class="sp2">北京市海淀区天秀路10号中国农大国际创业园1号楼526</span>
             </div>
+            <span class="sp1">© 2017 RoboCom 国际公开赛组委会  |  鄂ICP备16011249号-2 </span>
+            <span class="sp2">技术支持: 北京啃萝卜信息技术有限公司</span>
         </div>
+    </div>
 <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 <script type="text/javascript">
     (function($){
@@ -107,6 +113,7 @@
 
         // 点击取消输入验证码
         $('.identifying .no').click(function() {
+            // clearInterval(countdown);
             $('.identifying').removeClass('active');
         });
 
@@ -153,7 +160,7 @@
            $('#tipes i').html($('#leader_mobile').val());
            countdown();
         }else {
-           console.log('手机格式错误');
+           alert('您输入的手机格式错误');
         }
     });
 
