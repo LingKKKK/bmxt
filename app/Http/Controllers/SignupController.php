@@ -284,7 +284,6 @@ class SignupController extends Controller
 
     public function doSearch(Request $request)
     {
-
         $validator = Validator::make($request->all(),
             [
                 'leader_mobile' => 'required',
