@@ -350,7 +350,8 @@ class SignupController extends Controller
 
         $adminArr = [
             '18511431517',
-            '15903035872'
+            '15903035872',
+            '13476000614', //江城
         ];
 
 
