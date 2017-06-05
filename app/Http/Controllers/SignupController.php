@@ -322,9 +322,43 @@ class SignupController extends Controller
         return redirect('success');
     }
 
-    public function doExportExcel()
+    public function export()
     {
-        $filename = 'RoboCom报名-' . date('Y_m_d_H_i_s') . '.xls';
+        return view('enroll.excel');
+    }
+
+    public function doExportExcel(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+                'admincode' => 'required',
+                'mobile'    => 'required',
+                'verificationcode' => 'required|verificationcode',
+
+            ],[
+                'mobile.required' => '手机号不能为空',
+                'admincode.required'  => '查询码不能为空',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
+            ]);
+        if ($validator->fails()) {
+           return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        if ($request->input('admincode') != 'a3b5c4') {
+           return redirect()->back()->withErrors(['查询码不正确'])->withInput();
+        }
+
+        $adminArr = [
+            '18511431517',
+            ''
+        ];
+
+
+        if (! in_array($request->input('mobile'), $adminArr)) {
+            return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
+        }
+
+        $filename = 'RoboCom报名-' . date('Y_m_d_H_i_s');
 
         $signdataList = SignupData::all();
 
@@ -348,9 +382,9 @@ class SignupController extends Controller
             $excel->setDescription('报名数据');
 
             $excel->sheet('报名数据', function($sheet) use($signdataList) {
-                $sheet->mergeCells('A1:F1');
-                $sheet->mergeCells('G1:K1');
-                $sheet->mergeCells('L1:S1');
+                $sheet->mergeCells('A1:G1');
+                $sheet->mergeCells('H1:L1');
+                $sheet->mergeCells('M1:T1');
                 $sheet->cell('A1', '队伍信息');
                 $sheet->cell('G1', '领队信息');
                 $sheet->cell('L1', '队员信息');
@@ -385,7 +419,7 @@ class SignupController extends Controller
                 foreach ($signdataList as $k => $val) {
                     $sheet->row($rowIndex++, [
                             // 队伍信息
-                            $val['team_no'],
+                            $val['team_no'].' ',
                             $val['team_name'],
                             $val['school_name'],
                             $val['school_address'],
@@ -394,9 +428,9 @@ class SignupController extends Controller
                             $val['competition_group'],
                             // 领队信息
                             $val['leader_name'],
-                            $val['leader_id'],
+                            $val['leader_id'].' ',
                             $val['leader_email'],
-                            $val['leader_mobile'],
+                            $val['leader_mobile'].' ',
                             $val['leader_sex'],
                             //
                         ]);
@@ -419,8 +453,8 @@ class SignupController extends Controller
                                     '',
                                 // 队员信息
                                 $member['name'],
-                                $member['ID'],
-                                $member['mobile'],
+                                $member['ID'].' ',
+                                $member['mobile'].' ',
                                 $member['sex'],
                                 $member['age'],
                                 $member['height'],
