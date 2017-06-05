@@ -16,6 +16,7 @@
 Route::get('/', 'SignupController@signup');
 Route::post('/signup', 'SignupController@doSignup');
 Route::get('/success', 'SignupController@success');
+Route::get('/excel', 'SignupController@doExportExcel');
 
 // 报名系统查询
 Route::get('/search', 'SignupController@search');

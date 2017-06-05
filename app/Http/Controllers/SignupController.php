@@ -11,6 +11,7 @@ use Mail;
 use Storage;
 use Session;
 use App\Enroll\InviteManager;
+use Excel;
 
 class SignupController extends Controller
 {
@@ -319,5 +320,162 @@ class SignupController extends Controller
 
         $request->session()->flash('signdata', $signdata->toArray());
         return redirect('success');
+    }
+
+    public function doExportExcel()
+    {
+        $filename = 'RoboCom报名-' . date('Y_m_d_H_i_s') . '.xls';
+
+        $signdataList = SignupData::all();
+
+        foreach ($signdataList as $k => $val) {
+            $signdataList[$k]['members'] = json_decode($val['members'], true);
+        }
+
+
+
+
+        Excel::create($filename, function($excel) use($signdataList) {
+
+            // Set the title
+            $excel->setTitle('RoboCom报名表');
+
+            // Chain the setters
+            $excel->setCreator('RoboCom')
+                  ->setCompany('RoboCom');
+
+            // Call them separately
+            $excel->setDescription('报名数据');
+
+            $excel->sheet('报名数据', function($sheet) use($signdataList) {
+                $sheet->mergeCells('A1:F1');
+                $sheet->mergeCells('G1:K1');
+                $sheet->mergeCells('L1:S1');
+                $sheet->cell('A1', '队伍信息');
+                $sheet->cell('G1', '领队信息');
+                $sheet->cell('L1', '队员信息');
+                $sheet->row(2, [
+                    // 队伍信息
+                    '队伍编号',
+                    '队伍名称',
+                    '学校/单位名称',
+                    '学校/单位地址',
+                    '赛事项目',
+                    '子赛项',
+                    '组别',
+                    // 领队信息
+                    '姓名',
+                    '身份证号',
+                    '邮箱',
+                    '手机号',
+                    '性别',
+                    // 队员信息
+                    '队员姓名',
+                    '身份证',
+                    '手机号',
+                    '性别',
+                    '年龄',
+                    '身高(单位cm)',
+                    '学校/单位名称',
+                    '学校/单位地址',
+                    ]);
+
+                $rowIndex = 3;
+
+                foreach ($signdataList as $k => $val) {
+                    $sheet->row($rowIndex++, [
+                            // 队伍信息
+                            $val['team_no'],
+                            $val['team_name'],
+                            $val['school_name'],
+                            $val['school_address'],
+                            $this->getParentType($val['competition_type']),
+                            $val['competition_type'],
+                            $val['competition_group'],
+                            // 领队信息
+                            $val['leader_name'],
+                            $val['leader_id'],
+                            $val['leader_email'],
+                            $val['leader_mobile'],
+                            $val['leader_sex'],
+                            //
+                        ]);
+
+                    foreach ($val['members'] as $member) {
+                        $sheet->row($rowIndex++, [
+                                // 队伍信息
+                                    '',
+                                    '',
+                                    '',
+                                    '',
+                                    '',
+                                    '',
+                                    '',
+                                // 领队信息
+                                    '',
+                                    '',
+                                    '',
+                                    '',
+                                    '',
+                                // 队员信息
+                                $member['name'],
+                                $member['ID'],
+                                $member['mobile'],
+                                $member['sex'],
+                                $member['age'],
+                                $member['height'],
+                                $member['school_name'],
+                                isset($member['school_address']) ? $member['school_address'] : '',
+                            ]);
+                    }
+                }
+
+
+
+
+            });
+
+        })->export('xls');
+
+
+    }
+
+    private function getParentType($type = '')
+    {
+
+        $arrType = [
+            '未来世界' => [
+                    "WRO常规赛" => 1,
+                    "EV3足球赛" => 2,
+                    "WRO创意赛-'可持续发展'" => 3,
+            ],
+            '博思威龙'      =>  [
+                "VEX-EDR'步步为营'工程挑战赛" => 11,
+                "VEX-IQ'环环相扣'工程挑战赛" => 12,
+                "BDS机器人工程挑战赛——'长城意志'" => 13,
+            ],
+            '工业时代'      =>  [
+                "能力风暴——WER能力挑战赛" => 21,
+                "能力风暴——WER能力挑战赛工程创新赛" => 22,
+                "能力风暴——WER普及赛" => 23,
+            ],
+            '部落战争——攻城大师'    =>  [
+                "部落战争——攻城大师" => 31,
+
+            ],
+            '智造大挑战'     => [
+                "智造大挑战" => 41
+
+            ]
+        ];
+
+        foreach ($arrType as $k => $val) {
+           if (isset($val[$type]) && $val[$type]) {
+                return $k;
+           }
+        }
+
+        return '';
+
     }
 }
