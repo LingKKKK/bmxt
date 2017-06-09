@@ -72,6 +72,14 @@ body {
             }
         } 
 
+        .width200 {
+            width: 200px;
+        }
+
+        .ml20 {
+            margin-left: 20px;
+        }
+
         #input-read {
             display: block;
             float: right;
@@ -177,21 +185,43 @@ body {
                         display: block;
                         margin-bottom: 40px;
                     }
-                    span {
-                        font-family:PingFangSC-Regular;
-                        font-size:14px;
-                        color:#666666;
-                        letter-spacing:1px;
-                        line-height:24px;
-                        text-align:justify;
-                        display: block;
-                        margin-bottom: 10px;
+                    .input-field {
+                        width: 800px;
+
+                        .input-label {
+                            width: 230px;
+                        }
+                        .input-type {
+                            transform: translateY(2px);
+                            margin: 5px 10px 28px 20px;
+                        }
                     }
                 }
                 
             }
 
             .leader_info {
+
+                .other_leader {
+                    border-top: 1px solid #DDD;
+                    padding-top: 50px;
+                    padding-bottom: 50px;
+
+                    .leader_list {
+                        border-bottom: 1px solid #DDD;
+                        margin-bottom: 50px;
+
+                        .delete {
+                            cursor: pointer;
+                            position: absolute;
+                            right: 100px;
+
+                            i {
+                                font-size: 35px;
+                            }
+                        }
+                    }
+                }
             }
 
             .ranks_info {
@@ -360,6 +390,10 @@ body {
                         margin-top: 30px;
                     }
 
+                    #preview_leader_sex {
+                        margin-bottom: 30px;
+                    }
+
                     img {
                         width: 120px;
                         height: 160px;
@@ -368,6 +402,23 @@ body {
                         right: 71px;
                         top: 89px;
                         display: block;
+                    }
+
+                    .team_leader {
+                        border-top: 1px solid #DDD;
+                        margin-top: 10px;
+                        position: relative;
+                        padding-bottom: 20px;
+
+                        .leader_info {
+                            border-top: 1px solid #ddd;
+                            position: relative;
+                            margin-bottom: 35px;
+
+                            img {
+                                top: 35px;
+                            }
+                        }
                     }
                 }
                 .all_number {
@@ -441,12 +492,12 @@ body {
                 }
                 .pays {
                     width: 922px;
-                    height: 140px;
                     display: block;
                     position: relative;
                     background: #FFFFFF;
                     border: 1px solid #EAEAEA;
                     margin-bottom: 50px;
+                    padding-bottom: 50px;
 
                     .leader_title {
                         font-family: PingFangSC-Regular;
@@ -1053,7 +1104,7 @@ body {
 
    .btn_next {
         right: 90px;
-        bottom: -40px;
+        bottom: -42px;
     }
 
     .btn_pre {

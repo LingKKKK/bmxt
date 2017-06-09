@@ -139,6 +139,12 @@ body .instructions .instructions-span i {
 body .instructions .instructions-span .left {
   width: 200px;
 }
+body .instructions .width200 {
+  width: 200px;
+}
+body .instructions .ml20 {
+  margin-left: 20px;
+}
 body .instructions #input-read {
   display: block;
   float: right;
@@ -239,15 +245,32 @@ body .content .all_info .div_tab .enroll-notice p {
   display: block;
   margin-bottom: 40px;
 }
-body .content .all_info .div_tab .enroll-notice span {
-  font-family: PingFangSC-Regular;
-  font-size: 14px;
-  color: #666666;
-  letter-spacing: 1px;
-  line-height: 24px;
-  text-align: justify;
-  display: block;
-  margin-bottom: 10px;
+body .content .all_info .div_tab .enroll-notice .input-field {
+  width: 800px;
+}
+body .content .all_info .div_tab .enroll-notice .input-field .input-label {
+  width: 230px;
+}
+body .content .all_info .div_tab .enroll-notice .input-field .input-type {
+  transform: translateY(2px);
+  margin: 5px 10px 28px 20px;
+}
+body .content .all_info .leader_info .other_leader {
+  border-top: 1px solid #DDD;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+body .content .all_info .leader_info .other_leader .leader_list {
+  border-bottom: 1px solid #DDD;
+  margin-bottom: 50px;
+}
+body .content .all_info .leader_info .other_leader .leader_list .delete {
+  cursor: pointer;
+  position: absolute;
+  right: 100px;
+}
+body .content .all_info .leader_info .other_leader .leader_list .delete i {
+  font-size: 35px;
 }
 body .content .all_info .ranks_info select {
   background: #FFFFFF;
@@ -398,6 +421,9 @@ body .content .all_info .team_info .leader .name_input {
   letter-spacing: 2px;
   margin-top: 30px;
 }
+body .content .all_info .team_info .leader #preview_leader_sex {
+  margin-bottom: 30px;
+}
 body .content .all_info .team_info .leader img {
   width: 120px;
   height: 160px;
@@ -406,6 +432,20 @@ body .content .all_info .team_info .leader img {
   right: 71px;
   top: 89px;
   display: block;
+}
+body .content .all_info .team_info .leader .team_leader {
+  border-top: 1px solid #DDD;
+  margin-top: 10px;
+  position: relative;
+  padding-bottom: 20px;
+}
+body .content .all_info .team_info .leader .team_leader .leader_info {
+  border-top: 1px solid #ddd;
+  position: relative;
+  margin-bottom: 35px;
+}
+body .content .all_info .team_info .leader .team_leader .leader_info img {
+  top: 35px;
 }
 body .content .all_info .team_info .all_number {
   width: 922px;
@@ -471,12 +511,12 @@ body .content .all_info .team_info .all_number .team_number .member_info .school
 }
 body .content .all_info .team_info .pays {
   width: 922px;
-  height: 140px;
   display: block;
   position: relative;
   background: #FFFFFF;
   border: 1px solid #EAEAEA;
   margin-bottom: 50px;
+  padding-bottom: 50px;
 }
 body .content .all_info .team_info .pays .leader_title {
   font-family: PingFangSC-Regular;
@@ -997,7 +1037,7 @@ body button:hover {
 }
 body .btn_next {
   right: 90px;
-  bottom: -40px;
+  bottom: -42px;
 }
 body .btn_pre {
   bottom: -40px;

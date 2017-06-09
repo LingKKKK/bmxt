@@ -104,6 +104,13 @@ body {
                     border: 1px solid #EAEAEA;
                     margin-bottom: 18px;
 
+                    .leader_list {
+                        .leader_info {
+                            margin-top: 30px;
+                            margin-bottom: 30px;
+                        }
+                    }
+
                     .leader_title {
                         font-family: PingFangSC-Regular;
                         font-size: 16px;
@@ -244,12 +251,12 @@ body {
                 
                 .pays {
                     width: 922px;
-                    height: 140px;
                     display: block;
                     position: relative;
                     background: #FFFFFF;
                     border: 1px solid #EAEAEA;
                     margin-bottom: 39px;
+                    padding-bottom: 50px;
 
                     .leader_title {
                         font-family: PingFangSC-Regular;

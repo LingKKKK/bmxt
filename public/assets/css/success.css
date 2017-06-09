@@ -171,6 +171,10 @@ body .mid .all_info .team_info .leader, body .mid .all_info .team_info .all_numb
   border: 1px solid #EAEAEA;
   margin-bottom: 18px;
 }
+body .mid .all_info .team_info .leader .leader_list .leader_info, body .mid .all_info .team_info .all_number .leader_list .leader_info {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 body .mid .all_info .team_info .leader .leader_title, body .mid .all_info .team_info .all_number .leader_title {
   font-family: PingFangSC-Regular;
   font-size: 16px;
@@ -229,12 +233,12 @@ body .mid .all_info .team_info .leader img, body .mid .all_info .team_info .all_
 }
 body .mid .all_info .team_info .pays {
   width: 922px;
-  height: 140px;
   display: block;
   position: relative;
   background: #FFFFFF;
   border: 1px solid #EAEAEA;
   margin-bottom: 39px;
+  padding-bottom: 50px;
 }
 body .mid .all_info .team_info .pays .leader_title {
   font-family: PingFangSC-Regular;

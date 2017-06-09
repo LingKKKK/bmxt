@@ -2,6 +2,7 @@
 <html>
 <head>
     <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/success.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/signup-print.css')}}" media="print">
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
@@ -70,6 +71,32 @@
                         <span id="preview_leader_sex" class="name_input">{{$signdata['leader_sex'] or ''}}</span>
                         <div class="clearfix clear"></div>
                         <img id="preview_leader_pic" src="{{$signdata['leader_pic']}}" >
+                        <div class="leader_list">
+                            @if($signdata['leaders'])
+                            @foreach($signdata['leaders'] as $leader)
+                            <div class="leader_info">
+                                <div class="cut">
+                                    <img id="preview_leader_pic" src="{{$leader['pic']}}" >
+                                </div>
+                                <span class="name">领队姓名 :</span>
+                                <span  class="name_input">{{$leader['name'] or ''}}</span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">身份证 :</span>
+                                <span class="name_input">{{$leader['ID'] or ''}}</span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">邮箱 :</span>
+                                <span  class="name_input">{{$leader['email'] or ''}}</span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">手机号 :</span>
+                                <span class="name_input">{{$leader['mobile'] or ''}}</span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">性别 :</span>
+                                <span  class="name_input">{{$leader['sex'] or ''}}</span>
+                                <div class="clearfix clear"></div>
+                            </div>
+                            @endforeach          
+                            @endif                 
+                        </div>
                     </div>
                     <div class="all_number">
                         <span class="leader_title">队员信息</span>
@@ -107,16 +134,34 @@
                             </div>
                             @endforeach
                             @endif
-
                         </div>
                     </div>
-                    <!-- <div class="pays" id="pays">
-                        <span class="leader_title">缴费信息</span>
+                    <div class="pays clearfix" id="pays">
+                        <span class="leader_title">开票信息</span>
                         <div class="cut"></div>
-                        <span class="name">支付方式 :</span>
-                        <span id="preview_payment" class="name_input" >在线支付(已成功付款)</span>
+                        <span class="name">参赛总人数 :</span>
+                        <span id="preview_participant" class="name_input">{{$signdata['participant'] or ''}}</span>
                         <div class="clearfix clear"></div>
-                    </div> -->
+                        <span class="name">金额(每人) :</span>
+                        <span id="preview_average_amount" class="name_input">{{$signdata['average_amount'] or ''}}</span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">总费用 :</span>
+                        <span id="preview_total_cost" class="name_input">{{$signdata['total_cost'] or ''}}</span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">账户类型 :</span>
+                        <span id="preview_account_type" class="name_input">{{$signdata['account_type'] or ''}}</span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">发票抬头 :</span>
+                        <span id="preview_invoice_header" class="name_input">{{$signdata['invoice_header'] or ''}}</span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">开票内容</span>
+                        <span id="preview_billing_content" class="name_input">{{$signdata['billing_content'] or ''}}</span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">收件地址</span>
+                        <span id="preview_receive_address" class="name_input">{{$signdata['receive_address'] or ''}}</span>
+                        <div class="clearfix clear"></div>
+                    </div>
+
                     <div class="clearfix clear">
                     </div>
                 </div>

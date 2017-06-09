@@ -52,9 +52,10 @@ class SignupController extends Controller
     {
         //数据展示
         // $request->session()->forget('signdata');
-        $signdata = $request->session()->get('signdata');
+        // $signdata = $request->session()->pull('signdata');
+        $signdata = $this->fetchSignData();
+
         if ($signdata) {
-            $signdata['members'] = json_decode($signdata['members'], true);
             return view('success', compact('signdata'));
         }
 
@@ -106,15 +107,43 @@ class SignupController extends Controller
 
     public function success(Request $request)
     {
-        $signdata = $request->session()->get('signdata');
+
+        // $signdata = $request->session()->pull('signdata');   /*检测一次内容*/
+        $signdata = $this->fetchSignData();
         if ($signdata) {
-            $signdata['members'] = json_decode($signdata['members'], true);
-            // dd($signdata);
+            
             return view('success', compact('signdata'));
         }
 
+
         return redirect('/search');
     }
+
+    private function fetchSignData()
+    {
+        $signdata = session('signdata');
+        // dd($signdata);
+        if ($signdata) {
+            $signdata['members'] = json_decode($signdata['members'], true);
+            // dd($signdata)
+            $data = json_decode($signdata['data'], true);
+            $signdata['leaders'] = $data['leaders'];
+            $signdata['participant'] = $data['participant'];
+            $signdata['account_type'] = $data['account_type'];
+            $signdata['invoice_header'] = $data['invoice_header'];
+            $signdata['billing_content'] = $data['billing_content'];
+            $signdata['receive_address'] = $data['receive_address'];
+            $signdata['average_amount'] = $data['average_amount'];
+            $signdata['total_cost'] = $data['total_cost'];
+            // dd($signdata);
+
+            return $signdata;
+        }
+
+        return $signdata;
+    }
+
+
     public function doSignup(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -147,9 +176,10 @@ class SignupController extends Controller
 
         //初始化队伍码
         // dd($request->all());
+        // 获取到所有提交的数据   下面是对这些数据 进行分配 处理
+
         $this->initTeamNo($request->input('competition_group'), $request->input('competition_type'));
         try {
-
 
         $leader_picdata = $this->saveFile($request->file('leader_pic'));
         $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
@@ -168,6 +198,19 @@ class SignupController extends Controller
             $member_info['pic_filename'] = !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['filename'] : '';
             $members[] = $member_info;
         }
+        // 领队成员处理
+        $leaders = array();
+        $origin_leaders = isset($request->all()['leaders']) ? $request->all()['leaders'] : [];
+
+        foreach ($origin_leaders as $k => $item) {
+            $leader_info = array_only($item, ['name', 'mobile', 'ID', 'sex', 'email']);
+            $pic = isset($item['pic']) ? $item['pic'] : null;
+
+            $leader_picdata = $this->saveFile($item['pic']);
+            $leader_info['pic'] =  !empty($leader_picdata) && isset($leader_picdata['publicPath']) ?  $leader_picdata['publicPath'] : '';
+            $leader_info['pic_filename'] = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ?  $leader_picdata['filename'] : '';
+            $leaders[] = $leader_info;
+        }
 
         if ($validator->fails()) {
             // 弹出错误提示码
@@ -176,25 +219,38 @@ class SignupController extends Controller
                                      ->withErrors($validator->errors())
                                      ->with('leader_pic_preview', $leader_pic)
                                      ->with('leader_pic_filename', $leader_pic_filename)
+                                     ->with('leaders_data', $leaders)
                                      ->with('members_data', $members);
         }
 
         //表单地钻
-        $keys = ['invitecode','out_trade_no' ,'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email',
-                 'team_name', 'school_name', 'school_address', 'competition_name', 'competition_type', 'competition_group',
-                'payment'
+        $keys = ['invitecode', 'out_trade_no' ,'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 'team_name', 'school_name', 'school_address', 'competition_name', 'competition_type', 'competition_group', 'payment'
         ];
 
         $data = $request->only($keys);
         $data['leader_pic'] = $leader_pic;
         $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
+        $data['leaders'] = json_encode($leaders, JSON_UNESCAPED_UNICODE);
         $data['team_no'] = $this->team_no;
         $data['out_trade_no'] = '';
 
-        $request->session()->flash('signdata', $data);
+      
+        $dataPayload = $data;
+        $dataPayload['participant'] = $request->input('participant', '');
+        $dataPayload['account_type'] = $request->input('account_type', '');
+        $dataPayload['invoice_header'] = $request->input('invoice_header', '');
+        $dataPayload['billing_content'] = $request->input('billing_content', '');
+        $dataPayload['receive_address'] = $request->input('receive_address', '');
+        $dataPayload['average_amount'] = $request->input('average_amount', '');
+        $dataPayload['total_cost'] = $request->input('total_cost', '');
+        $dataPayload['leaders'] = $leaders;
 
-        $data['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $data['data'] = json_encode($dataPayload, JSON_UNESCAPED_UNICODE);
         $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
+     
+        // dd($data['data']);
+
+        $request->session()->flash('signdata', $data);
 
         $ddt = SignupData::create($data);
         InviteManager::useCode($data['invitecode'], $ddt->id);
@@ -304,7 +360,7 @@ class SignupController extends Controller
         // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
 
         if ($validator->fails()) {
-           return redirect()->back()->withErrors($validator->errors())->withInput();
+           // return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
         $team_no = $request->input('team_no', '');
@@ -318,6 +374,8 @@ class SignupController extends Controller
         }
 
         $request->session()->flash('signdata', $signdata->toArray());
+
+        // $request->session()->put('signdata', $signdata->toArray());
         return redirect('success');
     }
 
@@ -339,6 +397,7 @@ class SignupController extends Controller
                 'verificationcode.required' => '验证码不能为空',
                 'verificationcode.verificationcode' => '验证码不正确',
             ]);
+
         if ($validator->fails()) {
            return redirect()->back()->withErrors($validator->errors())->withInput();
         }
@@ -352,8 +411,6 @@ class SignupController extends Controller
             '15903035872',
             '13476000614', //江城
         ];
-
-
         if (! in_array($request->input('mobile'), $adminArr)) {
             return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
         }
@@ -366,7 +423,10 @@ class SignupController extends Controller
             $signdataList[$k]['members'] = json_decode($val['members'], true);
         }
 
-
+        foreach ($signdataList as $k => $val) {
+            $signdataList[$k]['data'] = json_decode($signdataList[$k]['data'], true);
+            // dd($signdataList[$k]['data']['leaders']);
+        }
 
 
         Excel::create($filename, function($excel) use($signdataList) {
@@ -386,97 +446,53 @@ class SignupController extends Controller
                 $sheet->mergeCells('H1:L1');
                 $sheet->mergeCells('M1:T1');
                 $sheet->cell('A1', '队伍信息');
-                $sheet->cell('G1', '领队信息');
-                $sheet->cell('L1', '队员信息');
-                $sheet->row(2, [
-                    // 队伍信息
-                    '队伍编号',
-                    '队伍名称',
-                    '学校/单位名称',
-                    '学校/单位地址',
-                    '赛事项目',
-                    '子赛项',
-                    '组别',
-                    // 领队信息
-                    '姓名',
-                    '身份证号',
-                    '邮箱',
-                    '手机号',
-                    '性别',
-                    // 队员信息
-                    '队员姓名',
-                    '身份证',
-                    '手机号',
-                    '性别',
-                    '年龄',
-                    '身高(单位cm)',
-                    '学校/单位名称',
-                    '学校/单位地址',
-                    ]);
+                $sheet->cell('H1', '领队信息');
+                $sheet->cell('M1', '队员信息');
+                $sheet->row(1, function($row) {
+                    $row->setAlignment('center');
+                });
+                $sheet->row(2, function($row) {
+                    $row->setAlignment('center');
+                });
+                $sheet->row(2, ['队伍编号', '队伍名称', '学校/单位名称', '学校/单位地址', '赛事项目', '子赛项', '组别', '姓名', '身份证号', '邮箱', '手机号', '性别', '队员姓名', '身份证', '手机号', '性别', '年龄', '身高(单位cm)', '学校/单位名称', '学校/单位地址',]);
 
                 $rowIndex = 3;
-
+                $rowIndexLeader = $rowIndex;
                 foreach ($signdataList as $k => $val) {
-                    $sheet->row($rowIndex++, [
-                            // 队伍信息
-                            $val['team_no'].' ',
-                            $val['team_name'],
-                            $val['school_name'],
-                            $val['school_address'],
-                            $this->getParentType($val['competition_type']),
-                            $val['competition_type'],
-                            $val['competition_group'],
-                            // 领队信息
-                            $val['leader_name'],
-                            $val['leader_id'].' ',
-                            $val['leader_email'],
-                            $val['leader_mobile'].' ',
-                            $val['leader_sex'],
-                            //
-                        ]);
-
+                    $sheet->row($rowIndex++, [ $val['team_no'].' ', $val['team_name'], $val['school_name'], $val['school_address'], $this->getParentType($val['competition_type']), $val['competition_type'], $val['competition_group'], $val['leader_name'], $val['leader_id'].' ', $val['leader_email'], $val['leader_mobile'].' ', $val['leader_sex'],]);
+                    $rowIndexLeader = $rowIndexLeader + 1;
+                    // 循环添加members内容
                     foreach ($val['members'] as $member) {
-                        $sheet->row($rowIndex++, [
-                                // 队伍信息
-                                    '',
-                                    '',
-                                    '',
-                                    '',
-                                    '',
-                                    '',
-                                    '',
-                                // 领队信息
-                                    '',
-                                    '',
-                                    '',
-                                    '',
-                                    '',
-                                // 队员信息
-                                $member['name'],
-                                $member['ID'].' ',
-                                $member['mobile'].' ',
-                                $member['sex'],
-                                $member['age'],
-                                $member['height'],
-                                $member['school_name'],
-                                isset($member['school_address']) ? $member['school_address'] : '',
-                            ]);
+                        $sheet->row($rowIndex++, ['', '', '', '', '', '', '', '', '', '', '', '', $member['name'], $member['ID'].' ', $member['mobile'].' ', $member['sex'], $member['age'], $member['height'], $member['school_name'], isset($member['school_address']) ? $member['school_address'] : '', ]);
                     }
+                    // 循环添加leaders内容
+                    foreach ($val['data']['leaders'] as $leader) {
+                        $sheet->row($rowIndexLeader++, [ '', '', '', '', '', '', '', $leader['name'], $leader['ID'].' ', $leader['email'].' ', $leader['mobile'].' ', $leader['sex'], ]);
+                    }
+                    // 给空行添加背景颜色 便于区分
+                    if ( $rowIndex>$rowIndexLeader ) {
+                        $largeNum = $rowIndex;
+                        $sheet->row($largeNum, function($row) {
+                            $row->setBackground('#DDDDDD');
+                        });
+                    }else {
+                        $largeNum = $rowIndexLeader;
+                        $sheet->row($largeNum, function($row) {
+                            $row->setBackground('#DDDDDD');
+                        });
+                    }
+                    // 让每个数据中间都加上一个空行
+                    $rowIndex = $largeNum + 1;
+                    $rowIndexLeader = $largeNum + 1;
                 }
 
-
-
-
             });
-
+            //最后一步 导出excel 表格
         })->export('xls');
-
-
     }
 
     private function getParentType($type = '')
     {
-
         $arrType = [
             '未来世界' => [
                     "WRO常规赛" => 1,
@@ -508,8 +524,6 @@ class SignupController extends Controller
                 return $k;
            }
         }
-
         return '';
-
     }
 }

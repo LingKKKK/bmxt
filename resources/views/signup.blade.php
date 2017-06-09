@@ -25,27 +25,51 @@
             <span class="instructions-span clearfix"><i style="color: red;">重要提示</i>：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于2017年世界机器人大赛—RoboCom青少年挑战赛全国总决赛，报名人员须对其提交的错误信息造成的后果负责。</span>
             <span class="instructions-span clearfix">3.联系“总通知中”各个项目的报名负责人，索取相应的项目邀请码。</span>
             <span class="instructions-span clearfix">4.每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
-            <span class="instructions-span clearfix">5.注册完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
-            <span class="instructions-span clearfix">6.注册资料填写完整，经组委会审核通过后，会在RoboCom官方网站进行公示s。</span>
-            <span class="instructions-span clearfix">7.如对网上报名有疑问，可通过联系江城（13476000614），曾令勇（ 15899948376），李达（ 15876493817）咨询。</span>
+            <span class="instructions-span clearfix">5.报名完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
+            <span class="instructions-span clearfix">6.参赛费用将不在网上报名中缴纳，具体缴费流程请参见“缴纳费用”页里的缴费流程。</span>
+            <span class="instructions-span clearfix">7.报名资料填写完整，经组委会审核通过后，会在RoboCom官方网站进行公示。</span>
+            <span class="instructions-span clearfix">8.如对网上报名有疑问，可通过联系江城（13476000614），曾令勇（ 15899948376），李达（ 15876493817）咨询。</span>
+            <h2 class="instructions-h" style="color: red;margin-top: 40px;">缴费流程如下</h2>
+            <span class="instructions-span clearfix">在线报名完成后，请根据自己所报赛项联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。2017年6月20日23:59后未缴费的队伍将被视为报名失败。</span>
+            <span class="instructions-span clearfix">1.联系相关项目的收费负责人。</span>
+            <span class="instructions-span ml20 clearfix"">a): “未来世界”项目联系人：李超 185 1020 7182    139 1025 2611</span>
+            <span class="instructions-span ml20 clearfix"">b): “工业时代”项目联系人：谢尊国 150 0077 4186</span>
+            <span class="instructions-span ml20 clearfix"">c): “博思威龙”项目参赛交费联系人：曾令勇 158 9994 8376</span>
+            <span class="instructions-span ml20 clearfix"">d): “攻城大师”、“智造大挑战” 两个项目参赛交费联系人：李达 15876493817</span>
+            <span class="instructions-span ml20 clearfix"">e): “创客生存挑战赛”项目联系人：李乔 176 0089 9441</span>
+            <span class="instructions-span ml20 clearfix"">f): &nbsp&nbsp&nbsp座机：027-84692577</span>
+            <span class="instructions-span clearfix">2.核实参赛队伍是否报名成功。并核实参赛人数。</span>
+            <span class="instructions-span clearfix">3.支付参赛注册费</span>
+            <span class="instructions-span ml20 clearfix">付款对公账户：</span>
+            <span class="instructions-span ml20 clearfix">开户名称：北京工道动力机器人技术研究院</span>
+            <span class="instructions-span ml20 clearfix">开户银行：锦州银行股份有限公司北京分行</span>
+            <span class="instructions-span ml20 clearfix">开户行号：313100022226</span>
+            <span class="instructions-span ml20 clearfix">银行账号：410100203296687</span>
 
             <h2 class="instructions-h" style="margin-top: 40px;">报名表填写说明</h2>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">邀请码</i><i class="right">由赛项负责人提供的16位邀请码，每个邀请码只能使用一次</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">姓名</i><i class="right">填写有效证件上的姓名，姓名只能包含汉字和英文</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">手机号码</i><i class="right">填写11位有效手机号码。如参赛选手没有手机则须填写带队老师或监护人手机号码。</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">邮箱</i><i class="right">填写有效邮箱地址</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">身份证号</i><i class="right">填写有效18位居民身份证号。</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">照片</i><i class="right">须上传2寸免冠登记照</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">队伍名称</i><i class="right">填写参赛队伍的名称，不接受已存在的队伍名称</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">学校/单位名称</i><i class="right">填写所属学校或单位名称</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">学校/单位地址</i><i class="right">填写所属学校或单位地址</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">赛事项目</i><i class="right">选择队伍参加的赛项</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">子赛项</i><i class="right">选择参队伍加的子赛项</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">组别</i><i class="right">选择参队伍加的组别</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">性别</i><i class="right">填写真实年龄</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">年龄</i><i class="right">填写真实性别</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">身高</i><i class="right">填写真实身高（用于制定活动用T恤尺寸）</i></span>
-            <span class="instructions-span clearfix"><i class="left" style="width: 200px;">验证码</i><i class="right">填写发送到领队手机的6位数验证码</i></span>
+            <span class="instructions-span clearfix"><i class="left">邀请码</i><i class="right">由赛项负责人提供的16位邀请码，每个邀请码只能使用一次</i></span>
+            <span class="instructions-span clearfix"><i class="left">姓名</i><i class="right">填写有效证件上的姓名，姓名只能包含汉字和英文</i></span>
+            <span class="instructions-span clearfix"><i class="left">手机号码</i><i class="right">填写11位有效手机号码。如参赛选手没有手机则须填写带队老师或监护人手机号码。</i></span>
+            <span class="instructions-span clearfix"><i class="left">邮箱</i><i class="right">填写有效邮箱地址</i></span>
+            <span class="instructions-span clearfix"><i class="left">身份证号</i><i class="right">填写有效18位居民身份证号。</i></span>
+            <span class="instructions-span clearfix"><i class="left">照片</i><i class="right">须上传2寸免冠登记照</i></span>
+            <span class="instructions-span clearfix"><i class="left">队伍名称</i><i class="right">填写参赛队伍的名称，不接受已存在的队伍名称</i></span>
+            <span class="instructions-span clearfix"><i class="left">学校/单位名称</i><i class="right">填写所属学校或单位名称</i></span>
+            <span class="instructions-span clearfix"><i class="left">学校/单位地址</i><i class="right">填写所属学校或单位地址</i></span>
+            <span class="instructions-span clearfix"><i class="left">赛事项目</i><i class="right">选择队伍参加的赛项</i></span>
+            <span class="instructions-span clearfix"><i class="left">子赛项</i><i class="right">选择参队伍加的子赛项</i></span>
+            <span class="instructions-span clearfix"><i class="left">组别</i><i class="right">选择参队伍加的组别</i></span>
+            <span class="instructions-span clearfix"><i class="left">年龄</i><i class="right">填写真实年龄</i></span>
+            <span class="instructions-span clearfix"><i class="left">性别</i><i class="right">填写真实性别</i></span>
+            <span class="instructions-span clearfix"><i class="left">身高</i><i class="right">填写真实身高（用于制定活动用T恤尺寸）</i></span>
+            <span class="instructions-span clearfix"><i class="left">人数</i><i class="right">所付费用里包含的人数（领队老师和队员的数量）</i></span>
+            <span class="instructions-span clearfix"><i class="left">账户类型</i><i class="right">缴费时使用的是公对公账户还是私对公账户</i></span>
+            <span class="instructions-span clearfix"><i class="left">发票抬头</i><i class="right">收款机构的抬头</i></span>
+            <span class="instructions-span clearfix"><i class="left">开票内容</i><i class="right">选择所需开出票据的类型</i></span>
+            <span class="instructions-span clearfix"><i class="left">收件地址</i><i class="right">票据需要邮寄到的地址</i></span>
+            <span class="instructions-span clearfix"><i class="left">金额</i><i class="right">选择单人所缴纳的费用</i></span>
+            <span class="instructions-span clearfix"><i class="left">汇款账户</i><i class="right">发票抬头账户的汇款号</i></span>
+            <span class="instructions-span clearfix"><i class="left">验证码</i><i class="right">填写发送到领队手机的6位数验证码</i></span>
             <div class="clear"></div>
             <a id="btn-read" type="button">我同意</a>
             <span class="span-read">阅读,并同意</span>
@@ -58,7 +82,7 @@
                         <li class="active">带队老师信息</li>
                         <li>队伍参赛信息</li>
                         <li>队员信息</li>
-                        <li>缴费信息</li>
+                        <li>开票信息</li>
                         <li>信息确认</li>
                     </ul>
                 </div>
@@ -90,7 +114,6 @@
                             <input required data-type="ID" tip-info="仅支持数字以及个别英文" class="input-field-text" id="leader_id" name="leader_id" type="text" value="{{old('leader_id')}}">
                             <div class="tips"></div>
                         </div>
-
                         <div class="input-field">
                             <span class="input-label">性别  :</span>
                             <input class="input-radio man" type="radio" name="leader_sex" @if(old('leader_sex') == '' || old('leader_sex') == '男') checked="checked" @endif value="男"><span>男</span>
@@ -103,6 +126,8 @@
                             <div class="tips"></div>
                             <span class="file_name" id="file_name">{{session('leader_pic_filename')}}</span>
                         </div>
+                        <div class="clearfix other_leader"></div>
+                        <button type="button" class="add_leader">添加领队信息</button>
                         <button type="button" class="btn_next" id="leader_info_btn">下一步</button>
                     </div>
                     <div class="ranks_info div_tab">
@@ -209,19 +234,48 @@
                             <input class="input-radio woman" type="radio" name="payment" disabled value="现场缴费"><span style="color: #ccc" >现场缴费(暂不支持)</span>
                         </div>
                         <div class="enroll-notice">
-                            <h4>缴费流程如下：</h4>
-                            <p>在线报名完成后，请根据自己所报赛项联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。2017年6月20日23:59后未缴费的队伍将被视为报名失败。</p>
-                            <span>1.联系相关项目的收费负责人。</span>
-                            <span>a):“博思威龙”、“工业时代”两个项目参赛交费联系人：曾令勇 15899948376</span>
-                            <span>b):“攻城大师”、“智造大挑战” 两个项目参赛交费联系人：李达 15876493817</span>
-                            <span>c) 座机：027-84692577</span>
-                            <span>2.核实参赛队伍是否报名成功。并核实参赛人数。</span>
-                            <span>3.支付参赛注册费</span>
-                            <span style="font-weight: bold;">付款对公账户：</span>
-                            <span>开户名称：北京工道动力机器人技术研究院</span>
-                            <span>开户银行：锦州银行股份有限公司北京分行</span>
-                            <span>开户行号：313100022226</span>
-                            <span>银行账号：410100203296687</span>
+                            <h4>开票信息: </h4>
+                            <!-- <p>在线报名完成后，请根据自己所报赛项联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。2017年6月20日23:59后未缴费的队伍将被视为报名失败。</p> -->
+                            <p style="font-size: 12px;">付款对公账户：<br>开户名称：北京工道动力机器人技术研究院<br>开户银行：锦州银行股份有限公司北京分行<br>开户行号：313100022226<br>银行账号：410100203296687</p>
+                            <div class="input-field">
+                                <span class="input-label">人数(*包括领队老师和队员) :</span>
+                                <span id="participant" style="margin-bottom: 18px;display: block;line-height: 26px;font-size: 14px;"></span>
+                                <input style="display: none;" class="input-field-text" id="participant-input" name="participant" type="text" value="{{old('participant')}}">
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label" style="width: 210px;">账户类型  :</span>
+                                <input class="input-type man" type="radio" name="account_type" @if(old('account_type') == '' || old('account_type') == '公对公账户') checked="checked" @endif value="公对公账户"><span>公对公账户</span>
+                                <input class="input-type woman" type="radio" name="account_type"  @if(old('account_type') == '私对公账户') checked="checked" @endif value="私对公账户"><span>私对公账户</span>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">发票抬头(*收款机构的抬头) :</span>
+                                <input required data-type='account_type' class="input-field-text" id="invoice_header" name="invoice_header" type="text" value="{{old('invoice_header')}}">
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">开票内容  :</span>
+                                <select id="billing_content" name="billing_content" class="input-field-text">
+                                    <option value="参赛费" selected >参赛费</option>
+                                    <option value="技术服务费" >技术服务费</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">收件地址 :</span>
+                                <input required data-type='account_type' class="input-field-text" id="receive_address" name="receive_address" type="text" value="{{old('receive_address')}}">
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">金额(每人)  :</span>
+                                <select id="average_amount" name="average_amount" class="input-field-text">
+                                    <option value="1500" selected >1500</option>
+                                    <option value="1800" >1800</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">您需要支付的总费用为  :</span>
+                                <span id="total_cost" style="margin-bottom: 18px;display: block;line-height: 26px;font-size: 14px;"></span>
+                                <input style="display: none;" class="input-field-text" id="total_cost_input" name="total_cost" type="text" value="{{old('total_cost')}}">
+                            </div>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
@@ -251,6 +305,35 @@
                                 <span id="preview_leader_sex" class="name_input"></span>
                             </div>
                             <img style="" id="preview_leader_pic" src="" >
+                            <div class="team_leader" id="number-leader">
+                                @for($i = 0; $i< 10; $i++)
+                                <div id="leader_info_{{$i}}" class="leader_info" style="display: none;">
+                                    <div class="cut"></div>
+                                    <div class="input-field">
+                                        <span class="name">领队姓名 :</span>
+                                        <span data-type="character" id="{{'preview_'.$i.'_leader_name'}}" class="name_input"></span>
+                                        <span data-type="character" id="preview_leaders[1][name]" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">身份证 :</span>
+                                        <span id="{{'preview_'.$i.'_leader_id'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">邮箱 :</span>
+                                        <span id="{{'preview_'.$i.'_leader_email'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">手机号 :</span>
+                                        <span id="{{'preview_'.$i.'_leader_mobile'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">性别 :</span>
+                                        <span id="{{'preview_'.$i.'_leader_sex'}}" class="name_input"></span>
+                                    </div>
+                                    <img id="{{'preview_'.$i.'_leader_pic'}}" src="" >
+                                </div>
+                                @endfor
+                            </div>
                         </div>
                         <div class="leader" id="team">
                             <span class="leader_title">队伍信息</span>
@@ -325,15 +408,33 @@
                                     <img id="{{'preview_'.$i.'_member_pic'}}" src="" >
                                 </div>
                                 @endfor
-
                             </div>
                         </div>
-                        <!-- <div class="pays clearfix" id="pays">
-                            <span class="leader_title">缴费信息</span>
+                        <div class="pays clearfix" id="pays">
+                            <span class="leader_title">开票信息</span>
                             <div class="cut"></div>
-                            <span class="name">支付方式 :</span>
-                            <span id="preview_payment" class="name_input" ></span>
-                        </div> -->
+                            <span class="name">人数 :</span>
+                            <span id="preview_participant-input" class="name_input">{{$signdata['participant-input'] or ''}}</span>
+                            <div class="clearfix clear"></div>
+                            <span class="name">金额(每人) :</span>
+                            <span id="preview_average_amount" class="name_input">{{$signdata['average_amount'] or ''}}</span>
+                            <div class="clearfix clear"></div>
+                            <span class="name">总费用 :</span>
+                            <span id="preview_total_cost_input" class="name_input">{{$signdata['total_cost_input'] or ''}}</span>
+                            <div class="clearfix clear"></div>
+                            <span class="name">账户类型 :</span>
+                            <span id="preview_account_type" class="name_input">{{$signdata['account_type'] or ''}}</span>
+                            <div class="clearfix clear"></div>
+                            <span class="name">发票抬头 :</span>
+                            <span id="preview_invoice_header" class="name_input">{{$signdata['invoice_header'] or ''}}</span>
+                            <div class="clearfix clear"></div>
+                            <span class="name">开票内容</span>
+                            <span id="preview_billing_content" class="name_input">{{$signdata['billing_content'] or ''}}</span>
+                            <div class="clearfix clear"></div>
+                            <span class="name">收件地址</span>
+                            <span id="preview_receive_address" class="name_input">{{$signdata['receive_address'] or ''}}</span>
+                            <div class="clearfix clear"></div>
+                        </div>
                         <div id="code" class="clearfix">
                             <span class="input-label">验证码  :</span>
                             <!-- <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
@@ -490,6 +591,14 @@
             }
             return true;
         }
+        //账户类型判断
+        function Accountype(val) {
+            var getVal = $('input[name="account_type"]:checked').val();
+            if(getVal == '公对公账户') {
+                return false;
+            }
+            return true;
+        }
         //身份证
         function isID(val) {
             var vcity={ 11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古", 21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏", 33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南", 42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆", 51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃", 63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"};
@@ -563,6 +672,11 @@
                     $el.tipWarn('身份证号格式不正确');
                     return false;
                 }
+                if (datatype == 'account_type' && ! Accountype(val)) {
+                    // // $('input[data-type="account_type"]').attr("required", "true");
+                    // $el.tipInfo('选择公对公账户时,这一部分必填');
+                    // return false;
+                }
             }
             $el.tipValid();
             return true;
@@ -598,17 +712,18 @@
                 validField(this);
                 $(this).siblings('.file_name').html('');
                 if ($(this).attr('files')) {
+                    console.log(1);
                     var f = $(this).attr('files')[0];
                     if(f)
                     {
-                        // console.log(f.name);
+                        console.log(f.name);
                         // console.dir($(this));
                         // $(this).val(f.name);
                         $(this).siblings('.file_name').html(f.name);
                     }
                 }
              });
-            // 添加删除按钮
+            // 队员部分,添加删除按钮
             $('.append_rank .menber_list .delete').unbind('click').click(function(){
                 $(this).parent('.menber_list').remove();
                 if ($('.all_info .append_rank .menber_list').length > 8) {
@@ -618,6 +733,21 @@
                     });
                 }else {
                     $('#append_rank_new').css({
+                        'pointer-events': 'auto',
+                        'background': '#587BEF'
+                    });
+                }
+            })
+            // 领队部分,添加删除按钮
+            $('.other_leader .leader_list .delete').unbind('click').click(function(){
+                $(this).parent('.leader_list').remove();
+                if ($('.all_info .other_leader .leader_list').length > 3) {
+                    $('.add_leader').css({
+                        'pointer-events': 'none',
+                        'background': '#ccc'
+                    });
+                }else {
+                    $('.add_leader').css({
                         'pointer-events': 'auto',
                         'background': '#587BEF'
                     });
@@ -773,6 +903,42 @@
 
                 }
             });
+            // 领队信息部分
+            $('.other_leader > .leader_list').each(function(index){
+                var mapKey = new Array('leader_name', 'leader_id' ,'leader_mobile', 'leader_email', 'leader_sex', 'leader_pic');
+                for (var i = 0; i < mapKey.length; i++) {
+                    var key = mapKey[i];
+                    var $el = $($(this).find('.'+key)[0]);
+                    var type = $el.prop('type');
+                    var val = $el.val();
+                    if(type == 'radio')
+                    {
+                        val = $($(this)).find('.'+key+":checked").val();
+                    }
+                    var preview_el = '#preview_'+index+'_'+key;
+                    if (type == 'file') {
+                        var picurl = $el.data('picurl');
+                        if (picurl) {
+                            $(preview_el).attr('src', picurl);
+                            continue;
+                        }
+                        var fileObj = $el.prop('files');
+                        if (fileObj) {
+                            if ($el.prop('files')) {
+                                var f = $el.prop('files')[0];
+                                if(f){
+                                    $(preview_el).attr('src', URL.createObjectURL(f));
+                                }
+                            }
+                        }
+                        continue;
+                    }
+                    $(preview_el).html(val);
+                }
+                console.log('show');
+                $('#leader_info_'+index).show();
+            })
+            // 队员信息部分
             $('.append_rank > .menber_list').each(function(index){
                 var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_height', 'member_school_name', 'member_school_address', 'member_pic');
                 for (var i = 0; i < mapKey.length; i++) {
@@ -828,6 +994,7 @@
                     }
                     $(preview_el).html(val);
                 }
+                console.log('show');
                 $('#member_info_'+index).show();
             })
             // 隐藏显示界面的空行
@@ -992,21 +1159,99 @@
                 rebindVlidation();
                 memberListNum +=1;
             }
+            $('.add_leader').click(function(event) {
+                addleaderList();
+                if ($('.all_info .other_leader .leader_list').length > 2) {
+                    $('.add_leader').css({
+                        'pointer-events': 'none',
+                        'background': '#ccc'
+                    });
+                }else {
+                    $('.add_leader').css({
+                        'pointer-events': 'auto',
+                        'background': '#587BEF'
+                    });
+                }
+            });
+            //添加领队列表
+            var leaderListNum = 1;
+            function addleaderList(){
+                var leaderList = '';
+                leaderList += '<div class="leader_list">';
+                leaderList += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
+
+                leaderList += '<div class="input-field">';
+                leaderList += '<span class="input-label">领队姓名('+ leaderListNum +'):</span>';
+                leaderList += '<input data-type="character" required tip-info="仅支持汉字、英文" name="leaders['+leaderListNum+'][name]" class="input-field-text leader_name" type="text">';
+                leaderList += '<div class="tips"></div>';
+                leaderList += '<div class="clearfix"></div>';
+                leaderList += '</div>';
+
+                leaderList += '<div class="input-field">';
+                leaderList += '<span class="input-label">手机号码  :</span>';
+                leaderList += '<input data-type="mobile" required tip-info="仅支持英文、数字、下划线" name="leaders['+leaderListNum+'][mobile]" class="input-field-text leader_mobile" type="text">';
+                leaderList += '<div class="tips"></div>';
+                leaderList += '<div class="clearfix"></div>';
+                leaderList += '</div>';
+
+                leaderList += '<div class="input-field">';
+                leaderList += '<span class="input-label">邮箱  :</span>';
+                leaderList += '<input data-type="email" required tip-info="请按照正确的邮箱格式填写" name="leaders['+leaderListNum+'][email]" class="input-field-text leader_email" type="text">';
+                leaderList += '<div class="tips"></div>';
+                leaderList += '<div class="clearfix"></div>';
+                leaderList += '</div>';
+
+                leaderList += '<div class="input-field">';
+                leaderList += '<span class="input-label">身份证号  :</span>';
+                leaderList += '<input required data-type="ID" tip-info="请输入合法的身份证号格式" name="leaders['+leaderListNum+'][ID]" class="input-field-text leader_id" type="text">';
+                leaderList += '<div class="tips"></div>';
+                leaderList += '<div class="clearfix"></div>';
+                leaderList += '</div>';
+
+                leaderList += '<div class="input-field">';
+                leaderList += '<span class="input-label">性别  :</span>';
+                leaderList += '<input name="leaders['+leaderListNum+'][sex]" class="input-radio man leader_sex" type="radio" checked="checked" name="sex" value="男"><span>男</span>';
+                leaderList += '<input name="leaders['+leaderListNum+'][sex]" class="input-radio woman leader_sex" type="radio" name="sex" value="女"><span>女</span>';
+                leaderList += '<div class="clearfix"></div>';
+                leaderList += '</div>';
+
+                leaderList += '<div class="input-field">';
+                leaderList += '<span class="input-label">领队照片  :</span>';
+                leaderList += '<div class="uploadBtn">上传图片</div>';
+                leaderList += '<input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="leaders['+leaderListNum+'][pic]" id="" type="file" class="inputstyle leader_pic"  onchange="dox2(this, \'preview_'+(leaderListNum-1)+'_leader_pic\')">';
+                leaderList += '<div class="tips"></div>';
+                // leaderList += '<span class="file_name">{{session("leader_pic_filename")}}</span>';
+                leaderList += '<div class="clearfix"></div>';
+                leaderList += '<div class="cut"></div>';
+                leaderList += '</div>';
+                $('.leader_info .other_leader').append(leaderList);
+                leaderListNum +=1;
+                rebindVlidation();
+            }
             var tabIndex = 0;
             // 点击切换 进行下一步
             $('.btn_next').click(function(){
+                var num = $('.append_rank .menber_list').length + 1 + $('.other_leader .leader_list').length;
+                $('#participant').text(num);
+                $('#participant-input').val(num);
+                var price = $('#average_amount option:selected').val();
+                var total = num * price;
+                $('#total_cost').text(total);
+                $('#total_cost_input').val(total);
+
                 var prevent = false;
-                var $inputs = $($('.all_info .div_tab').get(tabIndex)).find('input').each(function(){
-                   var ret = validField(this);
-                   if (!ret) {
-                     prevent = true;
-                   }
+                var $inputs = $($('.all_info .div_tab').get(tabIndex)).find('input').each(function() {
+                    var ret = validField(this);
+                    if (!ret) {
+                        prevent = true;
+                    }
                 });
                 if (!prevent) {
                     tabIndex +=1;
                 }
                 showTab(tabIndex);
             });
+
             // 返回上一步
             $('.btn_pre').click(function(){
                 tabIndex -=1;
@@ -1037,7 +1282,6 @@
                $('#tipes i').html($('#leader_mobile').val());
                // countdown();
             }else {
-               // console.log('格式错误');
             }
         });
         // IE有关的判断;
@@ -1166,9 +1410,7 @@
             for (var i = 0; i < as.length; i++) {
                 //  group
                 var op = new Option(as[i], as[i]);
-                // console.log(as[i], i)
                 areaEle.options.add(op);
-                // console.log(areaEle)
             }
             if(($('#competition_name option').text() == "智造大挑战") || ($('#competition_name option').text() == "智造大挑战")){
                 $('#competition_name').css({
@@ -1225,12 +1467,9 @@
             }
         }
         function dox2(obj, id) {
-            // console.log(obj, id)
-
             var ieVersion = detectIE();
             if(ieVersion == 'ie8'){
                 if (obj) {
-                    // console.log("图片预览")
                     obj.select();
                     obj.blur();
                     var nfile = document.selection.createRange().text;
@@ -1255,6 +1494,26 @@
                 // console.log('非ie 8 9 版本')
             }
         }
+        // 点击单选框时  发票和地址required的属性添加和删除
+        $('.enroll-notice').find('input[name="account_type"]').change(function(){
+            var getVal = $('input[name="account_type"]:checked').val();
+            if (getVal == '公对公账户') {
+                $('input[type="text"]').attr("required", "true");
+            }else {
+                $('input[data-type="account_type"]').removeAttr('required');
+            }
+        })
+        // 切换金额的时候  总费用相对的改变
+        $('#average_amount').change(function(){
+            var num = $('.append_rank .menber_list').length + 1 + $('.other_leader .leader_list').length;
+            $('#participant').text(num);
+            $('#participant-input').val(num);
+            var price = $('#average_amount option:selected').val();
+            var total = num * price;
+            $('#total_cost').text(total);
+            $('#total_cost_input').val(total);
+        })
+
     </script>
 </body>
 </html>
