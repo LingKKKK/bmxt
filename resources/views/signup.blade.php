@@ -1174,8 +1174,12 @@
                         'background': '#587BEF'
                     });
                     leaderListNum = 1;
+                    addleaderList();
+                    $('.add_leader').css({
+                        'pointer-events': 'none',
+                        'background': '#ccc'
+                    });
                 }
-                addleaderList();
             });
             function addleaderList(){
                 var leaderList = '';
