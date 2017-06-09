@@ -259,18 +259,23 @@ body .content .all_info .leader_info .other_leader {
   border-top: 1px solid #DDD;
   padding-top: 50px;
   padding-bottom: 50px;
+  position: relative;
 }
 body .content .all_info .leader_info .other_leader .leader_list {
   border-bottom: 1px solid #DDD;
   margin-bottom: 50px;
 }
 body .content .all_info .leader_info .other_leader .leader_list .delete {
-  cursor: pointer;
+  width: 10px;
+  height: 10px;
   position: absolute;
-  right: 100px;
+  top: 30px;
+  right: 50px;
+  cursor: pointer;
+  display: block;
 }
 body .content .all_info .leader_info .other_leader .leader_list .delete i {
-  font-size: 35px;
+  font-size: 32px;
 }
 body .content .all_info .ranks_info select {
   background: #FFFFFF;

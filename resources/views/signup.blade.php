@@ -741,7 +741,7 @@
             // 领队部分,添加删除按钮
             $('.other_leader .leader_list .delete').unbind('click').click(function(){
                 $(this).parent('.leader_list').remove();
-                if ($('.all_info .other_leader .leader_list').length > 3) {
+                if ($('.all_info .other_leader .leader_list').length > 0) {
                     $('.add_leader').css({
                         'pointer-events': 'none',
                         'background': '#ccc'
@@ -751,6 +751,7 @@
                         'pointer-events': 'auto',
                         'background': '#587BEF'
                     });
+                    leaderListNum = 1;
                 }
             })
             //上传 队员照片
@@ -935,7 +936,7 @@
                     }
                     $(preview_el).html(val);
                 }
-                console.log('show');
+                // console.log('show');
                 $('#leader_info_'+index).show();
             })
             // 队员信息部分
@@ -994,7 +995,7 @@
                     }
                     $(preview_el).html(val);
                 }
-                console.log('show');
+                // console.log('show');
                 $('#member_info_'+index).show();
             })
             // 隐藏显示界面的空行
@@ -1159,9 +1160,10 @@
                 rebindVlidation();
                 memberListNum +=1;
             }
+            //添加领队列表
+            var leaderListNum = 1;
             $('.add_leader').click(function(event) {
-                addleaderList();
-                if ($('.all_info .other_leader .leader_list').length > 2) {
+                if ($('.all_info .other_leader .leader_list').length > 0) {
                     $('.add_leader').css({
                         'pointer-events': 'none',
                         'background': '#ccc'
@@ -1171,10 +1173,10 @@
                         'pointer-events': 'auto',
                         'background': '#587BEF'
                     });
+                    leaderListNum = 1;
                 }
+                addleaderList();
             });
-            //添加领队列表
-            var leaderListNum = 1;
             function addleaderList(){
                 var leaderList = '';
                 leaderList += '<div class="leader_list">';

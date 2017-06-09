@@ -55,7 +55,7 @@
                     <div class="leader" id="leader">
                         <span class="leader_title">领队信息</span>
                         <div class="cut"></div>
-                        <span class="name">真实姓名 :</span>
+                        <span class="name">领队姓名 :</span>
                         <span  id="preview_leader_name" class="name_input" >{{$signdata['leader_name'] or ''}}</span>
                         <div class="clearfix clear"></div>
                         <span class="name">身份证号 :</span>
