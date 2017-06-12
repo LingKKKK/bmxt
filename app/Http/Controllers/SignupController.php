@@ -111,7 +111,7 @@ class SignupController extends Controller
         // $signdata = $request->session()->pull('signdata');   /*检测一次内容*/
         $signdata = $this->fetchSignData();
         if ($signdata) {
-            
+
             return view('success', compact('signdata'));
         }
 
@@ -234,7 +234,7 @@ class SignupController extends Controller
         $data['team_no'] = $this->team_no;
         $data['out_trade_no'] = '';
 
-      
+
         $dataPayload = $data;
         $dataPayload['participant'] = $request->input('participant', '');
         $dataPayload['account_type'] = $request->input('account_type', '');
@@ -247,7 +247,7 @@ class SignupController extends Controller
 
         $data['data'] = json_encode($dataPayload, JSON_UNESCAPED_UNICODE);
         $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
-     
+
         // dd($data['data']);
 
         $request->session()->flash('signdata', $data);
@@ -428,7 +428,6 @@ class SignupController extends Controller
             // dd($signdataList[$k]['data']['leaders']);
         }
 
-
         Excel::create($filename, function($excel) use($signdataList) {
 
             // Set the title
@@ -462,11 +461,12 @@ class SignupController extends Controller
                     $sheet->row($rowIndex++, [ $val['team_no'].' ', $val['team_name'], $val['school_name'], $val['school_address'], $this->getParentType($val['competition_type']), $val['competition_type'], $val['competition_group'], $val['leader_name'], $val['leader_id'].' ', $val['leader_email'], $val['leader_mobile'].' ', $val['leader_sex'],]);
                     $rowIndexLeader = $rowIndexLeader + 1;
                     // 循环添加members内容
-                    foreach ($val['members'] as $member) {
+                    // dd($val['members']);
+                    foreach ((array)$val['members'] as $member) {
                         $sheet->row($rowIndex++, ['', '', '', '', '', '', '', '', '', '', '', '', $member['name'], $member['ID'].' ', $member['mobile'].' ', $member['sex'], $member['age'], $member['height'], $member['school_name'], isset($member['school_address']) ? $member['school_address'] : '', ]);
                     }
                     // 循环添加leaders内容
-                    foreach ($val['data']['leaders'] as $leader) {
+                    foreach ((array)$val['data']['leaders'] as $leader) {
                         $sheet->row($rowIndexLeader++, [ '', '', '', '', '', '', '', $leader['name'], $leader['ID'].' ', $leader['email'].' ', $leader['mobile'].' ', $leader['sex'], ]);
                     }
                     // 给空行添加背景颜色 便于区分
