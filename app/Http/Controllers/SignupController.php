@@ -190,7 +190,7 @@ class SignupController extends Controller
         $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
 
         foreach ($origin_members as $k => $item) {
-            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name', 'school_address' ,'height']);
+            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name', 'school_address' ,'height', 'id_type']);
             $pic = isset($item['pic']) ? $item['pic'] : null;
 
             $member_picdata = $this->saveFile($item['pic']);
@@ -443,7 +443,7 @@ class SignupController extends Controller
             $excel->sheet('报名数据', function($sheet) use($signdataList) {
                 $sheet->mergeCells('A1:G1');
                 $sheet->mergeCells('H1:L1');
-                $sheet->mergeCells('M1:T1');
+                $sheet->mergeCells('M1:U1');
                 $sheet->cell('A1', '队伍信息');
                 $sheet->cell('H1', '领队信息');
                 $sheet->cell('M1', '队员信息');
@@ -453,7 +453,7 @@ class SignupController extends Controller
                 $sheet->row(2, function($row) {
                     $row->setAlignment('center');
                 });
-                $sheet->row(2, ['队伍编号', '队伍名称', '学校/单位名称', '学校/单位地址', '赛事项目', '子赛项', '组别', '姓名', '身份证号', '邮箱', '手机号', '性别', '队员姓名', '身份证', '手机号', '性别', '年龄', '身高(单位cm)', '学校/单位名称', '学校/单位地址',]);
+                $sheet->row(2, ['队伍编号', '队伍名称', '学校/单位名称', '学校/单位地址', '赛事项目', '子赛项', '组别', '姓名', '身份证号', '邮箱', '手机号', '性别', '队员姓名', '证件类型', '证件号', '手机号', '性别', '年龄', '身高(单位cm)', '学校/单位名称', '学校/单位地址',]);
 
                 $rowIndex = 3;
                 $rowIndexLeader = $rowIndex;
@@ -463,7 +463,7 @@ class SignupController extends Controller
                     // 循环添加members内容
                     // dd($val['members']);
                     foreach ((array)$val['members'] as $member) {
-                        $sheet->row($rowIndex++, ['', '', '', '', '', '', '', '', '', '', '', '', $member['name'], $member['ID'].' ', $member['mobile'].' ', $member['sex'], $member['age'], $member['height'], $member['school_name'], isset($member['school_address']) ? $member['school_address'] : '', ]);
+                        $sheet->row($rowIndex++, ['', '', '', '', '', '', '', '', '', '', '', '', $member['name'], isset($member['id_type']) ? $member['id_type'] : '身份证', $member['ID'].' ', $member['mobile'].' ', $member['sex'], $member['age'], $member['height'], $member['school_name'], isset($member['school_address']) ? $member['school_address'] : '', ]);
                     }
                     // 循环添加leaders内容
                     foreach ((array)$val['data']['leaders'] as $leader) {

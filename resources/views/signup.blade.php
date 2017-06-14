@@ -177,9 +177,16 @@
                                 <input data-type="character" required tip-info="仅支持汉字、英文" name="members[{{$i}}][name]" class="input-field-text member_name" type="text" value="{{$member['name']}}">
                                 <div class="tips"></div>
                             </div>
-                            <div class="input-field">
-                                <span class="input-label">身份证号  :</span>
-                                <input data-type="ID" required data-type="ID" tip-info="请输入合法的身份证号格式" name="members[{{$i}}][ID]" class="input-field-text member_id" type="text" value="{{$member['ID']}}">
+                            <div class="input-field id_type">
+                                <span class="input-label">证件类型  :</span>
+                                <select name="members[{{$i}}][id_type]" class="input-field-text member_id_type">
+                                    <option value="身份证" selected >身份证</option>
+                                    <option value="护照" >护照</option>
+                                </select>
+                            </div>
+                            <div class="input-field id_card">
+                                <span class="input-label">身份证号/护照号  :</span>
+                                <input required data-type="ID" required tip-info="请输入合法的身份证号/护照号的格式" name="members[{{$i}}][ID]" class="input-field-text member_id" type="text" value="{{$member['ID']}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
@@ -378,7 +385,11 @@
                                         <span data-type="character" id="{{'preview_'.$i.'_member_name'}}" class="name_input"></span>
                                     </div>
                                     <div class="input-field">
-                                        <span class="name">身份证 :</span>
+                                        <span class="input-label name">证件类型  :</span>
+                                        <span id="{{'preview_'.$i.'_member_id_type'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field id_card">
+                                        <span class="name">证件号码 :</span>
                                         <span id="{{'preview_'.$i.'_member_id'}}" class="name_input"></span>
                                     </div>
                                     <div class="input-field">
@@ -599,6 +610,14 @@
             }
             return true;
         }
+        //取消身份证验证
+        function Alltype(val) {
+            if( 1 == 2) {
+                return false;
+            }
+            console.log("Alltype");
+            return true;
+        }
         //身份证
         function isID(val) {
             var vcity={ 11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古", 21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏", 33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南", 42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆", 51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃", 63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"};
@@ -619,8 +638,6 @@
             var datatype = $el.data('type');// 数据类型 email , mobile , ID,
             if (type == 'file') {
                 // console.log($el.attr('required'));
-                // console.log(val);
-                // console.log(';;;;;;;;;;;;;;');
                 if (!!$el.attr('required') && val == "") {
                     $el.tipWarn('照片不能为空');
                     return false;
@@ -675,7 +692,10 @@
                 if (datatype == 'account_type' && ! Accountype(val)) {
                     // // $('input[data-type="account_type"]').attr("required", "true");
                     // $el.tipInfo('选择公对公账户时,这一部分必填');
-                    // return false;
+                    // return false;   allType
+                }
+                if (datatype == 'all_type' && ! Alltype(val)) {
+                    return true;
                 }
             }
             $el.tipValid();
@@ -712,7 +732,6 @@
                 validField(this);
                 $(this).siblings('.file_name').html('');
                 if ($(this).attr('files')) {
-                    console.log(1);
                     var f = $(this).attr('files')[0];
                     if(f)
                     {
@@ -836,6 +855,19 @@
             $('.codeError .close').unbind('click').click(function() {
                 $('.codeError').removeClass('active');
             });
+            //  切换证件类型
+            $('.menber_list .id_type .input-field-text').unbind('change').change(function (){
+                var getVal = $(this).find('option:selected').text();
+                if ( getVal == "身份证") {
+                    $(this).parents('.input-field').siblings('.id_card').find('input').attr("required", "true");
+                    $(this).parents('.input-field').siblings('.id_card').find('input').attr("data-type", "ID");
+                    $(this).parents('.input-field').siblings('.id_card').find('.input-label').text("身份证号  :");
+                } else {
+                    $(this).parents('.input-field').siblings('.id_card').find('input').removeAttr('required');
+                    $(this).parents('.input-field').siblings('.id_card').find('input').attr("data-type", "Alltype");
+                    $(this).parents('.input-field').siblings('.id_card').find('.input-label').text("护照号  :");
+                }
+            })
         }
         function detectIE()
         {
@@ -900,8 +932,11 @@
                             }
                         }
                     }
-
-
+                }
+                //select
+                if (type == 'select-one') {
+                    var chkVal = $('select[name="'+name+'"]').find('option:selected').val();
+                    $('#preview_' + name).html(chkVal);
                 }
             });
             // 领队信息部分
@@ -941,7 +976,7 @@
             })
             // 队员信息部分
             $('.append_rank > .menber_list').each(function(index){
-                var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_height', 'member_school_name', 'member_school_address', 'member_pic');
+                var mapKey = new Array('member_name', 'member_id' ,'member_mobile', 'member_age', 'member_sex', 'member_height', 'member_school_name', 'member_school_address', 'member_pic', 'member_id_type', 'member_passport');
                 for (var i = 0; i < mapKey.length; i++) {
                     var key = mapKey[i];
                     var $el = $($(this).find('.'+key)[0]);
@@ -999,9 +1034,31 @@
                 $('#member_info_'+index).show();
             })
             // 隐藏显示界面的空行
-            if ($('#team_id').text() == "") {
-                $('#team_id').parents('.input-field').css('display', 'none');
+            function aaa(){
+                if ($('#team_id').text() == "") {
+                    $('#team_id').parents('.input-field').css('display', 'none');
+                }
             }
+            // 隐藏显示界面的空行
+            function bbb(){
+                if ($('#number .member_info .name_input').text() == "") {
+                    $('#number .member_info .name_input').parents('.input-field').css('display', 'none');
+                }
+            }
+            aaa();
+            function showIDPassport(){
+                $('.append_rank .menber_list .id_type .member_id_type').each(function() {
+                    var getVal = $(this).find('option:selected').text();
+                    var idHtml = $(this).parents('.input-field').siblings('.id_card').find('input').val();
+                    var passHtml = $(this).parents('.input-field').siblings('.passport').find('input').val();
+                    if ( getVal == "身份证") { 
+                        $(this).parents('.input-field').siblings('.passport').find('input').val(idHtml);
+                    }else {
+                        $(this).parents('.input-field').siblings('.id_card').find('input').val(passHtml);
+                    }
+                });
+            };
+            // showIDPassport();
         }
         $(function(){
             $('#input-read').click(function (){
@@ -1101,9 +1158,19 @@
                 memberList += '<div class="clearfix"></div>';
                 memberList += '</div>';
 
-                memberList += '<div class="input-field">';
-                memberList += '<span class="input-label">身份证号  :</span>';
-                memberList += '<input required data-type="ID" tip-info="请输入合法的身份证号格式" name="members['+memberListNum+'][ID]" class="input-field-text member_id" type="text">';
+                memberList += '<div class="input-field id_type">';
+                memberList += '<span class="input-label">证件类型:</span>';
+                memberList += '<select data-type="character" required tip-info="仅支持汉字、英文" name="members['+memberListNum+'][id_type]" class="input-field-text member_id_type" type="text">';
+                memberList += '<option value="身份证" selected >身份证</option>';
+                memberList += '<option value="护照" >护照</option>';
+                memberList += '</select>';
+                memberList += '<div class="tips"></div>';
+                memberList += '<div class="clearfix"></div>';
+                memberList += '</div>';
+
+                memberList += '<div class="input-field id_card">';
+                memberList += '<span class="input-label id_card">身份证号  :</span>';
+                memberList += '<input required data-type="ID" tip-info="请输入合法的证件号格式" name="members['+memberListNum+'][ID]" class="input-field-text member_id" type="text">';
                 memberList += '<div class="tips"></div>';
                 memberList += '<div class="clearfix"></div>';
                 memberList += '</div>';
@@ -1209,7 +1276,7 @@
 
                 leaderList += '<div class="input-field">';
                 leaderList += '<span class="input-label">身份证号  :</span>';
-                leaderList += '<input required data-type="ID" tip-info="请输入合法的身份证号格式" name="leaders['+leaderListNum+'][ID]" class="input-field-text leader_id" type="text">';
+                leaderList += '<input required data-type="ID" tip-info="请输入合法的证件号格式" name="leaders['+leaderListNum+'][ID]" class="input-field-text leader_id" type="text">';
                 leaderList += '<div class="tips"></div>';
                 leaderList += '<div class="clearfix"></div>';
                 leaderList += '</div>';

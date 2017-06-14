@@ -309,6 +309,9 @@ body .content .all_info .append_rank .title-span {
 body .content .all_info .append_rank .menber_list {
   position: relative;
 }
+body .content .all_info .append_rank .menber_list .active {
+  display: none;
+}
 body .content .all_info .append_rank .menber_list .user_age {
   background: #FFFFFF;
   border: 1px solid #CCCCCC;
@@ -472,11 +475,9 @@ body .content .all_info .team_info .all_number .leader_title {
   margin-top: 31px;
   margin-bottom: 5px;
 }
-body .content .all_info .team_info .all_number .team_number {
-  padding-bottom: 30px;
-}
 body .content .all_info .team_info .all_number .team_number .member_info {
   position: relative;
+  border-bottom: 1px solid #ddd;
 }
 body .content .all_info .team_info .all_number .team_number .member_info .name {
   font-family: PingFangSC-Regular;

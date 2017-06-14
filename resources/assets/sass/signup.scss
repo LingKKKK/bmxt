@@ -266,6 +266,10 @@ body {
                     
                 .menber_list {
                     position: relative;
+                    
+                    .active {
+                        display: none;
+                    }
 
                     .user_age {
                         background: #FFFFFF;
@@ -447,11 +451,10 @@ body {
                         margin-bottom: 5px;
                     }
                     .team_number {
-                        padding-bottom: 30px;
                         
                         .member_info {
                             position: relative;
-
+                            border-bottom: 1px solid #ddd;
 
                             .name {
                                 font-family: PingFangSC-Regular;

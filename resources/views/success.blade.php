@@ -110,7 +110,10 @@
                                 <span class="name">队员姓名 :</span>
                                 <span  class="name_input">{{$member['name'] or ''}}</span>
                                 <div class="clearfix clear"></div>
-                                <span class="name">身份证 :</span>
+                                <span class="name">证件类型 :</span>
+                                <span  class="name_input">{{$member['id_type'] or '身份证'}}</span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">证件号码 :</span>
                                 <span class="name_input">{{$member['ID'] or ''}}</span>
                                 <div class="clearfix clear"></div>
                                 <span class="name">手机号 :</span>
