@@ -157,10 +157,10 @@
                         <span class="name">发票抬头 :</span>
                         <span id="preview_invoice_header" class="name_input">{{$signdata['invoice_header'] or ''}}</span>
                         <div class="clearfix clear"></div>
-                        <span class="name">开票内容</span>
+                        <span class="name">开票内容 :</span>
                         <span id="preview_billing_content" class="name_input">{{$signdata['billing_content'] or ''}}</span>
                         <div class="clearfix clear"></div>
-                        <span class="name">收件地址</span>
+                        <span class="name">收件地址 :</span>
                         <span id="preview_receive_address" class="name_input">{{$signdata['receive_address'] or ''}}</span>
                         <div class="clearfix clear"></div>
                     </div>
@@ -261,13 +261,14 @@
         $('#number').html(membersList);
     }
 
-    var game_name = ["未来世界", "博思威龙", "工业时代", "部落战争——攻城大师", "智造大挑战"]; //直接声明Array
+    var game_name = ["未来世界", "博思威龙", "工业时代", "部落战争——攻城大师", "智造大挑战", "创客生存挑战赛"]; //直接声明Array
     var game_type = [
         ["WRO常规赛", "EV3足球赛", "WRO创意赛-'可持续发展'"],
         ["VEX-EDR'步步为营'工程挑战赛", "VEX-IQ'环环相扣'工程挑战赛", "BDS机器人工程挑战赛——'长城意志'"],
         ["能力风暴——WER能力挑战赛", "能力风暴——WER能力挑战赛工程创新赛", "能力风暴——WER普及赛"],
         ["部落战争——攻城大师"],
-        ["智造大挑战"]
+        ["智造大挑战"],
+        ["创客生存挑战赛"]
     ];
     var get_competition_type = $('#preview_competition_type').text();
 
@@ -316,6 +317,16 @@
             }
         }
     }
+
+    // $('.name_input').each(function () {
+    //     console.log(1);
+    //     if( $(this).text() == "" ){
+    //         $(this).parents('.file-text').css('display', 'none');
+    //     }else {
+
+    //     }
+    // })
+
 </script>
 </body>
 </html>

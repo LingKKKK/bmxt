@@ -73,8 +73,9 @@ body {
             margin: 0 auto;
             border: 1px solid #587BEF;
             box-sizing: border-box;
-            padding: 50px 78px;
+            padding: 50px 50px;
             margin-top: 33px;
+            padding-left: 78px;
 
             .input-field {
                 zoom: 1;
@@ -169,6 +170,7 @@ body {
             }
 
             .tel {
+                max-width: 170px;
                 border: 1px solid #587BEF;
                 height: 30px;
                 font-family: PingFangSC-Regular;

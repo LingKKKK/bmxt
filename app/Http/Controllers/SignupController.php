@@ -42,7 +42,9 @@ class SignupController extends Controller
         // 部落战争——攻城大师
         "部落战争——攻城大师" => 31,
         // 智造大挑战
-        "智造大挑战" => 41
+        "智造大挑战" => 41,
+        // 创客生存挑战赛
+        "创客生存挑战赛" => 51
     ];
 
     //队伍码
@@ -85,7 +87,9 @@ class SignupController extends Controller
             // 部落战争——攻城大师
             "部落战争——攻城大师" => 31,
             // 智造大挑战
-            "智造大挑战" => 41
+            "智造大挑战" => 41,
+            // 创客生存挑战赛
+            "创客生存挑战赛" => 51
         ];
 
         return view('signup', compact('competition_types', 'competition_groups'));

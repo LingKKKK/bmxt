@@ -140,8 +140,9 @@ body .content .inner {
   margin: 0 auto;
   border: 1px solid #587BEF;
   box-sizing: border-box;
-  padding: 50px 78px;
+  padding: 50px 50px;
   margin-top: 33px;
+  padding-left: 78px;
 }
 body .content .inner .input-field {
   zoom: 1;
@@ -226,6 +227,7 @@ body .content .inner #code input {
   padding-left: 20px;
 }
 body .content .inner .tel {
+  max-width: 170px;
   border: 1px solid #587BEF;
   height: 30px;
   font-family: PingFangSC-Regular;

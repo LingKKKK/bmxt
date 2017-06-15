@@ -637,7 +637,6 @@
             var val = $el.val();
             var datatype = $el.data('type');// 数据类型 email , mobile , ID,
             if (type == 'file') {
-                // console.log($el.attr('required'));
                 if (!!$el.attr('required') && val == "") {
                     $el.tipWarn('照片不能为空');
                     return false;
@@ -657,7 +656,6 @@
             } else if(type == 'text') {
                 if ($el.attr('required') && val == '') {
                     $el.tipWarn('不能为空！');
-                    // console.log($el)
                     return false;
                 }
                 if (datatype == 'character' && !isName(val)) {
@@ -678,7 +676,6 @@
                 }
                 if (datatype == 'email' && !isEmail(val)) {
                     $el.tipWarn('邮件格式不正确');
-                    //console.log('Email');
                     return false;
                 }
                 if (datatype == 'mobile' && !isMobile(val)) {
@@ -735,9 +732,7 @@
                     var f = $(this).attr('files')[0];
                     if(f)
                     {
-                        console.log(f.name);
-                        // console.dir($(this));
-                        // $(this).val(f.name);
+                        // console.log(f.name);
                         $(this).siblings('.file_name').html(f.name);
                     }
                 }
@@ -826,7 +821,6 @@
                     async:false,
                     success:function(res) {
                         if (res.status == 0) {
-                            // console.log('通过验证');
                             // $('.QRcodeShow').addClass('active');
                             // getPayQrcode();
                             validcode = true;
@@ -901,14 +895,10 @@
                     if (id == 'competition_name') {
                        val = $('#'+id+' option:selected').text();
                     }
-                    // $('#preview_competition_name').html($('#competition_name  option:selected').text())
-                    // $('#preview_' + id).html(val);
+                    $('#preview_competition_name').html($('#competition_name  option:selected').text())
+                    $('#preview_' + id).html(val);
                 }
                 if (type == 'text' || type == 'select-one') {
-                    // console.log('id:'+id);
-                    // console.log('val:'+val);
-                    // console.log(this)
-
                     $('#preview_' + id).html(val);
                 }
                 if (type == 'radio') {
@@ -918,7 +908,6 @@
                 // 默认填写图片文件的路径
                 if (type == 'file') {
                     if (detectIE() == 'ie8') {
-
                     } else {
                         var fileObj = $('#'+id);
                         if (fileObj) {
@@ -971,7 +960,6 @@
                     }
                     $(preview_el).html(val);
                 }
-                // console.log('show');
                 $('#leader_info_'+index).show();
             })
             // 队员信息部分
@@ -1021,7 +1009,6 @@
                                 var f = $el.prop('files')[0];
                                 if(f){
                                     // $('#preview_'+id).attr('src');
-                                    // console.log('111')
                                     $(preview_el).attr('src', URL.createObjectURL(f));
                                 }
                             }
@@ -1030,7 +1017,6 @@
                     }
                     $(preview_el).html(val);
                 }
-                // console.log('show');
                 $('#member_info_'+index).show();
             })
             // 隐藏显示界面的空行
@@ -1062,7 +1048,6 @@
         }
         $(function(){
             $('#input-read').click(function (){
-                // console.log($('#input-read').prop("checked"))
                 if ($('#input-read').prop("checked") == false) {
                     $('#btn-read').css({
                         'backgroundColor': '#ccc',
@@ -1083,15 +1068,12 @@
             // 默认添加一次队员列表
             setTimeout(function (){
                 if ($('.append_rank .menber_list').length > 0) {
-                    // console.log(1);
                 } else {
-                    // console.log(0);
                     $('#append_rank_new').click();
                 }
             }, 1000)
             // 点击刷新验证码图片
             $('.identifying .showBox img').click(function (){
-                // console.log(1)
                 $(this).refreshCaptcha();
             });
             // 点击取消输入验证码
@@ -1118,12 +1100,12 @@
                     },
                     function(res){
                         if (res.status == 0) {
-                            // console.log('验证码填写成功并确定')
+                            // 验证码填写成功并确定
                             refresh_captcha();
                             $('.identifying').removeClass('active');
                             countdown();
                         } else {
-                            // console.log('验证码填写错误')
+                            // 验证码填写错误
                             $('.tipes-false').css('opacity', 1);
                         }
                     }
@@ -1311,7 +1293,6 @@
                 var total = num * price;
                 $('#total_cost').text(total);
                 $('#total_cost_input').val(total);
-
                 var prevent = false;
                 var $inputs = $($('.all_info .div_tab').get(tabIndex)).find('input').each(function() {
                     var ret = validField(this);
@@ -1324,7 +1305,6 @@
                 }
                 showTab(tabIndex);
             });
-
             // 返回上一步
             $('.btn_pre').click(function(){
                 tabIndex -=1;
@@ -1338,10 +1318,7 @@
             showTab(tabIndex);
             rebindVlidation();
             $('#competition_name').change();
-
         });// end of $(function())
-
-
         //  阅读报名须知
         $('#btn-read').click(function (){
             $('.instructions').removeClass('active');
@@ -1374,17 +1351,15 @@
         //         success: function (res) {
         //             var outTradeNo = 0;
         //             if (res.status == 0) {
-        //                 // console.log(res);
         //                 $(".QRcodeShow .QEbox .QEcode img").attr('src', res.data.qrcodeimgurl);
         //                 outTradeNo = res.data.out_trade_no;
         //                 $('#out_trade_no').val(outTradeNo);
         //                 // console.log(outTradeNo)
         //                 validcode = true;
         //                 if (outTradeNo != null) {
-        //                     // console.log(outTradeNo);
         //                     RefreshQrcode(outTradeNo);
         //                 }else {
-        //                     // console.log('未获取到out_trade_no')
+        //                     获取outTradeNo失败
         //                 }
         //             } else if (res.status == -1) {
         //                 // console.log(res);
@@ -1420,15 +1395,16 @@
             // }, 2000)
         }
 
-         //声明省
-        var game_name = ["未来世界", "博思威龙", "工业时代", "部落战争——攻城大师", "智造大挑战"]; //直接声明Array
-         //声明市
+         //声明比赛大项目
+        var game_name = ["未来世界", "博思威龙", "工业时代", "部落战争——攻城大师", "智造大挑战", "创客生存挑战赛"]; //直接声明Array
+         //声明比赛的子项目
         var game_type = [
             ["WRO常规赛", "EV3足球赛", "WRO创意赛-'可持续发展'"],
             ["VEX-EDR'步步为营'工程挑战赛", "VEX-IQ'环环相扣'工程挑战赛", "BDS机器人工程挑战赛——'长城意志'"],
             ["能力风暴——WER能力挑战赛", "能力风暴——WER能力挑战赛工程创新赛", "能力风暴——WER普及赛"],
             ["部落战争——攻城大师"],
-            ["智造大挑战"]
+            ["智造大挑战"],
+            ["创客生存挑战赛"]
         ];
         var game_object = [
                 [
@@ -1451,6 +1427,9 @@
                 ],
                 [
                     ["中学(含小初)", "高中"]
+                ],
+                [
+                    ["小学", "初中"]
                 ]
             ]
         var pIndex = -1;
@@ -1498,8 +1477,6 @@
                     'border': '1px solid #CCCCCC'
                 });
             }
-            // console.dir($('#competition_type option:eq(0)'))
-            // $('#competition_type option:eq(0)').css("display", "none");
         }
         function chg2(obj) {
             var val = obj.selectedIndex;
@@ -1533,10 +1510,10 @@
                     document.getElementById("preview_leader_pic").style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                     document.getElementById("preview_leader_pic").style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                 } else {
-                    // console.error("文件不存在")
+                    // 文件不存在
                 }
             } else {
-                // console.log('非ie 8 9 版本')
+                // 非ie 8 9 版本
             }
         }
         function dox2(obj, id) {
@@ -1549,7 +1526,7 @@
                     document.selection.empty();
                     document.getElementById(id).style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                     document.getElementById(id).style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";            } else {
-                    // console.error("文件不存在")
+                    // 文件不存在
                 }
             }
             else if(ieVersion == 'ie9'){
@@ -1561,13 +1538,13 @@
                     document.getElementById(id).style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                     document.getElementById(id).style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                 } else {
-                    // console.error("文件不存在")
+                    // 文件不存在
                 }
             } else {
-                // console.log('非ie 8 9 版本')
+                // 非ie 8 9 版本
             }
         }
-        // 点击单选框时  发票和地址required的属性添加和删除
+        // 账户类型发生改变  公对公账户  私对公账户
         $('.enroll-notice').find('input[name="account_type"]').change(function(){
             var getVal = $('input[name="account_type"]:checked').val();
             if (getVal == '公对公账户') {
@@ -1576,7 +1553,7 @@
                 $('input[data-type="account_type"]').removeAttr('required');
             }
         })
-        // 切换金额的时候  总费用相对的改变
+        // 切换金额的时候   总价也相应的进行改变
         $('#average_amount').change(function(){
             var num = $('.append_rank .menber_list').length + 1 + $('.other_leader .leader_list').length;
             $('#participant').text(num);
