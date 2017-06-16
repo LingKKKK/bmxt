@@ -851,6 +851,8 @@
             });
             //  切换证件类型
             $('.menber_list .id_type .input-field-text').unbind('change').change(function (){
+                $('.menber_list .id_type select option:eq(0)').remove();
+                $(this).parents('.input-field').siblings('.id_card').find('input').css("pointer-events", "auto");
                 var getVal = $(this).find('option:selected').text();
                 if ( getVal == "身份证") {
                     $(this).parents('.input-field').siblings('.id_card').find('input').attr("required", "true");
@@ -1143,7 +1145,8 @@
                 memberList += '<div class="input-field id_type">';
                 memberList += '<span class="input-label">证件类型:</span>';
                 memberList += '<select data-type="character" required tip-info="仅支持汉字、英文" name="members['+memberListNum+'][id_type]" class="input-field-text member_id_type" type="text">';
-                memberList += '<option value="身份证" selected >身份证</option>';
+                memberList += '<option value="请选择您的证件类型" selected >请选择您的证件类型</option>';
+                memberList += '<option value="身份证" >身份证</option>';
                 memberList += '<option value="护照" >护照</option>';
                 memberList += '</select>';
                 memberList += '<div class="tips"></div>';
@@ -1151,8 +1154,8 @@
                 memberList += '</div>';
 
                 memberList += '<div class="input-field id_card">';
-                memberList += '<span class="input-label id_card">身份证号  :</span>';
-                memberList += '<input required data-type="ID" tip-info="请输入合法的证件号格式" name="members['+memberListNum+'][ID]" class="input-field-text member_id" type="text">';
+                memberList += '<span class="input-label id_card">证件号码  :</span>';
+                memberList += '<input required tip-info="请输入合法的证件号格式" name="members['+memberListNum+'][ID]" class="input-field-text member_id" type="text" style="pointer-events: none;">';
                 memberList += '<div class="tips"></div>';
                 memberList += '<div class="clearfix"></div>';
                 memberList += '</div>';
