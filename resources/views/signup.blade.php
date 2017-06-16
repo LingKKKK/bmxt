@@ -851,7 +851,7 @@
             });
             //  切换证件类型
             $('.menber_list .id_type .input-field-text').unbind('change').change(function (){
-                $('.menber_list .id_type select option:eq(0)').remove();
+                $('.menber_list .id_type select .type').remove();
                 $(this).parents('.input-field').siblings('.id_card').find('input').css("pointer-events", "auto");
                 var getVal = $(this).find('option:selected').text();
                 if ( getVal == "身份证") {
@@ -859,7 +859,8 @@
                     $(this).parents('.input-field').siblings('.id_card').find('input').attr("data-type", "ID");
                     $(this).parents('.input-field').siblings('.id_card').find('.input-label').text("身份证号  :");
                 } else {
-                    $(this).parents('.input-field').siblings('.id_card').find('input').removeAttr('required');
+                    $(this).parents('.input-field').siblings('.id_card').find('input').attr("required", "true");
+                    // $(this).parents('.input-field').siblings('.id_card').find('input').removeAttr('required');
                     $(this).parents('.input-field').siblings('.id_card').find('input').attr("data-type", "Alltype");
                     $(this).parents('.input-field').siblings('.id_card').find('.input-label').text("护照号  :");
                 }
@@ -1145,7 +1146,7 @@
                 memberList += '<div class="input-field id_type">';
                 memberList += '<span class="input-label">证件类型:</span>';
                 memberList += '<select data-type="character" required tip-info="仅支持汉字、英文" name="members['+memberListNum+'][id_type]" class="input-field-text member_id_type" type="text">';
-                memberList += '<option value="请选择您的证件类型" selected >请选择您的证件类型</option>';
+                memberList += '<option class="type" value="请选择您的证件类型" selected >请选择您的证件类型</option>';
                 memberList += '<option value="身份证" >身份证</option>';
                 memberList += '<option value="护照" >护照</option>';
                 memberList += '</select>';
