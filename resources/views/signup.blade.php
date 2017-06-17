@@ -564,7 +564,7 @@
         }
         //数字 英文 汉字
         function isMathEngCha(val) {
-            reg= /^[\w\u4e00-\u9fa5][\s\w\u4e00-\u9fa5]*(?!\s)$/gi;
+            reg= /^[\w\u4e00-\u9fa5\(\)（）][\s\w\u4e00-\u9fa5\(\)（）]*(?!\s)$/gi;
             if(!reg.test(val)) {
                 return false;
             }
@@ -663,7 +663,7 @@
                     return false;
                 }
                 if (datatype == 'schoolname' && !isMathEngCha(val)) {
-                    $el.tipWarn('允许输入汉字英文数字空格,切首位不能为空格!');
+                    $el.tipWarn('允许输入汉字英文数字空格,且首位不能为空格!');
                     return false;
                 }
                 if (datatype == 'agemenber' && !isAgemenber(val)) {
@@ -1037,7 +1037,7 @@
                     var getVal = $(this).find('option:selected').text();
                     var idHtml = $(this).parents('.input-field').siblings('.id_card').find('input').val();
                     var passHtml = $(this).parents('.input-field').siblings('.passport').find('input').val();
-                    if ( getVal == "身份证") { 
+                    if ( getVal == "身份证") {
                         $(this).parents('.input-field').siblings('.passport').find('input').val(idHtml);
                     }else {
                         $(this).parents('.input-field').siblings('.id_card').find('input').val(passHtml);
