@@ -596,7 +596,10 @@
         }
         //手机
         function isMobile(val) {
-            reg = /^1(?:[38]\d|4[4579]|5[0-35-9]|7[35678])\d{8}$/;
+            // reg = /^1(?:[38]\d|4[4579]|5[0-35-9]|7[35678])\d{8}$/;
+            // ret = /^(0|86|17951)?(13[0-9]|15[012356789]|17[3678]|18[0-9]|14[57])[0-9]{8}$/;
+            var reg = /^1\d{10}$/;
+
             if(!reg.test(val)) {
                 return false;
             }
@@ -1331,6 +1334,7 @@
         // 发送手机验证码
         $('#tel').click(function() {
             var partten = /^1[3,5,8]\d{9}$/;
+            var partten = /^1\d{10}$/;
             if(partten.test($('#leader_mobile').val())){
                $('.identifying').addClass('active');
                $('#tipes i').html($('#leader_mobile').val());
