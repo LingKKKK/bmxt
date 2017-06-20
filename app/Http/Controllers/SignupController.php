@@ -46,10 +46,8 @@ class SignupController extends Controller
         // 创客生存挑战赛
         "创客生存挑战赛" => 51
     ];
-
     //队伍码
     protected $team_no = '';
-
     public function signup(Request $request)
     {
         //数据展示
@@ -60,7 +58,6 @@ class SignupController extends Controller
         if ($signdata) {
             return view('success', compact('signdata'));
         }
-
         $competition_groups = [
             '小学' => 1,
             '初中' => 2,
@@ -70,7 +67,6 @@ class SignupController extends Controller
             '中学(含小初)' => 6,
             '小初高' => 7
         ];
-
         $competition_types = [
             // 未来世界
             "WRO常规赛" => 1,
@@ -91,7 +87,6 @@ class SignupController extends Controller
             // 创客生存挑战赛
             "创客生存挑战赛" => 51
         ];
-
         return view('signup', compact('competition_types', 'competition_groups'));
     }
 

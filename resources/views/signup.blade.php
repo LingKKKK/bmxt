@@ -76,7 +76,7 @@
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
         <div class="content">
-            <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate>
+            <form id="form" name="form" action="/signup" onkeydown="if(event.keyCode==13)return false;" enctype="multipart/form-data" method="POST" novalidate>
                 <div class="tab_menu">
                     <ul>
                         <li class="active">带队老师信息</li>
