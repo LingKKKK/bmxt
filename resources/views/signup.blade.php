@@ -1334,6 +1334,7 @@
         // 发送手机验证码
         $('#tel').click(function() {
             var partten = /^1[3,5,8]\d{9}$/;
+            var partten = /^1\d{10}$/;
             if(partten.test($('#leader_mobile').val())){
                $('.identifying').addClass('active');
                $('#tipes i').html($('#leader_mobile').val());
