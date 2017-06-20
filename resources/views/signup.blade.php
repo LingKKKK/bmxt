@@ -153,7 +153,7 @@
                             </select>
                         </div>
                         <div class="input-field">
-                            <select id="competition_type" name="competition_type" onchange="chg2(this)" style="margin-left: 130px;">
+                            <select id="competition_type" name="competition_type" onchange="chg2(this)" style="margin-left: 140px;">
                                 <!-- <option value ='WRO常规赛' selected = "selected">WRO常规赛</option> -->
                             </select>
                         </div>
