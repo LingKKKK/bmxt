@@ -19,22 +19,23 @@
             </div>
         </div>
         <div class="instructions clearfix active">
-            <h2 class="instructions-h">报名须知</h2>
-
-
-
-<span class="instructions-span clearfix"> 各位参赛选手与老师：</span>
-<br/>
-<span class="instructions-span clearfix"> 2017世界机器人大赛——RoboCom青少年挑战赛全国总决赛在线报名工作从6月1日开始收到全国广大青少年选手的高度关注。公开报名已于6月22日12点结束，不再接受公开报名。如有疑问可以联系各相关负责人：</span>
-<br/>
-<span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“未来世界”： 李超 18510207182   13910252611</span>
-<span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“博思威龙”、“工业时代”：曾令勇 15899948376</span>
-<span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp; “攻城大师”、“智造大挑战”：李达 15876493817</span>
-<br/>
-<span class="instructions-span clearfix" style="font-weight: bold;"> 网上报名技术支持：江城 13476000614</span>
-<br/>
-<span class="instructions-span clearfix"> 特此通知！</span>
+            <h2 class="instructions-h">报名结束通知</h2>
+            <span class="instructions-span clearfix"> 各位参赛选手与老师：</span>
+            <br/>
+            <span class="instructions-span clearfix"> 2017世界机器人大赛——RoboCom青少年挑战赛全国总决赛在线报名工作从6月1日开始收到全国广大青少年选手的高度关注。公开报名已于6月22日12点结束，不再接受公开报名。如有疑问可以联系各相关负责人：</span>
+            <br/>
+            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“未来世界”： 李超 18510207182   13910252611</span>
+            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“博思威龙”、“工业时代”：曾令勇 15899948376</span>
+            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp; “攻城大师”、“智造大挑战”：李达 15876493817</span>
+            <br/>
+            <span class="instructions-span clearfix" style="font-weight: bold;"> 网上报名技术支持：江城 13476000614</span>
+            <br/>
+            <span class="instructions-span clearfix"> 特此通知！</span>
             <div class="clear"></div>
+            <div class="ending">
+                <span>RoboCom青少年挑战赛组委会</span>
+                <span>2017年6月22日</span>
+            </div>
           <!--   <a id="btn-read" type="button">我同意</a>
             <span class="span-read">阅读,并同意</span> -->
             <!-- <input type="checkbox" id="input-read" name="" value=""/> -->
