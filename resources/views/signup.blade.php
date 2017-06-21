@@ -28,7 +28,7 @@
             <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“博思威龙”、“工业时代”：曾令勇 15899948376</span>
             <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp; “攻城大师”、“智造大挑战”：李达 15876493817</span>
             <br/>
-            <span class="instructions-span clearfix" style="font-weight: bold;"> 网上报名技术支持：江城 13476000614</span>
+            <span class="instructions-span clearfix"> 网上报名技术支持：江城 13476000614</span>
             <br/>
             <span class="instructions-span clearfix"> 特此通知！</span>
             <div class="clear"></div>
