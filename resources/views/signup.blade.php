@@ -20,62 +20,26 @@
         </div>
         <div class="instructions clearfix active">
             <h2 class="instructions-h">报名须知</h2>
-            <span class="instructions-span clearfix">1.报名时间截止日期：2017年6月20日23:59。</span>
-            <span class="instructions-span clearfix">2.正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
-            <span class="instructions-span clearfix"><i style="color: red;">重要提示</i>：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于2017年世界机器人大赛—RoboCom青少年挑战赛全国总决赛，报名人员须对其提交的错误信息造成的后果负责。</span>
-            <span class="instructions-span clearfix">3.联系“总通知中”各个项目的报名负责人，索取相应的项目邀请码。</span>
-            <span class="instructions-span clearfix">4.每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
-            <span class="instructions-span clearfix">5.报名完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
-            <span class="instructions-span clearfix">6.参赛费用将不在网上报名中缴纳，具体缴费流程请参见“缴纳费用”页里的缴费流程。</span>
-            <span class="instructions-span clearfix">7.报名资料填写完整，经组委会审核通过后，会在RoboCom官方网站进行公示。</span>
-            <span class="instructions-span clearfix">8.如对网上报名有疑问，可通过联系江城（13476000614），曾令勇（ 15899948376），李达（ 15876493817）咨询。</span>
-            <h2 class="instructions-h" style="color: red;margin-top: 40px;">缴费流程如下</h2>
-            <span class="instructions-span clearfix">在线报名完成后，请根据自己所报赛项联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。2017年6月20日23:59后未缴费的队伍将被视为报名失败。</span>
-            <span class="instructions-span clearfix">1.联系相关项目的收费负责人。</span>
-            <span class="instructions-span ml20 clearfix"">a): “未来世界”项目联系人：李超 185 1020 7182    139 1025 2611</span>
-            <span class="instructions-span ml20 clearfix"">b): “工业时代”项目联系人：谢尊国 150 0077 4186</span>
-            <span class="instructions-span ml20 clearfix"">c): “博思威龙”项目参赛交费联系人：曾令勇 158 9994 8376</span>
-            <span class="instructions-span ml20 clearfix"">d): “攻城大师”、“智造大挑战” 两个项目参赛交费联系人：李达 15876493817</span>
-            <span class="instructions-span ml20 clearfix"">e): “创客生存挑战赛”项目联系人：李乔 176 0089 9441</span>
-            <span class="instructions-span ml20 clearfix"">f): &nbsp&nbsp&nbsp座机：027-84692577</span>
-            <span class="instructions-span clearfix">2.核实参赛队伍是否报名成功。并核实参赛人数。</span>
-            <span class="instructions-span clearfix">3.支付参赛注册费</span>
-            <span class="instructions-span ml20 clearfix">付款对公账户：</span>
-            <span class="instructions-span ml20 clearfix">开户名称：北京工道动力机器人技术研究院</span>
-            <span class="instructions-span ml20 clearfix">开户银行：锦州银行股份有限公司北京分行</span>
-            <span class="instructions-span ml20 clearfix">开户行号：313100022226</span>
-            <span class="instructions-span ml20 clearfix">银行账号：410100203296687</span>
 
-            <h2 class="instructions-h" style="margin-top: 40px;">报名表填写说明</h2>
-            <span class="instructions-span clearfix"><i class="left">邀请码</i><i class="right">由赛项负责人提供的16位邀请码，每个邀请码只能使用一次</i></span>
-            <span class="instructions-span clearfix"><i class="left">姓名</i><i class="right">填写有效证件上的姓名，姓名只能包含汉字和英文</i></span>
-            <span class="instructions-span clearfix"><i class="left">手机号码</i><i class="right">填写11位有效手机号码。如参赛选手没有手机则须填写带队老师或监护人手机号码。</i></span>
-            <span class="instructions-span clearfix"><i class="left">邮箱</i><i class="right">填写有效邮箱地址</i></span>
-            <span class="instructions-span clearfix"><i class="left">身份证号</i><i class="right">填写有效18位居民身份证号。</i></span>
-            <span class="instructions-span clearfix"><i class="left">照片</i><i class="right">须上传2寸免冠登记照</i></span>
-            <span class="instructions-span clearfix"><i class="left">队伍名称</i><i class="right">填写参赛队伍的名称，不接受已存在的队伍名称</i></span>
-            <span class="instructions-span clearfix"><i class="left">学校/单位名称</i><i class="right">填写所属学校或单位名称</i></span>
-            <span class="instructions-span clearfix"><i class="left">学校/单位地址</i><i class="right">填写所属学校或单位地址</i></span>
-            <span class="instructions-span clearfix"><i class="left">赛事项目</i><i class="right">选择队伍参加的赛项</i></span>
-            <span class="instructions-span clearfix"><i class="left">子赛项</i><i class="right">选择参队伍加的子赛项</i></span>
-            <span class="instructions-span clearfix"><i class="left">组别</i><i class="right">选择参队伍加的组别</i></span>
-            <span class="instructions-span clearfix"><i class="left">年龄</i><i class="right">填写真实年龄</i></span>
-            <span class="instructions-span clearfix"><i class="left">性别</i><i class="right">填写真实性别</i></span>
-            <span class="instructions-span clearfix"><i class="left">身高</i><i class="right">填写真实身高（用于制定活动用T恤尺寸）</i></span>
-            <span class="instructions-span clearfix"><i class="left">人数</i><i class="right">所付费用里包含的人数（领队老师和队员的数量）</i></span>
-            <span class="instructions-span clearfix"><i class="left">账户类型</i><i class="right">缴费时使用的是公对公账户还是私对公账户</i></span>
-            <span class="instructions-span clearfix"><i class="left">发票抬头</i><i class="right">收款机构的抬头</i></span>
-            <span class="instructions-span clearfix"><i class="left">开票内容</i><i class="right">选择所需开出票据的类型</i></span>
-            <span class="instructions-span clearfix"><i class="left">收件地址</i><i class="right">票据需要邮寄到的地址</i></span>
-            <span class="instructions-span clearfix"><i class="left">金额</i><i class="right">选择单人所缴纳的费用</i></span>
-            <span class="instructions-span clearfix"><i class="left">汇款账户</i><i class="right">发票抬头账户的汇款号</i></span>
-            <span class="instructions-span clearfix"><i class="left">验证码</i><i class="right">填写发送到领队手机的6位数验证码</i></span>
+
+
+<span class="instructions-span clearfix"> 各位参赛选手与老师：</span>
+<br/>
+<span class="instructions-span clearfix"> 2017世界机器人大赛——RoboCom青少年挑战赛全国总决赛在线报名工作从6月1日开始收到全国广大青少年选手的高度关注。公开报名已于6月22日12点结束，不再接受公开报名。如有疑问可以联系各相关负责人：</span>
+<br/>
+<span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“未来世界”： 李超 18510207182   13910252611</span>
+<span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“博思威龙”、“工业时代”：曾令勇 15899948376</span>
+<span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp; “攻城大师”、“智造大挑战”：李达 15876493817</span>
+<br/>
+<span class="instructions-span clearfix" style="font-weight: bold;"> 网上报名技术支持：江城 13476000614</span>
+<br/>
+<span class="instructions-span clearfix"> 特此通知！</span>
             <div class="clear"></div>
-            <a id="btn-read" type="button">我同意</a>
-            <span class="span-read">阅读,并同意</span>
-            <input type="checkbox" id="input-read" name="" value=""/>
+          <!--   <a id="btn-read" type="button">我同意</a>
+            <span class="span-read">阅读,并同意</span> -->
+            <!-- <input type="checkbox" id="input-read" name="" value=""/> -->
         </div>
-        <div class="content">
+        <div class="content" style="display: none;">
             <form id="form" name="form" action="/signup" onkeydown="if(event.keyCode==13)return false;" enctype="multipart/form-data" method="POST" novalidate>
                 <div class="tab_menu">
                     <ul>
