@@ -440,33 +440,33 @@ class SignupController extends Controller
             $excel->setDescription('报名数据');
 
             $excel->sheet('报名数据', function($sheet) use($signdataList) {
-                $sheet->mergeCells('A1:G1');
-                $sheet->mergeCells('H1:L1');
-                $sheet->mergeCells('M1:U1');
+                $sheet->mergeCells('A1:H1');
+                $sheet->mergeCells('I1:M1');
+                $sheet->mergeCells('N1:V1');
                 $sheet->cell('A1', '队伍信息');
-                $sheet->cell('H1', '领队信息');
-                $sheet->cell('M1', '队员信息');
+                $sheet->cell('I1', '领队信息');
+                $sheet->cell('N1', '队员信息');
                 $sheet->row(1, function($row) {
                     $row->setAlignment('center');
                 });
                 $sheet->row(2, function($row) {
                     $row->setAlignment('center');
                 });
-                $sheet->row(2, ['队伍编号', '队伍名称', '学校/单位名称', '学校/单位地址', '赛事项目', '子赛项', '组别', '姓名', '身份证号', '邮箱', '手机号', '性别', '队员姓名', '证件类型', '证件号', '手机号', '性别', '年龄', '身高(单位cm)', '学校/单位名称', '学校/单位地址',]);
+                $sheet->row(2, ['队伍编号', '邀请码', '队伍名称', '学校/单位名称', '学校/单位地址', '赛事项目', '子赛项', '组别', '姓名', '身份证号', '邮箱', '手机号', '性别', '队员姓名', '证件类型', '证件号', '手机号', '性别', '年龄', '身高(单位cm)', '学校/单位名称', '学校/单位地址',]);
 
                 $rowIndex = 3;
                 $rowIndexLeader = $rowIndex;
                 foreach ($signdataList as $k => $val) {
-                    $sheet->row($rowIndex++, [ $val['team_no'].' ', $val['team_name'], $val['school_name'], $val['school_address'], $this->getParentType($val['competition_type']), $val['competition_type'], $val['competition_group'], $val['leader_name'], $val['leader_id'].' ', $val['leader_email'], $val['leader_mobile'].' ', $val['leader_sex'],]);
+                    $sheet->row($rowIndex++, [ $val['team_no'].' ', $val['invitecode'],$val['team_name'], $val['school_name'], $val['school_address'], $this->getParentType($val['competition_type']), $val['competition_type'], $val['competition_group'], $val['leader_name'], $val['leader_id'].' ', $val['leader_email'], $val['leader_mobile'].' ', $val['leader_sex'],]);
                     $rowIndexLeader = $rowIndexLeader + 1;
                     // 循环添加members内容
                     // dd($val['members']);
                     foreach ((array)$val['members'] as $member) {
-                        $sheet->row($rowIndex++, ['', '', '', '', '', '', '', '', '', '', '', '', $member['name'], isset($member['id_type']) ? $member['id_type'] : '身份证', $member['ID'].' ', $member['mobile'].' ', $member['sex'], $member['age'], $member['height'], $member['school_name'], isset($member['school_address']) ? $member['school_address'] : '', ]);
+                        $sheet->row($rowIndex++, ['', '', '', '', '', '', '', '', '', '', '', '','' , $member['name'], isset($member['id_type']) ? $member['id_type'] : '身份证', $member['ID'].' ', $member['mobile'].' ', $member['sex'], $member['age'], $member['height'], $member['school_name'], isset($member['school_address']) ? $member['school_address'] : '', ]);
                     }
                     // 循环添加leaders内容
                     foreach ((array)$val['data']['leaders'] as $leader) {
-                        $sheet->row($rowIndexLeader++, [ '', '', '', '', '', '', '', $leader['name'], $leader['ID'].' ', $leader['email'].' ', $leader['mobile'].' ', $leader['sex'], ]);
+                        $sheet->row($rowIndexLeader++, [ '', '', '', '', '', '', '', '', $leader['name'], $leader['ID'].' ', $leader['email'].' ', $leader['mobile'].' ', $leader['sex'], ]);
                     }
                     // 给空行添加背景颜色 便于区分
                     if ( $rowIndex>$rowIndexLeader ) {
