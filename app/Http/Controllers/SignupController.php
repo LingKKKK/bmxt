@@ -566,7 +566,7 @@ class SignupController extends Controller
         }
 
         // $request->session()->flash('signdata', $signdata->toArray());
-        $request->session()->put('signdata', $signdata->toArray());
+        $request->session()->flash('signdata', $signdata->toArray());
 
         return redirect('plan');
     }
@@ -721,7 +721,7 @@ class SignupController extends Controller
                     $sheet->row($rowIndex++, [
                         $val['team_no'].' ', $val['trip_type'],
                         $team_baseinfo['team_name'], $team_baseinfo['competition_name'], $team_baseinfo['competition_type'], $team_baseinfo['competition_group'], $team_baseinfo['leader_name'], $team_baseinfo['leader_mobile'].' ',
-                        $val['vehicle_type'], $val['vehicle_number'].' ',
+                        $val['vehicle_type'], $val['vehicle_number'].' ' ,
                         $val['start_date'], $val['start_time'], $val['start_place'],
                         $val['arrive_date'], $val['arrive_time'], $val['arrive_place'],
                         $val['vehicle_time'], $val['people_number'], $val['contact_name'], $val['contact_mobile'].' ',]);
