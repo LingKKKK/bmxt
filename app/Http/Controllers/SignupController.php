@@ -552,7 +552,7 @@ class SignupController extends Controller
         // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
 
         if ($validator->fails()) {
-           // return redirect()->back()->withErrors($validator->errors())->withInput();
+           return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
         $team_no = $request->input('team_no', '');
@@ -665,8 +665,9 @@ class SignupController extends Controller
         }
 
         $adminArr = [
-            '15000000000',
-        ];
+            '18511431517',
+            '15903035872',
+            '13476000614', //江城        ];
         if (! in_array($request->input('mobile'), $adminArr)) {
             return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
         }
@@ -675,7 +676,17 @@ class SignupController extends Controller
 
         $tripdataList = TripData::all();
 
-        Excel::create($filename, function($excel) use($tripdataList) {
+        // 处理基本信息
+        $signupDataList = SignupData::all(['team_no', 'team_name', 'competition_type', 'competition_group', 'leader_name', 'leader_mobile'])->toArray();
+
+        $signupList = array();
+
+        foreach ($signupDataList as $val) {
+            $val['competition_name'] = $this->getParentType($val['competition_type']);
+            $signupList[$val['team_no']] = $val;
+        }
+
+        Excel::create($filename, function($excel) use($tripdataList, $signupList) {
 
             // Set the title
             $excel->setTitle('RoboCom行程表');
@@ -687,24 +698,33 @@ class SignupController extends Controller
             // Call them separately
             $excel->setDescription('行程数据');
 
-            $excel->sheet('行程数据', function($sheet) use($tripdataList) {
-                // $sheet->mergeCells('A1:G1');
-                // $sheet->mergeCells('H1:L1');
-                // $sheet->mergeCells('M1:U1');
-                // $sheet->cell('A1', '队伍信息');
-                // $sheet->cell('H1', '领队信息');
-                // $sheet->cell('M1', '队员信息');
+            $excel->sheet('行程数据', function($sheet) use($tripdataList, $signupList) {
+
                 $sheet->row(1, function($row) {
                     $row->setAlignment('center');
                 });
                 $sheet->row(2, function($row) {
                     $row->setAlignment('center');
                 });
-                $sheet->row(2, ['队伍编号', '行程状态', '交通工具', '航班/车次', '出发日期', '出发时间', '出发地点', '到达日期', '到达时间', '到达地点', '航班/列车发车时间', '总人数', '联系人', '联系人电话']);
+                $sheet->row(2, ['队伍编号', '行程状态',
+                    '队伍名称', '赛事项目', '子赛项', '组别', '领队姓名', '领队手机号',
+                    '交通工具', '航班/车次',
+                    '出发日期', '出发时间', '出发地点',
+                    '到达日期', '到达时间', '到达地点',
+                    '航班/列车发车时间', '总人数', '联系人', '联系人电话']);
 
                 $rowIndex = 3;
+
                 foreach ($tripdataList as $k => $val) {
-                    $sheet->row($rowIndex++, [ $val['team_no'].' ', $val['trip_type'], $val['vehicle_type'], $val['vehicle_number'], $val['start_date'], $val['start_time'], $val['start_place'], $val['arrive_date'], $val['arrive_time'], $val['arrive_place'], $val['vehicle_time'], $val['people_number'], $val['contact_name'], $val['contact_mobile'].' ',]);
+                    $team_baseinfo = $signupList[$val['team_no']];
+
+                    $sheet->row($rowIndex++, [
+                        $val['team_no'].' ', $val['trip_type'],
+                        $team_baseinfo['team_name'], $team_baseinfo['competition_name'], $team_baseinfo['competition_type'], $team_baseinfo['competition_group'], $team_baseinfo['leader_name'], $team_baseinfo['leader_mobile'].' ',
+                        $val['vehicle_type'], $val['vehicle_number'].' ',
+                        $val['start_date'], $val['start_time'], $val['start_place'],
+                        $val['arrive_date'], $val['arrive_time'], $val['arrive_place'],
+                        $val['vehicle_time'], $val['people_number'], $val['contact_name'], $val['contact_mobile'].' ',]);
                 }
 
             });
