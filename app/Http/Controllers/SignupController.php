@@ -629,12 +629,19 @@ class SignupController extends Controller
             return redirect()->back()->withInput();
         }
 
+        $request->session()->flash('showTrip', 1);
+
         return redirect('/showTrip');
     }
 
     public function showTrip(Request $request)
     {
-        return view('showTrip', compact('tripdata'));
+        $showTrip = $request->session()->get('showTrip');
+        if ($showTrip) {
+            return view('showTrip', compact('tripdata'));
+        }
+
+        return redirect('scheduling');
     }
 
     public function planExport()
@@ -669,7 +676,7 @@ class SignupController extends Controller
             '15903035872',
             '13476000614', //江城
         ];
-        
+
         if (! in_array($request->input('mobile'), $adminArr)) {
             return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
         }
