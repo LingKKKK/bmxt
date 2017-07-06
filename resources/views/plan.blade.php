@@ -1509,6 +1509,7 @@
                     "background": '#CCC',
                     "pointer-events": 'none'
                 });
+                $('#back_4 button').remove();
             }else {
                 $('#back_1 .delete').remove();
                 $('#back_3 .delete').remove();
