@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="instructions clearfix">
+        <div class="instructions clearfix active">
             <h2 class="instructions-h">行程系统需求</h2>
             <span class="instructions-span clearfix"> 各位参赛选手与老师：</span>
             <br/>
@@ -36,7 +36,7 @@
             <span class="span-read">阅读,并同意</span>
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
-        <div class="content active">
+        <div class="content ">
             <form id="form" name="form" action="/plan" onkeydown="if(event.keyCode==13)return false;" enctype="multipart/form-data" method="POST" novalidate>
                 <div class="all_info clearfix">
                     <div class="div_tab" id="base">
@@ -64,7 +64,7 @@
                         <span class="name">手机号 :</span>
                         <input class="name_input" id="leader_mobiles" name="leader_mobile" type="text" value="{{$signdata['leader_mobile'] or ''}}">
                         <input type="text">
-                        <div class="clearfix clear"></div>   
+                        <div class="clearfix clear"></div>
                     </div>
                     <?php $i = 0; ?>
                     @foreach($trip_data as $val)
@@ -206,8 +206,8 @@
                             <?php $i++ ?>
                         @endif
                     @endforeach
-                    
-                    
+
+
                     <div class="div_tab" style="padding-bottom: 0px;">
                         <span class="leader_title">信息确认</span>
                         <div class="cut" style="margin-bottom: 50px;"></div>
@@ -1381,7 +1381,7 @@
             comeInfo += '<span class="input-label">起飞/发车时间  :</span>';
             comeInfo += '<input required type="text" name="trip['+comeNum+'][vehicle_time]" id="datetimepicker' + ((comeNum-3)*5 + 13) + '" class="input-field-text" value="{{old("trip['+comeNum+'][vehicle_time]")}}"/>';
             comeInfo += '<div class="tips"></div>';
-            comeInfo += '</div>'; 
+            comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
             comeInfo += '<span class="input-label">人数  :</span>';
             comeInfo += '<input id="trip['+comeNum+'][people_number]" data-type="isNumber" required tip-warn="" tip-info="仅支持英文、汉字" type="text" name="trip['+comeNum+'][people_number]" class="input-field-text" value="{{old("trip['+comeNum+'][people_number]")}}"/>';
@@ -1484,7 +1484,7 @@
         }
 
         clickSelf();
-        function clickSelf(){  
+        function clickSelf(){
             if ($('.all_info .div_tab').length == 2) {
                 $("#base").after(addBackInfo());
                 $('#back_1 .delete').remove();
@@ -1524,7 +1524,7 @@
                 $('#back_2 button').remove();
                 $('#back_4 button').remove();
             }
-        } 
+        }
 
         function vehicleChange(thisSelect){
             thisSelect.find('option:first').text('火车');

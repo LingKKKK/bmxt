@@ -578,7 +578,8 @@ class SignupController extends Controller
 
         $signdata = $this->fetchSignData();
         if (! $signdata) {
-            return view('/scheduling');
+            return redirect('/scheduling');
+            // return view('/scheduling');
         }
 
         $team_no =  $signdata['team_no'];
@@ -594,7 +595,7 @@ class SignupController extends Controller
             [
                 'verificationcode.required' => '验证码不能为空',
             ]
-        );    
+        );
 
         // dd($request->all());
         $team_no = $request->input('team_no');
