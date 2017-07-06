@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>往返信息表</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plan.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lqdatetimepick.css')}}">

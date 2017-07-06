@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>往返信息表</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/search.css')}}">
 </head>
 <body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RoboCom青少年挑战赛 - 数据统计</title>
+    <title>RoboCom青少年挑战赛 - 往返程信息统计</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/search.css')}}">
 </head>
 <body>
