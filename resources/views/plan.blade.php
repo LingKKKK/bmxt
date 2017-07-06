@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="instructions clearfix">
+        <div class="instructions clearfix active">
             <h2 class="instructions-h">行程系统需求</h2>
             <span class="instructions-span clearfix"> 各位参赛选手与老师：</span>
             <br/>
@@ -36,7 +36,7 @@
             <span class="span-read">阅读,并同意</span>
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
-        <div class="content active">
+        <div class="content">
             <form id="form" name="form" action="/plan" onkeydown="if(event.keyCode==13)return false;" enctype="multipart/form-data" method="POST" novalidate>
                 <div class="all_info clearfix">
                     <div class="div_tab" id="base">
@@ -586,7 +586,6 @@
             });
             // 校验验证码
             $("#getQrcode").unbind('click').click(function() {
-                $('#submit').trigger('click');
                 var prevent = false;
                 var $inputs = $($('.all_info .div_tab')).find('input').each(function() {
                     var ret = validField(this);
