@@ -372,7 +372,7 @@ class SignupController extends Controller
             return redirect()->back()->withErrors(collect(['notfound' => '请填写正确的领队手机号']))->withInput();
         }
 
-        $request->session()->flash('signdata', $signdata->toArray());
+        // $request->session()->flash('signdata', $signdata->toArray());
 
         // $request->session()->put('signdata', $signdata->toArray());
         return redirect('success');
@@ -667,7 +667,9 @@ class SignupController extends Controller
         $adminArr = [
             '18511431517',
             '15903035872',
-            '13476000614', //江城        ];
+            '13476000614', //江城
+        ];
+        
         if (! in_array($request->input('mobile'), $adminArr)) {
             return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
         }
