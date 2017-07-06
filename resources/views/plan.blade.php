@@ -64,7 +64,7 @@
                         <span class="name">手机号 :</span>
                         <input class="name_input" id="leader_mobiles" name="leader_mobile" type="text" value="{{$signdata['leader_mobile'] or ''}}">
                         <input type="text">
-                        <div class="clearfix clear"></div>   
+                        <div class="clearfix clear"></div>
                     </div>
                     <?php $i = 0; ?>
                     @foreach($trip_data as $val)
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">航班/车次  :</span>
-                                    <input data-type="Alltype" required tip-warn="不能为空" tip-warn="" tip-info="输入航班/车次" class="input-field-text" id="trip[{{$i}}][vehicle_number]" name="trip[{{$i}}][vehicle_number]" type="text" value="{{$val['vehicle_number'] or ''}}">
+                                    <input data-type="Alltype" required tip-warn="不能为空" tip-warn="" tip-info="输入您的航班/车次" class="input-field-text" id="trip[{{$i}}][vehicle_number]" name="trip[{{$i}}][vehicle_number]" type="text" value="{{$val['vehicle_number'] or ''}}">
                                     <div class="tips"></div>
                                 </div>
                                 <div class="input-field">
@@ -118,7 +118,7 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">人数  :</span>
-                                    <input data-type="isNumber" required  required tip-warn="不能为空" tip-warn="" tip-info="输入人数"  type="text" name="trip[{{$i}}][people_number]" id="trip[{{$i}}][people_number]" class="input-field-text" value="{{$val['people_number'] or ''}}"/>
+                                    <input data-type="isNumber" required  required tip-warn="不能为空" tip-warn="" tip-info="请输入人数"  type="text" name="trip[{{$i}}][people_number]" id="trip[{{$i}}][people_number]" class="input-field-text" value="{{$val['people_number'] or ''}}"/>
                                     <div class="tips"></div>
                                 </div>
                                 <div class="input-field">
@@ -131,7 +131,7 @@
                                     <input data-type="mobile" required tip-info="请填写您的常用手机" class="input-field-text"  id="trip[{{$i}}][contact_mobile]" type="text" name="trip[{{$i}}][contact_mobile]" value="{{$val['contact_mobile'] or ''}}">
                                     <div class="tips"></div>
                                 </div>
-                                <button type="button" class="btn_next Btn_come" onclick="console.log(1)">添加出发信息</button>
+                                <button type="button" class="btn_next Btn_come">添加出发信息</button>
                             </div>
                             <?php $i++ ?>
                         @endif
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">航班/车次  :</span>
-                                    <input  data-type="Alltype" required tip-warn="不能为空" tip-warn="" tip-info="输入交通工具" class="input-field-text" id="trip[{{$i}}][vehicle_number]" name="trip[{{$i}}][vehicle_number]" type="text" value="{{$val['vehicle_number'] or ''}}">
+                                    <input  data-type="Alltype" required tip-warn="不能为空" tip-warn="" tip-info="输入您的航班/车次" class="input-field-text" id="trip[{{$i}}][vehicle_number]" name="trip[{{$i}}][vehicle_number]" type="text" value="{{$val['vehicle_number'] or ''}}">
                                     <div class="tips"></div>
                                 </div>
                                 <div class="input-field">
@@ -188,7 +188,7 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">人数  :</span>
-                                    <input data-type="isNumber" required tip-warn="不能为空!" tip-info="仅支持英文、汉字" type="text" name="trip[{{$i}}][people_number]" id="trip[{{$i}}][people_number]" class="input-field-text" value="{{$val['people_number'] or ''}}"/>
+                                    <input data-type="isNumber" required tip-warn="不能为空!" tip-info="请输入人数" type="text" name="trip[{{$i}}][people_number]" id="trip[{{$i}}][people_number]" class="input-field-text" value="{{$val['people_number'] or ''}}"/>
                                     <div class="tips"></div>
                                 </div>
                                 <div class="input-field">
@@ -206,8 +206,8 @@
                             <?php $i++ ?>
                         @endif
                     @endforeach
-                    
-                    
+
+
                     <div class="div_tab" style="padding-bottom: 0px;">
                         <span class="leader_title">信息确认</span>
                         <div class="cut" style="margin-bottom: 50px;"></div>
@@ -392,7 +392,7 @@
             if( 1 == 2) {
                 return false;
             }
-            console.log("Alltype");
+            // console.log("Alltype");
             return true;
         }
         //身份证
@@ -594,7 +594,7 @@
                     }else {
 
                     }
-                    console.log(prevent);
+                    // console.log(prevent);
                 });
                 if (!prevent) {
                     var validcode = false;
@@ -1222,7 +1222,7 @@
                $('#tipes i').html($('#leader_mobiles').val());
                // countdown();
             }else {
-                console.log('无法调取')
+                // console.log('无法调取')
             }
         });
         // IE有关的判断;
@@ -1351,7 +1351,7 @@
             comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
             comeInfo += '<span class="input-label">航班/车次  :</span>';
-            comeInfo += '<input data-type="Alltype" required tip-warn="不能为空" tip-warn="" tip-info="输入交通工具" class="input-field-text" id="trip['+comeNum+'][vehicle_number]" name="trip['+comeNum+'][vehicle_number]" type="text" value="{{old("trip['+comeNum+'][vehicle_number]")}}">';
+            comeInfo += '<input data-type="Alltype" required tip-warn="不能为空" tip-warn="" tip-info="输入您的航班/车次" class="input-field-text" id="trip['+comeNum+'][vehicle_number]" name="trip['+comeNum+'][vehicle_number]" type="text" value="{{old("trip['+comeNum+'][vehicle_number]")}}">';
             comeInfo += '<div class="tips"></div>';
             comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
@@ -1380,10 +1380,10 @@
             comeInfo += '<span class="input-label">起飞/发车时间  :</span>';
             comeInfo += '<input required type="text" name="trip['+comeNum+'][vehicle_time]" id="datetimepicker' + ((comeNum-3)*5 + 13) + '" class="input-field-text" value="{{old("trip['+comeNum+'][vehicle_time]")}}"/>';
             comeInfo += '<div class="tips"></div>';
-            comeInfo += '</div>'; 
+            comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
             comeInfo += '<span class="input-label">人数  :</span>';
-            comeInfo += '<input id="trip['+comeNum+'][people_number]" data-type="isNumber" required tip-warn="" tip-info="仅支持英文、汉字" type="text" name="trip['+comeNum+'][people_number]" class="input-field-text" value="{{old("trip['+comeNum+'][people_number]")}}"/>';
+            comeInfo += '<input id="trip['+comeNum+'][people_number]" data-type="isNumber" required tip-warn="" tip-info="请输入人数" type="text" name="trip['+comeNum+'][people_number]" class="input-field-text" value="{{old("trip['+comeNum+'][people_number]")}}"/>';
             comeInfo += '<div class="tips"></div>';
             comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
@@ -1421,7 +1421,7 @@
             backInfo += '</div>';
             backInfo += '<div class="input-field">';
             backInfo += '<span class="input-label">航班/车次  :</span>';
-            backInfo += '<input data-type="Alltype" id="trip['+backNum+'][vehicle_number]" required tip-warn="不能为空" tip-warn="" tip-info="输入航班/车次" class="input-field-text" id="vehicle_come_number_new" name="trip['+backNum+'][vehicle_number]" type="text" value="{{old("trip['+backNum+'][vehicle_number]")}}"/>';
+            backInfo += '<input data-type="Alltype" id="trip['+backNum+'][vehicle_number]" required tip-warn="不能为空" tip-warn="" tip-info="输入您的航班/车次" class="input-field-text" id="vehicle_come_number_new" name="trip['+backNum+'][vehicle_number]" type="text" value="{{old("trip['+backNum+'][vehicle_number]")}}"/>';
             backInfo += '<div class="tips"></div>';
             backInfo += '</div>';""
             backInfo += '<div class="input-field">';
@@ -1455,7 +1455,7 @@
             backInfo += '</div>';
             backInfo += '<div class="input-field">';
             backInfo += '<span class="input-label">人数  :</span>';
-            backInfo += '<input data-type="isNumber" id="trip['+backNum+'][people_number]" required tip-warn="" tip-info="请输入数字" type="text" name="trip['+backNum+'][people_number]" class="input-field-text" value="{{old("trip['+backNum+'][people_number]")}}"/>';
+            backInfo += '<input data-type="isNumber" id="trip['+backNum+'][people_number]" required tip-warn="" tip-info="请输入人数" type="text" name="trip['+backNum+'][people_number]" class="input-field-text" value="{{old("trip['+backNum+'][people_number]")}}"/>';
             backInfo += '<div class="tips"></div>';
             backInfo += '</div>';
             backInfo += '<div class="input-field">';
@@ -1483,7 +1483,7 @@
         }
 
         clickSelf();
-        function clickSelf(){  
+        function clickSelf(){
             if ($('.all_info .div_tab').length == 2) {
                 $("#base").after(addBackInfo());
                 $('#back_1 .delete').remove();
@@ -1523,7 +1523,7 @@
                 $('#back_2 button').remove();
                 $('#back_4 button').remove();
             }
-        } 
+        }
 
         function vehicleChange(thisSelect){
             thisSelect.find('option:first').text('火车');
