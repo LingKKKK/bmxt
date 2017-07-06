@@ -24,6 +24,16 @@ Route::post('/admin/export', 'SignupController@doExportExcel');
 Route::get('/search', 'SignupController@search');
 Route::post('/search', 'SignupController@doSearch');
 
+// 行程系统
+Route::get('/scheduling', 'SignupController@scheduling');
+Route::post('/scheduling', 'SignupController@doScheduling');
+Route::get('/plan', 'SignupController@plan');
+Route::post('/plan', 'SignupController@doPlan');
+Route::get('/showTrip', 'SignupController@showTrip');
+// 行程系统查询
+Route::get('/plan/export', 'SignupController@planExport');
+Route::post('/plan/export', 'SignupController@planExportExcel');
+
 //
 Route::get('/pay/test', 'AliPayController@test');
 

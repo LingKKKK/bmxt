@@ -192,75 +192,6 @@
         });
     }, 3000);
 
-    function showInfo(){
-        var leadersList = '';
-        leadersList += '<span class="leader_title">领队信息</span>';
-        leadersList += '<div class="cut"></div>';
-        leadersList += '<span class="name">用户名 :</span>';
-        leadersList += '<input class="name_input" type="text" value='+ allData.user_name +'>';
-        leadersList += '<div class="clearfix clear"></div>';
-        leadersList += '<span class="name">真实姓名 :</span>';
-        leadersList += '<input class="name_input" type="text" value='+ allData.leader_name +'>';
-        leadersList += '<div class="clearfix clear"></div>';
-        leadersList += '<span class="name">性别 :</span>';
-        leadersList += '<input class="name_input" type="text" value='+ allData.leader_sex +'>';
-        leadersList += '<div class="clearfix clear"></div>';
-        leadersList += '<span class="name">注册邮箱 :</span>';
-        leadersList += '<input class="name_input" type="text" value='+ allData.leader_email +'>';
-        leadersList += '<div class="clearfix clear"></div>';
-        leadersList += '<span class="name">手机号码 :</span>';
-        leadersList += '<input class="name_input" type="text" value='+ allData.leader_mobile +'>';
-        leadersList += '<div class="clearfix clear"></div>';
-        $('.team_info #leader').html(leadersList);
-
-        var teamList = '';
-        teamList+= '<span class="leader_title">队伍信息</span>';
-        teamList+= '<div class="cut"></div>';
-        teamList+= '<span class="name">队伍名称 :</span>';
-        teamList+= '<input class="name_input" type="text" value='+ allData.team_name +'>';
-        teamList+= '<div class="clearfix clear"></div>';
-        teamList+= '<span class="name">学校/单位名称 :</span>';
-        teamList+= '<input class="name_input" type="text" value='+ allData.school_name +'>';
-        teamList+= '<div class="clearfix clear"></div>';
-        teamList+= '<span class="name">学校/单位地址 :</span>';
-        teamList+= '<input class="name_input" type="text" value='+ allData.school_address +'>';
-        teamList+= '<div class="clearfix clear"></div>';
-        teamList+= '<span class="name">赛事项目 :</span>';
-        teamList+= '<input class="name_input" type="text" value='+ allData.competition_type1 +'>';
-        teamList+= '<div class="clearfix clear"></div>';
-        teamList+= '<span class="name">组别 :</span>';
-        teamList+= '<input class="name_input" type="text" value='+ allData.competition_type2 +'>';
-        teamList+= '<div class="clearfix clear"></div>';
-        $('.team_info #team').html(teamList);
-
-        var num_member = $('.menber_list').length;
-        console.log(num_member);
-
-        var membersList = '';
-        for( var i=0; i<num_member; i++ ){
-            membersList += '<div class="cut"></div>';
-            membersList += '<span class="name">队员姓名 :</span>';
-            membersList += '<input class="name_input" type="text" value='+ allData.members[i].name +'>';
-            membersList += '<div class="clearfix clear"></div>';
-            membersList += '<span class="name">手机号码 :</span> ';
-            membersList += '<input class="name_input" type="text" value='+ allData.members[i].mobile +'>';
-            membersList += '<div class="clearfix clear"></div>';
-            membersList += '<span class="name">性别 :</span>';
-            membersList += '<input class="name_input" type="text" value='+ allData.members[i].sex +'>';
-            membersList += '<div class="clearfix clear"></div>';
-            membersList += '<span class="name">年龄 :</span>';
-            membersList += '<input class="name_input" type="text" value='+ allData.members[i].age +'>';
-            membersList += '<div class="clearfix clear"></div>';
-            membersList += '<span class="name">学校/单位名称 :</span>';
-            membersList += '<input class="name_input" type="text" value='+ allData.members[i].member_school_name +'>';
-            membersList += '<div class="clearfix clear"></div>';
-            membersList += '<span class="name school_add">学校/单位地址 :</span>';
-            membersList += '<input class="name_input" type="text" value='+ allData.members[i].member_school_address +'>';
-            membersList += '<div class="clearfix clear"></div>';
-        }
-        $('#number').html(membersList);
-    }
-
     var game_name = ["未来世界", "博思威龙", "工业时代", "部落战争——攻城大师", "智造大挑战", "创客生存挑战赛"]; //直接声明Array
     var game_type = [
         ["WRO常规赛", "EV3足球赛", "WRO创意赛-'可持续发展'"],
@@ -317,15 +248,6 @@
             }
         }
     }
-
-    // $('.name_input').each(function () {
-    //     console.log(1);
-    //     if( $(this).text() == "" ){
-    //         $(this).parents('.file-text').css('display', 'none');
-    //     }else {
-
-    //     }
-    // })
 
 </script>
 </body>

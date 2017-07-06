@@ -12,6 +12,7 @@ use Storage;
 use Session;
 use App\Enroll\InviteManager;
 use Excel;
+use App\Enroll\TripData;
 
 class SignupController extends Controller
 {
@@ -179,80 +180,79 @@ class SignupController extends Controller
 
         $this->initTeamNo($request->input('competition_group'), $request->input('competition_type'));
         try {
+            $leader_picdata = $this->saveFile($request->file('leader_pic'));
+            $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
+            $leader_pic_filename = !empty($leader_picdata) && isset($leader_picdata['filename']) ? $leader_picdata['filename'] : '';
 
-        $leader_picdata = $this->saveFile($request->file('leader_pic'));
-        $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
-        $leader_pic_filename = !empty($leader_picdata) && isset($leader_picdata['filename']) ? $leader_picdata['filename'] : '';
+            // 处理成员
+            $members = array();
+            $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
 
-        // 处理成员
-        $members = array();
-        $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
+            foreach ($origin_members as $k => $item) {
+                $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name', 'school_address' ,'height', 'id_type']);
+                $pic = isset($item['pic']) ? $item['pic'] : null;
 
-        foreach ($origin_members as $k => $item) {
-            $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name', 'school_address' ,'height', 'id_type']);
-            $pic = isset($item['pic']) ? $item['pic'] : null;
+                $member_picdata = $this->saveFile($item['pic']);
+                $member_info['pic'] =  !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['publicPath'] : '';
+                $member_info['pic_filename'] = !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['filename'] : '';
+                $members[] = $member_info;
+            }
+            // 领队成员处理
+            $leaders = array();
+            $origin_leaders = isset($request->all()['leaders']) ? $request->all()['leaders'] : [];
 
-            $member_picdata = $this->saveFile($item['pic']);
-            $member_info['pic'] =  !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['publicPath'] : '';
-            $member_info['pic_filename'] = !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['filename'] : '';
-            $members[] = $member_info;
-        }
-        // 领队成员处理
-        $leaders = array();
-        $origin_leaders = isset($request->all()['leaders']) ? $request->all()['leaders'] : [];
+            foreach ($origin_leaders as $k => $item) {
+                $leader_info = array_only($item, ['name', 'mobile', 'ID', 'sex', 'email']);
+                $pic = isset($item['pic']) ? $item['pic'] : null;
 
-        foreach ($origin_leaders as $k => $item) {
-            $leader_info = array_only($item, ['name', 'mobile', 'ID', 'sex', 'email']);
-            $pic = isset($item['pic']) ? $item['pic'] : null;
+                $leader_picdata = $this->saveFile($item['pic']);
+                $leader_info['pic'] =  !empty($leader_picdata) && isset($leader_picdata['publicPath']) ?  $leader_picdata['publicPath'] : '';
+                $leader_info['pic_filename'] = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ?  $leader_picdata['filename'] : '';
+                $leaders[] = $leader_info;
+            }
 
-            $leader_picdata = $this->saveFile($item['pic']);
-            $leader_info['pic'] =  !empty($leader_picdata) && isset($leader_picdata['publicPath']) ?  $leader_picdata['publicPath'] : '';
-            $leader_info['pic_filename'] = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ?  $leader_picdata['filename'] : '';
-            $leaders[] = $leader_info;
-        }
+            if ($validator->fails()) {
+                // 弹出错误提示码
+                // dd($validator->errors());
+                return redirect()->back()->withInput()
+                                         ->withErrors($validator->errors())
+                                         ->with('leader_pic_preview', $leader_pic)
+                                         ->with('leader_pic_filename', $leader_pic_filename)
+                                         ->with('leaders_data', $leaders)
+                                         ->with('members_data', $members);
+            }
 
-        if ($validator->fails()) {
-            // 弹出错误提示码
-            // dd($validator->errors());
-            return redirect()->back()->withInput()
-                                     ->withErrors($validator->errors())
-                                     ->with('leader_pic_preview', $leader_pic)
-                                     ->with('leader_pic_filename', $leader_pic_filename)
-                                     ->with('leaders_data', $leaders)
-                                     ->with('members_data', $members);
-        }
+            //表单地钻
+            $keys = ['invitecode', 'out_trade_no' ,'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 'team_name', 'school_name', 'school_address', 'competition_name', 'competition_type', 'competition_group', 'payment'
+            ];
 
-        //表单地钻
-        $keys = ['invitecode', 'out_trade_no' ,'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 'team_name', 'school_name', 'school_address', 'competition_name', 'competition_type', 'competition_group', 'payment'
-        ];
-
-        $data = $request->only($keys);
-        $data['leader_pic'] = $leader_pic;
-        $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
-        $data['leaders'] = json_encode($leaders, JSON_UNESCAPED_UNICODE);
-        $data['team_no'] = $this->team_no;
-        $data['out_trade_no'] = '';
+            $data = $request->only($keys);
+            $data['leader_pic'] = $leader_pic;
+            $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
+            $data['leaders'] = json_encode($leaders, JSON_UNESCAPED_UNICODE);
+            $data['team_no'] = $this->team_no;
+            $data['out_trade_no'] = '';
 
 
-        $dataPayload = $data;
-        $dataPayload['participant'] = $request->input('participant', '');
-        $dataPayload['account_type'] = $request->input('account_type', '');
-        $dataPayload['invoice_header'] = $request->input('invoice_header', '');
-        $dataPayload['billing_content'] = $request->input('billing_content', '');
-        $dataPayload['receive_address'] = $request->input('receive_address', '');
-        $dataPayload['average_amount'] = $request->input('average_amount', '');
-        $dataPayload['total_cost'] = $request->input('total_cost', '');
-        $dataPayload['leaders'] = $leaders;
+            $dataPayload = $data;
+            $dataPayload['participant'] = $request->input('participant', '');
+            $dataPayload['account_type'] = $request->input('account_type', '');
+            $dataPayload['invoice_header'] = $request->input('invoice_header', '');
+            $dataPayload['billing_content'] = $request->input('billing_content', '');
+            $dataPayload['receive_address'] = $request->input('receive_address', '');
+            $dataPayload['average_amount'] = $request->input('average_amount', '');
+            $dataPayload['total_cost'] = $request->input('total_cost', '');
+            $dataPayload['leaders'] = $leaders;
 
-        $data['data'] = json_encode($dataPayload, JSON_UNESCAPED_UNICODE);
-        $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
+            $data['data'] = json_encode($dataPayload, JSON_UNESCAPED_UNICODE);
+            $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
 
-        // dd($data['data']);
+            // dd($data['data']);
 
-        $request->session()->flash('signdata', $data);
+            $request->session()->flash('signdata', $data);
 
-        $ddt = SignupData::create($data);
-        InviteManager::useCode($data['invitecode'], $ddt->id);
+            $ddt = SignupData::create($data);
+            InviteManager::useCode($data['invitecode'], $ddt->id);
             // dd($ddt);
         } catch (\Exception $e) {
             // dd($e);
@@ -283,7 +283,6 @@ class SignupController extends Controller
         $this->team_no = $seg1.$seg2.$seg3.$seg5.$seg4;
         return $this->team_no;
     }
-
     //发送邮件
     protected function sendMail($email)
     {
@@ -333,6 +332,7 @@ class SignupController extends Controller
      * 搜索
      * @return [type] [description]
      */
+
     public function search()
     {
         return view('search');
@@ -524,5 +524,191 @@ class SignupController extends Controller
            }
         }
         return '';
+    }
+
+    public function scheduling()
+    {
+        return view('scheduling');
+    }
+
+    public function doScheduling(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'leader_mobile' => 'required',
+                // 'leader_id' => 'sometimes|required',
+                // 'leader_name' => 'required_without:leader_id'
+                'team_no'   => 'required',
+                'verificationcode' => 'required|verificationcode',
+            ],
+            [
+                'leader_mobile.required' => '手机号不能为空',
+                'leader_id.required' => '身份证或者领队姓名名填写至少一个',
+                'leader_name.required_without' => '身份证或者领队姓名名至少填写一个',
+                'team_no.required'  => '队伍编号不能为空',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
+            ]);
+        // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
+
+        if ($validator->fails()) {
+           // return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        $team_no = $request->input('team_no', '');
+        $signdata = SignupData::where('team_no', $team_no)->first();
+        if ($signdata === null) {
+            return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
+        }
+
+        if ($signdata['leader_mobile'] != $request->input('leader_mobile')) {
+            return redirect()->back()->withErrors(collect(['notfound' => '请填写正确的领队手机号']))->withInput();
+        }
+
+        // $request->session()->flash('signdata', $signdata->toArray());
+        $request->session()->put('signdata', $signdata->toArray());
+
+        return redirect('plan');
+    }
+
+    public function plan(Request $request)
+    {
+        // $signdata = $request->session()->pull('signdata');   /*检测一次内容*/
+        // $signdata = $request->session()->pull('signdata');
+
+        $signdata = $this->fetchSignData();
+        if (! $signdata) {
+            return view('/scheduling');
+        }
+
+        $team_no =  $signdata['team_no'];
+        $trip_data = TripData::where('team_no', $team_no)->get();
+        // return redirect('/scheduling');
+        return view('plan', compact('trip_data', 'signdata'));
+    }
+
+    public function doPlan(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [],
+            [
+                'verificationcode.required' => '验证码不能为空',
+            ]
+        );    
+
+        // dd($request->all());
+        $team_no = $request->input('team_no');
+        $trip_data_old = TripData::where('team_no', $team_no)->get();
+
+        // 获取到所有提交的数据   下面是对这些数据 进行分配 处理
+        // dd($team_no, $trip_data);
+        try {
+            $team_no = $request->input('team_no');
+            $trip_data = $request->input('trip');
+
+            TripData::where('team_no', $team_no)->delete();
+            foreach ($trip_data as $k => $val) {
+                $val['team_no'] = $team_no;
+                $id = isset($val['id']) ? intval($val['id']) : 0;
+                if (!empty($id)) {
+                    $trip = TripData::find($id);
+                    if ($trip !== null) {
+                        $trip->fill($val)->save();
+                        // echo $val['id'].'<br>';
+                        continue;
+                    }
+                }
+                TripData::create($val);
+            }
+        // dd($team_no, $trip_data_old, $request->all());
+
+        }catch (\Exception $e) {
+            // dd($e->getMessage());
+
+            return redirect()->back()->withInput();
+        }
+
+        return redirect('/showTrip');
+    }
+
+    public function showTrip(Request $request)
+    {
+        return view('showTrip', compact('tripdata'));
+    }
+
+    public function planExport()
+    {
+        return view('enroll.planExport');
+    }
+
+    public function planExportExcel(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+                'admincode' => 'required',
+                'mobile'    => 'required',
+                'verificationcode' => 'required|verificationcode',
+
+            ],[
+                'mobile.required' => '手机号不能为空',
+                'admincode.required'  => '查询码不能为空',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
+            ]);
+
+        if ($validator->fails()) {
+           return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        if ($request->input('admincode') != 'a3b5c4') {
+           return redirect()->back()->withErrors(['查询码不正确'])->withInput();
+        }
+
+        $adminArr = [
+            '15000000000',
+        ];
+        if (! in_array($request->input('mobile'), $adminArr)) {
+            return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
+        }
+
+        $filename = 'RoboCom行程-' . date('Y_m_d_H_i_s');
+
+        $tripdataList = TripData::all();
+
+        Excel::create($filename, function($excel) use($tripdataList) {
+
+            // Set the title
+            $excel->setTitle('RoboCom行程表');
+
+            // Chain the setters
+            $excel->setCreator('RoboCom')
+                  ->setCompany('RoboCom');
+
+            // Call them separately
+            $excel->setDescription('行程数据');
+
+            $excel->sheet('行程数据', function($sheet) use($tripdataList) {
+                // $sheet->mergeCells('A1:G1');
+                // $sheet->mergeCells('H1:L1');
+                // $sheet->mergeCells('M1:U1');
+                // $sheet->cell('A1', '队伍信息');
+                // $sheet->cell('H1', '领队信息');
+                // $sheet->cell('M1', '队员信息');
+                $sheet->row(1, function($row) {
+                    $row->setAlignment('center');
+                });
+                $sheet->row(2, function($row) {
+                    $row->setAlignment('center');
+                });
+                $sheet->row(2, ['队伍编号', '行程状态', '交通工具', '航班/车次', '出发日期', '出发时间', '出发地点', '到达日期', '到达时间', '到达地点', '航班/列车发车时间', '总人数', '联系人', '联系人电话']);
+
+                $rowIndex = 3;
+                foreach ($tripdataList as $k => $val) {
+                    $sheet->row($rowIndex++, [ $val['team_no'].' ', $val['trip_type'], $val['vehicle_type'], $val['vehicle_number'], $val['start_date'], $val['start_time'], $val['start_place'], $val['arrive_date'], $val['arrive_time'], $val['arrive_place'], $val['vehicle_time'], $val['people_number'], $val['contact_name'], $val['contact_mobile'].' ',]);
+                }
+
+            });
+            //最后一步 导出excel 表格
+        })->export('xls');
+
     }
 }
