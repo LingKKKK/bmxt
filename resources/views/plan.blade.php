@@ -77,8 +77,9 @@
                                     <input type="hidden" name="trip[{{$i}}][id]" value="{{$val['id'] or ''}}">
                                     <input id="trip[{{$i}}][trip_type]" style="display:none;" name="trip[{{$i}}][trip_type]" type="text" value="到达" />
                                     <span class="input-label">交通工具  :</span>
-                                    <select id="trip[{{$i}}][vehicle_type]" name="trip[{{$i}}][vehicle_type]" class="input-field-text" onclick="vehicleChange($(this))">
-                                        <option value="{{$val['vehicle_type'] or ''}}" selected >{{$val['vehicle_type'] or ''}}</option>
+                                    <input class="select{{$i+1}}_val" type="hidden" value="{{$val['vehicle_type'] or ''}}">
+                                    <select id="trip[{{$i}}][vehicle_type]" name="trip[{{$i}}][vehicle_type]" class="input-field-text select{{$i+1}}">
+                                        <option value="火车" selected >火车</option>
                                         <option value="飞机" >飞机</option>
                                     </select>
                                 </div>
@@ -109,10 +110,12 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">到达地点  :</span>
-                                    <select id="trip[{{$i}}][arrive_place]" name="trip[{{$i}}][arrive_place]" class="input-field-text" onclick="stateChange($(this));">
-                                        <option value="{{$val['arrive_place'] or ''}}" selected >{{$val['arrive_place'] or ''}}</option>
+                                    <input class="select_{{$i+1}}_val" type="hidden" value="{{$val['arrive_place'] or ''}}">
+                                    <select id="trip[{{$i}}][arrive_place]" name="trip[{{$i+1}}][arrive_place]" class="input-field-text select_{{$i+1}}">
+                                        <option value="武汉火车站" selected >武汉火车站</option>
                                         <option value="汉口火车站" >汉口火车站</option>
                                         <option value="武昌火车站" >武昌火车站</option>
+                                        <option value="天河国际机场" >天河国际机场</option>
                                     </select>
                                     <div class="tips"></div>
                                 </div>
@@ -137,10 +140,10 @@
                         @endif
                     @endforeach
 
-                    <?php $i = 2; ?>
+                    <?php $i = 3; ?>
                     @foreach($trip_data as $val)
                         @if($val['trip_type'] == '返程')
-                            <div class="div_tab" id="back_{{$i+1}}">
+                            <div class="div_tab" id="back_{{$i}}">
                                 <span class="leader_title">返回信息表</span>
                                 <div class="cut"></div>
                                 <div class="delete"><i class="icon kenrobot ken-close"></i></div>
@@ -148,8 +151,9 @@
                                     <input type="hidden" name="trip[{{$i}}][id]" value="{{$val['id'] or ''}}">
                                     <input style="display:none;" name="trip[{{$i}}][trip_type]" type="text" value="返程" />
                                     <span class="input-label">交通工具  :</span>
-                                    <select id="trip[{{$i}}][vehicle_type]" name="trip[{{$i}}][vehicle_type]" class="input-field-text" onclick="vehicleChange($(this))">
-                                        <option value="{{$val['vehicle_type'] or ''}}" selected >{{$val['vehicle_type'] or ''}}</option>
+                                    <input class="select{{$i}}_val" type="hidden" value="{{$val['vehicle_type'] or ''}}">
+                                    <select id="trip[{{$i}}][vehicle_type]" name="trip[{{$i}}][vehicle_type]" class="input-field-text select{{$i}}">
+                                        <option value="火车" selected >火车</option>
                                         <option value="飞机" >飞机</option>
                                     </select>
                                     <div class="tips"></div>
@@ -171,8 +175,9 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">出发地点  :</span>
-                                    <select id="trip[{{$i}}][start_place]" name="trip[{{$i}}][start_place]" class="input-field-text" onclick="hotelChange($(this))">
-                                        <option value="{{$val['start_place'] or ''}}" selected >{{$val['start_place'] or ''}}</option>
+                                    <input class="select_{{$i}}_val" type="hidden" value="{{$val['start_place'] or ''}}">
+                                    <select id="trip[{{$i}}][start_place]" name="trip[{{$i}}][start_place]" class="input-field-text select_{{$i}}">
+                                        <option value="喜瑞德大酒店" selected >喜瑞德大酒店</option>
                                         <option value="武汉碧桂园凤凰酒店" >武汉碧桂园凤凰酒店</option>
                                         <option value="武汉豪生国际酒店" >武汉豪生国际酒店</option>
                                         <option value="湖北中核国际酒店" >湖北中核国际酒店</option>
@@ -243,7 +248,7 @@
                 <img src="{{url('/captcha')}}">
                 <input id="v_code" type="text" placeholder="请输入">
                 <a id="sendCode" class="yes">确认</a>
-                <a class="no"><i class="icon kenrobot ken-close">X</i></a>
+                <a class="no"><i class="icon kenrobot ken-close"></i></a>
             </div>
         </div>
         <div class="codeError">
@@ -934,6 +939,38 @@
                     }
                 });
             });
+
+            $('#back_1 .select1').unbind('change').on('change', function(event) {
+                if ( $('#back_1 .select1 option:selected').val() == "飞机" ) {
+                    $('#back_1 .select_1 option').removeAttr('selected');
+                    $('#back_1 .select_1 option').css('display', 'none');
+                    $('#back_1 .select_1 option:last').css('display', 'block');
+                    $('#back_1 .select_1 option:last').attr("selected", "true");
+                }else {
+                    $('#back_1 .select_1 option').removeAttr('selected');
+                    $('#back_1 .select_1 option').css('display', 'block');
+                    $('#back_1 .select_1 option:last').css('display', 'none');
+                    $('#back_1 .select_1 option:first').attr("selected", "true");
+                }
+                rebindVlidation();
+            });
+
+            $('#back_2 .select2').unbind('change').on('change', function(event) {
+                if ( $('#back_2 .select2 option:selected').val() == "飞机" ) {
+                    $('#back_2 .select_2 option').removeAttr('selected');
+                    $('#back_2 .select_2 option').css('display', 'none');
+                    $('#back_2 .select_2 option:last').css('display', 'block');
+                    $('#back_2 .select_2 option:last').attr("selected", "true");
+                }else {
+                    $('#back_2 .select_2 option').removeAttr('selected');
+                    $('#back_2 .select_2 option').css('display', 'block');
+                    $('#back_2 .select_2 option:last').css('display', 'none');
+                    $('#back_2 .select_2 option:first').attr("selected", "true");
+                }
+                rebindVlidation();
+            });
+
+
         }
         function detectIE()
         {
@@ -1338,12 +1375,12 @@
             var comeInfo = '';
             comeInfo += '<div class="div_tab" id="back_' + comeNum + '">';
             comeInfo += '<span class="leader_title">返回信息表</span>';
-            comeInfo += '<div class="cut"></div>';
             comeInfo += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
+            comeInfo += '<div class="cut"></div>';
             comeInfo += '<div class="input-field" style="margin-top: 30px;">';
             comeInfo += '<input style="display:none;" name="trip['+comeNum+'][trip_type]" type="text" value="返程" />';
             comeInfo += '<span class="input-label">交通工具  :</span>';
-            comeInfo += '<select id="trip['+comeNum+'][vehicle_type]" name="trip['+comeNum+'][vehicle_type]" class="input-field-text">';
+            comeInfo += '<select id="trip['+comeNum+'][vehicle_type]" name="trip['+comeNum+'][vehicle_type]" class="input-field-text select'+comeNum+'">';
             comeInfo += '<option value="火车" selected >火车</option>';
             comeInfo += '<option value="飞机" >飞机</option>';
             comeInfo += '</select>';
@@ -1366,7 +1403,7 @@
             comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
             comeInfo += '<span class="input-label">出发地点  :</span>';
-            comeInfo += '<select id="trip['+comeNum+'][start_place]" name="trip['+comeNum+'][start_place]" class="input-field-text">';
+            comeInfo += '<select id="trip['+comeNum+'][start_place]" name="trip['+comeNum+'][start_place]" class="input-field-text select_'+comeNum+'">';
             comeInfo += '<option value="喜瑞德大酒店" selected >喜瑞德大酒店</option>';
             comeInfo += '<option value="武汉碧桂园凤凰酒店" >武汉碧桂园凤凰酒店</option>';
             comeInfo += '<option value="武汉豪生国际酒店" >武汉豪生国际酒店</option>';
@@ -1408,12 +1445,12 @@
             var backInfo = '';
             backInfo += '<div class="div_tab" id="back_' + backNum + '">';
             backInfo += '<span class="leader_title">出发信息表</span>';
-            backInfo += '<div class="cut"></div>';
             backInfo += '<div class="delete"><i class="icon kenrobot ken-close"></i></div>';
+            backInfo += '<div class="cut"></div>';
             backInfo += '<div class="input-field" style="margin-top: 30px;">';
             backInfo += '<input style="display:none;" name="trip['+backNum+'][trip_type]" type="text" value="到达" />';
             backInfo += '<span class="input-label">交通工具  :</span>';
-            backInfo += '<select id="trip['+backNum+'][vehicle_type]" name="trip['+backNum+'][vehicle_type]" class="input-field-text">';
+            backInfo += '<select id="trip['+backNum+'][vehicle_type]" name="trip['+backNum+'][vehicle_type]" class="input-field-text select'+backNum+'" onchange="rebindVlidation()">';
             backInfo += '<option value="火车" selected >火车</option>';
             backInfo += '<option value="飞机" >飞机</option>';
             backInfo += '</select>';
@@ -1446,7 +1483,7 @@
             backInfo += '</div>';
             backInfo += '<div class="input-field">';
             backInfo += '<span class="input-label">到达地点  :</span>';
-            backInfo += '<select id="trip['+backNum+'][arrive_place]" name="trip['+backNum+'][arrive_place]" class="input-field-text">';
+            backInfo += '<select id="trip['+backNum+'][arrive_place]" name="trip['+backNum+'][arrive_place]" class="input-field-text select_'+backNum+'">';
             backInfo += '<option value="武汉火车站" selected >武汉火车站</option>';
             backInfo += '<option value="汉口火车站" >汉口火车站</option>';
             backInfo += '<option value="武昌火车站" >武昌火车站</option>';
@@ -1502,6 +1539,8 @@
             }else if ($('#back_4').length == 0 && $('#back_2').length == 0) {
                 $('#back_1 .delete').remove();
                 $('#back_3 .delete').remove();
+                $('#back_3 .delete').remove();
+                rebindVlidation();
             }else if ($('#back_4').length != 0 && $('#back_2').length == 0) {
                 $('#back_1 .delete').remove();
                 $('#back_3 .delete').remove();
@@ -1510,6 +1549,8 @@
                     "pointer-events": 'none'
                 });
                 $('#back_4 button').remove();
+                $('#back_3 .delete').remove();
+                rebindVlidation();
             }else {
                 $('#back_1 .delete').remove();
                 $('#back_3 .delete').remove();
@@ -1523,21 +1564,153 @@
                 });
                 $('#back_2 button').remove();
                 $('#back_4 button').remove();
+                $('#back_3 .delete').remove();
+                rebindVlidation();
             }
         }
 
-        function vehicleChange(thisSelect){
-            thisSelect.find('option:first').text('火车');
-            thisSelect.find('option:first').val('火车');
-        }
-        function hotelChange(thisSelect){
-            thisSelect.find('option:first').text('喜瑞德大酒店');
-            thisSelect.find('option:first').val('喜瑞德大酒店');
-        }
-        function stateChange(thisSelect){
-            thisSelect.find('option:first').text('武汉火车站');
-            thisSelect.find('option:first').val('武汉火车站');
-        }
+        reloadData1();
+        reloadData2();
+        reloadData3();
+        reloadData4();
+        
+        function reloadData1() {
+            if ( $('#back_1 .select1_val').val() == "火车" ) {
+                $('#back_1 .select1 option:contains("火车")').attr("selected", "true")
+                $('#back_1 .select1 option:contains("飞机")').removeAttr('selected');
+            }else {
+                $('#back_1 .select1 option:contains("火车")').removeAttr('selected');
+                $('#back_1 .select1 option:contains("飞机")').attr("selected", "true");
+            }
+
+            if ( $('#back_1 .select_1_val').val() == "武汉火车站" ) {
+                $('#back_1 .select_1 option:contains("武汉火车站")').attr("selected", "true");
+                $('#back_1 .select_1 option:contains("汉口火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("武昌火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("天河国际机场")').removeAttr('selected');
+            }else if ( $('#back_1 .select_1_val').val() == "汉口火车站" ) {
+                $('#back_1 .select_1 option:contains("武汉火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("汉口火车站")').attr("selected", "true");
+                $('#back_1 .select_1 option:contains("武昌火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("天河国际机场")').removeAttr('selected');
+            }else if ( $('#back_1 .select_1_val').val() == "武昌火车站" ) {
+                $('#back_1 .select_1 option:contains("武汉火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("汉口火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("武昌火车站")').attr("selected", "true");
+                $('#back_1 .select_1 option:contains("天河国际机场")').removeAttr('selected');
+            }else if ( $('#back_1 .select_1_val').val() == "天河国际机场" ) {
+                $('#back_1 .select_1 option:contains("武汉火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("汉口火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("汉口火车站")').removeAttr('selected');
+                $('#back_1 .select_1 option:contains("天河国际机场")').attr("selected", "true");
+            }
+
+            if ( $('#back_1 .select1 option:selected').val() == "飞机" ) {
+                $('#back_1 .select_1 option').css('display', 'none');
+                $('#back_1 .select_1 option:last').css('display', 'block');
+            }else {
+                $('#back_1 .select_1 option').css('display', 'block');
+                $('#back_1 .select_1 option:last').css('display', 'none');
+            }
+        };
+        function reloadData2() {
+            if ( $('#back_2 .select2_val').val() == "火车" ) {
+                $('#back_2 .select2 option:contains("火车")').attr("selected", "true")
+                $('#back_2 .select2 option:contains("飞机")').removeAttr('selected');
+            }else {
+                $('#back_2 .select2 option:contains("火车")').removeAttr('selected');
+                $('#back_2 .select2 option:contains("飞机")').attr("selected", "true");
+            }
+
+            if ( $('#back_2 .select_2_val').val() == "武汉火车站" ) {
+                $('#back_2 .select_2 option:contains("武汉火车站")').attr("selected", "true");
+                $('#back_2 .select_2 option:contains("汉口火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("武昌火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("天河国际机场")').removeAttr('selected');
+            }else if ( $('#back_2 .select_2_val').val() == "汉口火车站" ) {
+                $('#back_2 .select_2 option:contains("武汉火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("汉口火车站")').attr("selected", "true");
+                $('#back_2 .select_2 option:contains("武昌火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("天河国际机场")').removeAttr('selected');
+            }else if ( $('#back_2 .select_2_val').val() == "武昌火车站" ) {
+                $('#back_2 .select_2 option:contains("武汉火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("汉口火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("武昌火车站")').attr("selected", "true");
+                $('#back_2 .select_2 option:contains("天河国际机场")').removeAttr('selected');
+            }else if ( $('#back_2 .select_2_val').val() == "天河国际机场" ) {
+                $('#back_2 .select_2 option:contains("武汉火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("汉口火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("汉口火车站")').removeAttr('selected');
+                $('#back_2 .select_2 option:contains("天河国际机场")').attr("selected", "true");
+            }
+
+            if ( $('#back_2 .select2 option:selected').val() == "飞机" ) {
+                $('#back_2 .select_2 option').css('display', 'none');
+                $('#back_2 .select_2 option:last').css('display', 'block');
+            }else {
+                $('#back_2 .select_2 option').css('display', 'block');
+                $('#back_2 .select_2 option:last').css('display', 'none');
+            }
+        };
+        function reloadData3() {
+            if ( $('#back_3 .select3_val').val() == "火车" ) {
+                $('#back_3 .select3 option:contains("火车")').attr("selected", "true")
+                $('#back_3 .select3 option:contains("飞机")').removeAttr('selected');
+            }else {
+                $('#back_3 .select3 option:contains("火车")').removeAttr('selected');
+                $('#back_3 .select3 option:contains("飞机")').attr("selected", "true");
+            }
+
+            if ( $('#back_3 .select_3_val').val() == "喜瑞德大酒店" ) {
+                $('#back_3 .select_3 option').removeAttr('selected');
+                $('#back_3 .select_3 option:contains("喜瑞德大酒店")').attr("selected", "true");
+            }else if ( $('#back_3 .select_3_val').val() == "武汉碧桂园凤凰酒店" ) {
+                $('#back_3 .select_3 option').removeAttr('selected');
+                $('#back_3 .select_3 option:contains("武汉碧桂园凤凰酒店")').attr("selected", "true");
+            }else if ( $('#back_3 .select_3_val').val() == "武汉豪生国际酒店" ) {
+                $('#back_3 .select_3 option').removeAttr('selected');
+                $('#back_3 .select_3 option:contains("武汉豪生国际酒店")').attr("selected", "true");
+            }else if ( $('#back_3 .select_3_val').val() == "湖北中核国际酒店" ) {
+                $('#back_3 .select_3 option').removeAttr('selected');
+                $('#back_3 .select_3 option:contains("湖北中核国际酒店")').attr("selected", "true");
+            }else if ( $('#back_3 .select_3_val').val() == "武汉明德酒店" ) {
+                $('#back_3 .select_3 option').removeAttr('selected');
+                $('#back_3 .select_3 option:contains("武汉明德酒店")').attr("selected", "true");
+            }else if ( $('#back_3 .select_3_val').val() == "武汉联投半岛酒店" ) {
+                $('#back_3 .select_3 option').removeAttr('selected');
+                $('#back_3 .select_3 option:contains("武汉联投半岛酒店")').attr("selected", "true");
+            }
+        };
+        function reloadData4() {
+            if ( $('#back_4 .select4_val').val() == "火车" ) {
+                $('#back_4 .select4 option:contains("火车")').attr("selected", "true")
+                $('#back_4 .select4 option:contains("飞机")').removeAttr('selected');
+            }else {
+                $('#back_4 .select4 option:contains("火车")').removeAttr('selected');
+                $('#back_4 .select4 option:contains("飞机")').attr("selected", "true");
+            }
+
+            if ( $('#back_4 .select_4_val').val() == "喜瑞德大酒店" ) {
+                $('#back_4 .select_4 option').removeAttr('selected');
+                $('#back_4 .select_4 option:contains("喜瑞德大酒店")').attr("selected", "true");
+            }else if ( $('#back_4 .select_4_val').val() == "武汉碧桂园凤凰酒店" ) {
+                $('#back_4 .select_4 option').removeAttr('selected');
+                $('#back_4 .select_4 option:contains("武汉碧桂园凤凰酒店")').attr("selected", "true");
+            }else if ( $('#back_4 .select_4_val').val() == "武汉豪生国际酒店" ) {
+                $('#back_4 .select_4 option').removeAttr('selected');
+                $('#back_4 .select_4 option:contains("武汉豪生国际酒店")').attr("selected", "true");
+            }else if ( $('#back_4 .select_4_val').val() == "湖北中核国际酒店" ) {
+                $('#back_4 .select_4 option').removeAttr('selected');
+                $('#back_4 .select_4 option:contains("湖北中核国际酒店")').attr("selected", "true");
+            }else if ( $('#back_4 .select_4_val').val() == "武汉明德酒店" ) {
+                $('#back_4 .select_4 option').removeAttr('selected');
+                $('#back_4 .select_4 option:contains("武汉明德酒店")').attr("selected", "true");
+            }else if ( $('#back_4 .select_4_val').val() == "武汉联投半岛酒店" ) {
+                $('#back_4 .select_4 option').removeAttr('selected');
+                $('#back_4 .select_4 option:contains("武汉联投半岛酒店")').attr("selected", "true");
+            }
+        };
+
     </script>
 </body>
 </html>

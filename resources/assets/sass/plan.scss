@@ -283,10 +283,14 @@ body {
                     height: 30px;
                     display: block;
                     float: right;
-                    margin-top: 20px;
                     cursor: pointer;
                     text-align: center;
                     line-height: 30px;
+
+                    i {
+                        font-size: 26px;
+                        color: red;
+                    }
                 }
             }
 
@@ -304,6 +308,7 @@ body {
             }
 
             .cut {
+                clear: both;
                 opacity: 1;
                 background: #587BEF;
                 display: block;
@@ -883,6 +888,7 @@ body {
 
     //分割线
     .cut {
+        clear: both;
         opacity: 1;
         background: #587BEF;
         display: block;

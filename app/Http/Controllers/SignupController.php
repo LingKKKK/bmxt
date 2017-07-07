@@ -565,7 +565,7 @@ class SignupController extends Controller
             return redirect()->back()->withErrors(collect(['notfound' => '请填写正确的领队手机号']))->withInput();
         }
 
-        // $request->session()->flash('signdata', $signdata->toArray());
+        // $request->session()->put('signdata', $signdata->toArray());
         $request->session()->flash('signdata', $signdata->toArray());
 
         return redirect('plan');
@@ -629,6 +629,7 @@ class SignupController extends Controller
             return redirect()->back()->withInput();
         }
 
+        // $request->session()->put('showTrip', 1);
         $request->session()->flash('showTrip', 1);
 
         return redirect('/showTrip');

@@ -15,7 +15,7 @@ $.fn.lqdatetimepicker = function (options) {
                 'H' : {
                     begin : '00:00', //开始时分
                     end : '23:30', //结束时分
-                    step : "30" //时分步长
+                    step : "15" //时分步长
                 },
                 'D' : {
                     month : new Date(), //日期默认时间

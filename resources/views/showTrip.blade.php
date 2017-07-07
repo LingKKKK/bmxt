@@ -18,7 +18,6 @@
             <div class="successAlert" id="successAlert" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); padding: 40px;">
                 <span>您的数据已经成功录入!</span>
             </div>
-
         </div>
 
         <div class="bot">

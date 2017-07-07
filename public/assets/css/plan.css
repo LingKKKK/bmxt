@@ -336,10 +336,13 @@ body .content .all_info .div_tab .delete {
   height: 30px;
   display: block;
   float: right;
-  margin-top: 20px;
   cursor: pointer;
   text-align: center;
   line-height: 30px;
+}
+body .content .all_info .div_tab .delete i {
+  font-size: 26px;
+  color: red;
 }
 body .content .all_info .leader_title {
   font-family: PingFangSC-Regular;
@@ -354,6 +357,7 @@ body .content .all_info .leader_title {
   margin-bottom: 20px;
 }
 body .content .all_info .cut {
+  clear: both;
   opacity: 1;
   background: #587BEF;
   display: block;
@@ -843,6 +847,7 @@ body .btn_pre {
   right: 230px;
 }
 body .cut {
+  clear: both;
   opacity: 1;
   background: #587BEF;
   display: block;
