@@ -698,7 +698,7 @@
                     css : 'datetime-hour',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker1").each(function() {
+                        var $inputs = $("#datetimepicker4").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -733,7 +733,7 @@
                     dateType : 'D',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker3").each(function() {
+                        var $inputs = $("#datetimepicker1").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -751,7 +751,7 @@
                     dateType : 'D',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker4").each(function() {
+                        var $inputs = $("#datetimepicker3").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -769,7 +769,7 @@
                     css : 'datetime-hour',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker5").each(function() {
+                        var $inputs = $("#datetimepicker9").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -786,7 +786,7 @@
                     css : 'datetime-hour',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker6").each(function() {
+                        var $inputs = $("#datetimepicker7").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -804,7 +804,7 @@
                     dateType : 'D',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker7").each(function() {
+                        var $inputs = $("#datetimepicker8").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -822,7 +822,7 @@
                     dateType : 'D',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker8").each(function() {
+                        var $inputs = $("#datetimepicker6").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -840,7 +840,7 @@
                     css : 'datetime-hour',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker9").each(function() {
+                        var $inputs = $("#datetimepicker13").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -857,7 +857,7 @@
                     css : 'datetime-hour',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker10").each(function() {
+                        var $inputs = $("#datetimepicker12").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -894,7 +894,7 @@
                     dateType : 'D',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker12").each(function() {
+                        var $inputs = $("#datetimepicker16").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -911,7 +911,7 @@
                     css : 'datetime-hour',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker13").each(function() {
+                        var $inputs = $("#datetimepicker17").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -928,7 +928,7 @@
                     css : 'datetime-hour',
                     selectback : function(){
                         var prevent = false;
-                        var $inputs = $("#datetimepicker14").each(function() {
+                        var $inputs = $("#datetimepicker18").each(function() {
                             var ret = validField(this);
                             if (!ret) {
                                 prevent = true;
@@ -1450,7 +1450,7 @@
             backInfo += '<div class="input-field" style="margin-top: 30px;">';
             backInfo += '<input style="display:none;" name="trip['+backNum+'][trip_type]" type="text" value="到达" />';
             backInfo += '<span class="input-label">交通工具  :</span>';
-            backInfo += '<select id="trip['+backNum+'][vehicle_type]" name="trip['+backNum+'][vehicle_type]" class="input-field-text select'+backNum+'" onchange="rebindVlidation()">';
+            backInfo += '<select id="trip['+backNum+'][vehicle_type]" name="trip['+backNum+'][vehicle_type]" class="input-field-text select'+backNum+'">';
             backInfo += '<option value="火车" selected >火车</option>';
             backInfo += '<option value="飞机" >飞机</option>';
             backInfo += '</select>';
@@ -1487,6 +1487,7 @@
             backInfo += '<option value="武汉火车站" selected >武汉火车站</option>';
             backInfo += '<option value="汉口火车站" >汉口火车站</option>';
             backInfo += '<option value="武昌火车站" >武昌火车站</option>';
+            backInfo += '<option value="天河国际机场" >天河国际机场</option>';
             backInfo += '</select>';
             backInfo += '<div class="tips"></div>';
             backInfo += '</div>';
@@ -1575,10 +1576,11 @@
         reloadData4();
         
         function reloadData1() {
+            console.log(1);
             if ( $('#back_1 .select1_val').val() == "火车" ) {
                 $('#back_1 .select1 option:contains("火车")').attr("selected", "true")
                 $('#back_1 .select1 option:contains("飞机")').removeAttr('selected');
-            }else {
+            }else if ( $('#back_1 .select1_val').val() == "飞机" ) {
                 $('#back_1 .select1 option:contains("火车")').removeAttr('selected');
                 $('#back_1 .select1 option:contains("飞机")').attr("selected", "true");
             }
@@ -1645,6 +1647,7 @@
             }
 
             if ( $('#back_2 .select2 option:selected').val() == "飞机" ) {
+                console.log(1)
                 $('#back_2 .select_2 option').css('display', 'none');
                 $('#back_2 .select_2 option:last').css('display', 'block');
             }else {
@@ -1710,6 +1713,37 @@
                 $('#back_4 .select_4 option:contains("武汉联投半岛酒店")').attr("selected", "true");
             }
         };
+
+
+        $('#back_1 .select1').unbind('change').on('change', function(event) {
+            if ( $('#back_1 .select1 option:selected').val() == "飞机" ) {
+                $('#back_1 .select_1 option').removeAttr('selected');
+                $('#back_1 .select_1 option').css('display', 'none');
+                $('#back_1 .select_1 option:last').css('display', 'block');
+                $('#back_1 .select_1 option:last').attr("selected", "true");
+            }else {
+                $('#back_1 .select_1 option').removeAttr('selected');
+                $('#back_1 .select_1 option').css('display', 'block');
+                $('#back_1 .select_1 option:last').css('display', 'none');
+                $('#back_1 .select_1 option:first').attr("selected", "true");
+            }
+            rebindVlidation();
+        });
+
+        $('#back_2 .select2').unbind('change').on('change', function(event) {
+            if ( $('#back_2 .select2 option:selected').val() == "飞机" ) {
+                $('#back_2 .select_2 option').removeAttr('selected');
+                $('#back_2 .select_2 option').css('display', 'none');
+                $('#back_2 .select_2 option:last').css('display', 'block');
+                $('#back_2 .select_2 option:last').attr("selected", "true");
+            }else {
+                $('#back_2 .select_2 option').removeAttr('selected');
+                $('#back_2 .select_2 option').css('display', 'block');
+                $('#back_2 .select_2 option:last').css('display', 'none');
+                $('#back_2 .select_2 option:first').attr("selected", "true");
+            }
+            rebindVlidation();
+        });
 
     </script>
 </body>
