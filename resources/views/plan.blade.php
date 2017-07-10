@@ -93,10 +93,16 @@
                                     <input required tip-warn="不能为空" tip-warn="" tip-info="输入出发日期" type="text" name="trip[{{$i}}][start_date]" id="datetimepicker{{$i*5+1}}" class="input-field-text" value="{{$val['start_date'] or ''}}"/>
                                     <div class="tips"></div>
                                 </div>
-                                <div class="input-field">
+                                <div class="input-field time">
                                     <span class="input-label">出发时间  :</span>
-                                    <input required tip-warn="不能为空" tip-warn="" tip-info="输入出发时间" type="text" name="trip[{{$i}}][start_time]" id="datetimepicker{{$i*5+2}}" class="input-field-text" value="{{$val['start_time'] or ''}}"/>
-                                    <div class="tips"></div>
+                                    <input required tip-warn="不能为空" tip-warn="" tip-info="输入出发时间" type="hidden" name="trip[{{$i}}][start_time]" id="datetimepicker{{$i*5+2}}" class="input-field-text" value="{{$val['start_time'] or ''}}"/>
+                                    <select class="accurate accurate_moon">
+                                        <option selected="selected" value="AM">上午</option>
+                                        <option value="PM">下午</option>
+                                    </select>
+                                    <select class="accurate accurate_hour"></select>点
+                                    <select class="accurate accurate_min"></select>分
+                                    <!-- <div class="tips"></div> -->
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">到达日期  :</span>
@@ -105,8 +111,14 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">到达时间  :</span>
-                                    <input required tip-warn="不能为空" tip-warn="" tip-info="输入到达时间" type="text" name="trip[{{$i}}][arrive_time]" id="datetimepicker{{$i*5+4}}" class="input-field-text" value="{{$val['arrive_time'] or ''}}"/>
-                                    <div class="tips"></div>
+                                    <input required tip-warn="不能为空" tip-warn="" tip-info="输入到达时间" type="hidden" name="trip[{{$i}}][arrive_time]" id="datetimepicker{{$i*5+4}}" class="input-field-text" value="{{$val['arrive_time'] or ''}}"/>
+                                    <select class="accurate accurate_moon">
+                                        <option selected="selected" value="AM">上午</option>
+                                        <option value="PM">下午</option>
+                                    </select>
+                                    <select class="accurate accurate_hour"></select>点
+                                    <select class="accurate accurate_min"></select>分
+                                    <!-- <div class="tips"></div> -->
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">到达地点  :</span>
@@ -170,7 +182,13 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">出发时间  :</span>
-                                    <input required type="text" name="trip[{{$i}}][start_time]" id="datetimepicker{{$i*5+2}}" class="input-field-text" value="{{$val['start_time'] or ''}}"/>
+                                    <input required type="hidden" name="trip[{{$i}}][start_time]" id="datetimepicker{{$i*5+2}}" class="input-field-text" value="{{$val['start_time'] or ''}}"/>
+                                    <select class="accurate accurate_moon">
+                                        <option selected="selected" value="AM">上午</option>
+                                        <option value="PM">下午</option>
+                                    </select>
+                                    <select class="accurate accurate_hour"></select>点
+                                    <select class="accurate accurate_min"></select>分
                                     <div class="tips"></div>
                                 </div>
                                 <div class="input-field">
@@ -188,7 +206,13 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">起飞/发车时间  :</span>
-                                    <input required type="text" name="trip[{{$i}}][vehicle_time]" id="datetimepicker{{$i*5+3}}" class="input-field-text" value="{{$val['vehicle_time'] or ''}}"/>
+                                    <input required type="hidden" name="trip[{{$i}}][vehicle_time]" id="datetimepicker{{$i*5+3}}" class="input-field-text" value="{{$val['vehicle_time'] or ''}}"/>
+                                    <select class="accurate accurate_moon">
+                                        <option selected="selected" value="AM">上午</option>
+                                        <option value="PM">下午</option>
+                                    </select>
+                                    <select class="accurate accurate_hour"></select>点
+                                    <select class="accurate accurate_min"></select>分
                                     <div class="tips"></div>
                                 </div>
                                 <div class="input-field">
@@ -970,6 +994,7 @@
                 rebindVlidation();
             });
 
+            addOptions();
 
         }
         function detectIE()
@@ -1398,8 +1423,13 @@
             comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
             comeInfo += '<span class="input-label">出发时间  :</span>';
-            comeInfo += '<input required data-type="Alltype" type="text" name="trip['+comeNum+'][start_time]" id="datetimepicker' + ((comeNum-3)*5 + 12) + '" class="input-field-text" value="{{old("trip['+comeNum+'][start_time]")}}"/>';
-            comeInfo += '<div class="tips"></div>';
+            comeInfo += '<input required data-type="Alltype" type="hidden" name="trip['+comeNum+'][start_time]" id="datetimepicker' + ((comeNum-3)*5 + 12) + '" class="input-field-text" value="01:00"/>';
+            comeInfo += '<select class="accurate accurate_moon">';
+            comeInfo += '<option selected="selected" value="AM">上午</option>';
+            comeInfo += '<option value="PM">下午</option>';
+            comeInfo += '</select>';
+            comeInfo += '<select class="accurate accurate_hour"></select>点';
+            comeInfo += '<select class="accurate accurate_min"></select>分';
             comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
             comeInfo += '<span class="input-label">出发地点  :</span>';
@@ -1415,8 +1445,13 @@
             comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
             comeInfo += '<span class="input-label">起飞/发车时间  :</span>';
-            comeInfo += '<input required type="text" name="trip['+comeNum+'][vehicle_time]" id="datetimepicker' + ((comeNum-3)*5 + 13) + '" class="input-field-text" value="{{old("trip['+comeNum+'][vehicle_time]")}}"/>';
-            comeInfo += '<div class="tips"></div>';
+            comeInfo += '<input required type="hidden" name="trip['+comeNum+'][vehicle_time]" id="datetimepicker' + ((comeNum-3)*5 + 13) + '" class="input-field-text" value="01:00"/>';
+            comeInfo += '<select class="accurate accurate_moon">';
+            comeInfo += '<option selected="selected" value="AM">上午</option>';
+            comeInfo += '<option value="PM">下午</option>';
+            comeInfo += '</select>';
+            comeInfo += '<select class="accurate accurate_hour"></select>点';
+            comeInfo += '<select class="accurate accurate_min"></select>分';
             comeInfo += '</div>';
             comeInfo += '<div class="input-field">';
             comeInfo += '<span class="input-label">人数  :</span>';
@@ -1468,8 +1503,13 @@
             backInfo += '</div>';
             backInfo += '<div class="input-field">';
             backInfo += '<span class="input-label">出发时间  :</span>';
-            backInfo += '<input required type="text" name="trip['+backNum+'][start_time]" id="datetimepicker'+ ((backNum-1)*5 + 2) +'" class="input-field-text" value="{{old("trip['+backNum+'][start_time]")}}"/>';
-            backInfo += '<div class="tips"></div>';
+            backInfo += '<input required type="hidden" name="trip['+backNum+'][start_time]" id="datetimepicker'+ ((backNum-1)*5 + 2) +'" class="input-field-text" value="01:00"/>';
+            backInfo += '<select class="accurate accurate_moon">';
+            backInfo += '<option selected="selected" value="AM">上午</option>';
+            backInfo += '<option value="PM">下午</option>';
+            backInfo += '</select>';
+            backInfo += '<select class="accurate accurate_hour"></select>点';
+            backInfo += '<select class="accurate accurate_min"></select>分';
             backInfo += '</div>';
             backInfo += '<div class="input-field">';
             backInfo += '<span class="input-label">到达日期  :</span>';
@@ -1478,8 +1518,13 @@
             backInfo += '</div>';
             backInfo += '<div class="input-field">';
             backInfo += '<span required class="input-label">到达时间  :</span>';
-            backInfo += '<input type="text" name="trip['+backNum+'][arrive_time]" id="datetimepicker'+ ((backNum-1)*5 + 4) +'" class="input-field-text" value="{{old("trip['+backNum+'][arrive_time]")}}"/>';
-            backInfo += '<div class="tips"></div>';
+            backInfo += '<input type="hidden" name="trip['+backNum+'][arrive_time]" id="datetimepicker'+ ((backNum-1)*5 + 4) +'" class="input-field-text" value="01:00"/>';
+            backInfo += '<select class="accurate accurate_moon">';
+            backInfo += '<option selected="selected" value="AM">上午</option>';
+            backInfo += '<option value="PM">下午</option>';
+            backInfo += '</select>';
+            backInfo += '<select class="accurate accurate_hour"></select>点';
+            backInfo += '<select class="accurate accurate_min"></select>分';
             backInfo += '</div>';
             backInfo += '<div class="input-field">';
             backInfo += '<span class="input-label">到达地点  :</span>';
@@ -1522,6 +1567,7 @@
 
         clickSelf();
         function clickSelf(){
+
             if ($('.all_info .div_tab').length == 2) {
                 $("#base").after(addBackInfo());
                 $('#back_1 .delete').remove();
@@ -1576,7 +1622,6 @@
         reloadData4();
         
         function reloadData1() {
-            console.log(1);
             if ( $('#back_1 .select1_val').val() == "火车" ) {
                 $('#back_1 .select1 option:contains("火车")').attr("selected", "true")
                 $('#back_1 .select1 option:contains("飞机")').removeAttr('selected');
@@ -1647,7 +1692,6 @@
             }
 
             if ( $('#back_2 .select2 option:selected').val() == "飞机" ) {
-                console.log(1)
                 $('#back_2 .select_2 option').css('display', 'none');
                 $('#back_2 .select_2 option:last').css('display', 'block');
             }else {
@@ -1744,6 +1788,392 @@
             }
             rebindVlidation();
         });
+
+        addOptions();
+        function addOptions() {
+            $('.accurate_hour').each(function() {
+                var _hour = '';
+                _hour += '<option selected value="00">00</option>';
+                _hour += '<option value="01">01</option>';
+                _hour += '<option value="02">02</option>';
+                _hour += '<option value="03">03</option>';
+                _hour += '<option value="04">04</option>';
+                _hour += '<option value="05">05</option>';
+                _hour += '<option value="06">06</option>';
+                _hour += '<option value="07">07</option>';
+                _hour += '<option value="08">08</option>';
+                _hour += '<option value="09">09</option>';
+                _hour += '<option value="10">10</option>';
+                _hour += '<option value="11">11</option>';
+                if ($(this).html() == "") {
+                    $('.accurate_hour').html(_hour);
+                }
+            });
+
+            $('.accurate_min').each(function() {
+                var _min = '';
+                _min += '<option selected value="00">00</option>';
+                _min += '<option value="01">01</option>';
+                _min += '<option value="02">02</option>';
+                _min += '<option value="03">03</option>';
+                _min += '<option value="04">04</option>';
+                _min += '<option value="05">05</option>';
+                _min += '<option value="06">06</option>';
+                _min += '<option value="07">07</option>';
+                _min += '<option value="08">08</option>';
+                _min += '<option value="09">09</option>';
+                _min += '<option value="10">10</option>';
+                _min += '<option value="11">11</option>';
+                _min += '<option value="12">12</option>';
+                _min += '<option value="13">13</option>';
+                _min += '<option value="14">14</option>';
+                _min += '<option value="15">15</option>';
+                _min += '<option value="16">16</option>';
+                _min += '<option value="17">17</option>';
+                _min += '<option value="18">18</option>';
+                _min += '<option value="19">19</option>';
+                _min += '<option value="20">20</option>';
+                _min += '<option value="21">21</option>';
+                _min += '<option value="22">22</option>';
+                _min += '<option value="23">23</option>';
+                _min += '<option value="24">24</option>';
+                _min += '<option value="25">25</option>';
+                _min += '<option value="26">26</option>';
+                _min += '<option value="27">27</option>';
+                _min += '<option value="28">28</option>';
+                _min += '<option value="29">29</option>';
+                _min += '<option value="30">30</option>';
+                _min += '<option value="31">31</option>';
+                _min += '<option value="32">32</option>';
+                _min += '<option value="33">33</option>';
+                _min += '<option value="34">34</option>';
+                _min += '<option value="35">35</option>';
+                _min += '<option value="36">36</option>';
+                _min += '<option value="37">37</option>';
+                _min += '<option value="38">38</option>';
+                _min += '<option value="39">39</option>';
+                _min += '<option value="40">40</option>';
+                _min += '<option value="41">41</option>';
+                _min += '<option value="42">42</option>';
+                _min += '<option value="43">43</option>';
+                _min += '<option value="44">44</option>';
+                _min += '<option value="45">45</option>';
+                _min += '<option value="46">46</option>';
+                _min += '<option value="47">47</option>';
+                _min += '<option value="48">48</option>';
+                _min += '<option value="49">49</option>';
+                _min += '<option value="50">50</option>';
+                _min += '<option value="51">51</option>';
+                _min += '<option value="52">52</option>';
+                _min += '<option value="53">53</option>';
+                _min += '<option value="54">54</option>';
+                _min += '<option value="55">55</option>';
+                _min += '<option value="56">56</option>';
+                _min += '<option value="57">57</option>';
+                _min += '<option value="58">58</option>';
+                _min += '<option value="59">59</option>';
+                if ($(this).html() == "") {
+                    $('.accurate_min').html(_min);
+                }
+            });
+        }
+
+        function toFid(a){
+            if ( a >= 10 ){
+                return a;
+            }else{
+                return ("0"+a);
+            }
+        }
+
+        if ($('#datetimepicker2').length == 1) {
+            var time1_1 = new String();
+            var time1_1 = $('#datetimepicker2').val();
+            var arr1_1 = new Array();
+            arr1_1 = time1_1.split(':');
+            if ( arr1_1[0] >= 12 ) {
+                var hour1_1 = arr1_1[0] - 12;
+                // console.log(arr1_1[0], arr1_1[1])
+                $('#datetimepicker2').parents('.time').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker2').parents('.time').find('.accurate_moon option:contains("下午")').attr("selected", "true");
+                $('#datetimepicker2').parents('.time').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker2').parents('.time').find('.accurate_hour option:contains("'+ toFid(hour1_1) +'")').attr("selected", "true");
+                $('#datetimepicker2').parents('.time').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker2').parents('.time').find('.accurate_min option:contains("'+ arr1_1[1] +'")').attr("selected", "true");
+            }else {
+                $('#datetimepicker2').parents('.time').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker2').parents('.time').find('.accurate_moon option:contains("上午")').attr("selected", "true");
+                $('#datetimepicker2').parents('.time').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker2').parents('.time').find('.accurate_hour option:contains("'+ toFid(arr1_1[1]) +'")').attr("selected", "true");
+                $('#datetimepicker2').parents('.time').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker2').parents('.time').find('.accurate_min option:contains("'+ arr1_1[1] +'")').attr("selected", "true");
+            }
+
+            $('#datetimepicker2').parents('.input-field').find('.accurate').on('change', function(event){
+                if ($('#datetimepicker2').parents('.input-field').find('.accurate_moon').val() == "PM") {
+                    arr1_1[0] = parseInt(arr1_1[0]) + 12;
+                    arr1_1[0] = (12 + parseInt($('#datetimepicker2').parents('.input-field').find('.accurate_hour').val())).toString();
+                    arr1_1[1] = $('#datetimepicker2').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker2').val(arr1_1[0]+":"+arr1_1[1])
+                }else {
+                    arr1_1[0] = $('#datetimepicker2').parents('.input-field').find('.accurate_hour').val();
+                    arr1_1[1] = $('#datetimepicker2').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker2').val(arr1_1[0]+":"+arr1_1[1])
+                }
+            });
+        }
+        if ($('#datetimepicker4').length == 1) {
+            var time1_2 = new String();
+            var time1_2 = $('#datetimepicker4').val();
+            var arr1_2 = new Array();
+            arr1_2 = time1_2.split(':');
+            if ( arr1_2[0] >= 12 ) {
+                var hour1_2 = arr1_2[0] - 12;
+                $('#datetimepicker4').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker4').parents('.input-field').find('.accurate_moon option:contains("下午")').attr("selected", "true");
+                $('#datetimepicker4').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker4').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(hour1_2) +'")').attr("selected", "true");
+                $('#datetimepicker4').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker4').parents('.input-field').find('.accurate_min option:contains("'+ arr1_2[1] +'")').attr("selected", "true");
+            }else {
+                // console.log(2);
+                $('#datetimepicker4').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker4').parents('.input-field').find('.accurate_moon option:contains("上午")').attr("selected", "true");
+                $('#datetimepicker4').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker4').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(arr1_2[0]) +'")').attr("selected", "true");
+                $('#datetimepicker4').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker4').parents('.input-field').find('.accurate_min option:contains("'+ arr1_2[1] +'")').attr("selected", "true");
+            }
+
+            $('#datetimepicker4').parents('.input-field').find('.accurate').on('change', function(event){
+                if ($('#datetimepicker4').parents('.input-field').find('.accurate_moon').val() == "PM") {
+                    arr1_1[0] = parseInt(arr1_1[0]) + 12;
+                    arr1_1[0] = (12 + parseInt($('#datetimepicker4').parents('.input-field').find('.accurate_hour').val())).toString();
+                    arr1_1[1] = $('#datetimepicker4').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker4').val(arr1_1[0]+":"+arr1_1[1])
+                }else {
+                    arr1_1[0] = $('#datetimepicker4').parents('.input-field').find('.accurate_hour').val();
+                    arr1_1[1] = $('#datetimepicker4').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker4').val(arr1_1[0]+":"+arr1_1[1])
+                }
+            });
+        }
+        if ($('#datetimepicker7').length == 1) {
+            var time2_1 = new String();
+            var time2_1 = $('#datetimepicker7').val();
+            var arr2_1 = new Array();
+            arr2_1 = time2_1.split(':')
+            if ( arr2_1[0] >= 12 ) {
+                var hour = arr2_1[0] - 12;
+                $('#datetimepicker7').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker7').parents('.input-field').find('.accurate_moon option:contains("下午")').attr("selected", "true");
+                $('#datetimepicker7').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker7').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(hour) +'")').attr("selected", "true");
+                $('#datetimepicker7').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker7').parents('.input-field').find('.accurate_min option:contains("'+ arr2_1[1] +'")').attr("selected", "true");
+            }else {
+                // console.log(2);
+                $('#datetimepicker7').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker7').parents('.input-field').find('.accurate_moon option:contains("上午")').attr("selected", "true");
+                $('#datetimepicker7').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker7').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(arr2_1[0]) +'")').attr("selected", "true");
+                $('#datetimepicker7').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker7').parents('.input-field').find('.accurate_min option:contains("'+ arr2_1[1] +'")').attr("selected", "true");
+            }
+
+            $('#datetimepicker7').parents('.input-field').find('.accurate').on('change', function(event){
+                if ($('#datetimepicker7').parents('.input-field').find('.accurate_moon').val() == "PM") {
+                    arr1_1[0] = parseInt(arr1_1[0]) + 12;
+                    arr1_1[0] = (12 + parseInt($('#datetimepicker7').parents('.input-field').find('.accurate_hour').val())).toString();
+                    arr1_1[1] = $('#datetimepicker7').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker7').val(arr1_1[0]+":"+arr1_1[1])
+                }else {
+                    arr1_1[0] = $('#datetimepicker7').parents('.input-field').find('.accurate_hour').val();
+                    arr1_1[1] = $('#datetimepicker7').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker7').val(arr1_1[0]+":"+arr1_1[1])
+                }
+            });
+        }
+        if ($('#datetimepicker9').length == 1) {
+            var time2_2 = new String();
+            var time2_2 = $('#datetimepicker9').val();
+            var arr2_2 = new Array();
+            arr2_2 = time2_2.split(':')
+            if ( arr2_2[0] >= 12 ) {
+                var hour = arr2_2[0] - 12;
+                $('#datetimepicker9').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker9').parents('.input-field').find('.accurate_moon option:contains("下午")').attr("selected", "true");
+                $('#datetimepicker9').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker9').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(hour) +'")').attr("selected", "true");
+                $('#datetimepicker9').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker9').parents('.input-field').find('.accurate_min option:contains("'+ arr2_2[1] +'")').attr("selected", "true");
+            }else {
+                // console.log(2);
+                $('#datetimepicker9').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker9').parents('.input-field').find('.accurate_moon option:contains("上午")').attr("selected", "true");
+                $('#datetimepicker9').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker9').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(arr2_2[0]) +'")').attr("selected", "true");
+                $('#datetimepicker9').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker9').parents('.input-field').find('.accurate_min option:contains("'+ arr2_2[1] +'")').attr("selected", "true");
+            }
+
+            $('#datetimepicker9').parents('.input-field').find('.accurate').on('change', function(event){
+                if ($('#datetimepicker9').parents('.input-field').find('.accurate_moon').val() == "PM") {
+                    arr1_1[0] = parseInt(arr1_1[0]) + 12;
+                    arr1_1[0] = (12 + parseInt($('#datetimepicker9').parents('.input-field').find('.accurate_hour').val())).toString();
+                    arr1_1[1] = $('#datetimepicker9').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker9').val(arr1_1[0]+":"+arr1_1[1])
+                }else {
+                    arr1_1[0] = $('#datetimepicker9').parents('.input-field').find('.accurate_hour').val();
+                    arr1_1[1] = $('#datetimepicker9').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker9').val(arr1_1[0]+":"+arr1_1[1])
+                }
+            });
+        }
+        if ($('#datetimepicker12').length == 1) {
+            var time3_1 = new String();
+            var time3_1 = $('#datetimepicker12').val();
+            var arr3_1 = new Array();
+            arr3_1 = time3_1.split(':');
+            if ( arr3_1[0] >= 12 ) {
+                var hour = arr3_1[0] - 12;
+                $('#datetimepicker12').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker12').parents('.input-field').find('.accurate_moon option:contains("下午")').attr("selected", "true");
+                $('#datetimepicker12').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker12').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(hour) +'")').attr("selected", "true");
+                $('#datetimepicker12').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker12').parents('.input-field').find('.accurate_min option:contains("'+ arr3_1[1] +'")').attr("selected", "true");
+            }else {
+                // console.log(2);
+                $('#datetimepicker12').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker12').parents('.input-field').find('.accurate_moon option:contains("上午")').attr("selected", "true");
+                $('#datetimepicker12').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker12').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(arr3_1[0]) +'")').attr("selected", "true");
+                $('#datetimepicker12').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker12').parents('.input-field').find('.accurate_min option:contains("'+ arr3_1[1] +'")').attr("selected", "true");
+            }
+
+            $('#datetimepicker12').parents('.input-field').find('.accurate').on('change', function(event){
+                if ($('#datetimepicker12').parents('.input-field').find('.accurate_moon').val() == "PM") {
+                    arr1_1[0] = parseInt(arr1_1[0]) + 12;
+                    arr1_1[0] = (12 + parseInt($('#datetimepicker12').parents('.input-field').find('.accurate_hour').val())).toString();
+                    arr1_1[1] = $('#datetimepicker12').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker12').val(arr1_1[0]+":"+arr1_1[1])
+                }else {
+                    arr1_1[0] = $('#datetimepicker12').parents('.input-field').find('.accurate_hour').val();
+                    arr1_1[1] = $('#datetimepicker12').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker12').val(arr1_1[0]+":"+arr1_1[1])
+                }
+            });
+        }
+        if ($('#datetimepicker13').length == 1) {
+            var time3_2 = new String();
+            var time3_2 = $('#datetimepicker13').val();
+            var arr3_2 = new Array();
+            arr3_2 = time3_2.split(':')
+            if ( arr3_2[0] >= 12 ) {
+                var hour = arr3_2[0] - 12;
+                $('#datetimepicker13').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker13').parents('.input-field').find('.accurate_moon option:contains("下午")').attr("selected", "true");
+                $('#datetimepicker13').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker13').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(hour) +'")').attr("selected", "true");
+                $('#datetimepicker13').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker13').parents('.input-field').find('.accurate_min option:contains("'+ arr3_2[1] +'")').attr("selected", "true");
+            }else {
+                // console.log(2);
+                $('#datetimepicker13').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker13').parents('.input-field').find('.accurate_moon option:contains("上午")').attr("selected", "true");
+                $('#datetimepicker13').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker13').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(arr3_2[0]) +'")').attr("selected", "true");
+                $('#datetimepicker13').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker13').parents('.input-field').find('.accurate_min option:contains("'+ arr3_2[1] +'")').attr("selected", "true");
+            }
+
+            $('#datetimepicker13').parents('.input-field').find('.accurate').on('change', function(event){
+                if ($('#datetimepicker13').parents('.input-field').find('.accurate_moon').val() == "PM") {
+                    arr1_1[0] = parseInt(arr1_1[0]) + 12;
+                    arr1_1[0] = (12 + parseInt($('#datetimepicker13').parents('.input-field').find('.accurate_hour').val())).toString();
+                    arr1_1[1] = $('#datetimepicker13').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker13').val(arr1_1[0]+":"+arr1_1[1])
+                }else {
+                    arr1_1[0] = $('#datetimepicker13').parents('.input-field').find('.accurate_hour').val();
+                    arr1_1[1] = $('#datetimepicker13').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker13').val(arr1_1[0]+":"+arr1_1[1])
+                }
+            });
+        }
+        if ($('#datetimepicker17').length == 1) {
+            var time4_1 = new String();
+            var time4_1 = $('#datetimepicker17').val();
+            var arr4_1 = new Array();
+            arr4_1 = time4_1.split(':')
+            if ( arr4_1[0] >= 12 ) {
+                var hour = arr4_1[0] - 12;
+                $('#datetimepicker17').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker17').parents('.input-field').find('.accurate_moon option:contains("下午")').attr("selected", "true");
+                $('#datetimepicker17').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker17').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(hour) +'")').attr("selected", "true");
+                $('#datetimepicker17').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker17').parents('.input-field').find('.accurate_min option:contains("'+ arr4_1[1] +'")').attr("selected", "true");
+            }else {
+                // console.log(2);
+                $('#datetimepicker17').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker17').parents('.input-field').find('.accurate_moon option:contains("上午")').attr("selected", "true");
+                $('#datetimepicker17').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker17').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(arr4_1[0]) +'")').attr("selected", "true");
+                $('#datetimepicker17').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker17').parents('.input-field').find('.accurate_min option:contains("'+ arr4_1[1] +'")').attr("selected", "true");
+            }
+
+            $('#datetimepicker17').parents('.input-field').find('.accurate').on('change', function(event){
+                if ($('#datetimepicker17').parents('.input-field').find('.accurate_moon').val() == "PM") {
+                    arr1_1[0] = parseInt(arr1_1[0]) + 12;
+                    arr1_1[0] = (12 + parseInt($('#datetimepicker17').parents('.input-field').find('.accurate_hour').val())).toString();
+                    arr1_1[1] = $('#datetimepicker17').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker17').val(arr1_1[0]+":"+arr1_1[1])
+                }else {
+                    arr1_1[0] = $('#datetimepicker17').parents('.input-field').find('.accurate_hour').val();
+                    arr1_1[1] = $('#datetimepicker17').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker17').val(arr1_1[0]+":"+arr1_1[1])
+                }
+            });
+        }
+        if ($('#datetimepicker18').length == 1) {
+            var time4_2 = new String();
+            var time4_2 = $('#datetimepicker18').val();
+            var arr4_2 = new Array();
+            arr4_2 = time4_2.split(':')
+            if ( arr4_2[0] >= 12 ) {
+                var hour = arr4_2[0] - 12;
+                $('#datetimepicker18').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker18').parents('.input-field').find('.accurate_moon option:contains("下午")').attr("selected", "true");
+                $('#datetimepicker18').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker18').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(hour) +'")').attr("selected", "true");
+                $('#datetimepicker18').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker18').parents('.input-field').find('.accurate_min option:contains("'+ arr4_2[1] +'")').attr("selected", "true");
+            }else {
+                // console.log(2);
+                $('#datetimepicker18').parents('.input-field').find('.accurate_moon option').removeAttr('selected');
+                $('#datetimepicker18').parents('.input-field').find('.accurate_moon option:contains("上午")').attr("selected", "true");
+                $('#datetimepicker18').parents('.input-field').find('.accurate_hour option').removeAttr('selected');
+                $('#datetimepicker18').parents('.input-field').find('.accurate_hour option:contains("'+ toFid(arr4_2[0]) +'")').attr("selected", "true");
+                $('#datetimepicker18').parents('.input-field').find('.accurate_min option').removeAttr('selected');
+                $('#datetimepicker18').parents('.input-field').find('.accurate_min option:contains("'+ arr4_2[1] +'")').attr("selected", "true");
+            }
+
+            $('#datetimepicker18').parents('.input-field').find('.accurate').on('change', function(event){
+                if ($('#datetimepicker18').parents('.input-field').find('.accurate_moon').val() == "PM") {
+                    arr1_1[0] = parseInt(arr1_1[0]) + 12;
+                    arr1_1[0] = (12 + parseInt($('#datetimepicker18').parents('.input-field').find('.accurate_hour').val())).toString();
+                    arr1_1[1] = $('#datetimepicker18').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker18').val(arr1_1[0]+":"+arr1_1[1])
+                }else {
+                    arr1_1[0] = $('#datetimepicker18').parents('.input-field').find('.accurate_hour').val();
+                    arr1_1[1] = $('#datetimepicker18').parents('.input-field').find('.accurate_min').val();
+                    $('#datetimepicker18').val(arr1_1[0]+":"+arr1_1[1])
+                }
+            });
+        }
 
     </script>
 </body>

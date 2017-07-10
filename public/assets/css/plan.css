@@ -286,6 +286,11 @@ body .content .all_info .div_tab .input-field select {
   margin-bottom: 30px;
   border: 1px solid #CCCCCC;
 }
+body .content .all_info .div_tab .input-field .accurate {
+  padding: 0px 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 body .content .all_info .div_tab .tel {
   border: 1px solid #587BEF;
   height: 30px;
