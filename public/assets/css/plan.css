@@ -135,6 +135,8 @@ body .instructions .instructions-span {
 body .instructions .instructions-span i {
   display: block;
   float: left;
+  width: 170px;
+  margin-left: 50px;
 }
 body .instructions .instructions-span .left {
   width: 200px;

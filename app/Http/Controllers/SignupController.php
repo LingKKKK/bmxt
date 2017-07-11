@@ -533,27 +533,27 @@ class SignupController extends Controller
 
     public function doScheduling(Request $request)
     {
-        $validator = Validator::make($request->all(),
-            [
-                'leader_mobile' => 'required',
-                // 'leader_id' => 'sometimes|required',
-                // 'leader_name' => 'required_without:leader_id'
-                'team_no'   => 'required',
-                'verificationcode' => 'required|verificationcode',
-            ],
-            [
-                'leader_mobile.required' => '手机号不能为空',
-                'leader_id.required' => '身份证或者领队姓名名填写至少一个',
-                'leader_name.required_without' => '身份证或者领队姓名名至少填写一个',
-                'team_no.required'  => '队伍编号不能为空',
-                'verificationcode.required' => '验证码不能为空',
-                'verificationcode.verificationcode' => '验证码不正确',
-            ]);
-        // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
+        // $validator = Validator::make($request->all(),
+        //     [
+        //         'leader_mobile' => 'required',
+        //         // 'leader_id' => 'sometimes|required',
+        //         // 'leader_name' => 'required_without:leader_id'
+        //         'team_no'   => 'required',
+        //         'verificationcode' => 'required|verificationcode',
+        //     ],
+        //     [
+        //         'leader_mobile.required' => '手机号不能为空',
+        //         'leader_id.required' => '身份证或者领队姓名名填写至少一个',
+        //         'leader_name.required_without' => '身份证或者领队姓名名至少填写一个',
+        //         'team_no.required'  => '队伍编号不能为空',
+        //         'verificationcode.required' => '验证码不能为空',
+        //         'verificationcode.verificationcode' => '验证码不正确',
+        //     ]);
+        // // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
 
-        if ($validator->fails()) {
-           return redirect()->back()->withErrors($validator->errors())->withInput();
-        }
+        // if ($validator->fails()) {
+        //    return redirect()->back()->withErrors($validator->errors())->withInput();
+        // }
 
         $team_no = $request->input('team_no', '');
         $signdata = SignupData::where('team_no', $team_no)->first();

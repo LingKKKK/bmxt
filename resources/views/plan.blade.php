@@ -19,18 +19,34 @@
             </div>
         </div>
         <div class="instructions clearfix active">
-            <h2 class="instructions-h">行程系统需求</h2>
-            <span class="instructions-span clearfix"> 各位参赛选手与老师：</span>
+            <h2 class="instructions-h">往返行程表填写须知</h2>
+            <span class="instructions-span clearfix"> 1.报名时间截止日期：2017年8月8日23:59。</span>
             <br/>
-            <span class="instructions-span clearfix"> 2017世界机器人大赛——RoboCom青少年挑战赛全国总决赛在线报名工作从6月1日开始收到全国广大青少年选手的高度关注。公开报名已于6月22日12点结束，不再接受公开报名。如有疑问可以联系各相关负责人：</span>
+            <span class="instructions-span clearfix"> 2.填写往返行程表之前，应仔细阅读本须知，并按要求认真填信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上行程表的填写。填写人员须对其提交的错误信息造成的后果负责。</span>
             <br/>
-            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“未来世界”： 李超 18510207182   13910252611</span>
-            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“博思威龙”、“工业时代”：曾令勇 15899948376</span>
-            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp; “攻城大师”、“智造大挑战”：李达 15876493817</span>
+            <span class="instructions-span clearfix"> 3.每个队伍编码只能填写一份往返行程信息表。请严格、谨慎的填写信息。</span>
+            <span class="instructions-span clearfix"> 4.提交后，在截止日期前如需修改可重新输入队伍编码和领队老师电话来进行修改。</span>
+            <span class="instructions-span clearfix"> 5.如对在线往返行程表填写有疑问，可联系江城（13476000614）。</span>
             <br/>
-            <span class="instructions-span clearfix"> 网上报名技术支持：江城 13476000614</span>
             <br/>
-            <span class="instructions-span clearfix"> 特此通知！</span>
+            <br/>
+            <span class="instructions-span clearfix"><i>信息项</i>填写说明</span>
+            <span class="instructions-span clearfix"><i>队伍编码</i>赛事报名时系统自动生成的队伍编码</span>
+            <span class="instructions-span clearfix"><i>手机号码</i>填写11位有效手机号码。手机号必须是赛事报名里第一个领队老师的电话。</span>
+            <span class="instructions-span clearfix"><i>验证码</i>填写发送到手机的6位数验证码</span>
+            <span class="instructions-span clearfix"><i>交通工具</i>搭乘交通工具的类型</span>
+            <span class="instructions-span clearfix"><i>航班/车次</i>搭乘佳通工具的航班或者车次</span>
+            <span class="instructions-span clearfix"><i>出发日期</i>车票或者机票上的发车或起飞日期</span>
+            <span class="instructions-span clearfix"><i>出发时间（出发）</i>车票或者机票上的发车或起飞时间</span>
+            <span class="instructions-span clearfix"><i>出发时间（返程）</i>预计的出发去火车站/机场的时间</span>
+            <span class="instructions-span clearfix"><i>到达日期</i>预计到达日期</span>
+            <span class="instructions-span clearfix"><i>到达时间</i>预计到达时间</span>
+            <span class="instructions-span clearfix"><i>到达地点</i>到达的火车站或飞机场</span>
+            <span class="instructions-span clearfix"><i>出发地点</i>从哪个酒店出发</span>
+            <span class="instructions-span clearfix"><i>起飞/发车时间</i>车票或者机票上的发车或起飞时间</span>
+            <span class="instructions-span clearfix"><i>人数</i>包括人数和领队老师的总人数</span>
+            <span class="instructions-span clearfix"><i>联系人</i>有效的联系人名字</span>
+            <span class="instructions-span clearfix"><i>联系电话</i>有效的联系人的电话</span>
             <div class="clear"></div>
             <a id="btn-read" type="button">我同意</a>
             <span class="span-read">阅读,并同意</span>
