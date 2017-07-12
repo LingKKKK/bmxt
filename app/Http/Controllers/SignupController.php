@@ -536,8 +536,6 @@ class SignupController extends Controller
         $validator = Validator::make($request->all(),
             [
                 'leader_mobile' => 'required',
-                // 'leader_id' => 'sometimes|required',
-                // 'leader_name' => 'required_without:leader_id'
                 'team_no'   => 'required',
                 'verificationcode' => 'required|verificationcode',
             ],
