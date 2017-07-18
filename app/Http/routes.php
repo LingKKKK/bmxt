@@ -11,7 +11,6 @@
 |
 */
 
-
 //  报名页面
 Route::get('/', 'SignupController@signup');
 Route::post('/signup', 'SignupController@doSignup');
@@ -19,11 +18,9 @@ Route::get('/success', 'SignupController@success');
 Route::get('/excel', 'SignupController@doExportExcel');
 Route::get('/admin/export', 'SignupController@export');
 Route::post('/admin/export', 'SignupController@doExportExcel');
-
 // 报名系统查询
 Route::get('/search', 'SignupController@search');
 Route::post('/search', 'SignupController@doSearch');
-
 // 行程系统
 Route::get('/scheduling', 'SignupController@scheduling');
 Route::post('/scheduling', 'SignupController@doScheduling');
@@ -33,14 +30,10 @@ Route::get('/showTrip', 'SignupController@showTrip');
 // 行程系统查询
 Route::get('/plan/export', 'SignupController@planExport');
 Route::post('/plan/export', 'SignupController@planExportExcel');
-
 //
 Route::get('/pay/test', 'AliPayController@test');
-
 // 队伍名称检查
 Route::post('/checkteamname', 'SignupController@checkName');
-
-
 // 支付宝支付接口
 Route::post('/getpayqrcode', 'UtilsController@getPayQrcode');
 // 邀请码验证
@@ -56,3 +49,7 @@ Route::post('/captcha/verify', 'UtilsController@verificationcode');
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
+
+//北京赛相关路由
+Route::get('/matchbj', 'MatchbjController@signup');
+Route::post('/matchbj', 'MatchbjController@doSignup');
