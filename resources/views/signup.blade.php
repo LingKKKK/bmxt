@@ -535,7 +535,7 @@
             }
             return true;
         }
-        //数字 英文 汉字  agemenber
+        // agemenber
         function isAgemenber(val) {
             reg= /^([0-9]|[0-9]{2}|80)$/gi;
             if(!reg.test(val)) {

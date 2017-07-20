@@ -53,3 +53,9 @@ Route::post('/uploadimg', 'UtilsController@uploadImg');
 //北京赛相关路由
 Route::get('/matchbj', 'MatchbjController@signup');
 Route::post('/matchbj', 'MatchbjController@doSignup');
+
+
+
+// 测试页面
+Route::get('/demo', 'MatchbjController@demo');
+Route::post('/demo', 'MatchbjController@upDemo');

@@ -191,4 +191,25 @@ class MatchbjController extends Controller
 
         return redirect('/');
     }
+
+    public function demo()
+    {
+        return view('demo');
+    }
+
+    public function upDemo(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'invitecode' => 'required', //邀请码信息
+            ],
+            [
+                'invitecode.required' => '邀请码必填',
+                'team_name.required' => '队名必填',
+                'verificationcode.required' => '验证码不能为空',
+                'invitecode.required' => '邀请码不能为空',
+                'invitecode.invitecode' => '邀请码不正确',
+            ]
+        );
+    }
 }
