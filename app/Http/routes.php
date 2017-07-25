@@ -51,6 +51,9 @@ Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode')
 Route::post('/uploadimg', 'UtilsController@uploadImg');
 
 //北京赛相关路由
+Route::get('/searchbj', 'MatchbjController@search');
+Route::post('/searchbj', 'MatchbjController@doSearch');
+
 Route::get('/matchbj', 'MatchbjController@signup');
 Route::post('/matchbj', 'MatchbjController@doSignup');
 

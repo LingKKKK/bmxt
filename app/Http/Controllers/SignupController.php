@@ -59,6 +59,7 @@ class SignupController extends Controller
         if ($signdata) {
             return view('success', compact('signdata'));
         }
+        
         $competition_groups = [
             '小学' => 1,
             '初中' => 2,

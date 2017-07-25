@@ -385,7 +385,6 @@ body {
                         font-size: 16px;
                         color: #587BEF;
                         letter-spacing: 2.29px;
-                        width: 130px;
                         height: 22px;
                         display: block;
                         margin: 0 auto;
@@ -434,7 +433,6 @@ body {
                     }
 
                     .team_leader {
-                        border-top: 1px solid #DDD;
                         margin-top: 10px;
                         position: relative;
                         padding-bottom: 20px;
@@ -974,6 +972,12 @@ body {
         padding-left: 20px;
     }
 
+    .add_contact {
+        background: #ddd;
+        pointer-events: none;
+    }
+
+
     .file_name {
         float: left;
         margin-left: 15px;
@@ -1146,8 +1150,9 @@ body {
         background: #587BEF;
         display: block;
         width: 800px;
-        height: 0px;
+        height: 1px;
         margin: 0 auto;
+        margin-bottom: 50px;
     }
     // 清除浮动
     .input-field {

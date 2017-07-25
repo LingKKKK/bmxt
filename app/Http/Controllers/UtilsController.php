@@ -63,7 +63,7 @@ class UtilsController extends Controller
             $vcode = verificationcode_create();
             //发送短信
             sms_send_verifycode($mobile, $vcode);
-            return api_response(0, '短信发送成功!');
+            return api_response(0, $vcode, '短信发送成功!');
         }
 
         if ($type == 'email') {
