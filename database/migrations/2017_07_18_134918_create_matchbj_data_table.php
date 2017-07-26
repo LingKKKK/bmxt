@@ -95,7 +95,7 @@ class CreateMatchbjDataTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('team_id')->references('id')->on('bejing_teams');
+            $table->foreign('team_id')->references('id')->on('competion_teams');
         });
     }
 

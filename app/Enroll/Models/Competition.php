@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Competition extends Model
 {
-    protected $table = 'invite_codes';
+    protected $table = 'competitons';
 
-    protected $fillable = ['code', 'enroll_id', 'group', 'used_time'];
+    protected $fillable = ['id', 'name', 'remark'];
 }
