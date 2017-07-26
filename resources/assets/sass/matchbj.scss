@@ -473,6 +473,7 @@ body {
                         .member_info {
                             position: relative;
                             border-bottom: 1px solid #ddd;
+                            padding-bottom: 50px;
 
                             .name {
                                 font-family: PingFangSC-Regular;
@@ -1162,6 +1163,11 @@ body {
             display: block;
             clear: both;
             height: 0;
+        }
+
+        .id_number {
+            background: #ddd;
+            pointer-events: none;
         }
     }
 }

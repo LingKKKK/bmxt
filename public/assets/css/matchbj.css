@@ -494,6 +494,7 @@ body .content .all_info .team_info .all_number .leader_title {
 body .content .all_info .team_info .all_number .team_number .member_info {
   position: relative;
   border-bottom: 1px solid #ddd;
+  padding-bottom: 50px;
 }
 body .content .all_info .team_info .all_number .team_number .member_info .name {
   font-family: PingFangSC-Regular;
@@ -1086,4 +1087,8 @@ body .input-field:after {
   display: block;
   clear: both;
   height: 0;
+}
+body .input-field .id_number {
+  background: #ddd;
+  pointer-events: none;
 }
