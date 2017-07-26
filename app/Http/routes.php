@@ -50,15 +50,14 @@ Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
 
-//北京赛相关路由
+//查询 提交查询信息进行查询
 Route::get('/searchbj', 'MatchbjController@search');
 Route::post('/searchbj', 'MatchbjController@doSearch');
-
+// 填写信息/修改信息
 Route::get('/matchbj', 'MatchbjController@signup');
 Route::post('/matchbj', 'MatchbjController@doSignup');
+// 修改成功 弹出提示页面
+Route::get('/finish', 'MatchbjController@finish');
 
 
 
-// 测试页面
-Route::get('/demo', 'MatchbjController@demo');
-Route::post('/demo', 'MatchbjController@upDemo');

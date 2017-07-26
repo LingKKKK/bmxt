@@ -141,21 +141,19 @@ class MatchbjController extends Controller
 
     public function doSignup(Request $request)
     {
-        $validator = Validator::make($request->all(),
+        // $validator = Validator::make($request->all(),
 
-            [
-                'invitecode' => 'required', //邀请码信息
-            ],
-            [
-                'invitecode.required' => '邀请码必填',
-                'team_name.required' => '队名必填',
-                'verificationcode.required' => '验证码不能为空',
-                'invitecode.required' => '邀请码不能为空',
-                'invitecode.invitecode' => '邀请码不正确',
-            ]
-        );
-
-        // dd($request->all());
+        //     [
+        //         'invitecode' => 'required', //邀请码信息
+        //     ],
+        //     [
+        //         'invitecode.required' => '邀请码必填',
+        //         'team_name.required' => '队名必填',
+        //         'verificationcode.required' => '验证码不能为空',
+        //         'invitecode.required' => '邀请码不能为空',
+        //         'invitecode.invitecode' => '邀请码不正确',
+        //     ]
+        // );
 
         try {
             $leader_picdata = $this->saveFile($request->file('leader_pic'));
@@ -201,7 +199,7 @@ class MatchbjController extends Controller
             }
 
             //表单地钻
-            $keys = ['invitecode', 'out_trade_no' ,'leader_name', 'leader_id', 'leader_sex', 'leader_mobile', 'leader_email', 'team_name', 'school_name', 'school_address', 'competition_name', 'competition_type', 'competition_group', 'payment'
+            $keys = ['team_no', 'invitecode' ,'team_name', 'competition_name', 'competition_type', 'competition_group', 'vocation', 'name', 'nation', 'sex', 'age', 'heigth', 'work_unit', 'ID_type', 'ID_number'
             ];
 
             $data = $request->only($keys);
@@ -225,7 +223,7 @@ class MatchbjController extends Controller
             $data['data'] = json_encode($dataPayload, JSON_UNESCAPED_UNICODE);
             $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
 
-            // dd($data['data']);
+            dd($data['data']);
 
             $request->session()->flash('signdata', $data);
 
@@ -284,5 +282,9 @@ class MatchbjController extends Controller
         }
 
         return $signdata;
+    }
+
+    public function finish(){
+        return view('finish');
     }
 }

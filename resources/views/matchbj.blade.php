@@ -123,7 +123,7 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">备注  :</span>
-                            <input required tip-info="请按照正确的邮箱格式填写" class="input-field-text" id="remarks" name="remarks" type="text" value="">
+                            <input tip-info="请按照正确的邮箱格式填写" class="input-field-text" id="remarks" name="remarks" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
@@ -180,7 +180,7 @@
                             </div>
                             <div class="input-field">
                                 <span class="input-label">备注 :</span>
-                                <input required data-type='account_type' class="input-field-text" id="contact_remarks" name="contact_remarks" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input class="input-field-text" id="contact_remarks" name="contact_remarks" type="text" value="{{$signdata['total_cost'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                         </div>
@@ -263,6 +263,10 @@
                                 <div class="input-field">
                                     <span class="name">邮箱 :</span>
                                     <span id="{{'preview_leader'.$i.'_mail'}}" class="name_input"></span>
+                                </div>
+                                <div class="input-field">
+                                    <span class="name">备注 :</span>
+                                    <span id="{{'preview_leader'.$i.'_remarks'}}" class="name_input"></span>
                                 </div>
                                 <img id="{{'preview_'.$i.'_leader_pic'}}" src="" >
                             </div>
@@ -349,6 +353,10 @@
                                     <div class="input-field">
                                         <span class="name">邮箱 :</span>
                                         <span id="{{'preview_members'.$i.'_mail'}}" class="name_input"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <span class="name">备注 :</span>
+                                        <span id="{{'preview_members'.$i.'_remarks'}}" class="name_input"></span>
                                     </div>
                                     <img id="{{'preview_'.$i.'_member_pic'}}" src="" >
                                 </div>
@@ -582,7 +590,7 @@
                     return false;
                 }
                 if (datatype == 'schoolname' && !isMathEngCha(val)) {
-                    $el.tipWarn('允许输入汉字英文数字空格,且首位不能为空格!');
+                    $el.tipWarn('允许输入汉字英文数字空格!');
                     return false;
                 }
                 if (datatype == 'agemenber' && !isAgemenber(val)) {
@@ -639,7 +647,6 @@
                 $('#contact_mail_info').attr("required", "true");
                 $('#contact_mail_info').attr("data-type", "email");
                 $('#contact_remarks_info').removeClass('add_contact');
-                $('#contact_remarks_info').attr("required", "true");
                 /* Act on the event */
             });
             $("input").unbind('blur').blur(function(){
@@ -717,7 +724,7 @@
                 $.post("{{url('/checkinvitecode')}}",{
                     invitecode: $('#invitecode').val()
                 }, function(res) {
-                    console.log(res);
+                    // console.log(res);
                     if (res.status == 0) {
                         $('#invitecode').siblings('.tips').html(str0);
                         $('#leader_info_btn').css('pointer-events', 'auto');
@@ -775,7 +782,7 @@
                         }
                     }
                 });
-                // console.log('valid', validcode);
+                console.log('valid', validcode);
                 return false;
             });
             $("#submit").unbind("click").click(function() {
@@ -852,8 +859,10 @@
                 }
                 if (type == 'radio') {
                     var chkVal = $('input:radio[name="'+name+'"]:checked').val();
-                    console.log($(this), chkVal)
+                    // console.log($(this), chkVal)
+                    var new_ID = $(this).siblings('p').attr('id');
                     $('#preview_' + name).html(chkVal);
+                    $('#preview_' + new_ID).html(chkVal);
                 }
                 // 默认填写图片文件的路径
                 if (type == 'file') {
@@ -872,7 +881,6 @@
                         }
                     }
                 }
-                //select
                 if (type == 'select-one') {
                     if ($(this).siblings('p').length == 0) {
                         var chkVal = $('select[name="'+name+'"]').find('option:selected').val();
@@ -898,6 +906,7 @@
                         val = $($(this)).find('.'+key+":checked").val();
                     }
                     var preview_el = '#preview_'+index+'_'+key;
+                    // console.log(preview_el, key, index);
                     if (type == 'file') {
                         var picurl = $el.data('picurl');
                         if (picurl) {
@@ -1012,7 +1021,6 @@
                 var year = 'year_leader' + (leaderListNum);
                 var month = 'month_leader' + (leaderListNum);
                 var day = 'day_leader' + (leaderListNum);
-                console.log(year, month, day);
                 new YMDselect(year, month, day);
                 rebindVlidation();
                 leaderListNum ++;
@@ -1065,7 +1073,6 @@
                 var mobile = $('#contact_tel_info').val();
                 var email = $('#contact_mail_info').val();
                 var type = 'mobile';
-                console.log(captchacode, mobile, email, type);
                 // console.log(captchacode,mobile,type);
                 $.post(
                     "{{url('/verificationcode/send')}}",
@@ -1391,9 +1398,9 @@
             </div>
             <div class="input-field">
                 <span class="input-label">性别  :</span>
-                <input class="input-radio man" type="radio" name="members@{{:member_no}}[sex]" checked value="男"><span>男</span>
-                <input class="input-radio woman" type="radio" name="members@{{:member_no}}[sex]" value="女"><span>女</span>
-                <p id=""></p>
+                <input class="input-radio man member_sex" type="radio" name="members@{{:member_no}}[sex]" checked value="男"><span>男</span>
+                <input class="input-radio woman member_sex" type="radio" name="members@{{:member_no}}[sex]" value="女"><span>女</span>
+                <p id="members@{{:member_no}}_sex"></p>
             </div>
             <div class="input-field">
                 <span class="input-label">民族  :</span>
@@ -1458,6 +1465,11 @@
                 <div class="tips"></div>
             </div>
             <div class="input-field">
+                <span class="input-label">备注  :</span>
+                <input tip-info="填写备注信息" class="input-field-text" id="members@{{:member_no}}_remarks" name="members@{{:member_no}}[remarks]" type="text" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
                 <span class="input-label">照片  :</span>
                 <div class="uploadBtn">上传照片 </div>
                 <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="members[@{{:member_no}}][pic]" id="" type="file" class="inputstyle member_pic" onchange="dox2(this, 'preview_@{{:member_no}}_member_pic')">
@@ -1475,8 +1487,9 @@
             </div>
             <div class="input-field">
                 <span class="input-label">性别  :</span>
-                <input class="input-radio man" type="radio" checked name="leader@{{:leader_no}}[sex]" value="男"><span>男</span>
-                <input class="input-radio woman" type="radio" name="leader@{{:leader_no}}[sex]" value="女"><span>女</span>
+                <input class="input-radio man leader@{{:leader_no}}_sex" type="radio" checked name="leader@{{:leader_no}}[sex]" value="男"><span>男</span>
+                <input class="input-radio woman leader@{{:leader_no}}_sex" type="radio" name="leader@{{:leader_no}}[sex]" value="女"><span>女</span>
+                <p id="leader@{{:leader_no}}_sex"></p>
             </div>
             <div class="input-field">
                 <span class="input-label">民族  :</span>
@@ -1492,7 +1505,7 @@
                 <select class="d" name="day_leader@{{:leader_no}}" style="height: 30px;margin-bottom: 30px; margin-right: 5px;" onchange="changeDay(this)"></select>
                 <!-- <input type="hidden" id="leader@{{:leader_no}}_age" name="leader@{{:leader_no}}_age" /> -->
                 <p id="leader@{{:leader_no}}_age" name="leader@{{:leader_no}}[age]" style="display: none;"></p>
-                <input type="hidden" id="leader@{{:leader_no}}_age_val" name="" />
+                <input required type="hidden" id="leader@{{:leader_no}}_age_val" name="" />
             </div>
             <div class="input-field">
                 <span class="input-label">身高  :</span>
@@ -1538,6 +1551,11 @@
             <div class="input-field">
                 <span class="input-label">邮箱  :</span>
                 <input required data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="leader@{{:leader_no}}_mail" name="leader@{{:leader_no}}[mail]" type="text" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">备注  :</span>
+                <input tip-info="请填写备注信息" class="input-field-text mail" id="leader@{{:leader_no}}_remarks" name="leader@{{:leader_no}}[remarks]" type="text" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
