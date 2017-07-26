@@ -850,10 +850,11 @@
                 if (type == 'text' || type == 'select-one') {
                     $('#preview_' + id).html(val);
                 }
-                // if (type == 'radio') {
-                //     var chkVal = $('input:radio[name="'+name+'"]:checked').val();
-                //     $('#preview_' + name).html(chkVal);
-                // }
+                if (type == 'radio') {
+                    var chkVal = $('input:radio[name="'+name+'"]:checked').val();
+                    console.log($(this), chkVal)
+                    $('#preview_' + name).html(chkVal);
+                }
                 // 默认填写图片文件的路径
                 if (type == 'file') {
                     if (detectIE() == 'ie8') {
@@ -1390,8 +1391,9 @@
             </div>
             <div class="input-field">
                 <span class="input-label">性别  :</span>
-                <input class="input-radio man" type="radio" name="members@{{:member_no}}_sex" @if(old('sex') == '' || old('sex') == '男') checked="checked" @endif value="男"><span>男</span>
-                <input class="input-radio woman" type="radio" name="members@{{:member_no}}_sex"  @if(old('sex') == '女') checked="checked" @endif value="女"><span>女</span>
+                <input class="input-radio man" type="radio" name="members@{{:member_no}}[sex]" checked value="男"><span>男</span>
+                <input class="input-radio woman" type="radio" name="members@{{:member_no}}[sex]" value="女"><span>女</span>
+                <p id=""></p>
             </div>
             <div class="input-field">
                 <span class="input-label">民族  :</span>
@@ -1473,7 +1475,7 @@
             </div>
             <div class="input-field">
                 <span class="input-label">性别  :</span>
-                <input class="input-radio man" type="radio" name="leader@{{:leader_no}}[sex]" value="男"><span>男</span>
+                <input class="input-radio man" type="radio" checked name="leader@{{:leader_no}}[sex]" value="男"><span>男</span>
                 <input class="input-radio woman" type="radio" name="leader@{{:leader_no}}[sex]" value="女"><span>女</span>
             </div>
             <div class="input-field">
