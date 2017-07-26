@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Competition extends Model
 {
-    protected $table = 'competitons';
+    protected $table = 'competitions';
 
     protected $fillable = ['id', 'name', 'remark'];
+
+    public $timestamps = false;
 }

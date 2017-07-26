@@ -68,3 +68,4 @@ Route::post('/uploadimg', 'UtilsController@uploadImg');
 
 
 
+Route::get('/tttt', 'MatchbjController@test');

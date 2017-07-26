@@ -6,9 +6,9 @@ namespace App\Enroll\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Competition extends Model
+class CompetitonTeam extends Model
 {
-    protected $table = 'competion_teams';
+    protected $table = 'competition_teams';
 
     protected $fillable = ['id', 'invitecode', 'team_no' 'team_name' 'competition_event_id', 
     'contact_name', 'contact_mobile', 'contact_email', 'contact_remark',

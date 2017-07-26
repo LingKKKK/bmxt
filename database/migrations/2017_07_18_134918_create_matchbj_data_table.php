@@ -15,13 +15,13 @@ class CreateMatchbjDataTable extends Migration
         // 比赛
         Schema::create('competitons', function(Blueprint $table) {
             $table->increments('id');
-            $table->increments('name')->comments('比赛名称');
-            $table->string('remark', 1500)->comments('比赛介绍')
+            $table->string('name', 100)->comments('比赛名称');
+            $table->string('remark', 1500)->comments('比赛介绍');
         });
 
 
         // 比赛项目
-        Schema::create('competion_events', function(Blueprint $table) {
+        Schema::create('competition_events', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('event_group')->comments('赛项分组');
             $table->integer('parent_id')->comments('上级类别ID');
@@ -30,7 +30,7 @@ class CreateMatchbjDataTable extends Migration
         });
 
         // 队伍
-        Schema::create('competion_teams' , function(Blueprint $table){
+        Schema::create('competition_teams' , function(Blueprint $table){
             $table->increments('id');
 
 
@@ -38,7 +38,7 @@ class CreateMatchbjDataTable extends Migration
 
             $table->string('team_no', 50)->comments('队伍编码');
             $table->string('team_name', 100)->comments('队伍名称');
-            $table->string('competition_event_id')->comments('比赛项目');
+            $table->unsignedInteger('competition_event_id')->comments('比赛项目');
 
             // 联系人
             $table->string('contact_name', 50)->comments('联系人姓名');
@@ -60,15 +60,15 @@ class CreateMatchbjDataTable extends Migration
 
             $table->timestamps();
 
-            $table->uniqute('team_no');
-            $table->foreign('competition_event_id')->references('id')->on('competions_events');
+            $table->unique('team_no');
+            $table->foreign('competition_event_id')->references('id')->on('competition_events');
 
         });
 
-        Schema::create('competion_team_members', function(Blueprint $table) {
+        Schema::create('competition_team_members', function(Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('team_id')->comments('队伍id'); //
+            $table->unsignedInteger('team_id')->comments('队伍id'); //
             $table->string('type', 20)->comments('成员类型: 领队,指导教师,队长,队员');
 
             // 基本信息
@@ -95,7 +95,7 @@ class CreateMatchbjDataTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('team_id')->references('id')->on('competion_teams');
+            $table->foreign('team_id')->references('id')->on('competition_teams');
         });
     }
 
@@ -106,6 +106,12 @@ class CreateMatchbjDataTable extends Migration
      */
     public function down()
     {
-        Schema::drop('matchbj_data');
+
+        // \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::drop('competition_team_members');
+        Schema::drop('competition_teams');
+        Schema::drop('competition_events');
+        Schema::drop('competitons');
+        // \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

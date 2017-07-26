@@ -51,6 +51,11 @@ class MatchbjController extends Controller
     //队伍码
     protected $team_no = '';    
 
+    public function test(\App\Enroll\CompetitionService $service)
+    {
+        $service->initEvents2();
+    }
+
     public function search()
     {
         return view('searchbj');
