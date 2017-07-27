@@ -43,7 +43,7 @@
             <span class="instructions-span" style="padding-left: 20px;">开户名称：北京工道动力机器人技术研究院</span>
             <span class="instructions-span" style="padding-left: 20px;">开户行号：313100022226</span>
             <span class="instructions-span" style="padding-left: 20px;">银行账号：410100203296687</span>
-            <h2 class="">附一：各赛项负责人</h2>
+            <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：各赛项负责人</h2>
 
             <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”项目联系人：李蒙 136 2109 4852</span>
             <span class="instructions-span" style="padding-left: 20px;"> b)“工业时代”项目联系人：谢尊国 150 0077 4186</span>
@@ -52,7 +52,35 @@
             <span class="instructions-span" style="padding-left: 20px;"> e)“智造大挑战” 项目联系人：谢俊杰 186 0301 5057</span>
             <span class="instructions-span" style="padding-left: 20px;"> f)“创客生存挑战赛”项目联系人：李乔 176 0089 9441</span>
 
-            <h2>附二：报名表填写说明</h2>
+            <h2 style="margin-bottom: 20px; margin-top: 15px;">附二：报名表填写说明</h2>
+
+            <span class="instructions-span clearfix"><i>信息项</i>填写说明</span>
+            <span class="instructions-span clearfix"><i>邀请码</i>由赛项负责人提供的16位邀请码，每个邀请码只能使用一次</span>
+            <span class="instructions-span clearfix"><i>姓名</i>填写有效证件上的姓名，姓名只能包含汉字和英文</span>
+            <span class="instructions-span clearfix"><i>手机号码</i>填写11位有效手机号码。如参赛选手没有手机则须填写带队老师或监护人手机号码</span>
+            <span class="instructions-span clearfix"><i>邮箱/E-mail</i>填写有效邮箱地址</span>
+            <span class="instructions-span clearfix"><i>身份证号</i>填写有效18位居民身份证号</span>
+            <span class="instructions-span clearfix"><i>照片</i>须上传2寸免冠登记照，大小不能大于2MB</span>
+            <span class="instructions-span clearfix"><i>队伍名称</i>填写参赛队伍的名称，不接受已存在的队伍名称</span>
+            <span class="instructions-span clearfix"><i>学校/单位名称</i>填写所属学校或单位名称</span>
+            <span class="instructions-span clearfix"><i>赛事项目</i>选择队伍参加的赛项</span>
+            <span class="instructions-span clearfix"><i>子赛项</i>选择参队伍加的子赛项</span>
+            <span class="instructions-span clearfix"><i>组别</i>选择参队伍加的组别</span>
+            <span class="instructions-span clearfix"><i>出生日期</i>真实出生年月</span>
+            <span class="instructions-span clearfix"><i>性别</i>填写真实性别</span>
+            <span class="instructions-span clearfix"><i>身高</i>填写真实身高（用于制定活动用T恤尺寸）</span>
+            <span class="instructions-span clearfix"><i>证件类型</i>选择有效的身份证件类型</span>
+            <span class="instructions-span clearfix"><i>证件号码</i>填写有效的身份证件号码</span>
+            <span class="instructions-span clearfix"><i>居住省市</i>填写现居住的省和市</span>
+            <span class="instructions-span clearfix"><i>职务</i>填写真实职业</span>
+            <span class="instructions-span clearfix"><i>账户类型</i>需要开收据还是发票或是都不需要</span>
+            <span class="instructions-span clearfix"><i>发票抬头</i>收款机构的抬头</span>
+            <span class="instructions-span clearfix"><i>统一社会信用代码</i>填写真实统一社会信用代码</span>
+            <span class="instructions-span clearfix"><i>收件地址</i>票据需要邮寄到的地址</span>
+            <span class="instructions-span clearfix"><i>开票金额</i>选择单人所缴纳的费用</span>
+            <span class="instructions-span clearfix"><i>汇款账户</i>发票抬头账户的汇款号</span>
+            <span class="instructions-span clearfix"><i>验证码</i>填写发送到手机的6位数验证码</span>
+            <span class="instructions-span clearfix"><i>备注</i>填写需要补充的信息</span>
 
 
 
