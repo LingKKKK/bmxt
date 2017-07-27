@@ -406,7 +406,7 @@
             }
 
             if (datatype.indexOf('realname') !== -1 && !isName(val)) {
-                $el.tipWarn('姓名不能是数字或特殊字符，请重新输入！');
+                $el.tipWarn('姓名不能是数字或特殊字符！');
                 return false;
             }
             if (datatype.indexOf('schoolname') !== -1 && !isMathEngCha(val)) {
@@ -520,7 +520,8 @@
             var addIndex = 0;
             var nations = ["汉族","蒙古族","回族","藏族","维吾尔族","苗族","彝族","壮族","布依族","朝鲜族","满族","侗族","瑶族","白族","土家族", "哈尼族","哈萨克族","傣族","黎族","傈僳族","佤族","畲族","高山族","拉祜族","水族","东乡族","纳西族","景颇族","柯尔克孜族", "土族","达斡尔族","仫佬族","羌族","布朗族","撒拉族","毛南族","仡佬族","锡伯族","阿昌族","普米族","塔吉克族","怒族", "乌孜别克族", "俄罗斯族","鄂温克族","德昂族","保安族","裕固族","京族","塔塔尔族","独龙族","鄂伦春族","赫哲族","门巴族","珞巴族","基诺族"];
 
-            return function(type = 'member') {
+            return function(type) {
+                type = type || 'member';
                 var tmpl = $.templates("#tmpl_memberlist");
                 var rawHtml = tmpl.render({
                     'index': addIndex,
@@ -637,7 +638,8 @@
             return tmpl.render({'options': arr})
         };
 
-        function getOptions(key = 0) {
+        function getOptions(key) {
+            key = key || 0 ;
             var data = {!! $competitonsJson !!};
 
             if (key == 0) {
@@ -668,7 +670,9 @@
             return;
         }
 
-        function fillOptions(level = 1, key = 0) {
+        function fillOptions(level, key) {
+            level = level || 1;
+            key = key || 0;
             var options_data = getOptions(key);
             var options_html = buildOptions(options_data);
 
@@ -723,14 +727,12 @@
                 'contact_mobile',
                 'contact_email',
                 'contact_remark',
-
                 // 赛项信息
                 'team_name',
                 'competition_1',
                 'competition_2',
                 'competition_3',
                 'remarks',
-
                 // 开票信息
                 'invoice_type',
                 'invoice_title',
@@ -740,16 +742,15 @@
                 'invoice_mail_recipients',
                 'invoice_mail_mobile',
                 'invoice_mail_email',
-                'invoice_remark',
-            );
+                'invoice_remark'
+            )
 
             for(i in idNames)
             {
                 $el = $('#' + idNames[i]);
                 var val = $el.val();
                 if ($el.is('select')) {
-                    val = $el.find('option:selected').val();
-                    console.log(val)
+                    val = $el.find('option:selected').text();
                 }
                 $('#preview_' + idNames[i]).html(val);
             }
