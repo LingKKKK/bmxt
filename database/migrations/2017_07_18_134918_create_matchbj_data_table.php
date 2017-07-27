@@ -16,7 +16,7 @@ class CreateMatchbjDataTable extends Migration
         Schema::create('competitons', function(Blueprint $table) {
             $table->increments('id');
             $table->increments('name')->comments('比赛名称');
-            $table->string('remarks', 1500)->comments('比赛介绍')
+            $table->string('remark', 1500)->comments('比赛介绍')
         });
 
 
@@ -33,11 +33,18 @@ class CreateMatchbjDataTable extends Migration
         Schema::create('competion_teams' , function(Blueprint $table){
             $table->increments('id');
 
-            $table->string('competition_event_id')->comments('比赛项目id');
 
             $table->string('invitecode', 50)->comments('邀请码');
+
             $table->string('team_no', 50)->comments('队伍编码');
             $table->string('team_name', 100)->comments('队伍名称');
+            $table->string('competition_event_id')->comments('比赛项目');
+
+            // 联系人
+            $table->string('contact_name', 50)->comments('联系人姓名');
+            $table->string('contact_mobile', 50)->comments('联系电话');
+            $table->string('contact_email', 50)->comments('联系人邮箱');
+            $table->string('contact_remark', 50)->comments('备注');
 
             // 发票
             $table->string('invoice_title', 50)->comments('开票抬头');
@@ -50,11 +57,6 @@ class CreateMatchbjDataTable extends Migration
             $table->string('invoice_mail_email', 100)->comments('收件人邮箱');
             $table->string('invoice_remark', 1500)->comments('发票邮寄备注');
 
-
-            $table->string('contact_name', 50)->comments('联系人姓名');
-            $table->string('contact_tel', 50)->comments('联系电话');
-            $table->string('contact_mail', 50)->comments('联系人邮箱');
-            $table->string('contact_remarks', 50)->comments('备注');
 
             $table->timestamps();
 
@@ -88,7 +90,7 @@ class CreateMatchbjDataTable extends Migration
             $table->string('register_address', 50)->comments('户籍地址');
             $table->string('home_address', 50)->comments('现居详情');
 
-            $table->string('remarks', 1500)->comments('备注');
+            $table->string('remark', 1500)->comments('备注');
             $table->string('profiles', 2000)->comments('其他资料');
 
             $table->timestamps();
