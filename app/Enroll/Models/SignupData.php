@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enroll;
+namespace App\Enroll\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

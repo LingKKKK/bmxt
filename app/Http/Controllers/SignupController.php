@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Enroll\Models\TripData;
+use App\Enroll\InviteManager;
+use App\Enroll\Models\SignupData;
 use App\Http\Controllers\Controller;
 
-use App\Enroll\SignupData;
 use Validator;
 use Mail;
 use Storage;
 use Session;
-use App\Enroll\InviteManager;
 use Excel;
-use App\Enroll\TripData;
 
 class SignupController extends Controller
 {
@@ -59,7 +60,7 @@ class SignupController extends Controller
         if ($signdata) {
             return view('success', compact('signdata'));
         }
-        
+
         $competition_groups = [
             '小学' => 1,
             '初中' => 2,
