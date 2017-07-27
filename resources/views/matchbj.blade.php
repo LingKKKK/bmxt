@@ -66,22 +66,22 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人姓名  :</span>
-                            <input tip-warn="" tip-info="仅支持英文、汉字" data-type="realname" class="input-field-text add_contact disabled" readonly  id="contact_name_info" name="contact_name" type="text" value="">
+                            <input tip-warn="" tip-info="仅支持英文、汉字" data-type="realname" class="input-field-text add_contact disabled" readonly  id="contact_name" name="contact_name" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人手机号码  :</span>
-                            <input tip-info="请填联系人手机号码" data-type="mobile" class="input-field-text add_contact disabled" readonly  id="contact_mobile_info" type="text" name="contact_mobile" value="">
+                            <input tip-info="请填联系人手机号码" data-type="mobile" class="input-field-text add_contact disabled" readonly  id="contact_mobile" type="text" name="contact_mobile" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人邮箱  :</span>
-                            <input tip-info="请按照正确的邮箱格式填写" data-type="email" class="input-field-text add_contact disabled" readonly id="contact_email_info" name="contact_email" type="text" value="">
+                            <input tip-info="请按照正确的邮箱格式填写" data-type="email" class="input-field-text add_contact disabled" readonly id="contact_email" name="contact_email" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人备注  :</span>
-                            <input tip-info="请填写备注内容" class="input-field-text add_contact disabled" id="contact_remark_info" readonly name="contact_remark" type="text" value="">
+                            <input tip-info="请填写备注内容" class="input-field-text add_contact disabled" id="contact_remark" readonly name="contact_remark" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -229,15 +229,15 @@
                             </div>
                             <div class="input-field">
                                 <span class="name">赛事项目 :</span>
-                                <span id="preview_competition_name" class="name_input"></span>
+                                <span id="preview_competition_1" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name"></span>
-                                <span id="preview_competition_type" class="name_input"></span>
+                                <span id="preview_competition_2" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name">组别 :</span>
-                                <span id="preview_competition_group" class="name_input"></span>
+                                <span id="preview_competition_3" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name">备注 :</span>
@@ -749,6 +749,7 @@
                 var val = $el.val();
                 if ($el.is('select')) {
                     val = $el.find('option:selected').val();
+                    console.log(val)
                 }
                 $('#preview_' + idNames[i]).html(val);
             }
@@ -1013,7 +1014,7 @@
                     })
 
                     return !prevent;
-                }, function() {
+                }, function(index) {
                     if (index == 5) {
                         previewList();
                     }

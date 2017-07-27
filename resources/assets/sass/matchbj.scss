@@ -405,6 +405,37 @@ body {
             margin-bottom: 5px;
             text-align: center;
           }
+
+          #preview_leader {
+            .leader_info {
+              position: relative;
+              padding-bottom: 40px;
+
+              .name {
+                font-size: 14px;
+                color: #666666;
+                letter-spacing: 2px;
+                width: 140px;
+                height: 20px;
+                margin-right: 10px;
+                display: block;
+                float: left;
+                line-height: 20px;
+                margin-left: 71px;
+                margin-top: 30px;
+              }
+
+              .name_input {
+                display: block;
+                float: left;
+                font-size: 14px;
+                color: #666666;
+                line-height: 20px;
+                letter-spacing: 2px;
+                margin-top: 30px;
+              }
+            }
+          }
           .name {
             font-size: 14px;
             color: #666666;
