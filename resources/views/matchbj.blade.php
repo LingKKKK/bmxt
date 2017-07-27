@@ -759,11 +759,30 @@
             $('#preview_member').html(buildPreview('member'));
         }
 
+        function copyContactInfo() {
+
+            var value =  $('add_contact').find('option:selected').val();
+            // 如果选的是添加联系人信息，就不修改
+            if (value == '添加') {
+                return;
+            }
+
+            var $el = $('.teachers .person_data').eq(0);
+            if ($el) {
+                var name = $el.find('input.name').val();
+                var mobile = $el.find('input.tel').val();
+                var email = $el.find('input.mail').val();
+                $('#contact_name').val(name);
+                $('#contact_mobile').val(mobile);
+                $('#contact_email').val(email);
+            }
+        }
+
 
 
         // 提取联系人手机
         function getContactMobile() {
-            var mobile = $('#contact_mobile').val() || '18511431517';
+            var mobile = $('#contact_mobile').val() || '';
             return mobile;
         }
 
@@ -850,7 +869,7 @@
                     console.warn('too many');
                     return;
                 }
-                addMemberList();
+                addMemberList('member');
             });
 
             // TODO: 添加按钮 DISABLED
