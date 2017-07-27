@@ -782,13 +782,15 @@
                     var source_id = $(this).attr('id');
                     var imgObj = document.getElementById(source_id);
                     var dataURL = $(this).attr('local-src');
-
-
-                    // var realpath = document.selection.createRange().text;
                     var url = document.getElementById(source_id).value;
-                    dataURL = 'file:///' + dataURL;
-                    console.log(url, dataURL);
-                    // console.log(source_id, imgObj, dataURL);
+
+                    $(this).select();
+                    $(this).blur();
+                    var nfile = document.selection.createRange().text;
+                    document.selection.empty();
+                    console.log(nfile);
+
+
                     if (!imgObj) {
                         // imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
                         // imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
