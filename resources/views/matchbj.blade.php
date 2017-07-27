@@ -779,10 +779,21 @@
             if (detectIE() == 'IE8' || detectIE() == 'IE9') {
                 $('.preview-pic').each(function(){
                     var source_id = $(this).attr('id');
-                    var imgObj = document.getElementById("preview");
+                    var imgObj = document.getElementById(source_id);
                     var dataURL = $(this).attr('local-src');
-                    imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                    imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+
+
+                    // var realpath = document.selection.createRange().text;
+                    var url = document.getElementById(source_id).value;
+                    dataURL = 'file:///' + dataURL;
+                    console.log(url, dataURL);
+                    // console.log(source_id, imgObj, dataURL);
+                    if (!imgObj) {
+                        // imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                        // imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+                        imgObj.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+dataURL+"')";
+                        imgObj.style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+dataURL+"')";
+                    }
                 });
             }
 
