@@ -106,17 +106,14 @@
                         <div class="input-field">
                             <span class="input-label">赛事项目  :</span>
                             <select class="select-box" id="competition_1" name="competition_name" level="1"></select>
-                            <input type="hidden" id="competition_name_val" name="" value="">
                         </div>
                         <div class="input-field">
                             <span class="input-label">赛事名称  :</span>
                             <select class="select-box" id="competition_2" name="competition_type" level="2"></select>
-                            <input type="hidden" id="competition_type_val" name="" value="">
                         </div>
                         <div class="input-field">
                             <span class="input-label">组别  :</span>
-                            <select class="select-box" id="competition_3" name="competition_group" level="3"></select>
-                            <input type="hidden" id="competition_group_val" name="" value="">
+                            <select class="select-box" id="competition_3" name="competition_event_id" level="3"></select>
                         </div>
                         <div class="input-field">
                             <span class="input-label">备注  :</span>
@@ -1056,7 +1053,7 @@
             <div class="input-field">
                 <span class="input-label">民族  :</span>
                 <select id="@{{:type}}_@{{:index}}_nation" name="@{{:type}}[@{{:index}}][nation]" class="input-field-text">
-                        <option value="请选择">请选择</option>
+                        <!-- <option value="请选择">请选择</option> -->
                         @{{for nations}}
                             <option value="@{{: #data}}"> @{{: #data}}</option>}
                         @{{/for}}
@@ -1081,7 +1078,7 @@
             </div>
             <div class="input-field">
                 <span class="input-label">证件类型  :</span>
-                <select name="@{{:type}}[@{{:index}}][ID_type]" class="input-field-text id_type">
+                <select name="@{{:type}}[@{{:index}}][idcard_type]" class="input-field-text id_type">
                     <option value="身份证">身份证</option>
                     <option value="内地通行证">内地通行证</option>
                     <option value="台胞证">台胞证</option>
@@ -1090,7 +1087,7 @@
             </div>
             <div class="input-field">
                 <span class="input-label">证件号码  :</span>
-                <input tip-info="请填写证件号码" required class="input-field-text id_number" data-type="ID" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][ID_number]" value="">
+                <input tip-info="请填写证件号码" required class="input-field-text id_number" data-type="ID" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][idcard_no]" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
@@ -1105,17 +1102,17 @@
             </div>
             <div class="input-field">
                 <span class="input-label">手机号码  :</span>
-                <input required data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="@{{:type}}_@{{:index}}_tel" name="@{{:type}}[@{{:index}}][tel]" type="text" value="">
+                <input required data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="@{{:type}}_@{{:index}}_mobile" name="@{{:type}}[@{{:index}}][mobile]" type="text" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">邮箱  :</span>
-                <input required data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="@{{:type}}_@{{:index}}_mail" name="@{{:type}}[@{{:index}}][mail]" type="text" value="">
+                <input required data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="@{{:type}}_@{{:index}}_mail" name="@{{:type}}[@{{:index}}][mobile]" type="text" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">备注  :</span>
-                <input tip-info="请填写备注信息" class="input-field-text mail" id="@{{:type}}_@{{:index}}_remarks" name="@{{:type}}[@{{:index}}][remarks]" type="text" value="">
+                <input tip-info="请填写备注信息" class="input-field-text mail" id="@{{:type}}_@{{:index}}_remarks" name="@{{:type}}[@{{:index}}][remark]" type="text" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
