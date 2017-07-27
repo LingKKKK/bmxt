@@ -50,20 +50,7 @@
                     <div class="contact_info div_tab clearfix active">
                         <div class="input-field">
                             <span class="input-label">邀请码  :</span> 
-                            <p>
-                                {{competition_list}}
-                                <?php
-                                foreach($competition_list as $index=>$value) {
-                                    echo '<option>'.$index.'</option>';
-                                    foreach($value as $key=>$val) {
-                                        echo '<option>'.$key.'</option>';
-                                        foreach($val as $k=>$v) {
-                                            echo '<option>'.$k.'</option>';
-                                        }
-                                    }
-                                }
-                                ?>
-                            </p>
+                            
                             <input tip-warn="" tip-info="输入邀请码" class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{$signdata['invitecode'] or ''}}">
                             <div class="tips"></div>
                         </div>
@@ -648,16 +635,16 @@
         function rebindVlidation() {
             // 添加联系人 
             $("#add_contact").on('change', function(event) {
-                $('#contact_name').removeClass('add_contact');
-                $('#contact_name').attr("required", "true");
-                $('#contact_name').attr("data-type", "character");
-                $('#contact_mobile').removeClass('add_contact');
-                $('#contact_mobile').attr("required", "true");
-                $('#contact_mobile').attr("data-type", "mobile");
-                $('#contact_email').removeClass('add_contact');
-                $('#contact_email').attr("required", "true");
-                $('#contact_email').attr("data-type", "email");
-                $('#contact_remark').removeClass('add_contact');
+                $('#contact_name_info').removeClass('add_contact');
+                $('#contact_name_info').attr("required", "true");
+                $('#contact_name_info').attr("data-type", "character");
+                $('#contact_mobile_info').removeClass('add_contact');
+                $('#contact_mobile_info').attr("required", "true");
+                $('#contact_mobile_info').attr("data-type", "mobile");
+                $('#contact_email_info').removeClass('add_contact');
+                $('#contact_email_info').attr("required", "true");
+                $('#contact_email_info').attr("data-type", "email");
+                $('#contact_remark_info').removeClass('add_contact');
                 /* Act on the event */
             });
             $("input").unbind('blur').blur(function(){
@@ -1493,15 +1480,223 @@
         </div>
     </script>
 
-    <script id="addOptions" type="text/x-jsrender">
-        var index = 0;
-        <?php
-        foreach($competition_list as $k=>$v)
-        {
-            echo index;
-            echo $k; 
+    <script id="tmpl_options" type="text/x-jsrender">
+        @{{for options}}
+            <option value="@{{: #index + 1}}"> @{{: #data}}</option>}
+        @{{/for}}
+    </script>
+    <script>
+        // var competition_list = [
+        //     {
+        //         'name': '未来世界',
+        //         'children': [
+        //             {
+        //                 'name': "1",
+        //                 'children': [
+        //                     {
+        //                         'name': '11',
+        //                     }
+        //                 ],
+        //             }
+        //         ],
+        //     },
+        //     {
+        //         'name': '攻城大师',
+        //         'children': [
+        //             {
+        //                 'name': "2",
+        //                 'children': [
+        //                     {
+        //                         'name': "22",
+        //                     },{
+        //                         'name': "23",
+        //                     },{
+        //                         'name': "24",
+        //                     },{
+        //                         'name': "25",
+        //                     },
+        //                 ],
+        //             },
+        //             {
+        //                 'name': "2-1",
+        //                 'children': [
+        //                     {
+        //                         'name': "22-22",
+        //                     }
+        //                 ],
+        //             }
+        //         ],
+        //     },
+        //     {
+        //         'name': '博思威龙',
+        //         'children': [
+        //             {
+        //                 'name': "3",
+        //                 'children': [
+        //                     {
+        //                         'name': "33",
+        //                     }
+        //                 ],
+        //             }
+        //         ],
+        //     },
+        // ];
+        // function selectChange1(index) {
+        //     competition_list.forEach(function (val, key) {
+        //         if (index == key) {
+        //             var arr2 = [];
+        //             var arr3 = [];
+        //             competition_list[key]['children'].forEach( function (v, k) {
+        //                 arr2.push(v['name']);
+        //                 v['children'].forEach(function (i){
+        //                     arr3.push(i['name']);
+        //                 });
+        //             });
+        //             $('#第二层select').html(arr2);
+        //             $('#第二层select').find('option').eq(0).attr('selected', 'true');
+        //             $('#第三层select').html(arr3);
+        //             $('#第三层select').find('option').eq(0).attr('selected', 'true');
+
+        //             // var arr3 = [];
+        //             // competition_list[key]['children'][0]['children'].forEach(function (i){
+        //             //     arr3.push(i['name']);
+        //             // });
+        //             // $('#第三层select').html(arr1);
+        //             // $('#第三层select').find('option').eq(0).attr('selected', 'true');
+        //         }
+        //     });
+        // };
+        function addOptions(obj, data) {
+            var arr = [];
+            data.forEach(function (val, key) {
+                arr.push(val['name']);
+            });
+            $(obj).html(generateOptions(arr));
+            $(obj).find('option').eq(0).attr('selected', 'true');
+            selectChange(1, obj, data, index, value);
         }
-        ?>
+        function selectChange(level, obj, data, index, value) {
+            if (level == 1) {
+                data.forEach(function(val, key) {
+                    if (index == key && value['name'] == val) {
+                        var arr2 = [];
+                        data[key]['children'].forEach(function(v, k) {
+                            arr2.push(v['name']);
+                            selectChange(2, obj, index, value, v['children']);
+                        });
+                        $('obj').html(generateOptions(arr2));
+                        $('obj').find('option').eq(0).attr('selected', 'true');
+                    }
+                });
+            } else if (level == 2) {
+                var arr = [];
+                data.forEach(function (i){
+                    arr.push(i['name']);
+                });
+                $('obj').html(generateOptions(arr));
+                $('obj').find('option').eq(0).attr('selected', 'true');
+            }
+        }
+        // 动态生成 option List (HTML)
+        function generateOptions(data, deafutl_key) {
+            var tmpl = $.templates('#tmpl_options');
+            return tmpl.render({'options': data})
+        };
+
+        var data = {!! $competitonsJson !!};
+        console.log(data);
+      
+        function getOptions(key) {
+            var data = [
+                {
+                    'name': 1,
+                    'id': 1,
+                    'children': [
+                        {
+                            'name': 11,
+                            'id': 11,
+                            'children': [
+                                {
+                                    'name': 12,
+                                    'id': 12,
+                                    'children': [
+                                        {
+                                            'name': 13,
+                                            'id': 14,
+                                        }
+                                    ],
+                                },
+                                {
+                                    'name': 12,
+                                    'id': 12,
+                                    'children': [
+                                        {
+                                            'name': 13,
+                                            'id': 14,
+                                        }
+                                    ],
+                                }
+                            ],
+                        }
+                    ],
+                },{
+                    'name': 2,
+                    'id': 2,
+                    'children': [],
+                }
+            ];
+            if (key ==0) {
+                return data;
+            }
+
+            for (index in data) {
+                if (data[index]['id'] == key) {
+                    var arr = [];
+                    for (val in data[index]['children']) {
+                        arr.push(data[index]['children'][val]['name']);
+                    }
+                    return arr;
+                } else {
+                    for (item in data[index]['children']) {
+                        if (data[index]['children'][item]['id'] == key) {
+                            var arr = [];
+                            for (val in data[index]['children'][item]['children']) {
+                                arr.push(data[index]['children'][item]['children'][val]['name']);
+                            }
+                            return arr;
+                        }else {
+                            for (competition in data[index]['children'][item]['children']) {
+                                if (data[index]['children'][item]['children'][competition]['id'] == key) {
+                                    var arr = [];
+                                    for (val in data[index]['children'][item]['children'][competition]['children']) {
+                                        arr.push(data[index]['children'][item]['children'][competition]['children'][val]['name']);
+                                    }
+                                    return arr;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        $('.select-box').change(function() {
+            var level = $(this).attr('level');
+            var key = $(this).find('option:selected').val();
+            var options_data = getOptions(key);
+            var options_html = generateOptions(options_data);
+            if (level == 1) {
+                $('#select2').html(options_html);
+                $('#select2').find('option').removeAttr('selected');
+                $('#select2').find('option').eq(0).attr('selected', 'true');
+            };
+            if (level == 2) {
+                $('#select3').html(options_html);
+                $('#select3').find('option').removeAttr('selected');
+                $('#select3').find('option').eq(0).attr('selected', 'true');
+            }
+        });
+
     </script>
 </body>
 </html>

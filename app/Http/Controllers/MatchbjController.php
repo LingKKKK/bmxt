@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Enroll\Models\CompetitionEvent;
 
 use App\Enroll\SignupData;
 use App\Enroll\MatchbjData;
@@ -22,9 +23,9 @@ class MatchbjController extends Controller
 
     public function test(\App\Enroll\CompetitionService $service)
     {
-        $service->initEvents2();
+        $service->initEvents();
     }
-
+    
     public function search()
     {
         return view('searchbj');
@@ -32,24 +33,7 @@ class MatchbjController extends Controller
 
     public function doSearch(Request $request)
     {
-        // $validator = Validator::make($request->all(),
-        //     [
-        //         'leader_mobile' => 'required',
-        //         'team_no'   => 'required',
-        //         'verificationcode' => 'required|verificationcode',
-        //     ],
-        //     [
-        //         'leader_mobile.required' => '手机号不能为空',
-        //         'leader_id.required' => '身份证或者领队姓名名填写至少一个',
-        //         'leader_name.required_without' => '身份证或者领队姓名名至少填写一个',
-        //         'team_no.required'  => '队伍编号不能为空',
-        //         'verificationcode.required' => '验证码不能为空',
-        //         'verificationcode.verificationcode' => '验证码不正确',
-        //     ]);
-
-        // if ($validator->fails()) {
-        // }
-
+       
         $team_no = $request->input('team_no', '');
         $signdata = SignupData::where('team_no', $team_no)->first();
 
@@ -67,99 +51,24 @@ class MatchbjController extends Controller
         return redirect('matchbj');
     }
 
-    public function signup(Request $request)
+    public function signup(Request $request, \App\Enroll\CompetitionService $service)
     {
-        $competition_list = [
-            '未来世界' => [
-                'WRO常规赛' => [
-                    "小学" => 1,
-                    "初中" => 1,
-                    "高中" => 1,
-                    "大专" => 1,
-                ],
-                'EV3足球赛' => [
-                    "小学" => 1,
-                    "中学(含初高中)" => 1,
-                ],
-                'WRO创意赛——"可持续发展"' => [
-                    "小学" => 1,
-                    "中学(含初高中)" => 1,
-                ],
-            ],
-            '博思威龙' => [
-                'VEX-EDR"步步为营"工程挑战赛' => [
-                    '中学(含小初)' => 1,
-                    '高中' => 1,
-                ],
-                'VEX-IQ"环环相扣"工程挑战赛' => [
-                    '小学' => 1,
-                    '初中' => 1,
-                ],
-                'BDS机器人工程挑战赛——"长城意志"' => [
-                    '小初高' => 1,
-                ],
-            ],
-            '工业时代' => [
-                '能力风暴——WER能力挑战赛' => [
-                    "小学" => 1,
-                    "初中" => 1,
-                    "高中" => 1,
-                ],
-                '能力风暴——WER能力挑战赛工程创新赛' => [
-                    "小学" => 1,
-                    "初中" => 1,
-                    "高中" => 1,
-                ],
-                '能力风暴——WER普及赛' => [
-                    "小学" => 1,
-                    "初中" => 1,
-                ],
-            ],
-            '攻城大师' => [
-                '攻城大师' => [
-                    "小学" => 1,
-                    "初中" => 1,
-                    "高中" => 1,
-                ],
-            ],
-            '智造大挑战' => [
-                '智造大挑战' => [
-                    "小学" => 1,
-                    "初中" => 1,
-                    "高中" => 1,
-                ],
-            ],
-        ];
+        $competitionList = $service->getCompetitionList();
 
-        return view('matchbj', compact('competition_types', 'competition_groups'))->with('competition_list', $competition_list);
-        
-        // $signdata = $this->fetchSignData();
-        // if (! $signdata) {
-        //     return redirect('/matchbj');
-        // }
+        $competitonsJson = json_encode($competitionList, JSON_UNESCAPED_UNICODE);
 
-        // $team_no =  $signdata['team_no'];
-        // $trip_data = TripData::where('team_no', $team_no)->get();
-
-        // return view('matchbj', compact('competition_types', 'competition_groups', 'signdata'));
+        return view('matchbj', compact('competitonsJson'));
     }
 
     public function doSignup(Request $request)
     {
-        // $validator = Validator::make($request->all(),
 
-        //     [
-        //         'invitecode' => 'required', //邀请码信息
-        //     ],
-        //     [
-        //         'invitecode.required' => '邀请码必填',
-        //         'team_name.required' => '队名必填',
-        //         'verificationcode.required' => '验证码不能为空',
-        //         'invitecode.required' => '邀请码不能为空',
-        //         'invitecode.invitecode' => '邀请码不正确',
-        //     ]
-        // );
+        dd($request->all());
 
+
+        $team_no = '12321321'.rand(1000, 9999);
+
+       
         try {
             $leader_picdata = $this->saveFile($request->file('leader_pic'));
             $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
@@ -228,7 +137,6 @@ class MatchbjController extends Controller
             $data['data'] = json_encode($dataPayload, JSON_UNESCAPED_UNICODE);
             $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
 
-            dd($data['data']);
 
             $request->session()->flash('signdata', $data);
 
@@ -245,49 +153,8 @@ class MatchbjController extends Controller
         return redirect('/');
     }
 
-    public function demo()
-    {
-        return view('demo');
-    }
-
-    public function upDemo(Request $request)
-    {
-        $validator = Validator::make($request->all(),
-            [
-                'invitecode' => 'required', //邀请码信息
-            ],
-            [
-                'invitecode.required' => '邀请码必填',
-                'team_name.required' => '队名必填',
-                'verificationcode.required' => '验证码不能为空',
-                'invitecode.required' => '邀请码不能为空',
-                'invitecode.invitecode' => '邀请码不正确',
-            ]
-        );
-    }
-    private function fetchSignData()
-    {
-        $signdata = session('signdata');
-        // dd($signdata);
-        if ($signdata) {
-            $signdata['members'] = json_decode($signdata['members'], true);
-            // dd($signdata)
-            $data = json_decode($signdata['data'], true);
-            $signdata['leaders'] = $data['leaders'];
-            $signdata['participant'] = $data['participant'];
-            $signdata['account_type'] = $data['account_type'];
-            $signdata['invoice_header'] = $data['invoice_header'];
-            $signdata['billing_content'] = $data['billing_content'];
-            $signdata['receive_address'] = $data['receive_address'];
-            $signdata['average_amount'] = $data['average_amount'];
-            $signdata['total_cost'] = $data['total_cost'];
-            // dd($signdata);
-
-            return $signdata;
-        }
-
-        return $signdata;
-    }
+   
+   
 
     public function finish(){
         return view('finish');
