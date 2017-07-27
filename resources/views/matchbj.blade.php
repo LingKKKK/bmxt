@@ -705,12 +705,17 @@
                         value = $(this).find('input:radio:checked').val();
                     } else if ($el_input.attr('type') == 'file') {
                         value = $el_input.val();
-                        var source_id = $el_input.attr('id');
-                        var f = document.getElementById(source_id).files[0];
-                        if(f && detectIE() != 'ie8' && detectIE() != 'ie9'){
-                            console.log(f);
-                            imgPreviewUrl = window.URL.createObjectURL(f);
-                            console.log(imgPreviewUrl);
+
+                   
+                        if( detectIE() != 'IE8' && detectIE() != 'IE9'){                        
+                            var source_id = $el_input.attr('id');
+                            var f = document.getElementById(source_id).files[0];
+                            if (f) {
+                                console.log(f);
+                                imgPreviewUrl = window.URL.createObjectURL(f);
+                                console.log(imgPreviewUrl);
+                            }
+                         
                         }
 
                         localUrl = $el_input.val();
@@ -771,7 +776,7 @@
             $('#preview_leader').html(buildPreview('leader'));
             $('#preview_member').html(buildPreview('member'));
 
-            if (detectIE() == 'ie8' || detectIE == 'ie9') {
+            if (detectIE() == 'IE8' || detectIE() == 'IE9') {
                 $('.preview-pic').each(function(){
                     var source_id = $(this).attr('id');
                     var imgObj = document.getElementById("preview");
@@ -1166,7 +1171,7 @@
             <div class="input-field">
                 <span class="input-label">照片  :</span>
                 <div class="uploadBtn">上传照片 </div>
-                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}_@{{:index}}_pic" type="file" class="uploadField @{{:type}}_pic"  onchange="picPreview(this, 'preview_@{{:index}}_@{{:type}}_pic')">
+                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}_@{{:index}}_pic" type="file" class="uploadField @{{:type}}_pic" >
                 <div class="tips"></div>
             </div>
         </div>

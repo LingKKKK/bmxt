@@ -78,21 +78,45 @@ function isID(val) {
 
 function detectIE()
 {
-    var browser=navigator.appName
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
+    var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器  
+    var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器  
+    var isEdge = userAgent.indexOf("Windows NT 6.1; Trident/7.0;") > -1 && !isIE; //判断是否IE的Edge浏览器  
+    var isFF = userAgent.indexOf("Firefox") > -1; //判断是否Firefox浏览器  
+    var isSafari = userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") == -1; //判断是否Safari浏览器  
+    var isChrome = userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Safari") > -1; //判断Chrome浏览器  
 
-    if(browser == "Microsoft Internet Explorer")
-    {
-        var b_version=navigator.appVersion
-        var version=b_version.split(";");
-        var trim_Version=version[1].replace(/[ ]/g,"");
-        if(trim_Version=="MSIE8.0") {
-            return 'ie8';
+    if (isIE)   
+    {  
+        var reIE = new RegExp("MSIE (\\d+\\.\\d+);");  
+        reIE.test(userAgent);  
+        var fIEVersion = parseFloat(RegExp["$1"]);  
+        if(fIEVersion == 7)  
+        { 
+            return "IE7";
+        }  
+        else if(fIEVersion == 8)  
+        { 
+            return "IE8";
+        }  
+        else if(fIEVersion == 9)  
+        { 
+            return "IE9";
+        }  
+        else if(fIEVersion == 10)  
+        { 
+            return "IE10"
+        }  
+        else if(fIEVersion == 11)  
+        { 
+            return "IE11"
+        }  
+        else  
+        { 
+            return "0"
+            // return "IE版本过低"
         }
-        if (trim_Version=="MSIE9.0") {
-            return 'ie9';
-        }
-    }
-
+    }//isIE end 
     return '';
 }
 
@@ -165,6 +189,7 @@ function verificationcodeCheck(verificationcode) {
 
 // 预览照片
 function picPreview(obj, id) {
+    console.log(obj);
     var ieVersion = detectIE();
     if(ieVersion == 'ie8' || ieVersion == 'ie9'){
         if (obj) {
@@ -176,7 +201,12 @@ function picPreview(obj, id) {
             document.getElementById(id).style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
         }
     }
+
+
 }
+
+
+
 
 
 
