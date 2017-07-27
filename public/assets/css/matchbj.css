@@ -282,6 +282,7 @@ body .content .all_info .leader_info .other_leader {
 body .content .all_info .leader_info .other_leader .leader_list {
   border-bottom: 1px solid #DDD;
   margin-bottom: 50px;
+  position: relative;
 }
 body .content .all_info .leader_info .other_leader .leader_list .delete {
   width: 10px;
@@ -324,13 +325,15 @@ body .content .all_info .append_rank .title-span {
   display: block;
   margin-bottom: 24px;
 }
-body .content .all_info .append_rank .menber_list {
+body .content .all_info .append_rank .member_list {
   position: relative;
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
 }
-body .content .all_info .append_rank .menber_list .active {
+body .content .all_info .append_rank .member_list .active {
   display: none;
 }
-body .content .all_info .append_rank .menber_list .user_age {
+body .content .all_info .append_rank .member_list .user_age {
   background: #FFFFFF;
   border: 1px solid #CCCCCC;
   width: 120px;
@@ -341,13 +344,13 @@ body .content .all_info .append_rank .menber_list .user_age {
   box-sizing: border-box;
   padding-left: 20px;
 }
-body .content .all_info .append_rank .menber_list .cut {
+body .content .all_info .append_rank .member_list .cut {
   width: 862px;
   transform: translateX(-66px);
   border-bottom: 1px #666 solid;
   margin-bottom: 35px;
 }
-body .content .all_info .append_rank .menber_list .delete {
+body .content .all_info .append_rank .member_list .delete {
   width: 10px;
   height: 10px;
   position: absolute;
@@ -355,9 +358,13 @@ body .content .all_info .append_rank .menber_list .delete {
   right: 50px;
   cursor: pointer;
   display: block;
+  margin-top: 20px;
 }
-body .content .all_info .append_rank .menber_list .delete i {
+body .content .all_info .append_rank .member_list .delete i {
   font-size: 32px;
+}
+body .content .all_info .append_rank .member_list :first-child .delete {
+  display: none;
 }
 body .content .all_info .append_rank .btn_new {
   position: absolute;

@@ -231,6 +231,7 @@ body {
                     .leader_list {
                         border-bottom: 1px solid #DDD;
                         margin-bottom: 50px;
+                        position: relative;
 
                         .delete {
                             width: 10px;
@@ -284,8 +285,10 @@ body {
                     margin-bottom: 24px;
                 }
                     
-                .menber_list {
+                .member_list {
                     position: relative;
+                    padding-top: 30px;
+                    border-top: 1px solid #ddd;
                     
                     .active {
                         display: none;
@@ -318,10 +321,17 @@ body {
                         right: 50px;
                         cursor: pointer;
                         display: block;
+                        margin-top: 20px;
 
                         i {
                             font-size: 32px;
                         }
+                    }
+                }
+
+                .member_list :first-child {
+                    .delete {
+                        display: none;
                     }
                 }
 

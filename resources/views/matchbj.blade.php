@@ -103,19 +103,19 @@
                         <div class="input-field">
                             <span class="input-label">赛事项目  :</span>
                             <!-- <select id="competition_name" name="competition_name" onchange="chg(this);"></select> -->
-                            <select id="competition_first" name="competition_name" onchange="chg(this);"></select>
+                            <select class="select-box" id="competition_first" name="competition_name" level="1"></select>
                             <input type="hidden" id="competition_name_val" name="" value="">
                         </div>
                         <div class="input-field">
                             <span class="input-label">赛事名称  :</span>
                             <!-- <select id="competition_type" name="competition_type" onchange="chg2(this)" style="margin-left: 140px;"></select> -->
-                            <select id="competition_second" name="competition_type" onchange="chg2(this)"></select>
+                            <select class="select-box" id="competition_second" name="competition_type" level="2"></select>
                             <input type="hidden" id="competition_type_val" name="" value="">
                         </div>
                         <div class="input-field">
                             <span class="input-label">组别  :</span>
                             <!-- <select id="competition_group" name="competition_group"></select> -->
-                            <select id="competition_third" name="competition_group"></select>
+                            <select class="select-box" id="competition_third" name="competition_group" level="3"></select>
                             <input type="hidden" id="competition_group_val" name="" value="">
                         </div>
                         <div class="input-field">
@@ -681,9 +681,9 @@
                 }
              });
             // 队员部分,添加删除按钮
-            $('.append_rank .menber_list .delete').unbind('click').click(function(){
-                $(this).parent('.menber_list').remove();
-                if ($('.all_info .append_rank .menber_list').length > 7) {
+            $('.append_rank .member_list .delete').unbind('click').click(function(){
+                $(this).parent('.member_list').remove();
+                if ($('.all_info .append_rank .member_list').length > 7) {
                     $('#append_rank_new').css({
                         'pointer-events': 'none',
                         'background': '#ccc'
@@ -813,6 +813,7 @@
             });
 
 
+            $('.append_rank .member_list').eq(0).find('.delete').css('display', 'none');
             // new YMDselect('year1','month1','day1');
             // new YMDselect('year2','month2','day2');    
         }
@@ -1474,7 +1475,7 @@
             <div class="input-field">
                 <span class="input-label">照片  :</span>
                 <div class="uploadBtn">上传照片 </div>
-                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}[@{{:index}}]_pic" type="file" class="inputstyle leader_pic"  onchange="dox2(this, 'preview_@{{:index}}_@{{:type}}_pic')">
+                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}[@{{:index}}]_pic" type="file" class="inputstyle @{{:type}}_pic"  onchange="dox2(this, 'preview_@{{:index}}_@{{:type}}_pic')">
                 <div class="tips"></div>
             </div>
         </div>
@@ -1486,214 +1487,53 @@
         @{{/for}}
     </script>
     <script>
-        // var competition_list = [
-        //     {
-        //         'name': '未来世界',
-        //         'children': [
-        //             {
-        //                 'name': "1",
-        //                 'children': [
-        //                     {
-        //                         'name': '11',
-        //                     }
-        //                 ],
-        //             }
-        //         ],
-        //     },
-        //     {
-        //         'name': '攻城大师',
-        //         'children': [
-        //             {
-        //                 'name': "2",
-        //                 'children': [
-        //                     {
-        //                         'name': "22",
-        //                     },{
-        //                         'name': "23",
-        //                     },{
-        //                         'name': "24",
-        //                     },{
-        //                         'name': "25",
-        //                     },
-        //                 ],
-        //             },
-        //             {
-        //                 'name': "2-1",
-        //                 'children': [
-        //                     {
-        //                         'name': "22-22",
-        //                     }
-        //                 ],
-        //             }
-        //         ],
-        //     },
-        //     {
-        //         'name': '博思威龙',
-        //         'children': [
-        //             {
-        //                 'name': "3",
-        //                 'children': [
-        //                     {
-        //                         'name': "33",
-        //                     }
-        //                 ],
-        //             }
-        //         ],
-        //     },
-        // ];
-        // function selectChange1(index) {
-        //     competition_list.forEach(function (val, key) {
-        //         if (index == key) {
-        //             var arr2 = [];
-        //             var arr3 = [];
-        //             competition_list[key]['children'].forEach( function (v, k) {
-        //                 arr2.push(v['name']);
-        //                 v['children'].forEach(function (i){
-        //                     arr3.push(i['name']);
-        //                 });
-        //             });
-        //             $('#第二层select').html(arr2);
-        //             $('#第二层select').find('option').eq(0).attr('selected', 'true');
-        //             $('#第三层select').html(arr3);
-        //             $('#第三层select').find('option').eq(0).attr('selected', 'true');
-
-        //             // var arr3 = [];
-        //             // competition_list[key]['children'][0]['children'].forEach(function (i){
-        //             //     arr3.push(i['name']);
-        //             // });
-        //             // $('#第三层select').html(arr1);
-        //             // $('#第三层select').find('option').eq(0).attr('selected', 'true');
-        //         }
-        //     });
-        // };
-        function addOptions(obj, data) {
-            var arr = [];
-            data.forEach(function (val, key) {
-                arr.push(val['name']);
-            });
-            $(obj).html(generateOptions(arr));
-            $(obj).find('option').eq(0).attr('selected', 'true');
-            selectChange(1, obj, data, index, value);
-        }
-        function selectChange(level, obj, data, index, value) {
-            if (level == 1) {
-                data.forEach(function(val, key) {
-                    if (index == key && value['name'] == val) {
-                        var arr2 = [];
-                        data[key]['children'].forEach(function(v, k) {
-                            arr2.push(v['name']);
-                            selectChange(2, obj, index, value, v['children']);
-                        });
-                        $('obj').html(generateOptions(arr2));
-                        $('obj').find('option').eq(0).attr('selected', 'true');
-                    }
-                });
-            } else if (level == 2) {
-                var arr = [];
-                data.forEach(function (i){
-                    arr.push(i['name']);
-                });
-                $('obj').html(generateOptions(arr));
-                $('obj').find('option').eq(0).attr('selected', 'true');
-            }
-        }
         // 动态生成 option List (HTML)
-        function generateOptions(data, deafutl_key) {
+        function generateOptions(data) {
             var tmpl = $.templates('#tmpl_options');
             return tmpl.render({'options': data})
         };
 
         var data = {!! $competitonsJson !!};
-        console.log(data);
+
+        addCompetitons();
+        function addCompetitons() {
+            var arr = [];
+            for (key in data){
+                arr.push(data[key]['name']);
+            }
+            $('#competition_first').html(generateOptions(arr))
+        }
       
-        function getOptions(key) {
-            var data = [
-                {
-                    'name': 1,
-                    'id': 1,
-                    'children': [
-                        {
-                            'name': 11,
-                            'id': 11,
-                            'children': [
-                                {
-                                    'name': 12,
-                                    'id': 12,
-                                    'children': [
-                                        {
-                                            'name': 13,
-                                            'id': 14,
-                                        }
-                                    ],
-                                },
-                                {
-                                    'name': 12,
-                                    'id': 12,
-                                    'children': [
-                                        {
-                                            'name': 13,
-                                            'id': 14,
-                                        }
-                                    ],
-                                }
-                            ],
-                        }
-                    ],
-                },{
-                    'name': 2,
-                    'id': 2,
-                    'children': [],
-                }
-            ];
+        function getOptions(level, key) {
             if (key ==0) {
                 return data;
             }
-
-            for (index in data) {
-                if (data[index]['id'] == key) {
-                    var arr = [];
-                    for (val in data[index]['children']) {
-                        arr.push(data[index]['children'][val]['name']);
-                    }
-                    return arr;
-                } else {
-                    for (item in data[index]['children']) {
-                        if (data[index]['children'][item]['id'] == key) {
-                            var arr = [];
-                            for (val in data[index]['children'][item]['children']) {
-                                arr.push(data[index]['children'][item]['children'][val]['name']);
-                            }
-                            return arr;
-                        }else {
-                            for (competition in data[index]['children'][item]['children']) {
-                                if (data[index]['children'][item]['children'][competition]['id'] == key) {
-                                    var arr = [];
-                                    for (val in data[index]['children'][item]['children'][competition]['children']) {
-                                        arr.push(data[index]['children'][item]['children'][competition]['children'][val]['name']);
-                                    }
-                                    return arr;
-                                }
-                            }
-                        }
-                    }
-                }
+            var arr = [];
+            for (index in data[level]['children']) {
+                console.log(index);
+                arr.push(index);
             }
+            return arr;
         }
 
         $('.select-box').change(function() {
             var level = $(this).attr('level');
             var key = $(this).find('option:selected').val();
-            var options_data = getOptions(key);
+            var options_data = getOptions(level, key);
             var options_html = generateOptions(options_data);
+            console.log(key, options_data);
             if (level == 1) {
-                $('#select2').html(options_html);
-                $('#select2').find('option').removeAttr('selected');
-                $('#select2').find('option').eq(0).attr('selected', 'true');
+                $('#competition_second').html(options_html);
+                $('#competition_second').find('option').removeAttr('selected');
+                $('#competition_second').find('option').eq(0).attr('selected', 'true');
             };
             if (level == 2) {
-                $('#select3').html(options_html);
-                $('#select3').find('option').removeAttr('selected');
-                $('#select3').find('option').eq(0).attr('selected', 'true');
+                $('#competition_third').html(options_html);
+                $('#competition_third').find('option').removeAttr('selected');
+                $('#competition_third').find('option').eq(0).attr('selected', 'true');
+            }
+            if (level == 3) {
+
             }
         });
 
