@@ -782,21 +782,12 @@
                     var source_id = $(this).attr('id');
                     var imgObj = document.getElementById(source_id);
                     var dataURL = $(this).attr('local-src');
-                    var url = document.getElementById(source_id).value;
+                    var new_id = source_id.slice(8)
+                    var url = document.getElementById(new_id).value;
+                    document.body.appendChild(imgDiv);
 
-                    $(this).select();
-                    $(this).blur();
-                    var nfile = document.selection.createRange().text;
-                    document.selection.empty();
-                    console.log(nfile);
-
-
-                    if (!imgObj) {
-                        // imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                        // imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
-                        imgObj.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+dataURL+"')";
-                        imgObj.style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+dataURL+"')";
-                    }
+                    imgObj.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod = scale)";
+                    imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = url;
                 });
             }
 

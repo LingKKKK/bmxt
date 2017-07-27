@@ -453,6 +453,9 @@ body .content .all_info .preview_info .leader #preview_leader .leader_info .name
   letter-spacing: 2px;
   margin-top: 30px;
 }
+body .content .all_info .preview_info .leader #preview_leader .leader_info div:last-child {
+  display: none;
+}
 body .content .all_info .preview_info .leader .name {
   font-size: 14px;
   color: #666666;
@@ -584,6 +587,14 @@ body .content .all_info .preview_info .all_number .team_number .leader_info .inp
   line-height: 20px;
   letter-spacing: 2px;
   margin-top: 30px;
+}
+body .content .all_info .preview_info .all_number .team_number .leader_info img {
+  width: 120px;
+  height: 160px;
+  display: block;
+  position: absolute;
+  right: 71px;
+  top: 89px;
 }
 body .content .all_info .preview_info .pays {
   display: block;
