@@ -271,16 +271,16 @@
                             <span class="name">收件地址 :</span>
                             <span id="preview_invoice_mail_address" class="name_input"></span>
                             <div class="clearfix clear"></div>
-                            <span class="name">联系人姓名</span>
+                            <span class="name">联系人姓名 :</span>
                             <span id="preview_invoice_mail_recipients" class="name_input"></span>
                             <div class="clearfix clear"></div>
-                            <span class="name">联系人电话</span>
+                            <span class="name">联系人电话 :</span>
                             <span id="preview_invoice_mail_mobile" class="name_input"></span>
                             <div class="clearfix clear"></div>
-                            <span class="name">E-mail</span>
+                            <span class="name">E-mail :</span>
                             <span id="preview_invoice_mail_email" class="name_input"></span>
                             <div class="clearfix clear"></div>
-                            <span class="name">备注</span>
+                            <span class="name">备注 :</span>
                             <span id="preview_invoice_remark" class="name_input"></span>
                             <div class="clearfix clear"></div>
                         </div>
