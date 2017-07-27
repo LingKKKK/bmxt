@@ -1136,14 +1136,23 @@ body {
   }
 
   .uploadField{
+    // cursor: pointer;
+    // outline: medium none;
+    // filter: alpha(opacity=0);
+    // -moz-opacity: 0;
+    // opacity: 0;
+    // transform: translate(-70px,2px);
+    // z-index: 99;
+    // margin-bottom: 30px;
     cursor: pointer;
     outline: medium none;
     filter: alpha(opacity=0);
     -moz-opacity: 0;
     opacity: 0;
-    transform: translate(-70px,2px);
     z-index: 99;
     margin-bottom: 30px;
+    float: left;
+    width: 30px;
     // opacity: 1\9;
     // opacity: 1\0;
     // #{$hack_ie7}opacity: 1;

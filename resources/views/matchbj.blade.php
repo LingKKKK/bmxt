@@ -783,7 +783,7 @@
                     $('#btn-read').bind('click', function(event) {
                         $('.instructions').removeClass('active');
                         $('.content').addClass('active');
-                    });;
+                    });
                 }
             });
 

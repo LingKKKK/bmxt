@@ -1058,9 +1058,10 @@ body .uploadField {
   filter: alpha(opacity=0);
   -moz-opacity: 0;
   opacity: 0;
-  transform: translate(-70px, 2px);
   z-index: 99;
   margin-bottom: 30px;
+  float: left;
+  width: 30px;
 }
 body button {
   background: #587BEF;
