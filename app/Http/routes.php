@@ -12,8 +12,10 @@
 */
 
 //  报名页面
-Route::get('/', 'SignupController@signup');
-Route::post('/signup', 'SignupController@doSignup');
+// Route::get('/', 'SignupController@signup');
+// Route::post('/signup', 'SignupController@doSignup');
+
+
 Route::get('/success', 'SignupController@success');
 Route::get('/excel', 'SignupController@doExportExcel');
 Route::get('/admin/export', 'SignupController@export');
@@ -36,8 +38,8 @@ Route::post('/plan/export', 'SignupController@planExportExcel');
 Route::get('/searchbj', 'MatchbjController@search');
 Route::post('/searchbj', 'MatchbjController@doSearch');
 // 填写信息/修改信息
-Route::get('/matchbj', 'MatchbjController@signup');
-Route::post('/matchbj', 'MatchbjController@doSignup');
+Route::get('/', 'MatchbjController@signup');
+Route::post('/signup', 'MatchbjController@doSignup');
 // 修改成功 弹出提示页面
 Route::get('/finish', 'MatchbjController@finish');
 
@@ -64,8 +66,6 @@ Route::post('/captcha/verify', 'UtilsController@verificationcode');
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
-
-
 
 
 Route::get('/tttt', 'MatchbjController@test');
