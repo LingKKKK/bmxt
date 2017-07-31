@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Enroll\Models\CompetitionEvent;
 
 use App\Enroll\SignupData;
-use App\Enroll\MatchbjData;
 use Validator;
 use Mail;
 use Storage;
@@ -19,13 +18,13 @@ use App\Enroll\TripData;
 class MatchbjController extends Controller
 {
     //队伍码
-    protected $team_no = '';    
+    protected $team_no = '';
 
     public function test(\App\Enroll\CompetitionService $service)
     {
         $service->initEvents();
     }
-    
+
     public function search()
     {
         return view('searchbj');
@@ -33,21 +32,6 @@ class MatchbjController extends Controller
 
     public function doSearch(Request $request)
     {
-       
-        $team_no = $request->input('team_no', '');
-        $signdata = SignupData::where('team_no', $team_no)->first();
-
-        // if ($signdata === null) {
-        //     return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
-        // }
-        // if ($signdata['leader_mobile'] != $request->input('leader_mobile')) {
-        //     return redirect()->back()->withErrors(collect(['notfound' => '请填写正确的领队手机号']))->withInput();
-        // }
-
-        // $request->session()->flash('signdata', $signdata->toArray());
-
-        //  已经报名的队伍 可以参加填表  未报名的队伍 不允许添加
-        $request->session()->flash('signdata', $signdata->toArray());
         return redirect('matchbj');
     }
 
@@ -68,7 +52,7 @@ class MatchbjController extends Controller
 
         $team_no = '12321321'.rand(1000, 9999);
 
-       
+
         try {
             $leader_picdata = $this->saveFile($request->file('leader_pic'));
             $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
@@ -153,8 +137,8 @@ class MatchbjController extends Controller
         return redirect('/');
     }
 
-   
-   
+
+
 
     public function finish(){
         return view('finish');

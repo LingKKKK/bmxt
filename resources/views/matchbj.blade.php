@@ -34,6 +34,7 @@
             <span class="span-read">阅读,并同意</span>
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
+
         <div class="content active">
             <form id="form" name="form" action="/signup" onkeydown="if(event.keyCode==13)return false;" enctype="multipart/form-data" method="POST" novalidate style="width: 1004px;">
                 <div class="tab_menu">
@@ -49,8 +50,8 @@
                 <div class="all_info clearfix">
                     <div class="contact_info div_tab clearfix active">
                         <div class="input-field">
-                            <span class="input-label">邀请码  :</span> 
-                            
+                            <span class="input-label">邀请码  :</span>
+
                             <input tip-warn="" tip-info="输入邀请码" class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{$signdata['invitecode'] or ''}}">
                             <div class="tips"></div>
                         </div>
@@ -92,6 +93,7 @@
                         </div>
                         <div class="clearfix other_leader"></div>
                         <button type="button" class="add_leader">添加领队信息</button>
+                        <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="ranks_info div_tab">
@@ -265,7 +267,7 @@
                                     <span class="name">备注 :</span>
                                     <span id="{{'preview_leader_'.$i.'_remarks'}}" class="name_input"></span>
                                 </div>
-                                <img id="{{'preview_'.$i.'_leader_pic'}}" src="" > 
+                                <img id="{{'preview_'.$i.'_leader_pic'}}" src="" >
                             </div>
                             @endfor
                         </div>
@@ -440,7 +442,7 @@
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/jsrender.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/YMDClass.js')}}"></script>
-    <script type="text/javascript">   
+    <script type="text/javascript">
 
         (function($){
             $.fn.tipInfo = function(tipMsg){
@@ -633,7 +635,7 @@
         }
         // 重新绑定事件, DOM发生变化时调用
         function rebindVlidation() {
-            // 添加联系人 
+            // 添加联系人
             $("#add_contact").on('change', function(event) {
                 $('#contact_name_info').removeClass('add_contact');
                 $('#contact_name_info').attr("required", "true");
@@ -815,7 +817,7 @@
 
             $('.append_rank .member_list').eq(0).find('.delete').css('display', 'none');
             // new YMDselect('year1','month1','day1');
-            // new YMDselect('year2','month2','day2');    
+            // new YMDselect('year2','month2','day2');
         }
         function detectIE()
         {
@@ -1115,7 +1117,7 @@
                 }
             })
             //添加领队列表
-            
+
             $('.add_leader').click(function(event) {
                 if ($('.all_info .other_leader .leader_list').length > 1) {
                     $('.add_leader').css({
@@ -1131,7 +1133,7 @@
                     rebindVlidation();
                 }
             });
-            
+
             var tabIndex = 0;
             // 点击切换 进行下一步
             $('.btn_next').click(function(){
@@ -1301,7 +1303,7 @@
                     var nfile = document.selection.createRange().text;
                     document.selection.empty();
                     document.getElementById("preview_leader_pic").style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
-                    document.getElementById("preview_leader_pic").style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";            
+                    document.getElementById("preview_leader_pic").style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
                 } else {
                     // console.error("文件不存在")
                 }
@@ -1394,7 +1396,7 @@
     <script id="Memberlist" type="text/x-jsrender">
         <div class="clearfix  @{{:type}}_list">
             <div class="delete"><i class="icon kenrobot ken-close"></i></div>
-            <div class="input-field">       
+            <div class="input-field">
                 <span class="input-label">姓名  :</span>
                 <input data-type="character" required tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="@{{:type}}_@{{:index}}_name" name="@{{:type}}[@{{:index}}][name]" type="text" value="">
                 <div class="tips"></div>
@@ -1503,7 +1505,7 @@
             }
             $('#competition_first').html(generateOptions(arr))
         }
-      
+
         function getOptions(level, key) {
             if (key ==0) {
                 return data;
