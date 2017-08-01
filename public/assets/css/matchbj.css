@@ -274,18 +274,18 @@ body .content .all_info .div_tab .enroll-notice .input-field .input-type {
   transform: translateY(2px);
   margin: 5px 10px 28px 20px;
 }
-body .content .all_info .leader_info .other_leader {
+body .content .all_info .leader_info .teachers {
   border-top: 1px solid #DDD;
   padding-top: 50px;
   padding-bottom: 50px;
   position: relative;
 }
-body .content .all_info .leader_info .other_leader .leader_list {
+body .content .all_info .leader_info .teachers .leader_list {
   border-bottom: 1px solid #DDD;
   margin-bottom: 50px;
   position: relative;
 }
-body .content .all_info .leader_info .other_leader .leader_list .delete {
+body .content .all_info .leader_info .teachers .leader_list .delete {
   width: 10px;
   height: 10px;
   position: absolute;
@@ -294,7 +294,7 @@ body .content .all_info .leader_info .other_leader .leader_list .delete {
   cursor: pointer;
   display: block;
 }
-body .content .all_info .leader_info .other_leader .leader_list .delete i {
+body .content .all_info .leader_info .teachers .leader_list .delete i {
   font-size: 32px;
 }
 body .content .all_info .ranks_info select {
@@ -316,7 +316,7 @@ body .content .all_info .ranks_info select option {
   box-sizing: border-box;
   padding-left: 20px;
 }
-body .content .all_info .append_rank .title-span {
+body .content .all_info .student_info .title-span {
   font-family: PingFangSC-Regular;
   font-size: 14px;
   color: red;
@@ -326,15 +326,15 @@ body .content .all_info .append_rank .title-span {
   display: block;
   margin-bottom: 24px;
 }
-body .content .all_info .append_rank .member_list {
+body .content .all_info .student_info .students .member_list {
   position: relative;
   padding-top: 30px;
   border-top: 1px solid #ddd;
 }
-body .content .all_info .append_rank .member_list .active {
+body .content .all_info .student_info .students .member_list .active {
   display: none;
 }
-body .content .all_info .append_rank .member_list .user_age {
+body .content .all_info .student_info .students .member_list .user_age {
   background: #FFFFFF;
   border: 1px solid #CCCCCC;
   width: 120px;
@@ -345,13 +345,13 @@ body .content .all_info .append_rank .member_list .user_age {
   box-sizing: border-box;
   padding-left: 20px;
 }
-body .content .all_info .append_rank .member_list .cut {
+body .content .all_info .student_info .students .member_list .cut {
   width: 862px;
   transform: translateX(-66px);
   border-bottom: 1px #666 solid;
   margin-bottom: 35px;
 }
-body .content .all_info .append_rank .member_list .delete {
+body .content .all_info .student_info .students .member_list .delete {
   width: 10px;
   height: 10px;
   position: absolute;
@@ -361,18 +361,18 @@ body .content .all_info .append_rank .member_list .delete {
   display: block;
   margin-top: 20px;
 }
-body .content .all_info .append_rank .member_list .delete i {
+body .content .all_info .student_info .students .member_list .delete i {
   font-size: 32px;
 }
-body .content .all_info .append_rank .member_list :first-child .delete {
+body .content .all_info .student_info .students .member_list :first-child .delete {
   display: none;
 }
-body .content .all_info .append_rank .btn_new {
+body .content .all_info .student_info .btn_new {
   position: absolute;
   left: 100px;
   bottom: -40px;
 }
-body .content .all_info .append_rank .btn_new_tips {
+body .content .all_info .student_info .btn_new_tips {
   opacity: 0;
   transition: all 0.7s;
   font-family: PingFangSC-Regular;
@@ -389,7 +389,7 @@ body .content .all_info .append_rank .btn_new_tips {
   line-height: 42px;
   cursor: pointer;
 }
-body .content .all_info .append_rank .btn_new_tips:after {
+body .content .all_info .student_info .btn_new_tips:after {
   content: "";
   position: absolute;
   width: 0;
@@ -400,7 +400,7 @@ body .content .all_info .append_rank .btn_new_tips:after {
   left: -10px;
   top: 16px;
 }
-body .content .all_info .team_info {
+body .content .all_info .preview_info {
   height: 100%;
   position: relative;
   box-sizing: border-box;
@@ -409,7 +409,7 @@ body .content .all_info .team_info {
   transition: all 0.7s;
   display: none;
 }
-body .content .all_info .team_info .leader {
+body .content .all_info .preview_info .leader {
   width: 922px;
   display: block;
   position: relative;
@@ -418,7 +418,7 @@ body .content .all_info .team_info .leader {
   margin-bottom: 18px;
   padding-bottom: 30px;
 }
-body .content .all_info .team_info .leader .leader_title {
+body .content .all_info .preview_info .leader .leader_title {
   font-family: PingFangSC-Regular;
   font-size: 16px;
   color: #587BEF;
@@ -430,7 +430,7 @@ body .content .all_info .team_info .leader .leader_title {
   margin-bottom: 5px;
   text-align: center;
 }
-body .content .all_info .team_info .leader .name {
+body .content .all_info .preview_info .leader .name {
   font-family: PingFangSC-Regular;
   font-size: 14px;
   color: #666666;
@@ -444,7 +444,7 @@ body .content .all_info .team_info .leader .name {
   margin-left: 71px;
   margin-top: 30px;
 }
-body .content .all_info .team_info .leader .name_input {
+body .content .all_info .preview_info .leader .name_input {
   display: block;
   float: left;
   font-family: PingFangSC-Regular;
@@ -454,10 +454,10 @@ body .content .all_info .team_info .leader .name_input {
   letter-spacing: 2px;
   margin-top: 30px;
 }
-body .content .all_info .team_info .leader #preview_leader_sex {
+body .content .all_info .preview_info .leader #preview_leader_sex {
   margin-bottom: 30px;
 }
-body .content .all_info .team_info .leader img {
+body .content .all_info .preview_info .leader img {
   width: 120px;
   height: 160px;
   display: block;
@@ -466,20 +466,20 @@ body .content .all_info .team_info .leader img {
   top: 89px;
   display: block;
 }
-body .content .all_info .team_info .leader .team_leader {
+body .content .all_info .preview_info .leader .team_leader {
   margin-top: 10px;
   position: relative;
   padding-bottom: 20px;
 }
-body .content .all_info .team_info .leader .team_leader .leader_info {
+body .content .all_info .preview_info .leader .team_leader .leader_info {
   border-top: 1px solid #ddd;
   position: relative;
   margin-bottom: 35px;
 }
-body .content .all_info .team_info .leader .team_leader .leader_info img {
+body .content .all_info .preview_info .leader .team_leader .leader_info img {
   top: 35px;
 }
-body .content .all_info .team_info .all_number {
+body .content .all_info .preview_info .all_number {
   width: 922px;
   display: block;
   position: relative;
@@ -487,7 +487,7 @@ body .content .all_info .team_info .all_number {
   border: 1px solid #EAEAEA;
   margin-bottom: 18px;
 }
-body .content .all_info .team_info .all_number .leader_title {
+body .content .all_info .preview_info .all_number .leader_title {
   font-family: PingFangSC-Regular;
   font-size: 16px;
   color: #587BEF;
@@ -499,12 +499,12 @@ body .content .all_info .team_info .all_number .leader_title {
   margin-top: 31px;
   margin-bottom: 5px;
 }
-body .content .all_info .team_info .all_number .team_number .member_info {
+body .content .all_info .preview_info .all_number .team_number .member_info {
   position: relative;
   border-bottom: 1px solid #ddd;
   padding-bottom: 50px;
 }
-body .content .all_info .team_info .all_number .team_number .member_info .name {
+body .content .all_info .preview_info .all_number .team_number .member_info .name {
   font-family: PingFangSC-Regular;
   font-size: 14px;
   color: #666666;
@@ -518,7 +518,7 @@ body .content .all_info .team_info .all_number .team_number .member_info .name {
   margin-left: 71px;
   margin-top: 30px;
 }
-body .content .all_info .team_info .all_number .team_number .member_info .name_input {
+body .content .all_info .preview_info .all_number .team_number .member_info .name_input {
   display: block;
   float: left;
   font-family: PingFangSC-Regular;
@@ -528,7 +528,7 @@ body .content .all_info .team_info .all_number .team_number .member_info .name_i
   letter-spacing: 2px;
   margin-top: 30px;
 }
-body .content .all_info .team_info .all_number .team_number .member_info img {
+body .content .all_info .preview_info .all_number .team_number .member_info img {
   width: 120px;
   height: 160px;
   display: block;
@@ -537,10 +537,10 @@ body .content .all_info .team_info .all_number .team_number .member_info img {
   top: 28px;
   display: block;
 }
-body .content .all_info .team_info .all_number .team_number .member_info .school_add {
+body .content .all_info .preview_info .all_number .team_number .member_info .school_add {
   margin-bottom: 30px;
 }
-body .content .all_info .team_info .pays {
+body .content .all_info .preview_info .pays {
   width: 922px;
   display: block;
   position: relative;
@@ -549,7 +549,7 @@ body .content .all_info .team_info .pays {
   margin-bottom: 50px;
   padding-bottom: 50px;
 }
-body .content .all_info .team_info .pays .leader_title {
+body .content .all_info .preview_info .pays .leader_title {
   font-family: PingFangSC-Regular;
   font-size: 16px;
   color: #587BEF;
@@ -561,7 +561,7 @@ body .content .all_info .team_info .pays .leader_title {
   margin-top: 31px;
   margin-bottom: 5px;
 }
-body .content .all_info .team_info .pays .name {
+body .content .all_info .preview_info .pays .name {
   font-family: PingFangSC-Regular;
   font-size: 14px;
   color: #666666;
@@ -575,7 +575,7 @@ body .content .all_info .team_info .pays .name {
   margin-left: 71px;
   margin-top: 30px;
 }
-body .content .all_info .team_info .pays .name_input {
+body .content .all_info .preview_info .pays .name_input {
   display: block;
   float: left;
   font-family: PingFangSC-Regular;
@@ -585,7 +585,7 @@ body .content .all_info .team_info .pays .name_input {
   letter-spacing: 2px;
   margin-top: 30px;
 }
-body .content .all_info .team_info .tel {
+body .content .all_info .preview_info .tel {
   border: 1px solid #587BEF;
   height: 30px;
   font-family: PingFangSC-Regular;
@@ -604,19 +604,16 @@ body .content .all_info .team_info .tel {
   margin-right: 25px;
   text-align: center;
 }
-body .content .all_info .team_info .active {
+body .content .all_info .preview_info .tel.disabled {
   color: #ccc;
   border: 1px solid #ccc;
   pointer-events: none;
 }
-body .content .all_info .team_info #submit {
-  display: none;
-}
-body .content .all_info .team_info #code {
+body .content .all_info .preview_info #code {
   display: block;
   float: left;
 }
-body .content .all_info .team_info #code input {
+body .content .all_info .preview_info #code input {
   background: #FFFFFF;
   border: 1px solid #CCCCCC;
   width: 100px;
@@ -626,9 +623,6 @@ body .content .all_info .team_info #code input {
   margin-bottom: 30px;
   box-sizing: border-box;
   padding-left: 20px;
-}
-body .content .all_info .team_info #code .tips {
-  display: none;
 }
 body .content .all_info .active {
   display: block;
@@ -672,7 +666,7 @@ body .footer .inner .sp2 {
   margin-top: 10px;
   line-height: 24px;
 }
-body .identifying {
+body .verificationcode_box {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
@@ -682,7 +676,7 @@ body .identifying {
   z-index: 9999;
   display: none;
 }
-body .identifying .showBox {
+body .verificationcode_box .showBox {
   width: 500px;
   height: 215px;
   background-color: white;
@@ -692,22 +686,22 @@ body .identifying .showBox {
   border: 1px solid #DDDDDD\9;
   transform: translate(-50%, -50%);
 }
-body .identifying .showBox .tip {
+body .verificationcode_box .showBox .tip {
   display: table;
   margin: 0 auto;
   margin-top: 22px;
   font-size: 14px;
 }
-body .identifying .showBox #tipes {
+body .verificationcode_box .showBox #tipes {
   display: table;
   margin: 6px 0px -13px 0px;
   margin-left: 55px;
   font-size: 14px;
 }
-body .identifying .showBox #tipes i {
+body .verificationcode_box .showBox #tipes i {
   color: red;
 }
-body .identifying .showBox .tipes-false {
+body .verificationcode_box .showBox .tipes-false {
   color: red;
   display: block;
   margin: 16px 0px -13px 0px;
@@ -715,7 +709,7 @@ body .identifying .showBox .tipes-false {
   font-size: 14px;
   opacity: 0;
 }
-body .identifying .showBox img {
+body .verificationcode_box .showBox img {
   display: block;
   float: left;
   width: 120px;
@@ -724,7 +718,7 @@ body .identifying .showBox img {
   margin: 30px 0px 0px 125px;
   border: 1px solid #ccc;
 }
-body .identifying .showBox input {
+body .verificationcode_box .showBox input {
   width: 139px;
   height: 38px;
   display: block;
@@ -736,7 +730,7 @@ body .identifying .showBox input {
   margin-top: 30px;
   border: 1px solid #ccc;
 }
-body .identifying .showBox .yes {
+body .verificationcode_box .showBox .yes {
   background: #587BEF;
   width: 80px;
   height: 30px;
@@ -752,7 +746,7 @@ body .identifying .showBox .yes {
   transform: translateX(-50%);
   cursor: pointer;
 }
-body .identifying .showBox .no {
+body .verificationcode_box .showBox .no {
   width: 80px;
   height: 30px;
   font-family: PingFangSC-Regular;
@@ -766,7 +760,7 @@ body .identifying .showBox .no {
   transform: translateX(-50%);
   cursor: pointer;
 }
-body .identifying .showBox .no i {
+body .verificationcode_box .showBox .no i {
   font-size: 25px;
 }
 body .falseCodeAlert {
@@ -926,9 +920,6 @@ body .QRcodeShow .QEbox .tips {
   margin-top: 34px;
   line-height: 17px;
 }
-body .active {
-  display: block;
-}
 body .input-label {
   width: 130px;
   height: 20px;
@@ -1043,7 +1034,7 @@ body .uploadBtn:hover {
   color: #fff;
   background: #587BEF;
 }
-body .inputstyle {
+body .uploadField {
   cursor: pointer;
   outline: medium none;
   filter: alpha(opacity=0);
@@ -1069,6 +1060,10 @@ body button {
 }
 body button:hover {
   opacity: 0.8;
+}
+body button.disabled {
+  pointer-events: none;
+  background-color: #ccc;
 }
 body .btn_next {
   right: 90px;

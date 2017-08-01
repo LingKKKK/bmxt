@@ -95,7 +95,7 @@ class SignupController extends Controller
 
     public function checkName(Request $request)
     {
-        $team_name = $request->input('team_name');
+        $team_name = $request->input('team_name', '');
         if (empty($team_name)) {
             return api_response(2, '队名不能为空');
         }
