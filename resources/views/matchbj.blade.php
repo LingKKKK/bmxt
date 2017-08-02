@@ -945,35 +945,38 @@
 
             // 6.3 发送手机验证码
             $("#getQrcode").click(function() {
-                var validcode = false;
-                $.ajax({
-                    type:"post",
-                    url:"{{url('/verificationcode/verify')}}",
-                    data:{"verificationcode": $('#verificationcode').val()},
-                    async:false,
-                    success:function(res) {
-                        if (res.status == 0) {
-                            validcode = true;
 
-                            // 解决IE 8下部分时机提交不成功的问题
-                            setTimeout(function() {
-
-                                // IE 8 下无法提交的问题
-                                $('#submit').trigger('click');
-                                $('#submit').trigger('click');
-                                $('#submit').trigger('click');
-                                $('#submit').trigger('click');
-                                $('#submit').trigger('click');
-                                $('#submit').trigger('click');
-                                $('#submit').trigger('click');
-                            }, 100);
-                        } else if (res.status == -1) {
-                            validcode = false;
-                            $('.codeError').addClass('active');
-                        }
+                var stop = false;
+                $('.div_tab').each(function(index){
+                    if (stop) {
+                        return;
                     }
+
+                    console.log(index, this);
+                    $(this).find('input').each(function(){
+                        if (stop) {
+                            return;
+                        }
+                        var ret = validField(this);
+                        if (!ret) {
+                            console.log('start_' +index, this);
+                            stop = true;
+                            tabCenter.go(index);
+                            return;
+                        }
+                    });
                 });
-                console.log('valid', validcode);
+                if (stop) {
+                    return false;
+                }
+
+                $('#submit').trigger('click');
+                $('#submit').trigger('click');
+                $('#submit').trigger('click');
+                $('#submit').trigger('click');
+                $('#submit').trigger('click');
+                $('#submit').trigger('click');
+                $('#submit').trigger('click');
                 return false;
             });
 
