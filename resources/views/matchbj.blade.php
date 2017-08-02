@@ -1000,6 +1000,7 @@
 
             // 通用，翻页
             $('.btn_next').click(function(){
+                console.log('tttt');
                 tabCenter.next(function(index){
                     var curTab = tabCenter.currentTab();
                     var prevent = false;
@@ -1012,19 +1013,20 @@
                     })
 
                     return !prevent;
+                }, function() {
+                    if (index == 5) {
+                        previewList();
+                    }
                 });
 
-            }, function(index){
-                if (index == 5) {
-                    previewList();
-                }
+
             });
 
             $('.btn_pre').click(function(){
                 tabCenter.previous();
             });
 
-            tabCenter.go(5);
+            tabCenter.go(0);
             addMemberList('leader');
             addMemberList('member');
 
