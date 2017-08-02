@@ -427,6 +427,32 @@ body .content .all_info .preview_info .leader .leader_title {
   margin-bottom: 5px;
   text-align: center;
 }
+body .content .all_info .preview_info .leader #preview_leader .leader_info {
+  position: relative;
+  padding-bottom: 40px;
+}
+body .content .all_info .preview_info .leader #preview_leader .leader_info .name {
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 2px;
+  width: 140px;
+  height: 20px;
+  margin-right: 10px;
+  display: block;
+  float: left;
+  line-height: 20px;
+  margin-left: 71px;
+  margin-top: 30px;
+}
+body .content .all_info .preview_info .leader #preview_leader .leader_info .name_input {
+  display: block;
+  float: left;
+  font-size: 14px;
+  color: #666666;
+  line-height: 20px;
+  letter-spacing: 2px;
+  margin-top: 30px;
+}
 body .content .all_info .preview_info .leader .name {
   font-size: 14px;
   color: #666666;
@@ -1058,9 +1084,10 @@ body .uploadField {
   filter: alpha(opacity=0);
   -moz-opacity: 0;
   opacity: 0;
-  transform: translate(-70px, 2px);
   z-index: 99;
   margin-bottom: 30px;
+  float: left;
+  width: 30px;
 }
 body button {
   background: #587BEF;

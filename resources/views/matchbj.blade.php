@@ -81,7 +81,7 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人备注  :</span>
-                            <input tip-info="请填写备注内容" class="input-field-text add_contact disabled" id="contact_remark_info" readonly name="contact_remark" type="text" value="">
+                            <input tip-info="请填写备注内容" class="input-field-text add_contact disabled" id="contact_remark" readonly name="contact_remark" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -229,15 +229,15 @@
                             </div>
                             <div class="input-field">
                                 <span class="name">赛事项目 :</span>
-                                <span id="preview_competition_name" class="name_input"></span>
+                                <span id="preview_competition_1" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name"></span>
-                                <span id="preview_competition_type" class="name_input"></span>
+                                <span id="preview_competition_2" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name">组别 :</span>
-                                <span id="preview_competition_group" class="name_input"></span>
+                                <span id="preview_competition_3" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name">备注 :</span>
@@ -749,6 +749,7 @@
                 var val = $el.val();
                 if ($el.is('select')) {
                     val = $el.find('option:selected').val();
+                    console.log(val)
                 }
                 $('#preview_' + idNames[i]).html(val);
             }
@@ -796,7 +797,7 @@
                     $('#btn-read').bind('click', function(event) {
                         $('.instructions').removeClass('active');
                         $('.content').addClass('active');
-                    });;
+                    });
                 }
             });
 
@@ -1033,7 +1034,6 @@
 
                     return !prevent;
                 }, function(index) {
-                    copyContactInfo();
                     if (index == 5) {
                         previewList();
                     }
