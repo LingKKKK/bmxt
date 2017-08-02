@@ -66,22 +66,22 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人姓名  :</span>
-                            <input tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text add_contact" id="contact_name_info" name="contact_name" type="text" value="">
+                            <input tip-warn="" tip-info="仅支持英文、汉字" data-type="realname" class="input-field-text add_contact disabled" readonly  id="contact_name_info" name="contact_name" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人手机号码  :</span>
-                            <input tip-info="请填联系人手机号码" class="input-field-text add_contact"  id="contact_mobile_info" type="text" name="contact_mobile" value="">
+                            <input tip-info="请填联系人手机号码" data-type="mobile" class="input-field-text add_contact disabled" readonly  id="contact_mobile_info" type="text" name="contact_mobile" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人邮箱  :</span>
-                            <input tip-info="请按照正确的邮箱格式填写" class="input-field-text add_contact" id="contact_email_info" name="contact_email" type="text" value="">
+                            <input tip-info="请按照正确的邮箱格式填写" data-type="email" class="input-field-text add_contact disabled" readonly id="contact_email_info" name="contact_email" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人备注  :</span>
-                            <input tip-info="请填写备注内容" class="input-field-text add_contact" id="contact_remark_info" name="contact_remark" type="text" value="">
+                            <input tip-info="请填写备注内容" class="input-field-text add_contact disabled" id="contact_remark_info" readonly name="contact_remark" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -131,63 +131,65 @@
                         <div class="clearfix students">
                         </div>
 
-                        <button type="button" class="btn_new" id="student_info_new">添加新成员</button>
+                        <button type="button" class="btn_new" id="add_student">添加新成员</button>
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="payment div_tab">
                         <div class="enroll-notice">
                             <div class="input-field">
+                                <span class="input-label">开票类型 :</span>
+                                <select name="invoice_type" id="invoice_type" class="input-field-text">
+                                    <option value="发票" selected>发票</option>
+                                    <option value="收据">收据</option>
+                                    <option value="不开票">不开票</option>
+                                </select>
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
                                 <span class="input-label">发票抬头(*收款机构的抬头) :</span>
-                                <input required data-type='account_type' class="input-field-text" id="invoice_title" name="invoice_title" type="text" value="{{$signdata['invoice_header'] or ''}}">
+                                <input required data-type='schoolname' tip-info="发票抬头" class="input-field-text invoice-group" id="invoice_title" name="invoice_title" type="text" value="{{$signdata['invoice_header'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">统一社会信用代码 :</span>
-                                <input required data-type='account_type' class="input-field-text" id="invoice_code" name="invoice_code" type="text" value="{{$signdata['invoice_header'] or ''}}">
+                                <input required data-type='' tip-info="统一社会信用代码" class="input-field-text invoice-group" id="invoice_code" name="invoice_code" type="text" value="{{$signdata['invoice_header'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">开票金额 :</span>
-                                <input required data-type='account_type' class="input-field-text" id="invoice_money" name="invoice_money" type="text" value="{{$signdata['total_cost'] or ''}}">
-                                <div class="tips"></div>
-                            </div>
-                            <div class="input-field">
-                                <span class="input-label">开票明细 :</span>
-                                <input required data-type='account_type' class="input-field-text" id="invoice_type" name="invoice_type" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='float' tip-info="开票金额" class="input-field-text invoice-group" id="invoice_money" name="invoice_money" type="text" value="{{$signdata['total_cost'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">收件地址 :</span>
-                                <input required data-type='account_type' class="input-field-text" id="invoice_mail_address" name="invoice_mail_address" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='schoolname' tip-info="收件地址" class="input-field-text invoice-group" id="invoice_mail_address" name="invoice_mail_address" type="text" value="{{$signdata['total_cost'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">联系人姓名 :</span>
-                                <input required data-type='account_type' class="input-field-text" id="invoice_mail_recipients" name="invoice_mail_recipients" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='realname' class="input-field-text invoice-group" id="invoice_mail_recipients" name="invoice_mail_recipients" type="text" value="{{$signdata['total_cost'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">联系电话 :</span>
-                                <input required data-type='account_type' class="input-field-text" id="invoice_mail_mobile" name="invoice_mail_mobile" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='mobile' tip-info="联系电话" class="input-field-text invoice-group" id="invoice_mail_mobile" name="invoice_mail_mobile" type="text" value="{{$signdata['total_cost'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">E-mail :</span>
-                                <input required data-type='account_type' class="input-field-text" id="invoice_mail_email" name="invoice_mail_email" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='email' tip-info="电子邮件" class="input-field-text invoice-group" id="invoice_mail_email" name="invoice_mail_email" type="text" value="{{$signdata['total_cost'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">备注 :</span>
-                                <input class="input-field-text" id="invoice_remark" name="invoice_remark" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input class="input-field-text invoice-group" id="invoice_remark" name="invoice_remark" type="text" value="{{$signdata['total_cost'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
                     </div>
-
-
 
                     <div class="preview_info div_tab">
                         <div class="leader" id="number-leader">
@@ -444,7 +446,7 @@
     <script type="text/javascript" src="{{ asset('assets/js/jsrender.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/helpers.js')}}"></script>
 
-    <script src="https://cdn.bootcss.com/datepicker/0.5.3/datepicker.js"></script>
+    <script src="https://cdn.bootcss.com/datepicker/0.5.3/datepicker.min.js"></script>
     <script src="https://cdn.bootcss.com/datepicker/0.5.3/i18n/datepicker.zh-CN.min.js"></script>
     <script type="text/javascript">
 
@@ -452,16 +454,21 @@
         //              通用
         // *********************************
 
+        $.fn.datepicker.setDefaults({
+            language: 'zh-CN',
+            format: 'yyyy-mm-dd'
+        });
+
         // 输入提示
         (function($){
             $.fn.tipInfo = function(tipMsg){
-                $(this).siblings('.tips').html('<span class="cue">'+tipMsg+'</span>');
+                $(this).siblings('.tips').html('<span class="info">'+tipMsg+'</span>');
             }
             $.fn.tipWarn = function(tipMsg) {
-                $(this).siblings('.tips').html('<span class="unuse">'+tipMsg+'</span>')
+                $(this).siblings('.tips').html('<span class="warn">'+tipMsg+'</span>')
             }
             $.fn.tipValid = function() {
-                $(this).siblings('.tips').html('<span class="useable"><i class="icon kenrobot ken-check"></i></span>');
+                $(this).siblings('.tips').html('<span class="valid"><i class="icon kenrobot ken-check"></i></span>');
             }
             $.fn.tipClear = function() {
                 $(this).siblings('.tips').html('');
@@ -499,7 +506,14 @@
             var val = $el.val();
             var datatype = $el.data('type') || '';// 数据类型 email , mobile , ID,
             // console.log(name, type, id, val, datatype);
-            if (($el.attr('required') || datatype.indexOf('required') !== -1) && val == '') {
+            var required = $el.attr('required') || datatype.indexOf('required') !== -1;
+
+            if (val == '') {
+                if (!required) {
+                    $el.tipValid();
+                    return true;
+                }
+
                 var errMsg = type == 'file' ? '照片不能为空！' : '不能为空！'
                 $el.tipWarn(errMsg);
                 return false;
@@ -532,6 +546,11 @@
             if (datatype.indexOf('ID') !== -1 && ! isID(val)) {
                 $el.tipWarn('身份证号格式不正确！');
                 return false;
+            }
+
+            if (datatype.indexOf('float') !== -1 && ! isFloat(val)) {
+                $el.tipWarn('数据格式不正确');
+                return;
             }
 
             // 邀请码
@@ -660,14 +679,66 @@
                 // 时间选择插件
                 $(addHtmlId + ' input[data-toggle="datepicker"]').datepicker();
 
-                // 删除
+                // 删除按钮
                 $(addHtmlId + ' .delete').click(function(){
                     $(this).parent().remove();
-                })
+                    getPersonCount(type);
+
+                });
+
+                // 修改证件类型
+                $(addHtmlId + ' .id_type').change(function(){
+                    var selectedValue = $(this).find('option:selected').val();
+                    if (selectedValue == '身份证') {
+                        $(addHtmlId + ' .id_number').attr('data-type', 'ID');
+                    } else {
+                        $(addHtmlId + ' .id_number').removeAttr('data-type');
+                        // **** 直接removeAttr， $.data() 仍然可以取出旧值
+                        $(addHtmlId + ' .id_number').removeData('type');
+
+                    }
+                });
+
+                // 更新添加按钮状态
+                getPersonCount(type);
 
                 addIndex++;
             }
         })();
+
+        // 更新添加状态
+        function getPersonCount(type) {
+            if (type.indexOf('member') !== -1) {
+                var studentCount = $('.students .person_data').length;
+                if (studentCount > 0) {
+                    $('.students .person_data').eq(0).find('.delete').unbind('click').css('display', 'none');
+                }
+
+                if (studentCount >= 8) {
+                    $('#add_student').addClass('disabled');
+                } else {
+                    $('#add_student').removeClass('disabled');
+                }
+
+                return studentCount;
+
+            } else {
+                var teacherCount = $('.teachers .person_data').length;
+                if (teacherCount > 0) {
+                    $('.teachers .person_data').eq(0).find('.delete').unbind('click').css('display', 'none');
+                }
+
+                if (teacherCount >= 2) {
+                    $('#add_teacher').addClass('disabled');
+                } else {
+                    $('#add_teacher').removeClass('disabled');
+                }
+
+                return teacherCount;
+            }
+
+            // body...
+        }
 
         // 提取联系人手机
         function getContactMobile() {
@@ -752,13 +823,33 @@
             // 1. 邀请码，联系人信息
             $('#invitecode').blur(function() {
                 validField(this);
-            })
+            });
+
+            $('#add_contact').change(function() {
+                var val = $(this).find('option:selected').val();
+                if (val == 'yes') {
+                    $('.add_contact').attr('required', true);
+                    $('.add_contact').removeClass('disabled');
+                    $('.add_contact').removeAttr('readonly');
+
+                } else {
+                    $('.add_contact').removeAttr('required');
+                    $('.add_contact').addClass('disabled');
+                    $('.add_contact').attr('readonly', true);
+                }
+            });
 
             // TODO: 用户可选择是否添加联系人
 
             // 2. 添加领队
 
             $('#add_teacher').click(function(event) {
+                var count = getPersonCount('leader');
+                if (count >= 2) {
+                    console.warn('too many');
+                    return;
+                }
+
                 addMemberList('leader');
             });
 
@@ -784,7 +875,13 @@
 
 
             // 4. 添加队员
-            $('#student_info_new').click(function (){
+            $('#add_student').click(function (){
+
+                var count = getPersonCount('leader');
+                if (count >= 8) {
+                    console.warn('too many');
+                    return;
+                }
                 addMemberList();
             });
 
@@ -793,6 +890,32 @@
 
             // 5. 开票信息
             // TODO&MAYBE: 根据人数计算金额
+            $('#invoice_type').change(function(){
+                var selectedValue = $(this).find('option:selected').val();
+                if (selectedValue == '发票') {
+                    $('.invoice-group').attr('required', true);
+                    $('.invoice-group').removeClass('disabled');
+                    $('.invoice-group').removeAttr('readonly');
+                } else if (selectedValue == '收据') {
+                    $('.invoice-group').attr('required', true);
+                    $('.invoice-group').removeClass('disabled');
+                    $('.invoice-group').removeAttr('readonly');
+
+                    $('#invoice_code').removeAttr('required');
+                    $('#invoice_code').addClass('disabled');
+                    $('#invoice_code').attr('readonly', ture);
+
+                } else if (selectedValue == '不开票') {
+                    $('.invoice-group').val('');
+                    $('.invoice-group').removeAttr('required');
+                    $('.invoice-group').addClass('disabled');
+                    $('.invoice-group').attr('readonly', true);
+                }
+            });
+
+            $('.invoice-group').blur(function(){
+                validField(this);
+            })
 
             // 6. 信息确认
             // TODO: 信息预览
@@ -925,35 +1048,17 @@
                 tabCenter.previous();
             });
 
-            tabCenter.go(5);
+            tabCenter.go(4);
 
 
 
 
         });// end of $(function())
 
-
-
-
-
-
-
-
-        // 改变证件类型
-        function changeType(obj) {
-            $(obj).find('option:contains("请选择")').remove();
-            if ($(obj).find('option:selected').text() == "身份证") {
-                $(obj).parents('.input-field').siblings('.input-field').find('.id_number').attr('data-type', 'ID');
-            } else {
-
-            }
-            $(obj).parents('.input-field').siblings('.input-field').find('input').removeClass('id_number');
-        };
-
        </script>
 
     <script id="tmpl_memberlist" type="text/x-jsrender">
-        <div class="clearfix  @{{:type}}_list" id="member_list_@{{:index}}">
+        <div class="clearfix person_data  @{{:type}}_list" id="member_list_@{{:index}}">
             <div class="delete"><i class="icon kenrobot ken-close"></i></div>
             <div class="input-field">
                 <span class="input-label">姓名  :</span>
@@ -988,24 +1093,22 @@
                 <div class="tips"></div>
             </div>
             <div class="input-field">
-                <span class="input-label">工作单位  :</span>
+                <span class="input-label">学校  :</span>
                 <input data-type="schoolname" required tip-info="请填写工作单位" class="input-field-text"  id="@{{:type}}_@{{:index}}_work_unit" type="text" name="@{{:type}}[@{{:index}}][work_unit]" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">证件类型  :</span>
-                <select name="@{{:type}}[@{{:index}}][ID_type]" class="input-field-text" onchange="changeType(this);">
-                    <option value="请选择">请选择</option>
+                <select name="@{{:type}}[@{{:index}}][ID_type]" class="input-field-text id_type">
                     <option value="身份证">身份证</option>
                     <option value="内地通行证">内地通行证</option>
                     <option value="台胞证">台胞证</option>
                     <option value="护照">护照</option>
-                    <input type="hidden" id="@{{:type}}_@{{:index}}_ID_type">
                 </select>
             </div>
             <div class="input-field">
                 <span class="input-label">证件号码  :</span>
-                <input tip-info="请填写证件号码" required class="input-field-text id_number" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][ID_number]" value="">
+                <input tip-info="请填写证件号码" required class="input-field-text id_number" data-type="ID" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][ID_number]" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
@@ -1014,8 +1117,8 @@
                 <div class="tips"></div>
             </div>
             <div class="input-field">
-                <span class="input-label">现居详情  :</span>
-                <input data-type="schoolname" required tip-info="请填写现居详情" class="input-field-text"  id="@{{:type}}_@{{:index}}_home_address" type="text" name="@{{:type}}[@{{:index}}][home_address]" value="">
+                <span class="input-label">现居住详址  :</span>
+                <input data-type="schoolname" required tip-info="请填写现居住详址" class="input-field-text"  id="@{{:type}}_@{{:index}}_home_address" type="text" name="@{{:type}}[@{{:index}}][home_address]" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
@@ -1041,6 +1144,65 @@
             </div>
         </div>
     </script>
+    <script id="tmpl_preview_memberlist" type="text/x-jsrender">
+        <div class="leader_info" style="position: relative;">
+            <div class="cut"></div>
+            <div class="input-field">
+                <span class="name">姓名 :</span>
+                <span data-type="realname" id="{{'preview_leader_'.$i.'_name'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">性别 :</span>
+                <span id="{{'preview_leader_'.$i.'_sex'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">民族 :</span>
+                <span id="{{'preview_leader_'.$i.'_nation'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">出生日期 :</span>
+                <span id="{{'preview_leader_'.$i.'_age'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">身高 :</span>
+                <span id="{{'preview_leader_'.$i.'_height'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">工作单位 :</span>
+                <span id="{{'preview_leader_'.$i.'_work_unit'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">证件类型 :</span>
+                <span id="{{'preview_leader_'.$i.'_ID_type'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">证件号码 :</span>
+                <span id="{{'preview_leader_'.$i.'_ID_number'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">户籍地址 :</span>
+                <span id="{{'preview_leader_'.$i.'_register_address'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">现居详情 :</span>
+                <span id="{{'preview_leader_'.$i.'_home_address'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">手机号码 :</span>
+                <span id="{{'preview_leader_'.$i.'_tel'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">邮箱 :</span>
+                <span id="{{'preview_leader_'.$i.'_mail'}}" class="name_input"></span>
+            </div>
+            <div class="input-field">
+                <span class="name">备注 :</span>
+                <span id="{{'preview_leader_'.$i.'_remarks'}}" class="name_input"></span>
+            </div>
+            <img id="{{'preview_'.$i.'_leader_pic'}}" src="" >
+        </div>
+    </script>
+
     <script id="tmpl_competiton_options" type="text/x-jsrender">
         @{{for options}}
             <option value="@{{: id}}"> @{{: name}}</option>}

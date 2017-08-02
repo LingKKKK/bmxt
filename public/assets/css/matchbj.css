@@ -419,7 +419,6 @@ body .content .all_info .preview_info .leader {
   padding-bottom: 30px;
 }
 body .content .all_info .preview_info .leader .leader_title {
-  font-family: PingFangSC-Regular;
   font-size: 16px;
   color: #587BEF;
   letter-spacing: 2.29px;
@@ -431,7 +430,6 @@ body .content .all_info .preview_info .leader .leader_title {
   text-align: center;
 }
 body .content .all_info .preview_info .leader .name {
-  font-family: PingFangSC-Regular;
   font-size: 14px;
   color: #666666;
   letter-spacing: 2px;
@@ -447,7 +445,6 @@ body .content .all_info .preview_info .leader .name {
 body .content .all_info .preview_info .leader .name_input {
   display: block;
   float: left;
-  font-family: PingFangSC-Regular;
   font-size: 14px;
   color: #666666;
   line-height: 20px;
@@ -488,7 +485,6 @@ body .content .all_info .preview_info .all_number {
   margin-bottom: 18px;
 }
 body .content .all_info .preview_info .all_number .leader_title {
-  font-family: PingFangSC-Regular;
   font-size: 16px;
   color: #587BEF;
   letter-spacing: 2.29px;
@@ -938,7 +934,7 @@ body .input-field-text {
   box-sizing: border-box;
   padding-left: 20px;
 }
-body .add_contact {
+body .input-field-text.disabled {
   background: #ddd;
   pointer-events: none;
 }
@@ -978,19 +974,19 @@ body .tips > span:after {
   left: -8px;
   top: 9px;
 }
-body .tips .cue {
+body .tips .info {
   background: #587BEF;
 }
-body .tips .cue:after {
+body .tips .info:after {
   border-right: 8px solid #587BEF;
 }
-body .tips .useable {
+body .tips .valid {
   background: #2ECC71;
 }
-body .tips .useable:after {
+body .tips .valid:after {
   border-right: 8px solid #2ECC71;
 }
-body .tips .useable i {
+body .tips .valid i {
   display: block;
   background: #fff;
   width: 18px;
@@ -999,16 +995,16 @@ body .tips .useable i {
   color: #2ECC71;
   font-size: 19px;
 }
-body .tips .useable i:before {
+body .tips .valid i:before {
   content: "\e668";
   position: absolute;
   left: 9px;
   top: 6px;
 }
-body .tips .unuse {
+body .tips .warn {
   background: #E74C3C;
 }
-body .tips .unuse:after {
+body .tips .warn:after {
   border-right: 8px solid #E74C3C;
 }
 body .input-radio {
@@ -1090,8 +1086,4 @@ body .input-field:after {
   display: block;
   clear: both;
   height: 0;
-}
-body .input-field .id_number {
-  background: #ddd;
-  pointer-events: none;
 }

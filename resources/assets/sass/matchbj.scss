@@ -11,6 +11,7 @@ body {
   background:#fff;
   position: relative;
 
+
   .header {
     height: 180px;
     background: #587BEF;
@@ -395,7 +396,6 @@ body {
           padding-bottom: 30px;
 
           .leader_title {
-            font-family: PingFangSC-Regular;
             font-size: 16px;
             color: #587BEF;
             letter-spacing: 2.29px;
@@ -407,7 +407,6 @@ body {
             text-align: center;
           }
           .name {
-            font-family: PingFangSC-Regular;
             font-size: 14px;
             color: #666666;
             letter-spacing: 2px;
@@ -424,7 +423,6 @@ body {
           .name_input {
             display: block;
             float: left;
-            font-family: PingFangSC-Regular;
             font-size: 14px;
             color: #666666;
             line-height: 20px;
@@ -471,7 +469,6 @@ body {
           margin-bottom: 18px;
 
           .leader_title {
-            font-family: PingFangSC-Regular;
             font-size: 16px;
             color: #587BEF;
             letter-spacing: 2.29px;
@@ -985,11 +982,15 @@ body {
     margin-bottom: 30px;
     box-sizing: border-box;
     padding-left: 20px;
+
+     &.disabled{
+      background: #ddd;
+      pointer-events: none;
+    }
   }
 
   .add_contact {
-    background: #ddd;
-    pointer-events: none;
+
   }
 
 
@@ -1003,6 +1004,7 @@ body {
     // #{$hack_ie7}float: left;
     // _float: left;
   }
+
 
   .tips {
     opacity: 1;
@@ -1033,14 +1035,14 @@ body {
         top: 9px;
       }
     }
-    .cue {
+    .info {
       background: #587BEF;
       &:after{
         border-right: 8px solid #587BEF;
       }
     }
 
-    .useable {
+    .valid {
       background: #2ECC71;
       &:after {
         border-right: 8px solid #2ECC71;
@@ -1064,7 +1066,7 @@ body {
       }
     }
 
-    .unuse {
+    .warn {
       background: #E74C3C;
       &:after {
         border-right: 8px solid #E74C3C;
@@ -1183,11 +1185,6 @@ body {
       display: block;
       clear: both;
       height: 0;
-    }
-
-    .id_number {
-      background: #ddd;
-      pointer-events: none;
     }
   }
 }

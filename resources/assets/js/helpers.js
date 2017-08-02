@@ -7,7 +7,7 @@
 
 //判断是否位真实姓名
 function isName(val) {
-    reg= /^[\u4e00-\u9fa5a-z]+$/gi;
+    reg= /^[\u4e00-\u9fa5a-z·]+$/gi;
     if(!reg.test(val)) {
         return false;
     }
@@ -52,6 +52,14 @@ function isMobile(val) {
     var reg = /^1\d{10}$/;
 
     if(!reg.test(val)) {
+        return false;
+    }
+    return true;
+}
+
+function isFloat(val) {
+    var reg = /^\d+(\.\d{1,2})?$/;
+    if (!reg.test(val)) {
         return false;
     }
     return true;
