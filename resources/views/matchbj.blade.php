@@ -729,11 +729,14 @@
                     } else {
                         value = $el_input.val();
                     }
-                    data.push({
-                        name: name,
-                        value: value
-                    })
-                    console.log(name, value);
+
+                    if ($el_input.attr('type') != 'file') {
+                        data.push({
+                            name: name,
+                            value: value
+                        })
+                    }
+
                 });
 
                 var tmpl = $.templates('#tmpl_preview_memberlist');
