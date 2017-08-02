@@ -793,7 +793,6 @@
                     var dataURL = $(this).attr('local-src');
                     var new_id = source_id.slice(8)
                     var url = document.getElementById(new_id).value;
-                    document.body.appendChild(imgDiv);
 
                     imgObj.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod = scale)";
                     imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = url;
