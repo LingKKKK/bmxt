@@ -102,6 +102,7 @@ class MatchbjController extends Controller
         }
 
         InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
+        return redirect('finish');
         dd($competitionTeamModel);
     }
 
