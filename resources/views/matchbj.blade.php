@@ -66,17 +66,17 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人姓名  :</span>
-                            <input tip-warn="" tip-info="仅支持英文、汉字" data-type="realname" class="input-field-text add_contact disabled" readonly  id="contact_name_info" name="contact_name" type="text" value="">
+                            <input tip-warn="" tip-info="仅支持英文、汉字" data-type="realname" class="input-field-text add_contact disabled" readonly  id="contact_name" name="contact_name" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人手机号码  :</span>
-                            <input tip-info="请填联系人手机号码" data-type="mobile" class="input-field-text add_contact disabled" readonly  id="contact_mobile_info" type="text" name="contact_mobile" value="">
+                            <input tip-info="请填联系人手机号码" data-type="mobile" class="input-field-text add_contact disabled" readonly  id="contact_mobile" type="text" name="contact_mobile" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人邮箱  :</span>
-                            <input tip-info="请按照正确的邮箱格式填写" data-type="email" class="input-field-text add_contact disabled" readonly id="contact_email_info" name="contact_email" type="text" value="">
+                            <input tip-info="请按照正确的邮箱格式填写" data-type="email" class="input-field-text add_contact disabled" readonly id="contact_email" name="contact_email" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -757,11 +757,30 @@
             $('#preview_member').html(buildPreview('member'));
         }
 
+        function copyContactInfo() {
+
+            var value =  $('add_contact').find('option:selected').val();
+            // 如果选的是添加联系人信息，就不修改
+            if (value == '添加') {
+                return;
+            }
+
+            var $el = $('.teachers .person_data').eq(0);
+            if ($el) {
+                var name = $el.find('input.name').val();
+                var mobile = $el.find('input.tel').val();
+                var email = $el.find('input.mail').val();
+                $('#contact_name').val(name);
+                $('#contact_mobile').val(mobile);
+                $('#contact_email').val(email);
+            }
+        }
+
 
 
         // 提取联系人手机
         function getContactMobile() {
-            var mobile = $('#contact_mobile').val() || '18511431517';
+            var mobile = $('#contact_mobile').val() || '';
             return mobile;
         }
 
@@ -1013,7 +1032,8 @@
                     })
 
                     return !prevent;
-                }, function() {
+                }, function(index) {
+                    copyContactInfo();
                     if (index == 5) {
                         previewList();
                     }
