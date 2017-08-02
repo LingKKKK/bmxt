@@ -812,8 +812,7 @@
 
         // 提取联系人手机
         function getContactMobile() {
-            var mobile = $('#contact_mobile').val() || '';
-            return mobile;
+             return $('#contact_mobile').val();
         }
 
         $(function(){
