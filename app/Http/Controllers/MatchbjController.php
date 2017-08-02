@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Enroll\Models\CompetitionEvent;
 
-use App\Enroll\SignupData;
+use App\Enroll\Models\CompetitionTeamMember;
+use App\Enroll\Models\CompetitionTeam;
+use App\Enroll\InviteManager;
 use Validator;
-use Mail;
 use Storage;
 use Session;
-use App\Enroll\InviteManager;
-use Excel;
-use App\Enroll\TripData;
+
 
 class MatchbjController extends Controller
 {
@@ -38,7 +37,6 @@ class MatchbjController extends Controller
     public function signup(Request $request, \App\Enroll\CompetitionService $service)
     {
         $competitionList = $service->getCompetitionList();
-
         $competitonsJson = json_encode($competitionList, JSON_UNESCAPED_UNICODE);
 
         return view('matchbj', compact('competitonsJson'));
@@ -47,96 +45,103 @@ class MatchbjController extends Controller
     public function doSignup(Request $request)
     {
 
-        dd($request->all());
+        // dd($request->all());
+
+        $team_fields = [
+            'id', 'invitecode',
+            'contact_name', 'contact_mobile', 'contact_email', 'contact_remark',
+            'team_no', 'team_name', 'competition_event_id',
+            'invoice_title', 'invoice_code', 'invoice_money', 'invoice_type', 'invoice_mail_address', 'invoice_mail_recipients',
+            'invoice_mail_mobile', 'invoice_mail_email', 'invoice_remark'
+        ];
+
+        $team_data = $request->only($team_fields);
+        $team_data['team_no'] = $this->getTeamNo();
+
+        $competitionTeamModel = new CompetitionTeam();
 
 
-        $team_no = '12321321'.rand(1000, 9999);
 
-
-        try {
-            $leader_picdata = $this->saveFile($request->file('leader_pic'));
-            $leader_pic = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ? $leader_picdata['publicPath'] : '';
-            $leader_pic_filename = !empty($leader_picdata) && isset($leader_picdata['filename']) ? $leader_picdata['filename'] : '';
-
-            // 处理成员
-            $members = array();
-            $origin_members = isset($request->all()['members']) ? $request->all()['members'] : [];
-
-            foreach ($origin_members as $k => $item) {
-                $member_info = array_only($item, ['name', 'mobile', 'ID' ,'age', 'sex', 'school_name', 'school_address' ,'height', 'id_type']);
-                $pic = isset($item['pic']) ? $item['pic'] : null;
-
-                $member_picdata = $this->saveFile($item['pic']);
-                $member_info['pic'] =  !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['publicPath'] : '';
-                $member_info['pic_filename'] = !empty($member_picdata) && isset($member_picdata['publicPath']) ?  $member_picdata['filename'] : '';
-                $members[] = $member_info;
-            }
-            // 领队成员处理
-            $leaders = array();
-            $origin_leaders = isset($request->all()['leaders']) ? $request->all()['leaders'] : [];
-
-            foreach ($origin_leaders as $k => $item) {
-                $leader_info = array_only($item, ['name', 'mobile', 'ID', 'sex', 'email']);
-                $pic = isset($item['pic']) ? $item['pic'] : null;
-
-                $leader_picdata = $this->saveFile($item['pic']);
-                $leader_info['pic'] =  !empty($leader_picdata) && isset($leader_picdata['publicPath']) ?  $leader_picdata['publicPath'] : '';
-                $leader_info['pic_filename'] = !empty($leader_picdata) && isset($leader_picdata['publicPath']) ?  $leader_picdata['filename'] : '';
-                $leaders[] = $leader_info;
-            }
-
-            if ($validator->fails()) {
-                // 弹出错误提示码
-                // dd($validator->errors());
-                return redirect()->back()->withInput()
-                                         ->withErrors($validator->errors())
-                                         ->with('leader_pic_preview', $leader_pic)
-                                         ->with('leader_pic_filename', $leader_pic_filename)
-                                         ->with('leaders_data', $leaders)
-                                         ->with('members_data', $members);
-            }
-
-            //表单地钻
-            $keys = ['team_no', 'invitecode' ,'team_name', 'competition_name', 'competition_type', 'competition_group', 'vocation', 'name', 'nation', 'sex', 'age', 'heigth', 'work_unit', 'ID_type', 'ID_number'
-            ];
-
-            $data = $request->only($keys);
-            $data['leader_pic'] = $leader_pic;
-            $data['members'] = json_encode($members, JSON_UNESCAPED_UNICODE);
-            $data['leaders'] = json_encode($leaders, JSON_UNESCAPED_UNICODE);
-            $data['team_no'] = $this->team_no;
-            $data['out_trade_no'] = '';
-
-
-            $dataPayload = $data;
-            $dataPayload['participant'] = $request->input('participant', '');
-            $dataPayload['account_type'] = $request->input('account_type', '');
-            $dataPayload['invoice_header'] = $request->input('invoice_header', '');
-            $dataPayload['billing_content'] = $request->input('billing_content', '');
-            $dataPayload['receive_address'] = $request->input('receive_address', '');
-            $dataPayload['average_amount'] = $request->input('average_amount', '');
-            $dataPayload['total_cost'] = $request->input('total_cost', '');
-            $dataPayload['leaders'] = $leaders;
-
-            $data['data'] = json_encode($dataPayload, JSON_UNESCAPED_UNICODE);
-            $data['origin_data'] = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
-
-
-            $request->session()->flash('signdata', $data);
-
-            $ddt = SignupData::create($data);
-            InviteManager::useCode($data['invitecode'], $ddt->id);
-            // dd($ddt);
-        } catch (\Exception $e) {
-            // dd($e);
-            // dd($e);
-            return redirect()->back()->withInput();
+        if (isset($team_data['id']) && !empty($team_data['id'])) {
+            $competitionTeamModel = CompetitionTeam::find($team_data['id']);
         }
-        // dd($ddt);
 
-        return redirect('/');
+        $competitionTeamModel->fill($team_data)->save();
+
+        $leaders = $request->input('leader', []);
+        $members = $request->input('member', []);
+
+        foreach ($leaders as $k => $val) {
+            $leaders[$k]['team_id'] = $competitionTeamModel->id;
+            $leaders[$k]['type'] = 'leader';
+        }
+
+        foreach ($members as $k => $val) {
+            $members[$k]['team_id'] = $competitionTeamModel->id;
+            $members[$k]['type'] = 'member';
+        }
+
+
+
+        $member_fields = [
+            'id', 'team_id', 'type',
+                // 基本信息
+            'name', 'mobile', 'name', 'email', 'idcard_type', 'idcard_no', 'nation', 'sex', 'birthday', 'age', 'height', 'photo_url',
+                // 其他资料
+            'vocation', 'work_unit', 'register_address', 'home_address', 'remark'
+        ];
+
+        foreach (array_merge($leaders, $members) as $k => $val) {
+            $memberModel = new CompetitionTeamMember();
+            if (isset($val['id']) && !empty($val)) {
+                $memberModel = CompetitionTeamMember::find('id');
+            }
+
+            $val = array_only($val, $member_fields);
+            $memberModel->fill($val)->save();
+        }
+
+        InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
+        dd($competitionTeamModel);
     }
 
+    private function getTeamNo()
+    {
+        if ($this->team_no) {
+            return $this->team_no;
+        }
+
+        $teamCount = CompetitionTeam::count();
+
+        $seg1 = '2017';
+
+        $seg2 = date('mdHi');
+        $seg3 = 1687 + $teamCount;
+
+        // 年份前缀-月日时分-报名次序
+        $this->team_no = $seg1.$seg2.$seg3;
+        return $this->team_no;
+
+    }
+    public function saveFile($file)
+    {
+        if (!$file) {
+            return '';
+        }
+
+        $filename = $file->getClientOriginalName();
+
+        $ext = $file->getClientOriginalExtension();
+
+        $suffix = rand(1000, 9999);
+
+        $hashfilename = md5($filename.$suffix).'.'.$ext;
+        $storePath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
+        $publicPath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
+        Storage::put($storePath, file_get_contents($file));
+
+        return $publicPath;
+    }
 
 
 
