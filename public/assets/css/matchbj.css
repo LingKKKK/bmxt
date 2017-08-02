@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*重置css*/
 /*重置css*/
 body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
@@ -239,7 +238,7 @@ body .content .all_info {
   border: 1px solid #DDDDDD;
   width: 1002px;
   box-sizing: border-box;
-  padding: 30px 0px 100px 30px;
+  padding: 30px 30px 100px 30px;
 }
 body .content .all_info .div_tab {
   padding-left: 100px;
@@ -410,7 +409,6 @@ body .content .all_info .preview_info {
   display: none;
 }
 body .content .all_info .preview_info .leader {
-  width: 922px;
   display: block;
   position: relative;
   background: #FFFFFF;
@@ -477,7 +475,6 @@ body .content .all_info .preview_info .leader .team_leader .leader_info img {
   top: 35px;
 }
 body .content .all_info .preview_info .all_number {
-  width: 922px;
   display: block;
   position: relative;
   background: #FFFFFF;
@@ -536,8 +533,33 @@ body .content .all_info .preview_info .all_number .team_number .member_info img 
 body .content .all_info .preview_info .all_number .team_number .member_info .school_add {
   margin-bottom: 30px;
 }
+body .content .all_info .preview_info .all_number .team_number .leader_info {
+  position: relative;
+  padding-bottom: 50px;
+}
+body .content .all_info .preview_info .all_number .team_number .leader_info .input-field .name {
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 2px;
+  width: 140px;
+  height: 20px;
+  margin-right: 10px;
+  display: block;
+  float: left;
+  line-height: 20px;
+  margin-left: 71px;
+  margin-top: 30px;
+}
+body .content .all_info .preview_info .all_number .team_number .leader_info .input-field .name_input {
+  display: block;
+  float: left;
+  font-size: 14px;
+  color: #666666;
+  line-height: 20px;
+  letter-spacing: 2px;
+  margin-top: 30px;
+}
 body .content .all_info .preview_info .pays {
-  width: 922px;
   display: block;
   position: relative;
   background: #FFFFFF;
@@ -1076,7 +1098,7 @@ body .cut {
   width: 800px;
   height: 1px;
   margin: 0 auto;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 body .input-field {
   zoom: 1;

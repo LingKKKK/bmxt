@@ -180,7 +180,7 @@ body {
       border: 1px solid #DDDDDD;
       width: 1002px;
       box-sizing: border-box;
-      padding: 30px 0px 100px 30px;
+      padding: 30px 30px 100px 30px;
 
       .div_tab {
         padding-left: 100px;
@@ -387,7 +387,6 @@ body {
         transition: all 0.7s;
         display: none;
         .leader {
-          width: 922px;
           display: block;
           position: relative;
           background: #FFFFFF;
@@ -461,7 +460,6 @@ body {
           }
         }
         .all_number {
-          width: 922px;
           display: block;
           position: relative;
           background: #FFFFFF;
@@ -526,10 +524,40 @@ body {
                 margin-bottom: 30px;
               }
             }
+
+            .leader_info {
+              position: relative;
+              padding-bottom: 50px;
+
+              .input-field {
+                .name {
+                  font-size: 14px;
+                  color: #666666;
+                  letter-spacing: 2px;
+                  width: 140px;
+                  height: 20px;
+                  margin-right: 10px;
+                  display: block;
+                  float: left;
+                  line-height: 20px;
+                  margin-left: 71px;
+                  margin-top: 30px;
+                }
+
+                .name_input {
+                  display: block;
+                  float: left;
+                  font-size: 14px;
+                  color: #666666;
+                  line-height: 20px;
+                  letter-spacing: 2px;
+                  margin-top: 30px;
+                }
+              }
+            }
           }
         }
         .pays {
-          width: 922px;
           display: block;
           position: relative;
           background: #FFFFFF;
@@ -1175,7 +1203,7 @@ body {
     width: 800px;
     height: 1px;
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
   // 清除浮动
   .input-field {
