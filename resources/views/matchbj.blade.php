@@ -99,6 +99,11 @@
                         <button type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="ranks_info div_tab">
+                        <div class="input-field" style="display: none;">
+                            <span class="input-label">队伍编号  :</span>
+                            <input  id="team_no" name="team_no" type="hidden" value="{{$team_no or ''}}">
+                            <div class="tips"></div>
+                        </div>
                         <div class="input-field">
                             <span class="input-label">队伍名称  :</span>
                             <input data-type="schoolname|teamname" required tip-warn="" tip-info="请输入您队伍的名称" class="input-field-text" id="team_name" name="team_name" type="text" value="">
@@ -222,7 +227,7 @@
                             <div class="cut"></div>
                             <div class="input-field">
                                 <span class="name">队伍编号 :</span>
-                                <span id="team_id" class="name_input"></span>
+                                <span id="preview_team_no" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name">队伍名称 :</span>
@@ -747,6 +752,7 @@
                 'contact_email',
                 'contact_remark',
                 // 赛项信息
+                'team_no',
                 'team_name',
                 'competition_1',
                 'competition_2',
@@ -791,7 +797,7 @@
 
         function copyContactInfo() {
 
-            var value =  $('add_contact').find('option:selected').val();
+            var value =  $('#add_contact').find('option:selected').val();
             // 如果选的是添加联系人信息，就不修改
             if (value == '添加') {
                 return;

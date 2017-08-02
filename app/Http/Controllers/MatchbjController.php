@@ -38,8 +38,10 @@ class MatchbjController extends Controller
     {
         $competitionList = $service->getCompetitionList();
         $competitonsJson = json_encode($competitionList, JSON_UNESCAPED_UNICODE);
+        $team_no = $this->getTeamNo();
 
-        return view('matchbj', compact('competitonsJson'));
+
+        return view('matchbj', compact('competitonsJson', 'team_no'));
     }
 
     public function doSignup(Request $request)
@@ -55,7 +57,10 @@ class MatchbjController extends Controller
         ];
 
         $team_data = $request->only($team_fields);
-        $team_data['team_no'] = $this->getTeamNo();
+
+        if (!$team_data['team_no']) {
+            $team_data['team_no'] = $this->getTeamNo();
+        }
 
         $competitionTeamModel = new CompetitionTeam();
 
@@ -117,7 +122,7 @@ class MatchbjController extends Controller
 
         $seg1 = '2017';
 
-        $seg2 = date('mdHi');
+        $seg2 = date('mdHis');
         $seg3 = 1687 + $teamCount;
 
         // 年份前缀-月日时分-报名次序
