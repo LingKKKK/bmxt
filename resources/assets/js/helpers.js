@@ -165,6 +165,7 @@ function verificationcodeCheck(verificationcode) {
 
 // 预览照片
 function picPreview(obj, id) {
+    console.log(obj);
     var ieVersion = detectIE();
     if(ieVersion == 'ie8' || ieVersion == 'ie9'){
         if (obj) {
@@ -176,7 +177,12 @@ function picPreview(obj, id) {
             document.getElementById(id).style.backgroundImage="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='"+nfile+"')";
         }
     }
+
+
 }
+
+
+
 
 
 

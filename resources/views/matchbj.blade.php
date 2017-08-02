@@ -683,10 +683,12 @@
             }
         }
 
+
         function buildPreview(type) {
             var container = type == 'member' ? '.students .person_data' : '.teachers .person_data';
 
             var resultHtml = '';
+            var imgPreviewUrl = '';
             $(container).each(function(){
                 // console.log(this);
 
@@ -702,6 +704,12 @@
                         value = $(this).find('input:radio:checked').val();
                     } else if ($el_input.attr('type') == 'file') {
                         value = '图片';
+                        var f = $el_input.attr('files')[0];
+
+                        if(f){
+                            imgPreviewUrl =  URL.createObjectURL(f);
+                        }
+
                     } else {
                         value = $el_input.val();
                     }
@@ -713,7 +721,7 @@
                 });
 
                 var tmpl = $.templates('#tmpl_preview_memberlist');
-                resultHtml += tmpl.render({'datalist' : data});
+                resultHtml += tmpl.render({'datalist' : data, 'imgurl': imgPreviewUrl});
             });
 
             return resultHtml;
@@ -1035,6 +1043,7 @@
 
                     return !prevent;
                 }, function(index) {
+                    copyContactInfo();
                     if (index == 5) {
                         previewList();
                     }
@@ -1047,7 +1056,7 @@
                 tabCenter.previous();
             });
 
-            tabCenter.go(0);
+            tabCenter.go(1);
             addMemberList('leader');
             addMemberList('member');
 
@@ -1141,7 +1150,7 @@
             <div class="input-field">
                 <span class="input-label">照片  :</span>
                 <div class="uploadBtn">上传照片 </div>
-                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}[@{{:index}}]_pic" type="file" class="uploadField @{{:type}}_pic"  onchange="picPreview(this, 'preview_@{{:index}}_@{{:type}}_pic')">
+                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}_@{{:index}}__pic" type="file" class="uploadField @{{:type}}_pic"  onchange="picPreview(this, 'preview_@{{:index}}_@{{:type}}_pic')">
                 <div class="tips"></div>
             </div>
         </div>
@@ -1156,7 +1165,7 @@
             </div>
             @{{/for}}
 
-            <img id="" src="" >
+            <img id="" src="@{{: imgurl}}" >
         </div>
     </script>
 
