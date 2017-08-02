@@ -197,81 +197,27 @@
                             <div class="cut"></div>
                             <div class="input-field">
                                 <span class="name">真实姓名 :</span>
-                                <span  id="preview_contact_name_info" class="name_input" ></span>
+                                <span  id="preview_contact_name" class="name_input" ></span>
                             </div>
                             <div class="input-field">
                                 <span class="name">联系人手机号 :</span>
-                                <span  id="preview_contact_mobile_info" class="name_input"></span>
+                                <span  id="preview_contact_mobile" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span  class="name">联系人邮箱 :</span>
-                                <span id="preview_contact_email_info" class="name_input"></span>
+                                <span id="preview_contact_email" class="name_input"></span>
                             </div>
                             <div class="input-field">
                                 <span class="name">联系人备注 :</span>
-                                <span  id="preview_contact_remark_info" class="name_input" style="margin-bottom: 40px;"></span>
+                                <span  id="preview_contact_remark" class="name_input" style="margin-bottom: 40px;"></span>
                             </div>
                         </div>
                         <div class="leader" id="leader">
                             <span class="leader_title">领队老师信息</span>
-                            @for($i = 0; $i< 10; $i++)
-                            <div id="leader_info_{{$i}}" class="leader_info" style="display: none; position: relative;">
-                                <div class="cut"></div>
-                                <div class="input-field">
-                                    <span class="name">姓名 :</span>
-                                    <span data-type="realname" id="{{'preview_leader_'.$i.'_name'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">性别 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_sex'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">民族 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_nation'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">出生日期 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_age'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">身高 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_height'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">工作单位 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_work_unit'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">证件类型 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_ID_type'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">证件号码 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_ID_number'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">户籍地址 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_register_address'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">现居详情 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_home_address'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">手机号码 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_tel'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">邮箱 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_mail'}}" class="name_input"></span>
-                                </div>
-                                <div class="input-field">
-                                    <span class="name">备注 :</span>
-                                    <span id="{{'preview_leader_'.$i.'_remarks'}}" class="name_input"></span>
-                                </div>
-                                <img id="{{'preview_'.$i.'_leader_pic'}}" src="" >
+                            <div id="preview_leader">
+
                             </div>
-                            @endfor
+
                         </div>
                         <div class="leader" id="team">
                             <span class="leader_title">队伍信息</span>
@@ -303,65 +249,8 @@
                         </div>
                         <div class="all_number">
                             <span class="leader_title">队员信息</span>
-                            <div class="team_number" id="number">
-                                @for($i = 0; $i< 10; $i++)
-                                <div id="member_info_{{$i}}" class="member_info" style="display: none;position: relative;">
-                                    <div class="cut"></div>
-                                    <div class="input-field">
-                                        <span class="name">姓名 :</span>
-                                        <span data-type="realname" id="{{'preview_member_'.$i.'_name'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">性别 :</span>
-                                        <span id="{{'preview_member_'.$i.'_sex'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">民族 :</span>
-                                        <span id="{{'preview_member_'.$i.'_nation'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">出生日期 :</span>
-                                        <span id="{{'preview_member_'.$i.'_age'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">身高 :</span>
-                                        <span id="{{'preview_member_'.$i.'_height'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">工作单位 :</span>
-                                        <span id="{{'preview_member_'.$i.'_work_unit'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">证件类型 :</span>
-                                        <span id="{{'preview_member_'.$i.'_ID_type'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">证件号码 :</span>
-                                        <span id="{{'preview_member_'.$i.'_ID_number'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">户籍地址 :</span>
-                                        <span id="{{'preview_member_'.$i.'_register_address'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">现居详情 :</span>
-                                        <span id="{{'preview_member_'.$i.'_home_address'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">手机号码 :</span>
-                                        <span id="{{'preview_member_'.$i.'_tel'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">邮箱 :</span>
-                                        <span id="{{'preview_member_'.$i.'_mail'}}" class="name_input"></span>
-                                    </div>
-                                    <div class="input-field">
-                                        <span class="name">备注 :</span>
-                                        <span id="{{'preview_member_'.$i.'_remarks'}}" class="name_input"></span>
-                                    </div>
-                                    <img id="{{'preview_'.$i.'_member_pic'}}" src="" >
-                                </div>
-                                @endfor
+                            <div class="team_number" id="preview_member">
+
                             </div>
                         </div>
                         <div class="pays clearfix" id="pays">
@@ -740,12 +629,6 @@
             // body...
         }
 
-        // 提取联系人手机
-        function getContactMobile() {
-            var mobile = $('#contact_mobile').val() || '18511431517';
-            return mobile;
-        }
-
         // TABINDEX：2 比赛项目
         function buildOptions(data) {
             // console.log('OPTION_DATA', data);
@@ -797,6 +680,95 @@
             if (level < 3) {
                 $('#competition_' + level).change();
             }
+        }
+
+        function buildPreview(type) {
+            var container = type == 'member' ? '.teachers .person_data' : '.students .person_data';
+
+            var resultHtml = '';
+            $(container).each(function(){
+                // console.log(this);
+
+                var data = new Array();
+                $(this).find('.input-field').each(function(){
+                    var name = $(this).find('.input-label').html();
+                    var $el_input = $(this).find('input, select').eq(0);
+                    var value = '';
+                    if ($el_input.is('select')) {
+                        console.log('selec');
+                        value = $el_input.find('option:selected').val();
+                    } else if($el_input.attr('type') == 'radio') {
+                        value = $(this).find('input:radio:checked').val();
+                    } else if ($el_input.attr('type') == 'file') {
+                        value = '图片';
+                    } else {
+                        value = $el_input.val();
+                    }
+                    data.push({
+                        name: name,
+                        value: value
+                    })
+                    console.log(name, value);
+                });
+
+                var tmpl = $.templates('#tmpl_preview_memberlist');
+                resultHtml += tmpl.render({'datalist' : data});
+            });
+
+            return resultHtml;
+        }
+
+
+        function previewList() {
+            var idNames = new Array(
+                // 联系人信息
+                'contact_name',
+                'contact_mobile',
+                'contact_email',
+                'contact_remark',
+
+                // 赛项信息
+                'team_name',
+                'competition_1',
+                'competition_2',
+                'competition_3',
+                'remarks',
+
+                // 开票信息
+                'invoice_type',
+                'invoice_title',
+                'invoice_code',
+                'invoice_money',
+                'invoice_mail_address',
+                'invoice_mail_recipients',
+                'invoice_mail_mobile',
+                'invoice_mail_email',
+                'invoice_remark',
+            );
+
+            for(i in idNames)
+            {
+                $el = $('#' + idNames[i]);
+                var val = $el.val();
+                if ($el.is('select')) {
+                    val = $el.find('option:selected').val();
+                }
+                $('#preview_' + idNames[i]).html(val);
+            }
+
+            $('#preview_leader').html(buildPreview('leader'));
+            $('#preview_member').html(buildPreview('member'));
+
+
+
+        }
+
+
+
+        // 提取联系人手机
+        function getContactMobile() {
+            var mobile = $('#contact_mobile').val() || '18511431517';
+            return mobile;
         }
 
         $(function(){
@@ -1042,23 +1014,30 @@
                     return !prevent;
                 });
 
+            }, function(index){
+                if (index == 5) {
+                    previewList();
+                }
             });
 
             $('.btn_pre').click(function(){
                 tabCenter.previous();
             });
 
-            tabCenter.go(4);
+            tabCenter.go(1);
+            addMemberList('leader');
 
 
 
 
         });// end of $(function())
 
+
+
        </script>
 
     <script id="tmpl_memberlist" type="text/x-jsrender">
-        <div class="clearfix person_data  @{{:type}}_list" id="member_list_@{{:index}}">
+        <div class="clearfix person_data  @{{:type}}_list" id="member_list_@{{:index}}" data-index="@{{:index}}">
             <div class="delete"><i class="icon kenrobot ken-close"></i></div>
             <div class="input-field">
                 <span class="input-label">姓名  :</span>
@@ -1067,13 +1046,13 @@
             </div>
             <div class="input-field">
                 <span class="input-label">性别  :</span>
-                <input class="input-radio man @{{:type}}_sex" type="radio" checked name="@{{:type}}[@{{:index}}][sex]" value="男"><span>男</span>
-                <input class="input-radio woman @{{:type}}_sex" type="radio" name="@{{:type}}[@{{:index}}][sex]" value="女"><span>女</span>
+                <input id="@{{:type}}_@{{:index}}_sex_man" class="input-radio man @{{:type}}_sex" type="radio" checked name="@{{:type}}[@{{:index}}][sex]" value="男"><span>男</span>
+                <input id="@{{:type}}_@{{:index}}_sex_woman"  class="input-radio woman @{{:type}}_sex" type="radio" name="@{{:type}}[@{{:index}}][sex]" value="女"><span>女</span>
                 <p id="@{{:type}}_@{{:index}}_sex"></p>
             </div>
             <div class="input-field">
                 <span class="input-label">民族  :</span>
-                <select name="@{{:type}}[@{{:index}}][nation]" class="input-field-text">
+                <select id="@{{:type}}_@{{:index}}_nation" name="@{{:type}}[@{{:index}}][nation]" class="input-field-text">
                         <option value="请选择">请选择</option>
                         @{{for nations}}
                             <option value="@{{: #data}}"> @{{: #data}}</option>}
@@ -1147,59 +1126,14 @@
     <script id="tmpl_preview_memberlist" type="text/x-jsrender">
         <div class="leader_info" style="position: relative;">
             <div class="cut"></div>
+            @{{for datalist}}
             <div class="input-field">
-                <span class="name">姓名 :</span>
-                <span data-type="realname" id="{{'preview_leader_'.$i.'_name'}}" class="name_input"></span>
+                <span class="name">@{{: name}}</span>
+                <span class="name_input">@{{: value}}</span>
             </div>
-            <div class="input-field">
-                <span class="name">性别 :</span>
-                <span id="{{'preview_leader_'.$i.'_sex'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">民族 :</span>
-                <span id="{{'preview_leader_'.$i.'_nation'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">出生日期 :</span>
-                <span id="{{'preview_leader_'.$i.'_age'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">身高 :</span>
-                <span id="{{'preview_leader_'.$i.'_height'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">工作单位 :</span>
-                <span id="{{'preview_leader_'.$i.'_work_unit'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">证件类型 :</span>
-                <span id="{{'preview_leader_'.$i.'_ID_type'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">证件号码 :</span>
-                <span id="{{'preview_leader_'.$i.'_ID_number'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">户籍地址 :</span>
-                <span id="{{'preview_leader_'.$i.'_register_address'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">现居详情 :</span>
-                <span id="{{'preview_leader_'.$i.'_home_address'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">手机号码 :</span>
-                <span id="{{'preview_leader_'.$i.'_tel'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">邮箱 :</span>
-                <span id="{{'preview_leader_'.$i.'_mail'}}" class="name_input"></span>
-            </div>
-            <div class="input-field">
-                <span class="name">备注 :</span>
-                <span id="{{'preview_leader_'.$i.'_remarks'}}" class="name_input"></span>
-            </div>
-            <img id="{{'preview_'.$i.'_leader_pic'}}" src="" >
+            @{{/for}}
+
+            <img id="" src="" >
         </div>
     </script>
 
