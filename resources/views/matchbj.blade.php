@@ -689,7 +689,8 @@
 
             var resultHtml = '';
             var imgPreviewUrl = '';
-            $(container).each(function(){
+            var localUrl = '';
+            $(container).each(function(index){
                 // console.log(this);
 
                 var data = new Array();
@@ -703,12 +704,16 @@
                     } else if($el_input.attr('type') == 'radio') {
                         value = $(this).find('input:radio:checked').val();
                     } else if ($el_input.attr('type') == 'file') {
-                        value = '图片';
-                        var f = $el_input.attr('files')[0];
-
-                        if(f){
-                            imgPreviewUrl =  URL.createObjectURL(f);
+                        value = $el_input.val();
+                        var source_id = $el_input.attr('id');
+                        var f = document.getElementById(source_id).files[0];
+                        if(f && detectIE() != 'ie8' && detectIE() != 'ie9'){
+                            console.log(f);
+                            imgPreviewUrl = window.URL.createObjectURL(f);
+                            console.log(imgPreviewUrl);
                         }
+
+                        localUrl = $el_input.val();
 
                     } else {
                         value = $el_input.val();
@@ -721,7 +726,7 @@
                 });
 
                 var tmpl = $.templates('#tmpl_preview_memberlist');
-                resultHtml += tmpl.render({'datalist' : data, 'imgurl': imgPreviewUrl});
+                resultHtml += tmpl.render({'type' : type, 'index': index,'datalist' : data, 'imgurl': imgPreviewUrl, 'localUrl': localUrl});
             });
 
             return resultHtml;
@@ -765,6 +770,17 @@
 
             $('#preview_leader').html(buildPreview('leader'));
             $('#preview_member').html(buildPreview('member'));
+
+            if (detectIE() == 'ie8' || detectIE == 'ie9') {
+                $('.preview-pic').each(function(){
+                    var source_id = $(this).attr('id');
+                    var imgObj = document.getElementById("preview");
+                    var dataURL = $(this).attr('local-src');
+                    imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                    imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+                });
+            }
+
         }
 
         function copyContactInfo() {
@@ -1056,7 +1072,7 @@
                 tabCenter.previous();
             });
 
-            tabCenter.go(0);
+            tabCenter.go(1);
             addMemberList('leader');
             addMemberList('member');
 
@@ -1150,7 +1166,7 @@
             <div class="input-field">
                 <span class="input-label">照片  :</span>
                 <div class="uploadBtn">上传照片 </div>
-                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}_@{{:index}}__pic" type="file" class="uploadField @{{:type}}_pic"  onchange="picPreview(this, 'preview_@{{:index}}_@{{:type}}_pic')">
+                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}_@{{:index}}_pic" type="file" class="uploadField @{{:type}}_pic"  onchange="picPreview(this, 'preview_@{{:index}}_@{{:type}}_pic')">
                 <div class="tips"></div>
             </div>
         </div>
@@ -1165,7 +1181,7 @@
             </div>
             @{{/for}}
 
-            <img id="" src="@{{: imgurl}}" >
+            <img id="preview_@{{:type }}_@{{: index}}_pic" class="preview-pic" local-src="@{{: localUrl }}" src="@{{: imgurl}}" >
         </div>
     </script>
 
