@@ -683,7 +683,7 @@
         }
 
         function buildPreview(type) {
-            var container = type == 'member' ? '.teachers .person_data' : '.students .person_data';
+            var container = type == 'member' ? '.students .person_data' : '.teachers .person_data';
 
             var resultHtml = '';
             $(container).each(function(){
@@ -758,9 +758,6 @@
 
             $('#preview_leader').html(buildPreview('leader'));
             $('#preview_member').html(buildPreview('member'));
-
-
-
         }
 
 
@@ -903,10 +900,13 @@
             $('#getverifycode').click(function() {
                 var mobile = getContactMobile();
                 var partten = /^1\d{10}$/;
+                console.log(mobile);
                 if(! partten.test(mobile)) {
+                    $('#verificationcode').tipWarn('请输入正确的联系人手机号！');
+                    $('#verificationcode').tipWarn('dd');
                     return;
                 }
-                $('.verificationcode_box').addClass('active');
+                $('.verificationcode_box').show();
                 $('#tipes i').html(mobile);
             });
 
@@ -926,7 +926,7 @@
                     function(res){
                         if (res.status == 0) {
                             // 验证码填写成功并确定
-                            $('.verificationcode_box').removeClass('active');
+                            $('.verificationcode_box').hide();
                             $('#getverifycode').countdown();
                         } else {
                             // 验证码填写错误
@@ -1024,9 +1024,9 @@
                 tabCenter.previous();
             });
 
-            tabCenter.go(1);
+            tabCenter.go(5);
             addMemberList('leader');
-
+            addMemberList('member');
 
 
 
