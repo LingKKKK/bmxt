@@ -46,7 +46,7 @@ Route::get('/finish', 'MatchbjController@finish');
 
 
 // 队伍名称检查
-Route::post('/checkteamname', 'SignupController@checkName');
+Route::post('/checkteamname', 'MatchbjController@checkName');
 
 
 // 支付宝支付接口

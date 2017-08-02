@@ -44,7 +44,6 @@ class MatchbjController extends Controller
 
     public function doSignup(Request $request)
     {
-
         // dd($request->all());
 
         $team_fields = [
@@ -60,16 +59,15 @@ class MatchbjController extends Controller
 
         $competitionTeamModel = new CompetitionTeam();
 
-
-
         if (isset($team_data['id']) && !empty($team_data['id'])) {
             $competitionTeamModel = CompetitionTeam::find($team_data['id']);
+            $this->team_no = $competitionTeamModel->team_no; // 更新队伍编号
         }
 
         $competitionTeamModel->fill($team_data)->save();
 
-        $leaders = $request->input('leader', []);
-        $members = $request->input('member', []);
+        $leaders = (array)$request->all()['leader'];
+        $members = (array)$request->all()['member'];
 
         foreach ($leaders as $k => $val) {
             $leaders[$k]['team_id'] = $competitionTeamModel->id;
@@ -80,8 +78,6 @@ class MatchbjController extends Controller
             $members[$k]['team_id'] = $competitionTeamModel->id;
             $members[$k]['type'] = 'member';
         }
-
-
 
         $member_fields = [
             'id', 'team_id', 'type',
@@ -97,13 +93,18 @@ class MatchbjController extends Controller
                 $memberModel = CompetitionTeamMember::find('id');
             }
 
+            $photo_url = $this->saveFile($val['pic']);
+            if ($photo_url) {
+                $val['photo_url'] = $this->saveFile($val['pic']);
+            }
+
             $val = array_only($val, $member_fields);
             $memberModel->fill($val)->save();
         }
 
+        // 无效邀请码 异常
         InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
         return redirect('finish');
-        dd($competitionTeamModel);
     }
 
     private function getTeamNo()
@@ -122,7 +123,6 @@ class MatchbjController extends Controller
         // 年份前缀-月日时分-报名次序
         $this->team_no = $seg1.$seg2.$seg3;
         return $this->team_no;
-
     }
     public function saveFile($file)
     {
@@ -144,6 +144,19 @@ class MatchbjController extends Controller
         return $publicPath;
     }
 
+    public function checkName(Request $request)
+    {
+        $team_name = $request->input('team_name', '');
+        if (empty($team_name)) {
+            return api_response(2, '队名不能为空');
+        }
+        $result = CompetitionTeam::where('team_name', $team_name)->first();
+        if ($result !== null) {
+            return api_response(1, '队伍名重复');
+        }
+        return api_response(0, '合法的队名');
+
+    }
 
 
     public function finish(){

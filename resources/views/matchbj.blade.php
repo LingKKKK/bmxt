@@ -37,7 +37,8 @@
         </div>
 
         <div class="content active">
-            <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" onkeydown="if(event.keyCode==13)return false;"  style="width: 1004px;">
+            <!-- <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" onkeydown="if(event.keyCode==13)return false;"  style="width: 1004px;"> -->
+            <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate="novalidate" style="width: 1004px;">
                 <div class="tab_menu">
                     <ul>
                         <li class="active">联系人信息</li>
@@ -117,7 +118,7 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">备注  :</span>
-                            <input tip-info="请按照正确的邮箱格式填写" class="input-field-text" id="remarks" name="remarks" type="text" value="">
+                            <input tip-info="填写备注" class="input-field-text" id="remarks" name="remarks" type="text" value="">
                             <div class="tips"></div>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
@@ -447,7 +448,7 @@
 
             // 队名检测 :: BUG: 不知道问么
             if (datatype.indexOf('teamname') !== -1 && ! teamNameCheck(val)) {
-                $el.tipWarn('您输入的队伍名已被占用,请输入其他名称！');
+                $el.tipWarn('队伍名已被占用！');
                 return false;
             }
 
@@ -706,8 +707,8 @@
                     } else if ($el_input.attr('type') == 'file') {
                         value = $el_input.val();
 
-                   
-                        if( detectIE() != 'IE8' && detectIE() != 'IE9'){                        
+
+                        if( detectIE() != 'IE8' && detectIE() != 'IE9'){
                             var source_id = $el_input.attr('id');
                             var f = document.getElementById(source_id).files[0];
                             if (f) {
@@ -715,7 +716,7 @@
                                 imgPreviewUrl = window.URL.createObjectURL(f);
                                 console.log(imgPreviewUrl);
                             }
-                         
+
                         }
 
                         localUrl = $el_input.val();
@@ -909,17 +910,17 @@
             $('#invoice_type').change(function(){
                 var selectedValue = $(this).find('option:selected').val();
                 if (selectedValue == '发票') {
-                    $('.invoice-group').attr('required', true);
+                    $('.invoice-group').not('#invoice_remark').attr('required', true);
                     $('.invoice-group').removeClass('disabled');
                     $('.invoice-group').removeAttr('readonly');
                 } else if (selectedValue == '收据') {
-                    $('.invoice-group').attr('required', true);
+                    $('.invoice-group').not('#invoice_remark').attr('required', true);
                     $('.invoice-group').removeClass('disabled');
                     $('.invoice-group').removeAttr('readonly');
 
                     $('#invoice_code').removeAttr('required');
                     $('#invoice_code').addClass('disabled');
-                    $('#invoice_code').attr('readonly', ture);
+                    $('#invoice_code').attr('readonly', true);
 
                 } else if (selectedValue == '不开票') {
                     $('.invoice-group').val('');
@@ -950,7 +951,6 @@
                 console.log(mobile);
                 if(! partten.test(mobile)) {
                     $('#verificationcode').tipWarn('请输入正确的联系人手机号！');
-                    $('#verificationcode').tipWarn('dd');
                     return;
                 }
                 $('.verificationcode_box').show();
@@ -1029,7 +1029,7 @@
 
             // 6.4 点击取消输入验证码
             $('.verificationcode_box .no').click(function() {
-                $('.verificationcode_box').removeClass('active');
+                $('.verificationcode_box').hide();
             });
             $('#v_code').click(function(event) {
                 $('.tipes-false').css('opacity', 0);
@@ -1077,7 +1077,7 @@
                 tabCenter.previous();
             });
 
-            tabCenter.go(1);
+            tabCenter.go(0);
             addMemberList('leader');
             addMemberList('member');
 
