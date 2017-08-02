@@ -748,7 +748,7 @@
                 $el = $('#' + idNames[i]);
                 var val = $el.val();
                 if ($el.is('select')) {
-                    val = $el.find('option:selected').val();
+                    val = $el.find('option:selected').text();
                     console.log(val)
                 }
                 $('#preview_' + idNames[i]).html(val);
