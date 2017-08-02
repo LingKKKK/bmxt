@@ -37,7 +37,7 @@
         </div>
 
         <div class="content active">
-            <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate style="width: 1004px;">
+            <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate="novalidate" style="width: 1004px;">
                 <div class="tab_menu">
                     <ul>
                         <li class="active">联系人信息</li>
@@ -1056,7 +1056,7 @@
                 tabCenter.previous();
             });
 
-            tabCenter.go(1);
+            tabCenter.go(0);
             addMemberList('leader');
             addMemberList('member');
 
