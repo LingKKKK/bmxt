@@ -56,6 +56,9 @@
 
 
 
+
+
+
             <div class="clear"></div>
             <a id="btn-read" class="disabled" type="button">我同意</a>
             <span class="span-read">阅读,并同意</span>
@@ -551,10 +554,10 @@
         var addMemberList = (function() {
             var addIndex = 0;
 
-            var nations = ['汉族','壮族','回族','满族','维吾尔族','苗族','彝族','土家族','藏族','蒙古族','侗族','布依族','瑶族','白族','朝鲜族','哈尼族','黎族',
-                            '哈萨克族','傣族','畲族','傈僳族','东乡族','仡佬族','拉祜族','佤族','水族','纳西族','羌族','土族','仫佬族','锡伯族','柯尔克孜族','景颇族',
-                            '达斡尔族','撒拉族','布朗族','毛南族','塔吉克族','普米族','阿昌族','怒族','鄂温克族','京族','基诺族','德昂族','保安族','俄罗斯族','裕固族',
-                            '乌孜别克族','门巴族','鄂伦春族','独龙族','赫哲族','高山族','珞巴族','塔塔尔族','未识别民族','入籍外国人'];
+            // var nations = ['汉族','壮族','回族','满族','维吾尔族','苗族','彝族','土家族','藏族','蒙古族','侗族','布依族','瑶族','白族','朝鲜族','哈尼族','黎族',
+            //                 '哈萨克族','傣族','畲族','傈僳族','东乡族','仡佬族','拉祜族','佤族','水族','纳西族','羌族','土族','仫佬族','锡伯族','柯尔克孜族','景颇族',
+            //                 '达斡尔族','撒拉族','布朗族','毛南族','塔吉克族','普米族','阿昌族','怒族','鄂温克族','京族','基诺族','德昂族','保安族','俄罗斯族','裕固族',
+            //                 '乌孜别克族','门巴族','鄂伦春族','独龙族','赫哲族','高山族','珞巴族','塔塔尔族','未识别民族','入籍外国人'];
 
             return function(type) {
                 type = type || 'member';
@@ -562,7 +565,7 @@
                 var rawHtml = tmpl.render({
                     'index': addIndex,
                     'type': type,
-                    'nations': nations
+                    // 'nations': nations
                 });
 
                 if (type == 'member') {
@@ -1143,16 +1146,7 @@
                 <input id="@{{:type}}_@{{:index}}_sex_woman"  class="input-radio woman @{{:type}}_sex" type="radio" name="@{{:type}}[@{{:index}}][sex]" value="女"><span>女</span>
                 <p id="@{{:type}}_@{{:index}}_sex"></p>
             </div>
-            <div class="input-field">
-                <span class="input-label">民族  :</span>
-                <select id="@{{:type}}_@{{:index}}_nation" name="@{{:type}}[@{{:index}}][nation]" class="input-field-text">
-                        <!-- <option value="请选择">请选择</option> -->
-                        @{{for nations}}
-                            <option value="@{{: #data}}"> @{{: #data}}</option>}
-                        @{{/for}}
-                </select>
-                <input type="hidden" id="@{{:type}}_@{{:index}}_nation">
-            </div>
+
          <!--    <div class="input-field">
                 <span class="input-label">出生日期  :</span>
                 <input required type="text" id="@{{:type}}_@{{:index}}_birthday" data-toggle="datepicker" class="input-field-text input-field-datetime"  name="@{{:type}}[@{{:index}}][birthday]" />
@@ -1170,7 +1164,7 @@
                 <div class="tips"></div>
             </div>
             <div class="input-field">
-                <span class="input-label">学校  :</span>
+                <span class="input-label">单位／学校名称 :</span>
                 <input data-type="schoolname" required tip-info="请填写工作单位" class="input-field-text"  id="@{{:type}}_@{{:index}}_work_unit" type="text" name="@{{:type}}[@{{:index}}][work_unit]" value="">
                 <div class="tips"></div>
             </div>
