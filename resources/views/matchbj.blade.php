@@ -802,7 +802,7 @@
 
             var value =  $('#add_contact').find('option:selected').val();
             // 如果选的是添加联系人信息，就不修改
-            if (value == '添加') {
+            if (value == 'yes') {
                 return;
             }
 
@@ -861,6 +861,8 @@
                     $('.add_contact').removeAttr('required');
                     $('.add_contact').addClass('disabled');
                     $('.add_contact').attr('readonly', true);
+                    $('.add_contact').val('');
+                    copyContactInfo();
                 }
             });
 
