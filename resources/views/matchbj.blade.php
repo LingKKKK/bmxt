@@ -11,7 +11,7 @@
     <div class="main">
         <div class="header">
             <div class="inner">
-                <img src="{{ asset('assets/img/logo1.png')}}" alt="">
+                <img src="{{ asset('assets/img/logo1-beijing.png')}}" alt="">
                 <div class="logout">
                     <span></span>
                 </div>
@@ -53,8 +53,9 @@
             <span class="instructions-span" style="padding-left: 20px;"> f)“创客生存挑战赛”项目联系人：李乔 176 0089 9441</span>
 
             <h2>附二：报名表填写说明</h2>
-            <br/>
-            <span class="instructions-span clearfix"> 特此通知！</span>
+
+
+
             <div class="clear"></div>
             <a id="btn-read" class="disabled" type="button">我同意</a>
             <span class="span-read">阅读,并同意</span>
