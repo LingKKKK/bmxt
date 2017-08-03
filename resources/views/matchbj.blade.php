@@ -730,13 +730,13 @@
                         value = $el_input.val();
                     }
 
+                    // 图片项不显示
                     if ($el_input.attr('type') != 'file') {
                         data.push({
                             name: name,
                             value: value
                         })
                     }
-
                 });
 
                 var tmpl = $.templates('#tmpl_preview_memberlist');
@@ -789,13 +789,10 @@
             if (detectIE() == 'IE8' || detectIE() == 'IE9') {
                 $('.preview-pic').each(function(){
                     var source_id = $(this).attr('id');
-                    var imgObj = document.getElementById(source_id);
+                    var imgObj = document.getElementById("preview");
                     var dataURL = $(this).attr('local-src');
-                    var new_id = source_id.slice(8)
-                    var url = document.getElementById(new_id).value;
-
-                    imgObj.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod = scale)";
-                    imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = url;
+                    imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                    imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
                 });
             }
 

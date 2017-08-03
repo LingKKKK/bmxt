@@ -31,7 +31,40 @@ class MatchbjController extends Controller
 
     public function doSearch(Request $request)
     {
-        return redirect('matchbj');
+        $validator = Validator::make($request->all(),
+            [
+                'leader_mobile' => 'required',
+                'team_no'   => 'required',
+                'verificationcode' => 'required|verificationcode',
+            ],
+            [
+                'leader_mobile.required' => '手机号不能为空',
+                'leader_id.required' => '身份证或者领队姓名名填写至少一个',
+                'leader_name.required_without' => '身份证或者领队姓名名至少填写一个',
+                'team_no.required'  => '队伍编号不能为空',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
+            ]);
+        // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
+
+        if ($validator->fails()) {
+           // return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        $team_no = $request->input('team_no', '');
+        $signdata = SignupData::where('team_no', $team_no)->first();
+        if ($signdata === null) {
+            return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
+        }
+
+        if ($signdata['leader_mobile'] != $request->input('leader_mobile')) {
+            return redirect()->back()->withErrors(collect(['notfound' => '请填写正确的领队手机号']))->withInput();
+        }
+
+        // $request->session()->flash('signdata', $signdata->toArray());
+
+        // $request->session()->put('signdata', $signdata->toArray());
+        return redirect('success');
     }
 
     public function signup(Request $request, \App\Enroll\CompetitionService $service)
@@ -46,7 +79,31 @@ class MatchbjController extends Controller
 
     public function doSignup(Request $request)
     {
-        // dd($request->all());
+        $validator = Validator::make($request->all(),
+            [
+                'invitecode' => 'required', //邀请码信息
+                'leader_name' => 'required', //领队姓名
+                'leader_id' => 'required', //领队身份证号
+                'leader_sex' => 'required', //领队性别
+                'leader_pic' => 'required|image',
+                'leader_email' => 'required|email',
+                'leader_mobile' => 'required',
+                'team_name' => 'required',
+                'school_name' => 'required',
+                'school_address' => 'required',
+                // 'verificationcode' => 'required|verificationcode',
+                'invitecode' => 'required|invitecode'
+            ],
+            [
+                'invitecode.required' => '邀请码不能为空',
+                'invitecode.invitecode' => '邀请码不正确',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()
+            ->withInput();
+        }
 
         $team_fields = [
             'id', 'invitecode',
@@ -129,7 +186,7 @@ class MatchbjController extends Controller
         $this->team_no = $seg1.$seg2.$seg3;
         return $this->team_no;
     }
-    public function saveFile($file)
+    private function saveFile($file)
     {
         if (!$file) {
             return '';

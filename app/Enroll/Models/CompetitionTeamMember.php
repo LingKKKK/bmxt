@@ -4,10 +4,13 @@
 namespace App\Enroll\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class CompetitionTeamMember extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'competition_team_members';
 
     protected $fillable = ['id', 'team_id', 'type',
