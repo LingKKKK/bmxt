@@ -108,14 +108,22 @@ class MatchbjController extends Controller
             $team_data['team_no'] = $this->getTeamNo();
         }
 
-        $competitionTeamModel = new CompetitionTeam();
+        $this->team_no = $team_data['team_no'];
 
+        $competitionTeamModel = null;
         if (isset($team_data['id']) && !empty($team_data['id'])) {
             $competitionTeamModel = CompetitionTeam::find($team_data['id']);
-            $this->team_no = $competitionTeamModel->team_no; // 更新队伍编号
+        } else if (isset($team_data['team_no']) && !empty($team_data['team_no']) && $competitionTeamModel == null) {
+            $competitionTeamModel = CompetitionTeam::where('team_no', $team_data['team_no'])->first();
         }
 
-        $competitionTeamModel->fill($team_data)->save();
+        if ($competitionTeamModel == null) {
+            $competitionTeamModel = new CompetitionTeam();
+        }
+        // dd($competitionTeamModel);
+
+        $competitionTeamModel->fill(array_except($team_data, ['id']))->save();
+
 
         $leaders = (array)$request->all()['leader'];
         $members = (array)$request->all()['member'];
@@ -150,7 +158,7 @@ class MatchbjController extends Controller
             }
 
             $val = array_only($val, $member_fields);
-            $memberModel->fill($val)->save();
+            $memberModel->fill(array_except($val, ['id']))->save();
         }
 
         // 无效邀请码 异常
