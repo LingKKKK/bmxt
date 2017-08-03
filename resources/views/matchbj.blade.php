@@ -853,7 +853,7 @@
             $('#add_contact').change(function() {
                 var val = $(this).find('option:selected').val();
                 if (val == 'yes') {
-                    $('.add_contact').attr('required', true);
+                    $('.add_contact').not('#contact_remark').attr('required', true);
                     $('.add_contact').removeClass('disabled');
                     $('.add_contact').removeAttr('readonly');
 
