@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*重置css*/
 /*重置css*/
 body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
@@ -177,9 +178,11 @@ body .instructions #btn-read {
   cursor: pointer;
   border: 0;
   opacity: 1;
-  background-color: #ccc;
-  pointer-events: none;
   margin-left: 15px;
+}
+body .instructions #btn-read.disabled {
+  pointer-events: none;
+  background-color: #ccc;
 }
 body .instructions #btn-read:hover {
   opacity: 0.7;

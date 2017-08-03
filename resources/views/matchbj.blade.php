@@ -17,26 +17,51 @@
                 </div>
             </div>
         </div>
-        <div class="instructions clearfix">
-            <h2 class="instructions-h">北京挑战赛报名须知</h2>
-            <span class="instructions-span clearfix"> 各位参赛选手与老师：</span>
+        <div class="instructions clearfix active">
+            <h1 class="instructions-h">2017年世界机器人大赛—RoboCom国际公开赛报名须知</h1>
+            <span class="instructions-span"> 1. 报名时间截止日期：2017年8月15日 </span>
+            <span class="instructions-span"> 2. 缴费截止日期： 2017年8月18日</span>
+            <span class="instructions-span"> 3. 正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
+            <span class="instructions-span" style="color:red;padding-left: 20px;"> 重要提示：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于2017年世界机器人大赛—RoboCom国际公开赛，报名人员须对其提交的错误信息造成的后果负责。</span>
+            <span class="instructions-span">4. 联系“通知中”各个项目的报名负责人，索取相应的项目邀请码。</span>
+            <span class="instructions-span">5. 每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
+            <span class="instructions-span">6. 报名完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
+            <span class="instructions-span">7. 参赛费用将不在网上报名中缴纳，具体缴费流程请联系相应赛项交费联系人（见交费流程）。</span>
+            <span class="instructions-span">8. 报名资料填写完整，经组委会审核通过后，会在RoboCom官方网站进行公示。</span>
             <br/>
-            <span class="instructions-span clearfix"> 2017世界机器人大赛——RoboCom青少年挑战赛全国总决赛在线报名工作从6月1日开始收到全国广大青少年选手的高度关注。公开报名已于6月22日12点结束，不再接受公开报名。如有疑问可以联系各相关负责人：</span>
+            <h2 style="color: red;">交费流程如下：</h2>
             <br/>
-            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“未来世界”： 李超 18510207182   13910252611</span>
-            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp;“博思威龙”、“工业时代”：曾令勇 15899948376</span>
-            <span class="instructions-span clearfix"> &nbsp;&nbsp;&nbsp;&nbsp; “攻城大师”、“智造大挑战”：李达 15876493817</span>
+            <span class="instructions-span" >在线报名完成后，请根据自己所报赛项联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。</span>
             <br/>
-            <span class="instructions-span clearfix"> 网上报名技术支持：江城 13476000614</span>
+            <br/>
+            <span class="instructions-span">1. 联系相关项目的收费负责人。</span>
+            <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”、“博思威龙”、“智造大挑战”项目的参赛交费联系人：曾令勇  158 9994 8376</span>
+            <span class="instructions-span" style="padding-left: 20px;"> b)“工业时代”、“攻城大师”、“创客生存挑战赛”项目的参赛交费联系人：李达 158 7649 3817</span>
+            <span class="instructions-span">2. 核实参赛队伍是否报名成功。并核实参赛人数。</span>
+            <span class="instructions-span">3. 支付参赛注册费</span>
+            <span class="instructions-span" style="padding-left: 20px;">付款对公账户：</span>
+            <span class="instructions-span" style="padding-left: 20px;">开户名称：北京工道动力机器人技术研究院</span>
+            <span class="instructions-span" style="padding-left: 20px;">开户行号：313100022226</span>
+            <span class="instructions-span" style="padding-left: 20px;">银行账号：410100203296687</span>
+            <h2 class="">附一：各赛项负责人</h2>
+
+            <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”项目联系人：李蒙 136 2109 4852</span>
+            <span class="instructions-span" style="padding-left: 20px;"> b)“工业时代”项目联系人：谢尊国 150 0077 4186</span>
+            <span class="instructions-span" style="padding-left: 20px;"> c)“博思威龙”项目联系人：陆超 137 1326 2010</span>
+            <span class="instructions-span" style="padding-left: 20px;"> d)“攻城大师”项目联系人：王勇 15361056983</span>
+            <span class="instructions-span" style="padding-left: 20px;"> e)“智造大挑战” 项目联系人：谢俊杰 186 0301 5057</span>
+            <span class="instructions-span" style="padding-left: 20px;"> f)“创客生存挑战赛”项目联系人：李乔 176 0089 9441</span>
+
+            <h2>附二：报名表填写说明</h2>
             <br/>
             <span class="instructions-span clearfix"> 特此通知！</span>
             <div class="clear"></div>
-            <a id="btn-read" type="button">我同意</a>
+            <a id="btn-read" class="disabled" type="button">我同意</a>
             <span class="span-read">阅读,并同意</span>
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
 
-        <div class="content active">
+        <div class="content">
             <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" onkeydown="if(event.keyCode==13)return false;"  style="width: 1004px;">
             <!-- <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate="novalidate" style="width: 1004px;"> -->
                 <div class="tab_menu">
@@ -524,7 +549,11 @@
         // 添加成员
         var addMemberList = (function() {
             var addIndex = 0;
-            var nations = ["汉族","蒙古族","回族","藏族","维吾尔族","苗族","彝族","壮族","布依族","朝鲜族","满族","侗族","瑶族","白族","土家族", "哈尼族","哈萨克族","傣族","黎族","傈僳族","佤族","畲族","高山族","拉祜族","水族","东乡族","纳西族","景颇族","柯尔克孜族", "土族","达斡尔族","仫佬族","羌族","布朗族","撒拉族","毛南族","仡佬族","锡伯族","阿昌族","普米族","塔吉克族","怒族", "乌孜别克族", "俄罗斯族","鄂温克族","德昂族","保安族","裕固族","京族","塔塔尔族","独龙族","鄂伦春族","赫哲族","门巴族","珞巴族","基诺族"];
+
+            var nations = ['汉族','壮族','回族','满族','维吾尔族','苗族','彝族','土家族','藏族','蒙古族','侗族','布依族','瑶族','白族','朝鲜族','哈尼族','黎族',
+                            '哈萨克族','傣族','畲族','傈僳族','东乡族','仡佬族','拉祜族','佤族','水族','纳西族','羌族','土族','仫佬族','锡伯族','柯尔克孜族','景颇族',
+                            '达斡尔族','撒拉族','布朗族','毛南族','塔吉克族','普米族','阿昌族','怒族','鄂温克族','京族','基诺族','德昂族','保安族','俄罗斯族','裕固族',
+                            '乌孜别克族','门巴族','鄂伦春族','独龙族','赫哲族','高山族','珞巴族','塔塔尔族','未识别民族','入籍外国人'];
 
             return function(type) {
                 type = type || 'member';
@@ -828,11 +857,11 @@
 
             // 0. 报名须知
             $('#input-read').click(function (){
-                if ($('#input-read').prop("checked") == false) {
-                    $(this).addClass('disabled');
+                if ($(this).prop("checked") == false) {
+                    $('#btn-read').addClass('disabled');
                     $('#btn-read').unbind('click');
                 } else {
-                    $(this).removeClass('disabled');
+                    $('#btn-read').removeClass('disabled');
                     $('#btn-read').bind('click', function(event) {
                         $('.instructions').removeClass('active');
                         $('.content').addClass('active');
@@ -1123,9 +1152,14 @@
                 </select>
                 <input type="hidden" id="@{{:type}}_@{{:index}}_nation">
             </div>
-            <div class="input-field">
+         <!--    <div class="input-field">
                 <span class="input-label">出生日期  :</span>
                 <input required type="text" id="@{{:type}}_@{{:index}}_birthday" data-toggle="datepicker" class="input-field-text input-field-datetime"  name="@{{:type}}[@{{:index}}][birthday]" />
+                <div class="tips"></div>
+            </div> -->
+            <div class="input-field">
+                <span class="input-label">年龄  :</span>
+                <input data-type="agenumber" required tip-info="请填写真实的年龄" class="input-field-text"  id="@{{:type}}_@{{:index}}_age" type="text" name="@{{:type}}[@{{:index}}][age]" value="">
                 <div class="tips"></div>
             </div>
 
@@ -1153,14 +1187,14 @@
                 <input tip-info="请填写证件号码" required class="input-field-text id_number" data-type="ID" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][idcard_no]" value="">
                 <div class="tips"></div>
             </div>
-            <div class="input-field">
+    <!--         <div class="input-field">
                 <span class="input-label">户籍地址  :</span>
                 <input data-type="schoolname" required tip-info="请填写户籍地址" class="input-field-text"  id="@{{:type}}_@{{:index}}_register_address" type="text" name="@{{:type}}[@{{:index}}][register_address]" value="">
                 <div class="tips"></div>
-            </div>
+            </div> -->
             <div class="input-field">
-                <span class="input-label">现居住详址  :</span>
-                <input data-type="schoolname" required tip-info="请填写现居住详址" class="input-field-text"  id="@{{:type}}_@{{:index}}_home_address" type="text" name="@{{:type}}[@{{:index}}][home_address]" value="">
+                <span class="input-label">居住省市  :</span>
+                <input data-type="schoolname" required tip-info="请填写居住省市" class="input-field-text"  id="@{{:type}}_@{{:index}}_home_address" type="text" name="@{{:type}}[@{{:index}}][home_address]" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">

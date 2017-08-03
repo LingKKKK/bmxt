@@ -77,7 +77,74 @@ class CompetitionService
 			],
 		];
 
+		$origin_data = $this->getOriginData();
 		$this->initEventsRecursive($origin_data);
+	}
+
+	private function getOriginData()
+	{
+		$origin_data = [
+			'攻城大师' => [
+			    '攻城大师' => [
+			        "小学" => 1,
+			        "初中" => 1,
+			        "高中" => 1,
+			    ],
+			],
+			'博思威龙' => [
+			    'VEX-EDR"步步为营"工程挑战赛' => [
+			        '中学(含小初)' => 1,
+			        '高中' => 1,
+			        '大学' => 1,
+			    ],
+			    'VEX-IQ"环环相扣"工程挑战赛' => [
+			        '小学' => 1,
+			        '初中' => 1,
+			    ],
+			],
+			'工业时代' => [
+			    '能力风暴——WER能力挑战赛' => [
+			        "小学" => 1,
+			        "初中" => 1,
+			        "高中" => 1,
+			    ],
+			    '能力风暴——WER能力挑战赛工程创新赛' => [
+			        "小学" => 1,
+			        "初中" => 1,
+			        "高中" => 1,
+			    ],
+			    '能力风暴——WER普及赛' => [
+			        "小学" => 1,
+			        "初中" => 1,
+			    ],
+			],
+			'未来世界' => [
+			    '常规赛' => [
+			        "小学" => 1,
+			        "初中" => 1,
+			        "高中" => 1,
+			    ],
+			],
+			'智造大挑战' => [
+			    '智造大挑战' => [
+			        "中学（含小初）" => 1,
+			    ],
+			],
+			'创客生存挑战赛' => [
+				'创客生存挑战赛' => [
+					'小学' => 1,
+					'高中' => 1
+				]
+			],
+			'智慧日月潭' => [
+				'智慧日月潭' => [
+					'初中' => 1,
+					'小初高' => 1
+				]
+			]
+		];
+
+		return $origin_data;
 	}
 
 	private function initEventsRecursive($data, $parent_id = 0)
@@ -104,7 +171,7 @@ class CompetitionService
 
 	public function getCompetitionList()
 	{
-		
+
 		// 计算出第一层数据
 		$result = $this->findChidren(0);
 

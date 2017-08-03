@@ -81,17 +81,6 @@ class MatchbjController extends Controller
     {
         $validator = Validator::make($request->all(),
             [
-                'invitecode' => 'required', //邀请码信息
-                'leader_name' => 'required', //领队姓名
-                'leader_id' => 'required', //领队身份证号
-                'leader_sex' => 'required', //领队性别
-                'leader_pic' => 'required|image',
-                'leader_email' => 'required|email',
-                'leader_mobile' => 'required',
-                'team_name' => 'required',
-                'school_name' => 'required',
-                'school_address' => 'required',
-                // 'verificationcode' => 'required|verificationcode',
                 'invitecode' => 'required|invitecode'
             ],
             [
@@ -101,8 +90,8 @@ class MatchbjController extends Controller
         );
 
         if ($validator->fails()) {
-            return redirect()->back()
-            ->withInput();
+            // return redirect()->back()
+            // ->withInput();
         }
 
         $team_fields = [

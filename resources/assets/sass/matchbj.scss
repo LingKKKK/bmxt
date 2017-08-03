@@ -113,9 +113,12 @@ body {
       cursor: pointer;
       border: 0;
       opacity: 1;
-      background-color:#ccc;
-      pointer-events: none;
       margin-left: 15px;
+
+      &.disabled{
+        pointer-events: none;
+        background-color: #ccc;
+      }
 
       &:hover {
         opacity: 0.7;
