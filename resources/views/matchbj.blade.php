@@ -1261,7 +1261,7 @@
                 <input tip-info="请填写证件号码" required class="input-field-text id_number" data-type="ID" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][idcard_no]" value="@{{: defaultValue['idcard_no'] }}">
                 <div class="tips"></div>
             </div>
-    <!--         <div class="input-field">
+            <!--<div class="input-field">
                 <span class="input-label">户籍地址  :</span>
                 <input data-type="schoolname" required tip-info="请填写户籍地址" class="input-field-text"  id="@{{:type}}_@{{:index}}_register_address" type="text" name="@{{:type}}[@{{:index}}][register_address]" value="">
                 <div class="tips"></div>

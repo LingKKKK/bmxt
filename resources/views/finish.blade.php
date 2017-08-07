@@ -3,19 +3,193 @@
 <head>
     <title></title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/finish.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/finish.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/print-finish.css')}}" media="print" />
     <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js')}}"></script>
 </head>
 <body>
     <div class="main">
         <div class="top">
             <div class="inner">
-                <img src="{{ asset('assets/img/logo1.png')}}" alt="">
+                <img src="{{ asset('assets/img/logo1-beijing.png')}}" alt="">
             </div>
         </div>
         <div class="mid">
             <div class="successAlert" id="successAlert">
                 <span>您的信息已提交成功,如需修改,请重新查询并完善您的信息!</span>
+            </div>
+
+            <div class="title_top">
+                <ul>
+                    <li>2017世界机器人大赛-RoboCom国际公开赛</li>
+                </ul>
+                <div class="clearfix clear"></div>
+            </div>
+            <input class="button-print" type="button" value="打印" onclick="window.print()">
+            <div class="all_info clearfix clear">
+                <div class="active team_info div_tab">
+                    <div class="leader" id="team">
+                        <span class="leader_title">队伍信息</span>
+                        <div class="cut"></div>
+                        <span class="name">队伍编号 :</span>
+                        <span id="preview_team_no" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">队伍名称 :</span>
+                        <span id="preview_team_name" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">赛事项目 :</span>
+                        <span id="preview_school_name" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">赛事名称 :</span>
+                        <span id="preview_school_address" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">组别 :</span>
+                        <span id="preview_school_address" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">队伍备注 :</span>
+                        <span id="preview_competition_name" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">联系人姓名 :</span>
+                        <span id="preview_contact_name" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">联系人电话 :</span>
+                        <span id="preview_contact_mobile" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">联系人邮箱 :</span>
+                        <span id="preview_contact_email" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">联系人备注 :</span>
+                        <span id="preview_contact_remark" class="name_input"></span>
+                        <div class="clearfix clear"></div>
+                    </div>
+                    <div class="leader" id="leader">
+                        <div class="leader_list">
+                            
+
+                            <div class="leader_info clearfix">
+                                <div class="cut">
+                                    <img id="preview_leader_pic" src="" >
+                                </div>
+                                <span class="name">姓名 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">性别 :</span>
+                                <span class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">年龄 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">身高 :</span>
+                                <span class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">单位/学校名称 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">证件类型 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">证件号码 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">居住省市 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">手机号码 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">邮箱 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">备注 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="all_number">
+                        <span class="leader_title">队员信息</span>
+                        <div class="team_number clearfix" id="number">
+
+
+                            <div class="member_info">
+                                <div class="cut">
+                                    <img id="preview_leader_pic" src="" >
+                                </div>
+                                <span class="name">姓名 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">性别 :</span>
+                                <span class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">年龄 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">身高 :</span>
+                                <span class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">单位/学校名称 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">证件类型 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">证件号码 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">居住省市 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">手机号码 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name">邮箱 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                                <span class="name" style="margin-bottom: 20px;">备注 :</span>
+                                <span  class="name_input"></span>
+                                <div class="clearfix clear"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="pays clearfix" id="pays">
+                        <span class="leader_title">开票信息</span>
+                        <div class="cut"></div>
+                        <span class="name">开票类型 :</span>
+                        <span id="preview_pinvoice_type" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">发票抬头 :</span>
+                        <span id="preview_invoice_title" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">统一社会信用代码 :</span>
+                        <span id="preview_invoice_code" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">开票金额 :</span>
+                        <span id="preview_invoice_money" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">收件地址 :</span>
+                        <span id="preview_invoice_mail_address" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">收件人姓名 :</span>
+                        <span id="preview_binvoice_mail_recipients" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">收件人电话 :</span>
+                        <span id="preview_invoice_mail_mobile" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">收件人邮箱 :</span>
+                        <span id="preview_invoice_mail_email" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                        <span class="name">收件人备注 :</span>
+                        <span id="preview_invoice_remark" class="name_input" ></span>
+                        <div class="clearfix clear"></div>
+                    </div>
+
+                    <div class="clearfix clear">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="bot">
