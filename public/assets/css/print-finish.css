@@ -81,7 +81,7 @@ ul, ol, dl {
 }
 
 body {
-  min-width: 1200mm;
+  min-width: 1200px;
   background: #fff;
   position: relative;
 }
@@ -107,6 +107,7 @@ body .mid {
   margin: 0 auto;
   margin-top: 30px;
   min-height: 192px;
+  transform: translateX(-40px);
 }
 body .mid .successAlert {
   width: 500px;
@@ -348,7 +349,7 @@ body .button-print {
   cursor: pointer;
   color: #fff;
   background: #587BEF;
-  display: block;
+  display: none;
   float: right;
   margin-bottom: 30px;
 }

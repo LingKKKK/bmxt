@@ -235,6 +235,9 @@ class CompetitionService
         $eventItems = $eventItems->reverse();
         $teamData = $teamData->toArray();
         $teamData['eventItems'] = $eventItems->toArray();
+        $teamData['competition_1'] = $eventItems[0]['name'];
+        $teamData['competition_2'] = $eventItems[1]['name'];
+        $teamData['competition_3'] = $eventItems[2]['name'];
         $eventItemsKeys = $eventItems->pluck('id');
         $teamData['eventItemsKeys'] = $eventItemsKeys;
 
