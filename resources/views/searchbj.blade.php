@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>RoboCom北京挑战赛-报名确认</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/searchbj.css')}}">
 </head>
 <body>
     <div class="header">
         <div class="inner">
-            <img src="{{ asset('assets/img/logo1.png')}}" alt="">
+            <img src="{{ asset('assets/img/logo1-beijing.png')}}" alt="">
             <div class="logout">
                 <span></span>
             </div>
@@ -16,12 +16,10 @@
     <div class="content">
         <div class="leader-info-tips">
             @if(count($errors) > 0)
-                @foreach($errors->all() as $error)
-                <span>{{$error}}</span>
-                @endforeach
+                <span>{{$errors->first() }}</span>
             @endif
         </div>
-        <form id="form" action="/searchbj"  method="POST" novalidate>
+        <form id="form" action="/search"  method="POST" novalidate>
             <div class="inner">
                 <span class="tips">tips: 请输入队伍编号、领队手机号</span>
                 <div class="input-field">
@@ -30,7 +28,7 @@
                 </div>
                 <div class="input-field">
                     <span class="input-label">手机号  :</span>
-                    <input data-type="mobile" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
+                    <input data-type="mobile" class="input-field-text"  id="contact_mobile" type="text" name="contact_mobile" value="{{old('contact_mobile')}}">
                 </div>
                 <!-- <span class="tips-false">您输入的手机或验证码有误,请重新输入~</span> -->
                 <div id="code" class="clearfix">
@@ -75,11 +73,6 @@
             }
         }
     })(jQuery);
-    //修改
-    function refresh_captcha($el) {
-        var timestamp = Date.parse(new Date());
-        $($el).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
-    }
 
     function countdown() {
         var t = 60;
@@ -120,7 +113,7 @@
         $('.identifying .yes').click(function() {
             // console.log(1)
             var captchacode = $('#v_code').val();
-            var mobile = $('#leader_mobile').val();
+            var mobile = $('#contact_mobile').val();
             var ID = $('#leader_id').val();
             var type = 'mobile';
             //console.log(captchacode,mobile,type);
@@ -134,7 +127,6 @@
                 function(res){
                     if (res.status == 0) {
                         // console.log('验证码填写成功并确定')
-                        refresh_captcha();
                         $('.identifying').removeClass('active');
                         // $('.submit-search').removeClass('active');
                     } else {
@@ -149,9 +141,9 @@
     // 发送手机验证码
     $('#tel').click(function() {
         var partten = /^1\d{10}$/;
-        if(partten.test($('#leader_mobile').val())){
+        if(partten.test($('#contact_mobile').val())){
            $('.identifying').addClass('active');
-           $('#tipes i').html($('#leader_mobile').val());
+           $('#tipes i').html($('#contact_mobile').val());
            countdown();
         }else {
            alert('您输入的手机格式错误');

@@ -18,11 +18,11 @@
 
 Route::get('/success', 'SignupController@success');
 Route::get('/excel', 'SignupController@doExportExcel');
-Route::get('/admin/export', 'SignupController@export');
-Route::post('/admin/export', 'SignupController@doExportExcel');
+Route::get('/admin/export', 'MatchbjController@export');
+Route::post('/admin/export', 'MatchbjController@doExportExcel');
 // 报名系统查询
-Route::get('/search', 'SignupController@search');
-Route::post('/search', 'SignupController@doSearch');
+// Route::get('/search', 'SignupController@search');
+// Route::post('/search', 'SignupController@doSearch');
 // 行程系统
 Route::get('/scheduling', 'SignupController@scheduling');
 Route::post('/scheduling', 'SignupController@doScheduling');
@@ -35,11 +35,12 @@ Route::post('/plan/export', 'SignupController@planExportExcel');
 
 
 //查询 提交查询信息进行查询
-Route::get('/searchbj', 'MatchbjController@search');
-Route::post('/searchbj', 'MatchbjController@doSearch');
+Route::get('/search', 'MatchbjController@search');
+Route::post('/search', 'MatchbjController@doSearch');
 // 填写信息/修改信息
 Route::get('/', 'MatchbjController@signup');
 Route::post('/signup', 'MatchbjController@doSignup');
+Route::post('/signupedit', 'MatchbjController@doUpdate');
 // 修改成功 弹出提示页面
 Route::get('/finish', 'MatchbjController@finish');
 

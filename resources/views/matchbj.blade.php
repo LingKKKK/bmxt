@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="instructions clearfix active">
+        <div class="instructions clearfix {{$is_update ? '' : 'active'}}">
             <h1 class="instructions-h">2017年世界机器人大赛—RoboCom国际公开赛报名须知</h1>
             <span class="instructions-span"> 1. 报名时间截止日期：2017年8月15日 </span>
             <span class="instructions-span"> 2. 缴费截止日期： 2017年8月18日</span>
@@ -81,19 +81,13 @@
             <span class="instructions-span clearfix"><i>汇款账户</i>发票抬头账户的汇款号</span>
             <span class="instructions-span clearfix"><i>验证码</i>填写发送到手机的6位数验证码</span>
             <span class="instructions-span clearfix"><i>备注</i>填写需要补充的信息</span>
-
-
-
-
-
-
             <div class="clear"></div>
             <a id="btn-read" class="disabled" type="button">我同意</a>
             <span class="span-read">阅读,并同意</span>
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
 
-        <div class="content">
+        <div class="content {{$is_update ? 'active' : ''}}">
             <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" onkeydown="if(event.keyCode==13)return false;"  style="width: 1004px;">
             <!-- <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate="novalidate" style="width: 1004px;"> -->
                 <div class="tab_menu">
@@ -108,38 +102,42 @@
                 </div>
                 <div class="all_info clearfix">
                     <div class="contact_info div_tab clearfix active">
+                        <input type="hidden" name="id" value="{{$teamData['id']}}">
                         <div class="input-field">
                             <span class="input-label">邀请码  :</span>
-
-                            <input tip-warn="邀请码不能为空" tip-info="输入邀请码" data-type="invitecode" required class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{$signdata['invitecode'] or ''}}">
+                            @if($is_update)
+                            <input tip-warn="邀请码不能为空" tip-info="输入邀请码" data-type="" readonly class="input-field-text disabled" id="invitecode" name="invitecode" type="text" value="{{$teamData['invitecode'] or ''}}">
+                            @else
+                            <input tip-warn="邀请码不能为空" tip-info="输入邀请码" data-type="invitecode" required class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{$teamData['invitecode'] or ''}}">
+                            @endif
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">是否添加联系人  :</span>
-                            <select class="input-field-text" id="add_contact">
+                            <select class="input-field-text" id="add_contact" {{$is_update ? 'disabled' : ''}}>
                                 <option value="yes">添加</option>
-                                <option value="no" selected>不添加</option>
+                                <option value="no" {{$is_update ? '' : 'selected'}} >不添加</option>
                             </select>
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人姓名  :</span>
-                            <input tip-warn="" tip-info="仅支持英文、汉字" data-type="realname" class="input-field-text add_contact disabled" readonly  id="contact_name" name="contact_name" type="text" value="">
+                            <input tip-warn="" tip-info="仅支持英文、汉字" data-type="realname" class="input-field-text add_contact disabled" readonly  id="contact_name" name="contact_name" type="text" value="{{$teamData['contact_name'] or ''}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人手机号码  :</span>
-                            <input tip-info="请填联系人手机号码" data-type="mobile" class="input-field-text add_contact disabled" readonly  id="contact_mobile" type="text" name="contact_mobile" value="">
+                            <input tip-info="请填联系人手机号码" data-type="mobile" class="input-field-text add_contact disabled" readonly  id="contact_mobile" type="text" name="contact_mobile" value="{{$teamData['contact_mobile'] or ''}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人邮箱  :</span>
-                            <input tip-info="请按照正确的邮箱格式填写" data-type="email" class="input-field-text add_contact disabled" readonly id="contact_email" name="contact_email" type="text" value="">
+                            <input tip-info="请按照正确的邮箱格式填写" data-type="email" class="input-field-text add_contact disabled" readonly id="contact_email" name="contact_email" type="text" value="{{$teamData['contact_email'] or ''}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
                             <span class="input-label">联系人备注  :</span>
-                            <input tip-info="请填写备注内容" class="input-field-text add_contact disabled" id="contact_remark" readonly name="contact_remark" type="text" value="">
+                            <input tip-info="请填写备注内容" class="input-field-text add_contact disabled" id="contact_remark" readonly name="contact_remark" type="text" value="{{$teamData['contact_remark'] or ''}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -149,6 +147,7 @@
                     </div>
                     <div class="leader_info div_tab clearfix">
                         <div class="clearfix teachers">
+
                         </div>
                         <button type="button" id="add_teacher">添加领队信息</button>
 
@@ -156,14 +155,23 @@
                         <button type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="ranks_info div_tab">
+                        @if($is_update)
+                        <div class="input-field">
+                            <span class="input-label">队伍编号  :</span>
+                            <input  id="team_no" name="team_no" class="input-field-text disabled" type="text" readonly value="{{$team_no or ''}}">
+                            <div class="tips"></div>
+                        </div>
+                        @else
                         <div class="input-field" style="display: none;">
                             <span class="input-label">队伍编号  :</span>
                             <input  id="team_no" name="team_no" type="hidden" value="{{$team_no or ''}}">
                             <div class="tips"></div>
                         </div>
+                        @endif
+
                         <div class="input-field">
                             <span class="input-label">队伍名称  :</span>
-                            <input data-type="schoolname|teamname" required tip-warn="" tip-info="请输入您队伍的名称" class="input-field-text" id="team_name" name="team_name" type="text" value="">
+                            <input data-type="schoolname|teamname" required tip-warn="" tip-info="请输入您队伍的名称" class="input-field-text" id="team_name" name="team_name" type="text" value="{{$teamData['team_name']}}">
                             <div class="tips"></div>
                         </div>
                         <div class="input-field">
@@ -200,50 +208,50 @@
                             <div class="input-field">
                                 <span class="input-label">开票类型 :</span>
                                 <select name="invoice_type" id="invoice_type" class="input-field-text">
-                                    <option value="发票" selected>发票</option>
-                                    <option value="收据">收据</option>
-                                    <option value="不开票">不开票</option>
+                                    <option value="发票" {{$teamData['invoice_type'] == '发票' ? 'checked' : ''}}>发票</option>
+                                    <option value="收据" {{$teamData['invoice_type'] == '收据' ? 'checked' : ''}}>收据</option>
+                                    <option value="不开票" {{$teamData['invoice_type'] == '不开票' ? 'checked' : ''}}>不开票</option>
                                 </select>
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">发票抬头(*收款机构的抬头) :</span>
-                                <input required data-type='schoolname' tip-info="发票抬头" class="input-field-text invoice-group" id="invoice_title" name="invoice_title" type="text" value="{{$signdata['invoice_header'] or ''}}">
+                                <input required data-type='schoolname' tip-info="发票抬头" class="input-field-text invoice-group" id="invoice_title" name="invoice_title" type="text" value="{{$teamData['invoice_title'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">统一社会信用代码 :</span>
-                                <input required data-type='' tip-info="统一社会信用代码" class="input-field-text invoice-group" id="invoice_code" name="invoice_code" type="text" value="{{$signdata['invoice_header'] or ''}}">
+                                <input required data-type='' tip-info="统一社会信用代码" class="input-field-text invoice-group" id="invoice_code" name="invoice_code" type="text" value="{{$teamData['invoice_code'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">开票金额 :</span>
-                                <input required data-type='float' tip-info="开票金额" class="input-field-text invoice-group" id="invoice_money" name="invoice_money" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='float' tip-info="开票金额" class="input-field-text invoice-group" id="invoice_money" name="invoice_money" type="text" value="{{$teamData['invoice_money'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">收件地址 :</span>
-                                <input required data-type='schoolname' tip-info="收件地址" class="input-field-text invoice-group" id="invoice_mail_address" name="invoice_mail_address" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='schoolname' tip-info="收件地址" class="input-field-text invoice-group" id="invoice_mail_address" name="invoice_mail_address" type="text" value="{{$teamData['invoice_mail_address'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">联系人姓名 :</span>
-                                <input required data-type='realname' class="input-field-text invoice-group" id="invoice_mail_recipients" name="invoice_mail_recipients" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='realname' class="input-field-text invoice-group" id="invoice_mail_recipients" name="invoice_mail_recipients" type="text" value="{{$teamData['invoice_mail_recipients'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">联系电话 :</span>
-                                <input required data-type='mobile' tip-info="联系电话" class="input-field-text invoice-group" id="invoice_mail_mobile" name="invoice_mail_mobile" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='mobile' tip-info="联系电话" class="input-field-text invoice-group" id="invoice_mail_mobile" name="invoice_mail_mobile" type="text" value="{{$teamData['invoice_mail_mobile'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">E-mail :</span>
-                                <input required data-type='email' tip-info="电子邮件" class="input-field-text invoice-group" id="invoice_mail_email" name="invoice_mail_email" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input required data-type='email' tip-info="电子邮件" class="input-field-text invoice-group" id="invoice_mail_email" name="invoice_mail_email" type="text" value="{{$teamData['invoice_mail_email'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
                                 <span class="input-label">备注 :</span>
-                                <input class="input-field-text invoice-group" id="invoice_remark" name="invoice_remark" type="text" value="{{$signdata['total_cost'] or ''}}">
+                                <input class="input-field-text invoice-group" id="invoice_remark" name="invoice_remark" type="text" value="{{$teamData['invoice_remark'] or ''}}">
                                 <div class="tips"></div>
                             </div>
                         </div>
@@ -347,7 +355,8 @@
                         <div id="code" class="clearfix">
                             <span class="input-label">验证码  :</span>
                             <!-- <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
-                            <input name="verificationcode" data-type="required|verificationcode" id="verificationcode" class="code" type="text">
+                            <!-- <input name="verificationcode" data-type="required|verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
+                            <input name="verificationcode" id="verificationcode" class="code" tip-info="请输入您收到的验证码"  type="text">
                             <a id="getverifycode" class="tel">获取手机验证码</a>
 
                             <div class="tips"></div>
@@ -463,6 +472,15 @@
                     return true;
                 }
 
+                if (type == 'file') {
+                    // 如果是修改，默认取photourl属性里的值进行校验
+                    var photourl = $el.attr('photourl');
+                    if (photourl) {
+                        $el.tipValid();
+                        return true;
+                    }
+                }
+
                 var errMsg = type == 'file' ? '照片不能为空！' : '不能为空！'
                 $el.tipWarn(errMsg);
                 return false;
@@ -510,8 +528,11 @@
 
             // 队名检测 :: BUG: 不知道问么
             if (datatype.indexOf('teamname') !== -1 && ! teamNameCheck(val)) {
-                $el.tipWarn('队伍名已被占用！');
-                return false;
+                var old_team_name = "{{$teamData['team_name'] or ''}}";
+                if (val != old_team_name) {
+                    $el.tipWarn('队伍名已被占用！');
+                    return false;
+                }
             }
 
             if (datatype.indexOf('verificationcode') !== -1 && ! verificationcodeCheck(val)) {
@@ -582,18 +603,15 @@
         var addMemberList = (function() {
             var addIndex = 0;
 
-            // var nations = ['汉族','壮族','回族','满族','维吾尔族','苗族','彝族','土家族','藏族','蒙古族','侗族','布依族','瑶族','白族','朝鲜族','哈尼族','黎族',
-            //                 '哈萨克族','傣族','畲族','傈僳族','东乡族','仡佬族','拉祜族','佤族','水族','纳西族','羌族','土族','仫佬族','锡伯族','柯尔克孜族','景颇族',
-            //                 '达斡尔族','撒拉族','布朗族','毛南族','塔吉克族','普米族','阿昌族','怒族','鄂温克族','京族','基诺族','德昂族','保安族','俄罗斯族','裕固族',
-            //                 '乌孜别克族','门巴族','鄂伦春族','独龙族','赫哲族','高山族','珞巴族','塔塔尔族','未识别民族','入籍外国人'];
-
-            return function(type) {
+            return function(type, defaultValue) {
                 type = type || 'member';
+                defaultValue = defaultValue || [];
+
                 var tmpl = $.templates("#tmpl_memberlist");
                 var rawHtml = tmpl.render({
                     'index': addIndex,
                     'type': type,
-                    // 'nations': nations
+                    'defaultValue': defaultValue
                 });
 
                 if (type == 'member') {
@@ -695,14 +713,14 @@
         }
 
         // TABINDEX：2 比赛项目
-        function buildOptions(data) {
+        function buildOptions(data, defaultVal) {
             // console.log('OPTION_DATA', data);
             var arr = [];
             for (key in data){
                 arr.push(data[key]);
             }
             var tmpl = $.templates('#tmpl_competiton_options');
-            return tmpl.render({'options': arr})
+            return tmpl.render({'options': arr, 'defaultVal': defaultVal})
         };
 
         function getOptions(key) {
@@ -737,17 +755,14 @@
             return;
         }
 
-        function fillOptions(level, key) {
+        function fillOptions(level, key, defaultVal) {
             level = level || 1;
             key = key || 0;
+            defaultVal = defaultVal;
+            console.log(defaultVal);
             var options_data = getOptions(key);
-            var options_html = buildOptions(options_data);
-
-            // 更新下拉选项
+            var options_html = buildOptions(options_data, defaultVal);
             $('#competition_' + level).html(options_html);
-            if (level < 3) {
-                $('#competition_' + level).change();
-            }
         }
 
 
@@ -759,6 +774,8 @@
             var localUrl = '';
             $(container).each(function(index){
                 // console.log(this);
+                imgPreviewUrl = '';
+                localUrl = '';
 
                 var data = new Array();
                 $(this).find('.input-field').each(function(){
@@ -771,8 +788,8 @@
                     } else if($el_input.attr('type') == 'radio') {
                         value = $(this).find('input:radio:checked').val();
                     } else if ($el_input.attr('type') == 'file') {
-                        value = $el_input.val();
 
+                        value = $el_input.val();
 
                         if( detectIE() != 'IE8' && detectIE() != 'IE9'){
                             var source_id = $el_input.attr('id');
@@ -786,6 +803,13 @@
                         }
 
                         localUrl = $el_input.val();
+
+                        //  *** 优先预览用户上传的图片， 如果用户没有改变，使用已提交数据里的图片
+                        var photourl = $el_input.attr('photourl');
+                        if (photourl) {
+                            imgPreviewUrl = imgPreviewUrl || photourl;
+                            localUrl = localUrl || photourl;
+                        }
 
                     } else {
                         value = $el_input.val();
@@ -949,16 +973,32 @@
                 validField(this);
             });
 
-            fillOptions();
-            setTimeout(function(){
-                $('#competition_1').change();
-            }, 300);
+            // 初始化
+            @if($is_update)
+            var initKeys = {!! json_encode($teamData['eventItemsKeys']) !!};
+            @else
+            var initKeys = [0, 0, 0];
+            @endif
+            console.log(initKeys);
+            fillOptions(1, 0, initKeys[0]);
+            var k1 = $('#competition_1').find('option:selected').val();
+            fillOptions(2, k1, initKeys[1]);
+            var k2 = $('#competition_2').find('option:selected').val();
+            fillOptions(3, k2, initKeys[2]);
+
+
             $('.select-box').change(function() {
                 var level = $(this).attr('level');
                 var key = $(this).find('option:selected').val();
                 var next_level = parseInt(level) + 1;
                 fillOptions(next_level, key);
+
+                // 更新下拉选项
+                if (next_level < 3) {
+                    $('#competition_' + next_level).change();
+                }
             });
+
 
 
 
@@ -1149,10 +1189,18 @@
             });
 
             tabCenter.go(0);
-            addMemberList('leader');
-            addMemberList('member');
 
+            @if($is_update)
+                var team_members = {!! json_encode($teamData['members']) !!};
+                for(idx in team_members) {
+                    var item = team_members[idx];
+                    addMemberList(item['type'], item);
+                }
 
+            @else
+                addMemberList('leader');
+                addMemberList('member');
+            @endif
 
         });// end of $(function())
 
@@ -1163,15 +1211,17 @@
     <script id="tmpl_memberlist" type="text/x-jsrender">
         <div class="clearfix person_data  @{{:type}}_list" id="member_list_@{{:index}}" data-index="@{{:index}}">
             <div class="delete"><i class="icon kenrobot ken-close"></i></div>
+            <input id="@{{:type}}_@{{:index}}_id" name="@{{:type}}[@{{:index}}][id]" type="hidden" value="@{{: defaultValue['id']}}">
+
             <div class="input-field">
                 <span class="input-label">姓名  :</span>
-                <input data-type="realname" required tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="@{{:type}}_@{{:index}}_name" name="@{{:type}}[@{{:index}}][name]" type="text" value="">
+                <input data-type="realname" required tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="@{{:type}}_@{{:index}}_name" name="@{{:type}}[@{{:index}}][name]" type="text" value="@{{: defaultValue['name']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">性别  :</span>
                 <input id="@{{:type}}_@{{:index}}_sex_man" class="input-radio man @{{:type}}_sex" type="radio" checked name="@{{:type}}[@{{:index}}][sex]" value="男"><span>男</span>
-                <input id="@{{:type}}_@{{:index}}_sex_woman"  class="input-radio woman @{{:type}}_sex" type="radio" name="@{{:type}}[@{{:index}}][sex]" value="女"><span>女</span>
+                <input id="@{{:type}}_@{{:index}}_sex_woman"  class="input-radio woman @{{:type}}_sex" type="radio" @{{if defaultValue['sex'] == '女' }} checked @{{/if}} name="@{{:type}}[@{{:index}}][sex]" value="女"><span>女</span>
                 <p id="@{{:type}}_@{{:index}}_sex"></p>
             </div>
 
@@ -1182,32 +1232,33 @@
             </div> -->
             <div class="input-field">
                 <span class="input-label">年龄  :</span>
-                <input data-type="agenumber" required tip-info="请填写真实的年龄" class="input-field-text"  id="@{{:type}}_@{{:index}}_age" type="text" name="@{{:type}}[@{{:index}}][age]" value="">
+                <input data-type="agenumber" required tip-info="请填写真实的年龄" class="input-field-text"  id="@{{:type}}_@{{:index}}_age" type="text" name="@{{:type}}[@{{:index}}][age]" value="@{{: defaultValue['age']}}">
                 <div class="tips"></div>
             </div>
 
             <div class="input-field">
                 <span class="input-label">身高  :</span>
-                <input data-type="height_cm" required tip-info="请填写真实的身高(cm为单位)" class="input-field-text"  id="@{{:type}}_@{{:index}}_height" type="text" name="@{{:type}}[@{{:index}}][height]" value="">
+                <input data-type="height_cm" required tip-info="请填写真实的身高(cm为单位)" class="input-field-text"  id="@{{:type}}_@{{:index}}_height" type="text" name="@{{:type}}[@{{:index}}][height]" value="@{{: defaultValue['height'] }}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">单位／学校名称 :</span>
-                <input data-type="schoolname" required tip-info="请填写工作单位" class="input-field-text"  id="@{{:type}}_@{{:index}}_work_unit" type="text" name="@{{:type}}[@{{:index}}][work_unit]" value="">
+                <input data-type="schoolname" required tip-info="请填写工作单位" class="input-field-text"  id="@{{:type}}_@{{:index}}_work_unit" type="text" name="@{{:type}}[@{{:index}}][work_unit]" value="@{{: defaultValue['work_unit']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">证件类型  :</span>
                 <select name="@{{:type}}[@{{:index}}][idcard_type]" class="input-field-text id_type">
-                    <option value="身份证">身份证</option>
-                    <option value="内地通行证">内地通行证</option>
-                    <option value="台胞证">台胞证</option>
-                    <option value="护照">护照</option>
+
+                    <option value="身份证" @{{if defaultValue['idcard_type'] =='身份证}} selected @{{/if}}>身份证</option>
+                    <option value="内地通行证"  @{{if defaultValue['idcard_type'] =='内地通行证'}} selected @{{/if}}>内地通行证</option>
+                    <option value="台胞证"  @{{if defaultValue['idcard_type'] =='台胞证'}} selected @{{/if}}>台胞证</option>
+                    <option value="护照"  @{{if defaultValue['idcard_type'] =='护照'}} selected @{{/if}} >护照</option>
                 </select>
             </div>
             <div class="input-field">
                 <span class="input-label">证件号码  :</span>
-                <input tip-info="请填写证件号码" required class="input-field-text id_number" data-type="ID" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][idcard_no]" value="">
+                <input tip-info="请填写证件号码" required class="input-field-text id_number" data-type="ID" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][idcard_no]" value="@{{: defaultValue['idcard_no'] }}">
                 <div class="tips"></div>
             </div>
     <!--         <div class="input-field">
@@ -1217,28 +1268,32 @@
             </div> -->
             <div class="input-field">
                 <span class="input-label">居住省市  :</span>
-                <input data-type="schoolname" required tip-info="请填写居住省市" class="input-field-text"  id="@{{:type}}_@{{:index}}_home_address" type="text" name="@{{:type}}[@{{:index}}][home_address]" value="">
+                <input data-type="schoolname" required tip-info="请填写居住省市" class="input-field-text"  id="@{{:type}}_@{{:index}}_home_address" type="text" name="@{{:type}}[@{{:index}}][home_address]" value="@{{: defaultValue['home_address']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">手机号码  :</span>
-                <input required data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="@{{:type}}_@{{:index}}_mobile" name="@{{:type}}[@{{:index}}][mobile]" type="text" value="">
+                <input required data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="@{{:type}}_@{{:index}}_mobile" name="@{{:type}}[@{{:index}}][mobile]" type="text" value="@{{: defaultValue['mobile']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">邮箱  :</span>
-                <input required data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="@{{:type}}_@{{:index}}_mail" name="@{{:type}}[@{{:index}}][email]" type="text" value="">
+                <input required data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="@{{:type}}_@{{:index}}_mail" name="@{{:type}}[@{{:index}}][email]" type="text" value="@{{: defaultValue['email']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">备注  :</span>
-                <input tip-info="请填写备注信息" class="input-field-text mail" id="@{{:type}}_@{{:index}}_remarks" name="@{{:type}}[@{{:index}}][remark]" type="text" value="">
+                <input tip-info="请填写备注信息" class="input-field-text mail" id="@{{:type}}_@{{:index}}_remarks" name="@{{:type}}[@{{:index}}][remark]" type="text" value="@{{: defaultValue['remark']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">照片  :</span>
                 <div class="uploadBtn">上传照片 </div>
-                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" id="@{{:type}}_@{{:index}}_pic" type="file" class="uploadField @{{:type}}_pic" >
+                @{{if defaultValue['photo_url']}}
+                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" name="@{{:type}}[@{{:index}}][pic]" photourl = "@{{: defaultValue['photo_url'] }}" id="@{{:type}}_@{{:index}}_pic" type="file" class="uploadField @{{:type}}_pic" >
+                @{{else}}
+                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" photourl = "" id="@{{:type}}_@{{:index}}_pic" type="file" class="uploadField @{{:type}}_pic" >
+                @{{/if}}
                 <div class="tips"></div>
             </div>
         </div>
@@ -1258,9 +1313,16 @@
     </script>
 
     <script id="tmpl_competiton_options" type="text/x-jsrender">
-        @{{for options}}
-            <option value="@{{: id}}"> @{{: name}}</option>}
-        @{{/for}}
+        @{{if options.length ~defaultVal = defaultVal}}
+            @{{for options}}
+                @{{if id == ~defaultVal}}
+                <option value="@{{: id}}" selected> @{{: name}}</option>
+                @{{else}}
+                <option value="@{{: id}}"> @{{: name}}</option>
+                @{{/if}}
+
+            @{{/for}}
+        @{{/if}}
     </script>
 </body>
 </html>

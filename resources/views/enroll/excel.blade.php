@@ -7,7 +7,7 @@
 <body>
     <div class="header">
         <div class="inner">
-            <img src="{{ asset('assets/img/logo1.png')}}" alt="">
+            <img src="{{ asset('assets/img/logo1-beijing.png')}}" alt="">
             <div class="logout">
                 <span></span>
             </div>

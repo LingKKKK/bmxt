@@ -12,4 +12,9 @@ class CompetitionEvent extends Model
 
     public $timestamps = false;
 
+    public function parent()
+    {
+        return $this->belongsTo(CompetitionEvent::class, 'parent_id', 'id');
+    }
+
 }

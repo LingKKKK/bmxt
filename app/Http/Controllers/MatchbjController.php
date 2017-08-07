@@ -12,6 +12,7 @@ use App\Enroll\InviteManager;
 use Validator;
 use Storage;
 use Session;
+use Excel;
 
 
 class MatchbjController extends Controller
@@ -21,7 +22,8 @@ class MatchbjController extends Controller
 
     public function test(\App\Enroll\CompetitionService $service)
     {
-        $service->initEvents();
+        // 初始化报名数据
+        // $service->initEvents();
     }
 
     public function search()
@@ -29,70 +31,87 @@ class MatchbjController extends Controller
         return view('searchbj');
     }
 
-    public function doSearch(Request $request)
+    public function doSearch(Request $request, \App\Enroll\CompetitionService $service)
     {
         $validator = Validator::make($request->all(),
             [
-                'leader_mobile' => 'required',
                 'team_no'   => 'required',
+                'contact_mobile' => 'required',
                 'verificationcode' => 'required|verificationcode',
             ],
             [
-                'leader_mobile.required' => '手机号不能为空',
-                'leader_id.required' => '身份证或者领队姓名名填写至少一个',
-                'leader_name.required_without' => '身份证或者领队姓名名至少填写一个',
                 'team_no.required'  => '队伍编号不能为空',
+                'contact_mobile.required' => '联系人手机号不能为空',
                 'verificationcode.required' => '验证码不能为空',
                 'verificationcode.verificationcode' => '验证码不正确',
             ]);
-        // 处理事件的对象 处理事件的方式 处理事件错误时返回的结果
 
         if ($validator->fails()) {
-           // return redirect()->back()->withErrors($validator->errors())->withInput();
+           return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
         $team_no = $request->input('team_no', '');
-        $signdata = SignupData::where('team_no', $team_no)->first();
-        if ($signdata === null) {
+        $contact_mobile = $request->input('contact_mobile', '');
+        $verificationcode = $request->input('verificationcode', '');
+
+        $teamData = $service->searchTeam($team_no, $contact_mobile);
+
+        if ($teamData === null) {
             return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
         }
 
-        if ($signdata['leader_mobile'] != $request->input('leader_mobile')) {
-            return redirect()->back()->withErrors(collect(['notfound' => '请填写正确的领队手机号']))->withInput();
-        }
-
-        // $request->session()->flash('signdata', $signdata->toArray());
-
-        // $request->session()->put('signdata', $signdata->toArray());
-        return redirect('success');
+        return redirect('/')->with('teamData', $teamData);
     }
+
 
     public function signup(Request $request, \App\Enroll\CompetitionService $service)
     {
         $competitionList = $service->getCompetitionList();
         $competitonsJson = json_encode($competitionList, JSON_UNESCAPED_UNICODE);
+
+        // 如果是修改
+        $teamData = session('teamData');
+
         $team_no = $this->getTeamNo();
 
+        // 如果是修改
+        if ($teamData != null) {
+            $team_no = $teamData['team_no'];
+        }
 
-        return view('matchbj', compact('competitonsJson', 'team_no'));
+        $is_update = !empty($teamData);
+
+        return view('matchbj', compact('competitonsJson', 'team_no', 'teamData', 'is_update'));
     }
 
     public function doSignup(Request $request)
     {
+
+        $is_update = $request->has('id') && !empty($request->input('id'));
+
         $validator = Validator::make($request->all(),
             [
-                'invitecode' => 'required|invitecode'
+                'invitecode' =>  $is_update ? 'required' : 'required|invitecode',
+                'team_no'    => 'required',
+                'verificationcode' => 'required|verificationcode',
             ],
             [
                 'invitecode.required' => '邀请码不能为空',
                 'invitecode.invitecode' => '邀请码不正确',
+                'team_no.required'  => '队伍编号不能不能为空',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
             ]
         );
 
+
         if ($validator->fails()) {
-            // return redirect()->back()
-            // ->withInput();
+            // dd($request->all(), $validator->errors());
+            // dd($validator->errors());
+            return redirect()->back()->withInput();
         }
+
+
 
         $team_fields = [
             'id', 'invitecode',
@@ -104,27 +123,16 @@ class MatchbjController extends Controller
 
         $team_data = $request->only($team_fields);
 
-        if (!$team_data['team_no']) {
-            $team_data['team_no'] = $this->getTeamNo();
-        }
-
         $this->team_no = $team_data['team_no'];
 
-        $competitionTeamModel = null;
-        if (isset($team_data['id']) && !empty($team_data['id'])) {
+        $competitionTeamModel = new CompetitionTeam();
+        if ($is_update) {
             $competitionTeamModel = CompetitionTeam::find($team_data['id']);
-        } else if (isset($team_data['team_no']) && !empty($team_data['team_no']) && $competitionTeamModel == null) {
-            $competitionTeamModel = CompetitionTeam::where('team_no', $team_data['team_no'])->first();
         }
-
-        if ($competitionTeamModel == null) {
-            $competitionTeamModel = new CompetitionTeam();
-        }
-        // dd($competitionTeamModel);
 
         $competitionTeamModel->fill(array_except($team_data, ['id']))->save();
 
-
+        // 处理队员
         $leaders = (array)$request->all()['leader'];
         $members = (array)$request->all()['member'];
 
@@ -146,15 +154,30 @@ class MatchbjController extends Controller
             'vocation', 'work_unit', 'register_address', 'home_address', 'remark'
         ];
 
-        foreach (array_merge($leaders, $members) as $k => $val) {
-            $memberModel = new CompetitionTeamMember();
+
+        $allmembers = array_merge($leaders, $members);
+
+
+        // 删除成员
+        $ids = collect($allmembers)->pluck('id');
+        $old_ids = $competitionTeamModel->members->pluck('id');
+        $deleteIds = array_diff($old_ids->toArray(), $ids->toArray());
+        // dd($ids, $old_ids, $deleteIds);
+        CompetitionTeamMember::destroy($deleteIds);
+
+        foreach ($allmembers as $k => $val) {
             if (isset($val['id']) && !empty($val)) {
-                $memberModel = CompetitionTeamMember::find('id');
+                $memberModel = CompetitionTeamMember::find($val['id']);
             }
 
+            if ($memberModel == null) {
+                $memberModel = new CompetitionTeamMember();
+            }
             $photo_url = $this->saveFile($val['pic']);
             if ($photo_url) {
                 $val['photo_url'] = $this->saveFile($val['pic']);
+            } else {
+                unset($val['photo_url']); // 如果是修改且未上传照片
             }
 
             $val = array_only($val, $member_fields);
@@ -162,8 +185,15 @@ class MatchbjController extends Controller
         }
 
         // 无效邀请码 异常
-        InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
+        if (!$is_update) {
+            InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
+        }
         return redirect('finish');
+    }
+
+    public function doUpdate(Request $request)
+    {
+        # code...
     }
 
     private function getTeamNo()
@@ -214,11 +244,55 @@ class MatchbjController extends Controller
             return api_response(1, '队伍名重复');
         }
         return api_response(0, '合法的队名');
-
     }
-
 
     public function finish(){
         return view('finish');
     }
+
+
+
+
+    public function export(\App\Enroll\CompetitionService $service)
+    {
+        return view('enroll.excel');
+    }
+
+    public function doExportExcel(Request $request, \App\Enroll\CompetitionService $service)
+    {
+        $validator = Validator::make($request->all(),[
+                'admincode' => 'required',
+                'mobile'    => 'required',
+                'verificationcode' => 'required|verificationcode',
+
+            ],[
+                'mobile.required' => '手机号不能为空',
+                'admincode.required'  => '查询码不能为空',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
+            ]);
+
+        if ($validator->fails()) {
+           return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        if ($request->input('admincode') != 'a3b5c4') {
+           return redirect()->back()->withErrors(['查询码不正确'])->withInput();
+        }
+
+        $adminArr = [
+            '18511431517',
+            '15903035872',
+            '13476000614', //江城
+        ];
+
+        if (! in_array($request->input('mobile'), $adminArr)) {
+            return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
+        }
+
+        $filename = 'RoboCom北京报名-' . date('Y_m_d_H_i_s');
+        return $service->makeExcel($filename);
+    }
+
+
 }

@@ -19,4 +19,12 @@ class CompetitionTeamMember extends Model
     // 其他资料
     'vocation', 'work_unit', 'register_address', 'home_address', 'remark', 'profiles'
     ];
+
+    protected $hidden = ['updated_at', 'created_at', 'deleted_at'];
+
+
+    public function team()
+    {
+        return $this->belongsTo(CompetitionTeam::class, 'team_id', 'id');
+    }
 }
