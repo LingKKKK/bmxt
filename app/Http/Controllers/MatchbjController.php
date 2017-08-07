@@ -47,7 +47,7 @@ class MatchbjController extends Controller
             ]);
 
         if ($validator->fails()) {
-           return redirect()->back()->withErrors($validator->errors())->withInput();
+           // return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
         $team_no = $request->input('team_no', '');
@@ -188,7 +188,7 @@ class MatchbjController extends Controller
         if (!$is_update) {
             InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
         }
-        return redirect('finish');
+        return redirect('finish')->with('team_no',$competitionTeamModel->team_no)->with('contact_mobile', $competitionTeamModel->contact_mobile);
     }
 
     public function doUpdate(Request $request)
@@ -246,12 +246,15 @@ class MatchbjController extends Controller
         return api_response(0, '合法的队名');
     }
 
-    public function finish(){
-        return view('finish');
+    public function finish(\App\Enroll\CompetitionService $service){
+        $team_no = session('team_no');
+        $contact_mobile = session('contact_mobile');
+
+        $teamData = $service->searchTeam($team_no, $contact_mobile);
+
+        // dd($teamData);
+        return view('finish', compact('teamData'));
     }
-
-
-
 
     public function export(\App\Enroll\CompetitionService $service)
     {
