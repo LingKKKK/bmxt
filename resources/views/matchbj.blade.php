@@ -1227,7 +1227,7 @@
             </div>
             <div class="input-field">
                 <span class="input-label">邮箱  :</span>
-                <input required data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="@{{:type}}_@{{:index}}_mail" name="@{{:type}}[@{{:index}}][mobile]" type="text" value="">
+                <input required data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="@{{:type}}_@{{:index}}_mail" name="@{{:type}}[@{{:index}}][email]" type="text" value="">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
