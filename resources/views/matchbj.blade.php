@@ -355,8 +355,8 @@
                         <div id="code" class="clearfix">
                             <span class="input-label">验证码  :</span>
                             <!-- <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
-                            <!-- <input name="verificationcode" data-type="required|verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
-                            <input name="verificationcode" id="verificationcode" class="code" tip-info="请输入您收到的验证码"  type="text">
+                            <input name="verificationcode" data-type="required|verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text">
+                            <!-- <input name="verificationcode" id="verificationcode" class="code" tip-info="请输入您收到的验证码"  type="text"> -->
                             <a id="getverifycode" class="tel">获取手机验证码</a>
 
                             <div class="tips"></div>
