@@ -14,7 +14,7 @@ class AddInvitecodeToSignupdata extends Migration
     {
         Schema::table('signup_data', function (Blueprint $table) {
             $table->string('invitecode', 50)->comments('邀请码');
-            $table->string('team_no', 50)->comments('队伍编号');
+            // $table->string('team_no', 50)->comments('队伍编号');
             $table->string('out_trade_no',  50)->comments('支付单号');
         });
     }
@@ -28,7 +28,7 @@ class AddInvitecodeToSignupdata extends Migration
     {
         Schema::table('signup_data', function (Blueprint $table) {
             $table->dropColumn('invitecode');
-            $table->dropColumn('team_no');
+            // $table->dropColumn('team_no');
             $table->dropColumn('out_trade_no');
         });
     }
