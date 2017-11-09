@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>Robocom国际公开赛青少年人工智能编程挑战赛</title>
+    <title>RoboCom国际公开赛－－青少年人工智能编成挑战赛</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/matchbj.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
     <link href="https://cdn.bootcss.com/datepicker/0.5.3/datepicker.css" rel="stylesheet">
@@ -11,15 +11,14 @@
     <div class="main">
         <div class="header">
             <div class="inner">
-                <img src="{{ asset('assets/img/logo1-beijing.png')}}" alt="">
                 <div class="logout">
-                    <span></span>
+                    <span style="color: #fff;display: block;text-align: center;line-height: 180px;font-size: 32px;letter-spacing: 1px;font-family:MicrosoftYaHei;">RoboCom国际公开赛——青少年人工智能编成挑战赛</span>
                 </div>
             </div>
         </div>
-        <div class="instructions clearfix {{$is_update ? '' : 'active'}}" style="display: none;">
+        <div class="instructions clearfix {{$is_update ? '' : 'active'}}">
 
-            <h1 class="instructions-h">Robocom国际公开赛青少年人工智能编程挑战赛</h1>
+            <h1 class="instructions-h">RoboCom国际公开赛——青少年人工智能编成挑战赛</h1>
             <span class="instructions-span"> 1. 报名时间截止日期：2017年x月x日 </span>
             <span class="instructions-span"> 2. 缴费截止日期： 2017年x月x日</span>
             <span class="instructions-span"> 3. 正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
@@ -88,7 +87,7 @@
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
 
-        <div class="content {{$is_update ? 'active' : ''}}" style="display: block;">
+        <div class="content {{$is_update ? 'active' : ''}}">
             <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" onkeydown="if(event.keyCode==13)return false;"  style="width: 1004px;">
             <!-- <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate="novalidate" style="width: 1004px;"> -->
                 <div class="tab_menu">
@@ -269,7 +268,6 @@
                         <span class="title-span">*队员最多8人</span>
                         <div class="clearfix students">
                         </div>
-
                         <button type="button" class="btn_new" id="add_student">添加新成员</button>
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
@@ -334,7 +332,6 @@
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
                     </div>
-
                     <div class="preview_info div_tab">
                         <div class="leader" id="number-leader">
                             <span class="leader_title">带队老师信息(如果无数据,第一个领队教师为联系人)</span>
@@ -856,7 +853,7 @@
                     var $el_input = $(this).find('input, select').eq(0);
                     var value = '';
                     if ($el_input.is('select')) {
-                        console.log('selec');
+                        // console.log('selec');
                         value = $el_input.find('option:selected').val();
                     } else if($el_input.attr('type') == 'radio') {
                         value = $(this).find('input:radio:checked').val();
@@ -868,9 +865,9 @@
                             var source_id = $el_input.attr('id');
                             var f = document.getElementById(source_id).files[0];
                             if (f) {
-                                console.log(f);
+                                // console.log(f);
                                 imgPreviewUrl = window.URL.createObjectURL(f);
-                                console.log(imgPreviewUrl);
+                                // console.log(imgPreviewUrl);
                             }
 
                         }
@@ -1133,7 +1130,7 @@
             $('#getverifycode').click(function() {
                 var mobile = getContactMobile();
                 var partten = /^1\d{10}$/;
-                console.log(mobile);
+                // console.log(mobile);
                 if(! partten.test(mobile)) {
                     $('#verificationcode').tipWarn('请输入正确的联系人手机号！');
                     return;
@@ -1177,38 +1174,30 @@
 
             // 6.3 发送手机验证码
             $("#getQrcode").click(function() {
-                // var stop = false;
-                // $('.div_tab').each(function(index){
-                //     if (stop) {
-                //         return;
-                //     }
+                var stop = false;
+                $('.div_tab').each(function(index){
+                    if (stop) {
+                        return;
+                    }
 
-                //     console.log(index, this);
-                //     $(this).find('input').each(function(){
-                //         if (stop) {
-                //             return;
-                //         }
-                //         var ret = validField(this);
-                //         if (!ret) {
-                //             console.log('start_' +index, this);
-                //             stop = true;
-                //             tabCenter.go(index);
-                //             return;
-                //         }
-                //     });
-                // });
-                // if (stop) {
-                //     return false;
-                // }
+                    console.log(index, this);
+                    $(this).find('input').each(function(){
+                        if (stop) {
+                            return;
+                        }
+                        var ret = validField(this);
+                        if (!ret) {
+                            console.log('start_' +index, this);
+                            stop = true;
+                            tabCenter.go(index);
+                            return;
+                        }
+                    });
+                });
+                if (stop) {
+                    return false;
+                }
 
-                // $('#submit').trigger('click');
-                // $('#submit').trigger('click');
-                // $('#submit').trigger('click');
-                // $('#submit').trigger('click');
-                // $('#submit').trigger('click');
-                // $('#submit').trigger('click');
-                // $('#submit').trigger('click');
-                // return false;
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
@@ -1216,6 +1205,7 @@
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
+                return false;
             });
 
             // 6.4 点击取消输入验证码
@@ -1241,7 +1231,7 @@
 
             // 通用，翻页
             $('.btn_next').click(function(){
-                console.log('翻页');
+                // console.log('翻页');
                 tabCenter.next(function(index){
                     var curTab = tabCenter.currentTab();
                     var prevent = false;
@@ -1274,7 +1264,10 @@
                 var team_members = {!! json_encode($teamData['members']) !!};
                 for(idx in team_members) {
                     var item = team_members[idx];
-                    addMemberList(item['type'], item);
+                    if (item['type'] == 'leader') {
+                    } else {
+                        addMemberList(item['type'], item);
+                    }
                 }
 
             @else

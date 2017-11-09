@@ -20,7 +20,7 @@ class MatchbjController extends Controller
     //队伍码
     protected $team_no = '';
 
-    public function test(\App\Enroll\CompetitionService $service)
+    public function initEvents(\App\Enroll\CompetitionService $service)
     {
         // 初始化报名数据
         // $service->initEvents();
@@ -88,7 +88,6 @@ class MatchbjController extends Controller
     {
 
         $is_update = $request->has('id') && !empty($request->input('id'));
-
         $validator = Validator::make($request->all(),
             [
                 'invitecode' =>  $is_update ? 'required' : 'required|invitecode',
@@ -110,8 +109,6 @@ class MatchbjController extends Controller
             // dd($validator->errors());
             return redirect()->back()->withInput();
         }
-
-
 
         $team_fields = [
             'id', 'invitecode',
@@ -158,7 +155,6 @@ class MatchbjController extends Controller
 
 
         $allmembers = array_merge($leaders, $members);
-
 
         // 删除成员
         $ids = collect($allmembers)->pluck('id');
@@ -249,6 +245,7 @@ class MatchbjController extends Controller
     }
 
     public function finish(\App\Enroll\CompetitionService $service){
+        // dd('12312');
         $team_no = session('team_no');
         $contact_mobile = session('contact_mobile');
 

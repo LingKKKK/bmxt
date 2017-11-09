@@ -207,7 +207,11 @@
         </div>
     </div>
 <script type="text/javascript">
-
+    $(function() {
+        if ($('#preview_pinvoice_type').text() == '不开票') {
+            $('#pays').hide();
+        }
+    })
 </script>
 </body>
 </html>

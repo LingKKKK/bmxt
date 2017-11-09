@@ -17,9 +17,9 @@
 
 
 // Route::get('/success', 'SignupController@success');
-// Route::get('/excel', 'SignupController@doExportExcel');
-// Route::get('/admin/export', 'MatchbjController@export');
-// Route::post('/admin/export', 'MatchbjController@doExportExcel');
+Route::get('/excel', 'SignupController@doExportExcel');
+Route::get('/admin/export', 'MatchbjController@export');
+Route::post('/admin/export', 'MatchbjController@doExportExcel');
 // // 报名系统查询
 // // Route::get('/search', 'SignupController@search');
 // // Route::post('/search', 'SignupController@doSearch');
@@ -69,5 +69,5 @@ Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode')
 Route::post('/uploadimg', 'UtilsController@uploadImg');
 
 
-Route::get('/tttt', 'MatchbjController@test');
+Route::get('/initevents', 'MatchbjController@initEvents');
 Route::get('/t', 'MatchbjController@showList');
