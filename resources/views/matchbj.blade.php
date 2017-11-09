@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>RoboCom北京挑战赛</title>
+    <title>Robocom国际公开赛青少年人工智能编程挑战赛</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/matchbj.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
     <link href="https://cdn.bootcss.com/datepicker/0.5.3/datepicker.css" rel="stylesheet">
@@ -17,10 +17,11 @@
                 </div>
             </div>
         </div>
-        <div class="instructions clearfix {{$is_update ? '' : 'active'}}">
-            <h1 class="instructions-h">2017年世界机器人大赛—RoboCom国际公开赛报名须知</h1>
-            <span class="instructions-span"> 1. 报名时间截止日期：2017年8月15日 </span>
-            <span class="instructions-span"> 2. 缴费截止日期： 2017年8月18日</span>
+        <div class="instructions clearfix {{$is_update ? '' : 'active'}}" style="display: none;">
+
+            <h1 class="instructions-h">Robocom国际公开赛青少年人工智能编程挑战赛</h1>
+            <span class="instructions-span"> 1. 报名时间截止日期：2017年x月x日 </span>
+            <span class="instructions-span"> 2. 缴费截止日期： 2017年x月x日</span>
             <span class="instructions-span"> 3. 正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
             <span class="instructions-span" style="color:red;padding-left: 20px;"> 重要提示：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于2017年世界机器人大赛—RoboCom国际公开赛，报名人员须对其提交的错误信息造成的后果负责。</span>
             <span class="instructions-span">4. 联系“通知中”各个项目的报名负责人，索取相应的项目邀请码。</span>
@@ -35,7 +36,7 @@
             <br/>
             <br/>
             <span class="instructions-span">1. 联系相关项目的收费负责人。</span>
-            <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”、“博思威龙”、“智造大挑战”项目的参赛交费联系人：曾令勇  158 9994 8376</span>
+            <!-- <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”、“博思威龙”、“智造大挑战”项目的参赛交费联系人：曾令勇  158 9994 8376</span>
             <span class="instructions-span" style="padding-left: 20px;"> b)“工业时代”、“攻城大师”、“创客生存挑战赛”项目的参赛交费联系人：李达 158 7649 3817</span>
             <span class="instructions-span">2. 核实参赛队伍是否报名成功。并核实参赛人数。</span>
             <span class="instructions-span">3. 支付参赛注册费</span>
@@ -43,14 +44,14 @@
             <span class="instructions-span" style="padding-left: 20px;">开户名称：北京工道动力机器人技术研究院</span>
             <span class="instructions-span" style="padding-left: 20px;">开户行号：313100022226</span>
             <span class="instructions-span" style="padding-left: 20px;">银行账号：410100203296687</span>
-            <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：各赛项负责人</h2>
+            <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：各赛项负责人</h2> -->
 
-            <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”项目联系人：李蒙 136 2109 4852</span>
+<!--             <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”项目联系人：李蒙 136 2109 4852</span>
             <span class="instructions-span" style="padding-left: 20px;"> b)“工业时代”项目联系人：谢尊国 150 0077 4186</span>
             <span class="instructions-span" style="padding-left: 20px;"> c)“博思威龙”项目联系人：陆超 137 1326 2010</span>
             <span class="instructions-span" style="padding-left: 20px;"> d)“攻城大师”项目联系人：王勇 15361056983</span>
             <span class="instructions-span" style="padding-left: 20px;"> e)“智造大挑战” 项目联系人：谢俊杰 186 0301 5057</span>
-            <span class="instructions-span" style="padding-left: 20px;"> f)“创客生存挑战赛”项目联系人：李乔 176 0089 9441</span>
+            <span class="instructions-span" style="padding-left: 20px;"> f)“创客生存挑战赛”项目联系人：李乔 176 0089 9441</span> -->
 
             <h2 style="margin-bottom: 20px; margin-top: 15px;">附二：报名表填写说明</h2>
 
@@ -71,7 +72,7 @@
             <span class="instructions-span clearfix"><i>身高</i>填写真实身高（用于制定活动用T恤尺寸）</span>
             <span class="instructions-span clearfix"><i>证件类型</i>选择有效的身份证件类型</span>
             <span class="instructions-span clearfix"><i>证件号码</i>填写有效的身份证件号码</span>
-            <span class="instructions-span clearfix"><i>居住省市</i>填写现居住的省和市</span>
+            <span class="instructions-span clearfix"><i>联系地址</i>填写现居住的省和市</span>
             <span class="instructions-span clearfix"><i>职务</i>填写真实职业</span>
             <span class="instructions-span clearfix"><i>账户类型</i>需要开收据还是发票或是都不需要</span>
             <span class="instructions-span clearfix"><i>发票抬头</i>收款机构的抬头</span>
@@ -87,7 +88,7 @@
             <input type="checkbox" id="input-read" name="" value=""/>
         </div>
 
-        <div class="content {{$is_update ? 'active' : ''}}">
+        <div class="content {{$is_update ? 'active' : ''}}" style="display: block;">
             <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" onkeydown="if(event.keyCode==13)return false;"  style="width: 1004px;">
             <!-- <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate="novalidate" style="width: 1004px;"> -->
                 <div class="tab_menu">
@@ -147,10 +148,80 @@
                     </div>
                     <div class="leader_info div_tab clearfix">
                         <div class="clearfix teachers">
+                            <div class="clearfix person_data  leader_list" id="member_list_0" data-index="0">
+                                <div class="delete" style="display: none;"><i class="icon kenrobot ken-close"></i></div>
+                                <input id="leader_0_id" name="leader[0][id]" type="hidden" value="">
+                                <div class="input-field">
+                                    <span class="input-label">姓名  :</span>
+                                    <input data-type="realname" required="" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_name" name="leader[0][name]" type="text" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">性别  :</span>
+                                    <input id="leader_0_sex_man" class="input-radio man leader_sex" type="radio" checked="" name="leader[0][sex]" value="男"><span>男</span>
+                                    <input id="leader_0_sex_woman" class="input-radio woman leader_sex" type="radio" name="leader[0][sex]" value="女"><span>女</span>
+                                    <p id="leader_0_sex"></p>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">年龄  :</span>
+                                    <input data-type="agenumber" required="" tip-info="请填写真实的年龄" class="input-field-text" id="leader_0_age" type="text" name="leader[0][age]" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">工作单位 :</span>
+                                    <input data-type="schoolname" required="" tip-info="请填写工作单位" class="input-field-text" id="leader_0_work_unit" type="text" name="leader[0][work_unit]" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">证件类型  :</span>
+                                    <select name="leader[0][idcard_type]" class="input-field-text id_type">
+                                        <option value="身份证" selected="">身份证</option>
+                                        <option value="内地通行证">内地通行证</option>
+                                        <option value="台胞证">台胞证</option>
+                                        <option value="护照">护照</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">证件号码  :</span>
+                                    <input tip-info="请填写证件号码" required="" class="input-field-text id_number" data-type="ID" id="leader_0_ID_number" type="text" name="leader[0][idcard_no]" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">联系地址  :</span>
+                                    <input data-type="schoolname" required="" tip-info="请填写联系地址" class="input-field-text" id="leader_0_home_address" type="text" name="leader[0][home_address]" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">手机号码  :</span>
+                                    <input required="" data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="leader_0_mobile" name="leader[0][mobile]" type="text" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">邮箱  :</span>
+                                    <input required="" data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="leader_0_mail" name="leader[0][email]" type="text" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">学校校长姓名  :</span>
+                                    <input data-type="realname" required="" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_headmaster" name="leader[0][headmaster]" type="text" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">备注  :</span>
+                                    <input tip-info="请填写备注信息" class="input-field-text mail" id="leader_0_remarks" name="leader[0][remark]" type="text" value="">
+                                    <div class="tips"></div>
+                                </div>
+                                <div class="input-field">
+                                    <span class="input-label">照片  :</span>
+                                    <div class="uploadBtn">上传照片 </div>
 
+                                    <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required="" name="leader[0][pic]" photourl="" id="leader_0_pic" type="file" class="uploadField leader_pic">
+
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
                         </div>
-                        <button type="button" id="add_teacher">添加领队信息</button>
-
+                        <!-- <button type="button" id="add_teacher" style="display: none;">添加领队信息</button> -->
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
                     </div>
@@ -178,7 +249,7 @@
                             <span class="input-label">赛事项目  :</span>
                             <select class="select-box" id="competition_1" name="competition_name" level="1"></select>
                         </div>
-                        <div class="input-field">
+                        <div class="input-field" style="display: none;">
                             <span class="input-label">赛事名称  :</span>
                             <select class="select-box" id="competition_2" name="competition_type" level="2"></select>
                         </div>
@@ -227,6 +298,11 @@
                             <div class="input-field">
                                 <span class="input-label">开票金额 :</span>
                                 <input required data-type='float' tip-info="开票金额" class="input-field-text invoice-group" id="invoice_money" name="invoice_money" type="text" value="{{$teamData['invoice_money'] or ''}}">
+                                <div class="tips"></div>
+                            </div>
+                            <div class="input-field">
+                                <span class="input-label">开票明细 :</span>
+                                <input required data-type='schoolname' tip-info="开票金额" class="input-field-text invoice-group" id="invoice_detail" name="invoice_detail" type="text" value="参赛费" readonly="readonly">
                                 <div class="tips"></div>
                             </div>
                             <div class="input-field">
@@ -285,7 +361,6 @@
                             <div id="preview_leader">
 
                             </div>
-
                         </div>
                         <div class="leader" id="team">
                             <span class="leader_title">队伍信息</span>
@@ -334,7 +409,7 @@
                             <span id="preview_invoice_money" class="name_input"></span>
                             <div class="clearfix clear"></div>
                             <span class="name">开票明细 :</span>
-                            <span id="preview_invoice_type" class="name_input"></span>
+                            <span id="preview_invoice_detail" class="name_input"></span>
                             <div class="clearfix clear"></div>
                             <span class="name">收件地址 :</span>
                             <span id="preview_invoice_mail_address" class="name_input"></span>
@@ -354,16 +429,13 @@
                         </div>
                         <div id="code" class="clearfix">
                             <span class="input-label">验证码  :</span>
-                            <!-- <input required name="verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text"> -->
                             <input name="verificationcode" data-type="required|verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text">
-                            <!-- <input name="verificationcode" id="verificationcode" class="code" tip-info="请输入您收到的验证码"  type="text"> -->
                             <a id="getverifycode" class="tel">获取手机验证码</a>
 
                             <div class="tips"></div>
                         </div>
                         <div class="clearfix"></div>
                         <button type="button" class="btn_pre">上一步</button>
-                        <!-- <button type="submit" class="btn_next">确认提交</button> -->
                         <button type="button" id="getQrcode" class="btn_next">确认提交</button>
                         <input class="btn_next" id="submit" style="display: none;" type="submit" value="确认提交" />
                     </div>
@@ -435,7 +507,6 @@
                 var timestamp = Date.parse(new Date());
                 $(this).attr('src', "{{url('/captcha')}}"+"?t="+timestamp);
             }
-
             // 倒计时
             $.fn.countdown = function() {
                 var timelimit = 60;
@@ -452,7 +523,6 @@
                 }, 1000);
             }
         })(jQuery);
-
 
         // 校验表单字段
         function validField(el) {
@@ -488,6 +558,11 @@
 
             if (datatype.indexOf('realname') !== -1 && !isName(val)) {
                 $el.tipWarn('姓名不能是数字或特殊字符！');
+                return false;
+            }
+
+            if (datatype.indexOf('realname') == 0 && $el[0].length > 50) {
+                $el.tipWarn('字符长度不能超过50!');
                 return false;
             }
             if (datatype.indexOf('schoolname') !== -1 && !isMathEngCha(val)) {
@@ -686,7 +761,7 @@
                     $('.students .person_data').eq(0).find('.delete').unbind('click').css('display', 'none');
                 }
 
-                if (studentCount >= 8) {
+                if (studentCount >= 3) {
                     $('#add_student').addClass('disabled');
                 } else {
                     $('#add_student').removeClass('disabled');
@@ -759,16 +834,14 @@
             level = level || 1;
             key = key || 0;
             defaultVal = defaultVal;
-            console.log(defaultVal);
+            // console.log(defaultVal);
             var options_data = getOptions(key);
             var options_html = buildOptions(options_data, defaultVal);
             $('#competition_' + level).html(options_html);
         }
 
-
         function buildPreview(type) {
             var container = type == 'member' ? '.students .person_data' : '.teachers .person_data';
-
             var resultHtml = '';
             var imgPreviewUrl = '';
             var localUrl = '';
@@ -851,6 +924,7 @@
                 'invoice_title',
                 'invoice_code',
                 'invoice_money',
+                'invoice_detail',
                 'invoice_mail_address',
                 'invoice_mail_recipients',
                 'invoice_mail_mobile',
@@ -979,7 +1053,7 @@
             @else
             var initKeys = [0, 0, 0];
             @endif
-            console.log(initKeys);
+            // console.log(initKeys);
             fillOptions(1, 0, initKeys[0]);
             var k1 = $('#competition_1').find('option:selected').val();
             fillOptions(2, k1, initKeys[1]);
@@ -1103,31 +1177,38 @@
 
             // 6.3 发送手机验证码
             $("#getQrcode").click(function() {
+                // var stop = false;
+                // $('.div_tab').each(function(index){
+                //     if (stop) {
+                //         return;
+                //     }
 
-                var stop = false;
-                $('.div_tab').each(function(index){
-                    if (stop) {
-                        return;
-                    }
+                //     console.log(index, this);
+                //     $(this).find('input').each(function(){
+                //         if (stop) {
+                //             return;
+                //         }
+                //         var ret = validField(this);
+                //         if (!ret) {
+                //             console.log('start_' +index, this);
+                //             stop = true;
+                //             tabCenter.go(index);
+                //             return;
+                //         }
+                //     });
+                // });
+                // if (stop) {
+                //     return false;
+                // }
 
-                    console.log(index, this);
-                    $(this).find('input').each(function(){
-                        if (stop) {
-                            return;
-                        }
-                        var ret = validField(this);
-                        if (!ret) {
-                            console.log('start_' +index, this);
-                            stop = true;
-                            tabCenter.go(index);
-                            return;
-                        }
-                    });
-                });
-                if (stop) {
-                    return false;
-                }
-
+                // $('#submit').trigger('click');
+                // $('#submit').trigger('click');
+                // $('#submit').trigger('click');
+                // $('#submit').trigger('click');
+                // $('#submit').trigger('click');
+                // $('#submit').trigger('click');
+                // $('#submit').trigger('click');
+                // return false;
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
@@ -1135,7 +1216,6 @@
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
-                return false;
             });
 
             // 6.4 点击取消输入验证码
@@ -1161,7 +1241,7 @@
 
             // 通用，翻页
             $('.btn_next').click(function(){
-                console.log('tttt');
+                console.log('翻页');
                 tabCenter.next(function(index){
                     var curTab = tabCenter.currentTab();
                     var prevent = false;
@@ -1198,7 +1278,7 @@
                 }
 
             @else
-                addMemberList('leader');
+                // addMemberList('leader');
                 addMemberList('member');
             @endif
 
@@ -1224,32 +1304,24 @@
                 <input id="@{{:type}}_@{{:index}}_sex_woman"  class="input-radio woman @{{:type}}_sex" type="radio" @{{if defaultValue['sex'] == '女' }} checked @{{/if}} name="@{{:type}}[@{{:index}}][sex]" value="女"><span>女</span>
                 <p id="@{{:type}}_@{{:index}}_sex"></p>
             </div>
-
-         <!--    <div class="input-field">
-                <span class="input-label">出生日期  :</span>
-                <input required type="text" id="@{{:type}}_@{{:index}}_birthday" data-toggle="datepicker" class="input-field-text input-field-datetime"  name="@{{:type}}[@{{:index}}][birthday]" />
-                <div class="tips"></div>
-            </div> -->
             <div class="input-field">
                 <span class="input-label">年龄  :</span>
                 <input data-type="agenumber" required tip-info="请填写真实的年龄" class="input-field-text"  id="@{{:type}}_@{{:index}}_age" type="text" name="@{{:type}}[@{{:index}}][age]" value="@{{: defaultValue['age']}}">
                 <div class="tips"></div>
             </div>
-
             <div class="input-field">
-                <span class="input-label">身高  :</span>
-                <input data-type="height_cm" required tip-info="请填写真实的身高(cm为单位)" class="input-field-text"  id="@{{:type}}_@{{:index}}_height" type="text" name="@{{:type}}[@{{:index}}][height]" value="@{{: defaultValue['height'] }}">
+                <span class="input-label">学校 :</span>
+                <input data-type="schoolname" required tip-info="请填写学校" class="input-field-text"  id="@{{:type}}_@{{:index}}_school" type="text" name="@{{:type}}[@{{:index}}][school]" value="@{{: defaultValue['school']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
-                <span class="input-label">单位／学校名称 :</span>
-                <input data-type="schoolname" required tip-info="请填写工作单位" class="input-field-text"  id="@{{:type}}_@{{:index}}_work_unit" type="text" name="@{{:type}}[@{{:index}}][work_unit]" value="@{{: defaultValue['work_unit']}}">
+                <span class="input-label">班级 :</span>
+                <input data-type="schoolname" required tip-info="请填写班级" class="input-field-text"  id="@{{:type}}_@{{:index}}_class" type="text" name="@{{:type}}[@{{:index}}][class]" value="@{{: defaultValue['class']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
                 <span class="input-label">证件类型  :</span>
                 <select name="@{{:type}}[@{{:index}}][idcard_type]" class="input-field-text id_type">
-
                     <option value="身份证" @{{if defaultValue['idcard_type'] =='身份证}} selected @{{/if}}>身份证</option>
                     <option value="内地通行证"  @{{if defaultValue['idcard_type'] =='内地通行证'}} selected @{{/if}}>内地通行证</option>
                     <option value="台胞证"  @{{if defaultValue['idcard_type'] =='台胞证'}} selected @{{/if}}>台胞证</option>
@@ -1261,19 +1333,27 @@
                 <input tip-info="请填写证件号码" required class="input-field-text id_number" data-type="ID" id="@{{:type}}_@{{:index}}_ID_number" type="text" name="@{{:type}}[@{{:index}}][idcard_no]" value="@{{: defaultValue['idcard_no'] }}">
                 <div class="tips"></div>
             </div>
-            <!--<div class="input-field">
-                <span class="input-label">户籍地址  :</span>
-                <input data-type="schoolname" required tip-info="请填写户籍地址" class="input-field-text"  id="@{{:type}}_@{{:index}}_register_address" type="text" name="@{{:type}}[@{{:index}}][register_address]" value="">
-                <div class="tips"></div>
-            </div> -->
             <div class="input-field">
-                <span class="input-label">居住省市  :</span>
-                <input data-type="schoolname" required tip-info="请填写居住省市" class="input-field-text"  id="@{{:type}}_@{{:index}}_home_address" type="text" name="@{{:type}}[@{{:index}}][home_address]" value="@{{: defaultValue['home_address']}}">
+                <span class="input-label">学生监护人  :</span>
+                <input data-type="realname" required tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="@{{:type}}_@{{:index}}_guarder" name="@{{:type}}[@{{:index}}][guarder]" type="text" value="@{{: defaultValue['guarder']}}">
                 <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">关系  :</span>
+                <select name="@{{:type}}[@{{:index}}][relation]" class="input-field-text relation">
+                    <option value="亲属" @{{if defaultValue['relation'] =='亲属}} selected @{{/if}}>亲属</option>
+                    <option value="师生"  @{{if defaultValue['relation'] =='师生'}} selected @{{/if}}>师生</option>
+                    <option value="其他"  @{{if defaultValue['relation'] =='其他'}} selected @{{/if}}>其他</option>
+                </select>
             </div>
             <div class="input-field">
                 <span class="input-label">手机号码  :</span>
                 <input required data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="@{{:type}}_@{{:index}}_mobile" name="@{{:type}}[@{{:index}}][mobile]" type="text" value="@{{: defaultValue['mobile']}}">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">联系地址  :</span>
+                <input data-type="schoolname" required tip-info="请填写联系地址" class="input-field-text"  id="@{{:type}}_@{{:index}}_home_address" type="text" name="@{{:type}}[@{{:index}}][home_address]" value="@{{: defaultValue['home_address']}}">
                 <div class="tips"></div>
             </div>
             <div class="input-field">
@@ -1320,7 +1400,6 @@
                 @{{else}}
                 <option value="@{{: id}}"> @{{: name}}</option>
                 @{{/if}}
-
             @{{/for}}
         @{{/if}}
     </script>

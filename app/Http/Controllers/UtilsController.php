@@ -67,7 +67,7 @@ class UtilsController extends Controller
                 return api_response(0, $vcode.'短信发送成功!');
             } else {
                 sms_send_verifycode($mobile, $vcode);
-                return api_response(0, '短信发送成功!');
+                return api_response(0, '短信发送成功!', $vcode);
             }
 
         }

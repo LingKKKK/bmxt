@@ -16,22 +16,22 @@
 // Route::post('/signup', 'SignupController@doSignup');
 
 
-Route::get('/success', 'SignupController@success');
-Route::get('/excel', 'SignupController@doExportExcel');
-Route::get('/admin/export', 'MatchbjController@export');
-Route::post('/admin/export', 'MatchbjController@doExportExcel');
-// 报名系统查询
-// Route::get('/search', 'SignupController@search');
-// Route::post('/search', 'SignupController@doSearch');
-// 行程系统
-Route::get('/scheduling', 'SignupController@scheduling');
-Route::post('/scheduling', 'SignupController@doScheduling');
-Route::get('/plan', 'SignupController@plan');
-Route::post('/plan', 'SignupController@doPlan');
-Route::get('/showTrip', 'SignupController@showTrip');
-// 行程系统查询
-Route::get('/plan/export', 'SignupController@planExport');
-Route::post('/plan/export', 'SignupController@planExportExcel');
+// Route::get('/success', 'SignupController@success');
+// Route::get('/excel', 'SignupController@doExportExcel');
+// Route::get('/admin/export', 'MatchbjController@export');
+// Route::post('/admin/export', 'MatchbjController@doExportExcel');
+// // 报名系统查询
+// // Route::get('/search', 'SignupController@search');
+// // Route::post('/search', 'SignupController@doSearch');
+// // 行程系统
+// Route::get('/scheduling', 'SignupController@scheduling');
+// Route::post('/scheduling', 'SignupController@doScheduling');
+// Route::get('/plan', 'SignupController@plan');
+// Route::post('/plan', 'SignupController@doPlan');
+// Route::get('/showTrip', 'SignupController@showTrip');
+// // 行程系统查询
+// Route::get('/plan/export', 'SignupController@planExport');
+// Route::post('/plan/export', 'SignupController@planExportExcel');
 
 
 //查询 提交查询信息进行查询

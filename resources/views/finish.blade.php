@@ -39,9 +39,6 @@
                         <span class="name">赛事项目 :</span>
                         <span id="preview_school_name" class="name_input">{{$teamData['competition_1'] or ''}}</span>
                         <div class="clearfix clear"></div>
-                        <span class="name">赛事名称 :</span>
-                        <span id="preview_school_address" class="name_input">{{$teamData['competition_2'] or ''}}</span>
-                        <div class="clearfix clear"></div>
                         <span class="name">组别 :</span>
                         <span id="preview_school_address" class="name_input">{{$teamData['competition_3'] or ''}}</span>
                         <div class="clearfix clear"></div>
@@ -102,9 +99,9 @@
                                     <span class="name">备注 :</span>
                                     <span  class="name_input">{{$teamMember['remark'] or ''}}</span>
                                     <div class="clearfix clear"></div>
-                                </div>     
-                                @endif  
-                            @endforeach   
+                                </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                     <div class="all_number">
@@ -150,8 +147,8 @@
                                     <span  class="name_input">{{$teamMember['remark'] or ''}}</span>
                                     <div class="clearfix clear"></div>
                                 </div>
-                                @endif     
-                            @endforeach          
+                                @endif
+                            @endforeach
 
                         </div>
                     </div>

@@ -89,27 +89,27 @@ class MatchbjController extends Controller
 
         $is_update = $request->has('id') && !empty($request->input('id'));
 
-        $validator = Validator::make($request->all(),
-            [
-                'invitecode' =>  $is_update ? 'required' : 'required|invitecode',
-                'team_no'    => 'required',
-                'verificationcode' => 'required|verificationcode',
-            ],
-            [
-                'invitecode.required' => '邀请码不能为空',
-                'invitecode.invitecode' => '邀请码不正确',
-                'team_no.required'  => '队伍编号不能不能为空',
-                'verificationcode.required' => '验证码不能为空',
-                'verificationcode.verificationcode' => '验证码不正确',
-            ]
-        );
+        // $validator = Validator::make($request->all(),
+        //     [
+        //         'invitecode' =>  $is_update ? 'required' : 'required|invitecode',
+        //         'team_no'    => 'required',
+        //         'verificationcode' => 'required|verificationcode',
+        //     ],
+        //     [
+        //         'invitecode.required' => '邀请码不能为空',
+        //         'invitecode.invitecode' => '邀请码不正确',
+        //         'team_no.required'  => '队伍编号不能不能为空',
+        //         'verificationcode.required' => '验证码不能为空',
+        //         'verificationcode.verificationcode' => '验证码不正确',
+        //     ]
+        // );
 
 
-        if ($validator->fails()) {
-            // dd($request->all(), $validator->errors());
-            // dd($validator->errors());
-            return redirect()->back()->withInput();
-        }
+        // if ($validator->fails()) {
+        //     // dd($request->all(), $validator->errors());
+        //     // dd($validator->errors());
+        //     return redirect()->back()->withInput();
+        // }
 
 
 
@@ -117,7 +117,7 @@ class MatchbjController extends Controller
             'id', 'invitecode',
             'contact_name', 'contact_mobile', 'contact_email', 'contact_remark',
             'team_no', 'team_name', 'competition_event_id',
-            'invoice_title', 'invoice_code', 'invoice_money', 'invoice_type', 'invoice_mail_address', 'invoice_mail_recipients',
+            'invoice_title', 'invoice_code', 'invoice_money', 'invoice_type', 'invoice_detail', 'invoice_mail_address', 'invoice_mail_recipients',
             'invoice_mail_mobile', 'invoice_mail_email', 'invoice_remark'
         ];
 
@@ -148,15 +148,14 @@ class MatchbjController extends Controller
 
         $member_fields = [
             'id', 'team_id', 'type',
-                // 基本信息
-            'name', 'mobile', 'name', 'email', 'idcard_type', 'idcard_no', 'nation', 'sex', 'birthday', 'age', 'height', 'photo_url',
-                // 其他资料
-            'vocation', 'work_unit', 'register_address', 'home_address', 'remark'
+            'name', 'sex', 'age', 'school', 'class','idcard_type', 'guarder', 'idcard_no', 'relation', 'mobile', 'home_address', 'email', 'remark', 'photo_url',
+        ];
+        $leader_fields = [
+            'name', 'age', 'sex', 'work_unit', 'idcard_type', 'idcard_no', 'home_address', 'email', 'mobile', 'headmaster', 'remark', 'photo_url',
         ];
 
 
         $allmembers = array_merge($leaders, $members);
-
 
         // 删除成员
         $ids = collect($allmembers)->pluck('id');
@@ -252,7 +251,7 @@ class MatchbjController extends Controller
 
         $teamData = $service->searchTeam($team_no, $contact_mobile);
 
-        // dd($teamData);
+        dd($teamData, $team_no, $contact_mobile);
         return view('finish', compact('teamData'));
     }
 
