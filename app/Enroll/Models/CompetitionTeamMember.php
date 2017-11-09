@@ -15,9 +15,10 @@ class CompetitionTeamMember extends Model
 
     protected $fillable = ['id', 'team_id', 'type',
     // 基本信息
-    'name', 'mobile', 'name', 'email', 'idcard_type', 'idcard_no', 'nation', 'sex', 'birthday', 'age', 'height', 'photo_url',
+    'name', 'mobile', 'name', 'email', 'idcard_type', 'idcard_no', 'nation', 'sex', 'birthday', 'age', 'photo_url',
     // 其他资料
-    'vocation', 'work_unit', 'register_address', 'home_address', 'remark', 'profiles'
+    'vocation', 'work_unit', 'register_address', 'home_address', 'remark', 'profiles',
+    'school', 'class', 'guarder', 'relation', 'headmaster',
     ];
 
     protected $hidden = ['updated_at', 'created_at', 'deleted_at'];

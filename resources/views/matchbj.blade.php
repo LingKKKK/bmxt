@@ -377,7 +377,7 @@
                                 <span class="name">赛事项目 :</span>
                                 <span id="preview_competition_1" class="name_input"></span>
                             </div>
-                            <div class="input-field">
+                            <div class="input-field" style="display: none;">
                                 <span class="name"></span>
                                 <span id="preview_competition_2" class="name_input"></span>
                             </div>
