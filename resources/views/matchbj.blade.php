@@ -11,47 +11,55 @@
     <div class="main">
         <div class="header">
             <div class="inner">
-                <div class="logout">
-                    <span style="color: #fff;display: block;text-align: center;line-height: 180px;font-size: 32px;letter-spacing: 1px;font-family:MicrosoftYaHei;">RoboCom国际公开赛——青少年人工智能编成挑战赛</span>
-                </div>
+                <div class="banner-img"></div>
             </div>
         </div>
         <div class="instructions clearfix {{$is_update ? '' : 'active'}}">
 
-            <h1 class="instructions-h">RoboCom国际公开赛——青少年人工智能编成挑战赛</h1>
-            <span class="instructions-span"> 1. 报名时间截止日期：2017年x月x日 </span>
-            <span class="instructions-span"> 2. 缴费截止日期： 2017年x月x日</span>
-            <span class="instructions-span"> 3. 正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
-            <span class="instructions-span" style="color:red;padding-left: 20px;"> 重要提示：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于2017年世界机器人大赛—RoboCom国际公开赛，报名人员须对其提交的错误信息造成的后果负责。</span>
-            <span class="instructions-span">4. 联系“通知中”各个项目的报名负责人，索取相应的项目邀请码。</span>
-            <span class="instructions-span">5. 每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
-            <span class="instructions-span">6. 报名完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
-            <span class="instructions-span">7. 参赛费用将不在网上报名中缴纳，具体缴费流程请联系相应赛项交费联系人（见交费流程）。</span>
-            <span class="instructions-span">8. 报名资料填写完整，经组委会审核通过后，会在RoboCom官方网站进行公示。</span>
+            <h1 class="instructions-h">RoboCom国际公开赛——青少年人工智能编程挑战赛报名须知</h1>
+            <span class="instructions-span"> 1. 青少年人工智能编程挑战赛分为：</span>
+            <span class="instructions-span" style="padding-left: 26px;">线下比赛项目：图形化编程创意设计挑战赛、智造大挑战、中鸣超级轨迹赛、单片机迷宫任务挑战赛、RoboCom星际迷航。</span>
+            <span class="instructions-span" style="padding-left: 26px;">线上比赛项目：图形化编程创意设计挑战赛</span>
+            <span class="instructions-span"> 2. 线下比赛报名时间截止日期：2017年12月15日</span>
+            <span class="instructions-span" style="padding-left: 26px;">线下比赛缴费截止日期： 2017年12月20日</span>
+            <span class="instructions-span"> 3. 线上比赛报名时间截止日期：2017年12月29日</span>
+            <span class="instructions-span" style="padding-left: 26px;">线上比赛缴费截止日期：2017年12月29日</span>
+            <span class="instructions-span">4. 正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
+            <span class="instructions-span" style="padding-left: 26px; color: red;">重要提示：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于RoboCom国际公开赛——青少年人工智能编程挑战赛，报名人员须对其提交的错误信息造成的后果负责。</span>
+            <span class="instructions-span">5. 联系报名负责人，索取相应的项目邀请码。</span>
+            <span class="instructions-span">6. 每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
+            <span class="instructions-span">7. 报名完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
+            <span class="instructions-span">8. 参赛费用将不在网上报名中缴纳，具体缴费流程请联系相应赛项交费联系人（见交费流程）。</span>
+            <span class="instructions-span">9. 如对网上报名有疑问，可通过联系江城（13476000614）</span>
             <br/>
             <h2 style="color: red;">交费流程如下：</h2>
             <br/>
-            <span class="instructions-span" >在线报名完成后，请根据自己所报赛项联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。</span>
+            <span class="instructions-span" >在线报名完成后，请联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。</span>
             <br/>
-            <br/>
-            <span class="instructions-span">1. 联系相关项目的收费负责人。</span>
-            <!-- <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”、“博思威龙”、“智造大挑战”项目的参赛交费联系人：曾令勇  158 9994 8376</span>
-            <span class="instructions-span" style="padding-left: 20px;"> b)“工业时代”、“攻城大师”、“创客生存挑战赛”项目的参赛交费联系人：李达 158 7649 3817</span>
-            <span class="instructions-span">2. 核实参赛队伍是否报名成功。并核实参赛人数。</span>
-            <span class="instructions-span">3. 支付参赛注册费</span>
+            <span class="instructions-span">1. 核实参赛队伍是否报名成功。并核实参赛人数。</span>
+            <span class="instructions-span">2. 支付参赛注册费</span>
             <span class="instructions-span" style="padding-left: 20px;">付款对公账户：</span>
-            <span class="instructions-span" style="padding-left: 20px;">开户名称：北京工道动力机器人技术研究院</span>
-            <span class="instructions-span" style="padding-left: 20px;">开户行号：313100022226</span>
-            <span class="instructions-span" style="padding-left: 20px;">银行账号：410100203296687</span>
-            <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：各赛项负责人</h2> -->
+            <span class="instructions-span" style="padding-left: 20px; color: red;">图形化编程创意设计挑战赛缴费账户：</span>
+            <span class="instructions-span" style="padding-left: 20px;">开户名称：北京博趣出版有限责任公司</span>
+            <span class="instructions-span" style="padding-left: 20px;">开户银行：中国工商银行股份有限公司北京体育馆路支行</span>
+            <span class="instructions-span" style="padding-left: 20px;">开户行号（大额支付代码）：102100000819</span>
+            <span class="instructions-span" style="padding-left: 20px;">银行账号：0200008109024592567</span>
+            <span class="instructions-span" style="padding-left: 20px; color: red;">智造大挑战、中鸣超级轨迹赛、单片机迷宫任务挑战赛、RoboCom星际迷航缴费账户：</span>
+            <span class="instructions-span" style="padding-left: 20px;">开户名称：北京搜获科技有限公司</span>
+            <span class="instructions-span" style="padding-left: 20px;">开户银行：中国工商银行北京分行东升路支行</span>
+            <span class="instructions-span" style="padding-left: 20px;">开户行号（大额支付代码）：102100000626</span>
+            <span class="instructions-span" style="padding-left: 20px;">银行账号：0200006209200036460</span>
 
-<!--             <span class="instructions-span" style="padding-left: 20px;"> a)“未来世界”项目联系人：李蒙 136 2109 4852</span>
-            <span class="instructions-span" style="padding-left: 20px;"> b)“工业时代”项目联系人：谢尊国 150 0077 4186</span>
-            <span class="instructions-span" style="padding-left: 20px;"> c)“博思威龙”项目联系人：陆超 137 1326 2010</span>
-            <span class="instructions-span" style="padding-left: 20px;"> d)“攻城大师”项目联系人：王勇 15361056983</span>
-            <span class="instructions-span" style="padding-left: 20px;"> e)“智造大挑战” 项目联系人：谢俊杰 186 0301 5057</span>
-            <span class="instructions-span" style="padding-left: 20px;"> f)“创客生存挑战赛”项目联系人：李乔 176 0089 9441</span> -->
-
+            <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：负责人联系方式</h2>
+            <span class="instructions-span" style="padding-left: 20px;">1. 相关赛事项目技术咨询及比赛规则解释负责人：</span>
+            <span class="instructions-span" style="padding-left: 46px;"> a)图形化编程软件创意设计挑战赛项目联系人：周善斌　电话：18576690069　樊军伟　电话：18588238651 贺晓山 电话：15994743223</span>
+            <span class="instructions-span" style="padding-left: 46px;"> b)智造大挑战赛 联系人：解俊杰　电话：18603015057</span>
+            <span class="instructions-span" style="padding-left: 46px;"> c)中鸣超级轨迹赛 联系人：王小君　电话：13500034449</span>
+            <span class="instructions-span" style="padding-left: 46px;"> d)单片机迷宫任务挑战赛 联系人：张健 电话：13811159341</span>
+            <span class="instructions-span" style="padding-left: 46px;"> e)RoboCom星际迷航  联系人：钟毅  电话：18978985303</span>
+            <span class="instructions-span" style="padding-left: 20px;">2. 组委会办公室</span>
+            <span class="instructions-span" style="padding-left: 46px;">李佳：13552892879  洪婕：13466616992 闫旭晖：13810882832
+座机：010-81055310</span>
             <h2 style="margin-bottom: 20px; margin-top: 15px;">附二：报名表填写说明</h2>
 
             <span class="instructions-span clearfix"><i>信息项</i>填写说明</span>
@@ -66,13 +74,11 @@
             <span class="instructions-span clearfix"><i>赛事项目</i>选择队伍参加的赛项</span>
             <span class="instructions-span clearfix"><i>子赛项</i>选择参队伍加的子赛项</span>
             <span class="instructions-span clearfix"><i>组别</i>选择参队伍加的组别</span>
-            <span class="instructions-span clearfix"><i>出生日期</i>真实出生年月</span>
+            <span class="instructions-span clearfix"><i>年龄</i>真实年龄</span>
             <span class="instructions-span clearfix"><i>性别</i>填写真实性别</span>
-            <span class="instructions-span clearfix"><i>身高</i>填写真实身高（用于制定活动用T恤尺寸）</span>
             <span class="instructions-span clearfix"><i>证件类型</i>选择有效的身份证件类型</span>
             <span class="instructions-span clearfix"><i>证件号码</i>填写有效的身份证件号码</span>
-            <span class="instructions-span clearfix"><i>联系地址</i>填写现居住的省和市</span>
-            <span class="instructions-span clearfix"><i>职务</i>填写真实职业</span>
+            <span class="instructions-span clearfix"><i>地址</i>填写有效的邮寄地址</span>
             <span class="instructions-span clearfix"><i>账户类型</i>需要开收据还是发票或是都不需要</span>
             <span class="instructions-span clearfix"><i>发票抬头</i>收款机构的抬头</span>
             <span class="instructions-span clearfix"><i>统一社会信用代码</i>填写真实统一社会信用代码</span>
@@ -258,14 +264,14 @@
                         </div>
                         <div class="input-field">
                             <span class="input-label">备注  :</span>
-                            <input tip-info="填写备注" class="input-field-text" id="remarks" name="remarks" type="text" value="">
+                            <input tip-info="填写备注" class="input-field-text" id="remarks" name="remarks" type="text" value="{{$teamData['remark'] or ''}}">
                             <div class="tips"></div>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
                         <button id="checkTeamName" type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="student_info div_tab">
-                        <span class="title-span">*队员最多8人</span>
+                        <span class="title-span">*队员最多3人</span>
                         <div class="clearfix students">
                         </div>
                         <button type="button" class="btn_new" id="add_student">添加新成员</button>
@@ -939,7 +945,7 @@
                 $('#preview_' + idNames[i]).html(val);
             }
 
-            $('#preview_leader').html(buildPreview('leader'));
+            // $('#preview_leader').html(buildPreview('leader'));
             $('#preview_member').html(buildPreview('member'));
 
             if (detectIE() == 'IE8' || detectIE() == 'IE9') {

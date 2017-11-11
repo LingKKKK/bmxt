@@ -107,7 +107,7 @@ body .mid {
   margin: 0 auto;
   margin-top: 30px;
   min-height: 192px;
-  transform: translateX(-40px);
+  transform: translateX(-30px);
 }
 body .mid .successAlert {
   width: 500px;

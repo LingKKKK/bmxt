@@ -94,12 +94,13 @@ body .header .inner {
   height: 180px;
   margin: 0 auto;
 }
-body .header .inner img {
-  display: block;
-  float: left;
+body .header .inner .banner-img {
   width: 1180px;
-  height: 150px;
-  margin-top: 10px;
+  height: 180px;
+  display: block;
+  margin: 0 auto;
+  background: url("../img/banner_bg.png") no-repeat center;
+  background-size: contain;
 }
 body .instructions {
   width: 1180px;

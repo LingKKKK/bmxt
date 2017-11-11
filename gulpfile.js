@@ -64,7 +64,7 @@ gulp.task('css', ['clean-css'], function(){
 
     gulp.src(cssSrc)
         .pipe(gulp.dest(cssDst));
-   
+
     return sass(sassSrc, {style: 'expanded'})
         // .pipe(autoprefixer())
         .pipe(gulpif(args.release, cleanCSS()))
@@ -122,5 +122,5 @@ gulp.task('admin-lte-plugins', ['clean-admin-lte-plugins'], _ => {
 gulp.task('admin', ['admin-lte-dist', 'admin-lte-bootstrap', 'admin-lte-plugins'])
 
 gulp.task('default', ['js', 'css', 'img', 'admin', 'bootstrap'],function() {
-    
+
 });

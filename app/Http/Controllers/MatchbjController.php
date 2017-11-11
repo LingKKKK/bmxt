@@ -40,10 +40,10 @@ class MatchbjController extends Controller
                 'verificationcode' => 'required|verificationcode',
             ],
             [
-                'team_no.required'  => '队伍编号不能为空',
-                'contact_mobile.required' => '联系人手机号不能为空',
-                'verificationcode.required' => '验证码不能为空',
-                'verificationcode.verificationcode' => '验证码不正确',
+                // 'team_no.required'  => '队伍编号不能为空',
+                // 'contact_mobile.required' => '联系人手机号不能为空',
+                // 'verificationcode.required' => '验证码不能为空',
+                // 'verificationcode.verificationcode' => '验证码不正确',
             ]);
 
         if ($validator->fails()) {
@@ -55,7 +55,7 @@ class MatchbjController extends Controller
         $verificationcode = $request->input('verificationcode', '');
 
         $teamData = $service->searchTeam($team_no, $contact_mobile);
-
+        // dd($teamData);
         if ($teamData === null) {
             return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
         }
@@ -113,7 +113,7 @@ class MatchbjController extends Controller
         $team_fields = [
             'id', 'invitecode',
             'contact_name', 'contact_mobile', 'contact_email', 'contact_remark',
-            'team_no', 'team_name', 'competition_event_id',
+            'team_no', 'team_name', 'competition_event_id', 'remark',
             'invoice_title', 'invoice_code', 'invoice_money', 'invoice_type', 'invoice_detail', 'invoice_mail_address', 'invoice_mail_recipients',
             'invoice_mail_mobile', 'invoice_mail_email', 'invoice_remark', 'invoice_detail',
         ];
@@ -266,7 +266,6 @@ class MatchbjController extends Controller
                 'admincode' => 'required',
                 'mobile'    => 'required',
                 'verificationcode' => 'required|verificationcode',
-
             ],[
                 'mobile.required' => '手机号不能为空',
                 'admincode.required'  => '查询码不能为空',
@@ -286,13 +285,14 @@ class MatchbjController extends Controller
             '18511431517',
             '15903035872',
             '13476000614', //江城
+            '15900000000',
         ];
 
         if (! in_array($request->input('mobile'), $adminArr)) {
             return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
         }
 
-        $filename = 'RoboCom北京报名-' . date('Y_m_d_H_i_s');
+        $filename = 'RoboCom国际公开赛-' . date('Y_m_d_H_i_s');
         return $service->makeExcel($filename);
     }
 

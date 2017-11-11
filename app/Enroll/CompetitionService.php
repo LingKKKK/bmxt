@@ -190,10 +190,10 @@ class CompetitionService
 
             $excel->sheet('报名数据', function($sheet) use($teamList) {
             	$sheet->setAutoSize(true);
-                $sheet->mergeCells('A1:M1');
-                $sheet->mergeCells('N1:W1');
+                $sheet->mergeCells('A1:K1');
+                $sheet->mergeCells('L1:W1');
                 $sheet->cell('A1', '队伍信息');
-                $sheet->cell('N1', '成员信息');
+                $sheet->cell('L1', '成员信息');
                 // 居中
                 $sheet->row(1, function($row) {
                     $row->setAlignment('center');
@@ -209,7 +209,7 @@ class CompetitionService
 
                 $sheet->row(2, [ '邀请码', '队伍编号', '队伍名称', '赛事项目', '赛事名称', '组别', '队伍备注',
                 				 '联系人', '联系人手机', '联系人邮箱', '联系人备注',
-                				 '身份' ,'姓名', '性别', '身高', '学校', '证件类型', '证件号码', '居住省市', '手机号码', '邮箱', '备注']);
+                				 '身份' ,'姓名', '性别', '年龄', '学校', '班级', '工作单位', '证件类型', '证件号码', '监护人', '关系', '联系地址', '手机号码', '邮箱', '学校校长姓名', '备注']);
 
                 $rowIndex = 3;
 
@@ -222,13 +222,18 @@ class CompetitionService
                 			$m['type'] == 'leader' ? '领队教师' : '学生',
                 			$m['name'],
                 			$m['sex'],
-                			$m['height'],
+                            $m['age'],
+                            $m['school'],
+                			$m['class'],
                 			$m['work_unit'],
                 			$m['idcard_type'],
                 			$m['idcard_no'].' ',
+                            $m['guarder'],
+                            $m['relation'],
                 			$m['home_address'],
                 			$m['mobile'].' ',
-                			$m['email'],
+                            $m['email'],
+                			$m['headmaster'],
                 			$m['remark']
                 			]);
                 	}
