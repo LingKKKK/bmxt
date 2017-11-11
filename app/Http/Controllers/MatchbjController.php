@@ -40,10 +40,10 @@ class MatchbjController extends Controller
                 'verificationcode' => 'required|verificationcode',
             ],
             [
-                // 'team_no.required'  => '队伍编号不能为空',
-                // 'contact_mobile.required' => '联系人手机号不能为空',
-                // 'verificationcode.required' => '验证码不能为空',
-                // 'verificationcode.verificationcode' => '验证码不正确',
+                'team_no.required'  => '队伍编号不能为空',
+                'contact_mobile.required' => '联系人手机号不能为空',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
             ]);
 
         if ($validator->fails()) {
