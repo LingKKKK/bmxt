@@ -15,7 +15,6 @@
             </div>
         </div>
         <div class="instructions clearfix {{$is_update ? '' : 'active'}}">
-
             <h1 class="instructions-h">RoboCom国际公开赛——青少年人工智能编程挑战赛报名须知</h1>
             <span class="instructions-span"> 1. 青少年人工智能编程挑战赛分为：</span>
             <span class="instructions-span" style="padding-left: 26px;">线下比赛项目：图形化编程创意设计挑战赛、智造大挑战、中鸣超级轨迹赛、单片机迷宫任务挑战赛、RoboCom星际迷航。</span>
@@ -208,20 +207,12 @@
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">学校校长姓名  :</span>
-                                    <input data-type="realname" required="" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_headmaster" name="leader[0][headmaster]" type="text" value="">
+                                    <input data-type="realname" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_headmaster" name="leader[0][headmaster]" type="text" value="">
                                     <div class="tips"></div>
                                 </div>
                                 <div class="input-field">
                                     <span class="input-label">备注  :</span>
                                     <input tip-info="请填写备注信息" class="input-field-text mail" id="leader_0_remarks" name="leader[0][remark]" type="text" value="">
-                                    <div class="tips"></div>
-                                </div>
-                                <div class="input-field">
-                                    <span class="input-label">照片  :</span>
-                                    <div class="uploadBtn">上传照片 </div>
-
-                                    <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required="" name="leader[0][pic]" photourl="" id="leader_0_pic" type="file" class="uploadField leader_pic">
-
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -362,7 +353,6 @@
                         <div class="leader" id="leader">
                             <span class="leader_title">领队老师信息</span>
                             <div id="preview_leader">
-
                             </div>
                         </div>
                         <div class="leader" id="team">
@@ -530,7 +520,6 @@
         // 校验表单字段
         function validField(el) {
             var $el = $(el);
-
             var name = $el.prop('name');
             var type = $el.prop('type');
             var id = $el.prop('id');
@@ -662,7 +651,6 @@
                     if (typeof afterCallback == "function") {
                         afterCallback(index); // 传入变化之后的数值
                     }
-
                 },
 
                 next: function(preCallback, afterCallback)
@@ -771,7 +759,6 @@
                 }
 
                 return studentCount;
-
             } else {
                 var teacherCount = $('.teachers .person_data').length;
                 if (teacherCount > 0) {
@@ -783,10 +770,8 @@
                 } else {
                     $('#add_teacher').removeClass('disabled');
                 }
-
                 return teacherCount;
             }
-
             // body...
         }
 
@@ -875,9 +860,7 @@
                                 imgPreviewUrl = window.URL.createObjectURL(f);
                                 // console.log(imgPreviewUrl);
                             }
-
                         }
-
                         localUrl = $el_input.val();
 
                         //  *** 优先预览用户上传的图片， 如果用户没有改变，使用已提交数据里的图片
@@ -932,7 +915,7 @@
                 'invoice_mail_recipients',
                 'invoice_mail_mobile',
                 'invoice_mail_email',
-                'invoice_remark'
+                'invoice_remark',
             )
 
             for(i in idNames)
@@ -944,8 +927,8 @@
                 }
                 $('#preview_' + idNames[i]).html(val);
             }
-
-            // $('#preview_leader').html(buildPreview('leader'));
+            console.log(idNames);
+            $('#preview_leader').html(buildPreview('leader'));
             $('#preview_member').html(buildPreview('member'));
 
             if (detectIE() == 'IE8' || detectIE() == 'IE9') {
@@ -961,7 +944,6 @@
         }
 
         function copyContactInfo() {
-
             var value =  $('#add_contact').find('option:selected').val();
             // 如果选的是添加联系人信息，就不修改
             if (value == 'yes') {
@@ -1075,9 +1057,6 @@
                     $('#competition_' + next_level).change();
                 }
             });
-
-
-
 
             // 4. 添加队员
             $('#add_student').click(function (){
@@ -1365,16 +1344,6 @@
                 <input tip-info="请填写备注信息" class="input-field-text mail" id="@{{:type}}_@{{:index}}_remarks" name="@{{:type}}[@{{:index}}][remark]" type="text" value="@{{: defaultValue['remark']}}">
                 <div class="tips"></div>
             </div>
-            <div class="input-field">
-                <span class="input-label">照片  :</span>
-                <div class="uploadBtn">上传照片 </div>
-                @{{if defaultValue['photo_url']}}
-                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" name="@{{:type}}[@{{:index}}][pic]" photourl = "@{{: defaultValue['photo_url'] }}" id="@{{:type}}_@{{:index}}_pic" type="file" class="uploadField @{{:type}}_pic" >
-                @{{else}}
-                <input tip-info="格式 PNG/JPG 文件大小 <= 2M" accept="image/jpeg,image/png" required name="@{{:type}}[@{{:index}}][pic]" photourl = "" id="@{{:type}}_@{{:index}}_pic" type="file" class="uploadField @{{:type}}_pic" >
-                @{{/if}}
-                <div class="tips"></div>
-            </div>
         </div>
     </script>
     <script id="tmpl_preview_memberlist" type="text/x-jsrender">
@@ -1386,8 +1355,11 @@
                 <span class="name_input">@{{: value}}</span>
             </div>
             @{{/for}}
-
-            <img id="preview_@{{:type }}_@{{: index}}_pic" class="preview-pic" local-src="@{{: localUrl }}" src="@{{: imgurl}}" >
+            <div class="input-field">
+                <span class="name"></span>
+                <span class="name_input"></span>
+            </div>
+            <!-- <img id="preview_@{{:type }}_@{{: index}}_pic" class="preview-pic" local-src="@{{: localUrl }}" src="@{{: imgurl}}" > -->
         </div>
     </script>
 

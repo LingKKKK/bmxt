@@ -20,7 +20,7 @@
             </div>
             <div class="title_top">
                 <ul>
-                    <li>2017世界机器人大赛-RoboCom国际公开赛</li>
+                    <li>RoboCom国际公开赛-青少年人工智能编程挑战赛</li>
                 </ul>
                 <div class="clearfix clear"></div>
             </div>
@@ -63,9 +63,6 @@
                             @foreach($teamData['members'] as $teamMember)
                                 @if($teamMember['type'] == 'leader')
                                 <div class="leader_info clearfix">
-                                    <div class="cut">
-                                        <img id="preview_leader_pic" src="{{$teamMember['photo_url']}}" >
-                                    </div>
                                     <span class="name">姓名 :</span>
                                     <span  class="name_input">{{$teamMember['name'] or ''}}</span>
                                     <div class="clearfix clear"></div>
@@ -110,9 +107,6 @@
                             @foreach($teamData['members'] as $teamMember)
                                 @if($teamMember['type'] == 'member')
                                 <div class="member_info">
-                                    <div class="cut">
-                                        <img id="preview_leader_pic" src="{{$teamMember['photo_url']}}" >
-                                    </div>
                                     <span class="name">姓名 :</span>
                                     <span  class="name_input">{{$teamMember['name'] or ''}}</span>
                                     <div class="clearfix clear"></div>

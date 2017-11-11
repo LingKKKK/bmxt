@@ -146,7 +146,7 @@ class MatchbjController extends Controller
         $member_fields = [
             'id', 'team_id', 'type',
             //基本信息
-            'name', 'mobile', 'email', 'idcard_type', 'idcard_no', 'nation', 'sex', 'birthday', 'age', 'height','photo_url',
+            'name', 'mobile', 'email', 'idcard_type', 'idcard_no', 'nation', 'sex', 'birthday', 'age', 'height',
             //其他资料
             'vocation', 'work_unit','register_address', 'home_address','remark', 'profiles',
             //新增内容
@@ -171,12 +171,12 @@ class MatchbjController extends Controller
             if ($memberModel == null) {
                 $memberModel = new CompetitionTeamMember();
             }
-            $photo_url = $this->saveFile($val['pic']);
-            if ($photo_url) {
-                $val['photo_url'] = $this->saveFile($val['pic']);
-            } else {
-                unset($val['photo_url']); // 如果是修改且未上传照片
-            }
+            // $photo_url = $this->saveFile($val['pic']);
+            // if ($photo_url) {
+            //     $val['photo_url'] = $this->saveFile($val['pic']);
+            // } else {
+            //     unset($val['photo_url']); // 如果是修改且未上传照片
+            // }
 
             $val = array_only($val, $member_fields);
             $memberModel->fill(array_except($val, ['id']))->save();
@@ -213,22 +213,22 @@ class MatchbjController extends Controller
     }
     private function saveFile($file)
     {
-        if (!$file) {
-            return '';
-        }
+        // if (!$file) {
+        //     return '';
+        // }
 
-        $filename = $file->getClientOriginalName();
+        // $filename = $file->getClientOriginalName();
 
-        $ext = $file->getClientOriginalExtension();
+        // $ext = $file->getClientOriginalExtension();
 
-        $suffix = rand(1000, 9999);
+        // $suffix = rand(1000, 9999);
 
-        $hashfilename = md5($filename.$suffix).'.'.$ext;
-        $storePath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
-        $publicPath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
-        Storage::put($storePath, file_get_contents($file));
+        // $hashfilename = md5($filename.$suffix).'.'.$ext;
+        // $storePath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
+        // $publicPath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
+        // Storage::put($storePath, file_get_contents($file));
 
-        return $publicPath;
+        // return $publicPath;
     }
 
     public function checkName(Request $request)
