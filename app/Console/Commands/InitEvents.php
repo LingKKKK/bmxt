@@ -3,32 +3,34 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Enroll\InviteManager;
 
-class InitInviteCode extends Command
+class InitEvents extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'work:initinvitecode {--prefix=}';
+    protected $signature = 'work:initevents';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '初始化邀请码';
+    protected $description = 'Command description';
+
+    protected $service;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(\App\Enroll\CompetitionService $service)
     {
         parent::__construct();
+        $this->service = $service;
     }
 
     /**
@@ -38,10 +40,7 @@ class InitInviteCode extends Command
      */
     public function handle()
     {
-
-        $prefixName = $this->option('prefix', 'enroll');
-
-
-        InviteManager::InitCode($prefixName);
+        $this->service->initEvents();
+        $this->info('初始化成功');
     }
 }

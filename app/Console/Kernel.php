@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\Inspire::class,
         Commands\Location::class,
-        Commands\InitInviteCode::class
+        Commands\InitInviteCode::class,
+        Commands\InitEvents::class
     ];
 
     /**
