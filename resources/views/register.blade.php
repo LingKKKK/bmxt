@@ -16,9 +16,7 @@
     <div class="content">
         <div class="leader-info-tips">
             @if(count($errors) > 0)
-                @foreach($errors->all() as $error)
-                <span>{{$error}}</span>
-                @endforeach
+                <span>{{$errors->first()}}</span>
             @endif
         </div>
         <form id="form" action="/register"  method="POST" novalidate>
@@ -36,11 +34,11 @@
                 </div>
                 <div class="input-field">
                     <span class="input-label">昵称  :</span>
-                    <input data-type="mobile" class="input-field-text"  id="mobile" type="text" name="mobile" value="{{old('mobile')}}">
+                    <input data-type="name" class="input-field-text"  id="name" type="text" name="name" value="{{old('name')}}">
                 </div>
                 <div class="input-field">
                     <span class="input-label">密码  :</span>
-                    <input data-type="nickname" class="input-field-text"  id="nickname" type="password" name="nickname" value="{{old('nickname')}}">
+                    <input data-type="password" class="input-field-text"  id="password" type="password" name="password" value="{{old('password')}}">
                 </div>
                 <div class="input-field">
                     <span class="input-label">确认密码  :</span>

@@ -130,9 +130,8 @@ body .content .leader-info-tips span {
   display: block;
   color: red;
   font-size: 14px;
-  float: left;
-  margin-right: 25px;
-  margin-top: 50px;
+  margin-top: 30px;
+  text-align: center;
 }
 body .content .inner {
   width: 600px;
