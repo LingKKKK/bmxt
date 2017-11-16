@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -15,25 +16,25 @@ class AuthController extends Controller
 
     public function doLogin(Request $request)
     {
-        $validator = Validator::make($request->all(),
+        $this->validate($request,
             [
-                'email'   => 'required_without:mobile',
-                'mobile' => 'required_without:email',
+                'email'   => 'required_without:mobile|email|min:1|max:200|exists:users,email',
+                'mobile' => 'required_without:email|mobile|exists:users,mobile',
                 'password' => 'required',
             ],
             [
-                'email.required' => '用户邮箱有误',
-                'mobile.required' => '用户手机号有误',
+                'email.required_without' => '请输入邮箱或手机号',
+                'mobile.required_without' => '请输入邮箱或手机号',
                 'password.required' => '用户密码有误',
             ]);
 
-        if ($validator->fails()) {
-           return redirect()->back()->withErrors($validator->errors())->withInput();
+        if ($request->has('email')) {
+            $user = User::where('email', $request->input('email'))->first();
+        } else {
+            $user = User::where('mobile', $request->input('mobile'))->first();
         }
 
-        // dd('等待登录之后操作');
-
-        return view('login');
+        return $user;
     }
 
     public function register(Request $request)
@@ -43,20 +44,13 @@ class AuthController extends Controller
 
     public function doRegister(Request $request)
     {
-        // User::create(
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'mobile' => $data['mobile'],
-        //     'password' => bcrypt($data['password'])
-        // );
-
-        // return api_response(0, '注册撑哦功能')
-
-        $validator = Validator::make($request->all(),
+        $this->validate($request,
             [
-                'email'   => 'required',
-                'mobile' => 'required',
-                'verificationcode' => 'required|verificationcode',
+                // 'name' => 'required|string|min:1|max:200',
+                'email'   => 'required|email|min:0|max:800|unique:users,email',
+                'mobile' => 'required|mobile|unique:users,mobile',
+                'password' => 'required',
+                // 'verificationcode' => 'required|verificationcode',
             ],
             [
                 'email.required' => '用户邮箱不能为空',
@@ -65,12 +59,22 @@ class AuthController extends Controller
                 'verificationcode.verificationcode' => '验证码不正确',
             ]);
 
-        if ($validator->fails()) {
-           return redirect()->back()->withErrors($validator->errors())->withInput();
-        }
 
-        // dd('等待注册的操作');
+        $data = $request->only('email', 'mobile', 'name', 'password');
+
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'mobile' => $data['mobile'],
+            'password' => bcrypt($data['password'])
+        ]);
 
         return view('register');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return '退出成功';
     }
 }
