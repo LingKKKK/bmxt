@@ -20,6 +20,7 @@ Route::get('/register', 'AuthController@register');
 Route::post('/register', 'AuthController@doRegister');
 Route::get('/login', 'AuthController@login');
 Route::post('/login', 'AuthController@doLogin');
+Route::any('/logout', 'AuthController@logout');
 
 // 注册登录成功提示页面
 Route::get('/registerSuccess', 'AuthController@registerSuccessTips');
@@ -61,5 +62,6 @@ Route::post('/uploadimg', 'UtilsController@uploadImg');
 Route::get('/initevents', 'MatchbjController@initEvents');
 Route::get('/t', 'MatchbjController@showList');
 
+// 用户远程认证接口
 Route::post('/api/user/login', 'Api\UserController@login')->middleware('apiguard');
 Route::post('/api/user/info', 'Api\UserController@userinfo')->middleware('apiguard');
