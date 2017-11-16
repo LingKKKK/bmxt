@@ -10,29 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-//  报名页面
-// Route::get('/', 'SignupController@signup');
-// Route::post('/signup', 'SignupController@doSignup');
-
-
 // Route::get('/success', 'SignupController@success');
 Route::get('/excel', 'SignupController@doExportExcel');
 Route::get('/admin/export', 'MatchbjController@export');
 Route::post('/admin/export', 'MatchbjController@doExportExcel');
-// // 报名系统查询
-// // Route::get('/search', 'SignupController@search');
-// // Route::post('/search', 'SignupController@doSearch');
-// // 行程系统
-// Route::get('/scheduling', 'SignupController@scheduling');
-// Route::post('/scheduling', 'SignupController@doScheduling');
-// Route::get('/plan', 'SignupController@plan');
-// Route::post('/plan', 'SignupController@doPlan');
-// Route::get('/showTrip', 'SignupController@showTrip');
-// // 行程系统查询
-// Route::get('/plan/export', 'SignupController@planExport');
-// Route::post('/plan/export', 'SignupController@planExportExcel');
 
+// 登录注册
+Route::get('/register', 'MatchbjController@register');
+Route::post('/register', 'MatchbjController@doRegister');
+Route::get('/login', 'MatchbjController@login');
+Route::post('/login', 'MatchbjController@doLogin');
 
 //查询 提交查询信息进行查询
 Route::get('/search', 'MatchbjController@search');
@@ -45,10 +32,8 @@ Route::post('/signupedit', 'MatchbjController@doUpdate');
 Route::get('/finish', 'MatchbjController@finish');
 
 
-
 // 队伍名称检查
 Route::post('/checkteamname', 'MatchbjController@checkName');
-
 
 // 支付宝支付接口
 Route::post('/getpayqrcode', 'UtilsController@getPayQrcode');
@@ -67,7 +52,6 @@ Route::post('/captcha/verify', 'UtilsController@verificationcode');
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
-
 
 Route::get('/initevents', 'MatchbjController@initEvents');
 Route::get('/t', 'MatchbjController@showList');

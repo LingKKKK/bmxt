@@ -26,6 +26,65 @@ class MatchbjController extends Controller
         $service->initEvents();
     }
 
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function doRegister(Request $request, \App\Enroll\CompetitionService $service)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'email'   => 'required',
+                'leader_mobile' => 'required',
+                'verificationcode' => 'required|verificationcode',
+            ],
+            [
+                'email.required' => '用户邮箱不能为空',
+                'leader_mobile.required' => '用户手机号不能为空',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
+            ]);
+
+        if ($validator->fails()) {
+           return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        dd('等待注册的操作');
+
+        return view('register');
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function doLogin(Request $request, \App\Enroll\CompetitionService $service)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'email'   => 'required',
+                'leader_mobile' => 'required',
+                'verificationcode' => 'required|verificationcode',
+            ],
+            [
+                'email.required' => '用户邮箱不能为空',
+                'leader_mobile.required' => '用户手机号不能为空',
+
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
+            ]);
+
+        if ($validator->fails()) {
+           return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        dd('等待登录之后操作');
+
+        return view('login');
+    }
+
     public function search()
     {
         return view('searchbj');
