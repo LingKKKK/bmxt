@@ -71,3 +71,6 @@ Route::post('/uploadimg', 'UtilsController@uploadImg');
 
 Route::get('/initevents', 'MatchbjController@initEvents');
 Route::get('/t', 'MatchbjController@showList');
+
+Route::post('/api/user/login', 'Api\UserController@login')->middleware('apiguard');
+Route::post('/api/user/info', 'Api\UserController@userinfo')->middleware('apiguard');
