@@ -21,6 +21,11 @@ Route::post('/register', 'AuthController@doRegister');
 Route::get('/login', 'AuthController@login');
 Route::post('/login', 'AuthController@doLogin');
 
+// 注册登录成功提示页面
+Route::get('/registerSuccess', 'AuthController@registerSuccessTips');
+Route::get('/loginSuccess', 'AuthController@loginSuccessTips');
+
+
 //查询 提交查询信息进行查询
 Route::get('/search', 'MatchbjController@search');
 Route::post('/search', 'MatchbjController@doSearch');

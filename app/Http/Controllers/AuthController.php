@@ -30,7 +30,6 @@ class AuthController extends Controller
         if ($validator->fails()) {
            return redirect()->back()->withErrors($validator->errors())->withInput();
         }
-
         // dd('等待登录之后操作');
 
         return view('login');
@@ -51,7 +50,6 @@ class AuthController extends Controller
         // );
 
         // return api_response(0, '注册撑哦功能')
-
         $validator = Validator::make($request->all(),
             [
                 'email'   => 'required',
@@ -72,5 +70,15 @@ class AuthController extends Controller
         // dd('等待注册的操作');
 
         return view('register');
+    }
+
+    public function registerSuccessTips()
+    {
+        return view('registerSuccess');
+    }
+
+    public function loginSuccessTips()
+    {
+        return view('loginSuccess');
     }
 }

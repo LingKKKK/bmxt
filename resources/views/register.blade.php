@@ -22,7 +22,7 @@
             @endif
         </div>
         <form id="form" action="/register"  method="POST" novalidate>
-            <div class="inner">
+            <div class="inner clearfix">
                 <span class="tips">tips: 请输入您的邮箱、手机号进行注册</span>
                 <span class="tips-info" ></span>
 
@@ -35,19 +35,23 @@
                     <input data-type="mobile" class="input-field-text"  id="mobile" type="text" name="mobile" value="{{old('mobile')}}">
                 </div>
                 <div class="input-field">
+                    <span class="input-label">昵称  :</span>
+                    <input data-type="mobile" class="input-field-text"  id="mobile" type="text" name="mobile" value="{{old('mobile')}}">
+                </div>
+                <div class="input-field">
                     <span class="input-label">密码  :</span>
-                    <input data-type="password" class="input-field-text"  id="password" type="text" name="password" value="{{old('password')}}">
+                    <input data-type="nickname" class="input-field-text"  id="nickname" type="password" name="nickname" value="{{old('nickname')}}">
                 </div>
                 <div class="input-field">
                     <span class="input-label">确认密码  :</span>
-                    <input data-type="password_verify" class="input-field-text"  id="password_verify" type="text" name="password_verify" value="{{old('password_verify')}}">
+                    <input data-type="password_confirmed" class="input-field-text"  id="password_confirmed" type="password" name="password_confirmed" value="{{old('password_confirmed')}}">
                 </div>
                 <div id="code" class="clearfix">
                     <span class="input-label">验证码  :</span>
                     <input name="verificationcode" id="verificationcode" class="code" type="text">
                 </div>
                 <a id="tel" class="tel">获取手机验证码</a>
-                <button class="submit-search" id="submit-search">查询</button>
+                <button class="submit-search" id="submit-search">注册</button>
                 <!-- <p class="button-style">查询</p> -->
             </div>
         </form>
@@ -154,16 +158,16 @@
                 }
             );
         });
-        $('#email').unbind('blur').bind('blur', function() {
-            var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-            var isEmail = reg.test($('#email').val());
-            if (!isEmail) {
-                $('.tips-info').text('您输入的邮箱格式错误');
-                setTimeout(function (){
-                    $('.tips-info').text('');
-                }, 3000)
-            }
-        });
+        // $('#email').unbind('blur').bind('blur', function() {
+        //     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+        //     var isEmail = reg.test($('#email').val());
+        //     if (!isEmail) {
+        //         $('.tips-info').text('您输入的邮箱格式错误');
+        //         setTimeout(function (){
+        //             $('.tips-info').text('');
+        //         }, 3000)
+        //     }
+        // });
     })
 
     // 发送手机验证码

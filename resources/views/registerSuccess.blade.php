@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/login.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/successTips.css')}}">
 </head>
 <body>
     <div class="header">
@@ -14,31 +14,8 @@
         </div>
     </div>
     <div class="content">
-        <div class="leader-info-tips">
-            @if(count($errors) > 0)
-                <span>{{$errors->first()}}</span>
-            @endif
-        </div>
-        <form id="form" action="/login"  method="POST" novalidate>
-            <div class="inner">
-                <span class="tips">tips: 请输入您的邮箱、手机号进行登录</span>
-                <span class="tips-info" ></span>
-
-                <div class="input-field">
-                    <span class="input-label">邮箱  :</span>
-                    <input data-type="" class="input-field-text"  id="email" type="text" name="email" value="{{old('email')}}">
-                </div>
-                <div class="input-field">
-                    <span class="input-label">手机号  :</span>
-                    <input data-type="mobile" class="input-field-text"  id="mobile" type="text" name="mobile" value="{{old('mobile')}}">
-                </div>
-                <div class="input-field">
-                    <span class="input-label">密码  :</span>
-                    <input data-type="password" class="input-field-text"  id="password" type="text" name="password" value="{{old('password')}}">
-                </div>
-                <button class="submit-search" id="submit-search">查询</button>
-            </div>
-        </form>
+        <span class="sp1">注册成功!!</span>
+        <span class="sp2">正在为您进行跳转,请稍候...</span>
     </div>
 
     <div class="identifying">
@@ -142,16 +119,16 @@
                 }
             );
         });
-        // $('#email').unbind('blur').bind('blur', function() {
-        //     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-        //     var isEmail = reg.test($('#email').val());
-        //     if (!isEmail) {
-        //         $('.tips-info').text('您输入的邮箱格式错误');
-        //         setTimeout(function (){
-        //             $('.tips-info').text('');
-        //         }, 3000)
-        //     }
-        // });
+        $('#email').unbind('blur').bind('blur', function() {
+            var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+            var isEmail = reg.test($('#email').val());
+            if (!isEmail) {
+                $('.tips-info').text('您输入的邮箱格式错误');
+                setTimeout(function (){
+                    $('.tips-info').text('');
+                }, 3000)
+            }
+        });
     })
 
     // 发送手机验证码
