@@ -32,7 +32,15 @@
                 </div>
                 <div class="input-field">
                     <span class="input-label">手机号  :</span>
-                    <input data-type="mobile" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
+                    <input data-type="mobile" class="input-field-text"  id="mobile" type="text" name="mobile" value="{{old('mobile')}}">
+                </div>
+                <div class="input-field">
+                    <span class="input-label">密码  :</span>
+                    <input data-type="password" class="input-field-text"  id="password" type="text" name="password" value="{{old('password')}}">
+                </div>
+                <div class="input-field">
+                    <span class="input-label">确认密码  :</span>
+                    <input data-type="password_verify" class="input-field-text"  id="password_verify" type="text" name="password_verify" value="{{old('password_verify')}}">
                 </div>
                 <div id="code" class="clearfix">
                     <span class="input-label">验证码  :</span>
@@ -122,12 +130,12 @@
         $('.identifying .yes').click(function() {
             console.log(1)
             var captchacode = $('#v_code').val();
-            var mobile = $('#leader_mobile').val();
+            var mobile = $('#mobile').val();
             var ID = $('#leader_id').val();
             var type = 'mobile';
             //console.log(captchacode,mobile,type);
             $.post(
-                "{{url('/verificationcode/send')}}",
+                "{{url('/api/user/info')}}",
                 {
                     type    : type,
                     captcha : captchacode,
@@ -161,9 +169,9 @@
     // 发送手机验证码
     $('#tel').click(function() {
         var partten = /^1\d{10}$/;
-        if(partten.test($('#leader_mobile').val())){
+        if(partten.test($('#mobile').val())){
            $('.identifying').addClass('active');
-           $('#tipes i').html($('#leader_mobile').val());
+           $('#tipes i').html($('#mobile').val());
            countdown();
         }else {
             $('.tips-info').text('您输入的手机格式错误');

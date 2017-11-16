@@ -16,10 +16,10 @@ Route::get('/admin/export', 'MatchbjController@export');
 Route::post('/admin/export', 'MatchbjController@doExportExcel');
 
 // 登录注册
-Route::get('/register', 'MatchbjController@register');
-Route::post('/register', 'MatchbjController@doRegister');
-Route::get('/login', 'MatchbjController@login');
-Route::post('/login', 'MatchbjController@doLogin');
+Route::get('/register', 'AuthController@register');
+Route::post('/register', 'AuthController@doRegister');
+Route::get('/login', 'AuthController@login');
+Route::post('/login', 'AuthController@doLogin');
 
 //查询 提交查询信息进行查询
 Route::get('/search', 'MatchbjController@search');

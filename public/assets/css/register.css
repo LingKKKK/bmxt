@@ -112,7 +112,7 @@ body .button-print {
   background: #587BEF;
 }
 body .content {
-  min-height: 529px;
+  min-height: 560px;
   width: 100%;
   padding-top: 59px;
   box-sizing: border-box;
@@ -136,12 +136,12 @@ body .content .leader-info-tips span {
 }
 body .content .inner {
   width: 600px;
-  height: 350px;
+  height: 450px;
   margin: 0 auto;
   border: 1px solid #587BEF;
   box-sizing: border-box;
   padding: 50px 50px;
-  margin-top: 33px;
+  margin-top: 10px;
   padding-left: 78px;
   position: relative;
 }

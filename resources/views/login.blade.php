@@ -16,9 +16,7 @@
     <div class="content">
         <div class="leader-info-tips">
             @if(count($errors) > 0)
-                @foreach($errors->all() as $error)
-                <span>{{$error}}</span>
-                @endforeach
+                <span>{{$errors->first()}}</span>
             @endif
         </div>
         <form id="form" action="/login"  method="POST" novalidate>
@@ -32,13 +30,12 @@
                 </div>
                 <div class="input-field">
                     <span class="input-label">手机号  :</span>
-                    <input data-type="mobile" class="input-field-text"  id="leader_mobile" type="text" name="leader_mobile" value="{{old('leader_mobile')}}">
+                    <input data-type="mobile" class="input-field-text"  id="mobile" type="text" name="mobile" value="{{old('mobile')}}">
                 </div>
-                <div id="code" class="clearfix">
-                    <span class="input-label">验证码  :</span>
-                    <input name="verificationcode" id="verificationcode" class="code" type="text">
+                <div class="input-field">
+                    <span class="input-label">密码  :</span>
+                    <input data-type="password" class="input-field-text"  id="password" type="text" name="password" value="{{old('password')}}">
                 </div>
-                <a id="tel" class="tel">获取手机验证码</a>
                 <button class="submit-search" id="submit-search">查询</button>
             </div>
         </form>
@@ -121,12 +118,12 @@
         $('.identifying .yes').click(function() {
             console.log(1)
             var captchacode = $('#v_code').val();
-            var mobile = $('#leader_mobile').val();
+            var mobile = $('#mobile').val();
             var ID = $('#leader_id').val();
             var type = 'mobile';
             //console.log(captchacode,mobile,type);
             $.post(
-                "{{url('/verificationcode/send')}}",
+                "{{url('/api/user/login')}}",
                 {
                     type    : type,
                     captcha : captchacode,
@@ -160,9 +157,9 @@
     // 发送手机验证码
     $('#tel').click(function() {
         var partten = /^1\d{10}$/;
-        if(partten.test($('#leader_mobile').val())){
+        if(partten.test($('#mobile').val())){
            $('.identifying').addClass('active');
-           $('#tipes i').html($('#leader_mobile').val());
+           $('#tipes i').html($('#mobile').val());
            countdown();
         }else {
             $('.tips-info').text('您输入的手机格式错误');
