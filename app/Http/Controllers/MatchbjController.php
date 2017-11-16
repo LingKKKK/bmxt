@@ -23,7 +23,7 @@ class MatchbjController extends Controller
     public function initEvents(\App\Enroll\CompetitionService $service)
     {
         // 初始化报名数据
-        // $service->initEvents();
+        $service->initEvents();
     }
 
     public function search()
