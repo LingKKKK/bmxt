@@ -109,15 +109,6 @@
                     <div class="contact_info div_tab clearfix active">
                         <input type="hidden" name="id" value="{{$teamData['id']}}">
                         <div class="input-field">
-                            <span class="input-label">邀请码  :</span>
-                            @if($is_update)
-                            <input tip-warn="邀请码不能为空" tip-info="输入邀请码" data-type="" readonly class="input-field-text disabled" id="invitecode" name="invitecode" type="text" value="{{$teamData['invitecode'] or ''}}">
-                            @else
-                            <input tip-warn="邀请码不能为空" tip-info="输入邀请码" data-type="invitecode" required class="input-field-text" id="invitecode" name="invitecode" type="text" value="{{$teamData['invitecode'] or ''}}">
-                            @endif
-                            <div class="tips"></div>
-                        </div>
-                        <div class="input-field">
                             <span class="input-label">是否添加联系人  :</span>
                             <select class="input-field-text" id="add_contact" {{$is_update ? 'disabled' : ''}}>
                                 <option value="yes">添加</option>
@@ -587,12 +578,6 @@
                 return;
             }
 
-            // 邀请码
-            if (datatype.indexOf('invitecode') !== -1 && ! invitecodeCheck(val)) {
-                $el.tipWarn('请您输入有效邀请码！');
-                return false;
-            }
-
             // 队名检测 :: BUG: 不知道问么
             if (datatype.indexOf('teamname') !== -1 && ! teamNameCheck(val)) {
                 var old_team_name = "{{$teamData['team_name'] or ''}}";
@@ -990,9 +975,9 @@
             });
 
             // 1. 邀请码，联系人信息
-            $('#invitecode').blur(function() {
-                validField(this);
-            });
+            // $('#invitecode').blur(function() {
+            //     validField(this);
+            // });
 
             $('#add_contact').change(function() {
                 var val = $(this).find('option:selected').val();

@@ -90,13 +90,13 @@ class MatchbjController extends Controller
         $is_update = $request->has('id') && !empty($request->input('id'));
         $validator = Validator::make($request->all(),
             [
-                'invitecode' =>  $is_update ? 'required' : 'required|invitecode',
+                // 'invitecode' =>  $is_update ? 'required' : 'required|invitecode',
                 'team_no'    => 'required',
                 'verificationcode' => 'required|verificationcode',
             ],
             [
-                'invitecode.required' => '邀请码不能为空',
-                'invitecode.invitecode' => '邀请码不正确',
+                // 'invitecode.required' => '邀请码不能为空',
+                // 'invitecode.invitecode' => '邀请码不正确',
                 'team_no.required'  => '队伍编号不能不能为空',
                 'verificationcode.required' => '验证码不能为空',
                 'verificationcode.verificationcode' => '验证码不正确',
@@ -111,7 +111,7 @@ class MatchbjController extends Controller
         }
 
         $team_fields = [
-            'id', 'invitecode',
+            'id',
             'contact_name', 'contact_mobile', 'contact_email', 'contact_remark',
             'team_no', 'team_name', 'competition_event_id', 'remark',
             'invoice_title', 'invoice_code', 'invoice_money', 'invoice_type', 'invoice_detail', 'invoice_mail_address', 'invoice_mail_recipients',
@@ -183,9 +183,9 @@ class MatchbjController extends Controller
         }
 
         // 无效邀请码 异常
-        if (!$is_update) {
-            InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
-        }
+        // if (!$is_update) {
+        //     InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
+        // }
         return redirect('finish')->with('team_no',$competitionTeamModel->team_no)->with('contact_mobile', $competitionTeamModel->contact_mobile);
     }
 
