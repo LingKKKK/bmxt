@@ -257,10 +257,20 @@ class MatchbjController extends Controller
     }
 
     public function finish(\App\Enroll\CompetitionService $service){
-        $team_no = session('team_no');
-        $contact_mobile = session('contact_mobile');
+        if (! Auth::check()) {
+            return view('successTips', ['status' => '需要登录', 'link' => '/login']);
+        }
 
-        $teamData = $service->searchTeam($team_no, $contact_mobile);
+
+
+        $user = Auth::user();
+
+        $user = Auth::user();
+        $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();
+
+        $team_no = $teamModel !== null ? $teamModel->team_no : '';
+
+        $teamData = $service->getTeamData($team_no);
 
         // dd($teamData);
         return view('finish', compact('teamData'));
