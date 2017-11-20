@@ -182,15 +182,16 @@
                                         <div class="input-field">
                                             <span class="input-label">证件类型  :</span>
                                             <select name="leader[0][idcard_type]" class="input-field-text id_type">
-                                                <option value="身份证" {{$teamMember['idcard_type'] == '身份证' ? 'selected' : ''}} >身份证</option>
+                                                {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], $teamMember['idcard_type'] )!!}
+                                                <!-- <option value="身份证" {{$teamMember['idcard_type'] == '身份证' ? 'selected' : ''}} >身份证</option>
                                                 <option value="内地通行证"  {{$teamMember['idcard_type'] == '内地通行证' ? 'selected' : ''}}>内地通行证</option>
                                                 <option value="台胞证"  {{$teamMember['idcard_type'] == '台胞证' ? 'selected' : ''}}>台胞证</option>
-                                                <option value="护照"  {{$teamMember['idcard_type'] == '护照' ? 'selected' : ''}}>护照</option>
+                                                <option value="护照"  {{$teamMember['idcard_type'] == '护照' ? 'selected' : ''}}>护照</option> -->
                                             </select>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">证件号码  :</span>
-                                            <input tip-info="请填写证件号码" required="" class="input-field-text id_number" data-type="ID" id="leader_0_ID_number" type="text" name="leader[0][idcard_no]" value="{{$teamMember['idcard_no'] or ''}}">
+                                            <input tip-info="请填写证件号码" required="" class="input-field-text id_number" data-type="{{ $teamMember['idcard_type'] == '身份证' ? 'ID' : ''}}" id="leader_0_ID_number" type="text" name="leader[0][idcard_no]" value="{{$teamMember['idcard_no'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">

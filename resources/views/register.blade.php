@@ -19,6 +19,10 @@
                 <span>{{$errors->first()}}</span>
             @endif
         </div>
+        <div class="dialog-user">
+            <a href="/login">登录</a>
+            <a>注册</a>
+        </div>
         <form id="form" action="/register"  method="POST" novalidate>
             <div class="inner clearfix">
                 <span class="tips">tips: 请输入您的邮箱、手机号进行注册</span>
