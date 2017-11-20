@@ -24,10 +24,11 @@
                 </ul>
                 <div class="clearfix clear"></div>
             </div>
+            <div class="username_info">
+                <span class=""><i id="username">{{Auth::user()->name}}</i>, 您已成功登录</span>
+                <a href="/logout">退出登录</a>
+            </div>
             <input class="button-print" type="button" value="打印" onclick="window.print()">
-
-            <span class="username_info"><i id="username">报名信息填写人:{{Auth::user()->name}}</i></span>
-
             <div class="all_info clearfix clear">
                 <div class="active team_info div_tab">
                     <div class="leader" id="team">
@@ -208,6 +209,23 @@
         if ($('#preview_pinvoice_type').text() == '不开票') {
             $('#pays').hide();
         }
+
+
+        var timer;
+        $('.username_info').unbind('mouseenter', 'mouseleave').bind({
+            mouseenter: function() {
+                clearInterval(timer);
+                timer = setTimeout(function() {
+                    $('.username_info a').show();
+                }, 700);
+            },
+            mouseleave: function() {
+                clearInterval(timer);
+                timer = setTimeout(function() {
+                    $('.username_info a').hide();
+                }, 700);
+            }
+        });
     })
 </script>
 </body>

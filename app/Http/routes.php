@@ -29,7 +29,10 @@ Route::get('/enroll/signup', 'EnrollController@signup')->name('enroll.signup');
 
 // 注册登录成功提示页面
 Route::get('/successTips', 'AuthController@successTips');
-// Route::get('/loginSuccess', 'AuthController@loginSuccessTips');
+// Route::get('/loginSuccess', 'AuthController@loginSuccessTips');information
+
+// 登录成功之后的中间页面
+Route::get('/information', 'AuthController@information');
 
 
 //查询 提交查询信息进行查询

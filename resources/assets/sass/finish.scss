@@ -36,6 +36,7 @@ body {
         margin: 0 auto;
         margin-top: 30px;
         min-height: 192px;
+        position: relative;
 
         .successAlert {
             width: 500px;
@@ -384,7 +385,46 @@ body {
     }
 
     .username_info {
-        font-size: 14px;
+      height: 30px;
+      border: 1px solid #ccc;
+      text-align: center;
+      line-height: 30px;
+      border-radius: 5px;
+      font-size: 14px;
+      position: absolute;
+      right: 0px;
+      top: 6px;
+      cursor: pointer;
+
+
+      display: block;
+
+      span {
+        padding: 0px 20px;
+
+        i {
+          color: #587BEF;
+        }
+      }
+
+      a {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 35px;
+        height: 30px;
+        border: 1px solid #ccc;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 5px;
+        font-size: 13px;
+        cursor: pointer;
+        width: 80px;
+        background: #fff;
+        margin: 0 auto;
+        z-index: 9;
+        display: none;
+      }
     }
 
     .bot {

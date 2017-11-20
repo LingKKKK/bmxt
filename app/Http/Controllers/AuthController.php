@@ -82,6 +82,18 @@ class AuthController extends Controller
         return view('/successTips', compact('status', 'link'));
     }
 
+    public function information(Request $request)
+    {
+        if (! Auth::check()) {
+            return redirect('/login');
+            // return view('successTips', ['status' => '需要登录', 'link' => '/login']);
+        }
+
+        $user = Auth::user();
+
+        return view('/information');
+    }
+
     public function createUser($userData)
     {
         $data = [

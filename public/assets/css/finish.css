@@ -107,6 +107,7 @@ body .mid {
   margin: 0 auto;
   margin-top: 30px;
   min-height: 192px;
+  position: relative;
 }
 body .mid .successAlert {
   width: 500px;
@@ -353,7 +354,41 @@ body .button-print {
   margin-bottom: 30px;
 }
 body .username_info {
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
   font-size: 14px;
+  position: absolute;
+  right: 0px;
+  top: 6px;
+  cursor: pointer;
+  display: block;
+}
+body .username_info span {
+  padding: 0px 20px;
+}
+body .username_info span i {
+  color: #587BEF;
+}
+body .username_info a {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 35px;
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  width: 80px;
+  background: #fff;
+  margin: 0 auto;
+  z-index: 9;
+  display: none;
 }
 body .bot {
   height: 182px;
