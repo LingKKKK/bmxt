@@ -8,69 +8,53 @@ use App\Enroll\Models\CompetitionEvent;
 
 use App\Enroll\Models\CompetitionTeamMember;
 use App\Enroll\Models\CompetitionTeam;
-use App\Enroll\InviteManager;
+use App\Enroll\CompetitionService;
 use Validator;
-use Storage;
-use Session;
 use Excel;
 use Auth;
 
 
 class MatchbjController extends Controller
 {
-    //队伍码
-    protected $team_no = '';
+    protected $service = null;
 
+    public function __construct(CompetitionService $service)
+    {
+        $this->service = $service;
+    }
     public function initEvents(\App\Enroll\CompetitionService $service)
     {
-        // 初始化报名数据
-        $service->initEvents();
+        $this->service->initEvents();
     }
 
-    public function search()
+    public function information(Request $request, \App\Enroll\CompetitionService $service)
     {
-        return view('searchbj');
-    }
-
-    public function doSearch(Request $request, \App\Enroll\CompetitionService $service)
-    {
-        $validator = Validator::make($request->all(),
-            [
-                'team_no'   => 'required',
-                'contact_mobile' => 'required',
-                'verificationcode' => 'required|verificationcode',
-            ],
-            [
-                'team_no.required'  => '队伍编号不能为空',
-                'contact_mobile.required' => '联系人手机号不能为空',
-                'verificationcode.required' => '验证码不能为空',
-                'verificationcode.verificationcode' => '验证码不正确',
-            ]);
-
-        if ($validator->fails()) {
-           // return redirect()->back()->withErrors($validator->errors())->withInput();
+        if (! Auth::check()) {
+            return redirect('/login');
         }
 
-        $team_no = $request->input('team_no', '');
-        $contact_mobile = $request->input('contact_mobile', '');
-        $verificationcode = $request->input('verificationcode', '');
+        $teamList = $service->getTeamList(Auth::user()->id);
+        return view('information', compact('teamList'));
 
-        $teamData = $service->searchTeam($team_no, $contact_mobile);
-        // dd($teamData);
-        if ($teamData === null) {
-            return redirect()->back()->withErrors(collect(['notfound' => '数据不存在']))->withInput();
-        }
-
-        return redirect('/')->with('teamData', $teamData);
     }
 
-
-    public function signup( Request $request, \App\Enroll\CompetitionService $service)
+    public function create(Request $request)
     {
         if (! Auth::check()) {
             // return redirect('/login');
             return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
         }
+
+
+        $competitionList = $this->service->getCompetitionList();
+        $competitonsJson = json_encode($competitionList, JSON_UNESCAPED_UNICODE);
+
+        return view('matchbj', [
+            'competitonsJson' => $competitonsJson,
+            'is_update' => false,
+            'teamData' => null
+        ]);
+
 
         $user = Auth::user();
         $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();
@@ -78,17 +62,37 @@ class MatchbjController extends Controller
         $teamData = null;
         if ($teamModel !== null) {
             $team_no = $teamModel->team_no;
-            $teamData = $service->getTeamData($team_no);
+            $teamData = $this->service->getTeamData($team_no);
         } else {
             $team_no = $this->getTeamNo();
         }
 
         $is_update = !empty($teamData);
 
-        $competitionList = $service->getCompetitionList();
-        $competitonsJson = json_encode($competitionList, JSON_UNESCAPED_UNICODE);
 
         return view('matchbj', compact('competitonsJson', 'team_no', 'teamData', 'is_update'));
+    }
+
+    public function edit($team_no, Request $request)
+    {
+        if (! Auth::user()) {
+            return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
+        }
+
+        $teamData = $this->service->getTeamData($team_no);
+
+        if ($teamData === null) {
+            return view('successTips', ['status' => '不存在', 'link' => '/']);
+        }
+
+        $competitionList = $this->service->getCompetitionList();
+        $competitonsJson = json_encode($competitionList, JSON_UNESCAPED_UNICODE);
+
+        return view('matchbj', [
+            'competitonsJson' => $competitonsJson,
+            'is_update' => true,
+            'teamData' => $teamData
+        ]);
     }
 
     public function doSignup(Request $request)
@@ -98,47 +102,27 @@ class MatchbjController extends Controller
         }
 
         $user = Auth::user();
-        $is_update = $request->has('id') && !empty($request->input('id'));
-        $validator = Validator::make($request->all(),
-            [
-                'team_no'    => 'required',
-            ],
-            [
-                'team_no.required'  => '队伍编号不能不能为空',
-                // 'verificationcode.required' => '验证码不能为空',
-                // 'verificationcode.verificationcode' => '验证码不正确',
-            ]
-        );
 
-
-        if ($validator->fails()) {
-            return redirect()->back()->withInput();
+        $id = $request->input('id', 0);
+        $competitionTeamModel = CompetitionTeam::find($id);
+        if ($competitionTeamModel === null) {
+            $competitionTeamModel = new CompetitionTeam();
+            $competitionTeamModel->team_no = $this->getTeamNo();
         }
 
-        $team_fields = [
+        $team_data = $request->only([
             'user_id',
             'id',
-            'contact_name', 'contact_mobile', 'contact_email', 'contact_remark',
-            'team_no', 'team_name', 'competition_event_id', 'remark',
+            'contact_name', 'contact_mobile', 'contact_email', 'contact_remark', // 'team_no',
+            'team_name', 'competition_event_id', 'remark',
             'invoice_title', 'invoice_code', 'invoice_money', 'invoice_type', 'invoice_detail', 'invoice_mail_address', 'invoice_mail_recipients',
             'invoice_mail_mobile', 'invoice_mail_email', 'invoice_remark', 'invoice_detail',
-        ];
-
-        $team_data = $request->only($team_fields);
-        $team_data['enroll_user_id'] = $user->id;
-
-        $this->team_no = $team_data['team_no'];
-
-        $competitionTeamModel = new CompetitionTeam();
-        if ($is_update) {
-            $competitionTeamModel = CompetitionTeam::find($team_data['id']);
-        }
+        ]);
 
         $competitionTeamModel->fill(array_except($team_data, ['id']))->save();
 
-        // 处理队员
-        $leaders = (array)$request->all()['leader'];
-        $members = (array)$request->all()['member'];
+        $leaders = (array)$request->all()['leader']; // 领队教师
+        $members = (array)$request->all()['member']; // 队员
 
         foreach ($leaders as $k => $val) {
             $leaders[$k]['team_id'] = $competitionTeamModel->id;
@@ -160,16 +144,15 @@ class MatchbjController extends Controller
             'headmaster', 'school', 'class', 'guarder', 'relation',
         ];
 
-
         $allmembers = array_merge($leaders, $members);
 
         // 删除成员
         $ids = collect($allmembers)->pluck('id');
         $old_ids = $competitionTeamModel->members->pluck('id');
         $deleteIds = array_diff($old_ids->toArray(), $ids->toArray());
-
         CompetitionTeamMember::destroy($deleteIds);
 
+        // 添加成员
         foreach ($allmembers as $k => $val) {
             if (isset($val['id']) && !empty($val)) {
                 $memberModel = CompetitionTeamMember::find($val['id']);
@@ -183,21 +166,11 @@ class MatchbjController extends Controller
             $memberModel->fill(array_except($val, ['id']))->save();
         }
 
-        return redirect("finish/$team_no");
-        // return redirect('finish')->with('team_no',$competitionTeamModel->team_no)->with('contact_mobile', $competitionTeamModel->contact_mobile);
-    }
-
-    public function doUpdate(Request $request)
-    {
-        # code...
+        return redirect('finish/'.$competitionTeamModel->team_no);
     }
 
     private function getTeamNo()
     {
-        if ($this->team_no) {
-            return $this->team_no;
-        }
-
         $teamCount = CompetitionTeam::count();
 
         $seg1 = '2017';
@@ -206,40 +179,23 @@ class MatchbjController extends Controller
         $seg3 = 1687 + $teamCount;
 
         // 年份前缀-月日时分-报名次序
-        $this->team_no = $seg1.$seg2.$seg3;
-        return $this->team_no;
-    }
-    private function saveFile($file)
-    {
-        // if (!$file) {
-        //     return '';
-        // }
-
-        // $filename = $file->getClientOriginalName();
-
-        // $ext = $file->getClientOriginalExtension();
-
-        // $suffix = rand(1000, 9999);
-
-        // $hashfilename = md5($filename.$suffix).'.'.$ext;
-        // $storePath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
-        // $publicPath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
-        // Storage::put($storePath, file_get_contents($file));
-
-        // return $publicPath;
+        return $seg1.$seg2.$seg3;
     }
 
     public function checkName(Request $request)
     {
-        $team_name = $request->input('team_name', '');
-        if (empty($team_name)) {
+        if (! $request->has('team_name')) {
             return api_response(2, '队名不能为空');
         }
-        $result = CompetitionTeam::where('team_name', $team_name)->first();
-        if ($result !== null) {
+
+        $team_name = $request->input('team_name', '');
+
+        $nameCount = CompetitionTeam::where('team_name', $team_name)->count();
+        if ($nameCount > 0) {
             return api_response(1, '队伍名重复');
         }
-        return api_response(0, '合法的队名');
+
+        return api_response(0, '队伍名可用');
     }
 
     public function finish($team_no, Request $request, \App\Enroll\CompetitionService $service){
@@ -248,22 +204,24 @@ class MatchbjController extends Controller
         }
 
         $user = Auth::user();
-        // $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();
-
-        // $team_no = $teamModel !== null ? $teamModel->team_no : '';
 
         $teamData = $service->getTeamData($team_no);
 
-        if(!$teamData) {
-            return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
+        if ($teamData === null || $teamData['enroll_user_id'] !== Auth::user()->id) {
+            return view('successTips', ['status' => '队伍不存在', 'link' => '/']);
         }
-        // dd($teamData);
+
         return view('finish', compact('teamData'));
     }
 
-    public function success(Request $request)
+
+    /**
+     * 跳转页面
+     * @return [type] [description]
+     */
+    public function jumpPage()
     {
-        return view('success');
+        return view('/successTips');
     }
 
     public function export(\App\Enroll\CompetitionService $service)

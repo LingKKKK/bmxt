@@ -14,9 +14,8 @@
         </div>
     </div>
     <div class="content">
-
-        <span class="sp1">您好, {{$status}} </span>
-        <a id="toLoginPage" href="{{$link}}">点击此处,前往登录页面</a>
+        <span class="sp1">{{$status}}</span>
+        <a id="toLoginPage" href="{{$link}}">点击此处,前往页面</a>
         <span class="sp2">正在为您进行跳转(<i>3</i>),请稍候...</span>
     </div>
 
