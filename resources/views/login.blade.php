@@ -28,10 +28,10 @@
                     <span class="input-label">邮箱  :</span>
                     <input data-type="" class="input-field-text"  id="email" type="text" name="email" value="{{old('email')}}">
                 </div>
-                <div class="input-field">
+<!--                 <div class="input-field">
                     <span class="input-label">手机号  :</span>
                     <input data-type="mobile" class="input-field-text"  id="mobile" type="text" name="mobile" value="{{old('mobile')}}">
-                </div>
+                </div> -->
                 <div class="input-field">
                     <span class="input-label">密码  :</span>
                     <input data-type="password" class="input-field-text"  id="password" type="password" name="password" value="{{old('password')}}">

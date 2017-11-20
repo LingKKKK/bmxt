@@ -34,7 +34,7 @@
                 </div>
                 <div class="input-field">
                     <span class="input-label">昵称  :</span>
-                    <input data-type="name" class="input-field-text"  id="name" type="text" name="name" value="{{old('name')}}">
+                    <input data-type="username" class="input-field-text"  id="username" type="text" name="username" value="{{old('username')}}">
                 </div>
                 <div class="input-field">
                     <span class="input-label">密码  :</span>
