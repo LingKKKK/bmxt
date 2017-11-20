@@ -257,12 +257,12 @@ class MatchbjController extends Controller
         return api_response(0, '合法的队名');
     }
 
-    public function finish(\App\Enroll\CompetitionService $service){
+    public function finish(Request $request, \App\Enroll\CompetitionService $service){
         if (! Auth::check()) {
             return view('successTips', ['status' => '需要登录', 'link' => '/login']);
         }
 
-        $user = Auth::user();
+        dd($request->all());
 
         $user = Auth::user();
         $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();

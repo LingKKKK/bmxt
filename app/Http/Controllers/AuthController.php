@@ -91,9 +91,9 @@ class AuthController extends Controller
 
         $user = Auth::user();
 
-        $enroll_user_id = '10';
+        // 用户的id  等于  队伍的enroll_user_id
+        $enroll_user_id = $user['id'];
         $teamData = $service->searchTeamInfo($enroll_user_id);
-        // $teamData = json_encode($teamData, JSON_UNESCAPED_UNICODE);
 
         return view('/information', compact('teamData'));
     }
@@ -120,6 +120,7 @@ class AuthController extends Controller
     {
         return view('/successTips');
     }
+
     public function logout()
     {
         Auth::logout();

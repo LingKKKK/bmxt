@@ -1412,7 +1412,7 @@
                     {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], "{{: defaultValue['idcard_type']}}")!!}
                 </select>
                 <?php
-                    echo "{{: defaultValue['idcard_type']}}";
+                    echo "{!!: defaultValue['idcard_type']!!}";
                 ?>
             </div>
             <div class="input-field">

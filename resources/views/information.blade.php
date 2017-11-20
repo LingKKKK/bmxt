@@ -27,11 +27,11 @@
                 </div>
             @endif
 
-            <?php
-                var_dump($teamData);
-            ?>
+            <!-- $status = '注册成功,请登录';
+            $link = '/login';
+            return view('/successTips', compact('status', 'link')); -->
 
-            @if(!$teamData)
+            @if(count($teamData) == 0)
             <span class="no_list">暂无报名数据,请新建报名</span>
             @else
             <div class="information_list clearfix">
@@ -47,7 +47,11 @@
                         <li>{{Auth::user()->name}}</li>
                         <li>{{$team['team_no'] or ''}}</li>
                         <li>{{$team['created_at'] or ''}}</li>
-                        <li><a href="#">查看</a></li>
+                        <li><a href="{!!url('/finish/$team[team_no]')!!}">查看</a><a href="#">修改</a></li>
+
+                        <!-- $status = '注册成功,请登录';
+                        $link = '/login';
+                        return view('/successTips', compact('status', 'link')); -->
                     </ul>
                     @endforeach
                 </div>
