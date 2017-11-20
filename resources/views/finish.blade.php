@@ -25,6 +25,9 @@
                 <div class="clearfix clear"></div>
             </div>
             <input class="button-print" type="button" value="打印" onclick="window.print()">
+
+            <span class="username_info"><i id="username">报名信息填写人:{{Auth::user()->name}}</i></span>
+
             <div class="all_info clearfix clear">
                 <div class="active team_info div_tab">
                     <div class="leader" id="team">
