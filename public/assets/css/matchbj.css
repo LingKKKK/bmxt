@@ -210,9 +210,66 @@ body .instructions .ending span {
 body .content {
   width: 1000px;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 40px;
+  padding-top: 50px;
   min-height: 620px;
   display: none;
+  position: relative;
+}
+body .content .username_info {
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
+  font-size: 14px;
+  position: absolute;
+  right: 0px;
+  top: -25px;
+  cursor: pointer;
+  display: block;
+}
+body .content .username_info span {
+  padding: 0px 20px;
+}
+body .content .username_info span i {
+  color: #587BEF;
+}
+body .content .username_info a {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 35px;
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  width: 80px;
+  background: #fff;
+  margin: 0 auto;
+  z-index: 9;
+  display: none;
+}
+body .content .dialogue-box {
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
+  font-size: 14px;
+  position: absolute;
+  right: 0px;
+  top: -10px;
+  cursor: pointer;
+  display: block;
+}
+body .content .dialogue-box a {
+  margin-left: 20px;
+}
+body .content .dialogue-box a:hover {
+  color: #587BEF;
 }
 body .content .tab_menu {
   width: 100%;

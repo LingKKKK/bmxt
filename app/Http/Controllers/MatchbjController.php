@@ -13,6 +13,7 @@ use Validator;
 use Storage;
 use Session;
 use Excel;
+use Auth;
 
 
 class MatchbjController extends Controller
@@ -78,7 +79,7 @@ class MatchbjController extends Controller
         if ($teamData != null) {
             $team_no = $teamData['team_no'];
         }
-
+        $user = Auth::user();
         $is_update = !empty($teamData);
 
         return view('matchbj', compact('competitonsJson', 'team_no', 'teamData', 'is_update'));

@@ -93,6 +93,17 @@
         </div>
 
         <div class="content {{$is_update ? 'active' : ''}}">
+            @if(Auth::check())
+                <div class="username_info">
+                    <span class=""><i id="username">{{Auth::user()->name}}</i>, 您已成功登录</span>
+                    <a href="/logout">退出登录</a>
+                </div>
+            @else
+                <div class='dialogue-box'>
+                    <a href="/login">登录</a>
+                    <a href="/register">注册</a>
+                </div>
+            @endif
             <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" onkeydown="if(event.keyCode==13)return false;"  style="width: 1004px;">
             <!-- <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate="novalidate" style="width: 1004px;"> -->
                 <div class="tab_menu">
@@ -1244,6 +1255,27 @@
                 // addMemberList('leader');
                 addMemberList('member');
             @endif
+
+            var timer;
+            $('.username_info').unbind('mouseenter', 'mouseleave').bind({
+                mouseenter: function() {
+                    clearInterval(timer);
+                    timer = setTimeout(function() {
+                        $('.username_info a').show();
+                    }, 700);
+                },
+                mouseleave: function() {
+                    clearInterval(timer);
+                    timer = setTimeout(function() {
+                        $('.username_info a').hide();
+                    }, 700);
+                }
+            });
+
+            $('#btn-logout').unbind('click').bind('click', function() {
+                console.log('退出效果')
+                $('.username_info').hide();
+            });
 
         });// end of $(function())
 

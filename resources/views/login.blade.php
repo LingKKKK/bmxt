@@ -34,7 +34,7 @@
                 </div>
                 <div class="input-field">
                     <span class="input-label">密码  :</span>
-                    <input data-type="password" class="input-field-text"  id="password" type="text" name="password" value="{{old('password')}}">
+                    <input data-type="password" class="input-field-text"  id="password" type="password" name="password" value="{{old('password')}}">
                 </div>
                 <button class="submit-search" id="submit-search">查询</button>
             </div>

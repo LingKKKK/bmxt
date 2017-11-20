@@ -31,12 +31,12 @@ class AuthController extends Controller
         if ($request->has('email')) {
             $user = User::where('email', $request->input('email'))->first();
         } else {
-            $user = User::where('mobile', $request->input('mobile'))->first();
+        $user = User::where('mobile', $request->input('mobile'))->first();
         }
-        // dd('等待登录之后操作');
 
+        Auth::login($user);
 
-        return $user;
+        return redirect('/');
     }
 
     public function register(Request $request)

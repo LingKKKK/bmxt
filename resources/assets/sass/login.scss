@@ -42,7 +42,7 @@ body {
     }
 
     .content {
-        min-height: 529px;
+        min-height: 618px;
         width: 100%;
         padding-top: 59px;
         box-sizing: border-box;
@@ -52,6 +52,7 @@ body {
             position: absolute;
             transform: translateX(-50%);
             left: 50%;
+            top: 10px;
             opacity: 1;
             width: 420px;
             transition: all 1s;
