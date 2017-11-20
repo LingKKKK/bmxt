@@ -183,10 +183,6 @@
                                             <span class="input-label">证件类型  :</span>
                                             <select name="leader[0][idcard_type]" class="input-field-text id_type">
                                                 {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], $teamMember['idcard_type'] )!!}
-                                                <!-- <option value="身份证" {{$teamMember['idcard_type'] == '身份证' ? 'selected' : ''}} >身份证</option>
-                                                <option value="内地通行证"  {{$teamMember['idcard_type'] == '内地通行证' ? 'selected' : ''}}>内地通行证</option>
-                                                <option value="台胞证"  {{$teamMember['idcard_type'] == '台胞证' ? 'selected' : ''}}>台胞证</option>
-                                                <option value="护照"  {{$teamMember['idcard_type'] == '护照' ? 'selected' : ''}}>护照</option> -->
                                             </select>
                                         </div>
                                         <div class="input-field">
@@ -1413,11 +1409,11 @@
             <div class="input-field">
                 <span class="input-label">证件类型  :</span>
                 <select name="@{{:type}}[@{{:index}}][idcard_type]" class="input-field-text id_type">
-                    <option value="身份证" @{{if defaultValue['idcard_type'] =='身份证}} selected @{{/if}}>身份证</option>
-                    <option value="内地通行证"  @{{if defaultValue['idcard_type'] =='内地通行证'}} selected @{{/if}}>内地通行证</option>
-                    <option value="台胞证"  @{{if defaultValue['idcard_type'] =='台胞证'}} selected @{{/if}}>台胞证</option>
-                    <option value="护照"  @{{if defaultValue['idcard_type'] =='护照'}} selected @{{/if}} >护照</option>
+                    {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], "{{: defaultValue['idcard_type']}}")!!}
                 </select>
+                <?php
+                    echo "{{: defaultValue['idcard_type']}}";
+                ?>
             </div>
             <div class="input-field">
                 <span class="input-label">证件号码  :</span>

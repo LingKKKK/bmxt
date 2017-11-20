@@ -26,6 +26,35 @@
                     <a href="/register">注册</a>
                 </div>
             @endif
+
+            <?php
+                var_dump($teamData);
+            ?>
+
+            @if(!$teamData)
+            <span class="no_list">暂无报名数据,请新建报名</span>
+            @else
+            <div class="information_list clearfix">
+                <span class="enroll_title">报名列表:</span>
+                <div class="enroll_list clearfix">
+                    <ul class="enroll_type">
+                        <li>用户名</li>
+                        <li>队伍编号</li>
+                        <li>报名时间</li>
+                    </ul>
+                    @foreach($teamData as $team)
+                    <ul class="enroll_item">
+                        <li>{{Auth::user()->name}}</li>
+                        <li>{{$team['team_no'] or ''}}</li>
+                        <li>{{$team['created_at'] or ''}}</li>
+                        <li><a href="#">查看</a></li>
+                    </ul>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+            <!-- 添加报名列表 -->
+            <a class="btn-new-enroll">新建报名</a>
         </div>
 
         <div class="bot">

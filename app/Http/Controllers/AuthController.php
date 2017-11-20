@@ -82,7 +82,7 @@ class AuthController extends Controller
         return view('/successTips', compact('status', 'link'));
     }
 
-    public function information(Request $request)
+    public function information(Request $request, \App\Enroll\CompetitionService $service)
     {
         if (! Auth::check()) {
             return redirect('/login');
@@ -91,7 +91,11 @@ class AuthController extends Controller
 
         $user = Auth::user();
 
-        return view('/information');
+        $enroll_user_id = '10';
+        $teamData = $service->searchTeamInfo($enroll_user_id);
+        // $teamData = json_encode($teamData, JSON_UNESCAPED_UNICODE);
+
+        return view('/information', compact('teamData'));
     }
 
     public function createUser($userData)

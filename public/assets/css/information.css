@@ -108,6 +108,7 @@ body .mid {
   margin-top: 30px;
   min-height: 388px;
   position: relative;
+  padding-top: 30px;
 }
 body .mid .username_info {
   height: 30px;
@@ -146,23 +147,101 @@ body .mid .username_info a {
   z-index: 9;
   display: none;
 }
-body .mid .dialogue-box {
-  height: 30px;
-  text-align: center;
-  line-height: 30px;
-  border-radius: 5px;
-  font-size: 14px;
-  position: absolute;
-  right: 0px;
-  top: -10px;
-  cursor: pointer;
+body .mid .information_list {
+  width: 1000px;
+  margin-top: 60px;
+  box-sizing: border-box;
+  padding: 50px 100px;
+  padding-bottom: 110px;
+}
+body .mid .information_list .enroll_title {
+  font-size: 16px;
+  font-weight: bolder;
+  display: block;
+  margin-bottom: 30px;
+}
+body .mid .information_list .enroll_list {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 20px 0px;
+}
+body .mid .information_list .enroll_list .enroll_type {
+  width: 100%;
+  height: 40px;
   display: block;
 }
-body .mid .dialogue-box a {
-  margin-left: 20px;
-}
-body .mid .dialogue-box a:hover {
+body .mid .information_list .enroll_list .enroll_type li {
+  display: block;
+  float: left;
+  width: 200px;
+  line-height: 40px;
+  height: 40px;
   color: #587BEF;
+  text-align: center;
+  font-size: 14px;
+}
+body .mid .information_list .enroll_list .enroll_item {
+  width: 100%;
+  height: 40px;
+  display: block;
+}
+body .mid .information_list .enroll_list .enroll_item li {
+  display: block;
+  float: left;
+  width: 200px;
+  line-height: 40px;
+  height: 40px;
+  color: #666;
+  text-align: center;
+  font-size: 14px;
+}
+body .mid .information_list .enroll_list .enroll_item li a {
+  background: #587BEF;
+  font-size: 13px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  line-height: 30px;
+  padding: 0px 10px;
+  margin-top: 5px;
+  text-align: center;
+  position: absolute;
+  transition: all 0.5s;
+  cursor: pointer;
+  border: 0;
+  opacity: 1;
+  border-radius: 5px;
+}
+body .mid .information_list .enroll_list .enroll_item li a:hover {
+  opacity: 0.8;
+}
+body .mid .no_list {
+  display: block;
+  font-size: 25px;
+  color: red;
+  text-align: center;
+  margin-top: 100px;
+}
+body .mid .btn-new-enroll {
+  position: absolute;
+  right: 100px;
+  bottom: 40px;
+  background: #587BEF;
+  width: 120px;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  line-height: 42px;
+  text-align: center;
+  position: absolute;
+  transition: all 0.5s;
+  cursor: pointer;
+  border: 0;
+  opacity: 1;
+  border-radius: 5px;
+}
+body .mid .btn-new-enroll:hover {
+  opacity: 0.8;
+  transition: all 0.5s;
 }
 body .bot {
   height: 182px;
