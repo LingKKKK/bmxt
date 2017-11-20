@@ -57,8 +57,7 @@
             <span class="instructions-span" style="padding-left: 46px;"> d)单片机迷宫任务挑战赛 联系人：张健 电话：13811159341</span>
             <span class="instructions-span" style="padding-left: 46px;"> e)RoboCom星际迷航  联系人：钟毅  电话：18978985303</span>
             <span class="instructions-span" style="padding-left: 20px;">2. 组委会办公室</span>
-            <span class="instructions-span" style="padding-left: 46px;">李佳：13552892879  洪婕：13466616992 闫旭晖：13810882832
-座机：010-81055310</span>
+            <span class="instructions-span" style="padding-left: 46px;">李佳：13552892879  洪婕：13466616992 闫旭晖：13810882832 座机：010-81055310</span>
             <h2 style="margin-bottom: 20px; margin-top: 15px;">附二：报名表填写说明</h2>
 
             <span class="instructions-span clearfix"><i>信息项</i>填写说明</span>
@@ -153,6 +152,77 @@
                     </div>
                     <div class="leader_info div_tab clearfix">
                         <div class="clearfix teachers">
+                        @if($teamData)
+                            @foreach($teamData['members'] as $teamMember)
+                                @if($teamMember['type'] == 'leader')
+                                    <div class="clearfix person_data  leader_list" id="member_list_0" data-index="0">
+                                        <div class="delete" style="display: none;"><i class="icon kenrobot ken-close"></i></div>
+                                        <input id="leader_0_id" name="leader[0][id]" type="hidden" value="">
+                                        <div class="input-field">
+                                            <span class="input-label">姓名  :</span>
+                                            <input data-type="realname" required="" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_name" name="leader[0][name]" type="text" value="{{$teamMember['name'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">性别  :</span>
+                                            <input id="leader_0_sex_man" class="input-radio man leader_sex" type="radio" checked="" name="leader[0][sex]" value="男"><span>男</span>
+                                            <input id="leader_0_sex_woman" class="input-radio woman leader_sex" type="radio" name="leader[0][sex]" value="女"><span>女</span>
+                                            <p id="leader_0_sex"></p>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">年龄  :</span>
+                                            <input data-type="agenumber" required="" tip-info="请填写真实的年龄" class="input-field-text" id="leader_0_age" type="text" name="leader[0][age]" value="{{$teamMember['age'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">工作单位 :</span>
+                                            <input data-type="schoolname" required="" tip-info="请填写工作单位" class="input-field-text" id="leader_0_work_unit" type="text" name="leader[0][work_unit]" value="{{$teamMember['work_unit'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">证件类型  :</span>
+                                            <select name="leader[0][idcard_type]" class="input-field-text id_type">
+                                                <option value="身份证" {{$teamMember['idcard_type'] == '身份证' ? 'selected' : ''}} >身份证</option>
+                                                <option value="内地通行证"  {{$teamMember['idcard_type'] == '内地通行证' ? 'selected' : ''}}>内地通行证</option>
+                                                <option value="台胞证"  {{$teamMember['idcard_type'] == '台胞证' ? 'selected' : ''}}>台胞证</option>
+                                                <option value="护照"  {{$teamMember['idcard_type'] == '护照' ? 'selected' : ''}}>护照</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">证件号码  :</span>
+                                            <input tip-info="请填写证件号码" required="" class="input-field-text id_number" data-type="ID" id="leader_0_ID_number" type="text" name="leader[0][idcard_no]" value="{{$teamMember['idcard_no'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">联系地址  :</span>
+                                            <input data-type="schoolname" required="" tip-info="请填写联系地址" class="input-field-text" id="leader_0_home_address" type="text" name="leader[0][home_address]" value="{{$teamMember['home_address'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">手机号码  :</span>
+                                            <input required="" data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="leader_0_mobile" name="leader[0][mobile]" type="text" value="{{$teamMember['mobile'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">邮箱  :</span>
+                                            <input required="" data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="leader_0_mail" name="leader[0][email]" type="text" value="{{$teamMember['email'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">学校校长姓名  :</span>
+                                            <input data-type="realname" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_headmaster" name="leader[0][headmaster]" type="text" value="{{$teamMember['headmaster'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                        <div class="input-field">
+                                            <span class="input-label">备注  :</span>
+                                            <input tip-info="请填写备注信息" class="input-field-text mail" id="leader_0_remarks" name="leader[0][remark]" type="text" value="{{$teamMember['remark'] or ''}}">
+                                            <div class="tips"></div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @else
+
                             <div class="clearfix person_data  leader_list" id="member_list_0" data-index="0">
                                 <div class="delete" style="display: none;"><i class="icon kenrobot ken-close"></i></div>
                                 <input id="leader_0_id" name="leader[0][id]" type="hidden" value="">
@@ -217,6 +287,9 @@
                                     <div class="tips"></div>
                                 </div>
                             </div>
+                        @endif
+
+
                         </div>
                         <!-- <button type="button" id="add_teacher" style="display: none;">添加领队信息</button> -->
                         <button type="button" class="btn_pre">上一步</button>
@@ -275,9 +348,9 @@
                             <div class="input-field">
                                 <span class="input-label">开票类型 :</span>
                                 <select name="invoice_type" id="invoice_type" class="input-field-text">
-                                    <option value="发票" {{$teamData['invoice_type'] == '发票' ? 'checked' : ''}}>发票</option>
-                                    <option value="收据" {{$teamData['invoice_type'] == '收据' ? 'checked' : ''}}>收据</option>
-                                    <option value="不开票" {{$teamData['invoice_type'] == '不开票' ? 'checked' : ''}}>不开票</option>
+                                    <option value="发票" {{$teamData['invoice_type'] == '发票' ? 'selected' : ''}}>发票</option>
+                                    <option value="收据" {{$teamData['invoice_type'] == '收据' ? 'selected' : ''}}>收据</option>
+                                    <option value="不开票" {{$teamData['invoice_type'] == '不开票' ? 'selected' : ''}}>不开票</option>
                                 </select>
                                 <div class="tips"></div>
                             </div>
@@ -1069,7 +1142,28 @@
 
             // 5. 开票信息
             // TODO&MAYBE: 根据人数计算金额
-            $('#invoice_type').change(function(){
+            // $('#invoice_type').change(function(){
+                // var selectedValue = $(this).find('option:selected').val();
+                // if (selectedValue == '发票') {
+                //     $('.invoice-group').not('#invoice_remark').attr('required', true);
+                //     $('.invoice-group').removeClass('disabled');
+                //     $('.invoice-group').removeAttr('readonly');
+                // } else if (selectedValue == '收据') {
+                //     $('.invoice-group').not('#invoice_remark').attr('required', true);
+                //     $('.invoice-group').removeClass('disabled');
+                //     $('.invoice-group').removeAttr('readonly');
+
+                //     $('#invoice_code').removeAttr('required');
+                //     $('#invoice_code').addClass('disabled');
+                //     $('#invoice_code').attr('readonly', true);
+
+                // } else if (selectedValue == '不开票') {
+                //     $('.invoice-group').val('');
+                //     $('.invoice-group').removeAttr('required');
+                //     $('.invoice-group').addClass('disabled');
+                //     $('.invoice-group').attr('readonly', true);
+            // });
+            $('#invoice_type').unbind('change').bind('change', function(event) {
                 var selectedValue = $(this).find('option:selected').val();
                 if (selectedValue == '发票') {
                     $('.invoice-group').not('#invoice_remark').attr('required', true);
@@ -1154,29 +1248,6 @@
 
             // 6.3 发送手机验证码
             $("#getQrcode").click(function() {
-                var stop = false;
-                $('.div_tab').each(function(index){
-                    if (stop) {
-                        return;
-                    }
-
-                    console.log(index, this);
-                    $(this).find('input').each(function(){
-                        if (stop) {
-                            return;
-                        }
-                        var ret = validField(this);
-                        if (!ret) {
-                            console.log('start_' +index, this);
-                            stop = true;
-                            tabCenter.go(index);
-                            return;
-                        }
-                    });
-                });
-                if (stop) {
-                    return false;
-                }
 
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
@@ -1185,7 +1256,32 @@
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
                 $('#submit').trigger('click');
-                return false;
+                // var stop = false;
+                // $('.div_tab').each(function(index){
+                //     if (stop) {
+                //         return;
+                //     }
+
+                //     console.log(index, this);
+                //     $(this).find('input').each(function(){
+                //         if (stop) {
+                //             return;
+                //         }
+                //         var ret = validField(this);
+                //         if (!ret) {
+                //             console.log('start_' +index, this);
+                //             stop = true;
+                //             tabCenter.go(index);
+                //             return;
+                //         }
+                //     });
+                // });
+                // if (stop) {
+                //     return false;
+                // }
+
+
+                // return false;
             });
 
             // 6.4 点击取消输入验证码

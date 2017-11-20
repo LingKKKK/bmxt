@@ -68,7 +68,8 @@ class MatchbjController extends Controller
     public function signup(Request $request, \App\Enroll\CompetitionService $service)
     {
         if (! Auth::check()) {
-            return view('successTips', ['status' => '需要登录', 'link' => '/login']);
+            return redirect('/login');
+            // return view('successTips', ['status' => '需要登录', 'link' => '/login']);
         }
 
         $user = Auth::user();
@@ -102,7 +103,7 @@ class MatchbjController extends Controller
             [
                 // 'invitecode' =>  $is_update ? 'required' : 'required|invitecode',
                 'team_no'    => 'required',
-                'verificationcode' => 'required|verificationcode',
+                // 'verificationcode' => 'required|verificationcode',
             ],
             [
                 // 'invitecode.required' => '邀请码不能为空',
