@@ -51,6 +51,24 @@ if (! function_exists('invitecode_check')) {
     }
 }
 
+//
+if (! function_exists('buildSelectOptions')) {
+    function buildSelectOptions($list, $defaultKey)
+    {
+        $str = '';
+        foreach ($list as $val) {
+            if ($defaultKey == $val) {
+                $str.= "<option value='$val' selected>$val</option>";
+            } else {
+                $str.= "<option value='$val'>$val</option>";
+            }
+        }
+        return $str;
+    }
+}
+
+
+
 
 
 /****************** Common Helper *********************/
