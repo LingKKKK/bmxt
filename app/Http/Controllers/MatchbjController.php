@@ -105,8 +105,8 @@ class MatchbjController extends Controller
             ],
             [
                 'team_no.required'  => '队伍编号不能不能为空',
-                'verificationcode.required' => '验证码不能为空',
-                'verificationcode.verificationcode' => '验证码不正确',
+                // 'verificationcode.required' => '验证码不能为空',
+                // 'verificationcode.verificationcode' => '验证码不正确',
             ]
         );
 
@@ -183,7 +183,8 @@ class MatchbjController extends Controller
             $memberModel->fill(array_except($val, ['id']))->save();
         }
 
-        return redirect('finish')->with('team_no',$competitionTeamModel->team_no)->with('contact_mobile', $competitionTeamModel->contact_mobile);
+        return redirect('finish');
+        // return redirect('finish')->with('team_no',$competitionTeamModel->team_no)->with('contact_mobile', $competitionTeamModel->contact_mobile);
     }
 
     public function doUpdate(Request $request)
@@ -246,9 +247,7 @@ class MatchbjController extends Controller
             return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
         }
 
-        dd($team_no);
-
-        // $user = Auth::user();
+        $user = Auth::user();
         // $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();
 
         // $team_no = $teamModel !== null ? $teamModel->team_no : '';
