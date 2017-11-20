@@ -352,6 +352,9 @@ body .button-print {
   float: right;
   margin-bottom: 30px;
 }
+body .username_info {
+  font-size: 14px;
+}
 body .bot {
   height: 182px;
   background: #587BEF;

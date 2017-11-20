@@ -122,11 +122,18 @@ body .content .sp1 {
   display: block;
   text-align: center;
   padding: 10px 20px;
-  width: 200px;
   margin: 0 auto;
   font-size: 29px;
   font-weight: bolder;
   color: black;
+}
+body .content a {
+  color: #587BEF;
+  width: 200px;
+  font-size: 13px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 body .content .sp2 {
   display: block;
