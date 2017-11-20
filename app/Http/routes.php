@@ -11,16 +11,21 @@
 |
 */
 // Route::get('/success', 'SignupController@success');
-Route::get('/excel', 'SignupController@doExportExcel');
+// 导出数据
 Route::get('/admin/export', 'MatchbjController@export');
 Route::post('/admin/export', 'MatchbjController@doExportExcel');
 
 // 登录注册
-Route::get('/register', 'AuthController@register');
+Route::get('/register', 'AuthController@register')->name('register');
 Route::post('/register', 'AuthController@doRegister');
-Route::get('/login', 'AuthController@login');
+Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/login', 'AuthController@doLogin');
-Route::any('/logout', 'AuthController@logout');
+Route::any('/logout', 'AuthController@logout')->name('logout');
+
+// 新报名页面
+
+Route::get('/enroll', 'EnrollController@index')->name('enroll.index');
+Route::get('/enroll/signup', 'EnrollController@signup')->name('enroll.signup');
 
 // 注册登录成功提示页面
 Route::get('/registerSuccess', 'AuthController@registerSuccessTips');
@@ -36,7 +41,6 @@ Route::post('/signup', 'MatchbjController@doSignup');
 Route::post('/signupedit', 'MatchbjController@doUpdate');
 // 修改成功 弹出提示页面
 Route::get('/finish', 'MatchbjController@finish');
-
 
 // 队伍名称检查
 Route::post('/checkteamname', 'MatchbjController@checkName');
@@ -59,6 +63,7 @@ Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
 
+// 初始化
 Route::get('/initevents', 'MatchbjController@initEvents');
 Route::get('/t', 'MatchbjController@showList');
 
