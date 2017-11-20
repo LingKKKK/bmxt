@@ -51,6 +51,7 @@
                             <a href="{{url('/finish', $team['team_no'])}}">查看</a>
                             <a href="{{url('/', $team['team_no'])}}">修改</a>
                         </li>
+
                     </ul>
                     @endforeach
                 </div>
