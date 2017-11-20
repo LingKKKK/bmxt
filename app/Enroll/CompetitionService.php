@@ -166,6 +166,39 @@ class CompetitionService
         return $teamData;
     }
 
+    public function getTeamData($team_no)
+    {
+        $teamData = CompetitionTeam::where('team_no', $team_no)
+                                    ->with('members')->first();
+
+        if ($teamData === null) {
+            return null;
+        }
+
+        // 比赛项目
+        $teamEvent = $teamData->event;
+        $eventItems = collect([]);
+        while ($teamEvent != null) {
+            $eventItems->push([
+                'id' => $teamEvent->id,
+                'name'   => $teamEvent->name,
+                'parent_id' => $teamEvent->parent_id,
+                ]);
+            $teamEvent = $teamEvent->parent;
+        }
+
+        $eventItems = $eventItems->reverse();
+        $teamData = $teamData->toArray();
+        $teamData['eventItems'] = $eventItems->toArray();
+        $teamData['competition_1'] = $eventItems[0]['name'];
+        $teamData['competition_2'] = $eventItems[1]['name'];
+        $teamData['competition_3'] = $eventItems[2]['name'];
+        $eventItemsKeys = $eventItems->pluck('id');
+        $teamData['eventItemsKeys'] = $eventItemsKeys;
+
+        return $teamData;
+    }
+
     public function getTeams()
     {
     	$teamList = CompetitionTeam::with('members')->get();

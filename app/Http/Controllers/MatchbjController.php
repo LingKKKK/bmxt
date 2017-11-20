@@ -67,27 +67,36 @@ class MatchbjController extends Controller
 
     public function signup(Request $request, \App\Enroll\CompetitionService $service)
     {
+        if (! Auth::check()) {
+            return view('successTips', ['status' => '需要登录', 'link' => '/login']);
+        }
+
+        $user = Auth::user();
+        $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();
+
+        $teamData = null;
+        if ($teamModel !== null) {
+            $team_no = $teamModel->team_no;
+            $teamData = $service->getTeamData($team_no);
+        } else {
+            $team_no = $this->getTeamNo();
+        }
+
+        $is_update = !empty($teamData);
+
         $competitionList = $service->getCompetitionList();
         $competitonsJson = json_encode($competitionList, JSON_UNESCAPED_UNICODE);
-
-        // 如果是修改
-        $teamData = session('teamData');
-
-        $team_no = $this->getTeamNo();
-
-        // 如果是修改
-        if ($teamData != null) {
-            $team_no = $teamData['team_no'];
-        }
-        $user = Auth::user();
-        $is_update = !empty($teamData);
 
         return view('matchbj', compact('competitonsJson', 'team_no', 'teamData', 'is_update'));
     }
 
     public function doSignup(Request $request)
     {
+        if (! Auth::check()) {
+            return view('successTips', ['status' => '需要登录', 'link' => '/login']);
+        }
 
+        $user = Auth::user();
         $is_update = $request->has('id') && !empty($request->input('id'));
         $validator = Validator::make($request->all(),
             [
@@ -121,6 +130,7 @@ class MatchbjController extends Controller
         ];
 
         $team_data = $request->only($team_fields);
+        $team_data['enroll_user_id'] = $user->id;
 
         $this->team_no = $team_data['team_no'];
 
