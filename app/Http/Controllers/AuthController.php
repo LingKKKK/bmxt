@@ -36,12 +36,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-
-        $status = '登录';
-        $link = '/finish';
-        return view('/finish', compact('status', 'link'));
-
-        // return redirect('/');
+        return redirect('/');
     }
 
     public function register(Request $request)
@@ -77,7 +72,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password'])
         ]);
 
-        $status = '注册';
+        $status = '注册成功,请登录';
         $link = '/login';
         return view('/successTips', compact('status', 'link'));
         // return view('/registerSuccess');
