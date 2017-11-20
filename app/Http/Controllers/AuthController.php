@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
+use Curl\Curl;
 
 class AuthController extends Controller
 {
@@ -49,11 +50,11 @@ class AuthController extends Controller
         return view('register');
     }
 
-    public function doRegister(Request $request)
+    public function doRegister(Request $request, Curl $curl)
     {
         $this->validate($request,
             [
-                // 'name' => 'required|string|min:1|max:200',
+                'username' => 'required|string|min:1|max:200',
                 'email'   => 'required|email|min:0|max:800|unique:users,email',
                 'mobile' => 'required|mobile|unique:users,mobile',
                 'password' => 'required',
@@ -67,20 +68,41 @@ class AuthController extends Controller
                 'verificationcode.verificationcode' => '验证码不正确',
             ]);
 
+        $data = $request->only('email', 'mobile', 'username', 'password');
 
-        $data = $request->only('email', 'mobile', 'name', 'password');
+        $result = $curl->post('http://server.kenrobot.com/register', $data);
+        if (! $result) {
+            return back()->withInput()->withErrors('请求错误！！');
+        }
 
-        User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'mobile' => $data['mobile'],
-            'password' => bcrypt($data['password'])
-        ]);
+        $result = (array) $result;
+        if ($result['status'] != 0) {
+            return back()->withInput()->withErrors([$result['message']]);
+        }
+
+        $this->createUser($data);
 
         $status = '注册';
         $link = '/login';
         return view('/successTips', compact('status', 'link'));
-        // return view('/registerSuccess');
+    }
+
+    public function createUser($userData)
+    {
+        $data = [
+            'name' => $userData['username'],
+            'email' => $userData['email'],
+            'mobile' => $userData['mobile'],
+            'password' => bcrypt($userData['password'])
+        ];
+
+        $user = User::firstOrCreate([
+            'email' => $data['email'],
+            'mobile' => $data['mobile'],
+        ]);
+
+        return $user->fill($data)->save();
+
     }
 
     public function successTips()

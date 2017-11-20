@@ -261,8 +261,6 @@ class MatchbjController extends Controller
             return view('successTips', ['status' => '需要登录', 'link' => '/login']);
         }
 
-
-
         $user = Auth::user();
 
         $user = Auth::user();
