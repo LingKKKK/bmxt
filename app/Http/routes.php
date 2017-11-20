@@ -39,11 +39,11 @@ Route::get('/information', 'AuthController@information');
 Route::get('/search', 'MatchbjController@search');
 Route::post('/search', 'MatchbjController@doSearch');
 // 填写信息/修改信息
-Route::get('/', 'MatchbjController@signup');
+Route::get('/{team_no?}', 'MatchbjController@signup');
 Route::post('/signup', 'MatchbjController@doSignup');
 Route::post('/signupedit', 'MatchbjController@doUpdate');
 // 修改成功 弹出提示页面
-Route::get('/finish', 'MatchbjController@finish');
+Route::get('/finish/{team_no}', 'MatchbjController@finish');
 //  信息展示页面
 Route::get('/success', 'MatchbjController@success');
 

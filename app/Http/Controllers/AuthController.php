@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect('/information');
     }
 
     public function register(Request $request)

@@ -65,11 +65,11 @@ class MatchbjController extends Controller
     }
 
 
-    public function signup(Request $request, \App\Enroll\CompetitionService $service)
+    public function signup( Request $request, \App\Enroll\CompetitionService $service)
     {
         if (! Auth::check()) {
-            return redirect('/login');
-            // return view('successTips', ['status' => '需要登录', 'link' => '/login']);
+            // return redirect('/login');
+            return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
         }
 
         $user = Auth::user();
@@ -94,20 +94,16 @@ class MatchbjController extends Controller
     public function doSignup(Request $request)
     {
         if (! Auth::check()) {
-            return view('successTips', ['status' => '需要登录', 'link' => '/login']);
+            return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
         }
 
         $user = Auth::user();
         $is_update = $request->has('id') && !empty($request->input('id'));
         $validator = Validator::make($request->all(),
             [
-                // 'invitecode' =>  $is_update ? 'required' : 'required|invitecode',
                 'team_no'    => 'required',
-                // 'verificationcode' => 'required|verificationcode',
             ],
             [
-                // 'invitecode.required' => '邀请码不能为空',
-                // 'invitecode.invitecode' => '邀请码不正确',
                 'team_no.required'  => '队伍编号不能不能为空',
                 'verificationcode.required' => '验证码不能为空',
                 'verificationcode.verificationcode' => '验证码不正确',
@@ -116,8 +112,6 @@ class MatchbjController extends Controller
 
 
         if ($validator->fails()) {
-            // dd($request->all(), $validator->errors());
-            // dd($validator->errors());
             return redirect()->back()->withInput();
         }
 
@@ -173,7 +167,7 @@ class MatchbjController extends Controller
         $ids = collect($allmembers)->pluck('id');
         $old_ids = $competitionTeamModel->members->pluck('id');
         $deleteIds = array_diff($old_ids->toArray(), $ids->toArray());
-        // dd($ids, $old_ids, $deleteIds);
+
         CompetitionTeamMember::destroy($deleteIds);
 
         foreach ($allmembers as $k => $val) {
@@ -184,21 +178,11 @@ class MatchbjController extends Controller
             if ($memberModel == null) {
                 $memberModel = new CompetitionTeamMember();
             }
-            // $photo_url = $this->saveFile($val['pic']);
-            // if ($photo_url) {
-            //     $val['photo_url'] = $this->saveFile($val['pic']);
-            // } else {
-            //     unset($val['photo_url']); // 如果是修改且未上传照片
-            // }
 
             $val = array_only($val, $member_fields);
             $memberModel->fill(array_except($val, ['id']))->save();
         }
 
-        // 无效邀请码 异常
-        // if (!$is_update) {
-        //     InviteManager::useCode($team_data['invitecode'], $competitionTeamModel->id);
-        // }
         return redirect('finish')->with('team_no',$competitionTeamModel->team_no)->with('contact_mobile', $competitionTeamModel->contact_mobile);
     }
 
@@ -257,27 +241,29 @@ class MatchbjController extends Controller
         return api_response(0, '合法的队名');
     }
 
-    public function finish(Request $request, \App\Enroll\CompetitionService $service){
+    public function finish($team_no, Request $request, \App\Enroll\CompetitionService $service){
         if (! Auth::check()) {
-            return view('successTips', ['status' => '需要登录', 'link' => '/login']);
+            return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
         }
 
-        dd($request->all());
+        dd($team_no);
 
-        $user = Auth::user();
-        $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();
+        // $user = Auth::user();
+        // $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();
 
-        $team_no = $teamModel !== null ? $teamModel->team_no : '';
+        // $team_no = $teamModel !== null ? $teamModel->team_no : '';
 
         $teamData = $service->getTeamData($team_no);
 
+        if(!$teamData) {
+            return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
+        }
         // dd($teamData);
         return view('finish', compact('teamData'));
     }
 
-    public function success(Request $request){
-
-        // dd('信息展示页面');
+    public function success(Request $request)
+    {
         return view('success');
     }
 

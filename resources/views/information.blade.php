@@ -47,18 +47,17 @@
                         <li>{{Auth::user()->name}}</li>
                         <li>{{$team['team_no'] or ''}}</li>
                         <li>{{$team['created_at'] or ''}}</li>
-                        <li><a href="{!!url('/finish/$team[team_no]')!!}">查看</a><a href="#">修改</a></li>
-
-                        <!-- $status = '注册成功,请登录';
-                        $link = '/login';
-                        return view('/successTips', compact('status', 'link')); -->
+                        <li>
+                            <a href="{{url('/finish', $team['team_no'])}}">查看</a>
+                            <a href="{{url('/', $team['team_no'])}}">修改</a>
+                        </li>
                     </ul>
                     @endforeach
                 </div>
             </div>
             @endif
             <!-- 添加报名列表 -->
-            <a class="btn-new-enroll">新建报名</a>
+            <a class="btn-new-enroll" href="{{url('/')}}">新建报名</a>
         </div>
 
         <div class="bot">
