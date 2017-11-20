@@ -219,7 +219,6 @@
                                 @endif
                             @endforeach
                         @else
-
                             <div class="clearfix person_data  leader_list" id="member_list_0" data-index="0">
                                 <div class="delete" style="display: none;"><i class="icon kenrobot ken-close"></i></div>
                                 <input id="leader_0_id" name="leader[0][id]" type="hidden" value="">
@@ -286,9 +285,7 @@
                             </div>
                         @endif
 
-
                         </div>
-                        <!-- <button type="button" id="add_teacher" style="display: none;">添加领队信息</button> -->
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
                     </div>
@@ -338,7 +335,7 @@
                         </div>
                         <button type="button" class="btn_new" id="add_student">添加新成员</button>
                         <button type="button" class="btn_pre">上一步</button>
-                        <button type="button" class="btn_next">下一步</button>
+                        <button type="button" id="member_next_btn" class="btn_next">下一步</button>
                     </div>
                     <div class="payment div_tab">
                         <div class="enroll-notice">
@@ -398,7 +395,7 @@
                             </div>
                         </div>
                         <button type="button" class="btn_pre">上一步</button>
-                        <button type="button" class="btn_next">下一步</button>
+                        <button type="button" class="btn_next" id="invoice_next_btn">下一步</button>
                     </div>
                     <div class="preview_info div_tab">
                         <div class="leader" id="number-leader">
@@ -798,7 +795,6 @@
                         $(addHtmlId + ' .id_number').removeAttr('data-type');
                         // **** 直接removeAttr， $.data() 仍然可以取出旧值
                         $(addHtmlId + ' .id_number').removeData('type');
-
                     }
                 });
 
@@ -992,7 +988,7 @@
                 }
                 $('#preview_' + idNames[i]).html(val);
             }
-            console.log(idNames);
+            // console.log(idNames);
             $('#preview_leader').html(buildPreview('leader'));
             $('#preview_member').html(buildPreview('member'));
 
@@ -1323,8 +1319,6 @@
                         previewList();
                     }
                 });
-
-
             });
 
             $('.btn_pre').click(function(){
@@ -1369,6 +1363,47 @@
                 $('.username_info').hide();
             });
 
+            $('#member_next_btn').unbind("mouseenter").unbind("mouseleave").bind({
+                mouseenter: function(event) {
+                    var selectedValue = $(this).siblings('.students').find('.member_list').find('.input-field').find('option:selected').val();
+                    if (selectedValue == '身份证') {
+                       $(this).siblings('.students').find('.member_list').find('.input-field').find('.id_number').attr('data-type', 'ID');
+                    } else {
+                       $(this).siblings('.students').find('.member_list').find('.input-field').find('.id_number').removeAttr('data-type');
+                       $(this).siblings('.students').find('.member_list').find('.input-field').find('.id_number').removeData('type');
+                    }
+                },
+                mouseleave: function() {
+                }
+            });
+
+            $('#invoice_next_btn').unbind("mouseenter").unbind("mouseleave").bind({
+                mouseenter: function(event) {
+                    var selectedValue = $(this).siblings('.enroll-notice').find('.input-field').find('option:selected').val();
+                    if (selectedValue == '发票') {
+                        $('.invoice-group').not('#invoice_remark').attr('required', true);
+                        $('.invoice-group').removeClass('disabled');
+                        $('.invoice-group').removeAttr('readonly');
+                    } else if (selectedValue == '收据') {
+                        $('.invoice-group').not('#invoice_remark').attr('required', true);
+                        $('.invoice-group').removeClass('disabled');
+                        $('.invoice-group').removeAttr('readonly');
+                        $('#invoice_code').removeAttr('required');
+                        $('#invoice_code').addClass('disabled');
+                        $('#invoice_code').attr('readonly', true);
+                    } else if (selectedValue == '不开票') {
+                        $('.invoice-group').val('');
+                        $('.invoice-group').removeAttr('required');
+                        $('.invoice-group').addClass('disabled');
+                        $('.invoice-group').attr('readonly', true);
+                    }
+                },
+                mouseleave: function() {
+                }
+            });
+
+
+
         });// end of $(function())
 
 
@@ -1409,7 +1444,7 @@
             <div class="input-field">
                 <span class="input-label">证件类型  :</span>
                 <select name="@{{:type}}[@{{:index}}][idcard_type]" class="input-field-text id_type">
-                    {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], "{{: defaultValue['idcard_type']}}")!!}
+                    {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], $teamMember['idcard_type'] )!!}
                 </select>
             </div>
             <div class="input-field">

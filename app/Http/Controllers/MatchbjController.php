@@ -183,7 +183,7 @@ class MatchbjController extends Controller
             $memberModel->fill(array_except($val, ['id']))->save();
         }
 
-        return redirect('finish');
+        return redirect("finish/$team_no");
         // return redirect('finish')->with('team_no',$competitionTeamModel->team_no)->with('contact_mobile', $competitionTeamModel->contact_mobile);
     }
 
