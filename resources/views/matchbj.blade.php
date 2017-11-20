@@ -62,7 +62,6 @@
             <h2 style="margin-bottom: 20px; margin-top: 15px;">附二：报名表填写说明</h2>
 
             <span class="instructions-span clearfix"><i>信息项</i>填写说明</span>
-            <span class="instructions-span clearfix"><i>邀请码</i>由赛项负责人提供的16位邀请码，每个邀请码只能使用一次</span>
             <span class="instructions-span clearfix"><i>姓名</i>填写有效证件上的姓名，姓名只能包含汉字和英文</span>
             <span class="instructions-span clearfix"><i>手机号码</i>填写11位有效手机号码。如参赛选手没有手机则须填写带队老师或监护人手机号码</span>
             <span class="instructions-span clearfix"><i>邮箱/E-mail</i>填写有效邮箱地址</span>
@@ -422,7 +421,7 @@
                             <span id="preview_invoice_remark" class="name_input"></span>
                             <div class="clearfix clear"></div>
                         </div>
-                        <div id="code" class="clearfix">
+                        <div id="code" class="clearfix" style="display: none;">
                             <span class="input-label">验证码  :</span>
                             <input name="verificationcode" data-type="required|verificationcode" id="verificationcode" tip-info="请输入您收到的验证码" class="code" type="text">
                             <a id="getverifycode" class="tel">获取手机验证码</a>

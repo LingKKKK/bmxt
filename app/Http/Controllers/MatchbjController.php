@@ -112,6 +112,7 @@ class MatchbjController extends Controller
         }
 
         $team_fields = [
+            'user_id',
             'id',
             'contact_name', 'contact_mobile', 'contact_email', 'contact_remark',
             'team_no', 'team_name', 'competition_event_id', 'remark',
@@ -246,7 +247,6 @@ class MatchbjController extends Controller
     }
 
     public function finish(\App\Enroll\CompetitionService $service){
-        // dd('12312');
         $team_no = session('team_no');
         $contact_mobile = session('contact_mobile');
 
@@ -254,6 +254,12 @@ class MatchbjController extends Controller
 
         // dd($teamData);
         return view('finish', compact('teamData'));
+    }
+
+    public function success(Request $request){
+
+        // dd('信息展示页面');
+        return view('success');
     }
 
     public function export(\App\Enroll\CompetitionService $service)

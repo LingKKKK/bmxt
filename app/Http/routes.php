@@ -23,8 +23,8 @@ Route::post('/login', 'AuthController@doLogin');
 Route::any('/logout', 'AuthController@logout');
 
 // 注册登录成功提示页面
-Route::get('/registerSuccess', 'AuthController@registerSuccessTips');
-Route::get('/loginSuccess', 'AuthController@loginSuccessTips');
+Route::get('/successTips', 'AuthController@successTips');
+// Route::get('/loginSuccess', 'AuthController@loginSuccessTips');
 
 
 //查询 提交查询信息进行查询
@@ -36,6 +36,8 @@ Route::post('/signup', 'MatchbjController@doSignup');
 Route::post('/signupedit', 'MatchbjController@doUpdate');
 // 修改成功 弹出提示页面
 Route::get('/finish', 'MatchbjController@finish');
+//  信息展示页面
+Route::get('/success', 'MatchbjController@success');
 
 
 // 队伍名称检查
