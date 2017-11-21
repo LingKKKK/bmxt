@@ -1093,6 +1093,10 @@
                 }
                 $('.teachers .leader_list:eq(1) .delete').unbind('click').bind('click', function() {
                     $('.teachers .leader_list:eq(1)').remove();
+                    $('#add_teacher').css({
+                        'background': '#587BEF',
+                        'pointer-events': 'auto'
+                    });
                 });
                 $(' .teachers .leader_list:eq(1) .id_type').change(function() {
                     var selectedValue = $(this).find('option:selected').val();
