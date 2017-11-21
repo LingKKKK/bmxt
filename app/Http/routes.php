@@ -22,10 +22,6 @@ Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/login', 'AuthController@doLogin');
 Route::any('/logout', 'AuthController@logout')->name('logout');
 
-// 新报名页面
-
-Route::get('/enroll', 'EnrollController@index')->name('enroll.index');
-Route::get('/enroll/signup', 'EnrollController@signup')->name('enroll.signup');
 
 // 注册登录成功提示页面
 Route::get('/successTips', 'MatchbjController@jumpPage');
@@ -34,15 +30,12 @@ Route::get('/successTips', 'MatchbjController@jumpPage');
 // 登录成功之后的中间页面
 Route::get('/information', 'MatchbjController@information');
 
-
-//查询 提交查询信息进行查询
-Route::get('/search', 'MatchbjController@search');
-Route::post('/search', 'MatchbjController@doSearch');
 // 填写信息/修改信息
 
 Route::get('/', 'MatchbjController@information');
-Route::get('/signup', 'MatchbjController@signup')->name('enroll.edit');
-Route::post('/signup', 'MatchbjController@doSignup');
+Route::get('/signup', 'MatchbjController@create')->name('enroll.create');
+Route::get('/signup/{team_no}', 'MatchbjController@edit')->name('enroll.edit');
+Route::post('/signup', 'MatchbjController@doSignup')->name('enroll.store');
 
 // 修改成功 弹出提示页面
 Route::get('/finish/{team_no}', 'MatchbjController@finish')->name('enroll.result');

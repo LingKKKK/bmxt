@@ -296,13 +296,13 @@
                         @if($is_update)
                         <div class="input-field">
                             <span class="input-label">队伍编号  :</span>
-                            <input  id="team_no" name="team_no" class="input-field-text disabled" type="text" readonly value="{{$team_no or ''}}">
+                            <input  id="team_no" name="team_no" class="input-field-text disabled" type="text" readonly value="{{$teamData['team_no'] or ''}}">
                             <div class="tips"></div>
                         </div>
                         @else
                         <div class="input-field" style="display: none;">
                             <span class="input-label">队伍编号  :</span>
-                            <input  id="team_no" name="team_no" type="hidden" value="{{$team_no or ''}}">
+                            <input  id="team_no" name="team_no" type="hidden" value="">
                             <div class="tips"></div>
                         </div>
                         @endif

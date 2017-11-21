@@ -31,7 +31,7 @@
             $link = '/login';
             return view('/successTips', compact('status', 'link')); -->
 
-            @if(count($teamData) == 0)
+            @if(count($teamList) === 0)
             <span class="no_list">暂无报名数据,请新建报名</span>
             @else
             <div class="information_list clearfix">
@@ -50,7 +50,7 @@
                         <li>{{$team['created_at'] or ''}}</li>
                         <li>
                             <a href="{{url('/finish', $team['team_no'])}}">查看</a>
-                            <a href="{{url('/', $team['team_no'])}}">修改</a>
+                            <a href="{{url('/signup', $team['team_no'])}}">修改</a>
                         </li>
 
                     </ul>
