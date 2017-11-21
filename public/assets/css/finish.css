@@ -39,6 +39,10 @@ textarea {
   resize: none;
 }
 
+.clear {
+  clear: both;
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -61,12 +65,14 @@ ul, ol, dl {
   list-style: none;
 }
 
+.clearfix {
+  zoom: 1;
+}
 .clearfix:after {
-  content: ".";
+  content: '';
   display: block;
-  height: 0;
-  visibility: hidden;
   clear: both;
+  height: 0;
 }
 
 * {
@@ -149,7 +155,7 @@ body .mid .all_info {
   box-sizing: border-box;
   padding-top: 30px;
   position: relative;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 body .mid .all_info .team_info {
   height: 100%;

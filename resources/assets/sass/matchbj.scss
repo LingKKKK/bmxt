@@ -11,6 +11,27 @@ body {
   background:#fff;
   position: relative;
 
+
+  .header {
+    height: 180px;
+    background: #587BEF;
+
+    .inner {
+      width: 1180px;
+      height: 180px;
+      margin: 0 auto;
+
+      .banner-img {
+        width: 1180px;
+        height: 180px;
+        display: block;
+        margin: 0 auto;
+        background: url('../img/banner_bg.png') no-repeat center;
+        background-size: contain;
+      }
+    }
+  }
+
   .instructions {
     width: 1180px;
     background:#ffffff;
@@ -234,6 +255,7 @@ body {
       .div_tab {
         padding-left: 100px;
         padding-right: 100px;
+        height: 100%;
         position: relative;
         display: none;
         transition: all 0.7s;
@@ -756,6 +778,47 @@ body {
   // 切换阅读须知
   .active {
     display: block;
+  }
+
+  .footer {
+    height: 182px;
+    background: #587BEF;
+    font-size: 14px;
+
+    .inner {
+      width: 1180px;
+      height: 182px;
+      display: block;
+      margin: 0 auto;
+      padding-top: 46px;
+      box-sizing: border-box;
+
+      .logo-all {
+        width: 190px;
+        height: 40px;
+        margin: 0 auto;
+
+        img {
+          height: 40px;
+        }
+      }
+
+      .sp1 {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #fff;
+        line-height: 24px;
+      }
+
+      .sp2 {
+        display: block;
+        text-align: center;
+        color: #fff;
+        margin-top: 10px;
+        line-height: 24px;
+      }
+    }
   }
 
   .verificationcode_box {

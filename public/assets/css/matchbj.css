@@ -39,6 +39,10 @@ textarea {
   resize: none;
 }
 
+.clear {
+  clear: both;
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -61,12 +65,14 @@ ul, ol, dl {
   list-style: none;
 }
 
+.clearfix {
+  zoom: 1;
+}
 .clearfix:after {
-  content: ".";
+  content: '';
   display: block;
-  height: 0;
-  visibility: hidden;
   clear: both;
+  height: 0;
 }
 
 * {
@@ -78,6 +84,23 @@ body {
   min-width: 1200px;
   background: #fff;
   position: relative;
+}
+body .header {
+  height: 180px;
+  background: #587BEF;
+}
+body .header .inner {
+  width: 1180px;
+  height: 180px;
+  margin: 0 auto;
+}
+body .header .inner .banner-img {
+  width: 1180px;
+  height: 180px;
+  display: block;
+  margin: 0 auto;
+  background: url("../img/banner_bg.png") no-repeat center;
+  background-size: contain;
 }
 body .instructions {
   width: 1180px;
@@ -282,6 +305,7 @@ body .content .all_info {
 body .content .all_info .div_tab {
   padding-left: 100px;
   padding-right: 100px;
+  height: 100%;
   position: relative;
   display: none;
   transition: all 0.7s;
@@ -723,6 +747,41 @@ body .content .all_info .active {
 }
 body .active {
   display: block;
+}
+body .footer {
+  height: 182px;
+  background: #587BEF;
+  font-size: 14px;
+}
+body .footer .inner {
+  width: 1180px;
+  height: 182px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 46px;
+  box-sizing: border-box;
+}
+body .footer .inner .logo-all {
+  width: 190px;
+  height: 40px;
+  margin: 0 auto;
+}
+body .footer .inner .logo-all img {
+  height: 40px;
+}
+body .footer .inner .sp1 {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #fff;
+  line-height: 24px;
+}
+body .footer .inner .sp2 {
+  display: block;
+  text-align: center;
+  color: #fff;
+  margin-top: 10px;
+  line-height: 24px;
 }
 body .verificationcode_box {
   width: 100%;

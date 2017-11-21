@@ -61,14 +61,14 @@ class AuthController extends Controller
                 'email'   => 'required|email|min:0|max:800|unique:users,email',
                 'mobile' => 'required|mobile|unique:users,mobile',
                 'password' => 'required',
-                // 'verificationcode' => 'required|verificationcode',
+                'verificationcode' => 'required|verificationcode',
             ],
             [
                 'email.required' => '用户邮箱不能为空',
                 'mobile.required' => '用户手机号不能为空',
                 'password.required' => '密码不能为空',
-                // 'verificationcode.required' => '验证码不能为空',
-                // 'verificationcode.verificationcode' => '验证码不正确',
+                'verificationcode.required' => '验证码不能为空',
+                'verificationcode.verificationcode' => '验证码不正确',
             ]);
 
         $data = $request->only('email', 'mobile', 'username', 'password');
