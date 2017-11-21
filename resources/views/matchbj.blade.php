@@ -1444,7 +1444,10 @@
             <div class="input-field">
                 <span class="input-label">证件类型  :</span>
                 <select name="@{{:type}}[@{{:index}}][idcard_type]" class="input-field-text id_type">
-                    {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], $teamMember['idcard_type'] )!!}
+                    <option value="身份证" @{{if defaultValue['relation'] =='身份证}} selected @{{/if}}>身份证</option>
+                    <option value="内地通行证" @{{if defaultValue['relation'] =='内地通行证}} selected @{{/if}}>内地通行证</option>
+                    <option value="台胞证" @{{if defaultValue['relation'] =='台胞证}} selected @{{/if}}>台胞证</option>
+                    <option value="护照" @{{if defaultValue['relation'] =='护照}} selected @{{/if}}>护照</option>
                 </select>
             </div>
             <div class="input-field">

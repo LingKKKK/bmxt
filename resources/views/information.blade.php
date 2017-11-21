@@ -59,7 +59,7 @@
             </div>
             @endif
             <!-- 添加报名列表 -->
-            <a class="btn-new-enroll" href="{{url('/')}}">新建报名</a>
+            <a class="btn-new-enroll" href="{{url('/signup')}}">新建报名</a>
         </div>
 
         <div class="bot">

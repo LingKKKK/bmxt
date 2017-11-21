@@ -24,6 +24,7 @@
                 </ul>
                 <div class="clearfix clear"></div>
             </div>
+            <a href="/information" class="returnToIndex">返回首页</a>
             <div class="username_info">
                 <span class=""><i id="username">{{Auth::user()->name}}</i>, 您已成功登录</span>
                 <a href="/logout">退出登录</a>
