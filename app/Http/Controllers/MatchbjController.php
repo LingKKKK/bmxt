@@ -64,9 +64,15 @@ class MatchbjController extends Controller
         return redirect('/')->with('teamData', $teamData);
     }
 
-
-    public function signup( Request $request, \App\Enroll\CompetitionService $service)
+    public function information(Request $request, \App\Enroll\CompetitionService $service)
     {
+        if (! Auth::check()) {
+            return redirect('/login');
+        }
+
+    public function signup(\App\Enroll\CompetitionService $service,  Request $request)
+    {
+
         if (! Auth::check()) {
             // return redirect('/login');
             return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
@@ -184,12 +190,6 @@ class MatchbjController extends Controller
         }
 
         return redirect('finish');
-        // return redirect('finish')->with('team_no',$competitionTeamModel->team_no)->with('contact_mobile', $competitionTeamModel->contact_mobile);
-    }
-
-    public function doUpdate(Request $request)
-    {
-        # code...
     }
 
     private function getTeamNo()
@@ -209,37 +209,21 @@ class MatchbjController extends Controller
         $this->team_no = $seg1.$seg2.$seg3;
         return $this->team_no;
     }
-    private function saveFile($file)
-    {
-        // if (!$file) {
-        //     return '';
-        // }
-
-        // $filename = $file->getClientOriginalName();
-
-        // $ext = $file->getClientOriginalExtension();
-
-        // $suffix = rand(1000, 9999);
-
-        // $hashfilename = md5($filename.$suffix).'.'.$ext;
-        // $storePath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
-        // $publicPath = '/data/pic_beijing/'.$this->getTeamNo().'/'.$hashfilename;
-        // Storage::put($storePath, file_get_contents($file));
-
-        // return $publicPath;
-    }
 
     public function checkName(Request $request)
     {
-        $team_name = $request->input('team_name', '');
-        if (empty($team_name)) {
+        if (! $request->has('team_name')) {
             return api_response(2, '队名不能为空');
         }
-        $result = CompetitionTeam::where('team_name', $team_name)->first();
-        if ($result !== null) {
+
+        $team_name = $request->input('team_name', '');
+
+        $nameCount = CompetitionTeam::where('team_name', $team_name)->count();
+        if ($nameCount > 0) {
             return api_response(1, '队伍名重复');
         }
-        return api_response(0, '合法的队名');
+
+        return api_response(0, '队伍名可用');
     }
 
     public function finish($team_no, Request $request, \App\Enroll\CompetitionService $service){
@@ -248,22 +232,24 @@ class MatchbjController extends Controller
         }
 
         $user = Auth::user();
-        // $teamModel = CompetitionTeam::where('enroll_user_id', $user->id)->first();
-
-        // $team_no = $teamModel !== null ? $teamModel->team_no : '';
 
         $teamData = $service->getTeamData($team_no);
 
-        if(!$teamData) {
-            return view('successTips', ['status' => '您需要进入登录页面', 'link' => '/login']);
+        if ($teamData === null || $teamData['enroll_user_id'] !== Auth::user()->id) {
+            return view('successTips', ['status' => '队伍不存在', 'link' => '/']);
         }
-        // dd($teamData);
+
         return view('finish', compact('teamData'));
     }
 
-    public function success(Request $request)
+
+    /**
+     * 跳转页面
+     * @return [type] [description]
+     */
+    public function jumpPage()
     {
-        return view('success');
+        return view('/successTips');
     }
 
     public function export(\App\Enroll\CompetitionService $service)

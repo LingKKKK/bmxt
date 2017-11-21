@@ -38,13 +38,14 @@
                 <span class="enroll_title">报名列表:</span>
                 <div class="enroll_list clearfix">
                     <ul class="enroll_type">
-                        <li>用户名</li>
+                        <li>队名</li>
                         <li>队伍编号</li>
                         <li>报名时间</li>
+                        <li>操作</li>
                     </ul>
-                    @foreach($teamData as $team)
+                    @foreach($teamList as $team)
                     <ul class="enroll_item">
-                        <li>{{Auth::user()->name}}</li>
+                        <li>{{$team['team_name']}}</li>
                         <li>{{$team['team_no'] or ''}}</li>
                         <li>{{$team['created_at'] or ''}}</li>
                         <li>

@@ -82,22 +82,6 @@ class AuthController extends Controller
         return view('/successTips', compact('status', 'link'));
     }
 
-    public function information(Request $request, \App\Enroll\CompetitionService $service)
-    {
-        if (! Auth::check()) {
-            return redirect('/login');
-            // return view('successTips', ['status' => '需要登录', 'link' => '/login']);
-        }
-
-        $user = Auth::user();
-
-        // 用户的id  等于  队伍的enroll_user_id
-        $enroll_user_id = $user['id'];
-        $teamData = $service->searchTeamInfo($enroll_user_id);
-
-        return view('/information', compact('teamData'));
-    }
-
     public function createUser($userData)
     {
         $data = [
@@ -116,15 +100,9 @@ class AuthController extends Controller
 
     }
 
-    public function successTips()
-    {
-        return view('/successTips');
-    }
-
     public function logout()
     {
         Auth::logout();
-        // return '退出成功';
         return redirect('/login');
     }
 }
