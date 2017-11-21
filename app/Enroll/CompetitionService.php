@@ -165,16 +165,9 @@ class CompetitionService
 
         return $teamData;
     }
-    public function searchTeamInfo($enroll_user_id)
+    public function getTeamList($enroll_user_id)
     {
-        $teamData = CompetitionTeam::where('enroll_user_id', $enroll_user_id)->get();
-                                    // ->with('members')
-
-        if ($teamData === null) {
-            return null;
-        }
-
-        return $teamData;
+        return CompetitionTeam::where('enroll_user_id', $enroll_user_id)->get();
     }
 
     public function getTeamData($team_no)

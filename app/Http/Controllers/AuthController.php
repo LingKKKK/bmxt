@@ -82,22 +82,6 @@ class AuthController extends Controller
         return view('/successTips', compact('status', 'link'));
     }
 
-    public function information(Request $request, \App\Enroll\CompetitionService $service)
-    {
-        if (! Auth::check()) {
-            return redirect('/login');
-            // return view('successTips', ['status' => '需要登录', 'link' => '/login']);
-        }
-
-        $user = Auth::user();
-
-        $enroll_user_id = '10';
-        $teamData = $service->searchTeamInfo($enroll_user_id);
-        // $teamData = json_encode($teamData, JSON_UNESCAPED_UNICODE);
-
-        return view('/information', compact('teamData'));
-    }
-
     public function createUser($userData)
     {
         $data = [
@@ -116,10 +100,6 @@ class AuthController extends Controller
 
     }
 
-    public function successTips()
-    {
-        return view('/successTips');
-    }
     public function logout()
     {
         Auth::logout();

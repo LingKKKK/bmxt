@@ -28,36 +28,28 @@ Route::get('/enroll', 'EnrollController@index')->name('enroll.index');
 Route::get('/enroll/signup', 'EnrollController@signup')->name('enroll.signup');
 
 // 注册登录成功提示页面
-Route::get('/successTips', 'AuthController@successTips');
+Route::get('/successTips', 'MatchbjController@jumpPage');
 // Route::get('/loginSuccess', 'AuthController@loginSuccessTips');information
 
 // 登录成功之后的中间页面
-Route::get('/information', 'AuthController@information');
+Route::get('/information', 'MatchbjController@information');
 
 
 //查询 提交查询信息进行查询
 Route::get('/search', 'MatchbjController@search');
 Route::post('/search', 'MatchbjController@doSearch');
 // 填写信息/修改信息
-Route::get('/', 'MatchbjController@signup');
+Route::get('/', 'MatchbjController@information');
+Route::get('/signup', 'MatchbjController@signup')->name('enroll.edit');
 Route::post('/signup', 'MatchbjController@doSignup');
-Route::post('/signupedit', 'MatchbjController@doUpdate');
+
 // 修改成功 弹出提示页面
-Route::get('/finish', 'MatchbjController@finish');
+Route::get('/finish/{team_no}', 'MatchbjController@finish')->name('enroll.result');
 //  信息展示页面
 Route::get('/success', 'MatchbjController@success');
 
 // 队伍名称检查
 Route::post('/checkteamname', 'MatchbjController@checkName');
-
-// 支付宝支付接口
-Route::post('/getpayqrcode', 'UtilsController@getPayQrcode');
-// 邀请码验证
-Route::post('/checkinvitecode', 'UtilsController@checkInvitecode');
-// 查询订单，参数 invitecode
-Route::post('/pay/queryorder', 'UtilsController@queryOrderStatus');
-//二维码显示
-Route::get('/qrcodeimg.svg', 'UtilsController@qrcodeimg');
 
 // 图形验证码
 Route::get('/captcha/{config?}', 'UtilsController@captcha');
@@ -67,10 +59,6 @@ Route::post('/captcha/verify', 'UtilsController@verificationcode');
 Route::post('/verificationcode/send', 'UtilsController@verificationcode');
 Route::post('/verificationcode/verify', 'UtilsController@checkVerificationcode');
 Route::post('/uploadimg', 'UtilsController@uploadImg');
-
-// 初始化
-Route::get('/initevents', 'MatchbjController@initEvents');
-Route::get('/t', 'MatchbjController@showList');
 
 // 用户远程认证接口
 Route::post('/api/user/login', 'Api\UserController@login')->middleware('apiguard');
