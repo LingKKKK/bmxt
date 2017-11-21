@@ -27,9 +27,6 @@ Route::any('/logout', 'AuthController@logout')->name('logout');
 Route::get('/successTips', 'MatchbjController@jumpPage');
 // Route::get('/loginSuccess', 'AuthController@loginSuccessTips');information
 
-// 登录成功之后的中间页面
-Route::get('/information', 'MatchbjController@information');
-
 // 填写信息/修改信息
 
 Route::get('/', 'MatchbjController@information');
