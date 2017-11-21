@@ -27,8 +27,12 @@
                 </div>
             @endif
 
-            @if(count($teamList) < 0)
-                <span class="no_list">暂无报名数据,请新建报名</span>
+            <!-- $status = '注册成功,请登录';
+            $link = '/login';
+            return view('/successTips', compact('status', 'link')); -->
+
+            @if(count($teamData) == 0)
+            <span class="no_list">暂无报名数据,请新建报名</span>
             @else
             <div class="information_list clearfix">
                 <span class="enroll_title">报名列表:</span>
@@ -44,10 +48,7 @@
                         <li>{{$team['team_name']}}</li>
                         <li>{{$team['team_no'] or ''}}</li>
                         <li>{{$team['created_at'] or ''}}</li>
-                        <li>
-                            <!-- <a href="{{route('enroll.result', $team['team_no'])}}">编辑</a> -->
-                            <a href="{{route('enroll.result', $team['team_no'])}}">查看</a>
-                        </li>
+                        <li><a href="{!!url('/finish/$team[team_no]')!!}">查看</a><a href="#">修改</a></li>
                     </ul>
                     @endforeach
                 </div>

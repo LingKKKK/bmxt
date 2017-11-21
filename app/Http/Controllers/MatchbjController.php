@@ -232,12 +232,12 @@ class MatchbjController extends Controller
         return api_response(0, '队伍名可用');
     }
 
-    public function finish($team_no, \App\Enroll\CompetitionService $service){
-
+    public function finish(Request $request, \App\Enroll\CompetitionService $service){
         if (! Auth::check()) {
             return view('successTips', ['status' => '需要登录', 'link' => '/login']);
         }
 
+        dd($request->all());
 
         $teamData = $service->getTeamData($team_no);
 
