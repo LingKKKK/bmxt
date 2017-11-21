@@ -218,39 +218,36 @@ class MatchbjController extends Controller
 
     public function checkName(Request $request)
     {
-        $team_name = $request->input('team_name', '');
-        if (empty($team_name)) {
+        if (! $request->has('team_name')) {
             return api_response(2, '队名不能为空');
         }
-        $result = CompetitionTeam::where('team_name', $team_name)->first();
-        if ($result !== null) {
+
+        $team_name = $request->input('team_name', '');
+
+        $nameCount = CompetitionTeam::where('team_name', $team_name)->count();
+        if ($nameCount > 0) {
             return api_response(1, '队伍名重复');
         }
-        return api_response(0, '合法的队名');
+
+        return api_response(0, '队伍名可用');
     }
 
     public function finish($team_no, \App\Enroll\CompetitionService $service){
+
         if (! Auth::check()) {
             return view('successTips', ['status' => '需要登录', 'link' => '/login']);
         }
 
-        $user = Auth::user();
 
         $teamData = $service->getTeamData($team_no);
 
-        if ($teamData === null || $teamData['enroll_user_id'] !== $user->id) {
+        if ($teamData === null || $teamData['enroll_user_id'] !== Auth::user()->id) {
             return view('successTips', ['status' => '队伍不存在', 'link' => '/']);
         }
 
-        // dd($teamData);
         return view('finish', compact('teamData'));
     }
 
-    public function success(Request $request){
-
-        // dd('信息展示页面');
-        return view('success');
-    }
 
     /**
      * 跳转页面
