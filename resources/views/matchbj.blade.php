@@ -103,7 +103,6 @@
                 </div>
             @endif
             <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" onkeydown="if(event.keyCode==13)return false;"  style="width: 1004px;">
-            <!-- <form id="form" name="form" action="/signup" enctype="multipart/form-data" method="POST" novalidate="novalidate" style="width: 1004px;"> -->
                 <div class="tab_menu">
                     <ul>
                         <li class="active">联系人信息</li>
@@ -153,66 +152,66 @@
                     <div class="leader_info div_tab clearfix">
                         <div class="clearfix teachers">
                         @if($teamData)
-                            @foreach($teamData['members'] as $teamMember)
+                            @foreach($teamData['members'] as $key => $teamMember)
                                 @if($teamMember['type'] == 'leader')
-                                    <div class="clearfix person_data  leader_list" id="member_list_0" data-index="0">
+                                    <div class="clearfix person_data  leader_list" id="member_list_{!!$key!!}" data-index="{!!$key!!}">
                                         <div class="delete" style="display: none;"><i class="icon kenrobot ken-close"></i></div>
-                                        <input id="leader_0_id" name="leader[0][id]" type="hidden" value="">
+                                        <input id="leader_{!!$key!!}_id" name="leader[{!!$key!!}][id]" type="hidden" value="">
                                         <div class="input-field">
                                             <span class="input-label">姓名  :</span>
-                                            <input data-type="realname" required="" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_name" name="leader[0][name]" type="text" value="{{$teamMember['name'] or ''}}">
+                                            <input data-type="realname" required="" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_{!!$key!!}_name" name="leader[{!!$key!!}][name]" type="text" value="{{$teamMember['name'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">性别  :</span>
-                                            <input id="leader_0_sex_man" class="input-radio man leader_sex" type="radio" checked="" name="leader[0][sex]" value="男"><span>男</span>
-                                            <input id="leader_0_sex_woman" class="input-radio woman leader_sex" type="radio" name="leader[0][sex]" value="女"><span>女</span>
-                                            <p id="leader_0_sex"></p>
+                                            <input id="leader_{!!$key!!}_sex_man" class="input-radio man leader_sex" type="radio" checked="" name="leader[{!!$key!!}][sex]" value="男"><span>男</span>
+                                            <input id="leader_{!!$key!!}_sex_woman" class="input-radio woman leader_sex" type="radio" name="leader[{!!$key!!}][sex]" value="女"><span>女</span>
+                                            <p id="leader_{!!$key!!}_sex"></p>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">年龄  :</span>
-                                            <input data-type="agenumber" required="" tip-info="请填写真实的年龄" class="input-field-text" id="leader_0_age" type="text" name="leader[0][age]" value="{{$teamMember['age'] or ''}}">
+                                            <input data-type="agenumber" required="" tip-info="请填写真实的年龄" class="input-field-text" id="leader_{!!$key!!}_age" type="text" name="leader[{!!$key!!}][age]" value="{{$teamMember['age'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">工作单位 :</span>
-                                            <input data-type="schoolname" required="" tip-info="请填写工作单位" class="input-field-text" id="leader_0_work_unit" type="text" name="leader[0][work_unit]" value="{{$teamMember['work_unit'] or ''}}">
+                                            <input data-type="schoolname" required="" tip-info="请填写工作单位" class="input-field-text" id="leader_{!!$key!!}_work_unit" type="text" name="leader[{!!$key!!}][work_unit]" value="{{$teamMember['work_unit'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">证件类型  :</span>
-                                            <select name="leader[0][idcard_type]" class="input-field-text id_type">
+                                            <select name="leader[{!!$key!!}][idcard_type]" class="input-field-text id_type">
                                                 {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], $teamMember['idcard_type'] )!!}
                                             </select>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">证件号码  :</span>
-                                            <input tip-info="请填写证件号码" required="" class="input-field-text id_number" data-type="{{ $teamMember['idcard_type'] == '身份证' ? 'ID' : ''}}" id="leader_0_ID_number" type="text" name="leader[0][idcard_no]" value="{{$teamMember['idcard_no'] or ''}}">
+                                            <input tip-info="请填写证件号码" required="" class="input-field-text id_number" data-type="{{ $teamMember['idcard_type'] == '身份证' ? 'ID' : ''}}" id="leader_{!!$key!!}_ID_number" type="text" name="leader[{!!$key!!}][idcard_no]" value="{{$teamMember['idcard_no'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">联系地址  :</span>
-                                            <input data-type="schoolname" required="" tip-info="请填写联系地址" class="input-field-text" id="leader_0_home_address" type="text" name="leader[0][home_address]" value="{{$teamMember['home_address'] or ''}}">
+                                            <input data-type="schoolname" required="" tip-info="请填写联系地址" class="input-field-text" id="leader_{!!$key!!}_home_address" type="text" name="leader[{!!$key!!}][home_address]" value="{{$teamMember['home_address'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">手机号码  :</span>
-                                            <input required="" data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="leader_0_mobile" name="leader[0][mobile]" type="text" value="{{$teamMember['mobile'] or ''}}">
+                                            <input required="" data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="leader_{!!$key!!}_mobile" name="leader[{!!$key!!}][mobile]" type="text" value="{{$teamMember['mobile'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">邮箱  :</span>
-                                            <input required="" data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="leader_0_mail" name="leader[0][email]" type="text" value="{{$teamMember['email'] or ''}}">
+                                            <input required="" data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="leader_{!!$key!!}_mail" name="leader[{!!$key!!}][email]" type="text" value="{{$teamMember['email'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">学校校长姓名  :</span>
-                                            <input data-type="realname" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_headmaster" name="leader[0][headmaster]" type="text" value="{{$teamMember['headmaster'] or ''}}">
+                                            <input data-type="realname" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_{!!$key!!}_headmaster" name="leader[{!!$key!!}][headmaster]" type="text" value="{{$teamMember['headmaster'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
                                             <span class="input-label">备注  :</span>
-                                            <input tip-info="请填写备注信息" class="input-field-text mail" id="leader_0_remarks" name="leader[0][remark]" type="text" value="{{$teamMember['remark'] or ''}}">
+                                            <input tip-info="请填写备注信息" class="input-field-text mail" id="leader_{!!$key!!}_remarks" name="leader[{!!$key!!}][remark]" type="text" value="{{$teamMember['remark'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
                                     </div>
@@ -286,6 +285,7 @@
                         @endif
 
                         </div>
+                        <button type='button' class="add_teacher" id='add_teacher'>添加领队</button>
                         <button type="button" class="btn_pre">上一步</button>
                         <button type="button" class="btn_next">下一步</button>
                     </div>
@@ -813,7 +813,7 @@
                     $('.students .person_data').eq(0).find('.delete').unbind('click').css('display', 'none');
                 }
 
-                if (studentCount >= 3) {
+                if (studentCount >= 4) {
                     $('#add_student').addClass('disabled');
                 } else {
                     $('#add_student').removeClass('disabled');
@@ -1074,15 +1074,66 @@
             // TODO: 用户可选择是否添加联系人
 
             // 2. 添加领队
-
             $('#add_teacher').click(function(event) {
-                var count = getPersonCount('leader');
-                if (count >= 2) {
-                    console.warn('too many');
-                    return;
+                var leaderHtml = $.templates("#leaderList").render({});
+                $('.leader_info .teachers').append(leaderHtml);
+                deleteLeader();
+            });
+            function deleteLeader() {
+                if ($('.teachers .leader_list').length > 1) {
+                    $('#add_teacher').css({
+                        'background': '#ccc',
+                        'pointer-events': 'none'
+                    });
+                } else {
+                    $('#add_teacher').css({
+                        'background': '#587BEF',
+                        'pointer-events': 'auto'
+                    });
                 }
+                $('.teachers .leader_list:eq(1) .delete').unbind('click').bind('click', function() {
+                    $('.teachers .leader_list:eq(1)').remove();
+                });
+                $(' .teachers .leader_list:eq(1) .id_type').change(function() {
+                    var selectedValue = $(this).find('option:selected').val();
+                    if (selectedValue == '身份证') {
+                        $(' .teachers .leader_list:eq(1) .id_number').attr('data-type', 'ID');
+                    } else {
+                        $(' .teachers .leader_list:eq(1) .id_number').removeAttr('data-type');
+                        // **** 直接removeAttr， $.data() 仍然可以取出旧值
+                        $(' .teachers .leader_list:eq(1) .id_number').removeData('type');
+                    }
+                });
+                $(' .teachers .leader_list .id_type').each(function() {
+                    $(this).blur(function() {
+                        validField(this);
+                        return false;
+                    });
+                });
+                $('.teachers .leader_list input').each(function() {
+                    $(this).blur(function() {
+                        validField(this);
+                        return false;
+                    });
+                });
+            }
 
-                addMemberList('leader');
+            // 页面分配领队
+            $('#leader_info_btn').click(function() {
+                console.log($('.teachers .leader_list').length);
+                $('.teachers .leader_list:eq(1) .delete').show();
+                deleteLeader();
+
+                $(' .teachers .leader_list:eq(0) .id_type').change(function() {
+                    var selectedValue = $(this).find('option:selected').val();
+                    if (selectedValue == '身份证') {
+                        $(' .teachers .leader_list:eq(0) .id_number').attr('data-type', 'ID');
+                    } else {
+                        $(' .teachers .leader_list:eq(0) .id_number').removeAttr('data-type');
+                        // **** 直接removeAttr， $.data() 仍然可以取出旧值
+                        $(' .teachers .leader_list:eq(0) .id_number').removeData('type');
+                    }
+                });
             });
 
             // TODO: 添加按钮 DISABLED
@@ -1123,7 +1174,7 @@
             $('#add_student').click(function (){
 
                 var count = getPersonCount('leader');
-                if (count >= 8) {
+                if (count >= 4) {
                     console.warn('too many');
                     return;
                 }
@@ -1407,7 +1458,6 @@
         });// end of $(function())
 
 
-
        </script>
 
     <script id="tmpl_memberlist" type="text/x-jsrender">
@@ -1490,6 +1540,74 @@
             </div>
         </div>
     </script>
+
+    <script id="leaderList" type="text/x-jsrender">
+        <div class="clearfix person_data  leader_list" id="member_list_6" data-index="6">
+            <div class="delete"><i class="icon kenrobot ken-close"></i></div>
+            <input id="leader_6_id" name="leader[6][id]" type="hidden" value="">
+            <div class="input-field">
+                <span class="input-label">姓名  :</span>
+                <input data-type="realname" required="" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_6_name" name="leader[6][name]" type="text" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">性别  :</span>
+                <input id="leader_6_sex_man" class="input-radio man leader_sex" type="radio" checked="" name="leader[6][sex]" value="男"><span>男</span>
+                <input id="leader_6_sex_woman" class="input-radio woman leader_sex" type="radio" name="leader[6][sex]" value="女"><span>女</span>
+                <p id="leader_6_sex"></p>
+            </div>
+            <div class="input-field">
+                <span class="input-label">年龄  :</span>
+                <input data-type="agenumber" required="" tip-info="请填写真实的年龄" class="input-field-text" id="leader_6_age" type="text" name="leader[6][age]" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">工作单位 :</span>
+                <input data-type="schoolname" required="" tip-info="请填写工作单位" class="input-field-text" id="leader_6_work_unit" type="text" name="leader[6][work_unit]" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">证件类型  :</span>
+                <select name="leader[6][idcard_type]" class="input-field-text id_type">
+                    <option value="身份证" selected="">身份证</option>
+                    <option value="内地通行证">内地通行证</option>
+                    <option value="台胞证">台胞证</option>
+                    <option value="护照">护照</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <span class="input-label">证件号码  :</span>
+                <input tip-info="请填写证件号码" required="" class="input-field-text id_number" data-type="ID" id="leader_6_ID_number" type="text" name="leader[6][idcard_no]" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">联系地址  :</span>
+                <input data-type="schoolname" required="" tip-info="请填写联系地址" class="input-field-text" id="leader_6_home_address" type="text" name="leader[6][home_address]" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">手机号码  :</span>
+                <input required="" data-type="mobile" tip-info="请填写正确的手机号码" class="input-field-text tel" id="leader_6_mobile" name="leader[6][mobile]" type="text" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">邮箱  :</span>
+                <input required="" data-type="email" tip-info="请按照正确的邮箱格式填写" class="input-field-text mail" id="leader_6_mail" name="leader[6][email]" type="text" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">学校校长姓名  :</span>
+                <input data-type="realname" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_6_headmaster" name="leader[6][headmaster]" type="text" value="">
+                <div class="tips"></div>
+            </div>
+            <div class="input-field">
+                <span class="input-label">备注  :</span>
+                <input tip-info="请填写备注信息" class="input-field-text mail" id="leader_6_remarks" name="leader[6][remark]" type="text" value="">
+                <div class="tips"></div>
+            </div>
+        </div>
+    </script>
+
     <script id="tmpl_preview_memberlist" type="text/x-jsrender">
         <div class="leader_info" style="position: relative;">
             <div class="cut"></div>

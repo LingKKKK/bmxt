@@ -350,7 +350,7 @@ body .content .all_info .leader_info .teachers .leader_list .delete {
   width: 10px;
   height: 10px;
   position: absolute;
-  top: 30px;
+  top: 0px;
   right: 50px;
   cursor: pointer;
   display: block;
