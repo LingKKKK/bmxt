@@ -39,10 +39,6 @@ textarea {
   resize: none;
 }
 
-.clear {
-  clear: both;
-}
-
 html, body {
   height: 100%;
   width: 100%;
@@ -65,14 +61,12 @@ ul, ol, dl {
   list-style: none;
 }
 
-.clearfix {
-  zoom: 1;
-}
 .clearfix:after {
-  content: '';
+  content: ".";
   display: block;
-  clear: both;
   height: 0;
+  visibility: hidden;
+  clear: both;
 }
 
 * {

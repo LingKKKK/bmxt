@@ -22,6 +22,8 @@ Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/login', 'AuthController@doLogin');
 Route::any('/logout', 'AuthController@logout')->name('logout');
 
+Route::any('/master', 'AuthController@master');
+
 
 // 注册登录成功提示页面
 Route::get('/successTips', 'MatchbjController@jumpPage');

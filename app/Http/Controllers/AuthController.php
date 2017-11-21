@@ -10,6 +10,10 @@ use Curl\Curl;
 
 class AuthController extends Controller
 {
+    public function master(Request $request)
+    {
+        return view('layouts/master');
+    }
     public function login(Request $request)
     {
         return view('login');
@@ -37,7 +41,11 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/information');
+        // return redirect('/');
+
+        $status = '登录成功,正在为您跳转';
+        $link = '/';
+        return view('/successTips', compact('status', 'link'));
     }
 
     public function register(Request $request)
