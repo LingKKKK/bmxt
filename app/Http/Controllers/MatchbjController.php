@@ -118,7 +118,7 @@ class MatchbjController extends Controller
             'invoice_title', 'invoice_code', 'invoice_money', 'invoice_type', 'invoice_detail', 'invoice_mail_address', 'invoice_mail_recipients',
             'invoice_mail_mobile', 'invoice_mail_email', 'invoice_remark', 'invoice_detail',
         ]);
-
+        $competitionTeamModel->enroll_user_id = $user->id;
         $competitionTeamModel->fill(array_except($team_data, ['id']))->save();
 
         $leaders = (array)$request->all()['leader']; // 领队教师
