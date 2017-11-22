@@ -976,8 +976,8 @@
                 'invoice_mail_recipients',
                 'invoice_mail_mobile',
                 'invoice_mail_email',
-                'invoice_remark',
-            )
+                'invoice_remark'
+            );
 
             for(i in idNames)
             {
@@ -1030,9 +1030,9 @@
         }
 
         $(function(){
-
             // 0. 报名须知
             $('#input-read').click(function (){
+                console.log(1);
                 if ($(this).prop("checked") == false) {
                     $('#btn-read').addClass('disabled');
                     $('#btn-read').unbind('click');
