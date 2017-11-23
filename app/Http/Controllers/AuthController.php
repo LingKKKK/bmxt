@@ -23,7 +23,6 @@ class AuthController extends Controller
 
     public function doLogin(Request $request)
     {
-        // dd($request->all());
         $this->validate($request,
             [
                 'email'   => 'required_without:mobile|email|min:1|max:200|exists:users,email',
@@ -40,6 +39,10 @@ class AuthController extends Controller
             $user = User::where('email', $request->input('email'))->first();
         } else {
             $user = User::where('mobile', $request->input('mobile'))->first();
+        }
+
+        if (! password_verify($request->input('password'), $user->password)) {
+            return back()->withErrors(['密码错误']);
         }
 
         Auth::login($user);
