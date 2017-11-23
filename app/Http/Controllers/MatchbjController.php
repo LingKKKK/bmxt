@@ -174,7 +174,6 @@ class MatchbjController extends Controller
         $teamCount = CompetitionTeam::count();
 
         $seg1 = '2017';
-
         $seg2 = date('mdHis');
         $seg3 = 1687 + $teamCount;
 
@@ -207,7 +206,7 @@ class MatchbjController extends Controller
 
         $teamData = $service->getTeamData($team_no);
 
-        if ($teamData === null || $teamData['enroll_user_id'] !== Auth::user()->id) {
+        if (! $this->canAccess($teamData, $user)) {
             return view('successTips', ['status' => '队伍不存在', 'link' => '/']);
         }
 
@@ -226,44 +225,59 @@ class MatchbjController extends Controller
 
     public function export(\App\Enroll\CompetitionService $service)
     {
-        return view('enroll.excel');
+        return view('inquire');
     }
 
     public function doExportExcel(Request $request, \App\Enroll\CompetitionService $service)
     {
         $validator = Validator::make($request->all(),[
-                'admincode' => 'required',
-                'mobile'    => 'required',
-                'verificationcode' => 'required|verificationcode',
+                'email'    => 'required',
             ],[
-                'mobile.required' => '手机号不能为空',
-                'admincode.required'  => '查询码不能为空',
-                'verificationcode.required' => '验证码不能为空',
-                'verificationcode.verificationcode' => '验证码不正确',
+                'email.required' => '您没有权限,请选择其他操作',
             ]);
 
         if ($validator->fails()) {
-           return redirect()->back()->withErrors($validator->errors())->withInput();
+           return view('/successTips', ['status' => '您没有权限,请选择其他操作', 'link' => '/']);
         }
 
-        if ($request->input('admincode') != 'a3b5c4') {
-           return redirect()->back()->withErrors(['查询码不正确'])->withInput();
-        }
-
-        $adminArr = [
-            '18511431517',
-            '15903035872',
-            '13476000614', //江城
-            '15900000000',
+        $adminArr  = [
+            '815854240@qq.com',
+            '663831709@qq.com'
         ];
 
-        if (! in_array($request->input('mobile'), $adminArr)) {
-            return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
-        }
-
-        $filename = 'RoboCom国际公开赛-' . date('Y_m_d_H_i_s');
-        return $service->makeExcel($filename);
+        dd('开始下载数据');
     }
 
+    public function dataShow(Request $request, \App\Enroll\CompetitionService $service)
+    {
+        if (! Auth::check() || ! $this->isAdmin(Auth::user())) {
+            return view('successTips', ['status' => '您没有权限,需要进入登录页面', 'link' => '/login']);
+        }
 
+        $teamList = $service->getTeams();
+        // dd($teamList);
+        return view('dataShow', compact('teamList'));
+    }
+
+    protected function canAccess(array $teamData, $user)
+    {
+        if ($user === null) {
+            return false;
+        }
+
+        if ($teamData === null) {
+            return false;
+        }
+
+        if ($teamData['enroll_user_id'] !== $user->id && ! $this->isAdmin($user)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function isAdmin($user)
+    {
+        return $user !== null && $user->email === '815854240@qq.com' or '663831709@qq.com';
+    }
 }

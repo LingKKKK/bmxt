@@ -58,7 +58,10 @@
                 </div>
             </div>
             @endif
-            <!-- 添加报名列表 -->
+
+            @if(Auth::check() && Auth::user()->isAdmin())
+                <a class="btn-data-show" href="{{url('/dataShow')}}">查看所有报名信息</a>
+            @endif
             <a class="btn-new-enroll" href="{{url('/signup')}}">新建报名</a>
         </div>
 

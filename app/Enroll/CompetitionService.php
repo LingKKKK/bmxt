@@ -230,7 +230,6 @@ class CompetitionService
 
     public function makeExcel($filename)
     {
-
     	$teamList = $this->getTeams();
         Excel::create($filename, function($excel) use($teamList) {
 

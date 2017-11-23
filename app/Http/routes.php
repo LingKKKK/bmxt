@@ -11,9 +11,10 @@
 |
 */
 // Route::get('/success', 'SignupController@success');
-// 导出数据
 Route::get('/admin/export', 'MatchbjController@export');
-Route::post('/admin/export', 'MatchbjController@doExportExcel');
+// 数据展示页面
+Route::get('/dataShow', 'MatchbjController@dataShow');
+Route::post('/dataShow', 'MatchbjController@doExportExcel');
 
 // 登录注册
 Route::get('/register', 'AuthController@register')->name('register');
@@ -27,7 +28,7 @@ Route::any('/master', 'AuthController@master');
 
 // 注册登录成功提示页面
 Route::get('/successTips', 'MatchbjController@jumpPage');
-// Route::get('/loginSuccess', 'AuthController@loginSuccessTips');information
+// Route::get('/loginSuccess', 'AuthController@loginSuccessTips');
 
 // 填写信息/修改信息
 

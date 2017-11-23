@@ -31,7 +31,7 @@ body {
     }
 
     .mid {
-        width: 1000px;
+        width: 1080px;
         display: block;
         margin: 0 auto;
         margin-top: 30px;
@@ -39,52 +39,10 @@ body {
         position: relative;
         padding-top: 30px;
 
-        .username_info {
-          height: 30px;
-          border: 1px solid #ccc;
-          text-align: center;
-          line-height: 30px;
-          border-radius: 5px;
-          font-size: 14px;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-          cursor: pointer;
-          display: block;
-
-          span {
-            padding: 0px 20px;
-
-            i {
-              color: #587BEF;
-            }
-          }
-
-          a {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 35px;
-            height: 30px;
-            border: 1px solid #ccc;
-            text-align: center;
-            line-height: 30px;
-            border-radius: 5px;
-            font-size: 13px;
-            cursor: pointer;
-            width: 80px;
-            background: #fff;
-            margin: 0 auto;
-            z-index: 9;
-            display: none;
-          }
-        }
-
         .information_list {
-            width: 1000px;
-            margin-top: 60px;
+            width: 1080px;
             box-sizing: border-box;
-            padding: 50px 100px;
+            padding: 50px 0px;
             padding-bottom: 110px;
 
             .enroll_title {
@@ -107,7 +65,7 @@ body {
                     li {
                         display: block;
                         float: left;
-                        width: 200px;
+                        width: 167px;
                         line-height: 40px;
                         height: 40px;
                         color: #587BEF;
@@ -118,15 +76,13 @@ body {
 
                 .enroll_item {
                     width: 100%;
-                    height: 40px;
                     display: block;
 
                     li {
                         display: block;
                         float: left;
-                        width: 200px;
+                        width: 167px;
                         line-height: 40px;
-                        height: 40px;
                         color: #666;
                         text-align: center;
                         font-size: 14px;
@@ -163,34 +119,12 @@ body {
             margin-top: 100px;
         }
 
-        .btn-data-show {
-            left: 100px;
-            bottom: 40px;
-            background: #587BEF;
-            padding: 0px 15px;
-            font-size: 14px;
-            color: #FFFFFF;
-            letter-spacing: 2px;
-            line-height: 42px;
-            text-align: center;
-            position: absolute;
-            transition: all 0.5s;
-            cursor: pointer;
-            border: 0;
-            opacity: 1;
-            border-radius: 5px;
-
-            &:hover {
-                opacity: 0.8;
-                transition: all 0.5s;
-            }
-        }
-
         .btn-new-enroll {
-            right: 100px;
+            position: absolute;
+            right: 0px;
             bottom: 40px;
             background: #587BEF;
-            padding: 0px 15px;
+            padding: 0px 14px;
             font-size: 14px;
             color: #FFFFFF;
             letter-spacing: 2px;

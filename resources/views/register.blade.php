@@ -159,16 +159,6 @@
                 }
             );
         });
-        // $('#email').unbind('blur').bind('blur', function() {
-        //     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-        //     var isEmail = reg.test($('#email').val());
-        //     if (!isEmail) {
-        //         $('.tips-info').text('您输入的邮箱格式错误');
-        //         setTimeout(function (){
-        //             $('.tips-info').text('');
-        //         }, 3000)
-        //     }
-        // });
     })
 
     // 发送手机验证码
@@ -190,12 +180,6 @@
     $('.input-field-text').focus(function(event) {
         $('.leader-info-tips').css('opacity', 0)
     });
-
-    // 填写手机验证码之后才能点击提交按钮
-
-
-
-
 </script>
 </body>
 </html>

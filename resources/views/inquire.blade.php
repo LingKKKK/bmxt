@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/login.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/inquire.css')}}">
 </head>
 <body>
     <div class="header">
@@ -19,22 +19,23 @@
                 <span>{{$errors->first()}}</span>
             @endif
         </div>
-        <div class="dialog-user">
-            <a>登录</a>
-            <a href="/register">注册</a>
-        </div>
-        <form id="form" action="/login"  method="POST" novalidate>
+        <form id="form" action="/admin/export"  method="POST" novalidate>
             <div class="inner">
-                <span class="tips">tips: 请输入您的邮箱、密码进行登录</span>
+                <span class="tips">tips: 请输入查询码、手机号查询报名数据</span>
                 <span class="tips-info" ></span>
                 <div class="input-field">
-                    <span class="input-label">邮箱  :</span>
-                    <input data-type="" class="input-field-text"  id="email" type="text" name="email" value="{{old('email')}}">
+                    <span class="input-label">查询码  :</span>
+                    <input data-type="" class="input-field-text"  id="admincode" type="text" name="admincode" value="{{old('admincode')}}">
                 </div>
                 <div class="input-field">
-                    <span class="input-label">密码  :</span>
-                    <input data-type="password" class="input-field-text"  id="password" type="password" name="password" value="{{old('password')}}">
+                    <span class="input-label">手机号  :</span>
+                    <input data-type="mobile" class="input-field-text"  id="mobile" type="text" name="mobile" value="{{old('mobile')}}">
                 </div>
+                <div id="code" class="clearfix">
+                    <span class="input-label">验证码  :</span>
+                    <input name="verificationcode" id="verificationcode" class="code" type="text">
+                </div>
+                <a id="tel" class="tel">获取手机验证码</a>
                 <button class="submit-search" id="submit-search">查询</button>
             </div>
         </form>
@@ -92,37 +93,25 @@
     }
 
     $(function(){
-        // 默认添加一次队员列表
-        setTimeout(function (){
-            $('#append_rank_new').click();
-        }, 1000)
-
-        // 点击刷新验证码图片
         $('.identifying .showBox img').click(function (){
             $(this).refreshCaptcha();
         });
 
-        // 点击取消输入验证码
         $('.identifying .no').click(function() {
-            // clearInterval(countdown);
             $('.identifying').removeClass('active');
         });
 
         $('#v_code').click(function(event) {
-            // console.log(1)
             $('.tipes-false').css('opacity', 0);
         });
 
-        // 点击确认输入验证码
         $('.identifying .yes').click(function() {
-            console.log(1)
             var captchacode = $('#v_code').val();
             var mobile = $('#mobile').val();
             var ID = $('#leader_id').val();
             var type = 'mobile';
-            //console.log(captchacode,mobile,type);
             $.post(
-                "{{url('/api/user/login')}}",
+                "{{url('/verificationcode/send')}}",
                 {
                     type    : type,
                     captcha : captchacode,
@@ -130,27 +119,14 @@
                 },
                 function(res){
                     if (res.status == 0) {
-                        // console.log('验证码填写成功并确定')
                         refresh_captcha();
                         $('.identifying').removeClass('active');
-                        // $('.submit-search').removeClass('active');
                     } else {
-                        // console.log('验证码填写错误')
                         $('.tipes-false').css('opacity', 1);
                     }
                 }
             );
         });
-        // $('#email').unbind('blur').bind('blur', function() {
-        //     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-        //     var isEmail = reg.test($('#email').val());
-        //     if (!isEmail) {
-        //         $('.tips-info').text('您输入的邮箱格式错误');
-        //         setTimeout(function (){
-        //             $('.tips-info').text('');
-        //         }, 3000)
-        //     }
-        // });
     })
 
     // 发送手机验证码
@@ -172,12 +148,6 @@
     $('.input-field-text').focus(function(event) {
         $('.leader-info-tips').css('opacity', 0)
     });
-
-    // 填写手机验证码之后才能点击提交按钮
-
-
-
-
 </script>
 </body>
 </html>

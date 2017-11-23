@@ -12,8 +12,10 @@ class AuthController extends Controller
 {
     public function master(Request $request)
     {
+        # 创建模板页
         return view('layouts/master');
     }
+
     public function login(Request $request)
     {
         return view('login');
