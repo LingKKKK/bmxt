@@ -205,7 +205,7 @@ class CompetitionService
 
     public function getTeams()
     {
-    	$teamList = CompetitionTeam::with('members')->get();
+    	$teamList = CompetitionTeam::with('members')->with('user')->get();
     	foreach ($teamList as $k => $team) {
     		$teamEvent = $team->event;
         	$eventItems = collect([]);
@@ -228,9 +228,10 @@ class CompetitionService
     }
 
     // 通过enroll_user_id 查找到 user  ->id
-    public function getUser($enroll_user_id)
+    public function getUser()
     {
-        return CompetitionTeam::where('id', $id)->get();
+        $user = CompetitionTeam::with('user')->get();
+        return $user;
     }
 
 
@@ -260,8 +261,10 @@ class CompetitionService
 
                 // 11 Elements
                 $columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
-                $columnKeys = ['用户名', '用户电话', '用户邮箱', 'team_no', 'team_name', 'competition_1', 'competition_3', 'remark',
+
+                $columnKeys = ['user_name', 'user_mobile', 'user_email', 'team_no', 'team_name', 'competition_1', 'competition_3', 'remark',
                                     'contact_name', 'contact_mobile', 'contact_email', 'contact_remark'];
+
 
                 $sheet->row(2, [ '用户名', '用户电话', '用户邮箱', '队伍编号', '队伍名称', '赛事项目', '组别', '队伍备注',
                 				 '联系人', '联系人手机', '联系人邮箱', '联系人备注',
@@ -270,6 +273,11 @@ class CompetitionService
                 $rowIndex = 3;
 
                 foreach ($teamList as $team) {
+                    // dd($team['user']);
+                    $team['user_name'] = $team['user']['name'];
+                    $team['user_mobile'] = $team['user']['mobile'];
+                    $team['user_email'] = $team['user']['email'];
+
                 	$memberCount = $team->members->count();
                 	$idx = 0;
                 	foreach ($team->members as $m) {

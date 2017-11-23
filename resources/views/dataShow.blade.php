@@ -27,11 +27,9 @@
                         <li style="width: 100px;">操作</li>
                     </ul>
                     @foreach($teamList as $team)
-                    {{Auth::user()->id}}
-                    {{$team['enroll_user_id']}}
                     <ul class="enroll_item clearfix">
-                        <li>Lingkkkkkk</li>
-                        <li>{{$team['enroll_user_id']}}</li>
+                        <li>{{$team['user']['name']}}</li>
+                        <li>{{$team['user']['mobile']}}</li>
                         <li>{{$team['team_name']}}</li>
                         <li style="width: 200px;">{{$team['team_no'] or ''}}</li>
                         <li style="width: 260px;">{{$team['competition_1'] or ''}}</li>

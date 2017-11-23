@@ -23,7 +23,7 @@ class AuthController extends Controller
 
     public function doLogin(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $this->validate($request,
             [
                 'email'   => 'required_without:mobile|email|min:1|max:200|exists:users,email',

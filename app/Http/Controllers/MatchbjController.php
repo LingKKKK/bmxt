@@ -260,8 +260,6 @@ class MatchbjController extends Controller
         }
 
         $teamList = $service->getTeams();
-        // $user = $service->getUser();
-        // dd($user);
         return view('dataShow', compact('teamList'));
     }
 
@@ -284,6 +282,6 @@ class MatchbjController extends Controller
 
     public function isAdmin($user)
     {
-        return $user !== null && $user->email === '815854240@qq.com' or '663831709@qq.com';
+        return $user !== null && $user->email === '815854240@qq.com' or '123@123.com';
     }
 }
