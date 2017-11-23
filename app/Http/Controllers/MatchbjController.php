@@ -282,6 +282,6 @@ class MatchbjController extends Controller
 
     public function isAdmin($user)
     {
-        return $user !== null && $user->email === '815854240@qq.com' or '123@123.com';
+        return $user !== null && $user->email === '815854240@qq.com' or '123@123.com' or 'slowlyrun@hotmail.com';
     }
 }
