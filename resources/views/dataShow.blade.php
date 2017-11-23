@@ -29,7 +29,8 @@
                     @foreach($teamList as $team)
                     <ul class="enroll_item clearfix">
                         <li>Lingkkkkkk</li>
-                        <li>15900000000</li>
+                        <!-- {{Auth::user()}} -->
+                        <li>{{$team['enroll_user_id']}}</li>
                         <li>{{$team['team_name']}}</li>
                         <li style="width: 200px;">{{$team['team_no'] or ''}}</li>
                         <li style="width: 260px;">{{$team['competition_1'] or ''}}</li>

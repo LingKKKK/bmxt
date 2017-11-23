@@ -255,7 +255,8 @@ class MatchbjController extends Controller
         }
 
         $teamList = $service->getTeams();
-        // dd($teamList);
+        // $user = $service->getUser();
+        // dd($user);
         return view('dataShow', compact('teamList'));
     }
 

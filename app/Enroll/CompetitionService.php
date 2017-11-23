@@ -227,6 +227,12 @@ class CompetitionService
     	return $teamList;
     }
 
+    // 通过enroll_user_id 查找到 user  ->id
+    public function getUser($enroll_user_id)
+    {
+        return CompetitionTeam::where('id', $id)->get();
+    }
+
 
     public function makeExcel($filename)
     {
