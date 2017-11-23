@@ -23,6 +23,7 @@ class AuthController extends Controller
 
     public function doLogin(Request $request)
     {
+        dd($request->all());
         $this->validate($request,
             [
                 'email'   => 'required_without:mobile|email|min:1|max:200|exists:users,email',
@@ -38,7 +39,7 @@ class AuthController extends Controller
         if ($request->has('email')) {
             $user = User::where('email', $request->input('email'))->first();
         } else {
-        $user = User::where('mobile', $request->input('mobile'))->first();
+            $user = User::where('mobile', $request->input('mobile'))->first();
         }
 
         Auth::login($user);

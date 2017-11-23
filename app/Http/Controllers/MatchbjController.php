@@ -245,7 +245,12 @@ class MatchbjController extends Controller
             '663831709@qq.com'
         ];
 
-        dd('开始下载数据');
+        if (! in_array($request->input('email'), $adminArr)) {
+            return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
+        }
+
+        $filename = '青少年人工智能编成挑战赛-' . date('Y_m_d_H_i_s');
+        return $service->makeExcel($filename);
     }
 
     public function dataShow(Request $request, \App\Enroll\CompetitionService $service)

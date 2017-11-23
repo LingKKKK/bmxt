@@ -239,7 +239,7 @@ class CompetitionService
     	$teamList = $this->getTeams();
         Excel::create($filename, function($excel) use($teamList) {
 
-            $excel->setTitle('Robocom国际公开赛青少年人工智能编程挑战赛报名表');
+            $excel->setTitle('RoboCom国际公开赛——青少年人工智能编成挑战赛');
             $excel->setCreator('RoboCom')
                   ->setCompany('RoboCom');
             $excel->setDescription('报名数据');
@@ -260,10 +260,10 @@ class CompetitionService
 
                 // 11 Elements
                 $columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
-                $columnKeys = ['invitecode', 'team_no', 'team_name', 'competition_1', 'competition_2', 'competition_3', 'remark',
+                $columnKeys = ['用户名', '用户电话', '用户邮箱', 'team_no', 'team_name', 'competition_1', 'competition_3', 'remark',
                                     'contact_name', 'contact_mobile', 'contact_email', 'contact_remark'];
 
-                $sheet->row(2, [ '邀请码', '队伍编号', '队伍名称', '赛事项目', '赛事名称', '组别', '队伍备注',
+                $sheet->row(2, [ '用户名', '用户电话', '用户邮箱', '队伍编号', '队伍名称', '赛事项目', '组别', '队伍备注',
                 				 '联系人', '联系人手机', '联系人邮箱', '联系人备注',
                 				 '身份' ,'姓名', '性别', '年龄', '学校', '班级', '工作单位', '证件类型', '证件号码', '监护人', '关系', '联系地址', '手机号码', '邮箱', '学校校长姓名', '备注']);
 

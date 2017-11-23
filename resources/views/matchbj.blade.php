@@ -17,7 +17,7 @@
         <div class="instructions clearfix {{$is_update ? '' : 'active'}}">
             <h1 class="instructions-h">RoboCom国际公开赛——青少年人工智能编程挑战赛报名须知</h1>
             <span class="instructions-span"> 1. 青少年人工智能编程挑战赛分为：</span>
-            <span class="instructions-span" style="padding-left: 26px;">线下比赛项目：图形化编程创意设计挑战赛、智造大挑战、中鸣超级轨迹赛、单片机迷宫任务挑战赛、RoboCom星际迷航。</span>
+            <span class="instructions-span" style="padding-left: 26px;">线下比赛项目：图形化编程创意设计挑战赛——线上、图形化编程创意设计挑战赛——线下、智造大挑战、中鸣超级轨迹赛、单片机迷宫任务挑战赛和RoboCom星际迷航。</span>
             <span class="instructions-span" style="padding-left: 26px;">线上比赛项目：图形化编程创意设计挑战赛</span>
             <span class="instructions-span"> 2. 线下比赛报名时间截止日期：2017年12月15日</span>
             <span class="instructions-span" style="padding-left: 26px;">线下比赛缴费截止日期： 2017年12月20日</span>
@@ -25,11 +25,11 @@
             <span class="instructions-span" style="padding-left: 26px;">线上比赛缴费截止日期：2017年12月29日</span>
             <span class="instructions-span">4. 正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
             <span class="instructions-span" style="padding-left: 26px; color: red;">重要提示：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于RoboCom国际公开赛——青少年人工智能编程挑战赛，报名人员须对其提交的错误信息造成的后果负责。</span>
-            <span class="instructions-span">5. 联系报名负责人，索取相应的项目邀请码。</span>
-            <span class="instructions-span">6. 每条邀请码仅有效使用1次。请严格、谨慎的填写信息。一旦提交，将不再做修改。</span>
-            <span class="instructions-span">7. 报名完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
-            <span class="instructions-span">8. 参赛费用将不在网上报名中缴纳，具体缴费流程请联系相应赛项交费联系人（见交费流程）。</span>
-            <span class="instructions-span">9. 如对网上报名有疑问，可通过联系江城（13476000614）</span>
+            <span class="instructions-span">5. 注册后，在报名截止日期前可登录修改报名信息。报名截止后，如需修改报名信息须联系所参加赛项的负责人。</span>
+            <span class="instructions-span">6. 报名完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
+            <span class="instructions-span">7. 参赛费用将不在网上报名中缴纳，具体缴费流程请联系相应赛项交费联系人（见交费流程）。</span>
+            <span class="instructions-span">8. 如对赛项和缴费有疑问请联系相关赛项的联系人（见附一）。</span>
+            <span class="instructions-span">9. 如对在线报名有疑问，可通过联系江城（13476000614）</span>
             <br/>
             <h2 style="color: red;">交费流程如下：</h2>
             <br/>
@@ -51,13 +51,14 @@
 
             <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：负责人联系方式</h2>
             <span class="instructions-span" style="padding-left: 20px;">1. 相关赛事项目技术咨询及比赛规则解释负责人：</span>
-            <span class="instructions-span" style="padding-left: 46px;"> a)图形化编程软件创意设计挑战赛项目联系人：周善斌　电话：18576690069　樊军伟　电话：18588238651 贺晓山 电话：15994743223</span>
+            <span class="instructions-span" style="padding-left: 46px;"> a)图形化编程软件创意设计挑战赛  联系人：周善斌 电话：18576690069  樊军伟 电话：18588238651  贺晓山 电话：15994743223</span>
             <span class="instructions-span" style="padding-left: 46px;"> b)智造大挑战赛 联系人：解俊杰　电话：18603015057</span>
             <span class="instructions-span" style="padding-left: 46px;"> c)中鸣超级轨迹赛 联系人：王小君　电话：13500034449</span>
             <span class="instructions-span" style="padding-left: 46px;"> d)单片机迷宫任务挑战赛 联系人：张健 电话：13811159341</span>
             <span class="instructions-span" style="padding-left: 46px;"> e)RoboCom星际迷航  联系人：钟毅  电话：18978985303</span>
             <span class="instructions-span" style="padding-left: 20px;">2. 组委会办公室</span>
-            <span class="instructions-span" style="padding-left: 46px;">李佳：13552892879  洪婕：13466616992 闫旭晖：13810882832 座机：010-81055310</span>
+            <span class="instructions-span" style="padding-left: 46px;">李佳：13552892879  洪婕：13466616992 闫旭晖：13810882832</span>
+            <span class="instructions-span" style="padding-left: 46px;">座机：010-81055310</span>
             <h2 style="margin-bottom: 20px; margin-top: 15px;">附二：报名表填写说明</h2>
 
             <span class="instructions-span clearfix"><i>信息项</i>填写说明</span>
@@ -65,7 +66,6 @@
             <span class="instructions-span clearfix"><i>手机号码</i>填写11位有效手机号码。如参赛选手没有手机则须填写带队老师或监护人手机号码</span>
             <span class="instructions-span clearfix"><i>邮箱/E-mail</i>填写有效邮箱地址</span>
             <span class="instructions-span clearfix"><i>身份证号</i>填写有效18位居民身份证号</span>
-            <span class="instructions-span clearfix"><i>照片</i>须上传2寸免冠登记照，大小不能大于2MB</span>
             <span class="instructions-span clearfix"><i>队伍名称</i>填写参赛队伍的名称，不接受已存在的队伍名称</span>
             <span class="instructions-span clearfix"><i>学校/单位名称</i>填写所属学校或单位名称</span>
             <span class="instructions-span clearfix"><i>赛事项目</i>选择队伍参加的赛项</span>
@@ -181,7 +181,7 @@
                                         <div class="input-field">
                                             <span class="input-label">证件类型  :</span>
                                             <select name="leader[{!!$key!!}][idcard_type]" class="input-field-text id_type">
-                                                {!! buildSelectOptions(['身份证', '内地通行证', '台胞证', '护照'], $teamMember['idcard_type'] )!!}
+                                                {!! buildSelectOptions(['内地通行证', '台胞证', '护照','身份证'], $teamMember['idcard_type'] )!!}
                                             </select>
                                         </div>
                                         <div class="input-field">
@@ -205,7 +205,7 @@
                                             <div class="tips"></div>
                                         </div>
                                         <div class="input-field">
-                                            <span class="input-label">学校校长姓名  :</span>
+                                            <span class="input-label">学校校长姓名(选填)  :</span>
                                             <input data-type="realname" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_{!!$key!!}_headmaster" name="leader[{!!$key!!}][headmaster]" type="text" value="{{$teamMember['headmaster'] or ''}}">
                                             <div class="tips"></div>
                                         </div>
@@ -272,7 +272,7 @@
                                     <div class="tips"></div>
                                 </div>
                                 <div class="input-field">
-                                    <span class="input-label">学校校长姓名  :</span>
+                                    <span class="input-label">学校校长姓名(选填)  :</span>
                                     <input data-type="realname" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_0_headmaster" name="leader[0][headmaster]" type="text" value="">
                                     <div class="tips"></div>
                                 </div>
@@ -330,7 +330,7 @@
                         <button id="checkTeamName" type="button" class="btn_next">下一步</button>
                     </div>
                     <div class="student_info div_tab">
-                        <span class="title-span">*队员最多3人</span>
+                        <span class="title-span">*队员最多4人</span>
                         <div class="clearfix students">
                         </div>
                         <button type="button" class="btn_new" id="add_student">添加新成员</button>
@@ -1498,10 +1498,10 @@
             <div class="input-field">
                 <span class="input-label">证件类型  :</span>
                 <select name="@{{:type}}[@{{:index}}][idcard_type]" class="input-field-text id_type">
-                    <option value="身份证" @{{if defaultValue['relation'] =='身份证}} selected @{{/if}}>身份证</option>
-                    <option value="内地通行证" @{{if defaultValue['relation'] =='内地通行证}} selected @{{/if}}>内地通行证</option>
-                    <option value="台胞证" @{{if defaultValue['relation'] =='台胞证}} selected @{{/if}}>台胞证</option>
-                    <option value="护照" @{{if defaultValue['relation'] =='护照}} selected @{{/if}}>护照</option>
+                    <option value="身份证" @{{if defaultValue['relation'] == '身份证'}} selected @{{/if}}>身份证</option>
+                    <option value="内地通行证" @{{if defaultValue['relation'] == '内地通行证'}} selected @{{/if}}>内地通行证</option>
+                    <option value="台胞证" @{{if defaultValue['relation'] == '台胞证'}} selected @{{/if}}>台胞证</option>
+                    <option value="护照" @{{if defaultValue['relation'] == '护照'}} selected @{{/if}}>护照</option>
                 </select>
             </div>
             <div class="input-field">
@@ -1517,9 +1517,9 @@
             <div class="input-field">
                 <span class="input-label">关系  :</span>
                 <select name="@{{:type}}[@{{:index}}][relation]" class="input-field-text relation">
-                    <option value="亲属" @{{if defaultValue['relation'] =='亲属}} selected @{{/if}}>亲属</option>
-                    <option value="师生"  @{{if defaultValue['relation'] =='师生'}} selected @{{/if}}>师生</option>
-                    <option value="其他"  @{{if defaultValue['relation'] =='其他'}} selected @{{/if}}>其他</option>
+                    <option value="亲属" @{{if defaultValue['relation'] =='亲属'}} selected @{{/if}}>亲属</option>
+                    <option value="师生" @{{if defaultValue['relation'] =='师生'}} selected @{{/if}}>师生</option>
+                    <option value="其他" @{{if defaultValue['relation'] =='其他'}} selected @{{/if}}>其他</option>
                 </select>
             </div>
             <div class="input-field">
@@ -1600,7 +1600,7 @@
                 <div class="tips"></div>
             </div>
             <div class="input-field">
-                <span class="input-label">学校校长姓名  :</span>
+                <span class="input-label">学校校长姓名(选填)  :</span>
                 <input data-type="realname" tip-warn="" tip-info="仅支持英文、汉字" class="input-field-text name" id="leader_6_headmaster" name="leader[6][headmaster]" type="text" value="">
                 <div class="tips"></div>
             </div>

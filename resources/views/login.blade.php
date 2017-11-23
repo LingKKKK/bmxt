@@ -35,7 +35,7 @@
                     <span class="input-label">密码  :</span>
                     <input data-type="password" class="input-field-text"  id="password" type="password" name="password" value="{{old('password')}}">
                 </div>
-                <button class="submit-search" id="submit-search">查询</button>
+                <button class="submit-search" id="submit-search">登录</button>
             </div>
         </form>
     </div>
