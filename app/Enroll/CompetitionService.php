@@ -227,14 +227,6 @@ class CompetitionService
     	return $teamList;
     }
 
-    // 通过enroll_user_id 查找到 user  ->id
-    public function getUser()
-    {
-        $user = CompetitionTeam::with('user')->get();
-        return $user;
-    }
-
-
     public function makeExcel($filename)
     {
     	$teamList = $this->getTeams();
@@ -247,10 +239,12 @@ class CompetitionService
 
             $excel->sheet('报名数据', function($sheet) use($teamList) {
             	$sheet->setAutoSize(true);
-                $sheet->mergeCells('A1:K1');
-                $sheet->mergeCells('L1:W1');
-                $sheet->cell('A1', '队伍信息');
-                $sheet->cell('L1', '成员信息');
+                $sheet->mergeCells('A1:C1');
+                $sheet->mergeCells('D1:L1');
+                $sheet->mergeCells('L1:M1');
+                $sheet->cell('A1', '用户信息');
+                $sheet->cell('D1', '队伍信息');
+                $sheet->cell('M1', '成员信息');
                 // 居中
                 $sheet->row(1, function($row) {
                     $row->setAlignment('center');
@@ -268,7 +262,7 @@ class CompetitionService
 
                 $sheet->row(2, [ '用户名', '用户电话', '用户邮箱', '队伍编号', '队伍名称', '赛事项目', '组别', '队伍备注',
                 				 '联系人', '联系人手机', '联系人邮箱', '联系人备注',
-                				 '身份' ,'姓名', '性别', '年龄', '学校', '班级', '工作单位', '证件类型', '证件号码', '监护人', '关系', '联系地址', '手机号码', '邮箱', '学校校长姓名', '备注']);
+                				 '身份', '姓名', '性别', '年龄', '学校', '班级', '工作单位', '证件类型', '证件号码', '监护人', '关系', '联系地址', '手机号码', '邮箱', '学校校长姓名', '备注']);
 
                 $rowIndex = 3;
 
