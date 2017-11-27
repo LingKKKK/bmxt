@@ -282,7 +282,7 @@ class CompetitionService
                 	$idx = 0;
                 	foreach ($team->members as $m) {
                 		$sheet->row($rowIndex + $idx++, [
-                			'', '', '', '', '', '', '', '', '', '', '',
+                			'', '', '', '', '', '', '', '', '', '', '', '',
                 			$m['type'] == 'leader' ? '领队教师' : '学生',
                 			$m['name'],
                 			$m['sex'],
