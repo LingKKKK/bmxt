@@ -242,11 +242,12 @@ class MatchbjController extends Controller
 
         $adminArr  = [
             '815854240@qq.com',
-            '663831709@qq.com'
+            'slowlyrun@hotmail.com'
         ];
 
         if (! in_array($request->input('email'), $adminArr)) {
-            return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
+            // return redirect()->back()->withErrors(['您无权下载此数据'])->withInput();
+            return view('successTips', ['status' => '您没有权限,需要进入登录页面', 'link' => '/']);
         }
 
         $filename = '青少年人工智能编成挑战赛-' . date('Y_m_d_H_i_s');
@@ -282,6 +283,6 @@ class MatchbjController extends Controller
 
     public function isAdmin($user)
     {
-        return $user !== null && $user->email === '815854240@qq.com' or '123@123.com' or 'slowlyrun@hotmail.com';
+        return $user !== null && $user->email === '815854240@qq.com' || $user->email === 'slowlyrun@hotmail.com';
     }
 }

@@ -39,6 +39,6 @@ class User extends Model implements AuthenticatableContract,
 
     public function isAdmin()
     {
-        return $this->email === '815854240@qq.com' or '663831709@qq.com';
+        return $this->email === '815854240@qq.com' || $this->email === 'slowlyrun@hotmail.com';
     }
 }
