@@ -69,8 +69,8 @@
             <span class="instructions-span clearfix"><i>队伍名称</i>填写参赛队伍的名称，不接受已存在的队伍名称</span>
             <span class="instructions-span clearfix"><i>学校/单位名称</i>填写所属学校或单位名称</span>
             <span class="instructions-span clearfix"><i>赛事项目</i>选择队伍参加的赛项</span>
-            <span class="instructions-span clearfix"><i>子赛项</i>选择参队伍加的子赛项</span>
-            <span class="instructions-span clearfix"><i>组别</i>选择参队伍加的组别</span>
+            <span class="instructions-span clearfix"><i>子赛项</i>选择队伍参加的子赛项</span>
+            <span class="instructions-span clearfix"><i>组别</i>选择队伍参加的组别</span>
             <span class="instructions-span clearfix"><i>年龄</i>真实年龄</span>
             <span class="instructions-span clearfix"><i>性别</i>填写真实性别</span>
             <span class="instructions-span clearfix"><i>证件类型</i>选择有效的身份证件类型</span>
