@@ -497,7 +497,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <button type="button" class="btn_pre">上一步</button>
-                        <button type="button" id="getQrcode" class="btn_next">确认提交</button>
+                        <button type="submit" id="getQrcode" class="btn_next">确认提交</button>
                         <input class="btn_next" id="submit" style="display: none;" type="submit" value="确认提交" />
                     </div>
                 </div>
@@ -1292,44 +1292,6 @@
             // 6.2 点击刷新验证码图片
             $('#captcha_img1').click(function (){
                 $(this).refreshCaptcha();
-            });
-
-            // 6.3 发送手机验证码
-            $("#getQrcode").click(function() {
-
-                $('#submit').trigger('click');
-                $('#submit').trigger('click');
-                $('#submit').trigger('click');
-                $('#submit').trigger('click');
-                $('#submit').trigger('click');
-                $('#submit').trigger('click');
-                $('#submit').trigger('click');
-                // var stop = false;
-                // $('.div_tab').each(function(index){
-                //     if (stop) {
-                //         return;
-                //     }
-
-                //     console.log(index, this);
-                //     $(this).find('input').each(function(){
-                //         if (stop) {
-                //             return;
-                //         }
-                //         var ret = validField(this);
-                //         if (!ret) {
-                //             console.log('start_' +index, this);
-                //             stop = true;
-                //             tabCenter.go(index);
-                //             return;
-                //         }
-                //     });
-                // });
-                // if (stop) {
-                //     return false;
-                // }
-
-
-                // return false;
             });
 
             // 6.4 点击取消输入验证码

@@ -21,19 +21,21 @@ class AuthController extends Controller
         return view('login');
     }
 
+    // www.kenrobot.con/index.php?a=1&p=2
+
     public function doLogin(Request $request)
     {
         $this->validate($request,
-            [
-                'email'   => 'required_without:mobile|email|min:1|max:200|exists:users,email',
-                'mobile' => 'required_without:email|mobile|exists:users,mobile',
-                'password' => 'required',
-            ],
-            [
-                'email.required_without' => '请输入邮箱或手机号',
-                'mobile.required_without' => '请输入邮箱或手机号',
-                'password.required' => '用户密码有误',
-            ]);
+        [
+            'email'   => 'required_without:mobile|email|min:1|max:200|exists:users,email',
+            'mobile' => 'required_without:email|mobile|exists:users,mobile',
+            'password' => 'required',
+        ],
+        [
+            'email.required_without' => '请输入邮箱或手机号',
+            'mobile.required_without' => '请输入邮箱或手机号',
+            'password.required' => '用户密码有误',
+        ]);
 
         if ($request->has('email')) {
             $user = User::where('email', $request->input('email'))->first();
