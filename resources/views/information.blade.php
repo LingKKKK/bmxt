@@ -50,7 +50,6 @@
                         <li>{{$team['created_at'] or ''}}</li>
                         <li>
                             <a href="{{url('/finish', $team['team_no'])}}">查看</a>
-                            <a href="{{url('/signup', $team['team_no'])}}">修改</a>
                         </li>
 
                     </ul>
