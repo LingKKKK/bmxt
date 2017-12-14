@@ -31,23 +31,17 @@
             <span class="instructions-span">8. 如对赛项和缴费有疑问请联系相关赛项的联系人（见附一）。</span>
             <span class="instructions-span">9. 如对在线报名有疑问，可通过联系江城（13476000614）</span>
             <br/>
-            <h2 style="color: red;">交费流程如下：</h2>
+            <h2 style="color: red;">缴费流程如下：</h2>
             <br/>
             <span class="instructions-span" >在线报名完成后，请联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。</span>
             <br/>
             <span class="instructions-span">1. 核实参赛队伍是否报名成功。并核实参赛人数。</span>
             <span class="instructions-span">2. 支付参赛注册费</span>
             <span class="instructions-span" style="padding-left: 20px;">付款对公账户：</span>
-            <span class="instructions-span" style="padding-left: 20px; color: red;">图形化编程创意设计挑战赛缴费账户：</span>
-            <span class="instructions-span" style="padding-left: 20px;">开户名称：北京博趣出版有限责任公司</span>
-            <span class="instructions-span" style="padding-left: 20px;">开户银行：中国工商银行股份有限公司北京体育馆路支行</span>
-            <span class="instructions-span" style="padding-left: 20px;">开户行号（大额支付代码）：102100000819</span>
-            <span class="instructions-span" style="padding-left: 20px;">银行账号：0200008109024592567</span>
-            <span class="instructions-span" style="padding-left: 20px; color: red;">智造大挑战、中鸣超级轨迹赛、单片机迷宫任务挑战赛、RoboCom星际迷航缴费账户：</span>
-            <span class="instructions-span" style="padding-left: 20px;">开户名称：北京搜获科技有限公司</span>
-            <span class="instructions-span" style="padding-left: 20px;">开户银行：中国工商银行北京分行东升路支行</span>
-            <span class="instructions-span" style="padding-left: 20px;">开户行号（大额支付代码）：102100000626</span>
-            <span class="instructions-span" style="padding-left: 20px;">银行账号：0200006209200036460</span>
+            <span class="instructions-span" style="padding-left: 46px;">开户名称：北京搜获科技有限公司</span>
+            <span class="instructions-span" style="padding-left: 46px;">开户银行：中国工商银行北京分行东升路支行</span>
+            <span class="instructions-span" style="padding-left: 46px;">开户行号（大额支付代码）：102100000626</span>
+            <span class="instructions-span" style="padding-left: 46px;">银行账号：0200006209200036460</span>
 
             <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：负责人联系方式</h2>
             <span class="instructions-span" style="padding-left: 20px;">1. 相关赛事项目技术咨询及比赛规则解释负责人：</span>
