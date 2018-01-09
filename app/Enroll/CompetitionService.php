@@ -331,7 +331,7 @@ class CompetitionService
                                 ]
                             ]);
                         // 筛选队伍然后添加开票详情
-                        if ($team[$keyName] == '发票') {
+                        if ($team[$keyName] == '发票' || $team[$keyName] == '收据') {
                             $team['invoice_details'] = '参赛费';
                         }
 
