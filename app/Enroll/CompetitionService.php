@@ -245,7 +245,7 @@ class CompetitionService
                 $sheet->cell('A1', '用户信息');
                 $sheet->cell('D1', '队伍信息');
                 $sheet->cell('M1', '成员信息');
-                $sheet->cell('Z1', '开票信息');
+                $sheet->cell('AC1', '开票信息');
                 // 居中
                 $sheet->row(1, function($row) {
                     $row->setAlignment('center');
@@ -330,6 +330,11 @@ class CompetitionService
                                     [$rowIndex, $rowIndex + $idx],
                                 ]
                             ]);
+                        // 筛选队伍然后添加开票详情
+                        if ($team[$keyName] == '发票') {
+                            $team['invoice_details'] = '参赛费';
+                        }
+
                         $sheet->cell($colName.$rowIndex, $team[$keyName].' ');
                     }
 
