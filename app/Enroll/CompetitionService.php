@@ -245,6 +245,7 @@ class CompetitionService
                 $sheet->cell('A1', '用户信息');
                 $sheet->cell('D1', '队伍信息');
                 $sheet->cell('M1', '成员信息');
+                $sheet->cell('Z1', '开票信息');
                 // 居中
                 $sheet->row(1, function($row) {
                     $row->setAlignment('center');
@@ -253,7 +254,7 @@ class CompetitionService
                     $row->setAlignment('center');
                 });
 
-                // 11 Elements
+                // 11 Elements 基础部分
                 $columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
 
                 $columnKeys = ['user_name', 'user_mobile', 'user_email', 'team_no', 'team_name', 'competition_1', 'competition_3', 'remark',
@@ -262,9 +263,14 @@ class CompetitionService
 
                 $sheet->row(2, [ '用户名', '用户电话', '用户邮箱', '队伍编号', '队伍名称', '赛事项目', '组别', '队伍备注',
                 				 '联系人', '联系人手机', '联系人邮箱', '联系人备注',
-                				 '身份', '姓名', '性别', '年龄', '学校', '班级', '工作单位', '证件类型', '证件号码', '监护人', '关系', '联系地址', '手机号码', '邮箱', '学校校长姓名', '备注']);
+                				 '身份', '姓名', '性别', '年龄', '学校', '班级', '工作单位', '证件类型', '证件号码', '监护人', '关系', '联系地址', '手机号码', '邮箱', '学校校长姓名', '备注',
+                                 '是否需要开票', '开票抬头', '同意社会信用代码', '开票金额', '开票明细', '收件地址', '联系人姓名', 'E-mail', '备注', '']);
 
                 $rowIndex = 3;
+
+                // 9 Elements 开票部分
+                $invoice = ['AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK'];
+                $invoiceKeys = ['invoice_type', 'invoice_title', 'invoice_code', 'invoice_money', 'invoice_details', 'invoice_mail_address', 'invoice_mail_recipients', 'invoice_mail_mobile', 'invoice_mail_remark'];
 
                 foreach ($teamList as $team) {
                     // dd($team['user']);
@@ -297,23 +303,35 @@ class CompetitionService
                 	}
 
 
-                	for ($i=0; $i < 11; $i++) {
-                		$colName = $columns[$i];
-                		$keyName = $columnKeys[$i];
+                    for ($i=0; $i < 11; $i++) {
+                        $colName = $columns[$i];
+                        $keyName = $columnKeys[$i];
 
-                		$sheet->setMergeColumn([
-                				'columns' => [$colName],
-                				'rows'	  => [
-                					[$rowIndex, $rowIndex + $idx],
-                				]
-                			]);
+                        $sheet->setMergeColumn([
+                                'columns' => [$colName],
+                                'rows'    => [
+                                    [$rowIndex, $rowIndex + $idx],
+                                ]
+                            ]);
                         if ($keyName == 'team_no' || $keyName == 'contact_mobile') {
                             $sheet->cell($colName.$rowIndex, $team[$keyName].' ');
                         } else {
                             $sheet->cell($colName.$rowIndex, $team[$keyName]);
                         }
+                    }
 
-                	}
+                    for ($i=0; $i < 9; $i++) {
+                        $colName = $invoice[$i];
+                        $keyName = $invoiceKeys[$i];
+
+                        $sheet->setMergeColumn([
+                                'columns' => [$colName],
+                                'rows'    => [
+                                    [$rowIndex, $rowIndex + $idx],
+                                ]
+                            ]);
+                        $sheet->cell($colName.$rowIndex, $team[$keyName].' ');
+                    }
 
                 	$rowIndex = $rowIndex + $idx + 1;
                 }

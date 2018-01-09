@@ -31,7 +31,6 @@ Route::get('/successTips', 'MatchbjController@jumpPage');
 // Route::get('/loginSuccess', 'AuthController@loginSuccessTips');
 
 // 填写信息/修改信息
-
 Route::get('/', 'MatchbjController@information');
 Route::get('/signup', 'MatchbjController@create')->name('enroll.create');
 Route::get('/signup/{team_no}', 'MatchbjController@edit')->name('enroll.edit');
