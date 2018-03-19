@@ -95,10 +95,8 @@ class CompetitionService
 
 	public function getCompetitionList()
 	{
-
 		// 计算出第一层数据
 		$result = $this->findChidren(0);
-
 
 		foreach ($result as $id => $value) {
 			$result[$id]['children'] = $this->findChidren($id);
@@ -301,7 +299,6 @@ class CompetitionService
                 			$m['remark']
                 			]);
                 	}
-
 
                     for ($i=0; $i < 11; $i++) {
                         $colName = $columns[$i];

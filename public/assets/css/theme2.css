@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*重置css*/
 /*重置css*/
 body, h1, h2, h3, h4, h5, h6, p, a, ul, li, div, input, dd, dt, dl.ol, img, span, i, b, strong {
@@ -532,7 +533,7 @@ body #info .inner .enroll_information .form-horizontal .select select {
   background-size: 10px 5px;
   padding: 0px 30px 0px 0px;
   outline: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body #info .inner .enroll_information .form-horizontal .select .form-control {
   width: 30%;
