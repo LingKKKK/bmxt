@@ -238,8 +238,9 @@ class CompetitionService
             $excel->sheet('报名数据', function($sheet) use($teamList) {
             	$sheet->setAutoSize(true);
                 $sheet->mergeCells('A1:C1');
-                $sheet->mergeCells('D1:L1');
-                $sheet->mergeCells('L1:M1');
+                $sheet->mergeCells('D1:K1');
+                $sheet->mergeCells('L1:AB1');
+                $sheet->mergeCells('AC1:AK1');
                 $sheet->cell('A1', '用户信息');
                 $sheet->cell('D1', '队伍信息');
                 $sheet->cell('M1', '成员信息');

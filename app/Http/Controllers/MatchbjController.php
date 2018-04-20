@@ -250,7 +250,7 @@ class MatchbjController extends Controller
             return view('successTips', ['status' => '您没有权限,需要进入登录页面', 'link' => '/']);
         }
 
-        $filename = '青少年人工智能编成挑战赛-' . date('Y_m_d_H_i_s');
+        $filename = 'RoboCom国际公开赛——青少年人工智能编成挑战赛-' . date('Y_m_d_H_i_s');
         return $service->makeExcel($filename);
     }
 
