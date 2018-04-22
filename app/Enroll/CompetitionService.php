@@ -24,43 +24,36 @@ class CompetitionService
 	private function getOriginData()
 	{
 		$origin_data = [
-            '图形化编程创意设计挑战赛——线上' => [
-                '图形化编程创意设计挑战赛——线上' => [
+            'RoboCom星际迷航' => [
+                'RoboCom星际迷航' => [
                     "小学" => 1,
                     "初中" => 1,
                     "高中（含中职）" => 1,
                 ],
             ],
-            '图形化编程创意设计挑战赛——线下' => [
-                '图形化编程创意设计挑战赛——线下' => [
+            "'一带一路'智能挑战" => [
+                "'一带一路'智能挑战" => [
                     "小学" => 1,
                     "初中" => 1,
                     "高中（含中职）" => 1,
                 ],
             ],
-            '智造大挑战' => [
-                '智造大挑战' => [
+            'RoboCom星球大战' => [
+                'RoboCom星球大战' => [
                     "小学" => 1,
                     "初中" => 1,
                     "高中（含中职）" => 1,
                 ],
             ],
-			'中鸣超级轨迹赛' => [
-			    '中鸣超级轨迹赛' => [
+			'创客生存挑战' => [
+			    '创客生存挑战' => [
 			        "小学" => 1,
 			        "初中" => 1,
 			        "高中（含中职）" => 1,
 			    ],
 			],
-			'单片机迷宫任务挑战赛' => [
-			    '单片机迷宫任务挑战赛' => [
-			        "小学" => 1,
-			        "初中" => 1,
-			        "高中（含中职）" => 1,
-			    ],
-			],
-			'RoboCom星际迷航' => [
-			    'RoboCom星际迷航' => [
+			'水中机器人协同竞技' => [
+			    '水中机器人协同竞技' => [
 			        "小学" => 1,
 			        "初中" => 1,
 			        "高中（含中职）" => 1,
@@ -230,7 +223,7 @@ class CompetitionService
     	$teamList = $this->getTeams();
         Excel::create($filename, function($excel) use($teamList) {
 
-            $excel->setTitle('RoboCom国际公开赛——青少年人工智能编成挑战赛');
+            $excel->setTitle('RoboCom（睿抗）三航（航天航空航海）机器人挑战赛');
             $excel->setCreator('RoboCom')
                   ->setCompany('RoboCom');
             $excel->setDescription('报名数据');

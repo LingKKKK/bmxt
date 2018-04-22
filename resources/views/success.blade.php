@@ -21,7 +21,7 @@
 
             <div class="title_top">
                 <ul>
-                    <li>2017世界机器人大赛-RoboCom青少年挑战赛</li>
+                    <li>RoboCom（睿抗）三航（航天航空航海）机器人挑战赛</li>
                 </ul>
                 <div class="clearfix clear"></div>
             </div>
@@ -94,8 +94,8 @@
                                 <span  class="name_input">{{$leader['sex'] or ''}}</span>
                                 <div class="clearfix clear"></div>
                             </div>
-                            @endforeach          
-                            @endif                 
+                            @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="all_number">
@@ -192,14 +192,13 @@
         });
     }, 3000);
 
-    var game_name = ["未来世界", "博思威龙", "工业时代", "部落战争——攻城大师", "智造大挑战", "创客生存挑战赛"]; //直接声明Array
+    var game_name = ["RoboCom星际迷航", "'一带一路'智能挑战", "RoboCom星球大战", "创客生存挑战", "水中机器人协同竞技"]; //直接声明Array
     var game_type = [
-        ["WRO常规赛", "EV3足球赛", "WRO创意赛-'可持续发展'"],
-        ["VEX-EDR'步步为营'工程挑战赛", "VEX-IQ'环环相扣'工程挑战赛", "BDS机器人工程挑战赛——'长城意志'"],
-        ["能力风暴——WER能力挑战赛", "能力风暴——WER能力挑战赛工程创新赛", "能力风暴——WER普及赛"],
-        ["部落战争——攻城大师"],
-        ["智造大挑战"],
-        ["创客生存挑战赛"]
+        ["RoboCom星际迷航"],
+        ["'一带一路'智能挑战"],
+        ["RoboCom星球大战"],
+        ["创客生存挑战"],
+        ["水中机器人协同竞技"]
     ];
     var get_competition_type = $('#preview_competition_type').text();
 

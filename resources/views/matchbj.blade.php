@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>RoboCom国际公开赛－－青少年人工智能编成挑战赛</title>
+    <title>RoboCom（睿抗）三航（航天航空航海）机器人挑战赛</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/matchbj.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/kenrobot.css')}}">
     <link href="https://cdn.bootcss.com/datepicker/0.5.3/datepicker.css" rel="stylesheet">
@@ -15,23 +15,26 @@
             </div>
         </div>
         <div class="instructions clearfix {{$is_update ? '' : 'active'}}">
-            <h1 class="instructions-h">RoboCom国际公开赛——青少年人工智能编程挑战赛报名须知</h1>
-            <span class="instructions-span"> 1. 青少年人工智能编程挑战赛分为：</span>
-            <span class="instructions-span" style="padding-left: 26px;">线下比赛项目：图形化编程创意设计挑战赛——线上、图形化编程创意设计挑战赛——线下、智造大挑战、中鸣超级轨迹赛、单片机迷宫任务挑战赛和RoboCom星际迷航。</span>
-            <span class="instructions-span" style="padding-left: 26px;">线上比赛项目：图形化编程创意设计挑战赛</span>
-            <span class="instructions-span"> 2. 线下比赛报名时间截止日期：2017年12月15日</span>
-            <span class="instructions-span" style="padding-left: 26px;">线下比赛缴费截止日期： 2017年12月20日</span>
-            <span class="instructions-span"> 3. 线上比赛报名时间截止日期：2017年12月29日</span>
-            <span class="instructions-span" style="padding-left: 26px;">线上比赛缴费截止日期：2017年12月29日</span>
-            <span class="instructions-span">4. 正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
-            <span class="instructions-span" style="padding-left: 26px; color: red;">重要提示：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败。参赛队员的信息将用于RoboCom国际公开赛——青少年人工智能编程挑战赛，报名人员须对其提交的错误信息造成的后果负责。</span>
-            <span class="instructions-span">5. 注册后，在报名截止日期前可登录修改报名信息。报名截止后，如需修改报名信息须联系所参加赛项的负责人。</span>
-            <span class="instructions-span">6. 报名完成后，请注意保存自己的队伍编码，以备查询核实之用。</span>
-            <span class="instructions-span">7. 参赛费用将不在网上报名中缴纳，具体缴费流程请联系相应赛项交费联系人（见交费流程）。</span>
-            <span class="instructions-span">8. 如对赛项和缴费有疑问请联系相关赛项的联系人（见附一）。</span>
-            <span class="instructions-span">9. 如对在线报名有疑问，可通过联系江城（13476000614）</span>
+            <h1 class="instructions-h">RoboCom（睿抗）三航（航天航空航海）机器人挑战赛 暨2018“全球青少年人工智能与机器人大赛”
+（北大工学院AIRC）贵安选拔赛报名须知</h1>
+            <span class="instructions-span"> 1. 比赛时间：2018年5月11日-5月13日</span>
+            <span class="instructions-span"> 2. 比赛地点：贵州省贵安新区综合报税区黔中大道启迪贵安数字小镇</span>
+            <span class="instructions-span"> 3. 报名截止日期：2018年4月30日</span>
+            <span class="instructions-span">4. 比赛内容、报名方式和具体流程：</span>
+            <span class="instructions-span" style="padding-left: 26px;">1）比赛内容</span>
+            <span class="instructions-span" style="color: red;">5. 注意事项：</span>
+            <span class="instructions-span" style="padding-left: 26px;">1）机构代收参赛选手报名注册费用注意事项：</span>
+            <span class="instructions-span" style="padding-left: 46px;">请由机构代收的参赛选手和老师，必须提前在www.robocom.com.cn进行报名注册和登记。</span>
+            <span class="instructions-span" style="padding-left: 46px;">请代收机构向组委会提供详细的收费清单，清单内容包括：邀请码、姓名、手机号码、身份证号、队伍名称、学校名称、参加赛项名称、是否开票、备注等内容，并且与www.robocom.com.cn注册和登记的报名信息一致。</span>
+            <span class="instructions-span" style="padding-left: 26px;">2）选手自行缴费注意事项：</span>
+            <span class="instructions-span" style="padding-left: 46px;">请选手按照www.robocom.com.cn提醒缴费流程、收费标准和账号信息按时缴费；</span>
+            <span class="instructions-span" style="padding-left: 46px;">请保留好缴费凭证（队伍编码、转账成功截图）并发送至收费负责人，索取应有的收款凭证。</span>
+            <span class="instructions-span" style="padding-left: 26px;">3）收费负责人：洪老师13466616992</span>
+            <span class="instructions-span" style="padding-left: 46px;">缴费凭证发送方式：直接发送截图邮件至邮箱：robocom@163.com</span>
+            <span class="instructions-span" style="padding-left: 26px; color: red;">重要提示：请确保带队老师和参赛队员的姓名、身份证件类型、证件编码等个人信息的真实性和准确性，如有错误，可能导致报名失败，报名人员须对其提交的错误信息造成的后果负责。</span>
+            <span class="instructions-span" style="padding-left: 26px;">正式报名前，应仔细阅读本须知，并按要求认真填写个人基本信息，填写内容必须真实、完整、准确。如同意报名相关条款，点击“同意”后方可继续进行网上报名操作。</span>
             <br/>
-            <h2 style="color: red;">缴费流程如下：</h2>
+            <!-- <h2 style="color: red;">缴费流程如下：</h2>
             <br/>
             <span class="instructions-span" >在线报名完成后，请联系相应的项目参赛联系人缴费（请保留在线报名的队伍编码和转账成功的截图以方便核实）。</span>
             <br/>
@@ -41,25 +44,24 @@
             <span class="instructions-span" style="padding-left: 46px;">开户名称：北京搜获科技有限公司</span>
             <span class="instructions-span" style="padding-left: 46px;">开户银行：中国工商银行北京分行东升路支行</span>
             <span class="instructions-span" style="padding-left: 46px;">开户行号（大额支付代码）：102100000626</span>
-            <span class="instructions-span" style="padding-left: 46px;">银行账号：0200006209200036460</span>
+            <span class="instructions-span" style="padding-left: 46px;">银行账号：0200006209200036460</span> -->
 
-            <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：负责人联系方式</h2>
-            <span class="instructions-span" style="padding-left: 20px;">1. 相关赛事项目技术咨询及比赛规则解释负责人：</span>
-            <span class="instructions-span" style="padding-left: 46px;"> a)图形化编程软件创意设计挑战赛  联系人：周善斌 电话：18576690069  樊军伟 电话：18588238651  贺晓山 电话：15994743223</span>
-            <span class="instructions-span" style="padding-left: 46px;"> b)智造大挑战赛 联系人：解俊杰　电话：18603015057</span>
-            <span class="instructions-span" style="padding-left: 46px;"> c)中鸣超级轨迹赛 联系人：王小君　电话：13500034449</span>
-            <span class="instructions-span" style="padding-left: 46px;"> d)单片机迷宫任务挑战赛 联系人：张健 电话：13811159341</span>
-            <span class="instructions-span" style="padding-left: 46px;"> e)RoboCom星际迷航  联系人：钟毅  电话：18978985303</span>
-            <span class="instructions-span" style="padding-left: 20px;">2. 组委会办公室</span>
-            <span class="instructions-span" style="padding-left: 46px;">李佳：13552892879  洪婕：13466616992 闫旭晖：13810882832</span>
-            <span class="instructions-span" style="padding-left: 46px;">座机：010-81055310</span>
+            <h2 class="" style="margin-bottom: 20px; margin-top: 15px;">附一：赛项内容、负责人及联系方式</h2>
+            <span class="instructions-span" style="padding-left: 26px;"> 1) RoboCom星际迷航  联系人：李老师 电话：15800690339  备注：参赛选手自行向统一收款账号缴费</span>
+            <span class="instructions-span" style="padding-left: 26px;"> 2) “一带一路”智能挑战  联系人：王老师 电话：13500034449  备注：由机构代收</span>
+            <span class="instructions-span" style="padding-left: 26px;"> 3) RoboCom星际迷航  联系人：李老师 电话：15800690339  备注：参赛选手自行向统一收款账号缴费</span>
+            <span class="instructions-span" style="padding-left: 26px;"> 4) RoboCom星际迷航  联系人：刘老师 电话：17600826608  备注：由机构代收</span>
+            <span class="instructions-span" style="padding-left: 26px;"> 5) RoboCom星际迷航  联系人：刘老师 电话：17600826608  备注：由机构代收</span>
+
             <h2 style="margin-bottom: 20px; margin-top: 15px;">附二：报名表填写说明</h2>
 
             <span class="instructions-span clearfix"><i>信息项</i>填写说明</span>
+            <span class="instructions-span clearfix"><i>邀请码</i>由赛项负责人提供的16位邀请码，每个邀请码只能使用一次</span>
             <span class="instructions-span clearfix"><i>姓名</i>填写有效证件上的姓名，姓名只能包含汉字和英文</span>
             <span class="instructions-span clearfix"><i>手机号码</i>填写11位有效手机号码。如参赛选手没有手机则须填写带队老师或监护人手机号码</span>
             <span class="instructions-span clearfix"><i>邮箱/E-mail</i>填写有效邮箱地址</span>
             <span class="instructions-span clearfix"><i>身份证号</i>填写有效18位居民身份证号</span>
+            <span class="instructions-span clearfix"><i>照片</i>须上传2寸免冠登记照，大小不能大于2MB</span>
             <span class="instructions-span clearfix"><i>队伍名称</i>填写参赛队伍的名称，不接受已存在的队伍名称</span>
             <span class="instructions-span clearfix"><i>学校/单位名称</i>填写所属学校或单位名称</span>
             <span class="instructions-span clearfix"><i>赛事项目</i>选择队伍参加的赛项</span>
@@ -67,9 +69,11 @@
             <span class="instructions-span clearfix"><i>组别</i>选择队伍参加的组别</span>
             <span class="instructions-span clearfix"><i>年龄</i>真实年龄</span>
             <span class="instructions-span clearfix"><i>性别</i>填写真实性别</span>
+            <span class="instructions-span clearfix"><i>身高</i>填写真实身高（用于制定活动用T恤尺寸）</span>
             <span class="instructions-span clearfix"><i>证件类型</i>选择有效的身份证件类型</span>
             <span class="instructions-span clearfix"><i>证件号码</i>填写有效的身份证件号码</span>
-            <span class="instructions-span clearfix"><i>地址</i>填写有效的邮寄地址</span>
+            <span class="instructions-span clearfix"><i>居住省市</i>填写现居住的省和市</span>
+            <span class="instructions-span clearfix"><i>职务</i>填写真实职业</span>
             <span class="instructions-span clearfix"><i>账户类型</i>需要开收据还是发票或是都不需要</span>
             <span class="instructions-span clearfix"><i>发票抬头</i>收款机构的抬头</span>
             <span class="instructions-span clearfix"><i>统一社会信用代码</i>填写真实统一社会信用代码</span>

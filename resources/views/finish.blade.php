@@ -20,7 +20,7 @@
             </div>
             <div class="title_top">
                 <ul>
-                    <li>RoboCom国际公开赛-青少年人工智能编程挑战赛</li>
+                    <li>RoboCom（睿抗）三航（航天航空航海）机器人挑战赛</li>
                 </ul>
                 <div class="clearfix clear"></div>
             </div>
